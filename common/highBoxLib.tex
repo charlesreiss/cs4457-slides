@@ -1,0 +1,29 @@
+\newcommand<>{\highBox}[2]{%
+    \begin{tikzpicture}[remember picture,overlay]
+        \begin{visibleenv}#3
+        \coordinate (start) at ([yshift=1.7ex]pic cs:#1);
+        \coordinate (end) at ([yshift=-0.3ex]pic cs:#2);
+        \node[inner sep=2pt,fill=green!20,fit=(start) (end)] {};
+        \end{visibleenv}
+    \end{tikzpicture}
+}
+
+\newcommand<>{\highBoxX}[3]{%
+    \begin{tikzpicture}[remember picture,overlay]
+        \begin{visibleenv}#4
+        \coordinate (start) at ([yshift=1.7ex]pic cs:#1);
+        \coordinate (end) at ([yshift=-0.3ex]pic cs:#2);
+        \node[inner sep=2pt,#3,fit=(start) (end)] {};
+        \end{visibleenv}
+    \end{tikzpicture}
+}
+
+\newcommand<>{\highBoxB}[2]{%
+    \begin{tikzpicture}[remember picture,overlay]
+        \begin{visibleenv}#3
+        \coordinate (start) at ([yshift=1.7ex,xshift=1.5ex]pic cs:#1);
+        \coordinate (end) at ([yshift=-0.3ex]pic cs:#2);
+        \node[inner sep=2pt,fill=green!20,fit=(start) (end)] {};
+        \end{visibleenv}
+    \end{tikzpicture}
+}
