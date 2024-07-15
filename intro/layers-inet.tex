@@ -1,0 +1,10 @@
+
+\begin{frame}<1>[fragile,label=layerOverview]{layers}
+\begin{tabular}{|l|l|p{6cm}|} \hline
+application & HTTP, SSH, SMTP, \ldots & {application-defined meanings}\\ \hline
+\myemph<6>{transport} & TCP, UDP, \ldots & {reach correct program,\linebreak \myemph<2>{reliablity/streams}} \\ \hline
+\myemph<5>{network} & IPv4, IPv6, \ldots & {reach correct machine}\linebreak(across networks) \\ \hline
+\myemph<4>{link} & Ethernet, Wi-Fi, \ldots & {coordinate shared wire/radio}\\ \hline
+physical & \ldots & encode bits for wire/radio \\ \hline
+\end{tabular}
+\end{frame}

@@ -1,0 +1,54 @@
+\begin{frame}{channel abstractions}
+\begin{itemize}
+    \item want to avoid custom network for each application
+    \item but applications have different needs
+    \vspace{.5cm}
+    \item $\rightarrow$ multiple application interfaces to networks
+    \item common implementation of \myemph{common patterns}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{some abstractions}
+    \begin{itemize}
+    \item \myemph<2>{stream}
+        \begin{itemize}
+        \item continuous stream of bytes from one program to another
+        \item `connection' from one program to another
+        \end{itemize}
+    \item datagrams
+        \begin{itemize}
+        \item send small messages (\textit{datagrams})
+        \item each datagram's destination independently set
+        \end{itemize}
+    \item remote procedure calls
+        \begin{itemize}
+        \item make function calls that run on remote machine
+        \end{itemize}
+    \item remote memory access
+        \begin{itemize}
+        \item read/write bytes of data in remote memory
+        \end{itemize}
+    \item \ldots
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{focus on streams}
+    \begin{itemize}
+    \item this class: focus on implementing \textit{streams of bytes}
+    \vspace{.5cm}
+    \item why?
+        \begin{itemize}
+        \item most commonly used by applications on the Internet
+        \item many common tasks with other abstractions
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{some challenges for streams}
+    \begin{itemize}
+    \item separating data into pieces network can handle
+    \item getting network to send piece to correct place
+    \item putting pieces back together in order
+    \item handling transmission errors
+    \end{itemize}
+\end{frame}
