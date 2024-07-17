@@ -1,0 +1,24 @@
+\begin{frame}{physical media}
+\begin{tikzpicture}
+\tikzset{
+    credit/.style={font=\tiny,align=left},
+}
+\node[draw,label={[credit]south:Hustvedt, CC BY-SA 3.0,\\via Wikimedia Commons}] (fo) {
+\includegraphics[width=4.5cm]{../physical/Fiber_optic_illuminated.jpeg}
+};
+\node[draw,label={[credit]south:Dmitry G, CC BY-SA 3.0,\\via Wikimedia Commons},anchor=north west] (eth) at ([xshift=.2cm]fo.north east) {
+\includegraphics[width=4.5cm]{../physical/Ethernet_cable.jpeg}
+};
+
+\node[draw,label={[credit]south:Adamantios, CC BY-SA 3.0,\\via Wikimedia Commons},anchor=north west] (fso) at ([xshift=.2cm]eth.north east) {
+\includegraphics[width=4.5cm]{../physical/FSO-gigabit-laser-link-0a.jpeg}
+};
+\node[draw,label={[credit]south:FDominec, CC BY-SA 3.0,\\via Wikimedia Commons},anchor=north west] (coax) at ([xshift=.5cm,yshift=-0.6cm]fo.south west) {
+\includegraphics[width=3.5cm]{../physical/Coaxial_cable_cut.jpeg}
+};
+\node[draw,label={[credit]south:Evan-Amos,\\ via Wikimedia Commons},anchor=north west] (wifi) at ([yshift=-0.6cm]eth.south west) {
+\includegraphics[width=4.5cm]{../physical/Netgear-Nighthawk-AC1900-WiFi-Router.jpeg}
+};
+\node[font=\Huge] (dotdot) at ([yshift=-2cm]fso.south) {\ldots};
+\end{tikzpicture}
+\end{frame}
