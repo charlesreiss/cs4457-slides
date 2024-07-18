@@ -1,0 +1,55 @@
+\begin{frame}<1>[label=endToEndStatement]{end-to-end argument}
+    \begin{itemize}
+    \item Saltzer, Reed, Clark, ``End-to-End Arguments in System Design''
+    \item ``The function in question can completely and correctly be implemented 
+    \myemph<2>{only with the knowledge and help of the application standing at the end points} of the communication
+    system. Therefore, providing that questioned function as a feature of the communication
+    system itself is not possible. (Sometimes 
+    \myemph<3>{an incomplete version of the function provided by the communication system may be useful as a performance enhancement}.)''
+    \end{itemize}
+\end{frame}
+
+\againframe<2>{endToEndStatement}
+
+\begin{frame}{example: reliable file transfer}
+    \begin{itemize}
+    \item want to make sure correct data transferred
+    \vspace{.5cm}
+    \item want to protect against:
+        \begin{itemize}
+        \item \myemph<2>{error in hardware/software on sending machine reading file}
+        \item \myemph<2|3>{bits being flipped in memory on forwarding machine}
+        \item communication system flipping bits in data
+        \item \myemph<2>{hosts crashing during communication}
+        \end{itemize}
+    \vspace{.5cm}
+    \item<2-> \myemph<2>{\it communication system can't help a lot of these things}
+    \item<3-> \myemph<3>{\it authors experienced router with bad memory/processor}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{solution: end-to-end checks}
+    \begin{itemize}
+    \item want reliable transfer: compare final files (with hash or similar)
+    \vspace{.5cm}
+    \item ``end-to-end'' --- doesn't care what middle systems do
+    \end{itemize}
+\end{frame}
+
+
+\againframe<3>{endToEndStatement}
+
+\begin{frame}{end-to-end in practice}
+    \begin{itemize}
+    \item ``narrow waist'' of IP doesn't provide many gaurnetees
+        \begin{itemize}
+        \item no gaurentees about reliable transmission, duplicate suppression, message order, \ldots
+        \end{itemize}
+    \item but try to provide good service (``best effort'')
+    \vspace{.5cm}
+    \item in design: typically middle systems won't know/care about what's forwarded
+        \begin{itemize}
+        \item but many exceptions
+        \end{itemize}
+    \end{itemize}
+\end{frame}
