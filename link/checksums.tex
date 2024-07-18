@@ -1,0 +1,67 @@
+\begin{frame}{checksums}
+    \begin{itemize}
+    \item unsolved issue: will generate frames with bad data
+    \vspace{.5cm}
+    \item could rely on other layers to deal with that, but\ldots
+        \begin{itemize}
+        \item a lot better to detect this early
+        \end{itemize}
+    \vspace{.5cm}
+    \item idea
+\end{frame}
+
+\begin{frame}{checksum idea}
+\begin{itemize}
+\item instead of sending ``message''
+\vspace{.5cm}
+\item say Hash(``message'') = 0xABCDEF12
+\item then send ``0xABCDEF12,message''
+\vspace{.5cm}
+\item when receiving, recompute hash
+\item discard message if checksum doesn't match
+\end{itemize}
+\end{frame}
+
+\begin{frame}{checksum functions}
+    \begin{itemize}
+    \item hashes used to check messages called \textit{checksums}
+    \item used at data link layer and upper layers
+        \begin{itemize}
+        \item lots of places networks want to check messages aren't corrupted
+        \end{itemize}
+    \vspace{.5cm}
+    \item provides high probability we discard corrupted messages
+        \begin{itemize}
+        \item larger checksum $\rightarrow$ higher probability
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{example common checksums}
+\begin{itemize}
+\item IPv4, TCP ---
+    \begin{itemize}
+    \item based on one's complement sum of data+metadata treated as 16-bit numbers
+    \item one's complement addition = add normally with wraparound + add carry bit at end
+    \item efficient to implement on processor with addition
+    \item easy to compute incrementally
+    \end{itemize}
+\item Ethernet
+    \begin{itemize}
+    \item 32-bit ``cyclic redundancy code''
+    \item easy to compute fast in hardware
+    \item always detects up to 3 bits flipped (for sizes used in Ethernet)
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{beyond checksums}
+    \begin{itemize}
+    \item checksums \textit{detect} errors pretty reliably
+    \vspace{.5cm}
+    \item can send some extra bits can \textit{correct} some errors pretty reliably
+    \item ``error correcting code''
+    \vspace{.5cm}
+    \item clever ways to do this? take ECE/CS 4434
+    \end{itemize}
+\end{frame}

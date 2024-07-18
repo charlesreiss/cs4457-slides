@@ -1,0 +1,33 @@
+\usetikzlibrary{decorations.pathreplacing}
+\begin{frame}{size `header'}
+\begin{itemize}
+    \item let's transmit these (binary) messages:
+        \begin{itemize}
+        \item \tt 001
+        \item \tt 0110
+        \item \tt 0010
+        \end{itemize}
+    \item put 3-bit message size at beginning of messages
+\end{itemize}
+\begin{tikzpicture}
+\matrix[tight matrix no line,nodes={text width=.35cm,font=\large\tt}] (msg) {
+|[alias=h1]| 0 \& 1 \& 1 \& |[alias=s1]| 0 \& 0 \& |[alias=e1]| 1 \& 
+|[alias=h2]| 1 \& 0 \& 0 \& |[alias=s2]| 0 \& 1 \& 1 \& |[alias=e2]| 0 \& 
+|[alias=h3]| 1 \& 0 \& 0 \& |[alias=s3]| 0 \& 0 \& 1 \& |[alias=e3]| 0 \\
+};
+\foreach \x in {1,2,3} {
+    \node[inner sep=0mm,outer sep=0mm,draw,green,very thick,fit=(s\x) (e\x)] {};
+    \node[inner sep=0mm,outer sep=0mm,fill=blue,fill opacity=0.1,very thick,fit=(h\x) (s\x.west)] {};
+    \draw[very thick,decorate,decoration={brace,mirror}] 
+        ([xshift=.1cm,yshift=-.1cm]h\x.south west) -- ([xshift=-.1cm,yshift=-.1cm]e\x.south east) {};
+}
+\end{tikzpicture}
+\begin{itemize}
+\item read header, then determine number of bits to read before next header
+\item<2-> assumption: \myemph<2>{no gaps between messages?}
+    \begin{itemize}
+    \item need to transmit \textit{something} in between messages
+    \end{itemize}
+\end{itemize}
+\end{frame}
+

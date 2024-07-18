@@ -1,0 +1,110 @@
+\begin{frame}<1>[label=transmitErrorType]{types of transmission errors}
+    \begin{itemize}
+    \item \myemph<2>{desynchronization}:
+        \begin{itemize}
+        \item missing bits/bytes
+        \item adding bits/bytes
+        \end{itemize}
+    \item \myemph<3>{flipping bits}
+        \begin{itemize}
+        \item from `noise'/`interference'
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\againframe<2>{transmitErrorType}
+
+\begin{frame}{desynchronization and framing (1)} 
+    \begin{itemize}
+    \item with purely size-based framing 
+        \begin{itemize}
+        \item almost all future sizes messed up
+        \end{itemize}
+    \end{itemize}
+\begin{tikzpicture}
+\tikzset{
+    disappears/.style={opacity=0.1},
+}
+\matrix[tight matrix no line,nodes={text width=.35cm,font=\large\tt,name prefix=norm-}] (msg) {
+|[alias=h1]| 0 \& 1 \& 1 \& |[alias=s1]| 0 \& 1 \& |[alias=e1]| 0 \& 
+|[alias=h2]| 1 \& 0 \& 0 \& |[alias=s2]| 0 \& 1 \& 1 \& |[alias=e2]| 0 \& 
+|[alias=h3]| 1 \& 0 \& 0 \& |[alias=s3]| 0 \& 1 \& 1 \& |[alias=e3]| 1 \& \ldots \& ~ \& \ldots \\
+};
+\matrix[anchor=north west,tight matrix no line,nodes={text width=.35cm,font=\large\tt,name prefix=bad-}] (msg alt)
+at ([yshift=-1cm]msg.south west) {
+|[disappears]| \sout{0} \& |[alias=h1]| 1 \& 1 \& 0 \& |[alias=s1]| 1 \& 0 \& 
+1 \& 0 \& 0 \& |[alias=e1]| 0 \& |[alias=h2]| 1 \& 1 \& 0 \& 
+|[alias=s2]| 1 \& 0 \& 0 \& 0 \& 1 \& |[alias=e2]| 1 \& |[alias=h3]| 1 \& |[alias=s3]| \ldots \& |[alias=e3]| ~ \& \ldots \\
+};
+\foreach \x in {1,2,3} {
+    \foreach \pfx in {norm,bad} {
+        \node[inner sep=0mm,outer sep=0mm,draw,green,very thick,fit=(\pfx-s\x) (\pfx-e\x)] {};
+        \node[inner sep=0mm,outer sep=0mm,fill=blue,fill opacity=0.1,very thick,fit=(\pfx-h\x) (\pfx-s\x.west)] {};
+        \draw[very thick,decorate,decoration={brace,mirror}] 
+            ([xshift=.1cm,yshift=-.1cm]\pfx-h\x.south west) -- ([xshift=-.1cm,yshift=-.1cm]\pfx-e\x.south east) {};
+    }
+}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{desynchronization and framing (2)}
+\begin{itemize}
+\item with start/end marker idea
+    \begin{itemize}
+    \item can have start/end-marker corrupted or added by corruption
+    \item may mess up multiple frames, but will eventually be resync'd
+    \end{itemize}
+\end{itemize}
+\begin{tikzpicture}
+\tikzset{
+    disappears/.style={opacity=0.1},
+}
+\matrix[tight matrix no line,nodes={text width=.35cm,font=\large\tt,name prefix=norm-}] (msg norm) {
+|[alias=h1]| 0 \& 1 \& 0 \& |[alias=s1]| 0 \& |[alias=xform1s]| 0 \& 1 \& |[alias=xform1e,alias=e1]| 1 \&  
+|[alias=h2]| 0 \& 1 \& 0 \& |[alias=s2,alias=xform2s]| 0 \& 1 \& |[alias=xform2e]| 1 \& 1 \& |[alias=e2]| 0 \&
+|[alias=h3]| 0 \& 1 \& 0 \& |[alias=s3]| 0 \&|[alias=xform3s]| 0 \& 1 \& |[alias=xform3e,alias=e3]| 1 \& |[alias=e3]| 0 \& |[alias=h4]| 0 \& 1 \& 0 \& |[alias=s4]| ~ \\
+};
+\matrix[tight matrix no line,nodes={text width=.35cm,font=\large\tt,name prefix=bad-},
+    anchor=north west] (msg bad) at ([yshift=-1cm]msg norm.south west) {
+|[alias=h1]| 0 \& 1 \& 0 \& |[alias=s1]| 0 \& |[alias=xform1s]| 0 \& 1 \& |[alias=xform1e,alias=e1]| 1 \&  
+|[]| 0 \& |[disappears]| \sout{1} \& 0 \& |[alias=xform2s]| 0 \& 1 \& |[alias=xform2e]| 1 \& 1 \& |[alias=e1]| 0 \&
+|[alias=h2]| 0 \& 1 \& 0 \& |[alias=s2]| 0 \&|[alias=xform3s]| 0 \& 1 \& |[alias=xform3e,alias=e3]| 1 \& |[alias=e2]| 0 \& |[alias=h3]| 0 \& 1 \& 0 \& |[alias=s3]| ~ \\
+};
+\foreach \pfx/\maxM/\maxH/\maxS in {norm/3/4/3,bad/2/3/3} {
+    \foreach \x in {1,...,\maxM} {
+        \node[inner sep=0mm,outer sep=0mm,draw,green,very thick,fit=(\pfx-s\x) (\pfx-e\x)] {};
+        \draw[very thick,decorate,decoration={brace,mirror}] 
+            ([xshift=.1cm,yshift=-.1cm]\pfx-s\x.south west) -- ([xshift=-.1cm,yshift=-.1cm]\pfx-e\x.south east) {};
+    }
+    \foreach \x in {1,...,\maxH} {
+        \node[inner sep=0mm,outer sep=0mm,fill=blue,fill opacity=0.1,very thick,fit=(\pfx-h\x) (\pfx-s\x.west)] {};
+    }
+    \foreach \x in {1,...,\maxS} {
+        \fill[fill opacity=0.1,red,draw=violet,ultra thick,dotted] (\pfx-xform\x s.south west) rectangle (\pfx-xform\x e.north east);
+    }
+}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{fixed-sized frames}
+    \begin{itemize}
+    \item suppose all packets are same size
+    \item ``clock-based framing''
+    \item example: SONET looks for start symbol every 810 bytes
+        \begin{itemize}
+        \item if starts being missing, try to resync
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\againframe<3>{transmitErrorType}
+
+\begin{frame}{flipping bits?}
+    \begin{itemize}
+    \item flipping bits basically has same problems as synchornization
+        \begin{itemize}
+        \item can corrupt sizes and start/end markers
+        \item can add extra start/end markers
+        \end{itemize}
+    \end{itemize}
+\end{frame}

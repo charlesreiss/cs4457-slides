@@ -1,0 +1,91 @@
+\begin{frame}{start/end symbol}
+    \begin{itemize}
+    \item alternate idea: use bit sequence to mark beginning/end
+    \item example choice: send 010 between each frame
+    \item send extra 010s when no frames to send
+    \end{itemize}
+\begin{tikzpicture}
+\matrix[tight matrix no line,nodes={text width=.35cm,font=\large\tt}] (msg) {
+|[alias=h1]| 0 \& 1 \& 0 \& |[alias=s1]| 0 \& |[alias=bform1s]| 0 \& |[alias=e1,alias=bform1e]| 1 \& 
+|[alias=h2]| 0 \& 1 \& 0 \& |[alias=s2,alias=bform2s]| 0 \& |[alias=bform2e]| 1 \& 1 \& |[alias=e2]| 0  \&
+|[alias=h3]| 0 \& 1 \& 0 \& |[alias=s3]| 0 \& |[alias=false start,alias=bform3s]| 0 \& |[alias=bform3e]| 1 \& |[alias=e3,alias=false end]| 0 \& |[alias=h4]| 0 \& 1 \& 0 \& |[alias=s4]| ~ \\
+};
+\foreach \x in {1,2,3} {
+    \node[inner sep=0mm,outer sep=0mm,draw,green,alt=<2>{opacity=0.1},very thick,fit=(s\x) (e\x)] {};
+}
+\foreach \x in {1,2,3,4} {
+    \node[inner sep=0mm,outer sep=0mm,fill=blue,fill opacity=0.1,alt=<3>{fill opacity=0.05},very thick,fit=(h\x) (s\x.west)] {};
+}
+\foreach \x in {1,2,3} {
+    \draw[very thick,decorate,decoration={brace,mirror}] 
+        ([xshift=.1cm,yshift=-.1cm]s\x.south west) -- ([xshift=-.1cm,yshift=-.1cm]e\x.south east) {};
+    \begin{visibleenv}<3>
+    \fill[fill opacity=0.1,red,draw=violet,ultra thick,dotted] (bform\x s.south west) rectangle (bform\x e.north east);
+    \end{visibleenv}
+}
+\begin{visibleenv}<2>
+\node[draw=red,ultra thick,fit=(false start) (false end),inner sep=1mm,outer sep=0mm] {};
+\end{visibleenv}
+\end{tikzpicture}
+\begin{itemize}
+\item<2-> problem: \myemph<2>{messages can contain \texttt{010} or end with \texttt{01}}
+\item<3-> one solution: replace \texttt{01} in messages with \texttt{011}
+    \begin{itemize}
+    \item (need to undo replacement when receiving)
+    \end{itemize}
+\end{itemize}
+\begin{visibleenv}<3->
+\begin{tikzpicture}
+\matrix[tight matrix no line,nodes={text width=.35cm,font=\large\tt}] (msg) {
+|[alias=h1]| 0 \& 1 \& 0 \& |[alias=s1]| 0 \& |[alias=xform1s]| 0 \& 1 \& |[alias=xform1e,alias=e1]| 1 \&  
+|[alias=h2]| 0 \& 1 \& 0 \& |[alias=s2,alias=xform2s]| 0 \& 1 \& |[alias=xform2e]| 1 \& 1 \& |[alias=e2]| 0 \&
+|[alias=h3]| 0 \& 1 \& 0 \& |[alias=s3]| 0 \&|[alias=xform3s]| 0 \& 1 \& |[alias=xform3e,alias=e3]| 1 \& |[alias=e3]| 0 \& |[alias=h4]| 0 \& 1 \& 0 \& |[alias=s4]| ~ \\
+};
+\foreach \x in {1,2,3} {
+    \node[inner sep=0mm,outer sep=0mm,draw,green,alt=<2>{opacity=0.1},very thick,fit=(s\x) (e\x)] {};
+}
+\foreach \x in {1,2,3,4} {
+    \node[inner sep=0mm,outer sep=0mm,fill=blue,fill opacity=0.1,alt=<3>{fill opacity=0.05},very thick,fit=(h\x) (s\x.west)] {};
+}
+\foreach \x in {1,2,3} {
+    \draw[very thick,decorate,decoration={brace,mirror}] 
+        ([xshift=.1cm,yshift=-.1cm]s\x.south west) -- ([xshift=-.1cm,yshift=-.1cm]e\x.south east) {};
+    \fill[fill opacity=0.1,red,draw=violet,ultra thick,dotted] (xform\x s.south west) rectangle (xform\x e.north east);
+}
+\end{tikzpicture}
+\end{visibleenv}
+\end{frame}
+
+\begin{frame}[fragile]{escaping?}
+    \begin{itemize}
+    \item can think of replacement similar to escaping strings in C
+        \begin{itemize}
+        \item start/end marker is \verb|"|
+        \item \verb|"| $\rightarrow$ \verb|\"|
+        \item \verb|\| $\rightarrow$ \verb|\\|
+        \end{itemize}
+    \item represent \verb|foo \R"3"13\| using \verb|"foo \\R\"3\"13\\"|
+    \item but needed tweaks to idea to work with bits instead of bytes
+    \vspace{.5cm}
+    \item<2-> some physical layers allow transmitting bytes at a time
+    \item<2-> example: upcoming assignment
+    \item<2-> framing protocols for those (example: PPP) use \textbackslash-like idea
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{help from physical layer?}
+    \begin{itemize}
+    \item suppose instead of transmitting 0 or 1
+    \item \ldots physical layer transmits 0 or 1 or 2 or 3 or 4
+    \item probably going to `waste' one of these values
+        \begin{itemize}
+        \item example: transmit every two bits as 0 or 1 or 2 or 3
+        \end{itemize}
+    \vspace{.5cm}
+    \item<2-> idea: take advantage of leftover `symbol' 4
+    \item<2-> use it to send start/end
+        \begin{itemize}
+        \item similar idea used in 100Mbit/1000Mbit ethernet
+        \end{itemize}
+    \end{itemize}
+\end{frame}

@@ -1,0 +1,23 @@
+\usetikzlibrary{fit,matrix}
+\begin{frame}{aligning bits}
+    \begin{itemize}
+    \item let's transmit these (binary) messages:
+        \begin{itemize}
+        \item \tt 001
+        \item \tt 0110
+        \item \tt 0010
+        \end{itemize}
+    \end{itemize}
+\begin{tikzpicture}
+\matrix[tight matrix no line,nodes={text width=.35cm,font=\large\tt}] (msg) {
+|[alias=s1]| 0 \& 0 \& |[alias=e1]| 1 \& |[alias=s2]| 0 \& 1 \& 1 \& |[alias=e2]| 0 \& 
+|[alias=s3]| 0 \& 0 \& 1 \& |[alias=e3]| 0 \\
+};
+\foreach \x in {1,2,3} {
+    \node[inner sep=0mm,outer sep=0mm,draw,red,very thick,fit=(s\x) (e\x),alt=<2>{opacity=0.1}] {};
+}
+\end{tikzpicture}
+\begin{itemize}
+\item<2-> problem: can't tell where messages/start end
+\end{itemize}
+\end{frame}
