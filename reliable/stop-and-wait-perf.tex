@@ -1,0 +1,18 @@
+\begin{frame}{stop-and-wait performance}
+    \begin{itemize}
+    \item stop-and-wait protocol
+    \item assuming no packets lost/corrupted
+    \vspace{.5cm}
+    \item about \myemph{one packet per round-trip time}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{example: local ethernet}
+    \begin{itemize}
+    \item my home wired network: 0.6 ms round trip time
+    \item typical packet has about 1400 bytes = 11200 bits of data
+    \item throughput with stop-and-wait: $11200 \text{b} / 0.6 \text{ms} \approx 19000 \text{b/ms} = 19\;000\;000 \text{b/s} = \myemph<2>{19 \text{Mbit/s}}$
+    \vspace{.5cm}
+    \item available bandwidth is about \myemph<2>{$1$ Gbit/s}
+    \end{itemize}
+\end{frame}

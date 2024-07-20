@@ -1,0 +1,92 @@
+\usetikzlibrary{arrows.meta,shapes.misc,decorations.pathreplacing}
+
+\begin{frame}{dealing with network message lost}
+\begin{tikzpicture}
+\tikzset{
+    box/.style={draw,thick,minimum width=2cm},
+    message/.style={draw,thick,-Latex},
+    failure/.style={draw,ultra thick,red,cross out,minimum width=1cm,minimum height=1cm},
+}
+\begin{scope}
+\draw[box] (0, 0) rectangle ++(2, -3) 
+    node[midway,align=center] {machine\\ A};
+\draw[box] (13, 0) rectangle ++(2, -3) 
+    node[midway,align=center] {machine\\B};
+\draw[message] (2, -1) -- (13, -2) node[pos=0.35, above, sloped] {``The meeting is at 12pm.''};
+\end{scope}
+\draw[ultra thick] (0, -3.5) -- ++ (13,0);
+\begin{scope}[yshift=-4cm]
+\draw[box] (0, 0) rectangle ++(2, -3) 
+    node[midway,align=center] {machine\\A};
+\draw[box] (13, 0) rectangle ++(2, -3) 
+    node[midway,align=center] {machine\\B};
+\draw[message] (2, -1) -- (9, -1.5) 
+    node[pos=0.5,above,sloped] {``The meeting is at 12pm.''}
+    node[failure] {};
+\end{scope}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{handling lost message: acknowledgements}
+\begin{tikzpicture}
+\tikzset{
+    box/.style={thick},
+    message/.style={draw,thick,-Latex},
+    failure/.style={draw,ultra thick,red,cross out,minimum width=1cm,minimum height=1cm},
+}
+\begin{scope}
+\draw[box] (0, 0) rectangle ++(2, -8) 
+    node[midway,align=center] {machine\\A};
+\draw[box] (13, 0) rectangle ++(2, -8) 
+    node[midway,align=center] {machine\\B};
+\draw[message] (2, -0.5) -- (13, -1) node[pos=0.35, above, sloped] {``The meeting is at 12pm.''};
+\draw[message] (13, -1.5) -- (2, -2) node[pos=0.25, sloped,below] {Got it!};
+\end{scope}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{handling lost message}
+\begin{tikzpicture}
+\tikzset{
+    box/.style={thick},
+    message/.style={draw,thick,-Latex},
+    failure/.style={draw,ultra thick,red,cross out,minimum width=1cm,minimum height=1cm},
+}
+\draw[box] (0, 0) rectangle ++(2, -8) 
+    node[midway,align=center] {machine\\A};
+\draw[box] (13, 0) rectangle ++(2, -8) 
+    node[midway,align=center] {machine\\B};
+%\draw[message] (2, -0.5) -- (13, -1) node[pos=0.35, above, sloped] {``The meeting is at 12pm.''};
+\draw[message] (2, -0.5) -- (9, -1) 
+    node[pos=0.5,above,sloped] {``The meeting is at 12pm.''}
+    node[failure] {};
+\begin{visibleenv}<2->
+\draw[decorate,decoration={brace}] (2.1, -1) -- (2.1, -3) 
+    node[midway,right,align=left] {
+        ``timeout'' \\
+        A doesn't get reply \\
+        after waiting too long
+    };
+\end{visibleenv}
+\begin{visibleenv}<3->
+\draw[message] (2, -4) -- (13, -5) node[pos=0.35, above, sloped] {``The meeting is at 12pm.''};
+\draw[message] (13, -5.5) -- (2, -6) node[pos=0.5, sloped,below] {Got it!};
+\end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{protocol so far}
+    \begin{itemize}
+    \item on sender: until ACK received:
+        \begin{itemize}
+        \item (re)send frame of data
+        \item wait fixed amount of time for ACK
+        \end{itemize}
+    \vspace{.5cm}
+    \item on receiver: continuously:
+        \begin{itemize}
+        \item wait for frame of data
+        \item send ACK back
+        \end{itemize}
+    \end{itemize}
+\end{frame}

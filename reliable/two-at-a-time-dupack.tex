@@ -1,0 +1,108 @@
+\usetikzlibrary{decorations.pathreplacing}
+\begin{frame}<1-2>[label=twoAndTimeouts]{missing messages?}
+\begin{tikzpicture}
+\tikzset{
+    box/.style={thick},
+    message/.style={draw,thick,-Latex},
+    failure/.style={draw,ultra thick,red,cross out,minimum width=.5cm,minimum height=.5cm},
+    every node/.style={inner sep=0.1mm},
+}
+\begin{scope}[xshift=1cm,x=0.9cm]
+\draw[box] (0, 0) rectangle ++(2, -4) 
+    node[midway,align=center] {machine\\A};
+\draw[box] (13, 0) rectangle ++(2, -4) 
+    node[midway,align=center] {machine\\B};
+\draw[message] (2, -0.5) -- (13, -1.5) node[pos=0.25,above,sloped] {\myemph{0}: ``The ''};
+\draw[message] (13, -1.75) -- (2, -2.75) node[pos=0.25,sloped,below] {got up to \myemph{0}};
+\draw[message] (2, -1) -- (9, -1.7) node[pos=0.25, above, sloped] {\myemph{1}: ``meeting''}
+    node[failure] {};
+%\draw[message] (13, -2.25) -- (2, -3.25) node[pos=0.25, sloped,below] {got \myemph{1}};
+
+% in response to got 0
+\draw[message,draw=red,ultra thick] (2, -3) -- (13, -4) node[pos=0.5, above, sloped] {\myemph{2}: `` is at ''};
+%\draw[message] (13, -4.25) -- (2, -5.25) node[pos=0.25, sloped,below,alt=<2>{draw=red,ultra thick}] {got up to \myemph{0}};
+%\draw[message] (2, -3.5) -- (13, -4.5) node[pos=0.5, above, sloped] {\myemph{3}: ``12pm.''};
+%\draw[message] (13, -4.75) -- (2, -5.75) node[pos=0.25, sloped,below] {got \myemph{3}};
+\end{scope}
+\end{tikzpicture}
+\begin{itemize}
+\item question: what should receiver do with sequence number 2?
+\item<2-> \myemph<2>{one idea: ignore it?}
+\item<3-> \myemph<3>{better idea: send something back to sender}
+\end{itemize}
+\end{frame}
+
+\begin{frame}<0>{not great: ignore it (1)} 
+\begin{tikzpicture}
+\tikzset{
+    box/.style={thick},
+    message/.style={draw,thick,-Latex},
+    failure/.style={draw,ultra thick,red,cross out,minimum width=.5cm,minimum height=.5cm},
+    every node/.style={inner sep=0.1mm},
+}
+\begin{scope}[xshift=1cm,x=0.9cm,y=0.7cm]
+\draw[box] (0, 0) rectangle ++(2, -10) 
+    node[midway,align=center] {machine\\A};
+\draw[box] (13, 0) rectangle ++(2, -10) 
+    node[midway,align=center] {machine\\B};
+\draw[message] (2, -0.5) -- (13, -1.5) node[pos=0.25,above,sloped] {\myemph{0}: ``The ''};
+\draw[message] (13, -1.75) -- (2, -2.75) node[pos=0.25,sloped,below] {got up to \myemph{0}};
+\draw[message] (2, -1) -- (9, -1.75) node[pos=0.25, above, sloped] {\myemph{1}: ``meeting''}
+    node[failure] {};
+%\draw[message] (13, -2.25) -- (2, -3.25) node[pos=0.25, sloped,below] {got \myemph{1}};
+
+% in response to got 0
+\draw[message] (2, -3) -- (13, -4) node[pos=0.5, above, sloped] {\myemph{2}: `` is at ''};
+%\draw[message] (13, -4.25) -- (2, -5.25) node[pos=0.25, sloped,below,alt=<2>{draw=red,ultra thick}] {got up to \myemph{0}};
+\draw[ultra thick,red,decorate,decoration={brace}] (2.1, -1) -- (2.1, -6) node[pos=0.4,right=0.5cm] {\bfseries timeout for 1};
+\draw[message] (2, -6) -- (13, -7) node[pos=0.5, above, sloped] {\myemph{1}: ``meeting''};
+\draw[message] (13, -7.25) -- (2, -8.25) node[pos=0.25, sloped,below] {got \myemph{1}};
+\draw[message] (2, -8.5) -- (13, -9.5) node[pos=0.5, above, sloped] {\myemph{3}: `` 12pm ''};
+
+\draw[ultra thick,red,decorate,decoration={brace}] (2.4, -3) -- (2.4, -7.5) node[pos=0.5,right=0.5cm] {\bfseries timeout for 2};
+\draw[message] (2, -7.5) -- (13, -8.5) node[pos=0.5, above, sloped] {\myemph{2}: `` is at ''};
+\end{scope}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}<0>{not great: only ACK if next (2)}
+    \begin{itemize}
+    \item \textit{works} because we still have timeouts
+    \vspace{.5cm}
+    \item but we'd like to give more feedback to receiver
+    \end{itemize}
+\end{frame}
+
+\againframe<3>{twoAndTimeouts}
+
+\begin{frame}{better idea: always ACK}
+\begin{tikzpicture}
+\tikzset{
+    box/.style={thick},
+    message/.style={draw,thick,-Latex},
+    failure/.style={draw,ultra thick,red,cross out,minimum width=1cm,minimum height=1cm},
+    every node/.style={inner sep=0.1mm},
+}
+\begin{scope}[xshift=1cm,x=0.9cm]
+\draw[box] (0, 0) rectangle ++(2, -5.5) 
+    node[midway,align=center] {machine\\A};
+\draw[box] (13, 0) rectangle ++(2, -5.5) 
+    node[midway,align=center] {machine\\B};
+\draw[message] (2, -0.5) -- (13, -1.5) node[pos=0.25,above,sloped] {\myemph{0}: ``The ''};
+\draw[message] (13, -1.75) -- (2, -2.75) node[pos=0.25,sloped,below] {got up to \myemph{0}};
+\draw[message] (2, -1) -- (9, -1.7) node[pos=0.25, above, sloped] {\myemph{1}: ``meeting''}
+    node[failure] {};
+%\draw[message] (13, -2.25) -- (2, -3.25) node[pos=0.25, sloped,below] {got \myemph{1}};
+
+% in response to got 0
+\draw[message] (2, -3) -- (13, -4) node[pos=0.5, above, sloped] {\myemph{2}: `` is at ''};
+\draw[message] (13, -4.25) -- (2, -5.25) node[pos=0.25, sloped,below,alt=<2>{draw=red,ultra thick}] {got up to \myemph{0}};
+%\draw[message] (2, -3.5) -- (13, -4.5) node[pos=0.5, above, sloped] {\myemph{3}: ``12pm.''};
+%\draw[message] (13, -4.75) -- (2, -5.75) node[pos=0.25, sloped,below] {got \myemph{3}};
+\end{scope}
+\end{tikzpicture}
+\begin{itemize}
+\item<2-> only ACK $x$ if \myemph{everything up to and including $x$} received
+\item<2-> intuition: ACK tells sender \myemph{where to start sending more}
+\end{itemize}
+\end{frame}

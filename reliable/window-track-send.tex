@@ -1,0 +1,147 @@
+\usetikzlibrary{arrows.meta,decorations.pathreplacing,matrix,patterns}
+\begin{frame}{sender window tracking}
+\begin{tikzpicture}
+\tikzset{
+    seqlist/.style={tight matrix,nodes={text width=1cm,minimum height=1cm},column sep=.8mm},
+    dots/.style={draw=none,execute at begin node=\ldots,anchor=center,font=\huge,text width=1cm,align=center},
+    region mark/.style={very thick,decorate,decoration={brace,mirror}},
+    region mark label/.style={midway,below,align=center},
+    verified/.style={alt=<2->{pattern color=black!30,pattern=checkerboard}},
+    in flight/.style={alt=<3->{fill=yellow}},
+    unsent/.style={alt=<4->{pattern=crosshatch dots,pattern color=violet!70}}
+}
+\matrix[seqlist] (swindow) {
+    |[dots,alias=swindow-start]| ~ \& |[alias=after-swindow-start,verified]| ~ \& |[verified]|  ~\&
+   |[verified]| ~ \& |[alias=LFA,verified]| ~ \&
+    |[in flight,alias=after LFA]| ~ \& |[in flight]| ~ \& |[in flight]| ~ \& |[in flight,alias=LFS]| ~ \& 
+    |[alias=after LFS,unsent]| ~ \& |[unsent,alias=before-swindow-end]| ~ \& |[alias=swindow-end,dots]| \\
+};
+\matrix[anchor=north west,seqlist,label={east:= frame of data with sequeunce number $X$}] (key) at ([yshift=2.5cm]swindow.north west) { ~ \\};
+    \node[font=\small,anchor=south west,inner sep=0.1mm] at (key-1-1.north west) {$X$};
+\foreach \x in {2,...,11} {
+    \pgfmathtruncatemacro\xplus{\x + 10}
+    \node[font=\small,anchor=south west,inner sep=0.1mm] at (swindow-1-\x.north west) {\xplus};
+}
+\draw[thick,Latex-] (LFA.north) -- ++(0,.5) node[above,align=center] {(LAR)\\last ACK recv'd};
+\draw[thick,Latex-] (LFS.north) -- ++(0,.5) node[above,align=center] {(LFS)\\last frame sent};
+\begin{visibleenv}<2->
+    \draw[region mark] ([yshift=-.1cm]swindow-start.south west) -- ([yshift=-.1cm]LFA.south east)
+        node[region mark label] {verified received \\ can discard};
+\end{visibleenv}
+\begin{visibleenv}<3->
+    \draw[region mark] ([yshift=-.1cm]after LFA.south west) -- ([yshift=-.1cm]LFS.south east)
+        node[region mark label] (in flight label) {might need to resend \\ potentially ``in flight''};
+    \begin{visibleenv}<5->
+    \draw[thick,Latex-] (in flight label.south) -- ++(0,-.5) node[below,align=center] {
+            at most the \\
+            Send Window Size \\
+            (SWS)
+        };
+    \end{visibleenv}
+\end{visibleenv}
+\begin{visibleenv}<4->
+    \draw[region mark] ([yshift=-.1cm]after LFS.south west) -- ([yshift=-.1cm]swindow-end.south east)
+        node[region mark label] {yet to be sent};
+\end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{exercise 1: out-of-bounds ACK}
+\begin{tabular}{l|l}
+last ACK recv'd (LAR) & 10 \\
+last frame sent (LFS) & 15 \\
+send window size (SWS) & 5 \\
+\end{tabular}
+\begin{itemize}
+\item what probably happened if we receive an ACK for\ldots
+    \begin{itemize}
+    \item 9? 10? 13? 16?
+    \end{itemize}
+\end{itemize}
+\begin{tabular}{l}
+A. only possible if network reorders frames \\
+B. only possible from undetected frame corruption \\
+C. lost ACK for frame $\le$ 10\\
+D. lost ACK for frame $>$ 10\\
+E. lost frame 11 \\
+F. resent frame from timeout \\
+\end{tabular}
+\end{frame}
+
+\begin{frame}{exercise 2: sender logic}
+\begin{tabular}{l|l}
+last ACK recv'd (LAR) & 10 \\
+last frame sent (LFS) & 15 \\
+send window size (SWS) & 5 \\
+\end{tabular}
+\begin{itemize}
+\item In this case, there's a timeout that will
+trigger frame 13 to be resent. If still active,
+this timeout should be cancelled upon \ldots
+\end{itemize}
+\begin{tabular}{ll}
+A. receiving ACK 12 & B. receiving ACK 13 \\
+C. receiving ACK 14 & D. sending frame 16 \\
+\end{tabular}
+\end{frame}
+
+\begin{frame}{exercise 3a: new data}
+\begin{tabular}{l|l}
+last ACK recv'd (LAR) & 4 \\
+last frame sent (LFS) & 6 \\
+send window size (SWS) & 5 \\
+\end{tabular}
+\begin{itemize}
+\item if we compute a new frame of data with sequence number 7 to eventually
+send, we should
+\end{itemize}
+\begin{tabular}{l}
+A. send it now, advancing LFS \\
+B. wait until we get an ACK for 5 or 6 to send it \\
+C. wait until we get an ACK for 6 to send it \\
+D. wait until the frame with sequence number 6 is resent to send it
+D. something else \\
+\end{tabular}
+\end{frame}
+
+\begin{frame}{exercise 3b: new data}
+\begin{tabular}{l|l}
+last ACK recv'd (LAR) & 4 \\
+last frame sent (LFS) & 8 \\
+send window size (SWS) & 4 \\
+\end{tabular}
+\begin{itemize}
+\item if we compute a new frame of data with sequence number 9 to eventually
+send, we should
+\end{itemize}
+\begin{tabular}{l}
+A. send it now, advancing LFS \\
+B. wait until we get an ACK for 5 or 6 to send it \\
+C. wait until we get an ACK for 6 to send it \\
+D. decline to accept the data because we will never be able to send it \\
+E. something else \\
+\end{tabular}
+\end{frame}
+
+\begin{frame}{sender logic summarized}
+\begin{itemize}
+\item track variables:
+    \begin{itemize}
+    \item LFS (last frame sent)
+    \item LAS (last ACK recv'd)
+    \item SWS (send window size)
+    \end{itemize}
+\item when receiving ACK $LAR < X \le LFS$:
+    \begin{itemize}
+    \item LAR $\rightarrow$ $X$
+    \item clear any timers to resend frames $\le X$
+    \end{itemize}
+\item whenever SWS [send window size] > LFS - LAR \textit{and} \\
+    data for frame LFS + 1 is available:
+    \begin{itemize}
+    \item send frame LFS + 1
+    \item set timer to resend frame LFS + 1
+    \item LFS $\rightarrow$ LFS + 1
+    \end{itemize}
+\end{itemize}
+\end{frame}
