@@ -1,4 +1,9 @@
 SLIDEDECKS = \
+    intro \
+    framing \
+    physical \
+    reliable
+
 
 all: $(patsubst %,_dist/%.pdf,$(SLIDEDECKS))
 
@@ -9,6 +14,6 @@ _dist:
 	mkdir _dist
 
 _dist/%.pdf: % _dist
-	cd $< && make && cp talk-slides.pdf ../dist/$<.pdf
+	cd $< && make && cp talk-slides.pdf ../_dist/$<.pdf
 
 .PHONY: all

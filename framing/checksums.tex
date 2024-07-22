@@ -6,20 +6,19 @@
         \begin{itemize}
         \item a lot better to detect this early
         \end{itemize}
-    \vspace{.5cm}
-    \item idea
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{checksum idea}
-\begin{itemize}
-\item instead of sending ``message''
-\vspace{.5cm}
-\item say Hash(``message'') = 0xABCDEF12
-\item then send ``0xABCDEF12,message''
-\vspace{.5cm}
-\item when receiving, recompute hash
-\item discard message if checksum doesn't match
-\end{itemize}
+    \begin{itemize}
+    \item instead of sending ``message''
+    \vspace{.5cm}
+    \item say Hash(``message'') = 0xABCDEF12
+    \item then send ``0xABCDEF12,message''
+    \vspace{.5cm}
+    \item when receiving, recompute hash
+    \item discard message if checksum doesn't match
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{checksum functions}
@@ -38,21 +37,21 @@
 \end{frame}
 
 \begin{frame}[fragile]{example common checksums}
-\begin{itemize}
-\item IPv4, TCP ---
     \begin{itemize}
-    \item based on one's complement sum of data+metadata treated as 16-bit numbers
-    \item one's complement addition = add normally with wraparound + add carry bit at end
-    \item efficient to implement on processor with addition
-    \item easy to compute incrementally
+    \item IPv4, TCP ---
+        \begin{itemize}
+        \item based on one's complement sum of data+metadata treated as 16-bit numbers
+        \item one's complement addition = add normally with wraparound + add carry bit at end
+        \item efficient to implement on processor with addition
+        \item easy to compute incrementally
+        \end{itemize}
+    \item Ethernet
+        \begin{itemize}
+        \item 32-bit ``cyclic redundancy code''
+        \item easy to compute fast in hardware
+        \item always detects up to 3 bits flipped (for sizes used in Ethernet)
+        \end{itemize}
     \end{itemize}
-\item Ethernet
-    \begin{itemize}
-    \item 32-bit ``cyclic redundancy code''
-    \item easy to compute fast in hardware
-    \item always detects up to 3 bits flipped (for sizes used in Ethernet)
-    \end{itemize}
-\end{itemize}
 \end{frame}
 
 \begin{frame}{beyond checksums}

@@ -15,16 +15,18 @@
 \input{../reliable/window-track-send}
 
 \subsection{window tracking -- receiver}
-%\input{../reliable/window-track-recv}
+\input{../reliable/window-track-recv}
 
-\subsection{duplicate ACKs}
+\subsection{choosing a window size}
+    % FIXME: graph of empirical performance
+\input{../reliable/window-size-empirical}
+
+% FIXME: some discussion of congestion
+
+\subsection{sequence number wraparound}
+\input{../reliable/window-size-wraparound}
+
+\subsection{optimization: duplicate ACKs}
     % FIXME: this would make more sense with more than two things
 \input{../reliable/two-at-a-time-dupack}
 
-\subsection{larger windows}
-
-\subsection{choosing a window size}
-
-\subsection{sequence number wraparound}
-
-\subsection{optimization: selective ACKs}

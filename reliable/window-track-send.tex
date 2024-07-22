@@ -133,7 +133,7 @@ E. something else \\
     \end{itemize}
 \item when receiving ACK $LAR < X \le LFS$:
     \begin{itemize}
-    \item LAR $\rightarrow$ $X$
+    \item LAR $\leftarrow$ $X$
     \item clear any timers to resend frames $\le X$
     \end{itemize}
 \item whenever SWS [send window size] > LFS - LAR \textit{and} \\
@@ -141,7 +141,7 @@ E. something else \\
     \begin{itemize}
     \item send frame LFS + 1
     \item set timer to resend frame LFS + 1
-    \item LFS $\rightarrow$ LFS + 1
+    \item LFS $\leftarrow$ LFS + 1
     \end{itemize}
 \end{itemize}
 \end{frame}
