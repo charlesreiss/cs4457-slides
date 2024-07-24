@@ -1,0 +1,34 @@
+\begin{frame}{an annoyance}
+    \begin{itemize}
+    \item traditionally, switches/routers have been `fixed function' specialized hardware
+    \vspace{.5cm}
+    \item special hardware needed for multigigabit performance
+    \item limited configuration options
+    \item usually non-automated configuration
+        \begin{itemize}
+        \item login to each managed switch/router to change settings
+        \item no standardization for configuration across vendors
+        \end{itemize}
+    \item little visibility into internal design
+        \begin{itemize}
+        \item even though switches/routers often running complicated programs
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{the historical situation}
+    \begin{itemize}
+    \item let's say I want to design a new extension to Ethernet
+    \vspace{.5cm}
+    \item historical options if want to test/deploy it\ldots
+        \begin{itemize}
+        \item implement it in slow/low-capacity software/FPGA switch
+        \item convince switch HW company to implement it + release new version of switches
+        \item contort my modification to fit with switch features not intended for this use
+            \begin{itemize}
+            \item example: using VPN support to change path of frames on network
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+

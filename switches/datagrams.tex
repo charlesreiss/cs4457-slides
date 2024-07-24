@@ -1,0 +1,132 @@
+\usetikzlibrary{patterns}
+
+\begin{frame}{typically sent on Ethernet}
+\begin{tikzpicture}
+\tikzset{
+    box/.style={draw,thick},
+    label/.style={font=\small},
+    label large/.style={},
+    missing/.style={pattern=north west lines},
+    start and end/.style={alt=<2>{fill=red!10,text=red}},
+    type field/.style={alt=<3-4>{fill=red!10,text=red}},
+    destination address/.style={alt=<5-6>{fill=red!10,text=red}},
+    source address/.style={alt=<7>{fill=red!10,text=red}},
+}
+\draw[start and end,box] (4, 0) rectangle (12, -1)
+    node[midway,label] {preamble + start marker};
+\draw[source address,box] (0, -1) rectangle (6, -2)
+    node[midway,label] {source MAC address};
+\draw[destination address,box] (6, -1) rectangle (12, -2)
+    node[midway,label] {destination MAC address};
+\draw[type field,box] (0, -2) rectangle (2, -3)
+    node[midway,label] {type};
+\draw[box] (2, -2) -- (12, -2) -- (12, -4) -- (0, -4) -- (0, -3) -| cycle;
+    \node[label large] at (6, -3) {data (for next layer)};
+\begin{visibleenv}<8>
+\draw[red,ultra thick] (2, -2) -- (2, -3);
+\draw[box,red,ultra thick,fill=white] (4.5, -3) rectangle (11.5, -4) 
+    node[midway,label] {sometimes extra stuff (``tags'')};
+\end{visibleenv}
+\draw[box] (0, -4) rectangle (4, -5) node[midway,label] {checksum};
+\draw[start and end,box,missing] (4, -4) rectangle (12, -5)
+    node[midway,label,fill=white] {`interpacket gap'};
+\draw[start and end,box,missing] (0, -5) rectangle (4, -6);
+\begin{visibleenv}<2>
+\node[align=left,draw=red,ultra thick,fill=white] at (6, -3) {
+    explicit start marker \\
+    end indicated by `gap' between signals
+};
+\end{visibleenv}
+\begin{visibleenv}<3>
+\node[align=left,draw=red,ultra thick,fill=white] at (8, -3) {
+    type field indicates which next layer in use \\
+    often varies on frame-by-frame basis \\
+};
+\end{visibleenv}
+\begin{visibleenv}<4>
+\node[align=left,draw=red,ultra thick,fill=white] at (8, -3) {
+    actually \texttt{type/length} for historical reasons \\
+    but most commonly used for type these days
+};
+\end{visibleenv}
+\begin{visibleenv}<5>
+\node[align=left,draw=red,ultra thick,fill=white] at (6, -4) {
+    destination address indicates who frame is for \\
+    present regardless of whether switching is in use \\
+    ~ \\
+    each host \myemph{filters} out frames for `wrong' destination address
+};
+\end{visibleenv}
+\begin{visibleenv}<6>
+\node[align=left,draw=red,ultra thick,fill=white] at (6, -4) {
+    since destination address always present \\
+    as last resort, switches can send every frame to everyone \\
+    ~ \\
+    will still work, just much less efficient
+};
+\end{visibleenv}
+\begin{visibleenv}<7>
+\node[align=left,draw=red,ultra thick,fill=white] at (6, -4) {
+    who the frame came from \\
+    gives `return address' for sending replies \\
+    ~ \\
+    will also be used by switches
+};
+\end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{MAC addresses}
+    \begin{itemize}
+    \item MAC [media access control] addresses
+    \item used by Ethernet, Wifi, and lots of other protocols
+    \item 48-bit number written in hex: \texttt{01:23:45:67:89:AB}
+        \begin{itemize}
+        \item (sometimes seperated with \texttt{-} instead of \texttt{:})
+        \end{itemize}
+    \item assigned by IEEE to networking manufacturers in blocks
+        \begin{itemize}
+        \item Institution of Electrical and Electronics Engineers
+        \item example: \texttt{00:02:B3:}\ldots, \texttt{00:03:47:}\ldots, (and many more) for Intel
+        \end{itemize}
+    \vspace{.5cm}
+    \item individual addresses hard-coded in networking hardware
+        \begin{itemize}
+        \item uniquely identify port/device
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{special MAC addresses}
+    \begin{itemize}
+    \item \texttt{00:00:00:00:00:00} (all zeroes)
+    \item \texttt{FF:FF:FF:FF:FF:FF} (all ones), \texttt{FF:}\ldots
+        \begin{itemize}
+        \item special destination meaning ``send to everyone'' (on this network)
+        \item called \textit{broadcast}
+        \end{itemize}
+    \item \texttt{01:80:C2:}\ldots, \texttt{33:33:}\ldots, (and some more)
+        \begin{itemize}
+        \item special destinations representing multiple receivers
+        \item example: `all IPv6 routers on this network' (\texttt{33:33:00:00:00:02})
+        \item called \textit{multicast}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{larger MAC addresses}
+    \begin{itemize}
+    \item IEEE now calls MAC address EUI-48 (48-bit Extended Unique Identifier)
+    \vspace{.5cm}
+    \item also created EUI-64, with 64-bit addresses
+        \begin{itemize}
+        \item way of mapping EUI-48s to EUI-64s
+        \item turns out 48 bits might have been low
+        \end{itemize}
+    \item I'm not sure what status is on switching to 64-bit addresses
+        \begin{itemize}
+        \item IEEE 802.15.4 (used in ZigBee, 6LoWPAN, some others) uses EUI-64
+        \item I don't know other local network protocols that do
+        \end{itemize}
+    \end{itemize}
+\end{frame}

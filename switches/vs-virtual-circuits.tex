@@ -1,0 +1,34 @@
+\begin{frame}{datagram idea}
+    \begin{itemize}
+    \item can always send something to anyone on network
+        \begin{itemize}
+        \item just put destination MAC in frame
+        \end{itemize}
+    \item no need for reservations/`connections'/etc.
+        \begin{itemize}
+        \item not like the interface you've seen with [TCP] sockets
+        \end{itemize}
+    \vspace{.5cm}
+    \item not the only model for networks (and internetworks)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{virtual circuit}
+    \begin{itemize}
+    \item other model: virtual circuit
+    \item two machines setup a `circuit'
+        \begin{itemize}
+        \item some sort of `special' messages to do this
+        \end{itemize}
+    \item switches/routers \myemph{reserve resources} for circuit
+        \begin{itemize}
+        \item ``gaurenteed'' bandwidth
+        \end{itemize}
+    \item transmitted data must be part of estabished circuit
+    \vspace{.5cm}
+    \item example: ATM (Asynchronous Transfer Mode)
+        \begin{itemize}
+        \item used (?historically?) by some telephone networks
+        \end{itemize}
+    \end{itemize}
+\end{frame}

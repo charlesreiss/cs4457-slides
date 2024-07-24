@@ -1,0 +1,37 @@
+\begin{frame}{software defined networking (SDN)}
+    \begin{itemize}
+    \item movement toward \textit{programmable} networks
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{control plane and data plane}
+    \begin{itemize}
+    \item control plane
+        \begin{itemize}
+        \item decides \textit{how} to handle traffic
+        \item ``slow path'', where complicated decisions are
+        \end{itemize}
+    \item data plane
+        \begin{itemize}
+        \item actually implements the decisions made by the control plane
+        \item ``fast path'', implementing simple rules
+        \end{itemize}
+    \vspace{.5cm}
+    \item probably what switches did internally before SDN was a thing
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{separate control/data plane}
+    \begin{itemize}
+    \item one SDN key idea: separate control and data plane
+    \item allow new \myemph<2>{vendor-neutral} implementations of control plane
+        \begin{itemize}
+        \item requires standard interface for programming data plane
+        \item most prominent example: OpenFlow
+        \end{itemize}
+    \item easily allows for central `control plane' server
+        \begin{itemize}
+        \item instead of separate control plane running on each switch/router
+        \end{itemize}
+    \end{itemize}
+\end{frame}
