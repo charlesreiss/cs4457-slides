@@ -1,0 +1,225 @@
+
+\begin{frame}<1>[label=controlToC]{P4: control plane}
+    \begin{itemize}
+    \item P4 control plane is a program
+    \vspace{.5cm}
+    \item sends commands to one or more switches:
+        \begin{itemize}
+        \item \myemph<2>{load P4 program into data plane}
+        \item \myemph<3>{set table entries}
+        \item \myemph<4>{configure multicast groups}
+        \item \myemph<5>{receive frames to process them}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{aside: wrappers}
+    \begin{itemize}
+    \item I'll show code from a P4 controller for upcoming assignment
+    \item written in Python, using custom library to make things convenient
+    \item works with softawre based reference switch
+    \vspace{.5cm}
+    \item no requirement to use Python or other specific language
+        \begin{itemize}
+        \item controller sends commands over network/IPC to data plane
+        \end{itemize}
+    \item real raw code has more boilerplate/etc.
+    \item probably several things different for hardware-based switches
+    \end{itemize}
+\end{frame}
+
+\againframe<2>{controlToC}
+
+\begin{frame}[fragile]{P4: loading P4 program}
+\providecommand{\vemphA}[1]{\myemph<2>{#1}}
+\providecommand{\vemphB}[1]{\myemph<3>{#1}}
+\providecommand{\vemphC}[1]{\myemph<4>{#1}}
+\providecommand{\vemphD}[1]{\myemph<5>{#1}}
+\begin{Verbatim}[fontsize=\small,commandchars=\\@~]
+p4info_helper =  ....
+switch = ....
+\vemphA@switch.MasterArbitrationUpdate()~
+switch.\vemphB@SetForwardingPipelineConfig~(
+    p4info=p4info_helper.p4info,
+    \vemphC@bmv2_json_file_path=bmv2_file_path~
+)
+\end{Verbatim}
+\begin{tikzpicture}[overlay,remember picture]
+\tikzset{
+    box/.style={
+        align=left,
+        draw=red,
+        fill=white,
+        ultra thick,
+        anchor=north,
+        at={([yshift=-1cm]current page.center)},
+    },
+}
+    \begin{visibleenv}<2>
+    \node[box] {
+        swtich supports having primary + backup controller, \\
+        so need to indicate this is primary controller now \\
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<3>
+    \node[box] {
+        ``forwarding pipeline'' = dataplane
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<4>
+    \node[box] {
+        P4 code compiled to file to load, specified here
+    };
+    \end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+\againframe<3>{controlToC}
+
+\begin{frame}[fragile]{P4: setting table entries}
+\providecommand{\vemphA}[1]{\myemph<2>{#1}}
+\providecommand{\vemphB}[1]{\myemph<3>{#1}}
+\providecommand{\vemphC}[1]{\myemph<4>{#1}}
+\providecommand{\vemphD}[1]{\myemph<5>{#1}}
+\begin{Verbatim}[fontsize=\small,commandchars=\\@~]
+\vemphD@write_or_overwrite_table_entry~(
+    \vemphA@p4info_helper=p4info_helper, switch=switch,~
+    table_name='\vemphB@MyIngress.mac_dst_exact~',
+    match_fields={
+        'hdr.ethernet.dstAddr': \vemphC@some_address~,
+    },
+    action_name='forward_to',
+    action_params={'port': port},
+)
+\end{Verbatim}
+\begin{tikzpicture}[overlay,remember picture]
+\tikzset{
+    box/.style={
+        align=left,
+        draw=red,
+        fill=white,
+        ultra thick,
+        anchor=north,
+        at={([yshift=-1cm]current page.center)},
+    },
+}
+    \begin{visibleenv}<2>
+    \node[box] {
+        p4info\_helper, switch objects created by setup code
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<3>
+    \node[box] {
+        full name of table, including stage it is defined in
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<4>
+    \node[box] {
+        match value --- format would be different \\
+        if key was \texttt{lpm} or \texttt{ternary} \\
+        instead of exact match
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<5>
+    \node[box] {
+        \texttt{write\_or\_overwrite\_table\_entry} not the `raw' function \\
+        (one I wrote based on one P4 tutorial authors wrote) \\
+        uses gRPC (remote procedure call) library, which adds some extra steps
+    };
+    \end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+\againframe<4>{controlToC}
+\begin{frame}[fragile]{P4: multicast groups}
+\providecommand{\vemphA}[1]{\myemph<2>{#1}}
+\providecommand{\vemphB}[1]{\myemph<3>{#1}}
+\providecommand{\vemphC}[1]{\myemph<4>{#1}}
+\providecommand{\vemphD}[1]{\myemph<5>{#1}}
+\begin{Verbatim}[fontsize=\small,commandchars=\\@~]
+switch.Write\vemphC@PRE~Entry(
+    p4info_helper.buildMulticastGroupEntry(
+        \vemphA@multicast_group_id=1~, 
+        \vemphB@replicas~=[
+            {'egress_port': 1, 'instance': 0},
+            {'egress_port': 2, 'instance': 0},
+            {'egress_port': 3, 'instance': 0},
+            {'egress_port': 4, 'instance': 0},
+        ]
+    )
+)
+\end{Verbatim}
+\begin{tikzpicture}[overlay,remember picture]
+\tikzset{
+    box/.style={
+        align=left,
+        draw=red,
+        fill=white,
+        ultra thick,
+        anchor=north,
+        at={([yshift=-1cm]current page.center)},
+    },
+}
+    \begin{visibleenv}<2>
+    \node[box] {
+        in P4 dataplane code can write \\
+        \texttt{standard\_metadata.mcast\_grp = 1} to use this
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<3>
+    \node[box] {
+        list of ports to output to when group selected \\
+        ~ \\
+        \texttt{instance} can be inspected by dataplane code \\
+        for the egress step
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<4>
+    \node[box] {
+        PRE = packet replication engine \\
+        ~ \\
+        supports multicast groups (shown) and ``clone sessions'' (not shown) \\
+        (clone sessions make extra copy of packet, \\
+        but process original normally)
+    };
+    \end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+\againframe<5>{controlToC}
+\begin{frame}[fragile]{P4: receiving frame}
+\providecommand{\vemphA}[1]{\myemph<2>{#1}}
+\providecommand{\vemphB}[1]{\myemph<3>{#1}}
+\providecommand{\vemphC}[1]{\myemph<4>{#1}}
+\providecommand{\vemphD}[1]{\myemph<5>{#1}}
+\begin{Verbatim}[fontsize=\small,commandchars=\\@~]
+    for item in switch.stream_msg_resp:
+        if item.HasField('packet'):
+            do_something_with(\vemphA@item.packet.payload~,
+                              \vemphB@item.packet.metadata~)
+\end{Verbatim}
+\begin{tikzpicture}[overlay,remember picture]
+\tikzset{
+    box/.style={
+        align=left,
+        draw=red,
+        fill=white,
+        ultra thick,
+        anchor=north,
+        at={([yshift=0cm]current page.center)},
+    },
+}
+    \begin{visibleenv}<2>
+    \node[box] {
+        payload = bytes of frame  \\
+        (what would normally be sent on network)
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<3>
+    \node[box] {
+        extra metadata can be set by dataplane \\
+        example: which port packet came from
+    };
+    \end{visibleenv}
+\end{tikzpicture}
+\end{frame}

@@ -187,6 +187,7 @@
 \end{tikzpicture}
 \end{frame}
 
+% FIXME: show link getting dis/reconnected
 \begin{frame}{possible reason}
 \begin{tikzpicture}
 \tikzset{
@@ -215,4 +216,21 @@
 \node[font=\small,draw,fill=white] at ($(C)!0.5!(D)$) {\myemph{0}: ``The ''};
 \node[font=\small,draw,fill=white] at ($(E)!0.7!(start)$) {\myemph{0}: ``12pm''};
 \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{sequence numbers in practice}
+    \begin{itemize}
+    \item TCP tries to assume 120 second ``maximum segment lifetime''
+        \begin{itemize}
+        \item segment = TCP's name for a packet
+        \end{itemize}
+    \item original TCP used 32-bit sequence number identifying \textit{byte} number (not segment number)
+    \item problem: means wraparound happens on modern (Gigibit+) links in seconds!
+    \vspace{.5cm}
+    \item<2-> workaround: add \textit{additional} 32-bit timestamp field
+        \begin{itemize}
+        \item used to detect/discard duplicates
+        \item can also be used to set timeouts and/or window sizes
+        \end{itemize}
+    \end{itemize}
 \end{frame}

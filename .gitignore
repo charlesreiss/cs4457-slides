@@ -1,6 +1,9 @@
+_dist
 build
 *.aux
 *.fdb_latexmk
 *.fls
 *.log
 talk-slides.pdf
+test.pdf
+test.tex

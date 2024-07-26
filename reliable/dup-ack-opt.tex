@@ -1,0 +1,14 @@
+\begin{frame}{fast retransmit}
+    \begin{itemize}
+    \item if large window + data packet 3 is lost, then sender will see
+    \item ACK 0, \myemph{ACK 1, ACK 1, ACK 1, ACK 1, ACK 1}
+    \item duplicate ACKs indicate missing packet
+    \item \myemph{shouldn't wait for timeout}
+    \vspace{.5cm}
+    \item<2-> $\rightarrow$ TCP heuristic: retransmit immediately after $\sim$3 duplicate ACKs
+        \begin{itemize}
+        \item not 1 duplicate ACK to tolerate some reordering
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+

@@ -1,3 +1,5 @@
+\usetikzlibrary{arrows.meta,decorations.pathreplacing}
+
 \begin{frame}{P4}
     \begin{itemize}
     \item P4 --- programming langauge for data planes
@@ -24,39 +26,530 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{P4 switch architecture}
+\begin{frame}[fragile,label=p4arch]{P4 switch architecture}
 \begin{tikzpicture}
-\foreach \x in {1,2,3,4} {
-    \begin{scope}[yshift=\x cm,y=0.9cm]
-        \draw[thick] (0, 0) rectangle (2, 1);
-        \draw[ultra thick,-Latex] (-1, .5) -- (0, .5);
-        \foreach \off in {1,1.2,1.4,1.6,1.8} {
-            \draw[thick] (\off, 0) -- (\off, 1);
-        }
-    \end{scope}
+\tikzset{
+    queue/.style={alt=<2>{fill=red!10,draw=red,ultra thick}},
+    explain box/.style={
+        align=left,at={(explain box top)},anchor=north,draw=red,very thick
+    },
 }
+\begin{scope}[x=.7cm]
+\foreach \x in {1,2,3,4} {
+    \node[anchor=east] at (0, \x-.5) {IN$\rightarrow$};
+    \node[anchor=west] at (17.5, \x-.5) {$\rightarrow$OUT};
+    \foreach \noff in {0,8,16} {
+        \begin{scope}[shift={(\noff, 0)},yshift=\x cm-1cm,y=0.9cm]
+            \draw[queue,thick] (0, 0) rectangle (1.5, 1);
+            \foreach \off in {.5,.7,.9,1.1,1.3} {
+                \draw[queue,thick] (\off, 0) -- (\off, 1);
+            }
+        \end{scope}
+    }
+}
+\coordinate (explain box top) at (8.5, -.7);
 \tikzset{
     box/.style={draw,thick},
-    box label/.style={font=\small},
+    box label/.style={font=\fontsize{9}{10}\selectfont},
+    parserBox/.style={alt=<6>{fill=red!10}},
+    deparserBox/.style={alt=<7>{fill=red!10}},
+    ingressBox/.style={alt=<8>{fill=red!10}},
+    egressBox/.style={alt=<8>{fill=red!10}},
 };
-\foreach \x/\name in {3/parser,5/ingress,7/deparser} {
-    \draw[box] (\x, 1) coordinate (\name in base) rectangle ++(1.6, 2) coordinate (name other base) node[midway,box label] (\name label) {\name};
-    \draw[box] (\x + 1.4, 1) |- (\x - .2, .8) |- (\x, 1.8); 
-    \draw[box] (\x + 1.2, 1) |- (\x - .4, .6) |- (\x, 1.6); 
+\foreach \x/\name in {2/parser,4/ingress,6/deparser} {
+    \draw[box,\name Box] (\x, 0) coordinate (\name-in-base) rectangle ++(1.6, 4) coordinate (\name-in-other-base) node[midway,box label,alias=x] (\name-in-label) {\name};
+    \coordinate (\name-in-bottom-right) at (\name-in-base);
+    \coordinate (\name-in-bottom-left) at (\name-in-base -| \name-in-other-base);
+    \draw[box] (\x + 1.4, -.1) |- (\x - .2, .8-1) |- (\x-.1, 3.8); 
+    \draw[box] (\x + 1.5, 0) |- (\x - .1, .9-1) |- (\x, 3.9); 
 }
-\foreach \x/\name in {11/parser,13/egress,15/deparser} {
-    \draw[box] (\x, 1) coordinate (\name out base) rectangle ++(2, 2) coordinate (name other base) node[midway,box label] (\name label) {\name};
-    \draw[box] (\x + 1.4, 1) |- (\x - .2, .8) |- (\x, 1.8); 
-    \draw[box] (\x + 1.2, 1) |- (\x - .4, .6) |- (\x, 1.6); 
+\foreach \x/\name in {10/parser,12/egress,14/deparser} {
+    \draw[box,\name Box] (\x, 0) coordinate (\name-out-base) rectangle ++(1.6, 4) coordinate (\name-out-other-base) node[midway,box label] (\name-out label) {\name};
+    \coordinate (\name-out-bottom-right) at (\name-out-base);
+    \coordinate (\name-out-bottom-left) at (\name-out-base -| \name-out-other-base);
+    \draw[box] (\x + 1.4, -.1) |- (\x - .2, .8-1) |- (\x-.1, 3.8); 
+    \draw[box] (\x + 1.5, 0) |- (\x - .1, .9-1) |- (\x, 3.9); 
 }
+\end{scope}
+\begin{visibleenv}<2>
+    \node[explain box] {
+        queues of frames to be processed \\
+        if needed, hold packets in between processing steps 
+    };
+\end{visibleenv}
+\begin{visibleenv}<3>
+    \foreach \x in {in,out} {
+        \draw[line width=.5mm,red,decorate,decoration={brace,mirror,raise=3mm,amplitude=2mm}]
+            ([xshift=-.2cm]parser-\x-bottom-right) --
+            ([xshift=.2cm]deparser-\x-bottom-left);
+    }
+    \node[explain box] {
+        \textit{ingress} and \textit{egress} pipelines
+    };
+\end{visibleenv}
+\begin{visibleenv}<4>
+    \foreach \x in {in} {
+        \draw[line width=.5mm,red,decorate,decoration={brace,mirror,raise=3mm,amplitude=2mm}]
+            ([xshift=-.2cm]parser-\x-bottom-right) --
+            ([xshift=.2cm]deparser-\x-bottom-left);
+    }
+    \node[explain box] {
+        ingress pipeline: processes every input frame \\
+        primary job: decide where to forward frame (if anywhere) 
+    };
+\end{visibleenv}
+\begin{visibleenv}<5>
+    \foreach \x in {out} {
+        \draw[line width=.5mm,red,decorate,decoration={brace,mirror,raise=3mm,amplitude=2mm}]
+            ([xshift=-.2cm]parser-\x-bottom-right) --
+            ([xshift=.2cm]deparser-\x-bottom-left);
+    }
+    \node[explain box] {
+        egress pipeline: process every output frame \\
+        run one time for \myemph{each copy} output
+    };
+\end{visibleenv}
+\begin{visibleenv}<6>
+    \foreach \x in {in,out} {
+        \draw[line width=.5mm,red,decorate,decoration={brace,mirror,raise=3mm,amplitude=2mm}]
+            ([xshift=-.2cm]parser-\x-bottom-right) --
+            ([xshift=.2cm]parser-\x-bottom-left);
+    }
+    \node[explain box] {
+        parser: decode frame fields into temporary storage
+    };
+\end{visibleenv}
+\begin{visibleenv}<7>
+    \foreach \x in {in,out} {
+        \draw[line width=.5mm,red,decorate,decoration={brace,mirror,raise=3mm,amplitude=2mm}]
+            ([xshift=-.2cm]deparser-\x-bottom-right) --
+            ([xshift=.2cm]deparser-\x-bottom-left);
+    }
+    \node[explain box] {
+        deparser: converted decoded fields back into bytes for network
+    };
+\end{visibleenv}
+\begin{visibleenv}<8>
+    \foreach \x in {ingress-in,egress-out} {
+        \draw[line width=.5mm,red,decorate,decoration={brace,mirror,raise=3mm,amplitude=2mm}]
+            ([xshift=-.2cm]\x-bottom-right) --
+            ([xshift=.2cm]\x-bottom-left);
+    }
+    \node[explain box] {
+        ``match/action pipelines'' \\
+        do series of table lookups based on parsed fields \\
+        each table lookup specifies next action
+    };
+\end{visibleenv}
 \end{tikzpicture}
 \end{frame}
 
-% FIXME:
-    % example parser + deparser program
-        % idea of copying from buffer to control structure
-    % example match-pipeline
-        % show table lookup
-        % show standard_metadata
-    
-    % example configuration
+\begin{frame}[fragile]{P4: declaring headers (1)}
+\providecommand{\vemphA}[1]{\myemph<2>{#1}}
+\providecommand{\vemphB}[1]{\myemph<3>{#1}}
+\providecommand{\vemphC}[1]{\myemph<4>{#1}}
+\providecommand{\vemphD}[1]{\myemph<5>{#1}}
+\begin{Verbatim}[fontsize=\small,commandchars=\\@~]
+typedef bit<48> macAddr_t;
+\vemphA@@header~ ethernet_t~ {
+    macAddr_t srcAddr;
+    macAddr_T dstAddr;
+    bit<16>   etherType;
+}
+\end{Verbatim}
+\begin{itemize}
+\item<2-> kinda like \Verb|typedef struct { ... } ethernet_t;|
+\item<3-> order needs to \textit{exactly} match what's sent on network
+    \begin{itemize}
+    \item switch will do bit-by-bit copy into this struct
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{P4: declaring headers (2)}
+\providecommand{\vemphA}[1]{\myemph<2>{#1}}
+\providecommand{\vemphB}[1]{\myemph<3>{#1}}
+\providecommand{\vemphC}[1]{\myemph<4>{#1}}
+\providecommand{\vemphD}[1]{\myemph<5>{#1}}
+\begin{Verbatim}[fontsize=\small,commandchars=\\@~]
+\vemphA@struct headers~ {
+    \vemphB@ethernet_t~   ethernet;
+    \vemphB@ipv4_t~       ipv4;
+    \vemphB@ipv6_t~       ipv6;
+}
+\end{Verbatim}
+\begin{itemize}
+\item<2-> struct of all possible headers
+    \begin{itemize}
+    \item from all layers the switch/router handles
+    \item not all frames will use all of them, some may be mutually exclusive
+    \item order does not need to match frame storage (will write code to handle that)
+    \end{itemize}
+\item<3-> references header types defined previously
+\end{itemize}
+\end{frame}
+
+% FIXME: hilite parts with explanation
+\begin{frame}[fragile]{P4: parsing}
+\begin{Verbatim}
+parser MyParser(
+    packet_in packet,
+    out headers hdr,
+    inout metadata meta,
+    inout standard_metadata_t standard_metadata) {
+\end{Verbatim}
+\begin{itemize}
+\item function modifies `out' parameters instead of returning
+\item parser function --- takes parameters:
+    \begin{itemize}
+    \item packet --- the input frame
+    \item headers --- extracted headers (\texttt{struct headers})
+    \item meta --- program's local variables about frame (\texttt{struct metadata})
+    \item standard\_metadata --- info for system about frame
+        \begin{itemize}
+        \item where frame came from, where it should go, etc.
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{P4: parsing}
+\providecommand{\vemphA}[1]{\myemph<2>{#1}}
+\providecommand{\vemphB}[1]{\myemph<3>{#1}}
+\providecommand{\vemphC}[1]{\myemph<4>{#1}}
+\providecommand{\vemphD}[1]{\myemph<5>{#1}}
+\begin{Verbatim}[fontsize=\small,commandchars=\\@~]
+parser MyParser(...) {
+    \vemphA@state~ start {
+        \vemphB@transition~ \vemphC@parse_ethernet~;
+    }
+    \vemphA@state~ \vemphC@parse_ethernet~ {
+        \vemphD@packet.extract(hdr.ethernet);~
+        \vemphB@transition~ select(hdr.ethernet.etherType) {
+            TYPE_IPV4: parse_ipv4;
+            TYPE_IPV6: parse_ipv6
+            default: accept;
+        }
+    }
+    ....
+}
+\end{Verbatim}
+\begin{tikzpicture}[overlay,remember picture]
+    \begin{visibleenv}<2>
+    \node[align=left,draw=red,fill=white,very thick] at (current page.center) {
+        functions written as state machine \\
+        exectuion starts in state \texttt{start} \\
+        follows instructions in each state
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<3-4>
+    \node[align=left,draw=red,fill=white,very thick] at ([yshift=-1cm]current page.center) {
+        transition statements say which state to go to next  \\
+        can be conditional using switch-statement-like syntax
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<5>
+    \node[align=left,draw=red,fill=white,very thick] at ([yshift=-1.5cm]current page.center) {
+        \texttt{extract} operation copies from packet \\
+        into specific \texttt{header} object
+    };
+    \end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}[fragile]{P4: parsing}
+\providecommand{\vemphA}[1]{\myemph<2>{#1}}
+\providecommand{\vemphB}[1]{\myemph<3>{#1}}
+\providecommand{\vemphC}[1]{\myemph<4>{#1}}
+\providecommand{\vemphD}[1]{\myemph<5>{#1}}
+\begin{Verbatim}[fontsize=\small,commandchars=\\@~]
+parser MyParser(...) {
+    ...
+    state parse_ethernet {
+        \vemphA@packet.extract(hdr.ethernet);~
+        transition select(hdr.ethernet.etherType) {
+            TYPE_IPV4: parse_ipv4;
+            TYPE_IPV6: parse_ipv6
+            default: accept;
+        }
+    }
+
+    state parse_ipv4 {
+        \vemphA@packet.extract(hdr.ipv4)~
+        transition accept;
+    }
+    ....
+}
+\end{Verbatim}
+\begin{tikzpicture}[overlay,remember picture]
+    \begin{visibleenv}<2>
+    \node[align=left,draw=red,fill=white,ultra thick] at ([yshift=-1cm,xshift=4cm]current page.center) {
+        extract operations \\
+        can be chained \\
+        to extract multiple headers \\
+        (for multiple layers \\
+        or variable-length headers)
+    };
+    \end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}[fragile]{P4: deparsing}
+\providecommand{\vemphA}[1]{\myemph<2>{#1}}
+\providecommand{\vemphB}[1]{\myemph<3>{#1}}
+\providecommand{\vemphC}[1]{\myemph<4>{#1}}
+\providecommand{\vemphD}[1]{\myemph<5>{#1}}
+\begin{Verbatim}[fontsize=\small,commandchars=\\@~]
+control MyDeparser(packet_out packet, in headers hdr) {
+    apply {
+        \vemphA@packet.emit~(hdr.ethernet);
+        \vemphA@packet.emit~(hdr.ipv4);
+        \vemphA@packet.emit~(hdr.ipv6);
+    }
+}
+\end{Verbatim}
+\begin{tikzpicture}[overlay,remember picture]
+    \begin{visibleenv}<2>
+    \node[align=left,draw=red,fill=white,ultra thick] at ([yshift=-2cm]current page.center) {
+        use emit to put extracted bits back in packet \\
+        ~  \\
+        if header is not marked valid, emit does nothing \\
+        (\texttt{extract(hdr.foo)} marks \texttt{hdr.foo} valid, \\
+        can also use \texttt{hdr.foo.setValid()} and undo with \\
+        \texttt{hdr.foo.setInvalid()})
+    };
+    \end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}[fragile]{P4: ingress processing}
+\providecommand{\vemphA}[1]{\myemph<2>{#1}}
+\providecommand{\vemphB}[1]{\myemph<3>{#1}}
+\providecommand{\vemphC}[1]{\myemph<4>{#1}}
+\providecommand{\vemphD}[1]{\myemph<5>{#1}}
+\begin{itemize}
+\item example: send \textit{everything} to output port number 4
+\end{itemize}
+\begin{Verbatim}[fontsize=\small,commandchars=\\@~]
+control MyIngress(...) {
+    apply {
+        \vemphA@standard_metadata.egress_spec = 4;~
+    }
+}
+\end{Verbatim}
+\begin{tikzpicture}[overlay,remember picture]
+    \begin{visibleenv}<2>
+    \node[align=left,draw=red,fill=white,ultra thick] at ([yshift=-2cm]current page.center) {
+        standard\_metadata --- `hard-coded' phase reads \texttt{egress\_spec} \\
+        ~ \\
+        special \texttt{egress\_spec} value for ``discard frame''
+    };
+    \end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{switch decisions}
+    \begin{itemize}
+    \item most decisions switches/routers make are table lookups
+    \vspace{.5cm}
+    \item take field from packet (e.g. destination)
+    \item lookup in table what to do with that
+        (e.g. send to port X, throw error, etc.)
+    \vspace{.5cm}
+    \item P4 has special syntax for tables and table lookups
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{P4: tables}
+\providecommand{\vemphA}[1]{\myemph<2>{#1}}
+\providecommand{\vemphB}[1]{\myemph<3>{#1}}
+\providecommand{\vemphC}[1]{\myemph<4>{#1}}
+\providecommand{\vemphD}[1]{\myemph<5>{#1}}
+\begin{Verbatim}[fontsize=\small,commandchars=\\@~]
+\vemphA@table~ mac_dst_exact {
+    \vemphB@key~ = {
+        \vemphB@hdr.ethernet.dstAddr~ : \vemphC@exact~;
+    }
+    \vemphB@actions~ = {
+        drop,
+        forward_to,
+    }
+    size = 1024;
+    default_action = drop();
+}
+\end{Verbatim}
+\begin{tikzpicture}[overlay,remember picture]
+\tikzset{
+    box/.style={
+        align=left,
+        draw=red,
+        fill=white,
+        ultra thick,
+        anchor=west,
+        at={([xshift=1cm]current page.center)},
+    },
+}
+    \begin{visibleenv}<2>
+    \node[box] {
+        declare a table with a name \\
+        done has part of ingress/outgress
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<3>
+    \node[box] {
+        key/value structure \\
+        keys usually from headers \\
+        values are actions to run
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<4>
+    \node[box] {
+        here, each table entry \\
+        contains whole address \\
+        P4 also supports \\
+        partially matched keys
+    };
+    \end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{P4 table key types}
+    \begin{itemize}
+    \item exact --- full entry
+    \item lpm --- longest prefix match
+        \begin{itemize}
+        \item table entries contain `prefixes' of header field(s)
+        \item we'll see motivation for this when we talk about routing
+        \item if multiple entries match, take longest one
+        \end{itemize}
+    \item ternary --- 0/1/don't care
+        \begin{itemize}
+        \item table entries contain key and mask
+        \item entry matches if bits included in mask match
+        \item other view: keys represented with 0/1/don't care `trits'
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{content-addressable memory}
+    \begin{itemize}
+    \item high-end routers/switches have \textit{content addressable memory} (CAM)
+    \item \ldots including \textit{ternary content addressable memory} (TCAM)
+    \vspace{.5cm}
+    \item = hardware that implements a table lookup
+        \begin{itemize}
+        \item `content' $\approx$ key being looked up
+        \item looks kinda like highly associative cache
+        \item porbably lots of comparators
+        \end{itemize}
+    \item allows multigigabit frame processing speeds
+    \item P4 goal: P4 programs compile to use CAM/TCAM when available
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{P4: using a table}
+\providecommand{\vemphA}[1]{\myemph<2>{#1}}
+\providecommand{\vemphB}[1]{\myemph<3>{#1}}
+\providecommand{\vemphC}[1]{\myemph<4>{#1}}
+\providecommand{\vemphD}[1]{\myemph<5>{#1}}
+\begin{Verbatim}[fontsize=\small,commandchars=\\@~]
+control MyIngress(...) {
+    ...
+    table mac_dst_exact = { 
+        /* seen earlier */ ...
+    }
+    apply {
+        \vemphA@mac_dst_exact.apply();~
+    }
+}
+\end{Verbatim}
+\begin{tikzpicture}[overlay,remember picture]
+\tikzset{
+    box/.style={
+        align=left,
+        draw=red,
+        fill=white,
+        ultra thick,
+        anchor=west,
+        at={([xshift=1cm]current page.center)},
+    },
+}
+    \begin{visibleenv}<2>
+    \node[box] {
+        apply operation invokes the action specified by the table
+    };
+    \end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}[fragile]{P4: actions}
+\providecommand{\vemphA}[1]{\myemph<2>{#1}}
+\providecommand{\vemphB}[1]{\myemph<3>{#1}}
+\providecommand{\vemphC}[1]{\myemph<4>{#1}}
+\providecommand{\vemphD}[1]{\myemph<5>{#1}}
+\begin{Verbatim}[fontsize=\small,commandchars=\\@~]
+control MyIngress(...) {
+    \vemphA@action drop()~ {
+        mark_to_drop(\vemphB@standard_metadata~);
+    }
+    \vemphA@action forward_to(egressSpec_t port)~ {
+        \vemphB@standard_metadata.egress_spec = port;~
+    }
+    \vemphA@action mark_and_forward(egressSpec_t port)~ {
+        \vemphC@hdr.some_proto.value~ = 1;
+        \vemphB@standard_metadata.egress_spec = port;~
+    }
+    ...
+}
+\end{Verbatim}
+\begin{tikzpicture}[overlay,remember picture]
+\tikzset{
+    box/.style={
+        align=left,
+        draw=red,
+        fill=white,
+        ultra thick,
+        anchor=north,
+        at={([yshift=-1cm]current page.center)},
+    },
+}
+    \begin{visibleenv}<2>
+    \node[box] {
+        actions basically function calls for packet \\
+        can include parameters that are stored in table
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<3>
+    \node[box] {
+        typically, actions set standard metadata \\
+        to indicate where to send frame next \\
+        ~ \\
+        actual sending/not sending frame done later
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<4>
+    \node[box] {
+        actions can also edit packet headers \\
+        or do other table lookups \\
+        (which we will need in the future) 
+    };
+    \end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}[fragile]{P4: special actions}
+    \begin{itemize}
+    \item some ways switch can direct packet (incomplete list)
+    \vspace{.5cm}
+    \item send to the control plane
+        \begin{itemize}
+        \item special output port that goes to `general purpose' CPU
+        \end{itemize}
+    \item multicast/broadcast to multiple ports
+        \begin{itemize}
+        \item control plane can set \textit{multicast groups}
+        \item makes multiple copies of packets
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+

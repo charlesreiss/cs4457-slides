@@ -1,0 +1,72 @@
+\begin{frame}{multiple missing}
+\begin{tikzpicture}
+\tikzset{
+    box/.style={thick},
+    message/.style={draw,thick,-Latex},
+    failure/.style={draw,ultra thick,red,cross out,minimum width=1cm,minimum height=1cm},
+    every node/.style={inner sep=0.1mm},
+}
+\begin{scope}[xshift=1cm,x=0.9cm]
+\draw[box] (0, 0) rectangle ++(2, -5.5) 
+    node[midway,align=center] {machine\\A};
+\draw[box] (13, 0) rectangle ++(2, -5.5) 
+    node[midway,align=center] {machine\\B};
+\draw[message] (2, -0.5) -- (13, -1.5) node[pos=0.25,above,sloped] {\myemph{0}: ``The ''};
+\draw[message] (13, -1.75) -- (2, -2.75) node[pos=0.25,sloped,below] {got up to \myemph{0}};
+\draw[message] (2, -1) -- (9, -1.7) node[pos=0.25, above, sloped] {\myemph{1}: ``meeting''}
+    node[failure] {};
+\draw[message] (2, -1.5) -- (13, -2) node[pos=0.5, above, sloped] {\myemph{2}: ``is''};
+\draw[message] (2, -2) -- (13, -3) node[pos=0.5, above, sloped] {\myemph{3}: ``at''}
+    node[failure] {};
+\draw[message] (2, -3) -- (13, -4) node[pos=0.5, above, sloped] {\myemph{4}: ``12pm''};
+
+\draw[message] (13, -2.25) -- (2, -3.25) node[pos=0.25, sloped,below,alt=<2>{draw=red,ultra thick}] {got up to \myemph{0}};
+\draw[message] (13, -3.25) -- (2, -4.25) node[pos=0.25, sloped,below,alt=<2>{draw=red,ultra thick}] {got up to \myemph{0}};
+\end{scope}
+\end{tikzpicture}
+\begin{itemize}
+\item duplicate ACK heuristic will quickly resend 1, but not 3
+\item would like to supply better information
+\end{itemize}
+\end{frame}
+
+\begin{frame}{selective acknowledgments}
+\begin{tikzpicture}
+\tikzset{
+    box/.style={thick},
+    message/.style={draw,thick,-Latex},
+    failure/.style={draw,ultra thick,red,cross out,minimum width=1cm,minimum height=1cm},
+    every node/.style={inner sep=0.1mm},
+}
+\begin{scope}[xshift=1cm,x=0.9cm]
+\draw[box] (0, 0) rectangle ++(2, -5.5) 
+    node[midway,align=center] {machine\\A};
+\draw[box] (13, 0) rectangle ++(2, -5.5) 
+    node[midway,align=center] {machine\\B};
+\draw[message] (2, -0.5) -- (13, -1.5) node[pos=0.25,above,sloped] {\myemph{0}: ``The ''};
+\draw[message] (13, -1.75) -- (2, -2.75) node[pos=0.25,sloped,below] {got up to \myemph{0}};
+\draw[message] (2, -1) -- (9, -1.7) node[pos=0.25, above, sloped] {\myemph{1}: ``meeting''}
+    node[failure] {};
+\draw[message] (2, -1.5) -- (13, -2) node[pos=0.5, above, sloped] {\myemph{2}: ``is''};
+\draw[message] (2, -2) -- (13, -3) node[pos=0.5, above, sloped] {\myemph{3}: ``at''}
+    node[failure] {};
+\draw[message] (2, -3) -- (13, -4) node[pos=0.5, above, sloped] {\myemph{4}: ``12pm''};
+
+\draw[message] (13, -2.25) -- (2, -3.25) node[pos=0.25, sloped,below,alt=<2>{draw=red,ultra thick}] {got up to \myemph{0} plus 2};
+\draw[message] (13, -3.25) -- (2, -4.25) node[pos=0.25, sloped,below,alt=<2>{draw=red,ultra thick}] {got up to \myemph{0} plus 2 and 4};
+\end{scope}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{selective acknowledgments in TCP}
+    \begin{itemize}
+    \item optional feature (``extension'') described in RFC 2018
+    \item send list of ranges received
+    \item typically room for 3 ranges
+    \item if more than 3 ranges to report, then:
+        \begin{itemize}
+        \item include range with most recently received frame
+        \item include other ranges until sent three times
+        \end{itemize}
+    \end{itemize}
+\end{frame}
