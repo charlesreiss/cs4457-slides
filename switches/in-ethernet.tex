@@ -139,23 +139,3 @@ type = IPV4  \\ data = \tt34 45 43 42 \ldots \\
 % FIXME: picture of network with switch ports labeled
     % FIXME: picture of ideal mac_dst_exact tables for it
 
-% ideal: table of MAC addresses
-% note: multiple MAC addresses per port
-    % assumption: no loops
-% fallback: broadcast
-
-\begin{frame}{fallback option}
-    \begin{itemize}
-    \item very low quality switch: \\
-    send every frame to every \textit{other} port
-    \vspace{.5cm}
-    \item receivers will check destination
-        \begin{itemize}
-        \item check dates to history of unswitched (shared medium) ethernet
-        \item sending to extra destinations just slow
-        \end{itemize}
-    \vspace{.5cm}
-    \item as optimization: want to only send where interested
-    \end{itemize}
-\end{frame}
-

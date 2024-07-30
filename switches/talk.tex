@@ -32,19 +32,14 @@
 \subsection{P4 controlplane}
 \input{../switches/p4-controlplane}
 
-\section{switching ethernet}
+\section{basic Ethernet switching / MAC learning}
 
 \againframe<10>{ethernetFormat}
 \input{../switches/in-ethernet}
 
-% ideal: table of MAC addresses
-% note: multiple MAC addresses per port
-    % assumption: no loops
-% fallback: broadcast
+\subsection{aside: no loops please}
 
-\section{learning MAC addresses}
-
-\section{broadcast, multicast}
+\input{../switches/no-loops-please}
 
 \section{preview: internetworks}
 
