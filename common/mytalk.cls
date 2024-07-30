@@ -7,6 +7,7 @@
 
 \RequirePackage{etoolbox}
 
+
 \newtoggle{heldback}
 \togglefalse{heldback}
 
@@ -25,6 +26,7 @@
 \LoadClass[t,14pt,bookmarksdepth=5]{beamer}
 \setcounter{tocdepth}{5}
 
+\RequirePackage{sourcecodepro}
 \RequirePackage{fontspec}
 \RequirePackage{tikz}
 \RequirePackage{comment}
@@ -33,27 +35,26 @@
 \RequirePackage{listings}
 \RequirePackage{lmodern}
 \RequirePackage[normalem]{ulem} % for sout
-\RequirePackage[outputdir=latex.out]{minted}
 
 \renewcommand<>{\sout}[1]{\alt#2{\beameroriginal{\sout}{#1}}{#1}}
 
-\newfontfamily\sourcecodepro[
+\renewfontfamily\sourcecodepro[
     UprightFont=*-Regular,
-    ItalicFont=*-Regular It,
+    ItalicFont=*-Italic,
     BoldFont=*-Semibold,
-    BoldItalicFont=*-Semibold It]{Source Code Pro}
+    BoldItalicFont=*-Semibold Italic]{Source Code Pro}
 
-\newfontfamily\sourcecodeprolight[
+\renewfontfamily\sourcecodeprolight[
     UprightFont=*-Regular,
-    ItalicFont=*-Regular It,
+    ItalicFont=*-Italic,
     BoldFont=*-Medium,
-    BoldItalicFont=*-Medium It]{Source Code Pro}
+    BoldItalicFont=*-Medium Italic]{Source Code Pro}
 
 \setmonofont[
     UprightFont=*-Regular,
-    ItalicFont=*-RegularIt,
+    ItalicFont=*-Italic,
     BoldFont=*-Semibold,
-    BoldItalicFont=*-Semibold It]{Source Code Pro}
+    BoldItalicFont=*-Semibold Italic]{Source Code Pro}
 
 %\ifluatex
 %    \RequirePackage{luatexja}
