@@ -191,3 +191,15 @@ D. might cause frames sent much later to be dropped \\
 \end{tikzpicture}
 \end{frame}
 
+\begin{frame}{explosion from loops}
+\begin{itemize}
+\item avoiding sending back is not enough
+\item will get catastrophic failure of network!
+\vspace{.5cm}
+\item simple fix: only have one path from A to B
+    \begin{itemize}
+    \item BUT means network is more fragile
+    \end{itemize}
+\item we'll have better solutions when we talk about routing later
+\end{itemize}
+\end{frame}
