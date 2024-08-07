@@ -2,7 +2,8 @@ SLIDEDECKS = \
     intro \
     framing \
     physical \
-    reliable
+    reliable \
+    switches
 
 
 all: $(patsubst %,_dist/%.pdf,$(SLIDEDECKS))

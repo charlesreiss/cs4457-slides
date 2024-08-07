@@ -26,7 +26,6 @@
 \LoadClass[t,14pt,bookmarksdepth=5]{beamer}
 \setcounter{tocdepth}{5}
 
-\RequirePackage{sourcecodepro}
 \RequirePackage{fontspec}
 \RequirePackage{tikz}
 \RequirePackage{comment}
@@ -38,13 +37,13 @@
 
 \renewcommand<>{\sout}[1]{\alt#2{\beameroriginal{\sout}{#1}}{#1}}
 
-\renewfontfamily\sourcecodepro[
+\newfontfamily\sourcecodepro[
     UprightFont=*-Regular,
     ItalicFont=*-Italic,
     BoldFont=*-Semibold,
     BoldItalicFont=*-Semibold Italic]{Source Code Pro}
 
-\renewfontfamily\sourcecodeprolight[
+\newfontfamily\sourcecodeprolight[
     UprightFont=*-Regular,
     ItalicFont=*-Italic,
     BoldFont=*-Medium,
