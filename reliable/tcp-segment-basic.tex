@@ -1,0 +1,243 @@
+\usetikzlibrary{patterns}
+\begin{frame}{TCP}
+    \begin{itemize}
+    \item transmission control protocol (TCP)
+    \item implements reliable streams of bytes
+    \item similar mechanism to what we've described
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{TCP extras/differences}
+    \begin{itemize}
+    \item bidirectional ---
+        \begin{itemize}
+        \item separate sequence numbers in each direction
+        \item can combine data (from A to B) with acknowledgment (from B to A)
+        \end{itemize}
+    \item sequence numbers are byte numbers ---
+        \begin{itemize}
+        \item can retransmit data in different sized packets
+        \item sequence numbers = index of \textit{first byte} sent
+        \item acknowledgment numbers = index of \textit{last byte} acknowledged
+        \end{itemize}
+    \item dynamic/variable window sizes
+        \begin{itemize}
+        \item we'll discuss strategies later
+        \end{itemize}
+    \item offical name for packets = \textit{segments}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{TCP segment format}
+\begin{tikzpicture}
+    \tikzset{
+        box/.style={draw,thick},
+        box unused/.style={draw,thick,pattern=north west lines},
+        box label/.style={midway,font=\small,align=center},
+        box label flags/.style={midway,font=\fontsize{8}{9}\selectfont,align=center},
+        hi on/.style={alt=<#1>{ultra thick,fill=red!10}},
+        explain box 1/.style={draw=red,line width=0.8mm,fill=white,anchor=center,at={(explain box loc 1)},align=center},
+        explain box 2/.style={draw=red,line width=0.8mm,fill=white,anchor=center,at={(explain box loc 2)},align=center},
+        explain box 3/.style={draw=red,line width=0.8mm,fill=white,anchor=center,at={(explain box loc 3)},align=center},
+    }
+    \begin{scope}[x=4.7mm,y=9mm]
+        \coordinate (explain box loc 1) at (16, -3.1);
+        \coordinate (explain box loc 2) at (16, -5.1);
+        \coordinate (explain box loc 3) at (16, -1.1);
+        \path[shading=axis,top color=white,bottom color=black!20] (0, 1) rectangle (32, 0)
+            node[box label] {(lower layer header)};
+        \path[box,hi on=2] (0, 0) rectangle (16, -1) node[box label] {source port (16b)};
+        \path[box,hi on=2] (16, 0) rectangle (32, -1) node[box label] {destination port (16b)};
+        \path[box,hi on=3] (0, -1) rectangle (32, -2) node[box label] {sequence number (32b)};
+        \path[box,hi on=4] (0, -2) rectangle (32, -3) node[box label] {acknowledgment number (32b)};
+        \path[box,hi on=10] (0, -3) rectangle (4, -4) node[box label] {data offset\\(4b)};
+        \path[box unused] (4, -3) rectangle (8, -4);
+        \path[box,hi on=9] (8, -3) rectangle ++(1, -1) node[box label flags]{C\\W\\R};
+        \path[box,hi on=9] (9, -3) rectangle ++(1, -1) node[box label flags]{E\\C\\E};
+        \path[box,hi on=6] (10, -3) rectangle ++(1, -1) node[box label flags]{U\\R\\G};
+        \path[box,hi on=4] (11, -3) rectangle ++(1, -1) node[box label flags]{A\\C\\K};
+        \path[box,hi on=7] (12, -3) rectangle ++(1, -1) node[box label flags]{P\\S\\H};
+        \path[box,hi on=8] (13, -3) rectangle ++(1, -1) node[box label flags]{R\\S\\T};
+        \path[box,hi on=8] (14, -3) rectangle ++(1, -1) node[box label flags]{S\\Y\\N};
+        \path[box,hi on=8] (15, -3) rectangle ++(1, -1) node[box label flags]{F\\I\\N};
+        \path[box,hi on=5] (16, -3) rectangle ++(16, -1) node[box label] {window size (16b)};
+        \path[box] (0, -4) rectangle ++(16, -1) node[box label] {checksum (16b)};
+        \path[box, hi on=6] (16, -4) rectangle ++(16, -1) node[box label] {urgent pointer (16b)};
+        \path[box,hi on=10] (0, -5) rectangle ++(32, -1) node[box label] {options (variable)};
+        \draw[line width=1mm,white] (-.2, -5.55) -- (.2, -5.45);
+        \draw[line width=1mm,white] (32 -.2, -5.55) -- (32 + .2, -5.45);
+        \draw[very thick,black] (-.2, -5.5) -- (.2, -5.4);
+        \draw[very thick,black] (32 -.2, -5.5) -- (32 + .2, -5.4);
+        \draw[very thick,black] (-.2, -5.6) -- (.2, -5.5);
+        \draw[very thick,black] (32 -.2, -5.6) -- (32 + .2, -5.5);
+        \path[overlay,shading=axis,top color=black!20,bottom color=white] (0, -6) rectangle (32, -7)
+            node[box label] {(data)};
+    \end{scope}
+    \begin{visibleenv}<2>
+        \node[explain box 1] {
+            ports identify program/socket on machines \\
+            (we'll talk more when we cover sockets) \\
+            ~ \\
+            machines identified in lower layer headers 
+        };
+    \end{visibleenv}
+    \begin{visibleenv}<3>
+        \node[explain box 2] {
+            byte number for first byte of data in this packet
+        };
+    \end{visibleenv}
+    \begin{visibleenv}<4>
+        \node[explain box 2] {
+            ack number = byte number of largest byte acknowledged \\
+            only meaningful if ACK `flag' is 1
+        };
+    \end{visibleenv}
+    \begin{visibleenv}<5>
+        \node[explain box 3] {
+            window size is receive window size \\
+            tells sender how much receiver will accept \\
+            sender window could/often will be different \\
+            (and not directly visible in packets)
+        };
+    \end{visibleenv}
+    \begin{visibleenv}<6>
+        \node[explain box 3] {
+            some fields related to `urgent data' mechanism \\
+            almost never used today
+        };
+    \end{visibleenv}
+    \begin{visibleenv}<7>
+        \node[explain box 3] {
+            PSH (push) `flag' is hint that sender does not have \\
+            more data to send right away
+        };
+    \end{visibleenv}
+    \begin{visibleenv}<8>
+        \node[explain box 3] {
+            RST (reset), SYN (synchornize), FIN flags \\
+            used for connnection management \\
+            (we'll talk more when we cover sockets)
+        };
+    \end{visibleenv}
+    \begin{visibleenv}<9>
+        \node[explain box 3] {
+            CWR (congestion window reduced) and \\
+            ECE (explicit congestion notification echo) flags \\
+            sometimes used as part of setting window size \\
+            to match network conditions (later topic for us)
+        };
+    \end{visibleenv}
+    \begin{visibleenv}<10>
+        \node[explain box 3] {
+            header can have variable number of ``options'' \\
+            technically optional, almost always used today \\
+            ~ \\
+            size of header indicated by \textit{data offset} \\
+            (data offset is units of 32-bit words, not bytes)
+        };
+    \end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{exercise: maximum throughput}
+    \begin{itemize}
+    \item let's say we have a receiver window size of 65535 bytes
+    \item and a round-trip time of 100 ms
+    \vspace{.5cm}
+    \item if we want to avoid sending data the sender will reject as outside
+    its window, maximum throughput?
+    \end{itemize}
+\begin{tabular}{ll}
+A. around 32kbyte/sec &
+B. around 64kbyte/sec \\
+C. around 128kbyte/sec &
+D. around 320kbyte/sec \\
+E. around 640kbyte/sec &
+F. around 1280kbyte/sec \\
+G. something else \\
+\end{tabular}
+\end{frame}
+
+\begin{frame}{selected TCP options}
+    \begin{itemize}
+    \item window size scale factor
+        \begin{itemize}
+        \item allow receiver window sizes greater than 64k
+        \item needed to get reasonable bandwidth on modern networks
+        \end{itemize}
+    \item timestamps
+        \begin{itemize}
+        \item allow figuring out round trip time to estimate timeout
+        \item extend 32-bit sequence number, which is too small for multi-gigabit networks
+        \end{itemize}
+    \item selective acknowledgements
+        \begin{itemize}
+        \item allow providing information about `holes' in received data
+        \item example: I got bytes 1--5000, 6000--7000, 8000--9000
+        \item without it would only say 5000
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{selected TCP option formats}
+\begin{tikzpicture}
+    \tikzset{
+        box/.style={draw,thick},
+        box unused/.style={draw,thick,pattern=north west lines},
+        box label/.style={midway,font=\small,align=center},
+        box label flags/.style={midway,font=\fontsize{8}{9}\selectfont,align=center},
+        hi on/.style={alt=<#1>{ultra thick,fill=red!10}},
+        explain box 1/.style={draw=red,line width=0.8mm,fill=white,anchor=center,at={(explain box loc 1)},align=center},
+        explain box 2/.style={draw=red,line width=0.8mm,fill=white,anchor=center,at={(explain box loc 2)},align=center},
+        explain box 3/.style={draw=red,line width=0.8mm,fill=white,anchor=center,at={(explain box loc 3)},align=center},
+    }
+    \begin{scope}[x=4.7mm,y=9mm]
+        \coordinate (explain box loc 1) at (16, -5.1);
+        \coordinate (explain box loc 2) at (16, -6.1);
+        \coordinate (explain box loc 3) at (16, -1.1);
+        \path[box,hi on=3] (0, 0) rectangle (8, -1) node[box label] {kind (8b)};
+        \path[box,hi on=2] (8, 0) rectangle (16, -1) node[box label] {length (8b)};
+        \path[shading=axis,left color=black!20,right color=white] (16, 0) rectangle (32, -1) node[box label] {option data};
+
+        \node[anchor=south] at (16, -2) {\myemph<4>{window scale option}:};
+        \path[box,hi on=4,hi on=3] (0, -2) rectangle ++(8, -1) node[box label] {\tt 3};
+        \path[box,hi on=2,hi on=4] (8, -2) rectangle ++(8, -1) node[box label] {\tt 3};
+        \path[box,hi on=4] (16, -2) rectangle ++(8, -1) node[box label] {shift count};
+        
+        \node[anchor=south] at (16, -4) {\myemph<5>{timestamps}:};
+        \path[box,hi on=3] (0, -4) rectangle ++(8, -1) node[box label] {\tt 8};
+        \path[box,hi on=2] (8, -4) rectangle ++(8, -1) node[box label] {\tt 10};
+        \path[box] (16, -4) rectangle ++(16, -1) node[box label] {sender TS};
+        \path[box,hi on=6] (0, -5) rectangle ++(16, -1) node[box label] {echoed TS};
+    \end{scope}
+    \begin{visibleenv}<2>
+        \node[explain box 2] {
+            length field permits skipping unrecognized options
+        };
+    \end{visibleenv}
+    \begin{visibleenv}<3>
+        \node[explain box 2] {
+            unique kind codes for each option \\
+            list of valid codes maintained by IANA \\
+            (Internet Assigned Numbers Authority) 
+        };
+    \end{visibleenv}
+    \begin{visibleenv}<4>
+        \node[explain box 1] {
+            sent only in connection setup \\
+            only takes effect if both sides send it \\
+            sets amount to left-shift \\
+            all window size fields by
+        };
+    \end{visibleenv}
+    \begin{visibleenv}<6>
+        \node[explain box 3] {
+            echoed timestamp --- \\
+            only valid in ACK messages \\
+            copy of timestamp sent in message ACK'd \\
+            allows computing round-trip-time
+        };
+    \end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
