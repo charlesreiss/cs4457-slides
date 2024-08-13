@@ -3,7 +3,8 @@ SLIDEDECKS = \
     framing \
     physical \
     reliable \
-    switches
+    switches \
+    arp
 
 
 all: $(patsubst %,_dist/%.pdf,$(SLIDEDECKS))
