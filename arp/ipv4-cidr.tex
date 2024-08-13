@@ -1,0 +1,43 @@
+\begin{frame}{IPv4 address blocks}
+\begin{itemize}
+    \item often will want to talk about group of IPv4 addresses
+    \item example: {\color<2>{violet!70!black}128.143.67.64}---{\color<2>{green!70!black}128.143.67.127} (inclusive)
+    \item<2-> {\tt\color<2>{violet!70!black}\myemph<3>{10000000 10001111 01000011 001}\myemph<4>{00000}}
+    \item<2-> {\tt\color<2>{green!70!black}\myemph<3>{10000000 10001111 01000011 001}\myemph<4>{11111}}
+    \item<3-> first 27 bits always same; anything for last bits
+    \item<5-> more convenient representation: 128.143.67.64/27
+    \item<5-> called ``CIDR notation''
+        \begin{itemize}
+        \item CIDR = classless inter-domain routing (will come up when we discuss routing)
+        \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{CIDR notation examples}
+    \begin{itemize}
+    \item 5.7.3.3/14 = 5.4.0.0/14 = 5.4.0.0---5.7.255.255
+        \begin{itemize}
+        \item<2-> \myemph<2>{also written 5.4/14}
+        \end{itemize}
+    \item 128.143.0.0/16 =  128.143.0.0---128.143.255.255
+        \begin{itemize}
+        \item<2-> \myemph<2>{also written 128.143/16}
+        \end{itemize}
+    \item 192.168.0.0/24 =  192.168.0.0---192.168.0.255
+    \item 10.0.0.0/8 = 10.0.0.0--10.255.255.255
+        \begin{itemize}
+        \item<2-> \myemph<2>{also written 10/8}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{alternate notation: netmasks}
+    \begin{itemize}
+    \item instead of writing 128.143.67.64/27 might say
+    \item 128.143.67.64 and ``network mask'' of 255.255.255.224
+    \item 255.255.255.224 = 27 1's
+    \vspace{.5cm}
+    \item<2-> if some-address bitwise-AND netmask = 128.143.67.64 bitwise-AND netmask, \\
+        then some-address is in the range
+    \end{itemize}
+\end{frame}

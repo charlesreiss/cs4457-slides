@@ -1,0 +1,18 @@
+\begin{frame}{which link local?}
+    \begin{itemize}
+    \item ``link local'': \texttt{169.254/16}, \texttt{fe80::/10}
+    \item specific to each local network
+    \vspace{.5cm}
+    \item \texttt{fe80::17} on network A != \texttt{fe80::17} on network B
+    \vspace{.5cm}
+    \item problem: machine can be connected to two networks
+    \item<2-> solution: \texttt{fe80::17\%A} versus \texttt{fe80::17\%B}
+    \item<3-> what about IPv4? uh... too bad?
+        \begin{itemize}
+        \item ``There is no standard or obvious solution to this problem\ldots
+        must be done explicitly through other means. The specification does not stipulate
+        those means.'' --- RFC 3927, section 3.2
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+

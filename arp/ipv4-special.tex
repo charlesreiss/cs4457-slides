@@ -1,0 +1,22 @@
+\begin{frame}{selected special IPv4 addresses}
+\begin{itemize}
+\item 127.0.0.0 --- 127.255.255.255 --- localhost
+    \begin{itemize}
+    \item AKA loopback
+    \item the machine we're on
+    \item typically only 127.0.0.1 is used
+    \end{itemize}
+\item 192.168.0.0--192.168.255.255 and \\ 10.0.0.0--10.255.255.255 and \\ 172.16.0.0--172.31.255.255 
+    \begin{itemize}
+    \item ``private'' IP addresses
+    \item not used on the Internet
+    \item commonly connected to Internet with \myemph{network address translation}
+    \item also 100.64.0.0--100.127.255.255 (but with restrictions)
+    \end{itemize}
+\item 169.254.0.0-169.254.255.255
+    \begin{itemize}
+    \item link-local addresses --- `never' forwarded by routers
+    \end{itemize}
+\end{itemize}
+\end{frame}
+

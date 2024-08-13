@@ -1,0 +1,29 @@
+\begin{frame}{IPv6 addresses}
+    \begin{itemize}
+    \item IPv6 like IPv4, but with 128-bit numbers
+    \item written in hex, 16-bit parts, seperated by colons (\texttt{:})
+    \item strings of 0s represented by double-colons (\texttt{::})
+    \item typically given to users in blocks of $2^{80}$ or $2^{64}$ addresses
+    \vspace{.5cm}
+    \item \fontsize{10}{11}\selectfont\texttt{2607:f8b0:400d:c00::6a} = \\
+          \texttt{2607:f8b0:400d:0c00:0000:0000:0000:006a}
+          \begin{itemize}
+          \item \texttt{2607f8b0400d0c0000000000000006a}$_\text{SIXTEEN}$
+          \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{IPv6 CIDR notation examples}
+    \begin{itemize}
+    \item 2607:fb80:400d:0c00::/64 = 
+        \begin{itemize}
+        \item \texttt{2607:fb80:400d:0c00:0000:0000:0000:0000}---\\
+              \texttt{2607:fb80:400d:0c00:ffff:ffff:ffff:ffff}
+        \end{itemize}
+    \item 2607:fb80::/30 = 
+        \begin{itemize}
+        \item \texttt{2607:fb80:0000:0000:0000:0000:0000:0000}---\\
+              \texttt{2607:fb83:ffff:ffff:ffff:ffff:ffff:ffff}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
