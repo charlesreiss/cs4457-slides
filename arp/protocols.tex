@@ -1,0 +1,26 @@
+\begin{frame}{ARP/ND protocols}
+    \begin{itemize}
+    \item filling in tables dynamically?
+    \item key idea: ask \textit{everyone} on network
+    \item entity with that IP address responds
+    \vspace{.5cm}
+    \item IPv4: Address Resolution Protocol (ARP)
+    \item IPv6: ICMPv6 Neighbor Discovery (ND)
+        \begin{itemize}
+        \item ICMP = Internet Control Message Protocol
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{ARP messages}
+\begin{itemize}
+\item suppose router IP address 10.0.2.15 and MAC address 02:\ldots:DE needs to find out
+    that 10.0.2.2 uses 03:\ldots:EE
+\vspace{,5cm}
+\item 02:\ldots:DE$\rightarrow$FF:FF:FF:FF:FF:FF: who-has 10.0.2.2 tell 10.0.2.15
+    \begin{itemize}
+    \item FF:FF:FF:FF:FF:FF = broadcast (send to all on network)
+    \end{itemize}
+\item 03:\ldots:EE$\rightarrow$02:\ldots:DE
+\end{itemize}
+\end{frame}

@@ -1,0 +1,26 @@
+\begin{frame}{making neighbor tables}
+    \begin{itemize}
+    \item need neighbor table to use IP addresses on network
+    \vspace{.5cm}
+    \item some options:
+        \begin{itemize}
+        \item system administrator manually configures
+        \item discover dynamically
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{manual neighbor tables}
+\begin{itemize}
+\item on Linux, can run some commands
+\vspace{.5cm}
+\item {\tt ip niegh add 10.0.2.2 dev right lladdr 03:05:\ldots:EE permanent}
+    \begin{itemize}
+    \item (newer interface, also supports IPv6)
+    \end{itemize}
+\item {\tt arp -i right -s 10.0.2.2 03:05:\ldots:EE}
+    \begin{itemize}
+    \item IPv4 only; does not allow setting validity duration
+    \end{itemize}
+\end{itemize}
+\end{frame}
