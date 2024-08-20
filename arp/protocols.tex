@@ -1,3 +1,4 @@
+\usetikzlibrary{arrows.meta}
 \begin{frame}{ARP/ND protocols}
     \begin{itemize}
     \item filling in tables dynamically?
@@ -16,11 +17,103 @@
 \begin{itemize}
 \item suppose router IP address 10.0.2.15 and MAC address 02:\ldots:DE needs to find out
     that 10.0.2.2 uses 03:\ldots:EE
-\vspace{,5cm}
-\item 02:\ldots:DE$\rightarrow$FF:FF:FF:FF:FF:FF: who-has 10.0.2.2 tell 10.0.2.15
+\vspace{.5cm}
+\item 02:\ldots:DE$\rightarrow$FF:FF:FF:FF:FF:FF: request 10.0.2.2 \\
+      tell 10.0.2.15 (=02:\ldots:DE)
     \begin{itemize}
     \item FF:FF:FF:FF:FF:FF = broadcast (send to all on network)
     \end{itemize}
-\item 03:\ldots:EE$\rightarrow$02:\ldots:DE
+\item 03:\ldots:EE$\rightarrow$02:\ldots:DE: reply 10.0.2.2=03:\ldots:EE
+    \\ tell 10.0.2.15=02:\ldots:DE
 \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{ARP message format}
+\begin{tikzpicture}
+    \tikzset{
+        box/.style={draw,thick},
+        box unused/.style={draw,thick,pattern=north west lines},
+        box label/.style={midway,font=\small,align=center},
+        box label flags/.style={midway,font=\fontsize{8}{9}\selectfont,align=center},
+        hi on/.style={alt=<#1>{ultra thick,fill=red!10}},
+        explain box 1/.style={draw=red,line width=0.8mm,fill=white,anchor=center,at={(explain box loc 1)},align=center},
+        explain box 2/.style={draw=red,line width=0.8mm,fill=white,anchor=center,at={(explain box loc 2)},align=center},
+        explain box 3/.style={draw=red,line width=0.8mm,fill=white,anchor=center,at={(explain box loc 3)},align=center},
+    }
+    \begin{scope}[x=4.7mm,y=7mm]
+        \coordinate (explain box loc 1) at (16, -3.1);
+        \coordinate (explain box loc 2) at (16, -5.1);
+        \coordinate (explain box loc 3) at (16, -1.1);
+        \draw[very thick,Latex-Latex] (0, 1.1) -- ++(32, 0) node[font=\small,midway,above]
+            {32 bits};
+        \path[shading=axis,top color=white,bottom color=black!20] (0, 1) rectangle (32, 0)
+            node[box label] {(lower layer header)};
+        \path[box,hi on=0] (0, 0) rectangle (16, -1) node[box label] {HW address type};
+        \path[box,hi on=2] (16, 0) rectangle (32, -1) node[box label] {`protocol' address type};
+        \path[box,hi on=0] (0, -1) rectangle ++(8, -1) node[box label] {HW address length};
+       \path[box,hi on=2] (8, -1) rectangle ++(8, -1) node[box label] {`protocol' address len};
+        \path[box,hi on=0] (16, -1) rectangle ++(16, -1) node[box label] {opcode (request or reply)};
+        \path[box,hi on=0] (0, -2) rectangle ++(32, -1.5) node[box label] {sender HW addr};
+        \path[box,hi on=0] (0, -3.5) rectangle ++(32, -1.5) node[box label] {sender protocol addr};
+        \path[box,hi on=0] (0, -5) rectangle ++(32, -1.5) node[box label] {dest HW addr};
+        \path[box,hi on=3] (0, -6.5) rectangle ++(32, -1.5) node[box label] {dest protocol addr};
+        \foreach \offset in {-2.75,-4.25,-5.75, -7.25} {
+            \draw[line width=1mm,white] (-.2, \offset - .05) -- ++(.4, .1);
+            \draw[line width=1mm,white] (32 -.2, \offset - .05) -- ++(.4, .1);
+            \draw[very thick,black] (-.2, \offset) -- ++(.4, .1);
+            \draw[very thick,black] (32 -.2, \offset) -- ++(.4, .1);
+            \draw[very thick,black] (-.2, \offset-.1) -- ++(.4, .1);
+            \draw[very thick,black] (32 -.2, \offset-.1) -- ++(.4, .1);
+        }
+    \end{scope}
+    \begin{visibleenv}<2>
+    \node[explain box 2] {
+        protocol typically = IPv4 \\
+        so address len = 4 \\
+        ~ \\
+        seems like you could change this for IPv6 \\
+        but instead IPv6 uses its own protocol
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<3>
+    \node[explain box 3] {
+        to keep format consistent \\
+        between request/replies \\
+        \myemph{always have destination HW address} \\
+        kept at FF:\ldots:FF if unknown
+    };
+    \end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{ARP messages (revisited)}
+\begin{itemize}
+\item suppose router IP address 10.0.2.15 and MAC address 02:\ldots:DE needs to find out
+    that 10.0.2.2 uses 03:\ldots:EE
+\vspace{.5cm}
+\item 02:\ldots:DE$\rightarrow$FF:FF:FF:FF:FF:FF: request 10.0.2.2 \\
+      tell 10.0.2.15 (=02:\ldots:DE)
+      \begin{itemize}
+      \item \myemph{everyone who receives this can add 10.0.2.15=02:\ldots:DE to neighbor table}
+      \end{itemize}
+\item 03:\ldots:EE$\rightarrow$02:\ldots:DE: reply 10.0.2.2=03:\ldots:EE
+    \\ tell 10.0.2.15=02:\ldots:DE
+      \begin{itemize}
+      \item \myemph{everyone who receives this can add 10.0.2.2=03:\ldots:EE to neighbor table}
+      \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{ICMPv6 ND}
+    \begin{itemize}
+    \item IPv6 uses different protocol for this
+    \item \ldots but mostly works the same
+    \vspace{.5cm}
+    \item differences:
+    \item sent as IPv6 packets
+    \item requests sent to special multicast address
+        \begin{itemize}
+        \item goal: allow nodes to easily ignore irrelevant requests
+        \end{itemize}
+    \end{itemize}
 \end{frame}
