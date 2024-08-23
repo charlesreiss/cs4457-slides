@@ -119,9 +119,10 @@
     \vspace{.5cm}
     \item probe for IP address before using it
         \begin{itemize}
-        \item and probably give up on address if conflict found
+        \item make sure to broadcast when starting to use address
+        \item probably give up on address if conflict found
         \end{itemize}
-    \item make periodic `gratituous' requests of address
+    \item watch out for ARP messages indicating address in use
     \item on detecting conflict choose between:
         \begin{itemize}
         \item `defend' address with more gratituous requests

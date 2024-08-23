@@ -27,6 +27,7 @@
 \setcounter{tocdepth}{5}
 
 \RequirePackage{fontspec}
+\RequirePackage{emoji}
 \RequirePackage{tikz}
 \RequirePackage{comment}
 \RequirePackage{graphicx}
