@@ -1,0 +1,43 @@
+\usetikzlibrary{arrows.meta,calc,shapes}
+\providecommand{\computer}{%
+    \includegraphics[width=1cm]{../common/Noun_project_216.pdf}
+}
+\providecommand{\switch}{%
+    \includegraphics[width=0.9cm]{../common/fig-switch.pdf}
+}
+\providecommand{\router}{%
+    \includegraphics[width=0.9cm]{../common/fig-router.pdf}
+}
+
+\begin{frame}[fragile]{exercise}
+\begin{tikzpicture}
+\tikzset{
+    computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
+    switch/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\switch}},
+    router/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\router},circle},
+    connect/.style={draw,very thick,Latex-Latex},
+    connect big/.style={draw,ultra thick,Latex-Latex},
+}
+\node[computer,label={north:video streamer}] (server) at (0, 0) {};
+\node[computer,label={south:user D}] (D) at (6, 0) {};
+\node[computer,label={south:user C}] (C) at (6, -2) {};
+\node[computer,label={south:user B}] (B) at (-6, 0) {};
+\node[computer,label={south:user A}] (A) at (-6, -2) {};
+\node[switch] (s1) at (-3, -2) {};
+\node[router] (s2) at (0, -2) {};
+\node[switch] (s3) at (2, -1) {};
+\node[switch] (s4) at (4, -2) {};
+\foreach \x/\y in {A/s1,B/s1,s1/s2,server/s2,s2/s3,s3/s4,s4/C,s3/D} {
+    \draw[connect] (\x) -- (\y);
+}
+\end{tikzpicture}
+    \begin{itemize}
+    \item If the video streamer is sending a series of images
+    and audio to users A--D, then\ldots
+        \begin{itemize}
+        \item how many flows?
+        \item how many nodes are involved?
+        \item how many switches/routers?
+        \end{itemize}
+    \end{itemize}
+\end{frame}
