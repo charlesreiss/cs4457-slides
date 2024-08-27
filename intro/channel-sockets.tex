@@ -1,0 +1,36 @@
+\begin{frame}{channel abstraction and sockets}
+    \begin{itemize}
+    \item BSD \textit{sockets} are most used abstract for using channels
+    \item \texttt{channel} is called \texttt{connection}
+    \vspace{.5cm}
+    \item server (passive end)
+        \begin{itemize}
+        \item create socket (\texttt{socket()})
+        \item select address (\texttt{bind()})
+        \item wait for+get connection (\texttt{listen()}+\texttt{accept()})
+        \item read+write on connection(\texttt{read()}+\texttt{recv*()}+\texttt{write()}+\texttt{send*()})
+        \end{itemize}
+    \item client (active end)
+        \begin{itemize}
+        \item create socket (\texttt{socket()})
+        \item connect to address (\texttt{connect()}
+        \item read+write on connection(\texttt{read()}+\texttt{recv*()}+\texttt{write()}+\texttt{send*()})
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{sockets and other options}
+    \begin{itemize}
+    \item sockets can also provide \textit{datagram} abstraction
+        \begin{itemize}
+        \item difference: mode where read/write keeps messages together
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{socket details later}
+    \begin{itemize}
+    \item we're doing mostly bottom-up approach
+    \item will actually talk in detail about socket interface later in semester
+    \end{itemize}
+\end{frame}
