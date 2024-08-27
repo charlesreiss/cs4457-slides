@@ -1,4 +1,5 @@
 SLIDEDECKS = \
+    logistics \
     intro \
     framing \
     physical \
