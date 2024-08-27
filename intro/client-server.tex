@@ -1,0 +1,35 @@
+\begin{frame}{client/server}
+    \begin{itemize}
+    \item \textit{server} = entity that waits for + responds to \textit{clients}
+    \item server:
+        \begin{itemize}
+        \item always-on
+        \item well-known how to contact
+        \end{itemize}
+    \item client
+        \begin{itemize}
+        \item sometimes on
+        \item only contacted by server responding to it
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{not client/server?}
+    \begin{itemize}
+    \item not everything fits into client/server neatly
+    \vspace{.5cm}
+    \item sometimes something is both client and server
+    \item sometimes no distinguished entities (``peer-to-peer'')
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{client/server and channels}
+    \begin{itemize}
+    \item can have channels without client/server model
+    \vspace{.5cm}
+    \item but the interface sockets provide assume client/server
+        \begin{itemize}
+        \item (so you have to make something server-like to do peer-to-peer with sockets)
+        \end{itemize}
+    \end{itemize}
+\end{frame}
