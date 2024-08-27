@@ -1,0 +1,16 @@
+\begin{frame}{framing homework}
+    \begin{itemize}
+    \item implement send+receive messages (strings of bytes) using bits
+    \item \texttt{send\_message(MESSAGE)}
+    \item \texttt{handle\_bit\_from\_network(BIT)}
+        \begin{itemize}
+        \item calls \texttt{got\_message\_function(MESSAGE)}
+        \end{itemize}
+    \vspace{.5cm}
+    \item but:
+        \begin{itemize}
+        \item need to indicate message boundaries somehow
+        \item need to handle bit flips and missing bits without losing everything
+        \end{itemize}
+    \end{itemize}
+\end{frame}
