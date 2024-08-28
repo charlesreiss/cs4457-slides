@@ -1,0 +1,53 @@
+\frametitle{filling the pipe}
+\begin{tikzpicture}
+\draw[ultra thick,arrows={-Latex}] (0, 0) node[left] {sender} -- (1, 0);
+\draw[thick] (1, -.5) rectangle (3, .5);
+\foreach \x in {2,2.2,2.4,2.6,2.8} {
+    \draw (\x, -.5) -- (\x, .5);
+}
+\node[anchor=south,align=center] at (2, .5) {
+    loss when full
+};
+\node[anchor=north,align=center] at (2, -.5) (queue label) {
+    queue
+};
+\node[anchor=north,font=\fontsize{9}{10}\selectfont] at ([yshift=.3cm]queue label.south) {
+    capacity 20
+};
+\draw[ultra thick,arrows={-Latex}] (3, 0) -- (12, 0) node[right]{receiver}
+    node[midway,fill=white,draw=black,very thick,align=left] {
+        10 data frames/time unit \\
+        1 time unit delay
+    }
+    \foreach \x in {0,1,2,3,4,5,6,7,8,9} {
+        node[visible on=<3->,pos=\x*.1+0.05,draw=black,fill=white,font=\tiny,below=.5cm] (data-\x) {data}
+    };
+    \begin{visibleenv}<3->
+    \draw[red,Latex-Latex] ([yshift=-.1cm]data-0.south west) -- ([yshift=-.1cm]data-1.south west)
+        node[below,font=\small] {0.1 time unit};
+    \end{visibleenv}
+\begin{scope}[shift={(12, -4)},x=-1cm]
+    \draw[ultra thick,arrows={-Latex}] (0, 0) node[right] {receiver} -- (1, 0);
+    \draw[thick] (1, -.5) rectangle (3, .5);
+    \foreach \x in {2,2.2,2.4,2.6,2.8} {
+        \draw (\x, -.5) -- (\x, .5);
+    }
+    \node[anchor=south,align=center] at (2, .5) {
+        loss when full
+    };
+    \node[anchor=north,align=center] at (2, -.5) (queue label) {
+        queue
+    };
+    \node[anchor=north,font=\small] at ([yshift=.2cm]queue label.south) {
+        capacity 20
+    };
+    \draw[ultra thick,arrows={-Latex}] (3, 0) -- (12, 0) node[left]{sender}
+        node[midway,fill=white,draw=black,very thick,align=left] {
+            100 ACK frames/time unit \\
+            1 time unit delay
+        }
+        \foreach \x in {0,1,2,3,4,5,6,7,8,9} {
+            node[visible on=<3->,pos=\x*.1+0.05,draw=black,fill=white,font=\tiny,below=.5cm,align=center,inner sep=0.5mm] {a\\c\\k}
+        };
+\end{scope}
+\end{tikzpicture}

@@ -1,0 +1,24 @@
+\frametitle{a TCP connection}
+\tikzset{
+    overlay box/.style={fill=white,fill opacity=0.95},
+}
+\begin{tikzpicture}[
+    spy using outlines={%
+        rectangle,magnification=1.5,height=1cm,width=10cm,connect spies,%
+        every spy on node/.append style={very thick},%
+        ultra thick,%
+    }
+]
+\node[overlay,anchor=north west,inner sep=0mm] (base) at (0, 0) {%
+\includegraphics[width=\textwidth]{../reliable/wireshark-tcp-ex2-scrolled-server-retrans}%
+};
+\path (0, 0) rectangle (14.5, -7); % for bounding box
+\spy on (10, -4.0) in node;
+    \node[overlay box,text=red,anchor=south,align=left] at (6.55, -3.5) {
+        scrolling down reveals retransmission later
+    };
+    \node[overlay box,text=black,font=\small,anchor=north,align=left] at (6.55, -4.5) {
+        wireshark knows it's retransmission because \\
+        sequence number sent by server went backwards
+    };
+\end{tikzpicture}
