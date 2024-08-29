@@ -8,7 +8,7 @@
 \matrix[tight matrix no line,nodes={text width=.35cm,font=\large\tt}] (msg) {
 |[alias=h1]| 0 \& 1 \& 0 \& |[alias=s1]| 0 \& |[alias=bform1s]| 0 \& |[alias=e1,alias=bform1e]| 1 \& 
 |[alias=h2]| 0 \& 1 \& 0 \& |[alias=s2,alias=bform2s]| 0 \& |[alias=bform2e]| 1 \& 1 \& |[alias=e2]| 0  \&
-|[alias=h3]| 0 \& 1 \& 0 \& |[alias=s3]| 0 \& |[alias=false start,alias=bform3s]| 0 \& |[alias=bform3e]| 1 \& |[alias=e3,alias=false end]| 0 \& |[alias=h4]| 0 \& 1 \& 0 \& |[alias=s4]| ~ \\
+|[alias=h3]| 0 \& 1 \& 0 \& |[alias=s3]| 0 \& |[alias=false start,alias=bform3s]| 0 \& |[alias=bform3e]| 1 \& |[alias=e3,alias=false end]| 0 \& |[alias=h4]| 0 \& 1 \& 0 \& 0 \& 1 \& 0 \& 0 \& 1 \& 0 \& |[alias=s4]| ~ \\
 };
 \foreach \x in {1,2,3} {
     \node[inner sep=0mm,outer sep=0mm,draw,green,alt=<2>{opacity=0.1},very thick,fit=(s\x) (e\x)] {};
@@ -39,7 +39,7 @@
 \matrix[tight matrix no line,nodes={text width=.35cm,font=\large\tt}] (msg) {
 |[alias=h1]| 0 \& 1 \& 0 \& |[alias=s1]| 0 \& |[alias=xform1s]| 0 \& 1 \& |[alias=xform1e,alias=e1]| 1 \&  
 |[alias=h2]| 0 \& 1 \& 0 \& |[alias=s2,alias=xform2s]| 0 \& 1 \& |[alias=xform2e]| 1 \& 1 \& |[alias=e2]| 0 \&
-|[alias=h3]| 0 \& 1 \& 0 \& |[alias=s3]| 0 \&|[alias=xform3s]| 0 \& 1 \& |[alias=xform3e,alias=e3]| 1 \& |[alias=e3]| 0 \& |[alias=h4]| 0 \& 1 \& 0 \& |[alias=s4]| ~ \\
+|[alias=h3]| 0 \& 1 \& 0 \& |[alias=s3]| 0 \&|[alias=xform3s]| 0 \& 1 \& |[alias=xform3e,alias=e3]| 1 \& |[alias=e3]| 0 \& |[alias=h4]| 0 \& 1 \& 0 \& |[alias=s4]|  \\
 };
 \foreach \x in {1,2,3} {
     \node[inner sep=0mm,outer sep=0mm,draw,green,alt=<2>{opacity=0.1},very thick,fit=(s\x) (e\x)] {};

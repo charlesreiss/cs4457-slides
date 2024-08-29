@@ -211,6 +211,16 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}{self-sync and `start-message'}
+    \begin{itemize}
+    \item one idea: set start-message to have lots of 0/1/0/1/0/1/0/1/etc.
+        \begin{itemize}
+        \item something 10Mbit Ethernet does
+        \end{itemize}
+    \item but probably not enough to ensure things stay in sync on big message
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{Manchester encoding}
 \begin{tikzpicture}
 \node (fig) { \includegraphics[width=0.9\textwidth]{../physical/SysApproach-2-Fig-25.pdf} };
@@ -223,7 +233,7 @@
     \item fixed the problem of too few transitions
     \vspace{.5cm}
     \item but now most transitions don't send information
-    \item means we aren't making goo duse of wire/etc. capacity
+    \item means we aren't making good use of wire/etc. capacity
     \vspace{.5cm}
     \item there are more clever compromises
         \begin{itemize}
