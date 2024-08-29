@@ -16,6 +16,7 @@
         \item $2^{64}$ address available for local network
         \end{itemize}
     \item why so big? allow easy address assignment
+    \item StateLess Address Auto Configuration (SLAAC)
     \end{itemize}
 \end{frame}
 
@@ -23,12 +24,79 @@
     \begin{itemize}
     \item let's say my local network is 2001:db8:4999:3333::/64
     \end{itemize}
-{\scriptsize
+{\fontsize{12}{13}\selectfont
 \begin{tabular}{ll}
 MAC address & IPv6 address \\
-11:22:33:44:55:66 & 2001:db8:4999:3333:1122:33ff:fe44:5566 \\
-01:A0:B3:CC:DD:FF & 2001:db8:4999:3333:01A0:b3ff:fecc:ddff \\
+\tt \myemph<2>{11:22:33:44:55:66} & \tt 2001:db8:4999:3333:\myemph<2>{1122:33}ff:fe\myemph<2>{44:5566} \\
+\tt \myemph<2>{01:A0:B3:CC:DD:FF} & \tt 2001:db8:4999:3333:\myemph<2>{01a0:b3}ff:fe\myemph<2>{cc:ddff} \\
 \ldots & \ldots \\
-\end{tabular}
-}
+\end{tabular}}
+\end{frame}
+
+\begin{frame}[fragile]{}
+\begin{Verbatim}[fontsize=\fontsize{9}{10}\selectfont]
+Network Working Group                                          T. Narten
+Request for Comments: 3041                                           IBM
+Category: Standards Track                                      R. Draves
+                                                      Microsoft Research
+                                                                                                                  January 2001
+                                                                                                                     Privacy Extensions for Stateless Address Autoconfiguration in IPv6
+
+...
+Abstract
+
+                                  ........  Use of the extension causes
+   nodes to generate global-scope addresses from interface identifiers
+   that change over time, even in cases where the interface contains an
+   embedded IEEE identifier.  Changing the interface identifier (and the
+   global-scope addresses generated from it) over time makes it more
+   difficult for eavesdroppers and other information collectors to
+   identify when different addresses used in different transactions
+   actually correspond to the same node.
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}{late timeline}
+\begin{itemize}
+\item privacy extensions weren't default until
+    \begin{itemize}
+    \item MacOS X 10.7 (2011)
+    \item Windows Vista (2007)
+    \item Ubuntu 12.04 (2012)
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+% FIXME: wireshark example
+\begin{frame}{SLAAC}
+\begin{itemize}
+\item uses as ICMPv6 (same as for neighbor discovery)
+\item two modes:
+    \begin{itemize}
+    \item when there's a router (get \textit{global} addresses)
+    \item when there's only a local network (get \textit{link-local} addresses)
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{router adverisements}
+\begin{tiemize}
+\item nodes send a ICMPv6 \textit{Router Solicitation} message
+\item receive back a ICMPv6 \textit{Router Advertisement} which can have:
+\vspace{.5cm}
+\item \myemph<2>{prefix information}
+    \begin{itemize}
+    \item nodes choose address starting with prefix
+    \item check for duplicates using neighbor discovery
+    \end{itemize}
+\item \myemph<3>{DNS information}
+\item \myemph<4>{``managed configuration'' flag}
+    \begin{itemize}
+    \item nodes use DHCPv6 to get configuration
+    \end{itemize}
+\item \myemph<5>{``other configuration'' flag}
+    \begin{itemize}
+    \item nodes choose address using prefix, get additional information from DHCPv6
+    \end{itemize}
+\end{itemize}
 \end{frame}

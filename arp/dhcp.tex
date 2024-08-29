@@ -101,7 +101,7 @@ default \& 10.2.0.102 \& out \\
 \node[anchor=north west,inner sep=0mm] at (0, 0) {%
     \includegraphics[width=0.55\textwidth]{../arp/dhcp-response3-wireshark.png}
 };
-\path[overlay,draw,help lines] (0, 0) grid (15, -8);
+%\path[overlay,draw,help lines] (0, 0) grid (15, -8);
 \begin{visibleenv}<2>
     \draw[hi box] (0.6, -2.1) rectangle (5.7, -2.45);
     \draw[hi box] (0.6, -2.6) rectangle (5.5, -3.0);
@@ -127,4 +127,17 @@ default \& 10.2.0.102 \& out \\
     };
 \end{visibleenv}
 \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{DHCP leases}
+    \begin{itemize}
+    \item DHCP ACKs specify a time limit
+        \begin{itemize}
+        \item (example from prior slide (UVa eduroam): 30 minutes)
+        \end{itemize}
+    \item need to be renewed (new REQUEST + ACK)
+        \begin{itemize}
+        \item REQUESTs can contain `desired address' (= current address when renewing)
+        \end{itemize}
+    \end{itemize}
 \end{frame}

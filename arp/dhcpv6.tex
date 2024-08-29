@@ -1,0 +1,21 @@
+\begin{frame}{DHCPv6}
+    \begin{itemize}
+    \item IPv6 version of DHCP is DHCPv6
+        \begin{itemize}
+        \item not actual that common (we'll talk in a bit)
+        \end{itemize}
+    \item kinda looks like DHCP done with hindsight:
+    \vspace{.5cm}
+    \item new protocol (not BOOTP extension)
+    \item uses multicast instead of broadcast address
+        \begin{itemize}
+        \item so switches, hosts can filter DHCP traffic more easily
+        \end{itemize}
+    \item more explicit relay support
+    \item improved separation of message types
+        \begin{itemize}
+        \item separate RENEW and REQUEST messages
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
