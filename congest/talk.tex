@@ -1,0 +1,102 @@
+\date{}
+\title{}
+\date{}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\section{performance collapse}
+
+% FIXME: picture of performance versus window size/capacity
+
+\section{window size versus bandwidth usage}
+
+\subsection{accounting for ACKs}
+
+\section{what window size?}
+
+% FIXME: different networks with different bottlenecks
+    % part 1 --- single connection
+    % FIXME: example 1: A---[10Mbit@1ms]---B
+    % FIXME: example 2: A---[10Mbit@1ms]---X---[10Mbit@1ms]---C
+    % FIXME: example 3: A---[20Mbit@1ms]---X---[10Mbit@1ms]---C
+    % FIXME: example 4: A---[20Mbit@1ms]---X---[1Mbit@1ms]---X---[10Mbit@1ms]---C
+
+    % part 1 --- single connection + fixed cross-traffic
+
+    % part 1b --- single connection, constrained backwards
+    
+    % part 2a --- two connections, same hosts
+
+    % part 2b --- two connections, same source
+
+    % part 2c --- two connections, cross-traffic
+
+    % FIXME: example 1: {A,B}--[1000Mbit@1ms]---X--[10Mbit@1ms]--Y--[1000Mbit@1ms]--{C,D}
+    % FIXME: example 2: A--[1Mbit@1ms]--X, B--[1000Mbit@1ms]--X, X--[10Mbit@1ms]--Y-[fast]-{C,D}
+
+\section{changing cross-traffic}
+
+\section{some metrics}
+
+\subsection{Pareto-efficiency}
+
+\subsection{Pareto-efficiency = exactly fill buffer?}
+
+\subsection{min-max fairness}
+
+\section{what happens when buffers are full}
+
+\subsection{packet loss}
+
+\subsection{latency increase}
+
+\section{automatic increase+decrease}
+
+\subsection{sawtooth pattern}
+
+\subsection{need for fast decrease}
+
+\section{being TCP-unfriendly}
+
+\section{efficiency problems}
+
+\subsection{convergence time --- increasing}
+
+\subsection{`slow start'}
+
+\subsection{recovery time from loss}
+
+\subsection{fast recovery}
+
+\section{buffer bloat}
+
+% FIXME
+
+\section{explicit congestion notification}
+
+\subsection{marking instead of dropping}
+
+\subsection{echoing packet marks}
+
+\subsection{how much does this help?}
+
+\section{briefly, TCP variants}
+
+\subsection{Reno, NewReno}
+
+\subsection{Oddball: Vegas}
+
+\subsection{Compound TCP}
+
+\subsection{BBR}
+
+\subsection{modern Linux: BIC/CUBIC}
+
+
+\section{backup slides}
+\begin{frame}{backup slides}
+\end{frame}
+
+\end{document}
