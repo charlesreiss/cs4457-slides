@@ -1,0 +1,48 @@
+\begin{frame}{why optimal}
+    \begin{itemize}
+    \item in normal operation with window size $W$
+        \begin{itemize}
+        \item receive ACK for $x$ (now $W-1$ in flight)
+        \item send packet $x+W$
+        \item receive ACK for $x+1$
+        \item send packet $x+W+1$
+        \item \ldots
+        \end{itemize}
+    \item window size keeps $W$ packets in flight
+    \item if links + queues can hold $W$ packets --- perfect!
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{number in flight on losses}
+    \begin{itemize}
+    \item window size $W$
+    \item let's say we lose packet $x$ [only], sender might
+        \begin{itemize}
+        \item receive ACK for $x-1$
+        \item send packet $x+W-1$
+        \item receive ACK for $x$, $x$, $x$, \ldots
+        \item resend packet $x$ (guess it is lost)
+        \item \myemph<2>{receive ACK for $x$, $x$, $x$, \ldots}
+        \item receive ACK for packet $x+W-1$ 
+        \item send packets $x+W$ through $x+W+W-1$
+        \end{itemize}
+    \end{itemize}
+\begin{tikzpicture}[overlay,remember picture]
+\begin{visibleenv}<2->
+\node[draw=red,ultra thick,anchor=south,align=left] at ([yshift=1cm]current page.south) {
+    lots of time where we are not sending packets \\
+    means network is underutilized
+};
+\end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{window size tweaking}
+    \begin{itemize}
+    \item window size imperfect proxy for \# packets in flight
+    \item we'll ignore the difference for now
+    \vspace{.5cm}
+    \item our goal for now: window size = number of packets to have in flight
+    \end{itemize}
+\end{frame}
+

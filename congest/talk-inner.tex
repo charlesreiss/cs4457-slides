@@ -1,0 +1,108 @@
+
+\section{recall: window size versus bandwidth}
+\input{../reliable/window-size-empirical}
+
+% FIXME: different networks with different bottlenecks
+    % part 1 --- single connection
+    % FIXME: example 1: A---[10Mbit@1ms]---B
+    % FIXME: example 2: A---[10Mbit@1ms]---X---[10Mbit@1ms]---C
+    % FIXME: example 3: A---[20Mbit@1ms]---X---[10Mbit@1ms]---C
+    % FIXME: example 4: A---[20Mbit@1ms]---X---[1Mbit@1ms]---X---[10Mbit@1ms]---C
+\subsection{detail: loss rates / latency / queue occupency}
+% FIXME
+\section{why optimal / counting packets in flight}
+\input{../congest/window-optimum}
+
+\section{searching for performance}
+\input{../congest/find-window}
+
+\section{up/down pattern (rough)}
+\input{../congest/window-change-rough}
+    % FIXME: show sawtooth pattern
+
+\section{performance collapse}
+\input{../congest/overload}
+
+\section{heuristic: slow increase}
+
+    % FIXME: hilite up parts of sawtooth pattern
+
+\subsection{increasing 1 packet/RTT}
+
+\subsection{exercise: convergence times}
+
+\section{changing cross-traffic}
+
+\subsection{loss of cross-traffic}
+
+\subsection{addition of cross-traffic}
+
+\section{heuristic: fast decrease}
+
+    % FIXME: hilite distance measurement of down parts on sawtooth pattern
+
+\subsection{exercise: non-congestion losses}
+
+\subsection{exercise: convergence times}
+
+\section{what about sharing?}
+
+\subsection{some example scenarios}
+    % part 1 --- single connection + fixed cross-traffic
+
+    % part 1b --- single connection, constrained backwards
+    
+    % part 2a --- two connections, same hosts
+
+    % part 2b --- two connections, same source
+
+    % part 2c --- two connections, cross-traffic
+
+    % FIXME: example 1: {A,B}--[1000Mbit@1ms]---X--[10Mbit@1ms]--Y--[1000Mbit@1ms]--{C,D}
+    % FIXME: example 2: A--[1Mbit@1ms]--X, B--[1000Mbit@1ms]--X, X--[10Mbit@1ms]--Y-[fast]-{C,D}
+
+\subsection{metric: Pareto-efficiency}
+
+\subsubsection{Pareto-efficiency = exactly fill buffer?}
+
+\subsection{metric: min-max fairness}
+
+\subsection{empirical sharing with AIMD}
+
+\section{being TCP-unfriendly}
+
+\subsection{bundling connections for more}
+
+\subsection{adjusting increase/decrease factors for more}
+
+\section{efficiency problems}
+
+\subsection{convergence time --- increasing}
+
+\subsection{`slow start'}
+
+\subsection{recovery time from loss}
+
+\subsection{fast recovery}
+
+\section{buffer bloat}
+
+\section{explicit congestion notification}
+
+\subsection{marking instead of dropping}
+
+\subsection{echoing packet marks}
+
+\subsection{how much does this help?}
+
+\section{briefly, TCP variants}
+
+\subsection{Reno, NewReno}
+
+\subsection{Oddball: Vegas}
+
+\subsection{Compound TCP}
+
+\subsection{BBR}
+
+\subsection{modern Linux: BIC/CUBIC}
