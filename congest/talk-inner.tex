@@ -1,16 +1,13 @@
 
+\section{a little history}
+\input{../congest/collapse-history}
+
+\section{part 1: window sizing}
+\againframe<2>{jacobsonFixes}
+
 \section{recall: window size versus bandwidth}
 \input{../reliable/window-size-empirical}
 
-
-% FIXME: different networks with different bottlenecks
-    % part 1 --- single connection
-    % FIXME: example 1: A---[10Mbit@1ms]---B
-    % FIXME: example 2: A---[10Mbit@1ms]---X---[10Mbit@1ms]---C
-    % FIXME: example 3: A---[20Mbit@1ms]---X---[10Mbit@1ms]---C
-    % FIXME: example 4: A---[20Mbit@1ms]---X---[1Mbit@1ms]---X---[10Mbit@1ms]---C
-\subsection{detail: loss rates / latency / queue occupency}
-% FIXME
 \section{why optimal / counting packets in flight}
 \input{../congest/window-optimum}
 
@@ -26,7 +23,6 @@
 \section{up/down pattern (rough)}
 \input{../congest/window-change-rough}
     % FIXME: show sawtooth pattern
-
 
 \section{performance collapse}
 \input{../congest/overload}
@@ -70,37 +66,27 @@
 \subsection{other unfairness}
 \input{../congest/other-unfair}
 
-\section{metrics}
+\section{`fast recovery'}
 
-\begin{../congest/metrics}
-
-\subsection{Pareto-efficiency = exactly fill buffer?}
-
-\section{metric: min-max fairness}
-
-\subsection{empirical sharing with AIMD}
-
-\section{practical efficiency problems}
-
-\subsection{convergence time --- increasing}
-
-\subsection{`slow start'}
-
-\subsection{recovery time from loss}
-
-\subsection{fast recovery}
+\section{`slow start'}
 
 \section{buffer bloat}
 
+\subsection{big buffers}
+
 \subsection{idea of knee of performance}
 
-\section{explicit congestion notification}
+\section{other congestion signals}
 
-\subsection{marking instead of dropping}
+\subsection{watching latency}
 
-\subsection{echoing packet marks}
+\subsection{explicit congestion notification}
 
-\subsection{how much does this help?}
+\subsubsection{marking instead of dropping}
+
+\subsubsection{echoing packet marks}
+
+\subsection{briefly: non-binary congestion signals}
 
 \section{briefly, TCP variants}
 
