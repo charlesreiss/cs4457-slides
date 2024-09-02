@@ -2,17 +2,43 @@
 \input{../reliable/talk-stop-and-wait}
 % FIXME: performance interlude
 
-\section{bandwidth / latency}
-\input{../perf/bandwidth-latency}
+\section{interlude: metrics}
+\begin{frame}{stop-and-wait issues}
+    \begin{itemize}
+    \item two issues with stop-and-wait:
+    \vspace{.5cm}
+    \item doesn't use close to full capacity of network
+    \item not clear how to set timeouts
+    \end{itemize}
+\end{frame}
 
-\section{jitter}
+\begin{frame}{looking at metrics}
+    \begin{itemize}
+    \item several important metrics we'll care about
+    \item (both for this and future topics)
+    \vspace{.5cm}
+    \item \textit{throughput} and \textit{bandwidth} ($\sim$ how much capacity used/available)
+    \item \textit{latency} and \textit{round-trip time} (RTT) ($\sim$ what timeouts needed)
+    \item \textit{jitter} ($\sim$ safety margin for timeouts)
+    \end{itemize}
+\end{frame}
+
+\subsection{bandwidth / throughput}
+\input{../perf/throughput}
+
+\subsection{latency / round trip time}
+\input{../perf/latency}
+
+\subsection{jitter}
 \input{../perf/jitter.tex}
+
+\subsection{aside: measuring empirically}
+\input{../perf/empirical-measure}
 
 \section{stop-and-wait performance}
 \input{../reliable/stop-and-wait-perf}
 
 \input{../reliable/talk-window}
-
 
 \section{TCP example}
 
