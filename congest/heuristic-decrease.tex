@@ -1,0 +1,19 @@
+\begin{frame}{fast decrease}
+    \begin{itemize}
+    \item want to decrease quickly to get out of overload
+    \item original TCP heuristic: divide by two (minimum 1 packet)
+    \vspace{.5cm}
+    \item<2-> exactly by two probably not important
+    \item<2-> important theoretically: approx. \myemph{multiplicative} decrease
+        \begin{itemize}
+        \item will help show okay behavior with multiple flows
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{AIMD}
+    \begin{itemize}
+    \item additive increase + multiplicative decrease
+    \item basic of steady-state behavior
+    \end{itemize}
+\end{frame}

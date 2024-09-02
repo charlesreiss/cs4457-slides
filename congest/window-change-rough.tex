@@ -1,9 +1,84 @@
 \begin{frame}{window size experimenting}
-\begin{itemize}
-\item increase window size until see losses
+\begin{tikzpicture}
+\tikzset{
+    axis line/.style={draw,line width=1mm,-Latex},
+    optimum/.style={draw,line width=0.5mm,dashed},
+    actual/.style={draw,line width=0.75mm,violet,line to},
+    down segment/.style={},
+}
+    \begin{scope}[y=.8cm,x=.9cm]
+        \path[fill=red!10] (0, 6) rectangle (6, 8);
+        \path[fill=red!10] (6, 4) rectangle (10, 8);
+        \path[fill=red!10] (10, 6) rectangle (14, 8);
+        \node[text=red!70!black] at (8, 7) {packets dropped sometimes};
+        \node[text=green!70!black] at (8, 2) {packets not dropped};
+        
+        \path[actual]
+            (0, 5.5) to
+            (3, 6.3) coordinate (down1) to
+            (3, 5.5) to
+            (4, 5.8) to
+            (6.1, 6.1) coordinate (down2) to
+            (6.1, 5.7) to
+            (6.5, 5.9) coordinate (down3) to
+            (6.5, 5.5) to
+            (6.7, 5.7) coordinate (down4) to
+            (6.7, 4.8) to
+            (6.8, 4.9) coordinate (down5) to
+            (6.8, 3.7) to
+            (7, 3.8) to
+            (8, 4.2) coordinate (down6) to
+            (8, 3.5) to
+            (9, 3.7) to 
+            (10, 4.1) to
+            (11, 5.7) to
+            (12.5, 6.2) coordinate (down7) to
+            (12.5, 5.7) to
+            (13, 5.8) to 
+            (14, 6.1);
+
+        \foreach \x in {1,...,7} {
+            \node[draw=red,cross out,line width=2mm] at (down\x) {};
+        };
+
+        \path[axis line] (0, 0) -- (0, 8);
+        \path[axis line] (0, 0) -- (14, 0);
+        \node[anchor=north] at (7, 0) {time};
+        \node[anchor=east,align=center] at (0, 4) {window\\size};
+        \path[optimum] (0, 6) -- (6, 6);
+        \path[optimum] (6, 4) -- (10, 4);
+        \path[optimum] (10, 6) -- (14, 6);
+        \begin{visibleenv}<2>
+            \node[draw=red,fill=white,ultra thick,align=left,overlay,anchor=north] (up msg) at (3, 2) {
+                always try increasing window size
+            };
+        \end{visibleenv}
+
+        \begin{visibleenv}<3>
+            \node[draw=red,fill=white,ultra thick,align=left,overlay,anchor=north] (drop msg) at (3, 2) {
+                react to drops \\ by decreasing window
+            };
+            \foreach \x in {1,...,7} {
+                \path[draw=red!50!black, very thick,-Latex] (drop msg) -- (down\x);
+            }
+        \end{visibleenv}
+    \end{scope}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{increase/decrease strategy}
     \begin{itemize}
-    \item note: need at least one round-trip-time to see effect of new window
+    \item default to increasing window size
+    \item react to packet drops by decreasing window size
+        \begin{itemize}
+        \item \myemph<2>{assumption: few ``non-congestion'' packet losses}
+        \end{itemize}
+    \vspace{.5cm}
+    \item<3-> big topic: how fast to do each?
+    \item<3-> questions to help decide that:
+        \begin{itemize}
+        \item what happens if we increase too fast? too slow?
+        \item what happens if we decrease too fast? too slow?
+        \end{itemize}
     \end{itemize}
-\item decrease window size on losses
-\end{itemize}
 \end{frame}

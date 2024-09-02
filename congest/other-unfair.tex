@@ -1,0 +1,24 @@
+\begin{frame}{other unfairness}
+    \begin{itemize}
+    \item lower round-trip gets more bandwidth
+    \item can also get more bandwidth by\ldots
+    \vspace{.5cm}
+    \item using more connections (`independent' windows)
+    \item adding more than + 1 packet to window size/RTT
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{alternate congestion control}
+    \begin{itemize}
+    \item lots of changes to congestion control
+        \begin{itemize}
+        \item some used in modern TCP implementations
+        \end{itemize}
+    \vspace{.5cm}
+    \item on Internet, need to be compatible with ``normal'' TCP
+    \item ``TCP-friendly''
+        \begin{itemize}
+        \item should not make TCP used alongside them behave poorly
+        \end{itemize}
+    \end{itemize}
+\end{frame}

@@ -1,0 +1,18 @@
+\begin{frame}{exercise: convergence time (1)}
+    \begin{itemize}
+    \item suppose: 50 ms round trip time
+    \item initially sending at 600 packets/second
+        \begin{itemize}
+        \item $\approx 0.9$Mbyte/sec with 1500 byte packets
+        \end{itemize}
+    \item optimal rate is 10000 packets/second
+        \begin{itemize}
+        \item $\approx 15$Mbyte/sec with 1500 byte packets
+        \end{itemize}
+    \item how long to get there?
+    \vspace{.5cm}
+    \item<2-> current: 30 packets/RTT (= window size 30)
+    \item<2-> need to get to: 500 packets/RTT
+    \item<2-> will take $500-30=470$ round trips $\approx$ 23500 ms $\approx$ 24 s
+    \end{itemize}
+\end{frame}

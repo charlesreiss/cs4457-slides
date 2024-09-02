@@ -1,0 +1,13 @@
+\begin{frame}{slow increase}
+    \begin{itemize}
+    \item want to increase \textit{slowly} to avoid overload
+    \item original TCP: +1 packet/round trip time
+    \vspace{.5cm}
+    \item<2-> +1 certainly not optimal choice, but okay heuristic
+    \item<2-> important theoretically: approx. \myemph{additive} increase
+        \begin{itemize}
+        \item helps ensure good behavior with multiple connections
+        \item (we'll talk later about why)
+        \end{itemize}
+    \end{itemize}
+\end{frame}

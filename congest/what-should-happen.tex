@@ -1,0 +1,42 @@
+\usetikzlibrary{arrows.meta,calc,shapes}
+\providecommand{\computer}{%
+    \includegraphics[width=1cm]{../common/Noun_project_216.pdf}
+}
+\providecommand{\switch}{%
+    \includegraphics[width=0.9cm]{../common/fig-switch.pdf}
+}
+\providecommand{\router}{%
+    \includegraphics[width=0.9cm]{../common/fig-router.pdf}
+}
+
+\begin{frame}{exericse: what should happen?}
+\begin{tikzpicture}
+\tikzset{
+    computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
+    switch/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\switch}},
+    router/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\router},circle},
+    connect/.style={draw,very thick,Latex-Latex},
+    connect big/.style={draw,ultra thick,Latex-Latex},
+}
+\node[computer] (A) at (0, 0){};
+\node[computer] (B) at (13, 0){};
+\node[router] (r1) at (5, 0){};
+\node[router] (r2) at (10, 0){};
+\node[computer] (C) at (3, 3){};
+\node[computer] (D) at (12, -3){};
+\foreach \x/\y in {A/r1,r1/r2,r2/B,C/r1,r2/D} {
+    \draw[connect] (\x) -- (\y);
+}
+\foreach \x/\y in {A.east/r1.west,r1.east/r2.west,r2.east/B.west} {
+    \draw[-Latex,blue,line width=1mm] ([yshift=-3mm]\x) -- ([yshift=-3mm]\y);
+}
+\foreach \x/\y in {C/r1,r1.east/r2.west,r2/D} {
+    \draw[-Latex,red,dotted,line width=1mm] ([yshift=3mm]\x) -- ([yshift=3mm]\y);
+}
+\end{tikzpicture}
+\begin{itemize}
+\item two connections on shared link
+\item<2-> intuition: each should get half of link bandwidth
+\item<3-> question: will this happen if they don't start equal?
+\end{itemize}
+\end{frame}
