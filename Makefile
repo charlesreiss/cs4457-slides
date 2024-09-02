@@ -5,7 +5,8 @@ SLIDEDECKS = \
     physical \
     reliable \
     switches \
-    arp
+    arp \
+    congest
 
 
 all: $(patsubst %,_dist/%.pdf,$(SLIDEDECKS))
