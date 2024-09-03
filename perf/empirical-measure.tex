@@ -68,6 +68,30 @@ test.dat                         100%   32MB  28.2MB/s   00:01
 \end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]{measuring throughput}
+\begin{Verbatim}[fontsize=\fontsize{10}{11}]
+$ iperf -s
+------------------------------------------------------------
+Server listening on TCP port 5001
+TCP window size:  128 KByte (default)
+------------------------------------------------------------
+[  1] local 128.143.71.87 port 5001 connected with 128.143.71.27 port 54760
+[ ID] Interval       Transfer     Bandwidth
+[  1] 0.0000-10.0147 sec  1.09 GBytes   934 Mbits/sec
+\end{Verbatim}
+\hline
+\begin{Verbatim}[fontsize=\fontsize{10}{11}]
+$ iperf -c kytos02 | tee iperf.out
+------------------------------------------------------------
+Client connecting to kytos02, TCP port 5001
+TCP window size: 85.0 KByte (default)
+------------------------------------------------------------
+[  1] local 128.143.71.27 port 54760 connected with 128.143.71.87 port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  1] 0.0000-10.0256 sec  1.09 GBytes   933 Mbits/sec
+\end{Verbatim}
+\end{frame}
+
 \begin{frame}[fragile]{measuring transmission delay}
 \begin{Verbatim}[fontsize=\fontsize{10}{11}]
 $ ping -s 1400 www -i 0.05 -c 1000 -q
