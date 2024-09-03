@@ -26,11 +26,11 @@
 \draw[box] (13, 0) rectangle ++(2, -8) 
     node[midway,align=center] {machine\\B};
 \draw[message] (2, -0.5) -- (13, -0.75) node[pos=0.25, above, sloped] {\myemph{0}: ``The ''};
-\draw[message] (13, -1) -- (2, -2) node[pos=0.25, sloped,below] {got \myemph{0}};
+\draw[message] (13, -1) -- (2, -2) node[pos=0.25, sloped,below] {ACK \myemph{0}};
 \draw[message] (2, -3) -- (13, -3.5) node[pos=0.25, above, sloped] {\myemph{1}: ``meeting''};
-\draw[message] (13, -4) -- (2, -5) node[pos=0.25, sloped,below] {got \myemph{1}};
+\draw[message] (13, -4) -- (2, -5) node[pos=0.25, sloped,below] {ACK \myemph{1}};
 \draw[message] (2, -5.5) -- (13, -6) node[pos=0.5, above, sloped] {\myemph{0}: `` is at ''};
-\draw[message] (13, -6.5) -- (2, -7) node[pos=0.25, sloped,below] {got \myemph{0}};
+\draw[message] (13, -6.5) -- (2, -7) node[pos=0.25, sloped,below] {ACK \myemph{0}};
 \draw[message] (2, -7.5) -- (9, -8) node[pos=0.5, above, sloped] {\myemph{1}: ``12pm.''};
 \end{scope}
 \end{tikzpicture}
@@ -46,41 +46,41 @@
 \begin{frame}{stop-and-wait exercise (receive, 1)}
     \begin{itemize}
     \item machine B receives \ttbox{\myemph{0}: X}
-    \item machine B sends \ttbox{got \myemph{0}}
+    \item machine B sends \ttbox{ACK \myemph{0}}
     \item machine B receives \ttbox{\myemph{0}: X}
     \vspace{.5cm}
     \item what should machine B do now?
     \end{itemize}
 \begin{tabular}{lll}
-A. send \ttbox{got \myemph{0}} & B. send \ttbox{got \myemph{1}} & C. send nothing \\
+A. send \ttbox{ACK \myemph{0}} & B. send \ttbox{ACK \myemph{1}} & C. send nothing \\
 \end{tabular}
 \end{frame}
 
 \begin{frame}{stop-and-wait exercise (receive, 2)}
     \begin{itemize}
     \item machine B receives \ttbox{\myemph{0}: X}
-    \item machine B sends \ttbox{got \myemph{0}}
+    \item machine B sends \ttbox{ACK \myemph{0}}
     \item machine B receives \ttbox{\myemph{1}: X}
     \vspace{.5cm}
     \item what should machine B do now?
     \end{itemize}
 \begin{tabular}{lll}
-A. send \ttbox{got \myemph{0}} & B. send \ttbox{got \myemph{1}} & C. send nothing \\
+A. send \ttbox{ACK \myemph{0}} & B. send \ttbox{ACK \myemph{1}} & C. send nothing \\
 \end{tabular}
 \end{frame}
 
 \begin{frame}{stop-and-wait exercise (receive, 3)}
     \begin{itemize}
     \item machine B receives \ttbox{\myemph{0}: X}
-    \item machine B sends \ttbox{got \myemph{0}}
+    \item machine B sends \ttbox{ACK \myemph{0}}
     \item machine B receives \ttbox{\myemph{1}: Y}
-    \item machine B sends \ttbox{got \myemph{1}}
+    \item machine B sends \ttbox{ACK \myemph{1}}
     \item machine B receives \ttbox{\myemph{0}: X}
     \vspace{.5cm}
     \item what should machine B do now?
     \end{itemize}
 \begin{tabular}{lll}
-A. send \ttbox{got \myemph{0}} & B. send \ttbox{got \myemph{1}} & C. send nothing \\
+A. send \ttbox{ACK \myemph{0}} & B. send \ttbox{ACK \myemph{1}} & C. send nothing \\
 \end{tabular}
 \end{frame}
 
@@ -90,9 +90,9 @@ A. send \ttbox{got \myemph{0}} & B. send \ttbox{got \myemph{1}} & C. send nothin
     \item A trying to send `X', then `Y', then `Z'
     \item machine A sends \ttbox{\myemph{0}: X}
     \item machine A sends \ttbox{\myemph{0}: X}
-    \item machine A receives \ttbox{got \myemph{0}}
+    \item machine A receives \ttbox{ACK \myemph{0}}
     \item machine A sends \ttbox{\myemph{1}: Y}
-    \item machine A receives \ttbox{got \myemph{0}}
+    \item machine A receives \ttbox{ACK \myemph{0}}
     \vspace{.5cm}
     \item what should machine A do now?
     \end{itemize}
@@ -107,9 +107,9 @@ C. send \ttbox{0: Z} & D. something else \\
     \item A trying to send `X', then `Y', then `Z'
     \item machine A sends \ttbox{\myemph{0}: X}
     \item machine A sends \ttbox{\myemph{0}: X}
-    \item machine A receives \ttbox{got \myemph{0}}
+    \item machine A receives \ttbox{ACK \myemph{0}}
     \item machine A sends \ttbox{\myemph{1}: Y}
-    \item machine A receives \ttbox{got \myemph{1}}
+    \item machine A receives \ttbox{ACK \myemph{1}}
     \vspace{.5cm}
     \item what should machine A do now?
     \end{itemize}
