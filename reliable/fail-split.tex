@@ -20,9 +20,9 @@
 \draw[box] (13, 0) rectangle ++(2, -6) 
     node[midway,align=center] {machine\\B};
 \draw[message] (2, -0.5) -- (13, -1) node[pos=0.25, above, sloped] {``The meeting''};
-\draw[message] (13, -1.5) -- (2, -2) node[pos=0.25, sloped,below] {got it};
+\draw[message] (13, -1.5) -- (2, -2) node[pos=0.25, sloped,below] {ACK};
 \draw[message] (2, -2.5) -- (13, -3.5) node[pos=0.25, above, sloped] {`` is at 12pm.''};
-\draw[message] (13, -4) -- (2, -4.5) node[pos=0.25, sloped,below] {got it};
+\draw[message] (13, -4) -- (2, -4.5) node[pos=0.25, sloped,below] {ACK};
 \end{scope}
 \end{tikzpicture}
 reconstructed message: \\
@@ -42,11 +42,11 @@ The meeting is at 12pm.
 \draw[box] (13, 0) rectangle ++(2, -6) 
     node[midway,align=center] {machine\\B};
 \draw[message] (2, -0.5) -- (13, -0.75) node[pos=0.25, above, sloped] {``The meeting''};
-\draw[message] (13, -1) -- (6, -1.5) node[pos=0.25, sloped,below] {got it} node[failure] {};
+\draw[message] (13, -1) -- (6, -1.5) node[pos=0.25, sloped,below] {ACK} node[failure] {};
 \draw[message] (2, -2) -- (13, -2.5) node[pos=0.25, above, sloped] {``The meeting''};
-\draw[message] (13, -3) -- (2, -3.5) node[pos=0.25, sloped,below] {got it};
+\draw[message] (13, -3) -- (2, -3.5) node[pos=0.25, sloped,below] {ACK};
 \draw[message] (2, -4) -- (13, -4.5) node[pos=0.25, above, sloped] {`` is at 12pm.''};
-\draw[message] (13, -5) -- (2, -5.5) node[pos=0.25, sloped,below] {got it};
+\draw[message] (13, -5) -- (2, -5.5) node[pos=0.25, sloped,below] {ACK};
 \end{scope}
 \end{tikzpicture}
 \begin{visibleenv}<2->
@@ -74,7 +74,7 @@ The meetingThe meeting is at 12pm.
     \item but are possible with:
         \begin{itemize}
         \item multiple paths from A to B
-        \item doing this kind of reliable hop-by-hop
+        \item doing this kind of acknowledgment + resending hop-by-hop
         \end{itemize}
     \end{itemize}
 \end{frame}
@@ -92,9 +92,9 @@ The meetingThe meeting is at 12pm.
 \draw[box] (13, 0) rectangle ++(2, -5) 
     node[midway,align=center] {machine\\B};
 \draw[message] (2, -0.5) -- (13, -1) node[pos=0.25, above, sloped] {part 0: ``The meeting''};
-\draw[message] (13, -1.5) -- (2, -2) node[pos=0.25, sloped,below] {got it};
+\draw[message] (13, -1.5) -- (2, -2) node[pos=0.25, sloped,below] {ACK};
 \draw[message] (2, -2.5) -- (13, -3) node[pos=0.25, above, sloped] {part 1: `` is at 12pm.''};
-\draw[message] (13, -3.5) -- (2, -4) node[pos=0.25, sloped,below] {got it};
+\draw[message] (13, -3.5) -- (2, -4) node[pos=0.25, sloped,below] {ACK};
 \end{scope}
 \end{tikzpicture}
 reconstructed message: \\
@@ -114,11 +114,11 @@ The meeting is at 12pm.
 \draw[box] (13, 0) rectangle ++(2, -6) 
     node[midway,align=center] {machine\\B};
 \draw[message] (2, -0.5) -- (13, -0.75) node[pos=0.25, above, sloped] {part 0: ``The meeting''};
-\draw[message] (13, -1) -- (6, -1.5) node[pos=0.25, sloped,below] {got it} node[failure] {};
+\draw[message] (13, -1) -- (6, -1.5) node[pos=0.25, sloped,below] {ACK} node[failure] {};
 \draw[message] (2, -2) -- (13, -2.5) node[pos=0.25, above, sloped] {part 0: ``The meeting''};
-\draw[message] (13, -3) -- (2, -3.5) node[pos=0.25, sloped,below] {got it};
+\draw[message] (13, -3) -- (2, -3.5) node[pos=0.25, sloped,below] {ACK};
 \draw[message] (2, -4) -- (13, -4.5) node[pos=0.25, above, sloped] {part 1: `` is at 12pm.''};
-\draw[message] (13, -5) -- (2, -5.5) node[pos=0.25, sloped,below] {got it};
+\draw[message] (13, -5) -- (2, -5.5) node[pos=0.25, sloped,below] {ACK};
 \end{scope}
 \end{tikzpicture}
 reconstructed message: \\
@@ -138,9 +138,9 @@ The meeting is at 12pm.
 \draw[box] (13, 0) rectangle ++(2, -6) 
     node[midway,align=center] {machine\\B};
 \draw[message] (2, -0.5) -- (13, -0.75) node[pos=0.25, above, sloped] {part 0: ``The meeting''};
-\draw[message] (13, -1) -- (2, -3) node[pos=0.25, sloped,below] {got it};
+\draw[message] (13, -1) -- (2, -3) node[pos=0.25, sloped,below] {ACK};
 \draw[message] (2, -2) -- (13, -2.5) node[pos=0.25, above, sloped] {part 0: ``The meeting''};
-\draw[message] (13, -3) -- (2, -4.5) node[pos=0.25, sloped,below] {got it};
+\draw[message] (13, -3) -- (2, -4.5) node[pos=0.25, sloped,below] {ACK};
 \draw[message] (2, -4) -- (11.5, -4.5) node[pos=0.5, above, sloped] {part 1: `` is at 12pm.''}
     node[failure] {};
 \end{scope}
@@ -161,14 +161,14 @@ A thinks: part 1 + part 2 acknowleged!
 \draw[box] (13, 0) rectangle ++(2, -6) 
     node[midway,align=center] {machine\\B};
 \draw[message] (2, -0.5) -- (13, -0.75) node[pos=0.25, above, sloped] {part 0: ``The meeting''};
-\draw[message] (13, -1) -- (2, -3) node[pos=0.25, sloped,below] {got \myemph{part 0}};
+\draw[message] (13, -1) -- (2, -3) node[pos=0.25, sloped,below] {ACK \myemph{part 0}};
 \draw[message] (2, -2) -- (13, -2.5) node[pos=0.25, above, sloped] {part 0: ``The meeting''};
-\draw[message] (13, -4) -- (2, -5) node[pos=0.25, sloped,below] {got \myemph{part 0}};
+\draw[message] (13, -4) -- (2, -5) node[pos=0.25, sloped,below] {ACK \myemph{part 0}};
 \draw[message] (2, -3.5) -- (9, -3.6) node[pos=0.5, above, sloped] {part 1: `` is at 12pm.''}
     node[failure] {};
 \draw[thick,decorate,decoration={brace,mirror}] (-0.1, -3.5) -- (-0.1, -5.5) node[inner sep=1mm,font=\small,align=right,midway,left] {timeout\\\myemph{for part 1}};
 \draw[message] (2, -5.5) -- (13, -5.75) node[pos=0.75, above, sloped] {part 1: `` is at 12pm.''};
-\draw[message] (13, -5.75) -- (2, -6) node[pos=0.25, below, sloped] {got \myemph{part 1}};
+\draw[message] (13, -5.75) -- (2, -6) node[pos=0.25, below, sloped] {ACK \myemph{part 1}};
 \end{scope}
 \end{tikzpicture}
 \end{frame}
