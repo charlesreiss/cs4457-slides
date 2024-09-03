@@ -1,0 +1,50 @@
+\begin{frame}{ECN}
+\begin{itemize}
+\item explicit congestion notification
+\vspace{.5cm}
+\item when buffer `close' to full
+\item switches/router set `ECN' bit in some packets
+    \begin{itemize}
+    \item field in IP header
+    \end{itemize}
+\item ECN bit echoed back in ACKs
+\end{itemize}
+\end{frame}
+
+\begin{frame}{ECN timeline}
+\begin{tikzpicture}
+\tikzset{
+    box/.style={thick},
+    message/.style={draw,thick,-Latex},
+    failure/.style={draw,ultra thick,red,cross out,minimum width=1cm,minimum height=1cm},
+    every node/.style={inner sep=0.1mm},
+}
+\begin{scope}[xshift=1cm,x=0.9cm]
+\draw[box] (0, 0) rectangle ++(2, -6) 
+    node[midway,align=center] {machine\\A};
+\draw[box] (5, 0) rectangle ++(2, -6) 
+    node[midway,align=center] {switch};
+\draw[box] (13, 0) rectangle ++(2, -6) 
+    node[midway,align=center] {machine\\B};
+\draw[message] (2, -0.5) -- (13, -1.5) node[pos=0.25,above,sloped] {[no ECN]{0}: ``The ''}
+    node[pos=0.75,above,sloped] {[no ECN]{0}: ``The ''};
+\draw[message] (13, -1.75) -- (2, -2.75) node[pos=0.25,sloped,below] {got up to {0}};
+\draw[message] (2, -1) -- (13, -2) node[pos=0.25, above, sloped] {[no ECN]{1}: ``meeting''}
+    node[pos=0.75,above,sloped] {\myemph{[yes ECN]}{0}: ``The ''};
+\draw[message] (13, -2.25) -- (2, -3.25) node[pos=0.25, sloped,below] {got up to {1} \myemph{WITH ECN mark}};
+
+% in response to got 0
+\draw[message] (2, -3) -- (13, -4) node[pos=0.5, above, sloped] {[no ECN] {2}: `` is at ''};
+\draw[message] (13, -4.25) -- (2, -5.25) node[pos=0.25, sloped,below] {got up to {2}};
+% in response to got 1
+\draw[message] (2, -3.5) -- (13, -4.5) node[pos=0.5, above, sloped] {[no ECN] {3}: ``12pm.''};
+\draw[message] (13, -4.75) -- (2, -5.75) node[pos=0.25, sloped,below] {got up to {3}};
+\end{scope}
+\end{tikzpicture}
+\begin{itemize}
+\item data sent has place for ECN bit to be placed
+\item switch modifies ECN bit \myemph{if buffer close to full}
+\item ACK indicates if ECN bit was set
+\end{itemize}
+\end{frame}
+

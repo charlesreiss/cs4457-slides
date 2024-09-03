@@ -1,0 +1,38 @@
+\begin{frame}{``slow start''}
+    \begin{itemize}
+    \item not very well named
+    \vspace{.5cm}
+    \item problem is that additive increase doesn't find capacity quickly
+    \item exponential(ish) increase to find \textit{initial} window size
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{``slow start'' on connection begin}
+    \begin{itemize}
+    \item set window size = 1 packet
+    \item increase by one packet for each ACK
+    \item \ldots until first packet loss
+    \vspace{.5cm}
+    \item then revert to additive increase
+        \begin{itemize}
+        \item actually slower at increasing
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{``slow start'' later}
+    \begin{itemize}
+    \item keep track of window size after multiplicative decrease
+    \item called \texttt{ssthresh}
+        \begin{itemize}
+        \item probably variable name in BSD code for this
+        \end{itemize}
+    \vspace{.5cm}
+    \item on timeout (not dupack), reset window size to 1 packet, BUT
+    \item use `slow start' until ssthresh reached or more congestion
+        \begin{itemize}
+        \item backoff network more aggressively, and
+        \item hopefully find correct new window size faster?
+        \end{itemize}
+    \end{itemize}
+\end{frame}

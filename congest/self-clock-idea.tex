@@ -1,0 +1,46 @@
+\begin{frame}{self-clocking and dup-ACKs}
+    \begin{itemize}
+    \item without losses, sender sends one new packet per ACK
+    \item keeps number of packets in network constant
+    \item but duplicate ACKs are exception (say window size 6):
+    \end{itemize}
+{\fontsize{10}{11}\selectfont
+\begin{tabular}{lll}
+recv'd & sent & packets in flight \\ \hline
+--- & data 0-5 & 6 \\
+ACK 0 & ~ & 5 \\
+~ & data 6 & 6 \\
+ACK 1 & ~ & 5 \\
+~ & data 7 & 6 \\
+ACK 1 & ~  & 5 \\
+ACK 1 & ~  & 4 \\
+~ & data 1 & 5 \\
+ACK 1 & ~ & 4 \\
+ACK 1 & ~ & 3 \\
+\end{tabular}
+}
+\end{frame}
+
+\begin{frame}{alternate explanation}
+    \begin{itemize}
+    \item sender stopped sending while receiving duplicate ACKs
+    \item but we know \textit{most messages got there}
+    \item means our usage of network doesn't reflect out window size
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{TCP's fast retransmission}
+\begin{itemize}
+\item on third duplicate ACK:
+\vspace{.5cm}
+\item resend packet,
+\item do multiplicative decrease, AND THEN
+\item temporarily add 2 packet to window for each dup ACK
+    \begin{itemize}
+    \item send packets to replace received packet
+    \item (if allowed by multiplicative-decreased window)
+    \end{itemize}
+\item reset window size back when later ACK
+\end{itemize}
+\end{frame}
+
