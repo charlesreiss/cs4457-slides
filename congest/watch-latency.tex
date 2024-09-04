@@ -1,0 +1,47 @@
+\begin{frame}{very different congestion control}
+    \begin{itemize}
+    % FIXME: Fig 32 from TCPCC book
+    \item fuller queues $\rightarrow$ higher latency
+    \item fuller queues $\rightarrow$ throughput same as window increases
+    \vspace{.5cm}
+    \item<2-> strategy: monitor throughput/latency to detect full queues
+        \begin{itemize}
+        \item goal: fill link without making queue grow in size
+        \item react before dropped packets happen
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{`Vegas'-style congestion control}
+    \begin{itemize}
+    \item record ``base'' round-trip time
+        \begin{itemize}
+        \item connection start or lowest observed
+        \end{itemize}
+    \item ``ideal'' throughput should be one window / base round trip time
+        \begin{itemize}
+        \item (Vegas paper calls this ``expected'' throughput)
+        \item what would happen with no queuing delay
+        \end{itemize}
+    \vspace{.5cm}
+    \item goal: control what ``ideal'' - actual throughput is
+        \begin{itemize}
+        \item if 0, queues are probably empty, can increase window
+        \item if large, queues are too big, decrease window
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{BBR-style congestion control}
+    \begin{itemize}
+    \item \myemph<2>{if queues are empty}, larger window:
+    \item latency stays the same and throughput increases
+    \vspace{.5cm}
+    \item \myemph<3>{if queues are filling}, larger window:
+    \item throughput stays the same and latency increases
+    \vspace{.5cm}
+    \item<4-> observe effect of sending more/fewer packets periodically
+    \item<4-> estimate `boundary' based on observed latency/throughput
+    \item<4-> keep window size near boundary most of the time
+    \end{itemize}
+\end{frame}
