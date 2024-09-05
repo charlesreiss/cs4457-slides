@@ -1,5 +1,4 @@
-\usetikzlibrary{arrows.meta}
-\begin{frame}{sending three at a time}
+\begin{frame}{lost ACKs?}
 \begin{tikzpicture}
 \tikzset{
     box/.style={thick},
@@ -15,24 +14,18 @@
 \draw[message] (2, -0.5) -- (13, -1.5) node[pos=0.25,above,sloped] {\myemph{0}: ``The ''};
 \draw[message] (13, -1.75) -- (2, -2.75) node[pos=0.25,sloped,below] {ACK up to \myemph{0}};
 \draw[message] (2, -1) -- (13, -2) node[pos=0.25, above, sloped] {\myemph{1}: ``meeting''};
-\draw[message] (13, -2.25) -- (2, -3.25) node[pos=0.25, sloped,below] {ACK up to \myemph{1}};
+\draw[message] (13, -2.25) -- (5, -3) node[pos=0.25, sloped,below] {ACK up to \myemph{1}} node[failure] {};
 \draw[message] (2, -1.5) -- (13, -2.5) node[pos=0.25, above, sloped] {\myemph{2}: `` is at ''};
 \draw[message] (13, -2.75) -- (2, -3.75) node[pos=0.25, sloped,below] {ACK up to \myemph{2}};
-% in response to got 0
 \draw[message] (2, -3) -- (13, -4) node[pos=0.5, above, sloped] {\myemph{3}: ``12pm.''};
 \draw[message] (13, -4.25) -- (2, -5.25) node[pos=0.25, sloped,below] {ACK up to \myemph{3}};
-% in response to got 1 
-\draw[message] (2, -3.5) -- (13, -4.5) node[pos=0.5, above, sloped] {\myemph{4}: ``Please ''};
-\draw[message] (13, -4.75) -- (2, -5.75) node[pos=0.25, sloped,below] {ACK up to \myemph{4}};
-\draw[message] (2, -4) -- (13, -5) node[pos=0.5, above, sloped] {\myemph{5}: ``be ''};
-\draw[message] (13, -5.25) -- (2, -6.25) node[pos=0.25, sloped,below] {ACK up to \myemph{5}};
+\draw[message] (2, -4) -- (13, -5) node[pos=0.5, above, sloped] {\myemph{4}: ``Please ''};
+\draw[message] (13, -5.25) -- (2, -6) node[pos=0.25, sloped,below] {ACK up to \myemph{4}};
+\draw[message] (2, -4.5) -- (13, -5.5) node[pos=0.5, above, sloped] {\myemph{5}: ``be ''};
+\draw[message] (13, -5.75) -- (2, -6.5) node[pos=0.25, sloped,below] {ACK up to \myemph{5}};
 %\draw[message] (2, -4.5) -- (13, -5.5) node[pos=0.5, above, sloped] {\myemph{6}: ``prompt ''};
 %\draw[message] (13, -5.75) -- (2, -6.75) node[pos=0.25, sloped,below] {ACK up to \myemph{6}};
 %\draw[message] (2, -7) -- (13, -5.5) node[pos=0.5, above, sloped] {\myemph{7}: \ldots};
 \end{scope}
 \end{tikzpicture}
-\begin{itemize}
-\item choose ``window size'' to have in flight
-\item send when previous acknowledged
-\end{itemize}
 \end{frame}

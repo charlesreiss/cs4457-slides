@@ -9,6 +9,19 @@
 \subsection{more than two at a time}
 \input{../reliable/n-at-a-time}
 
+\subsection{lost ACKs}
+\input{../reliable/n-at-a-time-lost}
+
+\subsection{duplicate ACKs happen}
+    % FIXME: this would make more sense with more than two things
+\input{../reliable/two-at-a-time-dupack}
+
+\subsection{duplicate ACK optimization}
+\input{../reliable/dup-ack-opt}
+
+\subsection{optimization: selective ACKs}
+\input{../reliable/sack}
+
 \subsection{window tracking -- sender}
 % FIXME: diagram of receiver, sender window
     % actions for each case
@@ -27,12 +40,3 @@
 \subsection{sequence number wraparound}
 \input{../reliable/window-size-wraparound}
 
-\subsection{duplicate ACKs happen}
-    % FIXME: this would make more sense with more than two things
-\input{../reliable/two-at-a-time-dupack}
-
-\subsection{duplicate ACK optimization}
-\input{../reliable/dup-ack-opt}
-
-\subsection{optimization: selective ACKs}
-\input{../reliable/sack}
