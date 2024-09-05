@@ -1,0 +1,84 @@
+\date{}
+\title{}
+\date{}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}{last time}
+    \begin{itemize}
+    \item stop-and-wait protocol
+        \begin{itemize}
+        \item 1-bit sequence number to detect out-of-date
+        \item sender: send, wait for ACK, repeat
+        \item receiver: receive, ACK, repeat
+        \end{itemize}
+    \item performance metrics
+        \begin{itemize}
+        \item latency = \{transmission, propogation, queueing\}
+        \item throughput
+        \item jitter
+        \item measure via ping
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\section{interlude: metrics}
+\begin{frame}{stop-and-wait issues}
+    \begin{itemize}
+    \item two issues with stop-and-wait:
+    \vspace{.5cm}
+    \item doesn't use close to full capacity of network
+    \item not clear how to set timeouts
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{looking at metrics}
+    \begin{itemize}
+    \item several important metrics we'll care about
+    \item (both for this and future topics)
+    \vspace{.5cm}
+    \item<2-> \textit{throughput} and \textit{bandwidth} ($\sim$ how much capacity used/available)
+    \item<2-> \textit{latency} and \textit{round-trip time} (RTT) ($\sim$ what timeouts needed)
+    \item<2-> \textit{jitter} ($\sim$ safety margin for timeouts)
+    \end{itemize}
+\end{frame}
+
+\subsection{bandwidth / throughput}
+\input{../perf/throughput}
+
+\subsection{latency / round trip time}
+\input{../perf/latency}
+
+\subsection{jitter}
+\input{../perf/jitter.tex}
+
+\subsection{aside: measuring empirically}
+\input{../perf/empirical-measure}
+
+\section{stop-and-wait performance}
+\input{../reliable/stop-and-wait-perf}
+
+\input{../reliable/talk-window}
+
+\section{TCP example}
+
+\subsection{TCP segment format}
+\input{../reliable/tcp-segment-basic}
+
+%\subsection{TCP connection example 1}
+%\input{../reliable/tcp-example-1}
+
+\subsection{TCP connection example}
+\input{../reliable/tcp-example-2}
+
+\input{../switches/talk-inner}
+
+\section{backup slides}
+\begin{frame}{backup slides}
+\end{frame}
+
+\end{document}
