@@ -9,10 +9,28 @@
         \begin{itemize}
         \item $\approx 15$Mbyte/sec with 1500 byte packets
         \end{itemize}
+    \item `standard' TCP increase of 1 packet/second
     \item how long to get there?
     \vspace{.5cm}
     \item<2-> current: 30 packets/RTT (= window size 30)
     \item<2-> need to get to: 500 packets/RTT
     \item<2-> will take $500-30=470$ round trips $\approx$ 23500 ms $\approx$ 24 s
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{fixing bad convergence time}
+    \begin{itemize}
+    \item TCP's additive increase is very slow for ``high bandwidth-delay'' networks
+    \item two things make this better today:
+    \vspace{.5cm}
+    \item more adaptive increase for modern TCP variants
+        \begin{itemize}
+        \item e.g. FAST TCP, CUBIC TCP, \ldots
+        \item heuristics to increase faster when appropriate
+        \end{itemize}
+    \item not in additive increase mode at start of connection
+        \begin{itemize}
+        \item ``slow start'' we'll talk about later
+        \end{itemize}
     \end{itemize}
 \end{frame}

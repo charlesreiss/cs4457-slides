@@ -3,11 +3,17 @@
 \item explicit congestion notification
 \vspace{.5cm}
 \item when buffer `close' to full
-\item switches/router set `ECN' bit in some packets
+\item switches/router set `congestion experienced' (CE) bit in some packets
     \begin{itemize}
     \item field in IP header
     \end{itemize}
-\item ECN bit echoed back in ACKs
+\item CE bit echoed back in ACKs
+\vspace{.5cm}
+\item for compatibility:
+    \begin{itemize}
+    \item sender opts-in to ECN by setting field in IP packet
+    \item if not set, switch/router just drops packet
+    \end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -58,3 +64,23 @@
     \end{itemize}
 \end{frame}
 
+% FIXME: ECN-capable mark
+
+\begin{frame}{example: DCTCP}
+    \begin{itemize}
+    \item DataCenter TCP (2010)
+    \item intended for datacenters
+        \begin{itemize}
+        \item high bandwidth, low latency networks
+        \end{itemize}
+    \item based on explicit congestion notification
+    \item \ldots but uses different multiplicative decrease strategy
+    \vspace{.5cm}
+    \item measure portion of packets marked recently $\alpha$ 
+    \item decrease by factor of $1-\alpha/2$
+        \begin{itemize}
+        \item respond gradually to congestion
+        \item start responding early (packets marked when queues far from full)
+        \end{itemize}
+    \end{itemize}
+\end{frame}
