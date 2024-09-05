@@ -79,6 +79,7 @@ TCP window size:  128 KByte (default)
 [ ID] Interval       Transfer     Bandwidth
 [  1] 0.0000-10.0147 sec  1.09 GBytes   934 Mbits/sec
 \end{Verbatim}
+---
 \begin{Verbatim}[fontsize=\fontsize{10}{11}]
 $ iperf -c kytos02 | tee iperf.out
 ------------------------------------------------------------
@@ -91,9 +92,8 @@ TCP window size: 85.0 KByte (default)
 \end{Verbatim}
 \end{frame}
 
-\begin{frame}[fragile]{measuring transmission delay}
+\begin{frame}[fragile]{measuring transmission delay?}
 \begin{Verbatim}[fontsize=\fontsize{10}{11}]
-$ ping -s 1400 www -i 0.05 -c 1000 -q
 PING www.cs.virginia.edu (128.143.67.8) 1400(1428) bytes of data.
 --- www.cs.virginia.edu ping statistics ---
 1000 packets transmitted, 1000 received, 0% packet loss, time 50638ms
@@ -105,11 +105,11 @@ PING www.cs.virginia.edu (128.143.67.8) 16(44) bytes of data.
 rtt min/avg/max/mdev = 0.156/0.345/1.539/0.068 ms
 \end{Verbatim}
 \begin{itemize}
-\item approx. $0.416 - 0.345 = 0.071$ ms delay for $1400-16$ extra bytes
+\item approx. $0.461 - 0.345 = 0.116$ ms delay for $1400-16$ extra bytes
     \begin{itemize}
-    \item with two links in each direction = approx $\frac{0.071}{4}=0.018$ ms/link
-    \item $\frac{1400-16 \text{byte}}{0.018 \text{ms}} \approx 600$ Mbit/sec
-    \item very noisy; true value probably 1 Gbit/sec
+    \item with two links in each direction = approx $\frac{0.116}{4}=0.029$ ms/link
+    \item $\frac{1400-16 \text{byte}}{0.029 \text{ms}} \approx 50$ Mbit/sec
+    \item probably other processing time besides sending on links, though
     \end{itemize}
 \end{itemize}
 \end{frame}
