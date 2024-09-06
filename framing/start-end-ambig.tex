@@ -1,0 +1,30 @@
+\begin{frame}{bad choice of start/end (1)}
+    \begin{itemize}
+    \item [this slide added 6 Sep 2024]
+    \item let's say we choose delimiter \texttt{0000}
+    \item what do we need to escape?
+    \end{itemize}
+\begin{tabular}{l}
+A. any 0000 \\
+A. any 000 \\
+B. any 00 \\
+C. any 0 \\
+\end{tabular}
+\end{frame}
+
+\begin{frame}{bad choice of start/end (1)}
+    \begin{itemize}
+    \item sending \texttt{10} and \texttt{01}
+        \begin{itemize}
+        \item {\tt \myemph{10}0000\myemph{01}0000}
+        \end{itemize}
+    \item sending \texttt{1} and \texttt{001}
+        \begin{itemize}
+        \item {\tt \myemph{1}0000\myemph{001}0000}
+        \end{itemize}
+    \vspace{.5cm}
+    \item oops!
+    \item textbook example: start/end = {\tt 01111110}
+    \end{itemize}
+\end{frame}
+
