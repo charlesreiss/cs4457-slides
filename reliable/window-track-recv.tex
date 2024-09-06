@@ -55,10 +55,10 @@
 \item track variables:
     \begin{itemize}
     \item LFR (last frame recv'd) --- excludes frames after a missing frame
-    \item LAS (last accepted frame)
+    \item LAF (last accepted frame)
     \item RWS (receive window size)
     \end{itemize}
-\item when receiving frame $LFR < X \le LAS$:
+\item when receiving frame $LFR < X \le LAF$:
 \item LFR $\leftarrow$ (first missing frame after LFR) - 1
     \begin{itemize}
     \item only advances if X $=$ LFR
