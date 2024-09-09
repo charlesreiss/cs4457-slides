@@ -144,6 +144,26 @@
 \end{tikzpicture}
 \end{frame}
 
+\begin{frame}[fragile]{P4: switch parts}
+\begin{Verbatim}
+V1Switch(
+MyParser(),
+MyVerifyChecksum(),
+MyIngress(),
+MyEgress(),
+MyComputeChecksum(),
+MyDeparser()
+) main;
+\end{Verbatim}
+\begin{itemize}
+\item code to declare instance of dataplane from functions for each part
+\item will look at most of these components
+    \begin{itemize}
+    \item won't have reason to change verify/compute checksum
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
 \begin{frame}[fragile]{P4: declaring headers (1)}
 \providecommand{\vemphA}[1]{\myemph<2>{#1}}
 \providecommand{\vemphB}[1]{\myemph<3>{#1}}
@@ -440,10 +460,24 @@ control MyIngress(...) {
         \begin{itemize}
         \item `content' $\approx$ key being looked up
         \item looks kinda like highly associative cache
-        \item porbably lots of comparators
+        \item probably lots of comparators
         \end{itemize}
     \item allows multigigabit frame processing speeds
     \item P4 goal: P4 programs compile to use CAM/TCAM when available
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{aside: TCAM cost}
+    \begin{itemize}
+    \item 2.7x more transistors than SRAM (common cache technology)
+    \item probably much more power than SRAM
+    \item hard to find recent quotes for price/power
+    \item but probably 10s of dollars per megabyte
+        \beign{itemize}
+        \item e.g., secondary market price of Broadcom chip with 40Mbit of this is $\sim$\$180
+        \item chip needs 80W heatsink, max 900MHz clock rate
+        \item but chip has a bunch of other functionality, of course
+        \end{itemize}
     \end{itemize}
 \end{frame}
 
