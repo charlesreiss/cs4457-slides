@@ -58,7 +58,7 @@
 \begin{visibleenv}<6>
 \path[draw,red,very thick] (0, -2.25) rectangle (1.9, -2.45);
 \path[draw,red,very thick] (0, -4.2) rectangle (1.9, -4.4);
-\path[draw,red,dotted,double,ultra thick] (1, -2.45) -- (1, -4.2) node[midway,font=\small,fill=white,fill opacity=0.957,text=red,text opacity=1.0] {118 ms};
+\path[draw,red,dotted,double,ultra thick] (1, -2.45 +.2) -- (1, -4.2) node[midway,font=\small,fill=white,fill opacity=0.957,text=red,text opacity=1.0] {118 ms};
 \end{visibleenv}
 \begin{visibleenv}<7>
 \path[draw,red,very thick] (12.6, -4.15) rectangle (13.3, -4.4);
@@ -117,8 +117,8 @@
 ]{../reliable/wireshark-tcp-ex2-firstdata}%
 };
 \path (0, 0) rectangle (14.5, -7); % for bounding box
-\draw[violet,overlay,help lines] (0, 0) grid (14, -8);
-\draw[violet,overlay,help lines,dotted] (0, 0) grid[step=0.2] (14, -8);
+%\draw[violet,overlay,help lines] (0, 0) grid (14, -8);
+%\draw[violet,overlay,help lines,dotted] (0, 0) grid[step=0.2] (14, -8);
 %\spy[overlay,rectangle,magnification=1.7,height=7.5cm,width=10cm] on (3, -5) in node at (9, -3.5);
 \begin{visibleenv}<2>
     \draw[red,very thick] (0.65, -2.45) rectangle (3.5, -2.75);
