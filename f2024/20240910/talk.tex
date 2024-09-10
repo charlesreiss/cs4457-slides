@@ -27,10 +27,28 @@
 
 \begin{frame}{anonymous feedback}
     \begin{itemize}
-    \item difficulty of framing assignment v. conceptual issues
+    \item difficulty of framing assignment 
     \item time taken by TAs in office hours
     \end{itemize}
 \end{frame}
+
+\begin{frame}{framing assignment difficulty}
+    \begin{itemize}
+    \item more problematic than I expected
+        \begin{itemize}
+        \item (as of yesterday evening 60\% pass all of test.py)
+        \end{itemize}
+    \item will adjust grading to do more manual looks at code that fails test than originally planned
+    \vspace{.5cm}
+    \item TA and I's impression of issues:
+        \begin{itemize}
+        \item should have had clear testing-without-test.py infrastructure
+        \item seems like students spending more time without comparing what sender/receiver seeing than we expected (which we think is usually best way to diagnose bugs in this assignment)
+        \item should have mode prominent explanation of use of bytearray to store bit-arrays (since Python has no real bit-array type)
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
 
 \begin{frame}{assignment (1)}
     \begin{itemize}
@@ -63,14 +81,24 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}{a scheduling note}
+    \begin{itemize}
+    \item I'm travelling this Friday and all of next week
+    \item hopefully will have reasonable internet most of that time, but not optimistic
+    \vspace{.5cm}
+    \item Prof Campbell will cover lectures
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{assignment (3)}
     \begin{itemize}
-    \item part 2: sliding window [next week]
+    \item part 2: sliding window [originally next week]
         \begin{itemize}
         \item fixed window size
         \item should have timeouts per packet
         \item okay not to have fast retransmit (resend on duplicate ACKs)
         \end{itemize}
+    \item will move part 2 to be due after I come back
     \item part 3: basic congestion control [much later]
         \begin{itemize}
         \item set window size using additive increase/multiplicative decrease
@@ -79,12 +107,14 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{a scheduling note}
+\begin{frame}{upcoming P4 assignment}
     \begin{itemize}
-    \item I'm travelling this Friday and all of next week
-    \item hopefully will have reasonable internet most of that time, but not optimistic
+    \item after reliablity part 2
+    \item requires use of virtual machine image (or similar)
+    \item originally had extra week when I was in town because I'm worried about VM issues
     \vspace{.5cm}
-    \item Prof Campbell will cover lectures
+    \item still worried about VM issues, if you have a situation that makes running VMs weird,
+        let's make sure things work in advance
     \end{itemize}
 \end{frame}
 
