@@ -1,0 +1,128 @@
+\date{}
+\title{}
+\date{}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}{last time}
+    \begin{itemize}
+    \item more metrics
+        \begin{itemize}
+        \item measuring throughput, maybe transmission delay
+        \end{itemize}
+    \item performance of stop-and-wait
+    \item sending mulitple at a time
+    \item sliding window
+        \begin{itemize}
+        \item window = maximum number in flight
+        \item sender window size --- maximum sent ahead of ACK
+        \item receiver window size --- maximum accepted ahead of first missing
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{anonymous feedback}
+    \begin{itemize}
+    \item difficulty of framing assignment v. conceptual issues
+    \item time taken by TAs in office hours
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{assignment (1)}
+    \begin{itemize}
+    \item write sender/receiver
+    \item Packet structure
+        \begin{itemize}
+        \item acknum (can be \texttt{None} or integer)
+        \item seqnum
+        \item data
+        \item is\_end flag
+        \item timestamp
+        \end{itemize}
+    \item simulated simple network with queuing
+    \item call-me-on-timeout function w/ cancellation
+    \item send messages reliably (one message/packet)
+    \item send function indicates if you can accept more yet
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{assignment (2)}
+    \begin{itemize}
+    \item part 1: stop-and-wait [this week]
+        \begin{itemize}
+        \item one packet at a time
+        \item schedule `timeout' to resend
+        \item cancel timeout + send next if ack recv'd
+        \item set timeout length using timestamps
+        \item remember: set timestamp differently on resend
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{assignment (3)}
+    \begin{itemize}
+    \item part 2: sliding window [next week]
+        \begin{itemize}
+        \item fixed window size
+        \item should have timeouts per packet
+        \item okay not to have fast retransmit (resend on duplicate ACKs)
+        \end{itemize}
+    \item part 3: basic congestion control [much later]
+        \begin{itemize}
+        \item set window size using additive increase/multiplicative decrease
+        \item we haven't covered what this is/why it (kinda) works
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{a scheduling note}
+    \begin{itemize}
+    \item I'm travelling this Friday and all of next week
+    \item hopefully will have reasonable internet most of that time, but not optimistic
+    \vspace{.5cm}
+    \item Prof Campbell will cover lectures
+    \end{itemize}
+\end{frame}
+
+\section{sliding windows}
+\subsection{choosing a window size}
+    % FIXME: graph of empirical performance
+\input{../reliable/window-size-empirical}
+
+\subsection{problems solved}
+\input{../reliable/problems-solved}
+
+\subsection{sequence number wraparound}
+\input{../reliable/window-size-wraparound}
+
+\section{TCP example}
+
+\subsection{TCP segment format}
+\input{../reliable/tcp-segment-basic}
+
+%\subsection{TCP connection example 1}
+%\input{../reliable/tcp-example-1}
+
+\subsection{TCP connection example}
+\input{../reliable/tcp-example-2}
+
+\input{../switches/talk-inner}
+
+\section{backup slides}
+\begin{frame}{backup slides}
+\end{frame}
+
+\subsection{window tracking -- sender}
+% FIXME: diagram of receiver, sender window
+    % actions for each case
+\input{../reliable/window-track-send}
+
+\subsection{window tracking -- receiver}
+\input{../reliable/window-track-recv}
+
+
+\end{document}
