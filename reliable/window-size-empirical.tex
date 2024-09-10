@@ -254,7 +254,7 @@ F. 2.1 time unit & G. something else \\
     (no queuing delay)
 };
 \node[violet,anchor=south west,align=left] (mq) at ([xshift=-1.5cm]full queue mark) {
-    (max queuing delay)
+    (max effective queuing delay)
 };
 \node[violet,anchor=south] at ($(nq)!0.5!(mq)$) {bandwidth-delay product};
 \end{tikzpicture}
@@ -314,4 +314,17 @@ F. 2.1 time unit & G. something else \\
         };
 \end{scope}
 \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{on bursts}
+    \begin{itemize}
+    \item max possible queuing delay suggests window size of 30
+        \begin{itemize}
+        \item approx. 3 time units times 10
+        \end{itemize}
+    \item problem: ``bursts'' temporarily exceed queue size
+    \vspace{.5cm}
+    \item achievable average queue size not that high
+    \item sender could moderate by ``pacing'' packets
+    \end{itemize}
 \end{frame}
