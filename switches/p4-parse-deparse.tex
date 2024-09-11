@@ -1,0 +1,66 @@
+
+\usetikzlibrary{arrows.meta,decorations.pathreplacing}
+\begin{frame}[fragile]{P4: parsing}
+\providecommand{\vemphA}[1]{\myemph<2>{#1}}
+\providecommand{\vemphB}[1]{\myemph<3>{#1}}
+\providecommand{\vemphC}[1]{\myemph<4>{#1}}
+\providecommand{\vemphD}[1]{\myemph<5>{#1}}
+\begin{Verbatim}[fontsize=\small,commandchars=\\@~]
+parser MyParser(...) {
+    ...
+    state parse_ethernet {
+        \vemphA@packet.extract(hdr.ethernet);~
+        transition select(hdr.ethernet.etherType) {
+            TYPE_IPV4: parse_ipv4;
+            TYPE_IPV6: parse_ipv6
+            default: accept;
+        }
+    }
+
+    state parse_ipv4 {
+        \vemphA@packet.extract(hdr.ipv4)~
+        transition accept;
+    }
+    ....
+}
+\end{Verbatim}
+\begin{tikzpicture}[overlay,remember picture]
+    \begin{visibleenv}<2>
+    \node[align=left,draw=red,fill=white,ultra thick] at ([yshift=-1cm,xshift=4cm]current page.center) {
+        extract operations \\
+        can be chained \\
+        to extract multiple headers \\
+        (for multiple layers \\
+        or variable-length headers)
+    };
+    \end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}[fragile]{P4: deparsing}
+\providecommand{\vemphA}[1]{\myemph<2>{#1}}
+\providecommand{\vemphB}[1]{\myemph<3>{#1}}
+\providecommand{\vemphC}[1]{\myemph<4>{#1}}
+\providecommand{\vemphD}[1]{\myemph<5>{#1}}
+\begin{Verbatim}[fontsize=\small,commandchars=\\@~]
+control MyDeparser(packet_out packet, in headers hdr) {
+    apply {
+        \vemphA@packet.emit~(hdr.ethernet);
+        \vemphA@packet.emit~(hdr.ipv4);
+        \vemphA@packet.emit~(hdr.ipv6);
+    }
+}
+\end{Verbatim}
+\begin{tikzpicture}[overlay,remember picture]
+    \begin{visibleenv}<2>
+    \node[align=left,draw=red,fill=white,ultra thick] at ([yshift=-2cm]current page.center) {
+        use emit to put extracted bits back in packet \\
+        ~  \\
+        if header is not marked valid, emit does nothing \\
+        (\texttt{extract(hdr.foo)} marks \texttt{hdr.foo} valid, \\
+        can also use \texttt{hdr.foo.setValid()} and undo with \\
+        \texttt{hdr.foo.setInvalid()})
+    };
+    \end{visibleenv}
+\end{tikzpicture}
+\end{frame}

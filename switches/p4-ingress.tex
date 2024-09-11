@@ -1,0 +1,248 @@
+\usetikzlibrary{arrows.meta,decorations.pathreplacing}
+
+
+\begin{frame}[fragile]{P4: ingress processing}
+\providecommand{\vemphA}[1]{\myemph<2>{#1}}
+\providecommand{\vemphB}[1]{\myemph<3>{#1}}
+\providecommand{\vemphC}[1]{\myemph<4>{#1}}
+\providecommand{\vemphD}[1]{\myemph<5>{#1}}
+\begin{itemize}
+\item example: send \textit{everything} to output port number 4
+\end{itemize}
+\begin{Verbatim}[fontsize=\small,commandchars=\\@~]
+control MyIngress(...) {
+    apply {
+        \vemphA@standard_metadata.egress_spec = 4;~
+    }
+}
+\end{Verbatim}
+\begin{tikzpicture}[overlay,remember picture]
+    \begin{visibleenv}<2>
+    \node[align=left,draw=red,fill=white,ultra thick] at ([yshift=-2cm]current page.center) {
+        standard\_metadata --- `hard-coded' phase reads \texttt{egress\_spec} \\
+        ~ \\
+        special \texttt{egress\_spec} value for ``discard frame''
+    };
+    \end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{switch decisions}
+    \begin{itemize}
+    \item most decisions switches/routers make are table lookups
+    \vspace{.5cm}
+    \item take field from packet (e.g. destination)
+    \item lookup in table what to do with that
+        (e.g. send to port X, throw error, etc.)
+    \vspace{.5cm}
+    \item P4 has special syntax for tables and table lookups
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{P4: tables}
+\providecommand{\vemphA}[1]{\myemph<2>{#1}}
+\providecommand{\vemphB}[1]{\myemph<3>{#1}}
+\providecommand{\vemphC}[1]{\myemph<4>{#1}}
+\providecommand{\vemphD}[1]{\myemph<5>{#1}}
+\begin{Verbatim}[fontsize=\small,commandchars=\\@~]
+\vemphA@table~ mac_dst_exact {
+    \vemphB@key~ = {
+        \vemphB@hdr.ethernet.dstAddr~ : \vemphC@exact~;
+    }
+    \vemphB@actions~ = {
+        drop,
+        forward_to,
+    }
+    size = 1024;
+    default_action = drop();
+}
+\end{Verbatim}
+\begin{tikzpicture}[overlay,remember picture]
+\tikzset{
+    box/.style={
+        align=left,
+        draw=red,
+        fill=white,
+        ultra thick,
+        anchor=west,
+        at={([xshift=1cm]current page.center)},
+    },
+}
+    \begin{visibleenv}<2>
+    \node[box] {
+        declare a table with a name \\
+        done has part of ingress/outgress
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<3>
+    \node[box] {
+        key/value structure \\
+        keys usually from headers \\
+        values are actions to run
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<4>
+    \node[box] {
+        here, each table entry \\
+        contains whole address \\
+        P4 also supports \\
+        partially matched keys
+    };
+    \end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{P4 table key types}
+    \begin{itemize}
+    \item exact --- full entry
+    \item lpm --- longest prefix match
+        \begin{itemize}
+        \item table entries contain `prefixes' of header field(s)
+        \item we'll see motivation for this when we talk about routing
+        \item if multiple entries match, take longest one
+        \end{itemize}
+    \item ternary --- 0/1/don't care
+        \begin{itemize}
+        \item table entries contain key and mask
+        \item entry matches if bits included in mask match
+        \item other view: keys represented with 0/1/don't care `trits'
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{content-addressable memory}
+    \begin{itemize}
+    \item high-end routers/switches have \textit{content addressable memory} (CAM)
+    \item \ldots including \textit{ternary content addressable memory} (TCAM)
+    \vspace{.5cm}
+    \item = hardware that implements a table lookup
+        \begin{itemize}
+        \item `content' $\approx$ key being looked up
+        \item looks kinda like highly associative cache
+        \item probably lots of comparators
+        \end{itemize}
+    \item allows multigigabit frame processing speeds
+    \item P4 goal: P4 programs compile to use CAM/TCAM when available
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{aside: TCAM cost}
+    \begin{itemize}
+    \item 2.7x more transistors than SRAM (common cache technology)
+    \item probably much more power than SRAM
+    \item hard to find recent quotes for price/power
+    \item but probably 10s of dollars per megabyte
+        \begin{itemize}
+        \item e.g., secondary market price of Broadcom chip with 40Mbit of this is $\sim$\$180
+        \item chip needs 80W heatsink, max 900MHz clock rate
+        \item but chip has a bunch of other functionality, of course
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{P4: using a table}
+\providecommand{\vemphA}[1]{\myemph<2>{#1}}
+\providecommand{\vemphB}[1]{\myemph<3>{#1}}
+\providecommand{\vemphC}[1]{\myemph<4>{#1}}
+\providecommand{\vemphD}[1]{\myemph<5>{#1}}
+\begin{Verbatim}[fontsize=\small,commandchars=\\@~]
+control MyIngress(...) {
+    ...
+    table mac_dst_exact = { 
+        /* seen earlier */ ...
+    }
+    apply {
+        \vemphA@mac_dst_exact.apply();~
+    }
+}
+\end{Verbatim}
+\begin{tikzpicture}[overlay,remember picture]
+\tikzset{
+    box/.style={
+        align=left,
+        draw=red,
+        fill=white,
+        ultra thick,
+        anchor=west,
+        at={([xshift=1cm]current page.center)},
+    },
+}
+    \begin{visibleenv}<2>
+    \node[box] {
+        apply operation invokes the action specified by the table
+    };
+    \end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}[fragile]{P4: actions}
+\providecommand{\vemphA}[1]{\myemph<2>{#1}}
+\providecommand{\vemphB}[1]{\myemph<3>{#1}}
+\providecommand{\vemphC}[1]{\myemph<4>{#1}}
+\providecommand{\vemphD}[1]{\myemph<5>{#1}}
+\begin{Verbatim}[fontsize=\small,commandchars=\\@~]
+control MyIngress(...) {
+    \vemphA@action drop()~ {
+        mark_to_drop(\vemphB@standard_metadata~);
+    }
+    \vemphA@action forward_to(egressSpec_t port)~ {
+        \vemphB@standard_metadata.egress_spec = port;~
+    }
+    \vemphA@action mark_and_forward(egressSpec_t port)~ {
+        \vemphC@hdr.some_proto.value~ = 1;
+        \vemphB@standard_metadata.egress_spec = port;~
+    }
+    ...
+}
+\end{Verbatim}
+\begin{tikzpicture}[overlay,remember picture]
+\tikzset{
+    box/.style={
+        align=left,
+        draw=red,
+        fill=white,
+        ultra thick,
+        anchor=north,
+        at={([yshift=-1cm]current page.center)},
+    },
+}
+    \begin{visibleenv}<2>
+    \node[box] {
+        actions basically function calls for packet \\
+        can include parameters that are stored in table
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<3>
+    \node[box] {
+        typically, actions set standard metadata \\
+        to indicate where to send frame next \\
+        ~ \\
+        actual sending/not sending frame done later
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<4>
+    \node[box] {
+        actions can also edit packet headers \\
+        or do other table lookups \\
+        (which we will need in the future) 
+    };
+    \end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}[fragile]{P4: special actions}
+    \begin{itemize}
+    \item some ways switch can direct packet (incomplete list)
+    \vspace{.5cm}
+    \item send to the control plane
+        \begin{itemize}
+        \item special output port that goes to `general purpose' CPU
+        \end{itemize}
+    \item multicast/broadcast to multiple ports
+        \begin{itemize}
+        \item control plane can set \textit{multicast groups}
+        \item makes multiple copies of packets
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+

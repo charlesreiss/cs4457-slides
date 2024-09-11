@@ -1,0 +1,58 @@
+\begin{frame}{exercise: header representation (1)}
+    \begin{itemize}
+    \item let's say packet format is:
+        \begin{itemize}
+        \item 16 bit source address
+        \item 16 bit destination address
+        \item 1 bit flag ``is timestamp present''
+        \item 1 bit flag ``is data present'
+        \item 6 bits unused
+        \item (optional) 32-bit timestamp
+        \item (optional) 16-bit data size
+        \item (optional) data
+        \end{itemize}
+    \item how to represent this?
+        \begin{itemize}
+        \item how many structs?
+        \item what's in the \texttt{header \{\ldots\}}?
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\end{frame}
+
+\begin{frame}[fragile]{exercise: header parsing}
+\begin{Verbatim}[fontsize=\small]
+struct basic_hdr_t {
+    bit<16> src; bit<16> dst;
+    bit<1> has_timestamp; bit<1> has_data; bit<6> unused;
+};
+struct timestamp_t {
+    bit<32> timestamp;
+}
+struct data_hdr_t {
+    bit<16> size;
+}
+\end{Verbatim}
+\begin{itemize}
+\item what states/transitions in parser?
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{states/transitions}
+\begin{itemize}
+\item parse\_basic:
+    \begin{itemize}
+    \item has\_timestamp: to parse\_timestamp:
+    \item has\_data: to parse\_data
+    \item otherwise: accept
+    \end{itemize}
+\item parse\_timestamp:
+    \begin{itemize}
+    \item has\_data: to parse\_data:
+    \item otherwise: accept
+    \end{itemize}
+\item parse\_data: then accept
+\end{itemize}
+\end{frame}

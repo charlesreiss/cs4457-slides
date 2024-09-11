@@ -1,0 +1,138 @@
+\usetikzlibrary{arrows.meta,decorations.pathreplacing}
+\begin{frame}[fragile,label=p4arch]{P4 switch architecture}
+\begin{tikzpicture}
+\tikzset{
+    queue/.style={alt=<2>{fill=red!10,draw=red,ultra thick}},
+    explain box/.style={
+        align=left,at={(explain box top)},anchor=north,draw=red,very thick
+    },
+}
+\begin{scope}[x=.7cm]
+\foreach \x in {1,2,3,4} {
+    \node[anchor=east] at (0, \x-.5) {IN$\rightarrow$};
+    \node[anchor=west] at (17.5, \x-.5) {$\rightarrow$OUT};
+    \foreach \noff in {0,8,16} {
+        \begin{scope}[shift={(\noff, 0)},yshift=\x cm-1cm,y=0.9cm]
+            \draw[queue,thick] (0, 0) rectangle (1.5, 1);
+            \foreach \off in {.5,.7,.9,1.1,1.3} {
+                \draw[queue,thick] (\off, 0) -- (\off, 1);
+            }
+        \end{scope}
+    }
+}
+\coordinate (explain box top) at (8.5, -.7);
+\tikzset{
+    box/.style={draw,thick},
+    box label/.style={font=\fontsize{9}{10}\selectfont},
+    parserBox/.style={alt=<6>{fill=red!10}},
+    deparserBox/.style={alt=<7>{fill=red!10}},
+    ingressBox/.style={alt=<8>{fill=red!10}},
+    egressBox/.style={alt=<8>{fill=red!10}},
+};
+\foreach \x/\name in {2/parser,4/ingress,6/deparser} {
+    \draw[box,\name Box] (\x, 0) coordinate (\name-in-base) rectangle ++(1.6, 4) coordinate (\name-in-other-base) node[midway,box label,alias=x] (\name-in-label) {\name};
+    \coordinate (\name-in-bottom-right) at (\name-in-base);
+    \coordinate (\name-in-bottom-left) at (\name-in-base -| \name-in-other-base);
+    \draw[box] (\x + 1.4, -.1) |- (\x - .2, .8-1) |- (\x-.1, 3.8); 
+    \draw[box] (\x + 1.5, 0) |- (\x - .1, .9-1) |- (\x, 3.9); 
+}
+\foreach \x/\name in {10/parser,12/egress,14/deparser} {
+    \draw[box,\name Box] (\x, 0) coordinate (\name-out-base) rectangle ++(1.6, 4) coordinate (\name-out-other-base) node[midway,box label] (\name-out label) {\name};
+    \coordinate (\name-out-bottom-right) at (\name-out-base);
+    \coordinate (\name-out-bottom-left) at (\name-out-base -| \name-out-other-base);
+    \draw[box] (\x + 1.4, -.1) |- (\x - .2, .8-1) |- (\x-.1, 3.8); 
+    \draw[box] (\x + 1.5, 0) |- (\x - .1, .9-1) |- (\x, 3.9); 
+}
+\end{scope}
+\begin{visibleenv}<2>
+    \node[explain box] {
+        queues of frames to be processed \\
+        if needed, hold packets in between processing steps 
+    };
+\end{visibleenv}
+\begin{visibleenv}<3>
+    \foreach \x in {in,out} {
+        \draw[line width=.5mm,red,decorate,decoration={brace,mirror,raise=3mm,amplitude=2mm}]
+            ([xshift=-.2cm]parser-\x-bottom-right) --
+            ([xshift=.2cm]deparser-\x-bottom-left);
+    }
+    \node[explain box] {
+        \textit{ingress} and \textit{egress} pipelines
+    };
+\end{visibleenv}
+\begin{visibleenv}<4>
+    \foreach \x in {in} {
+        \draw[line width=.5mm,red,decorate,decoration={brace,mirror,raise=3mm,amplitude=2mm}]
+            ([xshift=-.2cm]parser-\x-bottom-right) --
+            ([xshift=.2cm]deparser-\x-bottom-left);
+    }
+    \node[explain box] {
+        ingress pipeline: processes every input frame \\
+        primary job: decide where to forward frame (if anywhere) 
+    };
+\end{visibleenv}
+\begin{visibleenv}<5>
+    \foreach \x in {out} {
+        \draw[line width=.5mm,red,decorate,decoration={brace,mirror,raise=3mm,amplitude=2mm}]
+            ([xshift=-.2cm]parser-\x-bottom-right) --
+            ([xshift=.2cm]deparser-\x-bottom-left);
+    }
+    \node[explain box] {
+        egress pipeline: process every output frame \\
+        run one time for \myemph{each copy} output
+    };
+\end{visibleenv}
+\begin{visibleenv}<6>
+    \foreach \x in {in,out} {
+        \draw[line width=.5mm,red,decorate,decoration={brace,mirror,raise=3mm,amplitude=2mm}]
+            ([xshift=-.2cm]parser-\x-bottom-right) --
+            ([xshift=.2cm]parser-\x-bottom-left);
+    }
+    \node[explain box] {
+        parser: decode frame fields into temporary storage
+    };
+\end{visibleenv}
+\begin{visibleenv}<7>
+    \foreach \x in {in,out} {
+        \draw[line width=.5mm,red,decorate,decoration={brace,mirror,raise=3mm,amplitude=2mm}]
+            ([xshift=-.2cm]deparser-\x-bottom-right) --
+            ([xshift=.2cm]deparser-\x-bottom-left);
+    }
+    \node[explain box] {
+        deparser: converted decoded fields back into bytes for network
+    };
+\end{visibleenv}
+\begin{visibleenv}<8>
+    \foreach \x in {ingress-in,egress-out} {
+        \draw[line width=.5mm,red,decorate,decoration={brace,mirror,raise=3mm,amplitude=2mm}]
+            ([xshift=-.2cm]\x-bottom-right) --
+            ([xshift=.2cm]\x-bottom-left);
+    }
+    \node[explain box] {
+        ``match/action pipelines'' \\
+        do series of table lookups based on parsed fields \\
+        each table lookup specifies next action
+    };
+\end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}[fragile]{P4: switch parts}
+\begin{Verbatim}
+V1Switch(
+MyParser(),
+MyVerifyChecksum(),
+MyIngress(),
+MyEgress(),
+MyComputeChecksum(),
+MyDeparser()
+) main;
+\end{Verbatim}
+\begin{itemize}
+\item code to declare instance of dataplane from functions for each part
+\item will look at most of these components
+    \begin{itemize}
+    \item won't have reason to change verify/compute checksum
+    \end{itemize}
+\end{itemize}
+\end{frame}

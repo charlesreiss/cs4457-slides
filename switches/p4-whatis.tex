@@ -1,0 +1,27 @@
+
+\begin{frame}{P4}
+    \begin{itemize}
+    \item P4 --- programming langauge for data planes
+    \item intended to be compiled to run on fast switches
+    \item includes `runtime' defining how control plane configures data plane
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{future P4 assignment}
+    \begin{itemize}
+    \item given: 
+        \begin{itemize}
+        \item simple P4 switch that doesn't know where to direct frames
+        \item simpler controller (in Python) that configures switch
+        \item simulated 4-machine network in VM
+        \end{itemize}
+    \item your task will be:
+        \begin{itemize}
+        \item have controller write static configuration to direct to right place
+        \item modify data plane to send information to control plane
+        \item have controller change configuration based on info from data plane
+        \end{itemize}
+    \item (we'll discuss more details later)
+    \end{itemize}
+\end{frame}
+
