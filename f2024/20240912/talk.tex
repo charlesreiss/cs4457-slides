@@ -1,0 +1,67 @@
+\date{}
+\title{}
+\date{}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}{last time}
+    \begin{itemize}
+    \item bandwidth-delay product and window size
+        \begin{itemize}
+        \item filling link at window size $\sim$ bandwidth-delay product
+        \item can exceed `raw' link capacity by filling queues
+        \item \myemph<2>{correction on next slide}
+        \end{itemize}
+    \item TCP
+        \begin{itemize}
+        \item sequence number = byte number for first data byte
+        \item ack number = byte number 1 past first
+        \end{itemize}
+    \item ethernet frame format
+    \item software-defined network motivation
+        \begin{itemize}
+        \item control plane versus data plane
+        \item vendor-neutral programmable switches
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{not really empty/full queues (1)}
+    \begin{itemize}
+    \item showed we achieved maximum throughput at window size 20 = 2 ms RTT times 10 pkt/ms
+    \item matches ``filling network'' idea
+    \vspace{.5cm}
+    \item<2-> but throughput collapsed at window size 22 = 2.2 ms RTT times 10 pkt/ms
+    \item<2-> but queue could hold 20 packets, which would be 4 ms round-trip-time
+        \begin{itemize}
+        \item window size 40
+        \end{itemize}
+    \item<2-> what was going on?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{not really empty/full queues (2)}
+    \begin{itemize}
+    \item calculation assumption: evenly spaced sending
+    \item but data was from ``bursty'' sending
+    \item example: send full window at start of connection
+    \vspace{.5cm}
+    \item means that queue occupency sometimes higher, sometimes lower
+    \vspace{.5cm}
+    \item overloading queue in temporary burst would cause throughput collapse
+        \begin{itemize}
+        \item even though queue not usually filled
+        \end{itemize}
+    \item won't get \textit{average} round-trip time = maximum possible
+    \end{itemize}
+\end{frame}
+
+\input{../switches/talk-inner}
+
+\section{backup slides}
+\begin{frame}{backup slides}
+\end{frame}
+
+\end{document}
