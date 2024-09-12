@@ -1,0 +1,122 @@
+
+
+\begin{frame}[fragile,label=throughAndWindow]{throughput and window size (detail)}
+\begin{tikzpicture}
+\begin{axis}[width=12cm,height=6cm,
+    xlabel=send window size,
+    ylabel=throughput (frames/time unit),
+    xmin=17,xmax=24,ymin=0]
+\addplot[only marks] coordinates {
+(1, 0.5000025000125)
+(2, 1.0000090000810007)
+(3, 1.4999925000374998)
+(4, 2.0000280003920055)
+(5, 2.500037500562508)
+(6, 3.000003000003)
+(7, 3.5000035000035)
+(8, 4.000048000576006)
+(9, 4.499842505512307)
+(10, 5.000025000125)
+(11, 5.499975250111374)
+(12, 5.99977200866367)
+(13, 6.499710762871052)
+(14, 6.999811005102861)
+(15, 7.4996812635462975)
+(16, 7.999680012799485)
+(17, 8.499426288725509)
+(18, 8.999361045365776)
+(19, 9.499202067026369)
+(20, 9.999100080971061)
+(21, 9.999100080973866)
+(22, 3.435635094325549)
+(23, 3.5274986154570636)
+(24, 3.613708966335035)
+(25, 3.6808686850100703)
+(26, 3.753260645186032)
+(27, 3.8487443471573166)
+(28, 3.925956461143474)
+};
+\addplot[blue,dotted,ultra thick,domain=0:25] {10};
+    \draw[violet,dashed,ultra thick] (axis cs:20,0) -- (axis cs:20, 11)
+     coordinate (empty queue mark);
+    %\draw[violet,dashed,ultra thick] (axis cs:21.99,0) -- (axis cs:21.99, 11)
+    % coordinate (full queue mark);
+\end{axis}
+\node[violet,anchor=south east,align=right] (nq) at ([xshift=1.5cm]empty queue mark) {
+    (no queuing delay)
+};
+\node[violet,anchor=south west,align=left] (mq) at ([xshift=-1.5cm]full queue mark) {
+    (max useful queuing delay)
+};
+\node[violet,anchor=south] at (nq) {bandwidth-delay product\\w/o queuing delay};
+\end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}[fragile,label=fullPipe]{filling the pipe}
+\begin{tikzpicture}
+\draw[ultra thick,arrows={-Latex}] (0, 0) node[left] {sender} -- (1, 0);
+\draw[thick] (1, -.5) rectangle (3, .5);
+\foreach \x in {2,2.2,2.4,2.6,2.8} {
+    \draw (\x, -.5) -- (\x, .5);
+}
+\node[anchor=south,align=center] at (2, .5) {
+    loss when full
+};
+\node[anchor=north,align=center] at (2, -.5) (queue label) {
+    queue
+};
+\node[anchor=north,font=\fontsize{9}{10}\selectfont] at ([yshift=.3cm]queue label.south) {
+    capacity 20
+};
+\draw[ultra thick,arrows={-Latex}] (3, 0) -- (12, 0) node[right]{receiver}
+    node[midway,fill=white,draw=black,very thick,align=left] {
+        10 data frames/time unit \\
+        1 time unit delay
+    }
+    \foreach \x in {0,1,2,3,4,5,6,7,8,9} {
+        node[visible on=<3->,pos=\x*.1+0.05,draw=black,fill=white,font=\tiny,below=.5cm] (data-\x) {data}
+    };
+    \begin{visibleenv}<3->
+    \draw[red,Latex-Latex] ([yshift=-.1cm]data-0.south west) -- ([yshift=-.1cm]data-1.south west)
+        node[below,font=\small] {0.1 time unit};
+    \end{visibleenv}
+\begin{scope}[shift={(12, -4)},x=-1cm]
+    \draw[ultra thick,arrows={-Latex}] (0, 0) node[right] {receiver} -- (1, 0);
+    \draw[thick] (1, -.5) rectangle (3, .5);
+    \foreach \x in {2,2.2,2.4,2.6,2.8} {
+        \draw (\x, -.5) -- (\x, .5);
+    }
+    \node[anchor=south,align=center] at (2, .5) {
+        loss when full
+    };
+    \node[anchor=north,align=center] at (2, -.5) (queue label) {
+        queue
+    };
+    \node[anchor=north,font=\small] at ([yshift=.2cm]queue label.south) {
+        capacity 20
+    };
+    \draw[ultra thick,arrows={-Latex}] (3, 0) -- (12, 0) node[left]{sender}
+        node[midway,fill=white,draw=black,very thick,align=left] {
+            100 ACK frames/time unit \\
+            1 time unit delay
+        }
+        \foreach \x in {0,1,2,3,4,5,6,7,8,9} {
+            node[visible on=<3->,pos=\x*.1+0.05,draw=black,fill=white,font=\tiny,below=.5cm,align=center,inner sep=0.5mm] {a\\c\\k}
+        };
+\end{scope}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{on bursts}
+    \begin{itemize}
+    \item max possible queuing delay suggests window size of 30
+        \begin{itemize}
+        \item approx. 3 time units times 10
+        \end{itemize}
+    \item problem: ``bursts'' temporarily exceed queue size
+    \vspace{.5cm}
+    \item achievable average queue size not that high
+    \item sender could moderate by ``pacing'' packets
+    \end{itemize}
+\end{frame}

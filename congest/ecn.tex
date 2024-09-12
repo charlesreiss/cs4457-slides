@@ -28,7 +28,7 @@
 \begin{scope}[xshift=1cm,x=0.9cm]
 \draw[box] (0, 0) rectangle ++(2, -6) 
     node[midway,align=center] {machine\\A};
-\draw[box] (5, 0) rectangle ++(2, -6) 
+\draw[violet] (7, 0) rectangle ++(.25, -6) 
     node[midway,align=center] {switch};
 \draw[box] (13, 0) rectangle ++(2, -6) 
     node[midway,align=center] {machine\\B};
@@ -37,13 +37,13 @@
 \draw[message] (13, -1.75) -- (2, -2.75) node[pos=0.25,sloped,below] {got up to {0}};
 \draw[message] (2, -1) -- (13, -2) node[pos=0.25, above, sloped] {[no ECN]{1}: ``meeting''}
     node[pos=0.75,above,sloped] {\myemph{[yes ECN]}{0}: ``The ''};
-\draw[message] (13, -2.25) -- (2, -3.25) node[pos=0.25, sloped,below] {got up to {1} \myemph{WITH ECN mark}};
+\draw[message] (13, -2.25) -- (2, -3.25) node[pos=0.25, sloped,below] {got up to {1} \myemph{+ECN}};
 
 % in response to got 0
-\draw[message] (2, -3) -- (13, -4) node[pos=0.5, above, sloped] {[no ECN] {2}: `` is at ''};
+\draw[message] (2, -3) -- (13, -4) node[pos=0.8, above, sloped] {[no ECN] {2}: `` is at ''};
 \draw[message] (13, -4.25) -- (2, -5.25) node[pos=0.25, sloped,below] {got up to {2}};
 % in response to got 1
-\draw[message] (2, -3.5) -- (13, -4.5) node[pos=0.5, above, sloped] {[no ECN] {3}: ``12pm.''};
+\draw[message] (2, -3.5) -- (13, -4.5) node[pos=0.8, above, sloped] {[no ECN] {3}: ``12pm.''};
 \draw[message] (13, -4.75) -- (2, -5.75) node[pos=0.25, sloped,below] {got up to {3}};
 \end{scope}
 \end{tikzpicture}
