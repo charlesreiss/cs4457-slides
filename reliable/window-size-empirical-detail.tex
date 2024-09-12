@@ -39,11 +39,11 @@
 \addplot[blue,dotted,ultra thick,domain=0:25] {10};
     \draw[violet,dashed,ultra thick] (axis cs:20,0) -- (axis cs:20, 11)
      coordinate (empty queue mark);
-    %\draw[violet,dashed,ultra thick] (axis cs:21.99,0) -- (axis cs:21.99, 11)
-    % coordinate (full queue mark);
+    \draw[violet,dashed,ultra thick] (axis cs:21.99,0) -- (axis cs:21.99, 11)
+     coordinate (full queue mark);
 \end{axis}
 \node[violet,anchor=south east,align=right] (nq) at ([xshift=1.5cm]empty queue mark) {
-    (no queuing delay)
+    (no(?) queuing delay)
 };
 \node[violet,anchor=south west,align=left] (mq) at ([xshift=-1.5cm]full queue mark) {
     (max useful queuing delay)
