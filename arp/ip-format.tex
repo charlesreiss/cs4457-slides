@@ -30,7 +30,7 @@
     node[midway,label] {payload len};
 \draw[box,type field] (16, -1) rectangle (24, -2)
     node[midway,label] {next header};
-\draw[box] (24, -1) rectangle (32, -2)
+\draw[box,ttl] (24, -1) rectangle (32, -2)
     node[midway,label] {hop limit/TTL};
 \draw[box,addrs] (0, -2) rectangle (32, -3.75)
     node[midway,label] {source IPv6 address (128 bit)};
