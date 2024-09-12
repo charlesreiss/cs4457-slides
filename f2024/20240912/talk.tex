@@ -28,6 +28,16 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}{quiz note}
+    \begin{itemize}
+    \item managed to get confused talking about wrong answers re: Q3
+        \begin{itemize}
+        \item made mistake re: not consistently counting what needs to happen with/without losses
+        \end{itemize}
+    \item quiz site now has explanation of correct answer
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{not really empty/full queues (1)}
     \begin{itemize}
     \item showed we achieved maximum throughput at window size 20 = 2 ms RTT times 10 pkt/ms
@@ -58,10 +68,66 @@
     \end{itemize}
 \end{frame}
 
-\input{../switches/talk-inner}
+\begin{frame}{assignment Q\&A}
+\end{frame}
+
+\subsection{control v dataplane}
+\input{../switches/control-v-dataplane}
+
+\subsection{what is P4}
+\input{../switches/p4-whatis}
+\subsection{P4 dataplane}
+\subsubsection{switch parts}
+\input{../switches/p4-switch-parts}
+\subsubsection{header management}
+\input{../switches/p4-headers}
+\subsubsection{exercise}
+\input{../switches/p4-header-exer}
+\subsubsection{ingress processing}
+\input{../switches/p4-ingress}
+\subsubsection{exercise}
+\input{../switches/p4-table-exer}
+\subsubsection{egress processing}
+\input{../switches/p4-egress}
+
+\subsection{P4 controlplane}
+\input{../switches/p4-controlplane}
+
+\section{basic Ethernet switching / MAC learning}
+
+%\againframe<10>{ethernetFormat}
+
+% FIXME: show before/after wireshark picture form assignment
+
+\input{../switches/in-ethernet}
+
+% FIXME: example of using tcpdump/etc. in implementation
+
+\subsection{aside: no loops please}
+
+\input{../switches/no-loops-please}
+
+\section{preview: internetworks}
+
+\input{../switches/preview-routing}
+
+\input{../arp/talk-inner}
 
 \section{backup slides}
 \begin{frame}{backup slides}
 \end{frame}
 
+\section{switched networks}
+
+\input{../switches/switched-network}
+
+\section{datagrams and Ethernet format}
+
+\input{../switches/datagrams}
+
+% FIXME: example in wireshark
+
+\subsection{versus virtual circuits}
+
+\input{../switches/vs-virtual-circuits}
 \end{document}
