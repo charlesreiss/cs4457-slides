@@ -1,0 +1,171 @@
+
+
+\begin{frame}{IPv6 packet format}
+\begin{tikzpicture}
+\tikzset{
+    box/.style={draw,thick},
+    label/.style={font=\small},
+    label large/.style={},
+    box label/.style={midway,font=\small,align=center},
+    box label flags/.style={midway,font=\fontsize{8}{9}\selectfont,align=center},
+    missing/.style={pattern=north west lines},
+    length field/.style={alt=<3>{fill=red!10,very thick}},
+    tos/.style={alt=<5>{fill=red!10,very thick}},
+    %frag/.style={alt=<3>{fill=red!10,very thick}},
+    ttl/.style={alt=<4>{fill=red!10,very thick}},
+    addrs/.style={alt=<6>{fill=red!10,very thick}},
+    type field/.style={alt=<2>{fill=red!10,very thick}},
+    checksum/.style={alt=<6>{fill=red!10,very thick}},
+}
+\begin{scope}[x=0.45cm,y=0.9cm]
+\path[shading=axis,top color=white,bottom color=black!20] (0, 1) rectangle (32, 0)
+    node[box label] {(lower layer header)};
+\draw[box] (0, 0) rectangle (4, -1)
+    node[midway,label] {6};
+\draw[box,tos] (4, 0) rectangle (12, -1)
+    node[midway,label] {diffserv/ECN};
+\draw[box,tos] (12, 0) rectangle (32, -1)
+    node[midway,label] {flow label};
+\draw[box,length field] (0, -1) rectangle (16, -2)
+    node[midway,label] {payload len};
+\draw[box,type field] (16, -1) rectangle (24, -2)
+    node[midway,label] {next header};
+\draw[box] (24, -1) rectangle (32, -2)
+    node[midway,label] {hop limit/TTL};
+\draw[box,addrs] (0, -2) rectangle (32, -3.75)
+    node[midway,label] {source IPv6 address (128 bit)};
+\draw[box,addrs] (0, -3.75) rectangle (32, -5.5)
+    node[midway,label] {destination IPv6 address (128 bit)};
+\draw[box] (0, -5.5) rectangle (32, -6.5)
+    node[midway,label] {extension headers (variable size)};
+\path[shading=axis,bottom color=white,top color=black!20] (0, -6.5) rectangle (32, -7.5)
+    node[box label] {(next layer's stuff)};
+\end{scope}
+\begin{visibleenv}<2>
+\node[align=left,draw=red,ultra thick,fill=white] at (6, -3) {
+    identifies first ``extension header'' type if present \\
+    (extension header idea similar to TCP `options' we saw earlier) \\
+    otherwise type of next layer (TCP, UDP, etc.)
+};
+\end{visibleenv}
+\begin{visibleenv}<3>
+\node[align=left,draw=red,ultra thick,fill=white] at (6, -3) {
+    payload = everything after fixed part of header \\
+    includes extension headers AND next layer's data
+};
+\end{visibleenv}
+\begin{visibleenv}<4>
+\node[align=left,draw=red,ultra thick,fill=white] at (6, -3) {
+    TTL=``time-to-live'' \\
+    limits how many times packet is forwarded \\
+    used to prevent ``routing loops''
+};
+\end{visibleenv}
+\begin{visibleenv}<6>
+%\node[align=left,draw=red,ultra thick,fill=white] at (6, -0.5) {
+%    32-bit IPv4 addresses
+%};
+\end{visibleenv}
+\begin{visibleenv}<5>
+\node[align=left,draw=red,ultra thick,fill=white] at (6, -3) {
+    explicit congestion notification \\
+    (for congestion control, later topic) \\
+    and `hints' for routers/switches about how `important' packet is
+};
+\end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{IPv4 packet format}
+\begin{tikzpicture}
+\tikzset{
+    box/.style={draw,thick},
+    label/.style={font=\small},
+    label large/.style={},
+    box label/.style={midway,font=\small,align=center},
+    box label flags/.style={midway,font=\fontsize{8}{9}\selectfont,align=center},
+    missing/.style={pattern=north west lines},
+    length field/.style={alt=<2>{fill=red!10,very thick}},
+    tos/.style={alt=<8>{fill=red!10,very thick}},
+    frag/.style={alt=<3>{fill=red!10,very thick}},
+    ttl/.style={alt=<5>{fill=red!10,very thick}},
+    addrs/.style={alt=<7>{fill=red!10,very thick}},
+    type field/.style={alt=<4>{fill=red!10,very thick}},
+    checksum/.style={alt=<6>{fill=red!10,very thick}},
+}
+\begin{scope}[x=0.45cm,y=0.9cm]
+\path[shading=axis,top color=white,bottom color=black!20] (0, 1) rectangle (32, 0)
+    node[box label] {(lower layer header)};
+\draw[box] (0, 0) rectangle (4, -1)
+    node[midway,label] {4};
+\draw[box,length field] (4, 0) rectangle (8, -1)
+    node[midway,label] {header len};
+\draw[box,tos] (8, 0) rectangle (16, -1)
+    node[midway,label] {diffserv/ECN};
+\draw[box,length field] (16, 0) rectangle (32, -1)
+    node[midway,label] {total length};
+\draw[box,frag] (0, -1) rectangle (16, -2)
+    node[midway,label] {identification};
+\draw[box,frag] (16, -1) rectangle (19, -2)
+    node[midway,label] {flags};
+\draw[box,frag] (19, -1) rectangle (32, -2)
+    node[midway,label] {fragment offset};
+\draw[box,ttl] (0, -2) rectangle (8, -3)
+    node[midway,label] {hop limit/TTL};
+\draw[box,type field] (8, -2) rectangle (16, -3)
+    node[midway,label] {protocol};
+\draw[box,checksum] (16, -2) rectangle (32, -3)
+    node[midway,label] {header checksum};
+\draw[box,addrs] (0, -3) rectangle (32, -4)
+    node[midway,label] {source IPv4 address (32 bit)};
+\draw[box,addrs] (0, -4) rectangle (32, -5)
+    node[midway,label] {dest IPv4 address (32 bit)};
+\draw[box] (0, -5) rectangle (32, -6.5)
+    node[midway,label] {options (variable size)};
+\path[shading=axis,bottom color=white,top color=black!20] (0, -6.5) rectangle (32, -7.5)
+    node[box label] {(next layer's stuff)};
+\end{scope}
+\begin{visibleenv}<2>
+\node[align=left,draw=red,ultra thick,fill=white] at (6, -3) {
+    data length = next layer's data only \\
+    header length includes variable `options' 
+};
+\end{visibleenv}
+\begin{visibleenv}<3>
+\node[align=left,draw=red,ultra thick,fill=white] at (6, -3) {
+    these fields part of support for ``fragments'' \\
+    where packet sent in multiple pieces \\
+    also exists in IPv6, but IPv6 uses extension headers for it\\
+    we'll probably revisit this later
+};
+\end{visibleenv}
+\begin{visibleenv}<4>
+\node[align=left,draw=red,ultra thick,fill=white] at (6, -0.5) {
+    identifier for which protocol \\
+    common: TCP, UDP, ICMP
+};
+\end{visibleenv}
+\begin{visibleenv}<5>
+\node[align=left,draw=red,ultra thick,fill=white] at (6, -0.5) {
+    ``time-to-live'' / hop limit \\
+    same idea as IPv6
+};
+\end{visibleenv}
+\begin{visibleenv}<6>
+\node[align=left,draw=red,ultra thick,fill=white] at (6, -0.5) {
+    checksum of header only \\
+    IP does not checksum other layer's stuff \\
+    (why TCP has its own checksum)
+};
+\end{visibleenv}
+\begin{visibleenv}<7>
+\end{visibleenv}
+\begin{visibleenv}<8>
+\node[align=left,draw=red,ultra thick,fill=white] at (6, -3) {
+    same field format as IPv6 \\
+    explicit congestion notification \\
+    and `importance' hint for switches/routers
+};
+\end{visibleenv}
+\end{tikzpicture}
+\end{frame}
