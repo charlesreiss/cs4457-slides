@@ -1,0 +1,61 @@
+\usetikzlibrary{arrows.meta,calc,patterns.meta}
+\begin{frame}{unfair dequeue/drop}
+\begin{tikzpicture}
+    \begin{scope}[yshift=3cm,xshift=-3cm]
+        \draw[line width=1mm,-Latex] (0, .5) -- (4, 0.3) node[midway,above,sloped] (top flow) {7 pkt/ms};
+        \foreach \x in {0.2,0.4,0.6,0.8} {
+            \path[draw,fill=violet!30] ($(0, 0.4)!\x!(4, 0.1)$) rectangle ++(0.4, 0.4);
+        }
+        \draw[line width=1mm,-Latex] (0, -.5) -- (4, -0.3) node[midway,below,sloped] (bottom flow) {3 pkt/ms};
+        \foreach \x in {0.3,0.74} {
+            \path[fill=white] ($(0, -0.5)!\x!(4, -0.4)$) rectangle ++(0.4, 0.4);
+            \path[draw,pattern={Hatch[distance=1.5,angle=45]},pattern color=blue!70!black] ($(0, -0.5)!\x!(4, -0.4)$) rectangle ++(0.4, 0.4);
+        }
+        \draw (4, -0.5) rectangle ++(2, 1) node[midway] {switch};
+        \draw[line width=1mm,-Latex] (6, 0) -- ++(4.5, 0) node[midway,above] {max 5 pkt/sec};
+        \foreach \x in {0.3} {
+            \path[fill=white] ($(6, -.2)!\x!(10, -.2)$) rectangle ++(0.4, 0.4);
+            \path[draw,pattern={Hatch[distance=1.5,angle=45]},pattern color=blue!70!black] ($(6, -.2)!\x!(10, -.2)$) rectangle ++(0.4, 0.4);
+        }
+        \foreach \x in {0.1,0.5,0.7,0.9} {
+            \path[fill=white] ($(6, -.2)!\x!(10, -.2)$) rectangle ++(0.4, 0.4);
+            \path[draw,fill=violet!30] ($(6, -.2)!\x!(10, -.2)$) rectangle ++(0.4, 0.4);
+        }
+        \node[align=left,anchor=south,fill=violet!10,draw,ultra thick] at (top flow.north)
+            {7 pkt/ms into switch};
+        \node[align=left,anchor=south,fill=violet!10,draw,ultra thick] at (8, 1)
+            {\myemph<4>{3.5 pkt/ms out} \\ \myemph<3>{20\% packet loss} };
+        \begin{visibleenv}<3->
+            \node[draw,ultra thick,align=left,anchor=north,pattern={Hatch[distance=1.5,angle=45]},pattern color=blue!10] at (bottom flow.south)
+                {3 pkt/ms into switch};
+            \node[draw,ultra thick,align=left,anchor=north,pattern={Hatch[distance=1.5,angle=45]},pattern color=blue!10] at (8, -.5)
+                {\myemph<4>{1.5 pkt/ms out} \\ \myemph<3>{20\% packet loss} };
+        \end{visibleenv}
+
+        \tikzset{
+            explain box/.style={draw=red,ultra thick,align=left,anchor=north,at={(5,-3)}},
+        }
+        \begin{visibleenv}<2>
+            \node[explain box] {
+                intuitive notion of `fair' would mean: \\
+                top flow gets 2.5 pkts/sec out  \\
+                bottom flow gets 2.5 pkts/sec out
+            };
+        \end{visibleenv}
+        \begin{visibleenv}<3>
+            \node[explain box] {
+                FIFO + drop-tail does not distinguish flows \\
+                so both flows have same drop rate  
+            };
+        \end{visibleenv}
+        \begin{visibleenv}<4>
+            \node[explain box] {
+                preserve ratio of input demand \\
+                far from even (`intuitive fair') split
+            };
+        \end{visibleenv}
+    \end{scope}
+\end{tikzpicture}
+\end{frame}
+
+

@@ -1,10 +1,23 @@
-\begin{frame}{weights instead of priorities}
+\begin{frame}{controlled fairness}
     \begin{itemize}
-    \item alternate idea: weights
-    \item if flow A has weight 9, flow B has weight 1
-    \item and both can use full availabile bandwidth
+    \item fair queuing says with 2 flows, each gets half bandwidth
+    \item maybe we have other goals:
+    \item flow A gets 80\% of bandwidth
+    \item flow B gets 20\% of bandwidth
     \vspace{.5cm}
-    \item flow A gets 90\% of bandwidth
-    \item flow B gets 10\% of bandwidth
+    \item<2-> instead of 1-bit at a time, imagine:
+    \item<2-> A sends 4 bits per round, B sends 1 bit per round
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{weighted fair queuing}
+    \begin{itemize}
+    \item change fair queuing to add `weights'
+    \item say N bits takes N/weight rounds to send
+    \vspace{.5cm}
+    \item virtual finish time = virtual start time + size/weight
+        \begin{itemize}
+        \item instead of just + size
+        \end{itemize}
     \end{itemize}
 \end{frame}

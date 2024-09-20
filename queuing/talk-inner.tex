@@ -1,17 +1,35 @@
-\section{drop-tail and some of its problems}
-
+\section{normal policy: FIFO + drop-tail}
 \input{../queuing/drop-tail}
 
-\section{priority queuing}
+\section{queue scheduling}
+\input{../queuing/scheduling}
 
-\input{../queuing/priority-queue}
+\subsection{FIFO: unfair dequeue} 
+\input{../queuing/fifo-unfair-dequeue}
 
-\section{simple fair queuing}
+\subsection{fair dequeue: simple fair queuing}
 % FIXME:
     % with packet arrivals synchornized to packet ends
     % what if arrives-in-middle
     % simultaing bit-by-bit sending
+\input{../queuing/fair-queue-setup}
+\input{../queuing/fair-queue-alt-bit}
 
-\section{weighted fair queuing}
+% FIXME: exercise implementing algorithm
+
+\subsection{fair dequeue: weighted fair queuing}
 \input{../queuing/weighted-fair-queue}
 
+% FIXME: exercise implementing algorithm
+
+\section{priority queuing}
+\input{../queuing/priority-queue}
+
+\section{drop-tail: unfair discard}
+\input{../queuing/drop-tail-unfair-discard}
+
+\section{drop-tail: long wait}
+\input{../queuing/drop-tail-long-wait}
+
+\section{early detection}
+\input{../queuing/early-detect}

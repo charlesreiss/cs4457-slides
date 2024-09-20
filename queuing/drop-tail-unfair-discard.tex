@@ -1,0 +1,27 @@
+
+\begin{frame}{drop tail --- unfair discard}
+\begin{itemize}
+\item drop tail is ``unfair''
+\item flow not responsible for most usage can be dropped
+\end{itemize}
+\begin{tikzpicture}
+    \draw[thick] (0, -.5) rectangle (8, .5);
+    \begin{visibleenv}<1>
+        \path[fill=violet!30] (0, -.5) rectangle ++(6, 1);
+        \path[fill=violet!30] (7, -.5) rectangle ++(1, 1);
+        \path[pattern=checkerboard,pattern color=blue!70!black]
+            (6, -.5) rectangle ++(1, 1);
+    \end{visibleenv}
+    \foreach \x in {1,2,3,4,5,6,7} {
+        \draw (\x, -.5) -- (\x, .5);
+    }
+    \draw[ultra thick,Latex-] (0, 0) -- ++(-2, 0);
+    \draw[draw=red,text=red,ultra thick,dotted,-Latex] (-.9, 0) to[in=90,out=0] ++(.5,-1) node[below] 
+        (discarded text) {discarded};
+    \draw[ultra thick,-Latex] (8, 0) -- ++(2, 0);
+    \node[anchor=south] at (.5, .5) {tail};
+    \node[anchor=south] at (7.5, .5) {head};
+    \path[draw,black!50,very thick,dashed,pattern=checkerboard,pattern color=blue!70!black]
+        (-2.5, -.5) rectangle ++(1, 1);
+\end{tikzpicture}
+\end{frame}
