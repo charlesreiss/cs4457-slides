@@ -1,0 +1,41 @@
+\date{}
+\title{}
+\date{}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}{last times}
+    \begin{itemize}
+    \item neighbor tables
+        \begin{itemize}
+        \item map local network (MAC) addresses to internetwork (IP) addresses
+        \item updated mostly by broadcasting to local network (ARP, ICMPv6 ND)
+        \end{itemize}
+    \item routing tables
+        \begin{itemize}
+        \item IP address range $\rightarrow$ where to send next
+        \item some entries using `gateway' (next router)
+        \item some entries say to send directly
+        \end{itemize}
+    \item autoconfiguration
+        \begin{itemize}
+        \item broadcast on local network to find configuring server
+        \item DHCP (IPv4) --- told what IP address + routes
+        \item SLAAC (IPv6) --- told prefix, assign own address in prefix
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\input{../congest/talk-inner}
+
+\section{backup slides}
+\begin{frame}{backup slides}
+\end{frame}
+
+%\input{../congest/talk-backup}
+
+\end{document}
