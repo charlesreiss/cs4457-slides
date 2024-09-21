@@ -20,16 +20,16 @@
 \begin{frame}{fixing bad convergence time}
     \begin{itemize}
     \item TCP's additive increase is very slow for ``high bandwidth-delay'' networks
-    \item two things make this better today:
+    \item two things make this better:
     \vspace{.5cm}
+    \item not in additive increase mode at start of connection
+        \begin{itemize}
+        \item ``slow start'' we'll talk about later
+        \end{itemize}
     \item more adaptive increase for modern TCP variants
         \begin{itemize}
         \item e.g. FAST TCP, CUBIC TCP, \ldots
         \item heuristics to increase faster when appropriate
-        \end{itemize}
-    \item not in additive increase mode at start of connection
-        \begin{itemize}
-        \item ``slow start'' we'll talk about later
         \end{itemize}
     \end{itemize}
 \end{frame}
