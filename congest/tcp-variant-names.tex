@@ -1,0 +1,23 @@
+\begin{frame}{``traditional'' TCP variant names}
+\begin{itemize}
+\item everything we've talked about as standard = NewReno
+\vspace{.5cm}
+\item Tahoe --- slow start + redo slow start on any loss + fast retransmit
+\item Reno --- Tahoe + halve window size on dup ACKs
+\item NewReno --- Reno + fast recovery (send extra during fast retransmit)
+\item SACK --- NewReno + use selective acknowledgments
+\end{itemize}
+\end{frame}
+
+\begin{frame}{more recent TCP variants}
+\begin{itemize}
+\item BIC, CUBIC --- loss-based schemes that vary increase/decrease algorithm
+\item Vegas, BBR, FAST, Compound, Westwood --- schemes that use latency/bandwidth to detect congestion
+    \begin{itemize}
+    \item (later topic)
+    \end{itemize}
+\item (and there are many, many more)
+\end{itemize}
+\end{frame}
+
+

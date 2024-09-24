@@ -34,13 +34,17 @@
 \subsection{exercise: convergence times}
 \input{../congest/convergence-time}
 
-\subsection{CUBIC, briefly}
-\input{../congest/cubic}
-
 \section{heuristic: fast decrease}
 \input{../congest/heuristic-decrease}
 
     % FIXME: hilite distance measurement oof down parts on sawtooth pattern
+
+\section{some graphs}
+\input{../congest/tcp-normal-graphs}
+
+\section{CUBIC, briefly}
+\input{../congest/cubic}
+
 
 \subsection{exercise: non-congestion losses}
 \input{../congest/non-congest-losses}
@@ -86,8 +90,22 @@
 
 \input{../congest/slow-start} % FIXME: picture
 
-\section{deep queues?}
+\section{some more graphs}
+\againframe<2>{vegasrenotrace}
+\input{../congest/graphs-with-slow-start}
 
+\section{TCP variants}
+\input{../congest/tcp-variant-names}
+
+\section{congestion missing pieces}
+\begin{frame}{some connected questions}
+    \begin{itemize}
+    \item do we really need packet loss?
+    \item what does congestoin control due to latency?
+    \end{itemize}
+\end{frame}
+
+\section{deep queues?}
 \input{../congest/buffer-bloat}
 
 \section{other congestion signals}

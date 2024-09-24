@@ -5,7 +5,6 @@
         \item sysadmin has other options they can configure
         \item can be changed on connection-by-connection basis
         \end{itemize}
-    \vspace{.5cm}
     \item big idea: faster increase when further away from window size of last loss
         \begin{itemize}
         \item cubic function with saddle at that window size
@@ -16,4 +15,15 @@
         \item avoid excess losses from `probing' if at ``steady state''
         \end{itemize}
     \end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\begin{tikzpicture}
+\node (pic) {
+\includegraphics[height=\textheight]{../congest/cubic-fig4}
+};
+\node[anchor=north west,font=\tiny] at (pic.north east) {
+from Ha, Rhee, and Xu, ``CUBIC: A New TCP-Friendly High-Speed TCP Variant''
+};
+\end{tikzpicture}
 \end{frame}
