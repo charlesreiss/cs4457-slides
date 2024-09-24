@@ -3,18 +3,38 @@
 \item explicit congestion notification
 \vspace{.5cm}
 \item when buffer `close' to full
-\item switches/router set `congestion experienced' (CE) bit in some packets
+\item switches set `congestion experienced' (CE) signal in some packets
+\item goal: congestion signal \textit{instead of} packet drops
     \begin{itemize}
-    \item field in IP header
+    \item avoid all the retransmission, hopefully
     \end{itemize}
-\item CE bit echoed back in ACKs
 \vspace{.5cm}
-\item for compatibility:
-    \begin{itemize}
-    \item sender opts-in to ECN by setting field in IP packet
-    \item if not set, switch/router just drops packet
-    \end{itemize}
+\item still have fallback to dropping packets
 \end{itemize}
+\end{frame}
+
+\begin{frame}{ECN and TCP/IP}
+\begin{itemize}
+\item congestion experience (CE) signal in IP heaer
+\item when ACKing, ``return'' CE signal with ACK
+    \begin{itemize}
+    \item ECN echo (ECE) TCP flag on ACK packets
+    \end{itemize}
+\vspace{.25cm}
+\item when sender sees ECE flag, confirm reciept by setting
+    ``congestion window reduced'' (CWR) flag until ECE flag stops being set
+\end{itemize}
+\end{frame}
+
+\begin{frame}{ECN opt-in}
+    \begin{itemize}
+    \item two bits in IP header
+    \item RFC 3168 says:
+    \vspace{.5cm}
+    \item \texttt{00} = not-ECN capable (default)
+    \item \texttt{01}, \texttt{10} = ECN-capable (set by TCP/etc. implementation)
+    \item \texttt{11} = congestion experienced
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{ECN timeline}

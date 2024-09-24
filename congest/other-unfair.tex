@@ -22,3 +22,18 @@
         \end{itemize}
     \end{itemize}
 \end{frame}
+
+\begin{frame}{examples: checking versus TCP}
+\begin{tikzpicture}
+\node (a) {
+\includegraphics[height=0.9\textheight]{../congest/cubic-sack-compare}
+};
+\node[anchor=north west] (b) at (a.north east) {
+\includegraphics[height=0.6\textheight]{../congest/ctcp-regular-compare}
+};
+\end{tikzpicture}
+\imagecredit{
+from Ha, et al, ``CUBIC: A New TCP-Friendly High-Speed TCP Variant'' \\
+and Tan, et al, ``A Compound TCP Approach for High-speed and Long Distance Networks''
+}
+\end{frame}
