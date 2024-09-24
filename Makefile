@@ -6,7 +6,8 @@ SLIDEDECKS = \
     reliable \
     switches \
     arp \
-    congest
+    congest \
+    queuing
 
 
 all: $(patsubst %,_dist/%.pdf,$(SLIDEDECKS))
