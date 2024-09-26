@@ -27,12 +27,31 @@
         \begin{itemize}
         \item probably variable name in BSD code for this
         \end{itemize}
+    \item use slow start when window size lower than ssthresh
     \vspace{.5cm}
-    \item on timeout (not dupack), reset window size to 1 packet, BUT
-    \item use `slow start' until ssthresh reached or more congestion
+    \item but how can that happen?
         \begin{itemize}
-        \item backoff network more aggressively, and
-        \item hopefully find correct new window size faster?
+        \item need something other than multiplicative decrease
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{decrease versus reset}
+    \begin{itemize}
+    \item on duplicate ACK (most common case):
+        \begin{itemize}
+        \item do multiplicative decrease
+        \end{itemize}
+    \item on timeout:
+        \begin{itemize}
+        \item reset window size to 1 packet
+        \end{itemize}
+    \vspace{.5cm}
+    \item after timeout, use ``slow start''
+    \item \ldots until ssthresh reached or congestion
+        \begin{itemize}
+        \item intuition: don't assume halving is enough
+        \item intuition: find correct lower window size faster
         \end{itemize}
     \end{itemize}
 \end{frame}

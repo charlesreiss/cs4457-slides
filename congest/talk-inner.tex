@@ -98,12 +98,32 @@
 
 \input{../congest/slow-start} % FIXME: picture
 
-\section{some more graphs}
+\subsection{exercise}
+\input{../congest/slow-start-ex}
+
+\subsection{some more graphs}
 \againframe<2>{vegasrenotrace}
 \input{../congest/graphs-with-slow-start}
 
 \section{missing piece: reverse path}
 \input{../congest/reverse-path}
+
+\section{aside: some queuing theory}
+\input{../congest/diversion-queuing-theory}
+
+\section{deep queues?}
+\input{../congest/buffer-bloat}
+
+\section{missing Jacobson pieces}
+
+\subsection{variance estimation}
+\againframe<5>{jacobsonFixes}
+\input{../congest/variance-estimate}
+
+\subsection{exponential backoff}
+\againframe<6>{jacobsonFixes}
+\input{../congest/exp-backoff}
+>>>>>>> 6650c6e (late slied edits)
 
 \section{TCP variants}
 \input{../congest/tcp-variant-names}
@@ -115,9 +135,6 @@
     \item what does congestoin control due to latency?
     \end{itemize}
 \end{frame}
-
-\section{deep queues?}
-\input{../congest/buffer-bloat}
 
 \section{other congestion signals}
 

@@ -1,0 +1,55 @@
+\begin{frame}{timeout setting}
+    \begin{itemize}
+    \item goal in setting timeouts:
+        \begin{itemize}
+        \item timeout triggering almost always means dropped packet
+        \end{itemize}
+    \item to do this want \textit{highest likely round trip time}
+    \vspace{.5cm}
+    \item original TCP heuristic: twice RTT estimate
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{RTT variation exercise (1)}
+    \begin{itemize}
+    \item let's say 1 ms tranmission delay + 20 ms propogation delay
+    \item and queue depth ranges `randomly' from 1 to 10
+    \item exercise: round-trip-time?
+        \begin{itemize}
+        \item<2-> 42 ms with no queue
+        \item<2-> +1 ms per queue depth
+        \item<2-> 43 to 52 ms
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{RTT variation exercise (2)}
+    \begin{itemize}
+    \item let's say 1 ms tranmission delay + 10 ms propogation delay
+    \item and queue depth ranges `randomly' from 10 to 40
+    \item exercise: round-trip-time?
+        \begin{itemize}
+        \item<2-> 12 ms with no queue
+        \item<2-> +1 ms per queue depth
+        \item<2-> 22 to 52 ms
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{how does original timeout do?}
+    \begin{itemize}
+    \item works well when queuing delay small relative to other delays
+    \item works poorly when queuing delay high
+    \item \ldots because queuing delay won't be consistent!
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{new timeout formula}
+    \begin{itemize}
+    \item estimate mean deviation of RTT (= difference from average)
+    \item similar exponentially weighted moving average
+    \vspace{.5cm}
+    \item timeout = RTT estimate + 2 $\times$ RTT deviation estimate
+    \end{itemize}
+\end{frame}
+

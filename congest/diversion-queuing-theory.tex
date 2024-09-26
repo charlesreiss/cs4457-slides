@@ -1,0 +1,66 @@
+\begin{frame}{diversion: some queuing theory}
+    \begin{itemize}
+    \item queuing theory: applied probability
+    \item talks about how queues work
+    \vspace{.5cm}
+    \item applies to networks and anything else with ``waiting in line''
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{queue measurements}
+    \begin{itemize}
+    \item arrival rate
+    \item service time (amount of time after waiting in line)
+    \item utilization = arrival rate / service time
+    \vspace{.5cm}
+    \item if single thing can be processed at a time, then max utilization = 100\%
+        \begin{itemize}
+        \item higher implies ``infinitely'' long queues
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{M/M/1/$\infty$ queue}
+    \begin{itemize}
+    \item next slides: results for M/M/1/$\infty$ queue
+    \vspace{.5cm}
+    \item M (memoryless) --- random arrival (exponential dist.)
+    \item M --- random service time (exponential dist.)
+    \item 1 --- one ``server'' (thing that can process packets)
+    \item $\infty$ --- unlimited queue length
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{M/M/1/$\infty$ queue length}
+    \begin{itemize}
+    \item mean queue length \[\frac{\text{arrival rate}}{\text{service rate} - \text{arrival rate}}\]
+    \end{itemize}
+\begin{tikzpicture}
+\begin{axis}[width=12cm,height=5cm,xlabel=arrival rate (portion of service rate),ylabel=queue length,xmin=0,xmax=1.2,ymin=0,ymax=10]
+\addplot[blue,ultra thick,domain=0:1,samples=128]{x/(1-x)};
+\end{axis}
+\end{tikzpicture}
+    \begin{itemize}
+    \item<2-> practical implication: \myemph{need to run networks at much less than full utilization}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{M/M/1/$\infty$ queue length std. deviation}
+    \begin{itemize}
+    \item \[\sqrt{\frac{\text{utilization}}{\left(1 - \text{utilization}\right)^2}}\]
+    \end{itemize}
+\begin{tikzpicture}
+\begin{axis}[width=12cm,height=6cm,xlabel=arrival rate (portion of service rate),ylabel=queue length,xmin=0,xmax=1,ymin=0,ymax=10]
+\addplot[blue,ultra thick,domain=0:1,samples=128]{sqrt(x/(1-x)^2)};
+\end{axis}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{approx 95th pctile v mean queue length}
+\begin{tikzpicture}
+\begin{axis}[width=12cm,height=8cm,xlabel=arrival rate (portion of service rate),ylabel=queue length,xmin=0,xmax=1,ymin=0,ymax=10]
+\addplot[blue,ultra thick,domain=0:1,samples=128]{x/(1-x)+1.96*sqrt(x/(1-x)^2)};
+\addplot[dotted,ultra thick,violet,domain=0:1,samples=128]{x/(1-x)};
+\end{axis}
+\end{tikzpicture}
+\end{frame}
