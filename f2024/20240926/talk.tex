@@ -8,10 +8,34 @@
     \titlepage
 \end{frame}
 
-\begin{frame}{timeout v dupack}
+\begin{frame}{last time}
+    \begin{itemize}
+    \item signals for sweet spot for window size
+        \begin{itemize}
+        \item window size $\approx$ packets in flight
+        \item too high --- drops + higher latency
+        \item too low --- no drops + lower latency
+        \end{itemize}
+    \item problem of networks getting overloaded
+        \begin{itemize}
+        \item positive feedback loop from retransmissions
+        \item drops spread across all connections
+        \end{itemize}
+    \item additive increase
+        \begin{itemize}
+        \item or variations (e.g. CUBIC)
+        \end{itemize}
+    \item multiplicative decrease
+    \item `fair' sharing
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{assignment Q and A}
 \end{frame}
 
 \input{../congest/talk-inner}
+
+\input{../queuing/talk-inner}
 
 \section{backup slides}
 \begin{frame}{backup slides}
