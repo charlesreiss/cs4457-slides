@@ -117,3 +117,15 @@
     \end{itemize}
 \end{frame}
 
+
+\begin{frame}{BBR}
+\begin{itemize}
+\item congestion control algoirithm out of Google published c. 2016
+\item apparently deployed (at least at some point) on their servers
+\vspace{.5cm}
+\item not great fairness results with traditional TCP
+    \begin{itemize}
+    \item Philip (IMC'21)\footnote{Philip, Ware, Athapathu, Sherry, Sekar, ``Revisting TCP Congestion Control Throughput Models \& Fairness Properties AT Scale'' (IMC'21)} claims one BBR flow takes 40\% of throughput when competing with thousands of CUBIC or NewReno flows
+    \end{itemize}
+\end{itemize}
+\end{frame}

@@ -1,0 +1,22 @@
+\begin{frame}{the reverse path}
+    \begin{itemize}
+    \item so far: assuming congestion on sender to receiver path
+    \item but we can also have congestion in other direction
+        \begin{itemize}
+        \item network becomes overloaded with ACKs
+        \end{itemize}
+    \item hopefully rare because ACKs are small, but\ldots
+    \item but worth some special mitigations
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{delayed ACKs}
+\begin{itemize}
+\item RFC 1122 {\small(Requirements for Internet Hosts --- Communication Layers)}
+    \begin{itemize}
+    \item ``A host that is receiving a stream of TCP data segments can increase efficiency\ldots by sending fewer than one ACK (acknowledgment) per data segment received; this is known as a ``delayed ACK''\ldots ''
+    \end{itemize}
+\item usually enabled these days
+\item adds some latency, so Linux lets you disable on per-connection basis
+\end{itemize}
+\end{frame}

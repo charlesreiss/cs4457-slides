@@ -37,14 +37,13 @@
 \section{heuristic: fast decrease}
 \input{../congest/heuristic-decrease}
 
-    % FIXME: hilite distance measurement oof down parts on sawtooth pattern
+% FIXME: decrease on timeout versus dup ACK
 
 \section{some graphs}
 \input{../congest/tcp-normal-graphs}
 
 \section{CUBIC, briefly}
 \input{../congest/cubic}
-
 
 \subsection{exercise: non-congestion losses}
 \input{../congest/non-congest-losses}
@@ -67,11 +66,20 @@
 \subsection{min/max fairness}
 \input{../congest/min-max-fairness}
 
+\subsubsection{exercise}
+\input{../congest/min-max-fair-ex}
+
+\subsection{Jain's fairness index}
+\input{../congest/jain-fairness}
+
 \subsection{RTT-unfairness}
 \input{../congest/rtt-unfair}
 
 \subsection{other unfairness}
 \input{../congest/other-unfair}
+
+\subsubsection{unfairness in practice}
+\input{../congest/unfair-practice}
 
 \section{`fast retransmit' and `fast recovery'}
 \againframe<3>{jacobsonFixes}
@@ -93,6 +101,9 @@
 \section{some more graphs}
 \againframe<2>{vegasrenotrace}
 \input{../congest/graphs-with-slow-start}
+
+\section{missing piece: reverse path}
+\input{../congest/reverse-path}
 
 \section{TCP variants}
 \input{../congest/tcp-variant-names}

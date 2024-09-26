@@ -17,7 +17,7 @@
     \draw[connect big] (\x) -- (\y);
 }
 \draw[connect big] (C) -- (r1)
-    node[-,sloped,midway,pin={[-]long link}] {};
+    node[-,sloped,midway,pin={long link},every pin edge/.style={-}] {};
 \begin{visibleenv}<2>
 \foreach \x/\y in {A.east/r1.west,r1.east/r2.west,r2.east/B.west} {
     \draw[-Latex,blue,line width=.7mm] ([yshift=-3mm]\x) -- ([yshift=-3mm]\y);

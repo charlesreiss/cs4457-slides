@@ -1,0 +1,17 @@
+\begin{frame}{a theoretical result}
+    \begin{itemize}
+    \item for RTT-unfairness, standard TCP with selective acknowledgments:\footnote{Mathis et al, ``The Macroscopeic Behavior of the TCP Congestion Avoidance Algorithm'' (1997)}
+    \[\text{throughput} \approx \text{constant} \times \frac{\text{packet size}}{\text{RTT}\sqrt{\text{loss rate}}}\]
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{empirical results}
+    \begin{itemize}
+    \item some results from Philip (IMC'21)\footnote{Philip, Ware, Athapathu, Sherry, Sekar, ``Revisting TCP Congestion Control Throughput Models \& Fairness Properties At Scale'' (IMC'21)}
+    \item with same congestion control algorithm + RTT, Jain's fairness index > 0.99
+    \item CUBIC takes 70-80\% of throughput when competing with equal number of traditional TCP flows
+        \begin{itemize}
+        \item recall: major change is cubic increase curve instead of additive (linear) increase
+        \end{itemize}
+    \end{itemize}
+\end{frame}
