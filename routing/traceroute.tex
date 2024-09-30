@@ -1,16 +1,3 @@
-\begin{frame}{time-to-live (v4) / hop limit (v6)}
-    \begin{itemize}
-    \item fields in IPv4/IPv6 headers
-    \vspace{.5cm}
-    \item when forwarding packet, router will:
-    \item subtract one from TTL / hop limit
-        \begin{itemize}
-        \item and recompute checksum accordingly
-        \end{itemize}
-    \item if TTL/hop limit = 0, drop packet
-    \item usually send back ICMP ``Time Exceeded'' error
-    \end{itemize}
-\end{frame}
 
 \begin{frame}{traceroute}
     \begin{itemize}
