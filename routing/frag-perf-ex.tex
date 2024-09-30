@@ -1,0 +1,20 @@
+\begin{frame}{exercise: fragmentation perf}
+    \begin{itemize}
+    \item assume:
+    \begin{itemize}
+        \item Ethernet header/trailer: 26 bytes
+        \item IPv4 header: 20 bytes + 0 bytes of options
+        \item TCP header: 20 bytes + 16 bytes of options
+    \end{itemize}
+    \vspace{.5cm}
+    \item suppose local network supports 65535-byte ethernet payloads
+    \item and remote network suports 1500-byte ethernet payloads
+    \item and fragmentation happens
+    \item exericses:
+        \begin{itemize}
+        \item lowest overhead TCP segment size?
+        \item overhead for 64000-byte TCP segments?
+        \item highest overhead TCP segment size?
+        \end{itemize}
+    \end{itemize}
+\end{frame}
