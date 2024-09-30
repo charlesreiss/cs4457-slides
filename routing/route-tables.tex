@@ -1,0 +1,57 @@
+\usetikzlibrary{matrix}
+\begin{frame}{routing tables}
+\begin{tikzpicture}
+\matrix[tight matrix,
+    nodes={minimum height=.6cm},gT
+    column 1/.style={nodes={text width=4.5cm,font=\small\tt}},
+    column 2/.style={nodes={text width=2cm,font=\small\tt,alt=<4>{fill=red!10}}},
+    column 3/.style={nodes={text width=1cm,font=\small\tt,alt=<3>{fill=red!10}}},
+    row 1/.style={nodes={font=\small}},
+    label={north:routing table},
+    anchor=north west
+] (route table v6) {
+IP addresses \& gateway \& iface \\
+2001:0db8:40:f000:;/44 \& --- \& int1 \\
+2001:0db8:40:e000::/44 \& 2001:0db8:40:f000::2 \& int1 \\
+2001:0db8:40:d000::/44 \& --- \& int3 \\
+3fff:1000:19::/48 \& --- \& ext1 \\
+\ldots \& \ldots \& \ldots \\
+\normalfont default \& fe80::17 \& ext2 \\
+};
+\matrix[tight matrix,
+    nodes={minimum height=.6cm},gT
+    column 1/.style={nodes={text width=4.5cm,font=\small\tt}},
+    column 2/.style={nodes={text width=2cm,font=\small\tt,alt=<4>{fill=red!10}}},
+    column 3/.style={nodes={text width=1cm,font=\small\tt,alt=<3>{fill=red!10}}},
+    row 1/.style={nodes={font=\small}},
+    label={north:routing table},
+    anchor=north west
+] (route table v4) at (route table v6.south west) {
+IP addresses \& gateway \& iface \\
+192.0.2.0/25 \& --- \& int1 \\
+192.0.2.128/26 \& 192.0.2.1 \& int1 \\
+192.0.2.192/26 \& 192.0.2.2 \& int1 \\
+198.51.100.0/25 \& 192.0.2.1 \& int1 \\
+198.51.100.128/25 \& --- \& int2 \\
+\ldots \& \ldots \& \ldots \\
+\normalfont default \& 203.0.113.1 \& ext \\
+};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{filling routing tables}
+    \begin{itemize}
+    \item easy part: what networks are you directly connected to
+        \begin{itemize}
+        \item that range of IP addresses, that interface
+        \end{itemize}
+    \vspace{.5cm}
+    \item harder part: other routers on connected router
+    \item need to learn:
+        \begin{itemize}
+        \item addresses of other router
+        \item which networks can be reached through them directly or indirectly
+        \end{itemize}
+    \item need to choose between multiple ways of reaching networks
+    \end{itemize}
+\end{frame}

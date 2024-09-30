@@ -1,0 +1,77 @@
+\date{}
+\title{}
+\date{}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\section{routing problem}
+
+\input{../routing/route-tables}
+
+\section{actions on forwarding}
+
+% FIXME: router picture
+\input{../routing/forward-act}
+
+\subsection{unreachable}
+\againframe<2>{forwardProbs}
+\input{../routing/unreachable} % FIXME: wireshark example
+
+\subsection{fragmentation, MTUs}
+
+\againframe<3>{forwardProbs}
+\input{../routing/fragments} % FIXME: IP packet format
+
+\subsection{time-to-live}
+
+\againframe<4>{forwardProbs}
+\input{../routing/ttl}
+
+\section{traceroute}
+\input{../routing/traceroute}
+
+\section{centralized versus distributed}
+\input{../routing/central-v-dist}
+
+\section{basic flooding / MAC learning}
+% FIXME
+
+\section{spanning trees}
+
+\subsection{living without TTLs}
+
+\subsection{Union-Find spanning tree}
+
+\subsection{spanning tree protocol}
+
+\section{aside: metrics}
+
+\section{Bellman-Ford}
+
+\section{distance vector routing}
+
+\subsection{centralized algorithm}
+
+\subsection{distributed algorithm}
+
+\section{link state}
+
+\section{interdomain routing}
+
+\subsection{business priorities}
+
+\subsection{sharing routes: BGP}
+
+\subsection{loop prevention, metrics}
+
+\subsection{within-AS routing}
+
+\subsection{hot or cold potato}
+
+\section{backup slides}
+\begin{frame}{backup slides}
+\end{frame}
+
+\end{document}
