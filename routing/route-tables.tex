@@ -2,16 +2,15 @@
 \begin{frame}{routing tables}
 \begin{tikzpicture}
 \matrix[tight matrix,
-    nodes={minimum height=.6cm},
-    column 1/.style={nodes={text width=4.5cm,font=\small\tt}},
-    column 2/.style={nodes={text width=2cm,font=\small\tt,alt=<4>{fill=red!10}}},
-    column 3/.style={nodes={text width=1cm,font=\small\tt,alt=<3>{fill=red!10}}},
+    nodes={minimum height=.4cm},
+    column 1/.style={nodes={text width=4.5cm,font=\fontsize{9}{10}\selectfont\tt}},
+    column 2/.style={nodes={text width=4.5cm,font=\fontsize{9}{10}\selectfont\tt}},
+    column 3/.style={nodes={text width=1cm,font=\fontsize{9}{10}\tt}},
     row 1/.style={nodes={font=\small}},
-    label={north:routing table},
     anchor=north west
 ] (route table v6) {
 IP addresses \& gateway \& iface \\
-2001:0db8:40:f000:;/44 \& --- \& int1 \\
+2001:0db8:40:f000::/44 \& --- \& int1 \\
 2001:0db8:40:e000::/44 \& 2001:0db8:40:f000::2 \& int1 \\
 2001:0db8:40:d000::/44 \& --- \& int3 \\
 3fff:1000:19::/48 \& --- \& ext1 \\
@@ -19,14 +18,13 @@ IP addresses \& gateway \& iface \\
 \normalfont default \& fe80::17 \& ext2 \\
 };
 \matrix[tight matrix,
-    nodes={minimum height=.6cm},
-    column 1/.style={nodes={text width=4.5cm,font=\small\tt}},
-    column 2/.style={nodes={text width=2cm,font=\small\tt,alt=<4>{fill=red!10}}},
-    column 3/.style={nodes={text width=1cm,font=\small\tt,alt=<3>{fill=red!10}}},
+    nodes={minimum height=.4cm},
+    column 1/.style={nodes={text width=4.5cm,font=\fontsize{9}{10}\selectfont\tt}},
+    column 2/.style={nodes={text width=4.5cm,font=\fontsize{9}{10}\selectfont\tt}},
+    column 3/.style={nodes={text width=1cm,font=\fontsize{9}{10}\tt}},
     row 1/.style={nodes={font=\small}},
-    label={north:routing table},
     anchor=north west
-] (route table v4) at (route table v6.south west) {
+] (route table v4) at ([yshift=-.2cm]route table v6.south west) {
 IP addresses \& gateway \& iface \\
 192.0.2.0/25 \& --- \& int1 \\
 192.0.2.128/26 \& 192.0.2.1 \& int1 \\
