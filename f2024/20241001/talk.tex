@@ -21,6 +21,31 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}{quiz Q1}
+\begin{itemize}
+\item initially data packet 4--11 or their ACK in flight, since 12 transmitted when 11 received
+\item also dup ack for 7 probably means 7 lost
+\end{itemize}
+\begin{tabular}{ll}
+before & 4,5,6,8,9,10,11\\
+ACK 4 & 5,6,8,9,10,11 \\
+send 12 & 5,6,8,9,10,11,12 \\
+ACK 5 & 6,8,9,10,11,12 \\
+ACK 6 & 8,9,10,11,12  \\
+ACK 6 & 9,10,11,12 (guessing 8 recv'd) \\
+ACK 6 & 10,11,12 (guessing 9 recv'd) \\
+\end{tabular}
+\end{frame}
+
+\begin{frame}{quiz Q3}
+\begin{itemize}
+\item A--S1--S2--C
+\item 10 ms per link = 30 ms/direction
+\item 60 ms RTT
+\item 1 packet/ms max
+\end{itemize}
+\end{frame}
+
 \begin{frame}{VM setup?}
 \end{frame}
 
@@ -77,10 +102,12 @@
 
 \subsection{explicit congestion notification}
 
+\againframe<2>{otherSig}
 \input{../congest/ecn}
 
 \subsection{watching latency, etc.}
 
+\againframe<3>{otherSig}
 \input{../congest/watch-latency}
 
 
