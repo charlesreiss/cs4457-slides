@@ -235,78 +235,78 @@
     every node/.style={font=\small},
 }
 \begin{visibleenv}<2>
-    \node[draw,very thick] at (G.north east) {
-        r=G,d=0,no link
-    };
-    \node[draw,very thick,alt=<2>{msg data}] at (E.south) {
-        r=E,d=0,no link
-    };
-    \node[draw,very thick] at (F.south east) {
-        r=F,d=0,no link
-    };
-    \node[draw,very thick] at (D.south west) {
-        r=D,d=0,no link
-    };
     \draw[msg link] (E) -- (G);
     \draw[msg link] (E) -- (F);
     \draw[msg link] (E) -- (D);
-\end{visibleenv}
-\begin{visibleenv}<3>
-    \node[draw,very thick,draw=red] at (G.north east) {
-        r=E,d=1,G--E
+    \node[draw,very thick,anchor=south west] at (G.north east) {
+        r=G,d=0,no link
     };
-    \node[draw,very thick] at (E.south) {
+    \node[draw,very thick,alt=<2>{msg data},anchor=north] at (E.south) {
         r=E,d=0,no link
     };
-    \node[draw,very thick,draw=red] at (F.south east) {
+    \node[draw,very thick,anchor=north west] at (F.south east) {
+        r=F,d=0,no link
+    };
+    \node[draw,very thick,anchor=north west] at (D.south west) {
+        r=D,d=0,no link
+    };
+\end{visibleenv}
+\begin{visibleenv}<3>
+    \draw[msg link] (E) -- (G);
+    \draw[msg link] (E) -- (F);
+    \draw[msg link] (E) -- (D);
+    \node[draw,very thick,draw=red,anchor=south west] at (G.north east) {
+        r=E,d=1,G--E
+    };
+    \node[draw,very thick,anchor=north] at (E.south) {
+        r=E,d=0,no link
+    };
+    \node[draw,very thick,draw=red,anchor=north west] at (F.south east) {
         r=E,d=0,F--E
     };
-    \node[align=left,draw,very thick,draw=red] at (D.south west) {
+    \node[align=left,draw,very thick,draw=red,anchor=north east] at (D.south west) {
         r=D,d=0,no link \\
         (D < G, so no update)
     };
-    \draw[msg link] (E) -- (G);
-    \draw[msg link] (E) -- (F);
-    \draw[msg link] (E) -- (D);
 \end{visibleenv}
 \begin{visibleenv}<4>
-    \node[draw,very thick] at (G.north east) {
-        r=E,d=1,G--E
-    };
-    \node[draw,very thick] at (E.south) {
-        r=E,d=0,no link
-    };
-    \node[draw,very thick] at (F.south east) {
-        r=E,d=0,F--E
-    };
-    \node[draw,very thick,alt=<4>{msg data}] at (D.south west) {
-        r=D,d=0,no link
-    };
-    \node[draw,very thick] at (B.north) {
-        r=B,d=0,no link
-    };
     \draw[msg link] (D) -- (B);
     \draw[msg link] (D) -- (E);
-\end{visibleenv}
-\begin{visibleenv}<5>
-    \node[draw,very thick] at (G.north east) {
+    \node[draw,very thick,anchor=south west] at (G.north east) {
         r=E,d=1,G--E
     };
-    \node[draw,very thick,draw=red] at (E.south) {
-        r=D,d=1,E--D
+    \node[draw,very thick,anchor=north] at (E.south) {
+        r=E,d=0,no link
     };
-    \node[draw,very thick] at (F.south east) {
+    \node[draw,very thick,anchor=north west] at (F.south east) {
         r=E,d=0,F--E
     };
-    \node[draw,very thick] at (D.south west) {
+    \node[draw,very thick,alt=<4>{msg data},anchor=north east] at (D.south west) {
         r=D,d=0,no link
     };
-    \node[align=left,draw,very thick,draw=red] at (B.north) {
+    \node[draw,very thick,anchor=south] at (B.north) {
+        r=B,d=0,no link
+    };
+\end{visibleenv}
+\begin{visibleenv}<5>
+    \draw[msg link] (D) -- (B);
+    \draw[msg link] (D) -- (E);
+    \node[draw,very thick,anchor=south west] at (G.north east) {
+        r=E,d=1,G--E
+    };
+    \node[draw,very thick,draw=red,anchor=north] at (E.south) {
+        r=D,d=1,E--D
+    };
+    \node[draw,very thick,anchor=north west] at (F.south east) {
+        r=E,d=0,F--E
+    };
+    \node[draw,very thick,anchor=north east] at (D.south west) {
+        r=D,d=0,no link
+    };
+    \node[align=left,draw,very thick,draw=red,anchor=south] at (B.north) {
         r=B,d=0,no link \\
         (B < D, no update)
     };
-    \draw[msg link] (D) -- (B);
-    \draw[msg link] (D) -- (E);
 \end{visibleenv}
 \end{tikzpicture}
 \end{frame}

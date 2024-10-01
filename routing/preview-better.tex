@@ -1,0 +1,46 @@
+\begin{frame}[fragile]{exercise: best routes?}
+\begin{tikzpicture}
+\tikzset{
+    computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
+    switch/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\switch}},
+    port/.style={pos=0.95,fill=white,circle,draw,inner sep=0mm},
+    port beginning/.style={pos=0.05,fill=white,circle,draw,inner sep=0mm},
+    route table/.style={
+        matrix of nodes,ampersand replacement=\&,
+        column 1/.style={nodes={draw,thick,text width=2.5cm,font=\tiny\tt,text depth=0mm,minimum height=0.5cm,inner sep=1mm}},
+        column 2/.style={nodes={draw,thick,text width=.5cm,font=\small\tt,text depth=0mm,minimum height=0.5cm,inner sep=1mm}},
+        row 1/.style={nodes={draw=none,font=\small}},
+    },
+    mac label/.style={
+        draw,fill=white,inner sep=1mm,font=\tiny\tt,
+    },
+    n real/.style={solid},
+    n real at/.style={alt=<#1->{solid},alt=<#1>{fill=red!10}},
+    n real until/.style={alt=<1-#1>{solid}},
+    tn/.style={draw,dotted,circle,very thick},
+    real at/.style={alt=<#1->{solid},alt=<#1>{fill=red!10}},
+    connect maybe/.style={draw,very thick,dotted,Latex-Latex},
+    actual at/.style={alt=<#1->{draw=red,solid},alt=<#1>{draw,solid}},
+    consider at/.style={alt=<#1>{draw=red}},
+    msg link/.style={draw,violet,line width=1.2mm,-Latex},
+    msg data/.style={draw=violet,line width=1mm,fill=white,align=left},
+}
+\node[tn,n real] (A) at (0, 0) {A};
+\node[tn,n real] (B) at (5, -1) {B};
+\node[tn,n real] (G) at (-5, -1) {G};
+\node[tn,n real] (D) at (7, -3) {D};
+\node[tn,n real] (E) at (1, -5) {E};
+\node[tn,n real] (F) at (-7, -4) {F};
+\draw[connect maybe] (A) -- (B) node[midway,sloped,above] {1Mbit, 10ms};
+\draw[connect maybe] (A) -- (G) node[midway,sloped,above] {10Mbit, 20ms};
+\draw[connect maybe] (B) -- (G) node[midway,sloped,above] {11Mbit, 20ms};
+\draw[connect maybe] (B) -- (D) node[midway,sloped,above] {5Mbit, 100ms};
+\draw[connect maybe] (G) -- (F) node[midway,sloped,above] {6Mbit, 5ms};
+\draw[connect maybe] (G) -- (E) node[midway,sloped,above] {8Mbit, 10ms};
+\draw[connect maybe] (D) -- (E) node[midway,sloped,above] {2Mbit, 20ms};
+\draw[connect maybe] (E) -- (F) node[midway,sloped,above] {100Mbit, 10ms};
+\end{tikzpicture}
+\begin{itemize}
+\item A to B? B to E? F to G?
+\end{itemize}
+\end{frame}
