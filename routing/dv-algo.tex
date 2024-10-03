@@ -1,0 +1,15 @@
+\begin{frame}{distance vector routing}
+    \begin{itemize}
+    \item each node keeps \textit{distance vector}
+        \begin{itemize}
+        \item distance to each other node (network)
+        \item also which neighbor to go through to get that distance
+        \end{itemize}
+    \item periodically send distance vector to all neighbors
+    \item when receiving distance vector from X, check
+    \item ``would going through X give me a better distance?''
+        \begin{itemize}
+        \item if so, update distance + which neighbor
+        \end{itemize}
+    \end{itemize}
+\end{frame}

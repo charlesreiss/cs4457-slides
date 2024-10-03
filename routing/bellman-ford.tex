@@ -1,0 +1,90 @@
+\usetikzlibrary{arrows.meta,matrix}
+\begin{frame}{all-pairs Bellman-Ford}
+    \begin{itemize}
+    \item one algorithm to find all shortest paths in graph (network)
+    \vspace{.5cm}
+    \item $d(A,B) = \text{best distance from A to B}$
+    \item $p(A,B) = \text{next node on path from A to B}$
+    \item initially $d(X,X) = 0$ for all nodes $X$
+    \item repeatedly* do the following:
+    \vspace{.5cm}
+    \item for each link from A to B, distance $c$:
+        \begin{itemize}
+        \item for each node X:
+        \item if $c + d(B, X) < d(A, X)$, \\
+        \item then $d(A,X) \leftarrow c+d(B,X)$, $p(A,X) = B$
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\providecommand{\noroute}{$\infty$/---}
+\providecommand{\mymark}[2]{\alt<#1->{\myemph<#1>{#2}}{}}
+\begin{frame}[fragile]{running Bellman-Ford}
+\begin{tikzpicture}
+\tikzset{
+    computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
+    switch/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\switch}},
+    port/.style={pos=0.95,fill=white,circle,draw,inner sep=0mm},
+    port beginning/.style={pos=0.05,fill=white,circle,draw,inner sep=0mm},
+    route table/.style={
+        matrix of nodes,ampersand replacement=\&,
+        column 1/.style={nodes={draw,thick,text width=2.5cm,font=\tiny\tt,text depth=0mm,minimum height=0.5cm,inner sep=1mm}},
+        column 2/.style={nodes={draw,thick,text width=.5cm,font=\small\tt,text depth=0mm,minimum height=0.5cm,inner sep=1mm}},
+        row 1/.style={nodes={draw=none,font=\small}},
+    },
+    mac label/.style={
+        draw,fill=white,inner sep=1mm,font=\tiny\tt,
+    },
+    n real/.style={solid},
+    n real at/.style={alt=<#1->{solid},alt=<#1>{fill=red!10}},
+    n real until/.style={alt=<1-#1>{solid}},
+    tn/.style={draw,dotted,circle,very thick},
+    real at/.style={alt=<#1->{solid},alt=<#1>{fill=red!10}},
+    connect/.style={draw,very thick,-Latex},
+    connect big/.style={draw,ultra thick,-Latex},
+    actual at/.style={alt=<#1->{draw=red,solid},alt=<#1>{draw,solid}},
+    consider at/.style={alt=<#1>{draw=red}},
+    msg link/.style={draw,violet,line width=1.2mm,-Latex},
+    msg data/.style={draw=violet,line width=1mm,fill=white,align=left},
+}
+\begin{scope}[x=0.8cm]
+\node[tn,n real] (A) at (0, 0) {A};
+\node[tn,n real] (B) at (5, -2) {B};
+\node[tn,n real] (C) at (-5, -2) {C};
+\node[tn,n real] (D) at (0, -4) {D};
+\draw[connect big,alt=<2>{red}] ([yshift=1mm]A.east) -- ([xshift=1mm]B.north) node[midway,above] {2};
+\draw[connect,alt=<3>{red},alt=<8>{red}] ([xshift=-1mm]B.north) -- ([yshift=-1mm]A.east) node[midway,below] {4};
+\draw[connect big,alt=<7>{red}] ([yshift=1mm]A.west) -- ([xshift=-1mm]C.north) node[midway,above] {1};
+\draw[connect big] ([xshift=1mm]C.north) -- ([yshift=-1mm]A.west) node[midway,below] {2};
+\draw[connect big,alt=<5>{red}] ([yshift=1mm]C.east) -- ([yshift=1mm]B.west) node[midway,above] {2};
+\draw[connect big,alt=<4>{red}] ([yshift=-1mm]B.west) -- ([yshift=-1mm]C.east) node[midway,below] {2};
+\draw[connect,alt=<6>{red}] ([xshift=1mm]C.south) -- ([yshift=1mm]D.west) node[midway,above] {4};
+\draw[connect] ([yshift=-1mm]D.west) -- ([xshift=-1mm]C.south) node[midway,below] {5};
+\draw[connect big] ([xshift=-1mm]B.south) -- ([yshift=1mm]D.east) node[midway,above] {1};
+\draw[connect big] ([yshift=-1mm]D.east) -- ([xshift=1mm]B.south) node[midway,below] {2};
+\begin{visibleenv}<1-9>
+\matrix[anchor=north west,tight matrix,
+    nodes={font=\fontsize{10}{11}\selectfont,text width=1cm,minimum height=0.5cm}
+] at (6, 0) {
+    ~ \& A \& B \& C \& D \\
+    A \& |[alt=<3>{fill=red!10}]| 0/A \& \only<1>{\noroute}\mymark{2}{2/B} \& \only<1-6>{\noroute}\mymark{7}{1/C} \& \only<1-6>{\noroute}\mymark{7}{5/D} \\
+    B \& |[alt=<5>{fill=red!10}]| \only<1-2>{\noroute}\mymark{3}{4/A} \& |[alt=<2>{fill=red!10},alt=<5>{fill=red!10}]| 0/B\& \only<1-3>{\noroute}\mymark{4}{2/C} \& \only<1-7>{\noroute}{\mymark{8}{0/A}} \\
+    C \& \only<1-4>{\noroute}\only<5-6>{\mymark{5}{6/B}}\mymark{7}{1/A} \& \only<1-4>{\noroute}\mymark{5}{2/B} \& 0/C \& 
+            \only<1-5>{\noroute}{\mymark{6}{4/D}} \\
+    D \& \noroute \& \noroute \& \noroute \& 0/D \\
+};
+\end{visibleenv}
+\begin{visibleenv}<10>
+\matrix[anchor=north west,tight matrix,
+    nodes={font=\fontsize{10}{11}\selectfont,text width=1cm,minimum height=0.5cm}
+] at (6, 0) {
+    ~ \& A \& B \& C \& D \\
+    A \& 0/A \& 2/B \& 4/C \& 3/B \\
+    B \& 4/A \& 0/B \& 2/C \& 1/D \\
+    C \& 2/A \& 2/B \& 0/C \& 4/D \\
+    D \& 6/B \& 2/B \& 4/B \& 0/D \\
+};
+\end{visibleenv}
+\end{scope}
+\end{tikzpicture}
+\end{frame}

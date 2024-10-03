@@ -1,0 +1,39 @@
+\begin{frame}{Routing Information Protocol}
+\begin{itemize}
+\item router broadcast on networks it's connected to packet containing list of:
+    \begin{itemize}
+    \item networks it can reach (example: 1.2.3.0/24)
+    \item its next hop to that network
+    \item its metric (distance) to reach that network
+    \end{itemize}
+\item each router on that network processes that packet
+\item on receiving distances, routers see if they can update their routes
+    \begin{itemize}
+    \item routes will be to networks (1.2.3.0/24, etc.), not routers
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{local information}
+    \begin{itemize}
+    \item routers need to track themselves:
+    \vspace{.5cm}
+    \item which networks they can reach directly
+        \begin{itemize}
+        \item (which networks is it connected to)
+        \end{itemize}
+    \item the `distance' it needs to reach those networks
+        \begin{itemize}
+        \item (probably based on its bandwidth to that network?)
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{RIP --- when to update}
+    \begin{itemize}
+    \item policy: every approx. 30 seconds always AND
+    \item immediately on changes (``triggered'')
+    \vspace{.5cm}
+    \item means that connecting new router should better routes quickly
+    \end{itemize}
+\end{frame}

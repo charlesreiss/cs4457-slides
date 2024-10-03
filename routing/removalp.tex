@@ -1,0 +1,161 @@
+\usetikzlibrary{arrows.meta,matrix}
+
+\providecommand{\noroute}{$\infty$/---}
+\providecommand{\mymark}[2]{\alt<#1->{\myemph<#1>{#2}}{}}
+
+
+\begin{frame}{links going down}
+    \begin{itemize}
+    \item problem with our update rule:
+    \item assumes routes only get better
+    \vspace{.5cm}
+    \item reality: sometimes links go down
+    \item need to find different route
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{updating for removal (1)}
+    \begin{itemize}
+    \item let's say I'm A and my distance vector is:
+        \begin{itemize}
+        \item A=0 via A, B=4 via B, C=5 via D, D=4 via D
+        \end{itemize}
+    \item if my link to D goes down, new distance vector should be?
+        \begin{itemize}
+        \item<2-> A=0 via A, B=4 via B, C=$\infty$ via no one, D=$\infty$ via no one
+        \end{itemize}
+    \vspace{.5cm}
+    \item<2-> later updates might fix $\infty$s
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{updating for removal (2)}
+    \begin{itemize}
+    \item let's say I'm A and my distance vector is:
+        \begin{itemize}
+        \item B=4 via B, C=5 via D, D=4 via D
+        \end{itemize}
+    \item and D tells me its distance vector is
+        \begin{itemize}
+        \item B=8 via A, C=$\infty$ via no one, D=0 via D
+        \end{itemize}
+    \item then my (A)'s new distance vector should be?
+        \begin{itemize}
+        \item<2->B=4 via B, C=$\infty$ via no one, D=4 via D
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{updating for removal (3)}
+    \begin{itemize}
+    \item let's say I'm A and my distance vector is:
+        \begin{itemize}
+        \item B=4 via B, C=5 via D, D=4 via D
+        \end{itemize}
+    \item and D tells me its distance vector is
+        \begin{itemize}
+        \item B=8 via A, C=5 via A, D=0 via D
+        \end{itemize}
+    \item then my (A)'s new distance vector should be?
+        \begin{itemize}
+        \item<2->B=4 via B, C=$\infty$ via no one, D=4 via D
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{updating for removal (4)}
+    \begin{itemize}
+    \item let's say I'm A and my distance vector is:
+        \begin{itemize}
+        \item B=4 via B, C=5 via D, D=4 via D
+        \end{itemize}
+    \item and D tells me its distance vector is
+        \begin{itemize}
+        \item B=3 via B, C=8 via B, D=0 via D
+        \end{itemize}
+    \item then my (A)'s new distance vector should be?
+        \begin{itemize}
+        \item<2->B=4 via B, C=12 via D, D=4 via D
+        \end{itemize}
+    \vspace{.5cm}
+    \item<2-> probably later update from B will overwrite route to C
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{removal?}
+\begin{tikzpicture}
+\tikzset{
+    computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
+    switch/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\switch}},
+    port/.style={pos=0.95,fill=white,circle,draw,inner sep=0mm},
+    port beginning/.style={pos=0.05,fill=white,circle,draw,inner sep=0mm},
+    route table/.style={
+        matrix of nodes,ampersand replacement=\&,
+        column 1/.style={nodes={draw,thick,text width=2.5cm,font=\tiny\tt,text depth=0mm,minimum height=0.5cm,inner sep=1mm}},
+        column 2/.style={nodes={draw,thick,text width=.5cm,font=\small\tt,text depth=0mm,minimum height=0.5cm,inner sep=1mm}},
+        row 1/.style={nodes={draw=none,font=\small}},
+    },
+    mac label/.style={
+        draw,fill=white,inner sep=1mm,font=\tiny\tt,
+    },
+    n real/.style={solid},
+    n real at/.style={alt=<#1->{solid},alt=<#1>{fill=red!10}},
+    n real until/.style={alt=<1-#1>{solid}},
+    tn/.style={draw,dotted,circle,very thick},
+    real at/.style={alt=<#1->{solid},alt=<#1>{fill=red!10}},
+    connect/.style={draw,very thick,-Latex},
+    connect big/.style={draw,ultra thick,-Latex},
+    actual at/.style={alt=<#1->{draw=red,solid},alt=<#1>{draw,solid}},
+    consider at/.style={alt=<#1>{draw=red}},
+    msg link/.style={draw,violet,line width=1.2mm,-Latex},
+    msg data/.style={draw=violet,line width=1mm,fill=white,align=left},
+}
+\begin{scope}[x=0.8cm]
+\node[tn,n real] (A) at (0, 0) {A};
+\node[tn,n real] (B) at (5, -2) {B};
+\node[tn,n real] (C) at (-5, -2) {C};
+\node[tn,n real] (D) at (0, -4) {D};
+\draw[connect big] ([yshift=1mm]A.east) -- ([xshift=1mm]B.north) node[midway,above] {2};
+\draw[connect] ([xshift=-1mm]B.north) -- ([yshift=-1mm]A.east) node[midway,below] {4};
+\draw[connect big] ([yshift=1mm]A.west) -- ([xshift=-1mm]C.north) node[midway,above] {1};
+\draw[connect big] ([xshift=1mm]C.north) -- ([yshift=-1mm]A.west) node[midway,below] {2};
+\draw[connect big] ([yshift=1mm]C.east) -- ([yshift=1mm]B.west) node[midway,above] {2};
+\draw[connect big] ([yshift=-1mm]B.west) -- ([yshift=-1mm]C.east) node[midway,below] {2};
+\draw[connect] ([xshift=1mm]C.south) -- ([yshift=1mm]D.west) node[midway,above] {4};
+\draw[connect] ([yshift=-1mm]D.west) -- ([xshift=-1mm]C.south) node[midway,below] {5};
+\draw[connect big,alt=<1>{red},alt=<2>{dotted,black!20}] ([xshift=-1mm]B.south) -- ([yshift=1mm]D.east) node[midway,above] {1};
+\draw[connect big,alt=<1>{red},alt=<2>{dotted,black!20}] ([yshift=-1mm]D.east) -- ([xshift=1mm]B.south) node[midway,below] {2};
+\tikzset{
+    one dv/.style={
+        tight matrix,
+        nodes={fill=white,font=\fontsize{10}{11}\selectfont,text width=1cm,minimum height=0.5cm}
+    }
+}
+\matrix[anchor=south,one dv,
+    row 2/.style={nodes={fill=violet!10}},
+] (A dv) at (A.north) {
+    A \& B \& C \& D \\
+    0/A \& 2/B \& 4/C \& 3/B \\
+};
+\matrix[anchor=north,one dv,
+    row 2/.style={nodes={fill=yellow!10}},
+] (D dv) at ([yshift=0cm]D.south) {
+    A \& B \& C \& D \\
+    \only<1>{6/B}\mark{2}{\noroute} \& \only<1>{2/B}\mark{2}{\noroute} \& \only<1>{4/B}\mark{2}{\noroute} \& 0/D \\
+};
+\matrix[anchor=south west,one dv,
+    row 2/.style={nodes={fill=blue!10}},
+] (C dv) at ([xshift=-3cm]C.north east) {
+    A \& B \& C \& D \\
+    2/A \& 2/B \& 0/C \& 4/D \\
+};
+\matrix[anchor=north east,one dv,
+    row 2/.style={nodes={fill=green!10}},
+] (B dv) at ([yshift=.25cm,xshift=4cm]B.south west) {
+    A \& B \& C \& D \\
+    4/A \& 0/B \& 2/C \& \only<1>{1/D}\mark{2}{\noroute} \\
+};
+\end{scope}
+\end{tikzpicture}
+\end{frame}
+
