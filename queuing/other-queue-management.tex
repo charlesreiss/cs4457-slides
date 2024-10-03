@@ -1,0 +1,21 @@
+\begin{frame}{active queue management}
+    \begin{itemize}
+    \item algorithms that go beyond drop-tail, FIFO called \\
+        ``active queue management''
+    \vspace{.5cm}
+    \item many variations besides RED, fair queuing
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{changing random early detection?}
+    \begin{itemize}
+    \item some things seem suspicious in RED:
+        \begin{itemize}
+        \item moving average of queue length limits response time
+        \item how moving average computed can matter
+        \item doesn't choose specific target queue length
+        \item choice of drops doesn't take fairness into account
+        \end{itemize}
+    \item various proposals to tweak and address these issues
+    \end{itemize}
+\end{frame}
