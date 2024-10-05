@@ -1,0 +1,115 @@
+\usetikzlibrary{graphs,graphs.standard,graphdrawing,quotes,positioning}
+\usegdlibrary{force,layered}
+
+\begin{frame}[fragile,label=bestFirstExample1]{Dijkstra's algorithm example 1}
+\begin{tikzpicture}
+\tikzset{
+    graphNode/.style={draw,circle,thick,font=\tt\fontsize{9}{10}\selectfont,minimum width=.6cm,inner sep=0.2mm},
+    graphEdge/.style={draw,thick},
+    >=Latex,
+    my graph/.style={graphs/nodes={graphNode},graphs/edges={graphEdge},graphs/edge quotes={font=\tt\small\color{blue!70!black},auto,inner sep=0.1mm}},
+    my graph box/.style={}
+}
+
+\tikzset{
+    my label/.style={draw=none,text width=.6cm},
+    my distance/.style={text width=1cm},
+    my previous/.style={text width=1cm},
+    my path/.style={text width=4cm},
+    my algorithm table/.style={
+        tight matrix,
+        nodes={font=\strut},
+        row 1/.style={nodes={draw=none}},
+        column 1/.style={nodes={my label}}
+        column 2/.style={nodes={my distance}},
+        column 3/.style={nodes={my previous}},
+        column 4/.style={nodes={my path}},
+        right={1cm of the graph},
+    },
+    hidden/.style={draw=black!50},
+    hilite/.style={draw=red,font=\bfseries},
+}
+\tikzset{
+    my label visited/.style={my label,text=black!50},
+    my label updating/.style={my label,font=\bfseries,text=red},
+    my label changed/.style={my label,font=\bfseries,text=blue!50!black},
+    my label unvisited/.style={my label},
+    my distance visited/.style={black!50},
+    my distance updating/.style={},
+    my distance changed/.style={red},
+    my distance unvisited/.style={},
+    my previous visited/.style={},
+    my previous updating/.style={},
+    my previous changed/.style={red},
+    my previous unvisited/.style={},
+    my path visited/.style={},
+    my path updating/.style={},
+    my path changed/.style={red},
+    my path unvisited/.style={},
+}
+% FIXME: hilite overwriting examples
+    \input{../routing/bestFirstExample1Body}
+
+\begin{visibleenv}<4>
+\draw[<-,very thick] (the table-5-2.north) -- ++(2cm,3cm) node[draw,thick,align=left,fill=white] {
+    D is adjacent --- \\ but not a shorter path
+};
+\draw[<-,very thick] (the table-7-2.south) -- ++(1cm,-2cm) node[fill=white,draw,thick,align=left] {
+    F updated from distance 7 (via D) \\ to distance 4 (via C)
+};
+\end{visibleenv}
+
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}[fragile,label=bestFirstExample2]{Dijkstra's algorithm example 2}
+\begin{tikzpicture}
+\tikzset{
+    graphNode/.style={draw,circle,thick,font=\tt\fontsize{9}{10}\selectfont,minimum width=.6cm,inner sep=0.2mm},
+    graphEdge/.style={draw,thick},
+    >=Latex,
+    my graph/.style={graphs/nodes={graphNode},graphs/edges={graphEdge},graphs/edge quotes={font=\tt\small\color{blue!70!black},auto,inner sep=0.1mm},graphs/node distance={2cm}},
+    my graph box/.style={}
+}
+
+\tikzset{
+    my label/.style={draw=none,text width=.6cm},
+    my distance/.style={text width=1cm},
+    my previous/.style={text width=1cm},
+    my path/.style={text width=4cm},
+    my algorithm table/.style={
+        tight matrix,
+        nodes={font=\strut},
+        row 1/.style={nodes={draw=none}},
+        column 1/.style={nodes={my label}}
+        column 2/.style={nodes={my distance}},
+        column 3/.style={nodes={my previous}},
+        column 4/.style={nodes={my path}},
+        right={1cm of the graph},
+    },
+    hidden/.style={draw=black!50},
+    hilite/.style={draw=red,font=\bfseries},
+}
+\tikzset{
+    my label visited/.style={my label,text=black!50},
+    my label updating/.style={my label,font=\bfseries,text=red},
+    my label changed/.style={my label,font=\bfseries,text=blue!50!black},
+    my label unvisited/.style={my label},
+    my distance visited/.style={black!50},
+    my distance updating/.style={},
+    my distance changed/.style={red},
+    my distance unvisited/.style={},
+    my previous visited/.style={},
+    my previous updating/.style={},
+    my previous changed/.style={red},
+    my previous unvisited/.style={},
+    my path visited/.style={},
+    my path updating/.style={},
+    my path changed/.style={red},
+    my path unvisited/.style={},
+}
+% FIXME: hilite overwriting examples
+    \input{../routing/bestFirstExample2Body}
+
+\end{tikzpicture}
+\end{frame}

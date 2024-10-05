@@ -1,0 +1,18 @@
+\begin{frame}{Dijkstra's algorithm}
+    \begin{itemize}
+    \item (AKA best-first search)
+    \vspace{.5cm}
+    \item track:
+        \begin{itemize}
+        \item list of visited nodes (initially just source)
+        \item distance to each node (init. $0$ for source; $\infty$ otherwise)
+        \end{itemize}
+    \item repeatedly:
+        \begin{itemize}
+        \item find lowest cost link $A\rightarrow B$ from visited node A
+        \item update distance to B = min\{old distance, distance to A + link cost\}
+        \item mark B as visited (if not already)
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+

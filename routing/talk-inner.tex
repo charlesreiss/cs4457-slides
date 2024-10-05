@@ -65,15 +65,61 @@
 \input{../routing/count-to-infty} % FIXME: diagram
 
 \section{link state}
+\subsection{idea}
+\input{../routing/link-state-idea}
+\subsection{link state advertisements}
+\input{../routing/link-state-adv}
+\subsection{link state database}
+\input{../routing/link-state-db}
+\subsection{reliable flooding}
+\input{../routing/ls-reliable-flood}
+\input{../routing/link-state-route}
+
+\subsection{shortest path first}
+\input{../routing/ls-shortest-path}
+
+\subsection{shortest path algorithm}
+\input{../routing/bestFirstExample}
+
+\subsection{shortest path consistency}
+\input{../routing/sp-consistency}
+
+\section{multipath/load balancing}
+
+\subsection{ECMP}
+
+\section{scalability: OSPF areas} % textbook sec 4.1.1.
+
+\subsection{motivation: stubs?}
+
+\subsection{summary at ABR}
+
+\subsection{always route through backbone}
+
+\subsection{closest route to other area}
+
+\subsection{virtual links}
 
 \section{interdomain routing}
 
 \subsection{business priorities}
 
+\subsubsection{customer/provider}
+
+\subsubsection{peering}
+
 \subsection{sharing routes: BGP}
+
+\subsection{adding + withdrawing routes}
 
 \subsection{loop prevention, metrics}
 
 \subsection{within-AS routing}
 
-\subsection{hot or cold potato}
+\subsubsection{iBGP}
+
+% FIXME: mesh, router server
+
+\subsubsection{converting to link-state}
+
+\subsubsection{hot or cold potato}

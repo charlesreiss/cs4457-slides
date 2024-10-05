@@ -1,0 +1,92 @@
+\begin{frame}{consistency}
+\begin{tikzpicture}
+\tikzset{mynode/.style={draw,circle,very thick}}
+\node[mynode] (A) at (0,0) {A};
+\node[mynode] (B) at (4,0) {B};
+\node[mynode] (low1) at (3,-2) {~};
+\node[mynode] (low2) at (6,-2) {~};
+\node[mynode] (C) at (8,0) {C};
+\node[mynode] (high1) at (6,1) {~};
+\tikzset{myedge/.style={draw,ultra thick}}
+\path[myedge] (A) -- (B);
+\path[myedge] (A) -- (low1);
+\path[myedge] (low1) -- (low2);
+\path[myedge] (low2) -- (C);
+\path[myedge] (B) -- (high1);
+\path[myedge] (high1) -- (C);
+\path[very thick,dotted,red,-Latex] (A) .. controls (4, -3) .. (C);
+\path[very thick,violet,-Latex] (A) -- (B);
+\end{tikzpicture}
+\begin{itemize}
+\item if A sends packet for C to B, how does A know B won't send it back?
+\vspace{.5cm}
+\item hope: if A thought shortest path to C was through B, then B should agree
+\item problem: not always true
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{inconsistency}
+\begin{tikzpicture}
+\tikzset{
+    mynode/.style={draw,circle,very thick},
+    myedge/.style={draw,ultra thick},
+    computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
+    switch/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\switch}},
+    port/.style={pos=0.95,fill=white,circle,draw,inner sep=0mm},
+    port beginning/.style={pos=0.05,fill=white,circle,draw,inner sep=0mm},
+    route table/.style={
+        matrix of nodes,ampersand replacement=\&,
+        column 1/.style={nodes={draw,thick,text width=2.5cm,font=\tiny\tt,text depth=0mm,minimum height=0.5cm,inner sep=1mm}},
+        column 2/.style={nodes={draw,thick,text width=.5cm,font=\small\tt,text depth=0mm,minimum height=0.5cm,inner sep=1mm}},
+        row 1/.style={nodes={draw=none,font=\small}},
+    },
+    mac label/.style={
+        draw,fill=white,inner sep=1mm,font=\tiny\tt,
+    },
+    n real/.style={solid},
+    n real at/.style={alt=<#1->{solid},alt=<#1>{fill=red!10}},
+    n real until/.style={alt=<1-#1>{solid}},
+    tn/.style={draw,dotted,circle,very thick},
+    real at/.style={alt=<#1->{solid},alt=<#1>{fill=red!10}},
+    connect/.style={draw,very thick,-Latex},
+    connect big/.style={draw,ultra thick,-Latex},
+    actual at/.style={alt=<#1->{draw=red,solid},alt=<#1>{draw,solid}},
+    consider at/.style={alt=<#1>{draw=red}},
+    msg link/.style={draw,violet,line width=1.2mm,-Latex},
+    msg data/.style={draw=violet,line width=1mm,fill=white,align=left},
+    explain box/.style={draw,ultra thick,draw=red,text=black,anchor=north,at={(4, -4)}, align=left},
+}
+\node[mynode] (A) at (0,0) {A};
+\node[mynode] (B) at (4,0) {B};
+\node[mynode] (low1) at (3,-2) {~};
+\node[mynode] (low2) at (6,-2) {~};
+\node[mynode] (C) at (8,0) {C};
+\node[mynode] (high1) at (6,1) {~};
+\path[myedge] (A) -- (B);
+\path[myedge] (A) -- (low1);
+\path[myedge] (low1) -- (low2);
+\path[myedge] (low2) -- (C);
+\path[myedge] (B) -- (high1);
+\path[myedge] (high1) -- (C) node[midway,font=\huge,text=red,draw=none]{X};
+\begin{visibleenv}<2->
+    \path[msg link] (high1) -- (B);
+    \path[msg link] (C) -- (low2);
+    \node[explain box] {B thinks best route to C: through A \\ A thinks best route to C: through B};
+\end{visibleenv}
+%\path[very thick,dotted,red,-Latex] (A) .. controls (4, -3) .. (C);
+%\path[very thick,dotted,red,-Latex] (A) -- (B);
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{temporary bad routes}
+    \begin{itemize}
+    \item while waiting for link state updates to propogate
+    \item can have too-slow routes
+    \item can have routing loops
+    \vspace{.5cm}
+    \item hope: this is only a few seconds at most
+        \begin{itemize}
+        \item and routing loop doesn't cause huge explosion of traffic
+        \end{itemize}
+    \end{itemize}
+\end{frame}
