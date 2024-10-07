@@ -1,4 +1,4 @@
-\begin{frame}{link-state advertisements (router)}
+\begin{frame}{OSPF link-state advertisements (router)}
 \begin{tikzpicture}
 \tikzset{
     box/.style={draw,thick},
@@ -26,19 +26,19 @@
     node[midway,label] {ID};
 \draw[box] (0, -2) rectangle (32, -3)
     node[midway,label] {advertising router};
-\draw[box] (0, -3) rectangle (0, -4)
+\draw[box] (0, -3) rectangle (3, -4)
     node[midway,label] {sequence number};
 \draw[box] (0, -4) rectangle (16, -5)
     node[midway,label] {checksum};
 \draw[box] (16, -4) rectangle (32, -5)
     node[midway,label] {length};
-\path[shading=axis,bottom color=white,top color=black!20] (0, -6.5) rectangle (32, -7.5)
+\path[shading=axis,bottom color=white,top color=black!20] (0, -5) rectangle (32, -6.5)
     node[box label] {depends on LSA type};
 \end{scope}
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{LSA sequences/ages}
+\begin{frame}{OSPF LSA sequences/ages}
     \begin{itemize}
     \item sequence number for getting correction version of LSAs
         \begin{itemize}
@@ -53,7 +53,7 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{LSA types}
+\begin{frame}{OSPF LSA types}
 \begin{itemize}
 \item `router':
     \begin{itemize}

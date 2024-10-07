@@ -1,0 +1,75 @@
+\usetikzlibrary{arrows.meta}
+\begin{frame}{a big network}
+\begin{tikzpicture}
+\tikzset{
+    n/.style={draw,circle,very thick},
+    connect/.style={draw,thick,Latex-Latex},
+}
+\begin{scope}[name prefix=A-]
+    \node[n] (a1) at (1, 0) {};
+    \node[n] (a2) at (-1, 0) {};
+    \node[n] (b) at (1, -1) {};
+    \node[n] (c) at (2, -2) {};
+    \node[n] (d) at (3, -1) {};
+    \node[n] (e) at (4, -2) {};
+    \node[n] (f) at (-2, -1) {};
+    \node[n] (g) at (-2, -2) {};
+    \node[n] (h) at (-3, -1) {};
+    \node[n] (i) at (-2, -2) {};
+    \node[n] (j) at (-3, -3) {};
+    \foreach \x/\y in {a1/b,a1/c,a2/b,a2/c,b/c,c/d,d/e,a1/f,a1/g,a2/f,a2/g,g/h,h/i,i/j} {
+        \draw[connect] (\x) -- (\y);
+    }
+\end{scope}
+
+\begin{scope}[name prefix=B-,yshift=2cm,y=-1cm,xshift=4cm]
+    \node[n] (a1) at (1, 0) {};
+    \node[n] (a2) at (-1, 0) {};
+    \node[n] (b) at (1, -1) {};
+    \node[n] (b2) at (1, -2) {};
+    \node[n] (b3) at (2, -2) {};
+    \node[n] (d) at (3, -1) {};
+    \node[n] (e) at (3, -2) {};
+    \node[n] (f) at (-2, -1) {};
+    \node[n] (h) at (-3, -1) {};
+    \node[n,overlay] (i) at (-4, -2) {};
+    \node[n] (j) at (-2, -2) {};
+    \foreach \x/\y in {a1/b,a2/b,b/b2,b2/b3,b3/d,b2/d,d/e,a1/f,a2/f,f/h,h/i,i/j,a2/j} {
+        \draw[connect] (\x) -- (\y);
+    }
+\end{scope}
+
+\begin{scope}[yshift=1cm]
+\node [n] (w) at (-4, 0) {};
+\node [n] (x) at (-1, 0.5) {};
+\node [n] (y) at (2, -0.5) {};
+\node [n] (z) at (5, 0) {};
+
+\draw[connect] (w) -- (A-a1);
+\draw[connect] (w) -- (A-a2);
+\draw[connect] (x) -- (A-a1);
+\draw[connect] (x) -- (A-a2);
+\draw[connect] (w) -- (x);
+\draw[connect] (w) -- (y);
+\draw[connect] (x) -- (z);
+\draw[connect] (y) -- (z);
+\draw[connect] (z) -- (B-a1);
+\draw[connect] (z) -- (B-a2);
+\draw[connect] (y) -- (B-a1);
+\draw[connect] (y) -- (B-a2);
+
+\node (ext1) at (-6, 0) {\ldots};
+\node (ext2) at (8, 0) {\ldots};
+\draw[connect] (ext1) --  (w);
+\draw[connect] (ext1) --  (x);
+\draw[connect] (ext2) --  (z);
+\draw[connect] (ext2) --  (y);
+\end{scope}
+
+\begin{pgfonlayer}{bg}
+\begin{visibleenv}<2->
+
+\end{visibleenv}
+\end{pgfonlayer}
+\end{tikzpicture}
+\end{frame}
