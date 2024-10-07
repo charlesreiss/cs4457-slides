@@ -1,0 +1,53 @@
+\begin{frame}[fragile]{two good choices?}
+\begin{tikzpicture}
+\tikzset{
+    n/.style={draw,circle,very thick},
+    connect/.style={draw,very thick,Latex-Latex},
+}
+\node[n] (A) at (0, 0) {A};
+\node[n] (B) at (3, -2) {B};
+\node[n] (D) at (6, -2) {D};
+\node[n] (F) at (9, -2) {F};
+\node[n] (C) at (3, 2) {C};
+\node[n] (E) at (6, 2) {E};
+\node[n] (G) at (9, 2) {G};
+\node[n] (H) at (12, 0) {H};
+\foreach \x/\y in {A/B,B/D,D/F,F/H,A/C,C/E,E/G,G/H} {
+    \draw[connect] (\x) -- (\y);
+}
+\draw[ultra thick,red,dotted,-Latex] (A) .. controls (3, -4) .. (6, -4) .. controls (9, -4) .. (H);
+\draw[ultra thick,red,dotted,-Latex] (A) .. controls (3, 4) .. (6, 4) .. controls (9, 4) .. (H);
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{splitting packets}
+    \begin{itemize}
+    \item na\"ive idea: send every other packet on bottom link
+    \vspace{.5cm}
+    \item problem: bottom and top link will have different latencies
+        \begin{itemize}
+        \item (even if only temporarily from queuing)
+        \end{itemize}
+    \item $\implies$ packets will be reordered a lot
+        \begin{itemize}
+        \item this is pretty bad for TCP
+        \item (and many other things)
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{equal cost multipath (ECMP)}
+    \begin{itemize}
+    \item split packets by flow
+    \item goal:
+        \begin{itemize}
+        \item each TCP connection chooses one of the $N$ links
+        \item \ldots but don't want to track list of TCP connections
+        \end{itemize}
+    \item solution:
+        \begin{itemize}
+        \item take a hash of the connection info in header
+        \item use link index $\left\lfloor\frac{\text{hash value} \times N}{\text{max hash value}}\right\rfloor$ 
+        \end{itemize}
+    \end{itemize}
+\end{frame}
