@@ -1,3 +1,4 @@
+\usetikzlibrary{shapes,shapes.misc,arrows.meta}
 \begin{frame}{backbone}
     \begin{itemize}
     \item OSPF area 0 is called ``backbone''
@@ -13,3 +14,70 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}{backbone limits}
+\begin{tikzpicture}
+\tikzset{
+    network/.style={draw,cloud,very thick,aspect=2},
+    router/.style={draw,circle,fill=white},
+    connect/.style={draw,ultra thick,Latex-Latex},
+    connect big/.style={draw,line width=0.75mm,Latex-Latex},
+}
+\node[network,minimum width=8cm,minimum height=4cm] (backbone) at (0, 0) {backbone};
+\node[network] (A) at ([xshift=-3cm,yshift=2cm]backbone.north) {site A};
+\node[network] (B) at ([xshift=3cm,yshift=2cm]backbone.north) {site B};
+\draw[connect] (A) -- (backbone.150);
+\draw[connect] (B) -- (backbone.30) node[midway,visible on=<3>,red,font=\huge] {X};
+\path (A.40) -- (B.140) node[midway,router] (AB) {};
+\draw[connect big] (A.40) -- (AB);
+\draw[connect big] (AB) -- (B.140);
+\node[router] (Ar) at (backbone.150) {};
+\node[router] (Br) at (backbone.30) {};
+\begin{visibleenv}<4>
+\draw[dotted,very thick,Latex-Latex,red] (Ar) -- (AB);
+\draw[dotted,very thick,Latex-Latex,red] (Br) -- (AB);
+\end{visibleenv}
+\begin{visibleenv}<2>
+    \node[align=left,draw=red,ultra thick] at ([xshift=3cm,yshift=3cm]backbone.east) {
+        org with two sites --- \\
+        can configure as areas  \\
+        three border routers
+    };
+\end{visibleenv}
+\begin{visibleenv}<3>
+    \node[align=left,draw=red,ultra thick] at ([xshift=3cm,yshift=3cm]backbone.east) {
+        if B's link to \\
+        backbone fails, \\
+        B should \\
+        use building A's \\
+        ~ \\
+        but disallowed by \\
+        anti-loop rule
+    };
+\end{visibleenv}
+\begin{visibleenv}<4>
+    \node[align=left,draw=red,ultra thick] at ([xshift=3cm,yshift=3cm]backbone.east) {
+        could fix this \\
+        by connecting A/B \\
+        border router \\
+        to backbone\ldots
+        ~ \\
+        solution: \\
+        ``virtual links''
+    };
+\end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{OSPF virtual links}
+    \begin{itemize}
+    \item ``tunnel'' backbone through another area
+        \begin{itemize}
+        \item route as if `direct' connection between two border routers
+        \item but connection implemented by going through area
+        \item both ends considered part of backbone
+        \end{itemize}
+    \item metric for virtaul link = metric of route through area
+    \vspace{.5cm}
+    \item configured explicitly by administrator
+    \end{itemize}
+\end{frame}

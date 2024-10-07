@@ -1,0 +1,29 @@
+\begin{frame}{Border Gateway Protocol}
+    \begin{itemize}
+    \item protocol for sending routes between networks
+    \item used whereever routers from different ASes connect
+    \vspace{.5cm}
+    \item each router constructs list of routes to offer
+        \begin{itemize}
+        \item obtained from OSPF or similar
+        \item route list filtered by administrator's policy
+        \end{itemize}
+    \item each router receives list of routes, exports
+        \begin{itemize}
+        \item sent as routes in OSPF or similar
+        \item route list filtered by administrator's policy
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{external/internal route sharing}
+    \begin{itemize}
+    \item AS wants to choose intelligently from all external options
+    \item probably could do this with OSPF or similar, but\ldots
+    \vspace{.5cm}
+    \item usually have internal BGP instances (``iBGP'') to share this
+        \begin{itemize}
+        \item make sure every router knows all the ways out
+        \end{itemize}
+    \end{itemize}
+\end{frame}

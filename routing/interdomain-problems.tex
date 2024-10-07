@@ -1,0 +1,106 @@
+\usetikzlibrary{arrows.meta,shapes,quotes}
+\begin{frame}{interdomain routing}
+    \begin{itemize}
+    \item so far: routing within one organization
+    \item lots of trust/sharing:
+    \vspace{.5cm}
+    \item okay to send packets through (essentially) every router
+    \item okay for any router to `announce' any address
+    \item okay to share (almost) full map of network
+    \vspace{.5cm}
+    \item not what we want for interdomain routing
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{some business considerations}
+\begin{tikzpicture}
+\tikzset{
+    network/.style={draw,cloud,very thick,aspect=2},
+    router/.style={draw,circle,fill=white},
+    connect/.style={draw,ultra thick,Latex-Latex},
+    send money/.style={bend right,draw,line width=1mm,green!70!black,dotted,"\huge\$",-Latex},
+}
+\node[network] (A) at (0,0) {ISP A};
+\node[network] (B) at (4,0) {ISP B};
+\node[network] (C) at (8,0) {ISP C};
+\node[network] (D) at (12,0) {ISP D};
+\node[network] (webhost) at (4,-4) {webhost};
+\node[network] (office) at (8,-4) {office};
+\node[network] (school) at (12, -4) {school};
+\draw[connect] (A) -- (webhost);
+\draw[connect] (B) -- (webhost);
+\draw[connect] (C) -- (webhost);
+\draw[connect] (C) -- (D);
+\draw[connect] (office) -- (D);
+\draw[connect] (office) -- (B);
+\draw[connect] (school) -- (D);
+\draw (webhost) edge[send money] (B);
+\draw (office) edge[send money] (B);
+\draw (office) edge[send money] (D);
+\draw[overlay] (school) edge[send money] (D);
+\draw (D) edge[send money] (C);
+\draw[connect] (B) -- (C);
+\draw[connect] (A) edge[bend left] (C);
+\begin{visibleenv}<2>
+    \begin{scope}[red,line width=1.5mm,dotted,-Latex] 
+    \draw (webhost) -- (C.center);
+    \draw (C.center) -- (D.center);
+    \draw (D.center) -- (office);
+    \end{scope}
+    \node[align=left,draw=red,line width=.8mm,fill=white,anchor=north] at (6, -5) {
+        exercise: does this route make sense?
+    };
+\end{visibleenv}
+\begin{visibleenv}<3>
+    \begin{scope}[red,line width=1.5mm,dotted,-Latex] 
+    \draw (webhost) -- (B.center);
+    \draw (B.center) -- (office);
+    \end{scope}
+    \node[align=left,draw=red,line width=.8mm,fill=white,anchor=north] at (6, -5) {
+        exercise: does this route make sense?
+    };
+\end{visibleenv}
+\begin{visibleenv}<4>
+    \begin{scope}[red,line width=1.5mm,dotted,-Latex] 
+    \draw (office) -- (D.center);
+    \draw (D.center) -- (school);
+    \end{scope}
+    \node[align=left,draw=red,line width=.8mm,fill=white,anchor=north] at (6, -5) {
+        exercise: does this route make sense?
+    };
+\end{visibleenv}
+\begin{visibleenv}<5>
+    \begin{scope}[red,line width=1.5mm,dotted,-Latex] 
+    \draw (webhost) -- (B.center);
+    \draw (B.center) -- (office.center);
+    \draw (office.center) -- (D.center);
+    \draw (D.center) -- (school);
+    \end{scope}
+    \node[align=left,draw=red,line width=.8mm,fill=white,anchor=north] at (6, -5) {
+        exercise: does this route make sense?
+    };
+\end{visibleenv}
+\begin{visibleenv}<6>
+    \begin{scope}[red,line width=1.5mm,dotted,-Latex] 
+    \draw (webhost) -- (B.center);
+    \draw (B.center) -- (C.center);
+    \draw (C.center) -- (D.center);
+    \draw (D.center) -- (office);
+    \end{scope}
+    \node[align=left,draw=red,line width=.8mm,fill=white,anchor=north] at (6, -5) {
+        exercise: does this route make sense?
+    };
+\end{visibleenv}
+\begin{visibleenv}<6>
+    \begin{scope}[red,line width=1.5mm,dotted,-Latex] 
+    \draw (webhost) -- (A.center);
+    \draw[-] (A.center) edge[-Latex,bend left] (C.center);
+    \draw (C.center) -- (D.center);
+    \draw (D.center) -- (office);
+    \end{scope}
+    \node[align=left,draw=red,line width=.8mm,fill=white,anchor=north] at (6, -5) {
+        exercise: does this route make sense?
+    };
+\end{visibleenv}
+\end{tikzpicture}
+\end{frame}

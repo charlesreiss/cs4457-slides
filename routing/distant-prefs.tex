@@ -1,0 +1,62 @@
+\usetikzlibrary{shapes,shapes.misc,arrows.meta,fit}
+
+\begin{frame}{going the distance}
+\begin{tikzpicture}
+\tikzset{
+    network/.style={draw,cloud,very thick,aspect=2},
+    router/.style={draw,circle,fill=white},
+    connect/.style={draw,ultra thick,Latex-Latex,black!50},
+    send money/.style={bend right,draw,line width=1mm,green!70!black,dotted,"\huge\$",-Latex},
+    every label/.style={font=\small},
+}
+\node[router,label={north:ISP A/Tokyo}] (A-japan) at (0, 1) {};
+\node[router,label={south:ISP B/Tokyo}] (B-japan) at (0.5, -1) {};
+\node[router] (A-japan-other) at (1.75, 0.75) {};
+\node[router,label={north:ISP A/Los Angeles}] (A-la) at (6.5, .5) {};
+\node[router,label={south:ISP B/Los Anegles}] (B-la) at (6.5, -1.5) {};
+\node[router] (B-us-other) at (8.5, -1.25) {};
+\node[router,label={north:ISP A/NoVA}] (A-va) at (10.5, 1.5) {};
+\node[router,label={south:ISP B/NoVA}] (B-va) at (10.5, -.5) {};
+
+\node[network,overlay] (jp-net) at (-1.5, 1) {};
+\node[network,overlay] (va-net)at (13, -.5) {};
+\foreach \x/\y in {A-japan/B-japan,A-la/B-la,A-va/B-va,A-japan/A-japan-other,A-japan-other/A-la,A-la/A-va,
+                   B-japan/B-la,B-la/B-us-other,B-us-other/B-va,
+                   va-net/B-va,jp-net/A-japan} {
+    \draw[connect] (\x) -- (\y);
+}
+\begin{visibleenv}<2>
+    \foreach \x/\y in {B-va/A-va,A-va/A-la,A-la/A-japan-other,A-japan-other/A-japan} {
+        \draw[red,line width=1.5mm,solid,-Latex] (\x) -- (\y);
+    }
+    \foreach \x/\y in {B-va/B-us-other,B-us-other/B-la,B-la/B-japan,B-japan/A-japan} {
+        \draw[blue,line width=1.5mm,dash dot dot,-Latex] (\x) -- (\y);
+    }
+    \foreach \x/\y in {va-net/B-va,A-japan/jp-net} {
+        \draw[violet,line width=1.5mm,dashed,-Latex] (\x) -- (\y);
+    }
+    \node[align=left,very thick,draw=red,ultra thick,anchor=north] at (6, -3) {
+        does ISP A or ISP B help packets cross the Pacific?
+    };
+\end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{distance preferences}
+    \begin{itemize}
+    \item ISP B$\rightarrow$ISP A across the Pacific:
+    \vspace{.5cm}
+    \item for ISP B:
+        \begin{itemize}
+        \item cheaper to hand-off packet to ISP A as soon as possible
+        \item more control over performance if handing off as late as possible
+        \end{itemize}
+    \item for ISP A:
+        \begin{itemize}
+        \item cheaper to require ISP B to hand-off packet as late as possible
+        \item more control over performance if B sends as soon as possible
+        \end{itemize}
+    \item maybe part of ISP A and ISP B peering agreement
+    \end{itemize}
+\end{frame}
+
