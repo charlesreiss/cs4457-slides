@@ -1,13 +1,20 @@
-\usetikzlibrary{arrows.meta}
+\usetikzlibrary{arrows.meta,patterns,patterns.meta,fit}
 \begin{frame}{a big network}
 \begin{tikzpicture}
 \tikzset{
-    n/.style={draw,circle,very thick},
-    connect/.style={draw,thick,Latex-Latex},
+    n/.style={draw,circle,very thick,alt=<2>{draw=black!10},alt=<5>{invisible},fill=white},
+    n focus/.style={alt=<2>{draw=black},alt=<5>{draw=black,opacity=1}},
+    n large focus/.style={draw,circle,very thick,minimum width=1cm},
+    n half focus/.style={alt=<2>{draw=black!40},alt=<5>{draw=black,opacity=1}},
+    connect/.style={draw,thick,Latex-Latex,alt=<2>{draw=black!10},alt=<5>{invisible}},
+    connect focus/.style={draw,thick,Latex-Latex,alt=<2>{draw=black},alt=<5>{draw=black,opacity=1}},
+    connect half focus/.style={draw,thick,Latex-Latex,alt=<2>{draw=black!40},alt=<5>{draw=black,opacity=1}},
+    boundary/.style={draw,line width=1mm,blue!40,alt=<5>{invisible}},
+    area border/.style={alt=<4>{fill=red!20}},
 }
 \begin{scope}[name prefix=A-]
-    \node[n] (a1) at (1, 0) {};
-    \node[n] (a2) at (-1, 0) {};
+    \node[n,area border] (a1) at (1, 0) {};
+    \node[n,area border] (a2) at (-1, 0) {};
     \node[n] (b) at (1, -1) {};
     \node[n] (c) at (2, -2) {};
     \node[n] (d) at (3, -1) {};
@@ -23,19 +30,19 @@
 \end{scope}
 
 \begin{scope}[name prefix=B-,yshift=2cm,y=-1cm,xshift=4cm]
-    \node[n] (a1) at (1, 0) {};
-    \node[n] (a2) at (-1, 0) {};
-    \node[n] (b) at (1, -1) {};
-    \node[n] (b2) at (1, -2) {};
-    \node[n] (b3) at (2, -2) {};
+    \node[n,n half focus,area border] (a1) at (1, 0) {};
+    \node[n,n focus,area border] (a2) at (-1, 0) {};
+    \node[n,overlay] (b) at (1, -1) {};
+    \node[n,overlay] (b2) at (1, -2) {};
+    \node[n,overlay] (b3) at (2, -2) {};
     \node[n] (d) at (3, -1) {};
-    \node[n] (e) at (3, -2) {};
-    \node[n] (f) at (-2, -1) {};
-    \node[n] (h) at (-3, -1) {};
-    \node[n,overlay] (i) at (-4, -2) {};
-    \node[n] (j) at (-2, -2) {};
-    \foreach \x/\y in {a1/b,a2/b,b/b2,b2/b3,b3/d,b2/d,d/e,a1/f,a2/f,f/h,h/i,i/j,a2/j} {
-        \draw[connect] (\x) -- (\y);
+    \node[n,overlay] (e) at (3, -2) {};
+    \node[n,n focus] (f) at (-2, -1) {};
+    \node[n,n focus] (h) at (-3, -1) {};
+    \node[n,overlay,n focus,alt=<2>{red,fill=red!10},alt=<5>{red,fill=red!10}] (i) at (-4, -2) {};
+    \node[n,overlay,n focus] (j) at (-2, -2) {};
+    \foreach \x/\y/\r in {a1/b/,a2/b/,b/b2/,b2/b3/,b3/d/,b2/d/,d/e/,a1/f/connect half focus,a2/f/connect focus,f/h/connect focus,h/i/connect focus,i/j/connect focus,a2/j/connect focus,d/a2/} {
+        \draw[connect,\r] (\x) -- (\y);
     }
 \end{scope}
 
@@ -66,10 +73,62 @@
 \draw[connect] (ext2) --  (y);
 \end{scope}
 
-\begin{pgfonlayer}{bg}
-\begin{visibleenv}<2->
-
+\begin{visibleenv}<2>
+\node[fill=white,draw=red,ultra thick,align=left,anchor=north east] at ([xshift=-.2cm]B-i.north west) {
+    this router \\
+    only cares about \\
+    small part of network
+};
 \end{visibleenv}
+
+\begin{visibleenv}<3->
+\begin{pgfonlayer}{bg}
+\draw[boundary,blue!40]
+    ([xshift=-.2cm,yshift=.2cm]B-i.north west) -- ([xshift=.2cm,yshift=.2cm]B-j.north east) --
+    ([xshift=.2cm]B-f.east) -- (B-a1.center) -- (B-a2.center) -- ([xshift=-.2cm,yshift=-.2cm]B-h.south west) -- cycle;
+
+\draw[boundary,violet!40]
+    ([xshift=-.2cm,yshift=.2cm]B-b2.north west) -- ([xshift=.2cm,yshift=.2cm]B-e.north east) --
+    ([xshift=.2cm]B-d.east) -- (B-a1.center) -- (B-a2.center) -- ([xshift=-.2cm,yshift=.2cm]B-b2.north west) -- cycle;
+
+\draw[boundary,green!40]
+    ([xshift=-.5cm,yshift=.2cm]A-h.north east) --
+    ([xshift=-.2cm,yshift=-.2cm]A-j.south west) -- ([xshift=.2cm,yshift=-.2cm]A-e.south east) --
+    ([xshift=.2cm,yshift=1cm]A-e.north east) --
+    ([xshift=.2cm]A-a1.east) -- ([xshift=-.2cm]A-a2.west) -- cycle;
+
+\node[boundary,orange!40,fit=(w) (x) (y) (z) (ext1) (ext2)] {};
 \end{pgfonlayer}
+\end{visibleenv}
+\begin{visibleenv}<3>
+\node[fill=white,draw=red,ultra thick,align=left,anchor=north east] at ([xshift=-.2cm]B-i.north west) {
+    divide network into ``areas''
+};
+\end{visibleenv}
+\begin{visibleenv}<4>
+\node[fill=white,draw=red,ultra thick,align=left,anchor=north east] at ([xshift=-.2cm]B-i.north west) {
+    ``border'' routers \\
+   only send summaries \\
+   about other areas
+};
+\end{visibleenv}
+\begin{visibleenv}<5>
+\node[n large focus] (net1) at (1, 0) {};
+\node[n large focus] (net2) at (3, 0) {};
+\node[n large focus] (net3) at (5, 0) {};
+\node[n large focus] (net4) at (6,  4) {};
+\foreach \x in {net1,net2,net3,net4} {
+    \draw[connect focus,-Latex] (B-a1) -- (\x);
+    \draw[connect focus,-Latex] (B-a2) -- (\x);
+};
+\end{visibleenv}
+\begin{visibleenv}<5>
+\node[fill=white,draw=red,ultra thick,align=left,anchor=north east] at ([xshift=-.2cm]B-i.north west) {
+    router sees simpler \\
+    summary of network \\
+    $\rightarrow$ hopefully \\
+    faster routing
+};
+\end{visibleenv}
 \end{tikzpicture}
 \end{frame}

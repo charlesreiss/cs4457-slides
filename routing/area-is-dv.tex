@@ -1,0 +1,20 @@
+\begin{frame}{distance vector in link state?}
+    \begin{itemize}
+    \item summaries are distance vectors!
+        \begin{itemize}
+        \item area border routers just saying which networks + metric
+        \end{itemize}
+    \item idea: mix simpler distance vectors with more flexible link-state
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{but distance vector problems?}
+    \begin{itemize}
+    \item recall: count-to-infinity
+    \item let's say areas A, B, C, D all connected to each other\ldots
+    \item \ldots and area D goes offline:
+    \item could packet for D loop area A to B to C to A to B to C to \ldots
+    \vspace{.5cm}
+    \item<2-> OSPF solution: disallow this network configuration
+    \end{itemize}
+\end{frame}

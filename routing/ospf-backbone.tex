@@ -1,0 +1,15 @@
+\begin{frame}{backbone}
+    \begin{itemize}
+    \item OSPF area 0 is called ``backbone''
+    \item border routers only summarize routes sent to backbone \textit{or}
+        not obtained from other area border routers
+    \vspace{.5cm}
+    \item means routing between areas must either:
+        \begin{itemize}
+        \item go through the backbone, or
+        \item only go through one border router
+        \end{itemize}
+    \item makes loops not possible
+    \end{itemize}
+\end{frame}
+
