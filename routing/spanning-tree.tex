@@ -85,10 +85,10 @@
     node[midway,sloped,below,visible on=<5>] {no new nodes};
 \draw[connect maybe,actual at=6,consider at=5] (B) -- (D)
     node[midway,below left,visible on=<5>] {first priority};
-\draw[connect maybe,actual at=7,consider at=5] (G) -- (F)
+\draw[connect maybe,actual at=8,consider at=5] (G) -- (F)
     node[midway,below right,visible on=<5>] {second priority};
-\draw[connect maybe] (G) -- (E);
-\draw[connect maybe] (D) -- (E);
+\draw[connect maybe,consider at=6,actual at=7] (G) -- (E);
+\draw[connect maybe,consider at=6] (D) -- (E);
 \draw[connect maybe] (E) -- (F);
 \end{tikzpicture}
 \end{frame}
