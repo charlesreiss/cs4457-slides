@@ -1,0 +1,23 @@
+\begin{frame}{BGP route}
+    \begin{itemize}
+    \item adjacent routers share list of \textit{routes} with:
+    \vspace{.5cm}
+    \item IP prefix (CIDR-style, basically)
+    \item AS path --- list of autonomous system the route goes through
+    \item next hop router (IP address)
+    \item \textit{multi-exit discriminator}
+        \begin{itemize}
+        \item low value = this entrance to AS is better than others for these IPs
+        \end{itemize}
+    \item \textit{local preference} (internal-only)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{AS path}
+    \begin{itemize}
+    \item used to detect routing loops
+    \vspace{.5cm}
+    \item append your AS when sending route externally
+    \item always ignore external routes with your AS in their AS path already
+    \end{itemize}
+\end{frame}
