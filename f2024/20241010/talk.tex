@@ -1,0 +1,168 @@
+\date{}
+\title{}
+\date{}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}{last time}
+    \begin{itemize}
+    \item error messages from routers
+        \begin{itemize}
+        \item destination unreachable
+        \item packet too big
+        \item time exceeded
+        \end{itemize}
+    \item fragmentation (and avoiding it)
+        \begin{itemize}
+        \item best perf: probably largest size without fragmentation
+        \end{itemize}
+    \item `flooding' idea:
+        \begin{itemize}
+        \item periodically share routes with all neighbors
+        \item (excluding routes that double-back to same network)
+        \item receive new routes + add to table
+        \end{itemize}
+    \item spanning trees
+        \begin{itemize}
+        \item to avoid loops, want single path across network
+        \item choose subset of nodes that form tree (single path)
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{reliable3}
+\end{frame}
+
+\begin{frame}{queuing assignment}
+
+\begin{frame}{anonymous feedback (from before Tuesday)}
+    \begin{itemize}
+    \item lack of clear writing on slides
+        \begin{itemize}
+        \item definitely need to make that more of a focus, sorry!
+        \item need to remind myself to get in better habits on that
+        \end{itemize}
+    \item dropping assignment --- not planning on it
+    \end{itemize}
+\end{frame}
+
+\section{basic flooding / MAC learning}
+\input{../routing/basic-flooding}
+
+\section{spanning trees}
+\input{../routing/spanning-tree}
+
+\section{preview: better routing}
+\input{../routing/preview-better}
+
+\section{aside: metrics}
+\input{../routing/metrics}
+
+\section{Bellman-Ford}
+\input{../routing/bellman-ford}
+
+\section{distance vector routing}
+\subsection{distributing Bellman-Ford}
+\input{../routing/bellman-ford-dist}
+
+\subsection{aside: networks and routers}
+\input{../routing/network-v-router-dv} 
+
+\subsection{algorithm}
+\input{../routing/dv-algo}
+
+\subsection{RIP}
+\input{../routing/rip-protocol}
+
+
+\subsection{handling removal}
+\input{../routing/removalp} % FIXME: fill in diagram
+
+\subsection{count-to-infinity}
+\input{../routing/count-to-infty} % FIXME: diagram
+
+\section{link state}
+\subsection{idea}
+\input{../routing/link-state-idea}
+\subsection{link state advertisements}
+\input{../routing/link-state-adv}
+\subsection{link state database}
+\input{../routing/link-state-db}
+\subsection{reliable flooding}
+\input{../routing/ls-reliable-flood}
+
+\subsection{shortest path first}
+\input{../routing/ls-shortest-path}
+
+\subsection{shortest path algorithm}
+\input{../routing/bestFirstExample}
+
+\subsection{shortest path consistency}
+\input{../routing/sp-consistency}
+
+\subsection{networks versus routers}
+\input{../routing/network-v-router-ls} 
+
+\section{multipath/load balancing}
+\input{../routing/multipath}
+
+\section{scalability: OSPF areas} % textbook sec 4.1.1.
+
+\subsection{motivation / basic idea}
+
+\input{../routing/area-big-net}
+
+\subsection{areas are DV}
+
+\input{../routing/area-is-dv}
+
+\subsection{always route through backbone}
+\input{../routing/ospf-backbone}
+
+\subsection{virtual links}
+\input{../routing/ospf-virt-link}
+
+\section{interdomain routing}
+\input{../routing/interdomain-problems}
+
+\subsection{terminology: autonomous system}
+\input{../routing/define-as}
+
+\subsection{relationship types}
+\input{../routing/relate-types}
+
+\subsection{local/remote preferences}
+\input{../routing/distant-prefs}
+
+\subsection{sharing routes: BGP}
+\input{../routing/bgp-overview}
+
+\subsection{BGP route format}
+\input{../routing/bgp-route-format}
+
+\subsection{BGP route preference order}
+\input{../routing/bgp-route-pref}
+
+\subsection{adding + withdrawing routes}
+
+\subsection{route aggregation}
+
+\subsection{loop prevention, metrics}
+
+\subsection{self-appending}
+
+\subsection{limited propogation options}
+
+\subsection{validating routes / sBGP}
+
+\subsection{BGP hijacking/fat fingers}
+
+
+
+\section{backup slides}
+\begin{frame}{backup slides}
+\end{frame}
+
+\end{document}
