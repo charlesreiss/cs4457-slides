@@ -247,8 +247,11 @@
     \node[draw,very thick,anchor=north west] at (F.south east) {
         r=F,d=0,no link
     };
-    \node[draw,very thick,anchor=north west] at (D.south west) {
+    \node[draw,very thick,anchor=north east] at (D.south west) {
         r=D,d=0,no link
+    };
+    \node[draw,very thick,anchor=south] at (B.north) {
+        r=B,d=0,no link
     };
 \end{visibleenv}
 \begin{visibleenv}<3>
@@ -268,6 +271,9 @@
         r=D,d=0,no link \\
         (D < E, so no update)
     };
+    \node[draw,very thick,anchor=south] at (B.north) {
+        r=B,d=0,no link
+    };
 \end{visibleenv}
 \begin{visibleenv}<4>
     \draw[msg link] (D) -- (B);
@@ -281,7 +287,7 @@
     \node[draw,very thick,anchor=north west] at (F.south east) {
         r=E,d=0,F--E
     };
-    \node[draw,very thick,alt=<4>{msg data},anchor=north east] at (D.south west) {
+    \node[draw,very thick,alt=<4>{msg data},anchor=east] at (D.west) {
         r=D,d=0,no link
     };
     \node[draw,very thick,anchor=south] at (B.north) {
@@ -300,7 +306,7 @@
     \node[draw,very thick,anchor=north west] at (F.south east) {
         r=E,d=0,F--E
     };
-    \node[draw,very thick,anchor=north east] at (D.south west) {
+    \node[draw,very thick,anchor=east,msg data] at (D.west) {
         r=D,d=0,no link
     };
     \node[align=left,draw,very thick,draw=red,anchor=south] at (B.north) {
