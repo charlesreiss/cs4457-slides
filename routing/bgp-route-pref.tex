@@ -4,8 +4,8 @@
     \item should use most specific route
         \begin{itemize}
         \item use 2001:db8:1234::/40 over 2001:db8:1234::/39 if both apply
-        \item (but reject very small address ranges)
-        \end{itmize}
+        \item (but usually reject very small address ranges (e.g. /31 for IPv4, /60 for IPv6))
+        \end{itemize}
     \item then (if tie) local policy applies
     \item then shortest AS path
     \item then lower AS number
@@ -33,7 +33,7 @@
 \node[router] (B-us-other) at (8.5, -1.25) {};
 \node[router,label={north:ISP A/NoVA}] (A-va) at (10.5, 1.5) {};
 \node[router,label={south:ISP B/NoVA}] (B-va) at (10.5, -.5) {};
-\foreach \x/\y in {A-japan/B-japan/1,A-la/B-la/2,A-va/B-va/3} {
+\foreach \x/\y/\med in {A-japan/B-japan/1,A-la/B-la/2,A-va/B-va/3} {
     \draw[connect] (\x) -- (\y);
     \draw[red] (\y) -- (\x) node[midway,fill=white,draw=red,align=left,font=\small] {
             to 2001:db8:1::/40, MED=\med
