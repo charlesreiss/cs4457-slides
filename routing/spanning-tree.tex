@@ -238,19 +238,19 @@
     \draw[msg link] (E) -- (G);
     \draw[msg link] (E) -- (F);
     \draw[msg link] (E) -- (D);
-    \node[draw,very thick,anchor=south west] at (G.north east) {
+    \node[draw,very thick,anchor=south west,fill=white] at (G.north east) {
         r=G,d=0,no link
     };
-    \node[draw,very thick,alt=<2>{msg data},anchor=north] at (E.south) {
+    \node[draw,very thick,alt=<2>{msg data},anchor=north,fill=white] at (E.south) {
         r=E,d=0,no link
     };
-    \node[draw,very thick,anchor=north west] at (F.south east) {
+    \node[draw,very thick,anchor=north west,fill=white] at (F.south east) {
         r=F,d=0,no link
     };
-    \node[draw,very thick,anchor=north east] at (D.south west) {
+    \node[draw,very thick,anchor=east,fill=white] at ([xshift=-.2cm]D.west) {
         r=D,d=0,no link
     };
-    \node[draw,very thick,anchor=south] at (B.north) {
+    \node[draw,very thick,anchor=south,fill=white] at (B.north) {
         r=B,d=0,no link
     };
 \end{visibleenv}
@@ -258,16 +258,16 @@
     \draw[msg link] (E) -- (G);
     \draw[msg link] (E) -- (F);
     \draw[msg link] (E) -- (D);
-    \node[draw,very thick,draw=red,anchor=south west] at (G.north east) {
+    \node[draw,very thick,draw=red,anchor=south west,fill=white] at (G.north east) {
         r=E,d=1,G--E
     };
-    \node[draw,very thick,anchor=north] at (E.south) {
+    \node[draw,very thick,anchor=north,fill=white] at (E.south) {
         r=E,d=0,no link
     };
-    \node[draw,very thick,draw=red,anchor=north west] at (F.south east) {
+    \node[draw,very thick,draw=red,anchor=north west,fill=white] at (F.south east) {
         r=E,d=1,F--E
     };
-    \node[align=left,draw,very thick,draw=red,anchor=north east] at (D.south west) {
+    \node[align=left,draw,very thick,draw=red,anchor=east,fill=white] at ([xshift=-.2cm]D.west) {
         r=D,d=0,no link \\
         (D < E, so no update)
     };
