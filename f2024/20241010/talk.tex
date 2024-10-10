@@ -122,9 +122,6 @@
 \subsection{always route through backbone}
 \input{../routing/ospf-backbone}
 
-\subsection{virtual links}
-\input{../routing/ospf-virt-link}
-
 \section{interdomain routing}
 \input{../routing/interdomain-problems}
 
@@ -140,21 +137,27 @@
 \subsection{sharing routes: BGP}
 \input{../routing/bgp-overview}
 
+\subsection{sharing routes: picture}
+\input{../routing/bgp-basic-picture}
+
+\subsection{sharing routes: multiple connections}
+\input{../routing/bgp-simple-multi}
+
 \subsection{BGP route format}
 \input{../routing/bgp-route-format}
 
 \subsection{BGP route preference order}
-\input{../routing/bgp-route-pref}
+\input{../routing/bgp-route-pref} % FIXME: show multi-exit discriminator
 
-\subsection{adding + withdrawing routes}
+\subsection{in practice?}
+\begin{frame}{}
+    \begin{itemize}
+    \item \url{https://bgp.he.net/super-lg/}
+    \end{itemize}
+\bend{frame}
 
-\subsection{route aggregation}
-
-\subsection{loop prevention, metrics}
-
-\subsection{self-appending}
-
-\subsection{limited propogation options}
+\subsection{BGP communities}
+\input{../routing/bgp-comm}
 
 \subsection{validating routes / sBGP}
 
