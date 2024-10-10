@@ -5,7 +5,7 @@
     \vspace{.5cm}
     \item $d(A,B) = \text{best distance from A to B}$
     \item $p(A,B) = \text{next node on path from A to B}$
-    \item initially $d(X,X) = 0$ for all nodes $X$
+    \item initially $d(X,X) = \infty$ for all nodes $X$
     \item repeatedly* do the following:
     \vspace{.5cm}
     \item for each link from A to B, distance $c$:
@@ -68,8 +68,8 @@
 ] at (6, 0) {
     ~ \& A \& B \& C \& D \\
     A \& |[alt=<3>{fill=red!10}]| 0/A \& \only<1>{\noroute}\mymark{2}{2/B} \& \only<1-6>{\noroute}\mymark{7}{1/C} \& \only<1-6>{\noroute}\mymark{7}{5/D} \\
-    B \& |[alt=<5>{fill=red!10}]| \only<1-2>{\noroute}\mymark{3}{4/A} \& |[alt=<2>{fill=red!10},alt=<5>{fill=red!10}]| 0/B\& \only<1-3>{\noroute}\mymark{4}{2/C} \& \only<1-7>{\noroute}{\mymark{8}{0/A}} \\
-    C \& \only<1-4>{\noroute}\only<5-6>{\mymark{5}{6/B}}\mymark{7}{1/A} \& \only<1-4>{\noroute}\mymark{5}{2/B} \& 0/C \& 
+    B \& |[alt=<5>{fill=red!10}]| \only<1-2>{\noroute}\mymark{3}{4/A} \& |[alt=<2>{fill=red!10},alt=<5>{fill=red!10}]| 0/B\& \only<1-3>{\noroute}\mymark{4}{2/C} \& \only<1-7>{\noroute}{\mymark{8}{9/A}} \\
+    C \& \only<1-4>{\noroute}\only<5->{\mymark{5}{6/B}} \& \only<1-4>{\noroute}\mymark{5}{2/B} \& 0/C \& 
             \only<1-5>{\noroute}{\mymark{6}{4/D}} \\
     D \& \noroute \& \noroute \& \noroute \& 0/D \\
 };
