@@ -14,3 +14,24 @@
     \item each router receives list of routes, exports to OSPF/etc.
     \end{itemize}
 \end{frame}
+
+\begin{frame}{BGP connections}
+    \begin{itemize}
+    \item BGP connections made between routers
+    \vspace{.5cm}
+    \item each router keeps track of set routes advertised by other
+    \item command sent to add or withdraw specific routes
+    \vspace{.5cm}
+    \item not like distance vector where we keep resending everything
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{BGP prefixes}
+    \begin{itemize}
+    \item routes sent via BGP called `prefixes'
+    \item said to be ``announced'' from one router to another
+    \vspace{.5cm}
+    \item because the network (e.g. 10.0.1.0/24) is the important part
+    \item (and the next hop is implied by where prefix comes from) 
+    \end{itemize}
+\end{frame}

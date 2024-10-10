@@ -1,0 +1,67 @@
+\usetikzlibrary{arrows.meta,shapes}
+\begin{frame}[fragile]{external BGP}
+\begin{tikzpicture}
+\tikzset{
+    network/.style={draw,cloud,very thick,aspect=2,font=\fontsize{10}{11}\selectfont,align=center,inner sep=0.1mm},
+    router/.style={draw,circle,fill=white},
+    connect/.style={draw,ultra thick,Latex-Latex},
+    send money/.style={bend right,draw,line width=1mm,green!70!black,dotted,"\huge\$",-Latex},
+    bgp msg/.style={font=\fontsize{9}{10}\selectfont,fill=blue!5,align=left,draw,thick},
+}
+\node[network] (A) at (0,0) {ISP A\\\ldots\\AS64901};
+\node[network] (B) at (4,0) {ISP B\\\ldots\\AS64895};
+\node[network] (C) at (8,0) {ISP C\\\ldots\\AS64755};
+\node[network] (D) at (12,0) {ISP D\\\ldots\\AS64600};
+\node[network] (webhost) at (4,-5) {webhost \\3fff:1::/32\\AS64501};
+\node[network] (office) at (8,-5) {office \\3fff:2::/32\\AS64502};
+\node[network] (school) at (12, -5) {school \\3ff:7:ab::/40};
+\draw[connect,alt=<2>{draw=red}] (A) -- (webhost);
+\draw[connect,alt=<3>{draw=red}] (B) -- (webhost);
+\draw[connect,alt=<4>{draw=red}] (C) -- (webhost);
+\draw[connect,alt=<5>{draw=red}] (C) -- (D);
+\draw[connect] (office) -- (B);
+\draw[connect] (office) -- (D);
+\draw[connect,alt=<6>{red}] (school) -- (D);
+\begin{visibleenv}<2>
+\path (A) -- (webhost) node[midway,bgp msg] {
+    webhost$\rightarrow$A: \\
+    \hspace{.5cm} 3fff:1::/32 () \\
+    A$\rightarrow$webhost: \\
+    \hspace{.5cm} \ldots
+    \hspace{.5cm} \ldots
+};
+\end{visibleenv}
+\begin{visibleenv}<3>
+\path (B) -- (webhost) node[midway,bgp msg] {
+    webhost$\rightarrow$B: \\
+    \hspace{.5cm} 3fff:1::/32 () \\
+    B$\rightarrow$webhost: \\
+    \hspace{.5cm} 3fff::2::/32 (AS64502) \\
+    \hspace{.5cm} \ldots
+};
+\end{visibleenv}
+\begin{visibleenv}<4>
+\path (C) -- (webhost) node[midway,bgp msg] {
+    webhost$\rightarrow$C: \\
+    \hspace{.5cm} 3fff:1::/32 () \\
+    C$\rightarrow$webhost: \\
+    \hspace{.5cm} 3fff::2::/32 (AS64502 AS64000) \\
+    \hspace{.5cm} 3fff::7:ab::/40 (AS64000) \\
+    \hspace{.5cm} \ldots
+};
+\end{visibleenv}
+\begin{visibleenv}<5>
+\path (office) -- (webhost) node[midway,bgp msg] {
+    C$\rightarrow$D: \\
+    \hspace{.5cm} 3fff:1::/32 (AS64501) \\
+    \hspace{.5cm} \ldots \\
+    D$\rightarrow$C: \\
+    \hspace{.5cm} 3fff:2::/32 (AS64501) \\
+    \hspace{.5cm} 3fff:7:ab::/32 () \\
+    \hspace{.5cm} \ldots \\
+};
+\end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+

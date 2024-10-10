@@ -81,8 +81,8 @@
 };
 \end{visibleenv}
 
-\begin{visibleenv}<3->
 \begin{pgfonlayer}{bg}
+\begin{visibleenv}<3->
 \draw[boundary,blue!40]
     ([xshift=-.2cm,yshift=.2cm]B-i.north west) -- ([xshift=.2cm,yshift=.2cm]B-j.north east) --
     ([xshift=.2cm]B-f.east) -- (B-a1.center) -- (B-a2.center) -- ([xshift=-.2cm,yshift=-.2cm]B-h.south west) -- cycle;
@@ -98,8 +98,8 @@
     ([xshift=.2cm]A-a1.east) -- ([xshift=-.2cm]A-a2.west) -- cycle;
 
 \node[boundary,orange!40,fit=(w) (x) (y) (z) (ext1) (ext2)] {};
-\end{pgfonlayer}
 \end{visibleenv}
+\end{pgfonlayer}
 \begin{visibleenv}<3>
 \node[fill=white,draw=red,ultra thick,align=left,anchor=north east] at ([xshift=-.2cm]B-i.north west) {
     divide network into ``areas''

@@ -1,0 +1,92 @@
+\usetikzlibrary{arrows.meta,fit,shapes}
+
+\begin{frame}[fragile]{multiple BGP sessions}
+\begin{tikzpicture}
+\tikzset{
+    network/.style={draw,cloud,very thick,aspect=2,font=\fontsize{10}{11}\selectfont,align=center,inner sep=0.1mm},
+    router/.style={draw,circle,fill=white},
+    connect/.style={draw,ultra thick,Latex-Latex},
+    send money/.style={bend right,draw,line width=1mm,green!70!black,dotted,"\huge\$",-Latex},
+    bgp msg/.style={font=\fontsize{8}{9}\selectfont,fill=blue!5,align=left,draw=black,text=black,thick},
+}
+\node[router] (A-r1) at (-3, 0) {};
+\node[router] (A-r2) at (3, 0) {};
+\draw[connect] (A-r1) -- (-2, 1) node{\ldots};
+\draw[connect] (A-r1) -- (-3.5, 1.8) node{\ldots};
+\draw[connect] (A-r2) -- (2, 1.5) node{\ldots};
+\draw[connect] (A-r2) -- (2.5, 2.5) node{\ldots};
+\draw[connect] (A-r2) -- (1.2, 0.5) node{\ldots};
+\node[router] (B-r1) at (-4, -2) {};
+\node[router] (B-r2) at (5, -2) {};
+\draw[connect] (B-r1) -- (-3, -4) node{\ldots};
+\draw[connect] (B-r1) -- (-4, -5) node{\ldots};
+\draw[connect] (B-r2) -- (4, -3) node{\ldots};
+\draw[connect] (B-r2) -- (2, -2.5) node{\ldots};
+\begin{pgfonlayer}{bg}
+\node[fill=violet!10,fit={(A-r1) (A-r2) (2.5, 2.5) (-3.5, 1.8)}] {ISP A};
+\node[fill=green!10,fit={(B-r1) (B-r2) (-3, -4) (-4, -5) (4, -3) (2, -2.5)}] {company B};
+\end{pgfonlayer}
+\begin{visibleenv}<2-3>
+\draw[connect,red] (A-r1) -- (B-r1)
+    node[midway,below right,bgp msg] {
+        A$\rightarrow$B: \\
+        \hspace{.5cm} 2601:db8:33::/40, MED=10 () \\
+        \hspace{.5cm} 3fff:1234:99::/40, MED=10 (AS65432) \\
+        \hspace{.5cm} 3fff:1234:abc::/40, MED=20 (AS65323) \\
+        \hspace{.5cm} \ldots \\
+        B$\rightarrow$A: \\
+        \hspace{.5cm} 3fff:3230:10::/40, MED=20 () \\
+        \hspace{.5cm} 3fff:3230:20::/40, MED=10 () \\
+        \hspace{.5cm} \ldots
+    };
+\draw[connect,red] (A-r2) -- (B-r2)
+    node[midway,above right,bgp msg] {
+        A$\rightarrow$B: \\
+        \hspace{.5cm} 2601:db8:33::/40, MED=30 () \\
+        \hspace{.5cm} 3fff:1234:99::/40, MED=20 (AS65432) \\
+        \hspace{.5cm} 3fff:1234:abc::/40, MED=10 (AS65823) \\
+        \hspace{.5cm} \ldots \\
+        B$\rightarrow$A: \\
+        \hspace{.5cm} 3fff:3230:10::/40, MED=10 ()  \\
+        \hspace{.5cm} 3fff:3230:20::/40, MED=20 () \\
+        \hspace{.5cm} \ldots
+    };
+\end{visibleenv}
+\begin{visibleenv}<3>
+\node[draw=red,ultra thick,font=\small,align=left,fill=white] at ([xshift=.5cm,yshift=-1cm]B-r2.north east) {
+    exchange possible routes \\
+    over each pair of routers \\
+    ~ \\
+    typically same routes for \\
+    each connection to AS \\
+    but maybe different attributes 
+};
+\end{visibleenv}
+\begin{visibleenv}<4->
+\draw[connect] (A-r1) -- (B-r1);
+\draw[connect] (A-r2) -- (B-r2);
+\draw[dotted,red,very thick,Latex-Latex] (A-r1) -- (A-r2)
+    node[midway,below=1cm,bgp msg] {
+        left router$\rightarrow$all: \\
+        \hspace{.5cm}via 3ff:3230:10::3, 3fff:3230:10::/40, MED=10 (AS64992) \\
+        \hspace{.5cm}via 3ff:3230:10::3, 3fff:3230:20::/40, MED=20 (AS64992) \\
+        \hspace{.5cm}\ldots \\
+        right router$\rightarrow$all: \\
+        \hspace{.5cm}via 3ff:3230:20::5, 3fff:3230:10::/40, MED=10 (AS64992) \\
+        \hspace{.5cm}via 3ff:3230:20::5, 3fff:3230:20::/40, MED=20 (AS64992) \\
+        \hspace{.5cm}\ldots \\
+    };
+\draw[dotted,red,very thick,Latex-] (A-r1) -- (2, 1.5) node[above]{\ldots};
+\draw[dotted,red,very thick,Latex-] (A-r1) -- (-2, 1.75) node[above]{\ldots};
+\draw[dotted,red,very thick,Latex-] (A-r2) -- (2, 1.5) node[above]{\ldots};
+\draw[dotted,red,very thick,Latex-] (A-r2) -- (-2, 1.9) node[above]{\ldots};
+\end{visibleenv}
+\begin{visibleenv}<4>
+\node[draw=red,ultra thick,font=\small,align=left,fill=white,anchor=north] at (8,-1) {
+    within ISP, use internal BGP (IBGP) \\
+    share everything learned via BGP \\
+    with all BGP routers
+};
+\end{visibleenv}
+\end{tikzpicture}
+\end{frame}
