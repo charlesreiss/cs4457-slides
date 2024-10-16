@@ -1,0 +1,43 @@
+\begin{frame}[fragile,label=serverLookupClientMulti]{connection setup: multiple server addresses}
+\begin{lstlisting}[
+    language=C++,style=smaller,
+    moredelim={**[is][\btHL<2|handout:2>]{@2}{2@}},
+    moredelim={**[is][\btHL<3|handout:3>]{@3}{3@}},
+    moredelim={**[is][\btHL<4|handout:4>]{@4}{4@}},
+    moredelim={**[is][\btHL<5|handout:5>]{@5}{5@}},
+    moredelim={**[is][\btHL<6|handout:6>]{@6}{6@}},
+]
+struct addrinfo *server;
+...
+rv = getaddrinfo(hostname, portname, &hints, &server);
+if (rv != 0) { /* handle error */ }
+
+for (struct addrinfo *current = server; current != NULL;
+      @2current = current->ai_next2@) {
+    sock_fd = socket(current->ai_family, current->ai_socktype, current->ai_protocol);
+    if (sock_fd < 0) continue;
+    if (connect(sock_fd, current->ai_addr, current->ai_addrlen) == 0) {
+        break;
+    }
+    close(sock_fd); // connect failed
+}
+freeaddrinfo(server);
+DoClientStuff(sock_fd);
+close(sock_fd);
+\end{lstlisting}
+\begin{tikzpicture}[overlay,remember picture]
+\tikzset{
+    box/.style={draw=red, ultra thick,fill=white,at={([yshift=-2cm]current page.north)},anchor=north,align=left},
+    box low/.style={draw=red, ultra thick,fill=white,at={([yshift=-6.5cm]current page.north)},anchor=north,align=left},
+}
+\begin{visibleenv}<2>
+\node[box low] {
+    addrinfo is a linked list \\
+    name can correspond to multiple addresses \\
+    example: redundant copies of web server \\
+    example: an IPv4 address and IPv6 address \\
+    example: wired + wireless connection on one machine
+};
+\end{visibleenv}
+\end{tikzpicture}
+\end{frame}

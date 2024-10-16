@@ -1,0 +1,64 @@
+\begin{frame}[fragile,label=connSetupClientAddrInfo]{connection setup: client, TCP+IPv4}
+\begin{lstlisting}[
+    language=Python,style=smaller,
+    moredelim={**[is][\btHL<2|handout:2>]{@2}{2@}},
+    moredelim={**[is][\btHL<3|handout:3>]{@3}{3@}},
+    moredelim={**[is][\btHL<4|handout:4>]{@4}{4@}},
+    moredelim={**[is][\btHL<5|handout:5>]{@5}{5@}},
+    moredelim={**[is][\btHL<6|handout:6>]{@6}{6@}},
+]
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# to select local host/port: socket.bind(('128.143.71.27', 54444))
+# if no local host/port selected, OS assigns
+sock.connect(('128.143.67.8', 443))
+...
+sock.send(...)
+sock.recv(...)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile,label=connSetupClientAddrInfo]{connection setup: client, TCP+IPv6}
+\begin{lstlisting}[
+    language=Python,style=smaller,
+    moredelim={**[is][\btHL<2|handout:2>]{@2}{2@}},
+    moredelim={**[is][\btHL<3|handout:3>]{@3}{3@}},
+    moredelim={**[is][\btHL<4|handout:4>]{@4}{4@}},
+    moredelim={**[is][\btHL<5|handout:5>]{@5}{5@}},
+    moredelim={**[is][\btHL<6|handout:6>]{@6}{6@}},
+]
+sock = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
+# to select local host/port: socket.bind(('3fff:1234::1', 54444))
+# if no local host/port selected, OS assigns
+sock.connect(('2607:f8b0:4004:c06::67', 443))
+...
+sock.send(...)
+sock.recv(...)
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile,label=connSetupClientAddrInfo]{connection setup: generic TCP, addrinfo}
+\begin{Verbatim}[fontsize=\fontsize{9}{10}]
+import socket
+possible_addrs = socket.getaddrinfo(
+        'www.cs.virginia.edu', '443',
+        socket.AF_UNSPEC, socket.SOCK_STREAM)
+
+for af, socktype, proto, canonname, sockaddr in possible_addrs:
+    try:
+        sock = socket.socket(af, socktype, proto)
+    except OSError:
+        sock = None
+        continue
+    try:
+        sock.connect(sa)
+    except OSError:
+        sock.close()
+        sock = None
+        continue
+
+if sock == None:
+    # not successful
+\end{Verbatim}
+\end{frame}
+

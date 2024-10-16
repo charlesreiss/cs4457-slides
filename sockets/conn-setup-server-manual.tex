@@ -1,0 +1,48 @@
+\begin{frame}[fragile,label=connSetupServer]{connection setup: server, manual}
+\begin{lstlisting}[
+    language=C++,style=smaller,
+    moredelim={**[is][\btHL<2|handout:2>]{@2}{2@}},
+    moredelim={**[is][\btHL<3|handout:3>]{@3}{3@}},
+    moredelim={**[is][\btHL<4|handout:4>]{@4}{4@}},
+    moredelim={**[is][\btHL<5|handout:5>]{@5}{5@}},
+    moredelim={**[is][\btHL<6|handout:6>]{@6}{6@}},
+]
+int server_socket_fd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+struct sockaddr_in addr;
+addr.sin_family = AF_INET;
+addr.sin_addr.s_addr = @2INADDR_ANY2@; /* "any address I can use" */
+    @3/* or: addr.s_addr.in_addr = INADDR_LOOPBACK (127.0.0.1) */3@
+    /* or: addr.s_addr.in_addr = htonl(...); */
+addr.sin_port = @4htons(9999)4@; /* port number 9999 */
+
+if (bind(server_socket_fd, &addr, sizeof(addr)) < 0) {
+    /* handle error */
+}
+listen(server_socket_fd, @4MAX_NUM_WAITING4@);
+...
+int socket_fd = accept(server_socket_fd, NULL);
+\end{lstlisting}
+\begin{tikzpicture}[overlay,remember picture]
+\tikzset{
+    box/.style={draw=red, ultra thick,fill=white,at={([yshift=-2cm]current page.north)},anchor=north,align=left},
+    box low/.style={draw=red, ultra thick,fill=white,at={([yshift=-6cm]current page.north)},anchor=north,align=left},
+}
+\begin{visibleenv}<2>
+\node[box low] {
+    INADDR\_ANY: accept connections for any address I can! \\
+    alternative: specify specific address
+};
+\end{visibleenv}
+\begin{visibleenv}<3>
+\node[box low] {
+    bind to 127.0.0.1? only accept connections \myemph{from same machine} \\
+    what we recommend for FTP server assignment
+};
+\end{visibleenv}
+\begin{visibleenv}<4>
+\node[box low] {
+    choose the number of unaccepted connections
+};
+\end{visibleenv}
+\end{tikzpicture}
+\end{frame}

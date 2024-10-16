@@ -1,0 +1,48 @@
+\begin{frame}[fragile]{connection setup: server, IPv4}
+\begin{Verbatim}[fontsize=\small]
+import socket
+ssock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# 0.0.0.0 == "any IP address"
+ssock.bind(('0.0.0.0', 12345))
+ssock.listen()
+sock, remote_addr = ssock.accept()
+Use(sock)
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{connection setup: server, IPv4}
+\begin{Verbatim}[fontsize=\small]
+import socket
+ssock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# 0.0.0.0 == "any IP address"
+ssock.bind(('0.0.0.0', 12345))
+ssock.listen()
+sock, remote_addr = ssock.accept()
+Use(sock)
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile,label=connSetupServerLookup]{connection setup: server, generic}
+\begin{Verbatim}[fontsize=\fontsize{9}{10}]
+import select
+import socket
+all_addrs = socket.getaddrinfo(
+        None, '12345',
+        socket.AF_UNSPEC, socket.SOCK_STREAM)
+ssocks = []
+for af, socktype, proto, canonname, sockaddr in possible_addrs:
+    ssock = socket.socket(af, socktype, proto)
+    try:
+        ssock.bind(sockaddr)
+        ssock.listen()
+        ssocks.append(ssock)
+    except OSError:
+        pass
+
+which_ready, _, _ = select.select(ssocks, [], [])
+for item in which_ready:
+    sock, remote_addr = which_ready.accept()
+    Use(sock)
+\end{Verbatim}
+\end{frame}
+

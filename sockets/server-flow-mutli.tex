@@ -1,0 +1,66 @@
+\usetikzlibrary{arrows.meta,fit}
+
+\begin{frame}{client/server flow (one connection at a time)}
+\begin{tikzpicture}
+\tikzset{
+    every node/.style={font=\small,inner sep=.5mm},
+    >=Latex,
+    myline/.style={draw,->,very thick},
+}
+\node (client socket) {
+    create client socket
+};
+\node[anchor=north west,align=left] (connect) at ([yshift=-.5cm]client socket.south west) {
+    connect socket to server hostname:port \\
+    (gets assigned local host:port) 
+};
+\node[anchor=north west] (write request) at ([yshift=-1cm]connect.south west) {
+    write request
+};
+\node[anchor=north west] (read response) at ([yshift=-.35cm]write request.south west) {
+    read response
+};
+\node[anchor=north west] (close client) at ([yshift=-.5cm]read response.south west) {
+    close socket
+};
+
+\node[anchor=west] (server socket) at ([xshift=8cm,yshift=2cm]client socket.west) {
+    create server socket
+};
+\node[anchor=north west] (bind) at ([yshift=-.5cm]server socket.south west) {
+    bind to host:port
+};
+\node[anchor=north west] (listen) at ([yshift=-.5cm]bind.south west) {
+    start listening for connections
+};
+\node[anchor=north west,align=left] (accept) at ([yshift=-.5cm]listen.south west) {
+    accept a new connection \\
+    (get connection socket)
+};
+\node[anchor=north west] (read request) at ([yshift=-1cm,xshift=.5cm]accept.south west) {
+    read request from connection socket
+};
+\node[anchor=north west] (write response) at ([yshift=-.35cm]read request.south west) {
+    write response to connection socket
+};
+\node[anchor=north west] (close server) at ([yshift=-.5cm]write response.south west) {
+    close connection socket
+};
+
+\foreach \x/\y/\extra in {client socket/connect/,connect/write request/,write request/read response/,read response/close client/,%
+                         server socket/bind/,bind/listen/,listen/accept/,accept/read request/,read request/write response/,%
+                         write response/close server/} {
+    \path[myline,\extra] ([xshift=1cm]\x.south west) -- ([xshift=1cm]\y.north west);
+}
+\foreach \x/\y in {read response/write request,write response/read request,accept/accept} {
+    \path[myline,dotted] ([xshift=0.5cm]\x.south west) -- ++ (0cm,-0.25cm) -| ([yshift=.25cm,xshift=-.5cm]\y.north west)
+            -| ([xshift=.5cm]\y.north west);
+}
+\draw[dotted,blue!50!black,->,thick] (write request.east) -- (read request.west);
+\draw[dotted,blue!50!black,->,thick] (write response.west) -- (read response.east);
+\begin{pgfonlayer}{bg}
+    \node[fill=blue!10,fit=(read request) (write response) (close server),
+          label={south:spawn new process (fork) or thread per conn.}] {}
+\end{pgfonlayer}
+\end{tikzpicture}
+\end{frame}

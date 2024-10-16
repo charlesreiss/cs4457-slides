@@ -1,0 +1,42 @@
+\begin{frame}{port numbers}
+    \begin{itemize}
+    \item we run multiple programs on a machine
+        \begin{itemize}
+        \item IP addresses identifying machine --- not enough
+        \end{itemize}
+    \item<2-> so, add 16-bit \textit{port numbers}
+        \begin{itemize}
+        \item<2-> think: multiple PO boxes at address
+        \end{itemize}
+    \vspace{.5cm}
+    \item<3-> 0--49151: typically assigned for particular services
+        \begin{itemize}
+        \item 80 = http, 443 = https, 22 = ssh, \ldots
+        \item usually <1024 reserved for sysadmin-only-use
+        \end{itemize}
+    \item<3-> 49152--65535: allocated on demand
+        \begin{itemize}
+        \item default ``return address'' for client connecting to server
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{port number independence}
+    \begin{itemize}
+    \item typically ``5-tuple'' identifies socket: \\
+        (protocol=TCP or UDP, source IP, dest IP, source port, dest port)
+    \item means can have:
+        \begin{itemize}
+        \item two sockets with same source IP+source port, but different destinations
+        \item two sockets with same dest IP+des port, but different sources
+        \item two sockets with different protocols, but everything else same
+        \end{itemize}
+    \item special cases:
+        \begin{itemize}
+        \item dest IP/port can be `wildcard' (all zeroes usually)
+        \item used for server that can be connected to
+        \item used for unconnected UDP sockets
+        \end{itemize}
+    \end{itemize}
+\end{frame}

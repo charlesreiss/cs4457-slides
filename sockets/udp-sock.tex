@@ -1,0 +1,28 @@
+\begin{frame}[fragile]{connected UDP sockets (Python)}
+\begin{Verbatim}[fontsize=\small]
+import socket
+# ipv4
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+# ipv6
+sock = socket.socket(socket.AF_INET6, socket.SOCK_DGRAM)
+
+sock.bind((host, port))
+sock.connect((host, port))
+sock.send(b"one datagram")
+sock.send(b"another datagram")
+data = sock.recv(MAX_SIZE)
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{unconnected UDP sockets (Python)}
+\begin{Verbatim}[fontsize=\small]
+sock = ...
+sock.bind((host, port))
+# no connect() operation
+
+data, addr = sock.recvfrom(MAX_SIZE)
+
+sock.sendto(data, (addr, port))
+\end{Verbatim}
+\end{frame}
+

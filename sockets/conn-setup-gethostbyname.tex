@@ -1,0 +1,18 @@
+\begin{frame}[fragile,label=serverLookupClientOld]{connection setup: old lookup function}
+\begin{lstlisting}[language=C++,style=smaller]
+/* example hostname, portnum= "www.cs.virginia.edu", 443*/
+const char *hostname; int portnum;
+...
+struct hostent *server_ip;
+server_ip = gethostbyname(hostname);
+
+if (server_ip == NULL) { /* handle error */ }
+
+struct sockaddr_in addr;
+addr.s_addr = *(struct in_addr*) server_ip->h_addr_list[0];
+addr.sin_port = htons(portnum);
+sock_fd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+connect(sock_fd, &addr, sizeof(addr));
+...
+\end{lstlisting}
+\end{frame}

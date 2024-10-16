@@ -1,0 +1,80 @@
+\begin{frame}[fragile,label=connSetupServerLookup]{connection setup: server, address setup}
+\begin{lstlisting}[
+    language=C++,style=smaller,
+    moredelim={**[is][\btHL<2|handout:2>]{@2}{2@}},
+    moredelim={**[is][\btHL<3|handout:3>]{@3}{3@}},
+    moredelim={**[is][\btHL<4|handout:4>]{@4}{4@}},
+    moredelim={**[is][\btHL<5|handout:5>]{@5}{5@}},
+    moredelim={**[is][\btHL<6|handout:6>]{@6}{6@}},
+]
+/* example (hostname, portname) = ("127.0.0.1", "443") */
+const char *@2hostname2@; const char *@3portname3@;
+...
+struct addrinfo *server;
+struct addrinfo hints;
+int rv;
+
+memset(&hints, 0, sizeof(hints));
+hints.ai_family = AF_INET; /* for IPv4 */
+/* or: */ hints.ai_family = AF_INET6; /* for IPv6 */
+/* or: */ hints.ai_family = AF_UNSPEC; /* I don't care */
+@4hints.ai_flags = AI_PASSIVE4@;
+
+rv = getaddrinfo(hostname, portname, &hints, &server);
+if (rv != 0) { /* handle error */ }
+\end{lstlisting}
+\begin{tikzpicture}[overlay,remember picture]
+\tikzset{
+    box/.style={draw=red, ultra thick,fill=white,at={([yshift=-2cm]current page.north)},anchor=north,align=left},
+    box low/.style={draw=red, ultra thick,fill=white,at={([yshift=-6cm]current page.north)},anchor=north,align=left},
+}
+\begin{visibleenv}<2>
+\node[box low] {
+    \texttt{hostname} could also be NULL \\
+    means ``use all possible addresses'' \\
+    only makes sense for servers
+};
+\end{visibleenv}
+\begin{visibleenv}<3>
+\node[box low] {
+    \texttt{portname} could also be NULL \\
+    means ``choose a port number for me'' \\
+    only makes sense for servers
+};
+\end{visibleenv}
+\begin{visibleenv}<4>
+\node[box] {
+    AI\_PASSIVE: ``I'm going to use bind''
+};
+\end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}[fragile,label=connSetupServerAddrinfo]{connection setup: server, addrinfo}
+\begin{lstlisting}[
+    language=C++,style=smaller,
+    moredelim={**[is][\btHL<2|handout:2>]{@2}{2@}},
+    moredelim={**[is][\btHL<3|handout:3>]{@3}{3@}},
+    moredelim={**[is][\btHL<4|handout:4>]{@4}{4@}},
+    moredelim={**[is][\btHL<5|handout:5>]{@5}{5@}},
+    moredelim={**[is][\btHL<6|handout:6>]{@6}{6@}},
+]
+struct addrinfo *server;
+... getaddrinfo(...) ...
+
+int server_socket_fd = socket(
+    server->ai_family,
+    server->ai_sockttype,
+    server->ai_protocol
+);
+
+if (bind(server_socket_fd, ai->ai_addr, ai->ai_addr_len)) < 0) {
+    /* handle error */
+}
+listen(server_socket_fd, MAX_NUM_WAITING);
+...
+int socket_fd = accept(server_socket_fd, NULL);
+\end{lstlisting}
+\end{frame}
+

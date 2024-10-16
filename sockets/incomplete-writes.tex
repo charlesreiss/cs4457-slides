@@ -1,0 +1,14 @@
+\begin{frame}{incomplete writes}
+\begin{itemize}
+    \item \texttt{write} might write less than requested
+        \begin{itemize}
+        \item error after writing some data
+        \item if blocking disabled
+        \end{itemize}
+    \item \texttt{read} might read less than requested
+        \begin{itemize}
+        \item error after reading some data
+        \item not enough data got there in time
+        \end{itemize}
+\end{itemize}
+\end{frame}

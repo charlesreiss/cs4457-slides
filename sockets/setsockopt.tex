@@ -1,0 +1,29 @@
+\begin{frame}[fragile]{socket options}
+\begin{itemize}
+\item `socket options' for extra settings
+\item Python: \texttt{sock.setsockopt(level, key, value)}
+\item C: \texttt{setsockopt(sock, level, key, value)}
+\vspace{.5cm}
+\item common level values
+    \begin{itemize}
+    \item \texttt{SOL\_SOCKET} --- OS-level
+    \item \texttt{IPPROTO\_IP}
+    \item \texttt{IPPROTO\_IPV4}
+    \item \texttt{IPPROTO\_TCP}
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{common SOL\_SOCKET options}
+    \begin{itemize}
+    \item \texttt{SO\_REUSEADDR} --- allow bind()ing even if another socket for this port active
+        \begin{itemize}
+        \item common problem: server can't bind() because old session in TIME\_WAIT
+        \end{itemize}
+    \item \texttt{SO\_RCVBUF} --- buffer size used by OS for receiving bytes
+    \item \texttt{SO\_SNDBUF} --- buffer size used by OS for sending bytes
+    \vspace{.5cm}
+    \item (full list on Linux: \texttt{man 7 socket})
+    \end{itemize}
+\end{frame}
+

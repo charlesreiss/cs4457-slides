@@ -1,0 +1,30 @@
+\begin{frame}[fragile]{efficiency problem}
+\begin{Verbatim}[fontsize=\small]
+sock = ...
+sock.send(b'About to send file with 16Kbytes')
+sock.send(b'File is HTML; updated 16 November')
+sock.send(file_data)
+\end{Verbatim}
+\begin{itemize}
+\item Naive approach:
+    \begin{itemize}
+    \item one packet for `about to send file with\ldots'
+    \item one packet for `file is HTML; \ldots'
+    \item some number of packets for \texttt{file\_data}
+    \end{itemize}
+\item sending small TCP packets, so lots of overhead
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Nagle's algorithm}
+\begin{itemize}
+\item (RFC 896)
+\item delay sending data when smaller than full TCP segment
+\item hope: by waiting we'll get a full TCP segment
+    \begin{itemize}
+    \item typical wait: 200 ms?
+    \end{itemize}
+\vspace{.5cm}
+\item TCP\_NODELAY socket option can disable (at least on Linux)
+\end{itemize}
+\end{frame}

@@ -1,0 +1,56 @@
+\begin{frame}[fragile,label=connSetupClientManual]{connection setup: client --- manual addresses}
+\begin{lstlisting}[
+    language=C++,style=smaller,
+    moredelim={**[is][\btHL<1|handout:1>]{@1}{1@}},
+    moredelim={**[is][\btHL<2|handout:2>]{@2}{2@}},
+    moredelim={**[is][\btHL<3|handout:3>]{@3}{3@}},
+    moredelim={**[is][\btHL<4|handout:4>]{@4}{4@}},
+    moredelim={**[is][\btHL<5|handout:5>]{@5}{5@}},
+    moredelim={**[is][\btHL<6|handout:6>]{@6}{6@}},
+]
+int sock_fd;
+
+server = /* code on later slide */;
+sock_fd = @1socket1@(
+    @2AF_INET2@, /* IPv4 */
+    @2SOCK_STREAM2@, /* byte-oriented */
+    @2IPPROTO_TCP2@
+);
+if (sock_fd < 0) { /* handle error */ }
+
+@4struct sockaddr_in addr4@;
+addr.sin_family = AF_INET;
+addr.sin_addr.s_addr = @3htonl3@(2156872459); /* 128.143.67.11 */
+addr.sin_port = @3htons3@(80); /* port 80 */
+if (@1connect1@(sock_fd, (struct sockaddr*) &addr, sizeof(addr)) {
+    /* handle error */
+}
+DoClientStuff(sock_fd); /* read and write from sock_fd */
+close(sock_fd);
+\end{lstlisting}
+\begin{tikzpicture}[overlay,remember picture]
+\tikzset{
+    box/.style={draw=red, ultra thick,fill=white,at={([yshift=-2cm]current page.north)},anchor=north,align=left},
+    box low/.style={draw=red, ultra thick,fill=white,at={([yshift=-5cm]current page.north)},anchor=north,align=left},
+}
+\begin{visibleenv}<2>
+\node[box low] {
+    specify IPv4 instead of IPv6 or local-only sockets \\
+    specify TCP (byte-oriented) instead of UDP (`datagram' oriented)
+};
+\end{visibleenv}
+\begin{visibleenv}<3>
+\node[box] {
+    htonl/s = host-to-network long/short \\
+    network byte order = big endian
+};
+\end{visibleenv}
+\begin{visibleenv}<4>
+\node[box] {
+    struct representing IPv4 address + port number \\
+    declared in \lstinline|<netinet/in.h>| \\
+    see \texttt{man 7 ip} on Linux for docs
+};
+\end{visibleenv}
+\end{tikzpicture}
+\end{frame}

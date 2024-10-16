@@ -1,0 +1,101 @@
+\usetikzlibrary{arrows.meta,calc}
+
+
+\begin{frame}{sockets and server sockets (C)}
+% FIXME
+\begin{tikzpicture}
+    \tikzset{
+        >=Latex,
+        comp box/.style={draw, thick, align=center, minimum width=1.5cm,minimum height=1.5cm},
+        explain box/.style={draw=red,very thick, align=left},
+        msg/.style={font=\small},
+        cmd/.style={font=\small},
+    }
+    \node[draw,circle,label={south:client}] (client) {socket};
+    \node[draw,circle,align=center] (ssocket) at ([xshift=8.75cm,yshift=4cm]client.west) {server\\socket};
+    \node[draw,circle,align=center,label={south:server},visible on=<4->] (server) at ([xshift=8.75cm]client.west) {socket};
+    \draw[very thick,dotted,<-] (ssocket.east) -- ++(.5cm,0cm) node[right,font=\small\tt,align=left] {
+        server: \\
+        \myemph<2>{ss\_fd = socket(\ldots)} \\
+        \myemph<3>{bind(ss\_fd, addr, \ldots)} \\
+        \myemph<3>{listen(ss\_fd, \ldots)}
+    };
+    \draw[very thick,dotted,<-] (client.north) -- ++(0cm,2cm) node[above,xshift=1cm,font=\small\tt,align=left] {
+        client: \\
+        \myemph<2>{fd = socket(\ldots)}
+    };
+    \begin{visibleenv}<2>
+        \node[explain box,anchor=north] at ([yshift=-.5cm]ssocket.south) {
+            socket() function --- create socket fd
+        };
+    \end{visibleenv}
+    \begin{visibleenv}<3>
+        \node[explain box,anchor=north] at ([yshift=-.5cm]ssocket.south) {
+            listen() --- turn socket into server socket \\
+            still has a file descriptor, but \ldots \\
+            can only \texttt{accept()} --- create normal socket
+        };
+    \end{visibleenv}
+    \begin{visibleenv}<4->
+    \draw[very thick,dotted,->] (client) -- (ssocket)
+        node[font=\small,midway,sloped,above,align=left] {request connection \\
+                                   client: \texttt{\myemph<4-5>{connect(fd, addr, \ldots)}}};
+    \draw[very thick,dotted,->,out=-120,in=120] (ssocket) to (server);
+    \node[anchor=west,align=left] at ([xshift=-.75cm]$(server)!0.5!(ssocket)$) {server: \\ \texttt{fd = \myemph<4-5>{accept(ss\_fd, \ldots)}}};
+    \end{visibleenv}
+    \begin{visibleenv}<5->
+    \draw[<->,double,ultra thick] (client) -- (server) node[midway,fill=white,inner sep=0.1mm] {connection};
+    \end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}{sockets and server sockets (Python)}
+% FIXME
+\begin{tikzpicture}
+    \tikzset{
+        >=Latex,
+        comp box/.style={draw, thick, align=center, minimum width=1.5cm,minimum height=1.5cm},
+        explain box/.style={draw=red,very thick, align=left},
+        msg/.style={font=\small},
+        cmd/.style={font=\small},
+    }
+    \node[draw,circle,label={south:client}] (client) {socket};
+    \node[draw,circle,align=center] (ssocket) at ([xshift=7.75cm,yshift=4cm]client.west) {server\\socket};
+    \node[draw,circle,align=center,label={south:server},visible on=<4->] (server) at ([xshift=8.75cm]client.west) {socket};
+    \draw[very thick,dotted,<-] (ssocket.east) -- ++(.5cm,0cm) node[right,font=\small\tt,align=left] {
+        server: \\
+        \myemph<2>{ssock = \textbackslash} \\
+        \myemph<2>{\hspace{.25cm}socket.socket(\ldots)} \\
+        \myemph<3>{ssock.bind(\ldots)} \\
+        \myemph<3>{ssock.listen()}
+    };
+    \draw[very thick,dotted,<-] (client.north) -- ++(0cm,2cm) node[above,xshift=1cm,font=\small\tt,align=left] {
+        client: \\
+        \myemph<2>{sock = socket.socket(\ldots)}
+    };
+    \begin{visibleenv}<2>
+        \node[explain box,anchor=north] at ([yshift=-.5cm]ssocket.south) {
+            socket() function --- create socket fd
+        };
+    \end{visibleenv}
+    \begin{visibleenv}<3>
+        \node[explain box,anchor=north] at ([yshift=-.5cm]ssocket.south) {
+            listen() --- turn socket into server socket \\
+            still has a file descriptor, but \ldots \\
+            can only \texttt{accept()} --- create normal socket
+        };
+    \end{visibleenv}
+    \begin{visibleenv}<4->
+    \draw[very thick,dotted,->] (client) -- (ssocket)
+        node[font=\small,midway,sloped,above,align=left] {request connection \\
+                                   client: \texttt{\myemph<4-5>{sock.connect(\ldots)}}};
+    \draw[very thick,dotted,->,out=-120,in=120] (ssocket) to (server);
+    \node[anchor=west,align=left] at ([xshift=-.75cm]$(server)!0.5!(ssocket)$) {server: \\ \texttt{sock, addr = \textbackslash} \\ \hspace{.25cm}\myemph<4-5>{\texttt{ssock.accept(\ldots)}}};
+    \end{visibleenv}
+    \begin{visibleenv}<5->
+    \draw[<->,double,ultra thick] (client) -- (server) node[midway,fill=white,inner sep=0.1mm] {connection};
+    \end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+

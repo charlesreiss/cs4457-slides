@@ -1,0 +1,99 @@
+\begin{frame}[fragile,label=connSetupClientAddrInfo]{connection setup: client, using addrinfo}
+\begin{lstlisting}[
+    language=C++,style=smaller,
+    moredelim={**[is][\btHL<2|handout:2>]{@2}{2@}},
+    moredelim={**[is][\btHL<3|handout:3>]{@3}{3@}},
+    moredelim={**[is][\btHL<4|handout:4>]{@4}{4@}},
+    moredelim={**[is][\btHL<5|handout:5>]{@5}{5@}},
+    moredelim={**[is][\btHL<6|handout:6>]{@6}{6@}},
+]
+int sock_fd; 
+@2struct addrinfo2@ *server = /* code on next slide */;
+
+sock_fd = socket(
+    @3server->ai_family3@,  
+     // ai_family = AF_INET (IPv4) or AF_INET6 (IPv6) or ...
+    @3server->ai_socktype3@,
+     // ai_socktype = SOCK_STREAM (bytes) or ...
+    @3server->ai_prototcol3@
+     // ai_protocol = IPPROTO_TCP or ...
+);
+if (sock_fd < 0) { /* handle error */ }
+if (connect(sock_fd, server->@4ai_addr4@, server->@4ai_addrlen4@) < 0) {
+    /* handle error */
+}
+@5freeaddrinfo(server);5@
+DoClientStuff(sock_fd); /* read and write from sock_fd */
+close(sock_fd);
+\end{lstlisting}
+\begin{tikzpicture}[overlay,remember picture]
+\tikzset{
+    box/.style={draw=red, ultra thick,fill=white,at={([yshift=-2cm]current page.north)},anchor=north,align=left},
+    box low/.style={draw=red, ultra thick,fill=white,at={([yshift=-5cm]current page.north)},anchor=north,align=left},
+}
+\begin{visibleenv}<2>
+\node[box low] {
+    addrinfo contains all information needed to setup socket \\
+    set by \texttt{getaddrinfo} function (next slide) \\
+    handles IPv4 and IPv6 \\
+    handles DNS names, service names
+};
+\end{visibleenv}
+\begin{visibleenv}<4>
+\node[box] {
+    ai\_addr points to struct representing address \\
+    type of struct depends whether IPv6 or IPv4
+};
+\end{visibleenv}
+\begin{visibleenv}<5>
+\node[box] {
+    since addrinfo contains pointers to dynamically allocated memory, \\
+    call this function to free everything
+};
+\end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}[fragile,label=serverLookupClient]{connection setup: lookup address}
+\begin{lstlisting}[
+    language=C++,style=smaller,
+    moredelim={**[is][\btHL<2|handout:2>]{@2}{2@}},
+    moredelim={**[is][\btHL<3|handout:3>]{@3}{3@}},
+    moredelim={**[is][\btHL<4|handout:4>]{@4}{4@}},
+    moredelim={**[is][\btHL<5|handout:5>]{@5}{5@}},
+    moredelim={**[is][\btHL<6|handout:6>]{@6}{6@}},
+]
+/* example hostname, portname = "www.cs.virginia.edu", "443" */
+const char *hostname; const char *portname;
+...
+struct addrinfo *server;
+struct addrinfo hints;
+int rv;
+memset(&hints, 0, sizeof(hints));
+@3hints.ai_family = AF_UNSPEC3@; /* for IPv4 OR IPv6 */
+// hints.ai_family = AF_INET4; /* for IPv4 only */
+
+hints.ai_socktype = SOCK_STREAM; /* byte-oriented --- TCP */
+rv = getaddrinfo(hostname, portname, &hints, @2&server2@);
+if (rv != 0) { /* handle error */ }
+
+/* eventually freeaddrinfo(result) */
+\end{lstlisting}
+\begin{tikzpicture}[overlay,remember picture]
+\tikzset{
+    box/.style={draw=red, ultra thick,fill=white,at={([yshift=-2cm]current page.north)},anchor=north,align=left},
+    box low/.style={draw=red, ultra thick,fill=white,at={([yshift=-5cm]current page.north)},anchor=north,align=left},
+}
+\begin{visibleenv}<2>
+\node[box low] {
+    NB: pass pointer \textit{to pointer} to addrinfo to fill in
+};
+\end{visibleenv}
+\begin{visibleenv}<3>
+\node[box] {
+    AF\_UNSPEC: choose between IPv4 and IPv6 for me \\
+    AF\_INET, AF\_INET6: choose IPv4 or IPV6 respectively
+};
+\end{visibleenv}
+\end{tikzpicture}
+\end{frame}
