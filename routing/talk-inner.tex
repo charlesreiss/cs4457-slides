@@ -121,14 +121,14 @@
 \subsection{sharing routes: BGP}
 \input{../routing/bgp-overview}
 
+\subsection{BGP route format}
+\input{../routing/bgp-route-format}
+
 \subsection{sharing routes: picture}
 \input{../routing/bgp-basic-picture}
 
 \subsection{sharing routes: multiple connections}
 \input{../routing/bgp-simple-multi}
-
-\subsection{BGP route format}
-\input{../routing/bgp-route-format}
 
 \subsection{BGP route preference order}
 \input{../routing/bgp-route-pref} % FIXME: show multi-exit discriminator
@@ -137,14 +137,25 @@
 \begin{frame}[fragile]{}
     \begin{itemize}
     \item \url{https://bgp.he.net/super-lg/}
+    \item \url{https://bgp.he.net/super-lg/#128.143.0.0/16?tob=none&mt=include&ma=6939&els=exact}
     \end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\url{https://bgp.he.net/AS225}
+\includegraphics[width=0.8\textwidth]{as225-graph}
+\end{frame}
+
+\begin{frame}{peeringdb / IXs}
 \end{frame}
 
 \subsection{BGP communities}
 \input{../routing/bgp-comm}
 
 \subsection{validating routes / sBGP}
+\input{../routing/aside-verification}
 
 \subsection{BGP hijacking/fat fingers}
+\input{../routing/hijack}
 
 

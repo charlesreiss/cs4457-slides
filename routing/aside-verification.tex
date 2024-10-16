@@ -1,0 +1,16 @@
+\begin{frame}{route security}
+    \begin{itemize}
+    \item historically, no verification routes announced by ``owner'' of IP addresses
+    \vspace{.5cm}
+    \item probably some ISPs filter
+    \item effort to deploy RPKI --- public-key based scheme to verify routes
+        \begin{itemize}
+        \item checks that routes originated at correct AS
+        \item doesn't verify intermediate ASes will forward correctly
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\includegraphics[height=\textheight]{rpki-rfc}
+\end{frame}
