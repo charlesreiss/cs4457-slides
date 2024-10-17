@@ -3,7 +3,37 @@
 \providecommand{\noroute}{$\infty$/---}
 \providecommand{\mymark}[2]{\alt<#1->{\myemph<#1>{#2}}{}}
 
-\begin{frame}[fragile]{count-to-infinity (v1)}
+\begin{frame}{split horizon with poison reverse}
+    \begin{itemize}
+    \item when sending distance vectors, `posion' routes to same node
+        \begin{itemize}
+        \item make sure other node won't go back to us\ldots
+        \item only to have us go back to them
+        \end{itemize}
+    \item example, if I'm A and routes are:
+        \begin{itemize}
+        \item A: 0 via A; B: 2 via B; C: 4 via C; D: 6 via B
+        \end{itemize}
+    \item when sending to B send:
+        \begin{itemize}
+        \item A: 0; B: 2; C: 4; D: $\infty$
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{without split horizon?}
+    \begin{itemize}
+    \item can create routing loop
+    \item example: if D unreachable from B, then B goes to A and A goes to B
+    \vspace{.5cm}
+    \item called ``count-to-infinity'' problem
+        \begin{itemize}
+        \item because A, B will keep updating distance higher and higher
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{avoided count-to-infinity}
 \begin{tikzpicture}
 \tikzset{
     computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
@@ -42,10 +72,10 @@
 \draw[connect big] ([xshift=1mm]C.north) -- ([yshift=-1mm]A.west) node[midway,below] {2};
 \draw[connect big] ([yshift=1mm]C.east) -- ([yshift=1mm]B.west) node[midway,above] {2};
 \draw[connect big] ([yshift=-1mm]B.west) -- ([yshift=-1mm]C.east) node[midway,below] {2};
-\draw[connect] ([xshift=1mm]C.south) -- ([yshift=1mm]D.west) node[midway,above] {4};
-\draw[connect] ([yshift=-1mm]D.west) -- ([xshift=-1mm]C.south) node[midway,below] {5};
-\draw[connect big,alt=<1>{red},alt=<2>{dotted,black!20}] ([xshift=-1mm]B.south) -- ([yshift=1mm]D.east) node[midway,above] {1};
-\draw[connect big,alt=<1>{red},alt=<2>{dotted,black!20}] ([yshift=-1mm]D.east) -- ([xshift=1mm]B.south) node[midway,below] {2};
+\draw[connect,alt=<2->{dotted,black!20}] ([xshift=1mm]C.south) -- ([yshift=1mm]D.west) node[midway,above] {4};
+\draw[connect,alt=<2->{dotted,black!20}] ([yshift=-1mm]D.west) -- ([xshift=-1mm]C.south) node[midway,below] {5};
+\draw[connect big,alt=<1>{red},alt=<2->{dotted,black!20}] ([xshift=-1mm]B.south) -- ([yshift=1mm]D.east) node[midway,above] {1};
+\draw[connect big,alt=<1>{red},alt=<2->{dotted,black!20}] ([yshift=-1mm]D.east) -- ([xshift=1mm]B.south) node[midway,below] {2};
 \tikzset{
     one dv/.style={
         tight matrix,
@@ -100,23 +130,6 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{split horizon with poison reverse}
-    \begin{itemize}
-    \item when sending distance vectors, `posion' routes to same node
-        \begin{itemize}
-        \item make sure other node won't go back to us\ldots
-        \item only to have us go back to them
-        \end{itemize}
-    \item example, if I'm A and routes are:
-        \begin{itemize}
-        \item A: 0 via A; B: 2 via B; C: 4 via C; D: 6 via B
-        \end{itemize}
-    \item when sending to B send:
-        \begin{itemize}
-        \item A: 0; B: 2; C: 4; D: $\infty$
-        \end{itemize}
-    \end{itemize}
-\end{frame}
 
 \begin{frame}{split horizon incomplete solution}
     \begin{itemize}
@@ -166,10 +179,10 @@
 \draw[connect big] ([xshift=1mm]C.north) -- ([yshift=-1mm]A.west) node[midway,below] {2};
 \draw[connect big] ([yshift=1mm]C.east) -- ([yshift=1mm]B.west) node[midway,above] {2};
 \draw[connect big] ([yshift=-1mm]B.west) -- ([yshift=-1mm]C.east) node[midway,below] {2};
-\draw[connect] ([xshift=1mm]C.south) -- ([yshift=1mm]D.west) node[midway,above] {4};
-\draw[connect] ([yshift=-1mm]D.west) -- ([xshift=-1mm]C.south) node[midway,below] {5};
-\draw[connect big,alt=<1>{red},alt=<2>{dotted,black!20}] ([xshift=-1mm]B.south) -- ([yshift=1mm]D.east) node[midway,above] {1};
-\draw[connect big,alt=<1>{red},alt=<2>{dotted,black!20}] ([yshift=-1mm]D.east) -- ([xshift=1mm]B.south) node[midway,below] {2};
+\draw[connect,alt=<2->{dotted,black!20}] ([xshift=1mm]C.south) -- ([yshift=1mm]D.west) node[midway,above] {4};
+\draw[connect,alt=<2->{dotted,black!20}] ([yshift=-1mm]D.west) -- ([xshift=-1mm]C.south) node[midway,below] {5};
+\draw[connect big,alt=<1>{red},alt=<2->{dotted,black!20}] ([xshift=-1mm]B.south) -- ([yshift=1mm]D.east) node[midway,above] {1};
+\draw[connect big,alt=<1>{red},alt=<2->{dotted,black!20}] ([yshift=-1mm]D.east) -- ([xshift=1mm]B.south) node[midway,below] {2};
 \tikzset{
     one dv/.style={
         tight matrix,

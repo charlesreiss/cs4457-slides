@@ -32,7 +32,10 @@
 \begin{frame}{assignment Q and A}
 \end{frame}
 
-\begin{frame}{on current virtual time}
+\begin{frame}{scheduling note}
+    \begin{itemize}
+    \item not sure if on track for DNS coverage before current scheduled DNS assignment
+    \end{itemize}
 \end{frame}
 
 \subsection{RIP}
@@ -58,11 +61,12 @@
 \subsection{shortest path first}
 \input{../routing/ls-shortest-path}
 
-\subsection{shortest path algorithm}
-\input{../routing/bestFirstExample}
 
 \subsection{shortest path consistency}
 \input{../routing/sp-consistency}
+
+\subsection{convergence}
+\input{../routing/ls-v-dv-converge}
 
 \subsection{networks versus routers}
 \input{../routing/network-v-router-ls} 
@@ -120,10 +124,18 @@
 
 \begin{frame}{}
 \url{https://bgp.he.net/AS225}
-\includegraphics[width=0.8\textwidth]{as225-graph}
+\includegraphics[width=0.8\textwidth]{../routing/as225-graph}
 \end{frame}
 
 \begin{frame}{peeringdb / IXs}
+    \begin{itemize}
+    \item \url{https://peeringdb.com} --- commonly used database of ASes and how to peer with them
+    \item a lot of peering at public `internet exchanges'
+        \begin{itemize}
+        \item usually at `carrier-neutral' datacenter
+        \item run some switch everyone can connect to
+        \end{itemize}
+    \end{itemize}
 \end{frame}
 
 \subsection{BGP communities}
@@ -140,5 +152,8 @@
 \section{backup slides}
 \begin{frame}{backup slides}
 \end{frame}
+
+\subsection{shortest path algorithm}
+\input{../routing/bestFirstExample}
 
 \end{document}

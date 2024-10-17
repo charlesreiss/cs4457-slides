@@ -1,0 +1,28 @@
+\usetikzlibrary{calc,shapes.misc}
+\begin{frame}{convergence time}
+\begin{tikzpicture}
+\tikzset{
+    mynode/.style={draw,circle,very thick,font=\small},
+    myedge/.style={draw,ultra thick},
+}
+\node[mynode] (A) at (0,0) {A};
+\node[mynode] (B) at (4,0) {B};
+\node[mynode] (C) at (8,0) {C};
+\node[mynode] (D) at (8,-4) {D};
+\node[mynode] (E) at (4,-4) {E};
+\node[mynode] (F) at (0,-4) {F};
+\foreach \x/\y in {A/B,B/C,C/D,D/E,E/F,F/A} {
+    \draw[myedge] (\x) -- (\y);
+}
+\begin{visibleenv}<2>
+    \node[draw,red,very thick,cross out] at ($(A)!0.5!(B)$) {};
+\end{visibleenv}
+\end{tikzpicture}
+\begin{itemize}
+\item exercise: how many steps to fix A's next hop for B, C, D, etc.\ldots
+    \begin{itemize}
+    \item with distance vector?
+    \item with link state?
+    \end{itemize}
+\end{itemize}
+\end{frame}
