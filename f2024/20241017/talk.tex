@@ -1,0 +1,144 @@
+\date{}
+\title{}
+\date{}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}A
+
+\begin{frame}{last time}
+    \begin{itemize}
+    \item spanning tree protocols
+        \begin{itemize}
+        \item choose specific order for nodes/links in tree constructions
+        \item periodic messages + detect if tree would be wrong
+        \end{itemize}
+    \item Bellman-Ford all-pairs shortest path
+        \begin{itemize}
+        \item for each edge, see if it can make path shorter
+        \end{itemize}
+    \item distance vectors routing
+        \begin{itemize}
+        \item list of distances to nodes/networks
+        \item sent periodically to neighbors
+        \end{itemize}
+    \item split horizon
+        \begin{itemize}
+        \item avoid sending distances back to where they came from
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{assignment Q and A}
+\end{frame}
+
+\begin{frame}{on current virtual time}
+\end{frame}
+
+\subsection{RIP}
+\input{../routing/rip-protocol}
+
+
+\subsection{handling removal}
+\input{../routing/removalp} % FIXME: fill in diagram
+
+\subsection{count-to-infinity}
+\input{../routing/count-to-infty} % FIXME: diagram
+
+\section{link state}
+\subsection{idea}
+\input{../routing/link-state-idea}
+\subsection{link state advertisements}
+\input{../routing/link-state-adv}
+\subsection{link state database}
+\input{../routing/link-state-db}
+\subsection{reliable flooding}
+\input{../routing/ls-reliable-flood}
+
+\subsection{shortest path first}
+\input{../routing/ls-shortest-path}
+
+\subsection{shortest path algorithm}
+\input{../routing/bestFirstExample}
+
+\subsection{shortest path consistency}
+\input{../routing/sp-consistency}
+
+\subsection{networks versus routers}
+\input{../routing/network-v-router-ls} 
+
+\section{multipath/load balancing}
+\input{../routing/multipath}
+
+\section{scalability: OSPF areas} % textbook sec 4.1.1.
+
+\subsection{motivation / basic idea}
+
+\input{../routing/area-big-net}
+
+\subsection{areas are DV}
+
+\input{../routing/area-is-dv}
+
+\subsection{always route through backbone}
+\input{../routing/ospf-backbone}
+
+\section{interdomain routing}
+\input{../routing/interdomain-problems}
+
+\subsection{terminology: autonomous system}
+\input{../routing/define-as}
+
+\subsection{relationship types}
+\input{../routing/relate-types}
+
+\subsection{local/remote preferences}
+\input{../routing/distant-prefs}
+
+\subsection{sharing routes: BGP}
+\input{../routing/bgp-overview}
+
+\subsection{BGP route format}
+\input{../routing/bgp-route-format}
+
+\subsection{sharing routes: picture}
+\input{../routing/bgp-basic-picture}
+
+\subsection{sharing routes: multiple connections}
+\input{../routing/bgp-simple-multi}
+
+\subsection{BGP route preference order}
+\input{../routing/bgp-route-pref} % FIXME: show multi-exit discriminator
+
+\subsection{in practice?}
+\begin{frame}[fragile]{}
+    \begin{itemize}
+    \item \url{https://bgp.he.net/super-lg/}
+    \item \url{https://bgp.he.net/super-lg/#128.143.0.0/16?tob=none&mt=include&ma=6939&els=exact}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\url{https://bgp.he.net/AS225}
+\includegraphics[width=0.8\textwidth]{as225-graph}
+\end{frame}
+
+\begin{frame}{peeringdb / IXs}
+\end{frame}
+
+\subsection{BGP communities}
+\input{../routing/bgp-comm}
+
+\subsection{validating routes / sBGP}
+\input{../routing/aside-verification}
+
+\subsection{BGP hijacking/fat fingers}
+\input{../routing/hijack}
+
+
+
+\section{backup slides}
+\begin{frame}{backup slides}
+\end{frame}
+
+\end{document}
