@@ -1,9 +1,18 @@
-
 \section{port numbers}
 \input{../sockets/port-numbers}
 
-\section{TCP handshake}
+\section{UDP}
+\input{../sockets/udp-format}
 
+\section{socket basics}
+\subsection{BSD socket history}
+\input{../sockets/socket-iface}
+
+\subsection{UDP sockets}
+\input{../sockets/udp-sock}
+% FIXME: rearrange to put UDP sockets first, then talk about TCP
+
+\section{TCP handshake}
 \input{../sockets/tcp-handshake}
 
 \section{TCP state machine}
@@ -12,14 +21,10 @@
 \subsection{netstat}
 \input{../sockets/netstat}
 
-\section{TCP sockets}
-
-\subsection{BSD socket history}
-\input{../sockets/socket-iface}
-
 \subsection{basic flow}
 \input{../sockets/socket-flow}
 
+\section{TCP sockets}
 \subsection{partial read/writes}
 \input{../sockets/socket-flow-part-read-write}
 \input{../sockets/incomplete-writes}
@@ -39,26 +44,14 @@
 \subsection{server flow (multiple connections)}
 \input{../sockets/server-flow-multi}
 
-\subsection{send/recv}
-\input{../sockets/send-recv}
-
 \subsubsection{simultaneous read/write}
 \input{../sockets/simul-read-write}
-
-\subsection{getting addresses from sockets}
-\input{../sockets/getting-addresses}
 
 \subsection{setsockopt}
 \input{../sockets/setsockopt.tex}
 
 \section{Nagle, etc.}
 \input{../sockets/nagle-algo.tex}
-
-\section{UDP}
-% FIXME: header format
-
-\section{UDP sockets}
-\input{../sockets/udp-sock.tex}
 
 \subsection{broadcast}
 \input{../sockets/udp-broadcast.tex}

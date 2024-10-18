@@ -1,19 +1,10 @@
 \begin{frame}{reading and writing at once}
     \begin{itemize}
-    \item so far assumption: alternate between reading+writing
-        \begin{itemize}
-        \item sufficient for FTP assignment
-        \item how many protocols work
-        \end{itemize}
-    \item ``half-duplex''
-    \item don't have to use sockets this way, but tricky
-        \vspace{.5cm}
     \item threads: one reading thread, one writing thread \textit{OR}
     \item event-loop: use \textit{non-blocking I/O} and select()/poll()/etc. functions
         \begin{itemize}
-        \item non-blocking I/O setup with fcntl() function
-        \item non-blocking write() fills up buffer as much as possible, then returns
-        \item non-blocking read() returns what's in buffer, never waits for more
+        \item select/poll/etc. tell you when one of many operations possible
+        \item \ldots including across many sockets
         \end{itemize}
     \end{itemize}
 \end{frame}

@@ -1,3 +1,100 @@
+\begin{frame}[fragile]{unconnected UDP sockets (Python)}
+\begin{Verbatim}[fontsize=\small]
+import socket
+# ipv4
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM,
+                     socket.IPPROTO_UDP)
+# ipv6
+sock = socket.socket(socket.AF_INET6, socket.SOCK_DGRAM)
+sock = socket.socket(socket.AF_INET6, socket.SOCK_DGRAM,
+                     socket.IPPROTO_UDP)
+
+sock.bind((local_host, local_port))
+# local_host == "0.0.0.0" (v4) or "::" (v6) for "all possible"
+
+data1, (host1, port1) = sock.recvfrom(MAX_SIZE)
+data2, (host2, port2) = sock.recvfrom(MAX_SIZE)
+
+sock.sendto(data, (host3, port3))
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{unconnected UDP sockets (Python, generic)}
+\begin{Verbatim}[fontsize=\small]
+import socket
+possible_local_addrs = socket.getaddrinfo(
+        local_host, local_port,
+        family=socket.AF_UNSPEC,
+        type=socket.SOCK_DGRAM,
+        flags=socket.AI_PASSIVE)
+
+# now need to handle that local_host might have multiple addresses
+for af, socktype, proto, canonname, sockaddr in possible_local_addrs:
+    sock = socket.socket(af, socktype, proto)
+    sock.bind(sockaddr)
+    
+    # then use sock for recvfrom/sendto somehow
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{unconnected UDP sockets (Python, generic)}
+\begin{Verbatim}[fontsize=\small]
+import socket
+possible_remote_addrs = socket.getaddrinfo(
+        remote_host, remote_port,
+        family=socket.AF_UNSPEC,
+        type=socket.SOCK_DGRAM,
+        flags=0)
+
+for af, socktype, proto, canonname, sockaddr in possible_lremote_addrs:
+    sock = socket.socket(af, socktype, proto)
+    try:
+        # hope local_host is acceptable for 'af'?
+        # maybe choose local_host based on 'af' value?
+        sock.bind((local_host, local_addr))
+        sock.sendto(data, ...)
+        ...
+    except ...:
+        ...
+        # hope another address works?
+        continue
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}{aside: getaddrinfo}
+    \begin{itemize}
+    \item lookup host+port by name
+    \item can handle both IPv4 and IPv6
+    \item AI\_PASSIVE = for bind()
+    \item returns list of addresses
+        \begin{itemize}
+        \item sometimes: just choose one address (send message to server)
+        \item sometimes: want to make socket for each address (run server)
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{unconnected UDP sockets (C, IPv4)}
+\begin{Verbatim}[fontsize=\small]
+int fd = socket(AF_INET, SOCK_DGRAM, 0 /* or IPPROTO_UDP */);
+/* for 10.1.2.3 port 12345 
+   there are utility functions to help with this, so you 
+   shouldn't actually construct local_addr manually like this */
+struct sockaddr_in local_addr;
+memset(&local_addr, 0, sizeof(local_addr);
+local_addr.sin_family = AF_INET;
+local_addr.sin_port = htons(12345);
+local_addr.sin_addr.s_addr = htonl((10<<24)|(1<<16)|(2<<8)|3),
+bind(fd, &local_addr, sizeof(local_addr));
+struct sockaddr_in remote1, remote2;
+recvfrom(fd, buffer1, buffer1_size, 0, &remote1, sizeof(remote1));
+recvfrom(fd, buffer2, buffer2_size, 0, &remote2, sizeof(remote2));
+struct sockaddr_in remote3 = ...;
+sendto(fd, buffer3, buffer3_size, 0, &remote3, sizeof(remote3));
+\end{Verbatim}
+\end{frame}
+
 \begin{frame}[fragile]{connected UDP sockets (Python)}
 \begin{Verbatim}[fontsize=\small]
 import socket
@@ -6,23 +103,24 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 # ipv6
 sock = socket.socket(socket.AF_INET6, socket.SOCK_DGRAM)
 
-sock.bind((host, port))
-sock.connect((host, port))
+sock.bind((local_host, local_port))
+sock.connect((remote_host, remote_port))
 sock.send(b"one datagram")
 sock.send(b"another datagram")
-data = sock.recv(MAX_SIZE)
+remote_data1 = sock.recv(MAX_SIZE)
+remote_data2 = sock.recv(MAX_SIZE)
 \end{Verbatim}
 \end{frame}
 
-\begin{frame}[fragile]{unconnected UDP sockets (Python)}
-\begin{Verbatim}[fontsize=\small]
-sock = ...
-sock.bind((host, port))
-# no connect() operation
-
-data, addr = sock.recvfrom(MAX_SIZE)
-
-sock.sendto(data, (addr, port))
-\end{Verbatim}
+\begin{frame}{choosing v4/v6?}
+    \begin{itemize}
+    \item nicer to write applications that handle both
+    \item \ldots without explicitly doing this differently
+    \vspace{.5cm}
+    \item later socket API for that is getaddrinfo()
+        \begin{itemize}
+        \item also exists in C, but lots of cruft\ldots
+        \end{itemize}
+    \end{itemize}
 \end{frame}
 
