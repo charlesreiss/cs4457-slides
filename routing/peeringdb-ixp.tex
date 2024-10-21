@@ -1,0 +1,27 @@
+
+
+\begin{frame}{peeringdb}
+    \begin{itemize}
+    \item \url{https://peeringdb.com} --- commonly used database of ASes and how to peer with them
+    \item there is also -- ``whois'' records (from RIRs) for ASes, IP blocks with contact info
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{internet exchanges and route servers}
+    \begin{itemize}
+    \item internet exchange
+        \begin{itemize}
+        \item local network (typically within metro area) for connecting networks
+        \item often run at and/or by `carrier-neutral' datacenter
+        \item typically high bandwidth (10-100Gbps ports to network)
+        \item provides connections when
+        \end{itemize}
+    \vspace{.5cm}
+    \item route servers
+        \begin{itemize}
+        \item BGP servers run by internet exchange
+        \item consolidates routes from participants
+        \item goal: only need O($n$) BGP connections, not O($n^2$)
+        \end{itemize}
+    \end{itemize}
+\end{frame}

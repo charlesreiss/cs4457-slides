@@ -119,6 +119,9 @@
 \subsection{relationship types}
 \input{../routing/relate-types}
 
+\subsection{aside: connecting big networks}
+\input{../routing/aside-connect-big}
+
 \subsection{local/remote preferences}
 \input{../routing/distant-prefs}
 
@@ -137,29 +140,20 @@
 \subsection{BGP route preference order}
 \input{../routing/bgp-route-pref} % FIXME: show multi-exit discriminator
 
-\subsection{in practice?}
-\begin{frame}[fragile]{}
-    \begin{itemize}
-    \item \url{https://bgp.he.net/super-lg/}
-    \item \url{https://bgp.he.net/super-lg/#128.143.0.0/16?tob=none&mt=include&ma=6939&els=exact}
-    \end{itemize}
-\end{frame}
+\section{UVa, in practice}
+\input{../routing/in-practice-uva}
 
-\begin{frame}{}
-\url{https://bgp.he.net/AS225}
-\includegraphics[width=0.8\textwidth]{../routing/as225-graph}
-\end{frame}
-
-\begin{frame}{peeringdb / IXs}
-\end{frame}
+\subsection{internet exchanges, peeringdb}
+\input{../routing/peeringdb-ixp}
 
 \subsection{BGP communities}
 \input{../routing/bgp-comm}
 
+\subsection{BGP hijacking/fat fingers}
+\input{../routing/hijack}
+
 \subsection{validating routes / sBGP}
 \input{../routing/aside-verification}
 
-\subsection{BGP hijacking/fat fingers}
-\input{../routing/hijack}
 
 

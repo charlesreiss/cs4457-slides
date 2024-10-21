@@ -2,7 +2,15 @@
     \begin{itemize}
     \item historically, no verification routes announced by ``owner'' of IP addresses
     \vspace{.5cm}
-    \item probably some ISPs filter
+    \item Internet Routing Registries --- database of AS to IP address
+        \begin{itemize}
+        \item used automatically to filter out mistakes
+        \item (not really designed to resist malicious attacks)
+        \end{itemize}
+    \item some verify which IPs they should have with RIRs
+        \begin{itemize}
+        \item ``letter of agency/authority'' to delegate
+        \end{itemize}
     \item effort to deploy RPKI --- public-key based scheme to verify routes
         \begin{itemize}
         \item checks that routes originated at correct AS
