@@ -1,0 +1,63 @@
+\usetikzlibrary{graphs,graphdrawing,fit}
+\usegdlibrary{trees,layered}
+\begin{frame}{DNS hierarchy}
+\begin{tikzpicture}
+\graph[
+tree layout,
+    level 1/.style={sibling distance=7cm},
+    level 2/.style={sibling distance=3cm,nodes={font=\small}},
+    level 3/.style={sibling distance=1cm,nodes={font=\small}},
+] {
+    root/"." -> { 
+        com/"com" -> {comdot/"\ldots"},
+        ,
+        ,
+        edu/"edu" -> {
+            virginia/"virginia" -> {
+                cs/"cs" -> {
+                    kytos02,
+                    www,
+                    csdot/\ldots
+                },
+                ,
+                ,
+                engineering/"engineering",
+                ,
+                ,
+                its/"its" -> {
+                    canvas,
+                    shibidp,
+                    itsdot/\ldots
+                },
+            },
+            ,
+            ,
+            vt/"vt",
+            vcu/"vcu",
+            edudot/"\ldots"
+        },
+        ,
+        rootdot/"\ldots"
+    };
+};
+\coordinate (place) at ([yshift=-4cm]root);
+\begin{visibleenv}<1>
+    \node[anchor=north,align=center] at (place) {
+        hierarchy with single root
+    };
+\end{visibleenv}
+\begin{visibleenv}<2>
+    \foreach \x in {(root),(com),(edu),(vt),(vcu),
+        (cs) (kytos02) (www) (csdot)} {
+        \node[draw=red,very thick,inner sep=0mm,fit=\x] {};
+    }
+    \draw[red,very thick] (engineering.south west) |- (virginia.north east) |- (its.north) -| (itsdot.south east)
+        -| cycle;
+    \node[anchor=north,align=center] at (place) {
+        divided into `zones' \\
+        each with own set of authoritative servers
+    };
+\end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+

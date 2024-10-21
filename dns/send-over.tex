@@ -1,0 +1,60 @@
+\begin{frame}{DNS over \ldots}
+    \begin{itemize}
+    \item UDP port 53
+        \begin{itemize}
+        \item send DNS message
+        \item reply with DNS message back
+        \end{itemize}
+    \item TCP port 53
+        \begin{itemize}
+        \item send length (2B, big endian) + message
+        \item reply with length (2B, big endian) + message
+        \item (+ repeat)
+        \end{itemize}
+    \item over HTTPS (RFC 8484)
+        \begin{itemize}
+        \item using \url{https://server/dns-query}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{DNS UDP size limit}
+\begin{Verbatim}[fontsize=\fontsize{9}{10}]
+$ dig virginia.edu txt +notcp +all
+;; Truncated, retrying in TCP mode.
+
+; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> virginia.edu txt +notcp +all
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 53043
+;; flags: qr rd ra; QUERY: 1, ANSWER: 17, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;virginia.edu.			IN	TXT
+
+;; ANSWER SECTION:
+virginia.edu.		3537	IN	TXT	"cisco-ci-domain-verification=268b991de3589451b38fcfeaa99473f8e4fb2522f96a1b478e04ec1bd5a25ff9"
+....
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}{DNS UDP size limit}
+    \begin{itemize}
+    \item 512 byte size limit for UDP
+        \begin{itemize}
+        \item if exceeded, set TC (truncate) flag and truncate response
+        \item clients supposed to retry with TCP
+        \end{itemize}
+    \item extensions to DNS increase limit
+        \begin{itemize}
+        \item (but have to be opted into by clients)
+        \end{itemize}
+    \item explains why only 13 root server names
+        \begin{itemize}
+        \item 13 NS RRs + 13 A RRs $\approx$ 480 bytes (w/ name compression)
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+

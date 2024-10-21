@@ -1,0 +1,61 @@
+\usetikzlibrary{arrows.meta,positioning,shapes.callouts}
+\begin{frame}[fragile,label=dnsDD]{DNS: distributed database}
+\begin{tikzpicture}
+    \tikzset{
+        >=Latex,
+        comp box/.style={draw, thick, align=center, minimum width=1.5cm,minimum height=1.5cm},
+        explain box/.style={draw=red,very thick, align=left},
+        msg/.style={font=\small},
+        cmd/.style={font=\small},
+        my callout2/.style={draw,fill=blue!10!white,rectangle callout,callout absolute pointer=(#1),below right=5pt of {#1}}
+    }
+    \node[comp box] (my machine) at (0, 0) { my \\ machine };
+    \node[comp box] (isp) at (6, 0) { ISP's \\ DNS server };
+    \begin{visibleenv}<1>
+        \node[my callout2=isp.south,fill=red!10,align=center,font=\small,anchor=north] at ([xshift=-2cm,yshift=-2cm]isp.south) {
+            address sent to my machine \\
+            when it connected to network
+        };
+    \end{visibleenv}
+    \begin{visibleenv}<3->
+    \node[comp box] (root) at (11, 2) { root \\ DNS server };
+    \end{visibleenv}
+    \begin{visibleenv}<4->
+    \node[comp box] (edu) at (11, 0) { .edu \\ DNS server };
+    \node[comp box] (virginia) at (11, -2) { virginia.edu \\ DNS server };
+    \node[comp box] (cs) at (11, -4) { {\small cs.virginia.edu} \\ DNS server };
+    \end{visibleenv}
+    \begin{visibleenv}<2->
+    \draw[very thick,<->] (my machine) -- (isp)
+        coordinate[midway] (midpt);
+    \node[my callout2=midpt,anchor=south,font=\fontsize{9}{10}\selectfont,align=left] at ([yshift=1cm]midpt) {
+        address for \\ www.cs.virginia.edu?
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<5->
+    \node[my callout2=midpt,anchor=north,font=\fontsize{9}{10}\selectfont,align=left] at ([yshift=-1cm]midpt) {
+        www.cs.virginia.edu = \\
+        128.143.67.11
+    };
+    \end{visibleenv}
+    \foreach \n/\when in {root/3,edu/4,virginia/4,cs/4} {
+        \draw[very thick,<->,alt=<\when->{}{invisible}] (isp) -- (\n.west) coordinate[midway] (midpt \n);
+    }
+    \begin{visibleenv}<3->
+        \node[my callout2=midpt root,anchor=south,font=\fontsize{9}{10}\selectfont,align=left,
+              alt=<5>{fill=red!10}] at ([yshift=1cm]midpt root) {
+            www.cs.virginia.edu? \\
+            try .edu server at \ldots
+        };
+        \begin{visibleenv}<5>
+            \draw[very thick,dotted,red,<->] (isp) -- (root.west);
+            \node[draw=red,very thick,fill=white,align=left,anchor=north,font=\small] at ([yshift=-3cm]midpt root) {
+                .edu server doesn't change much \\
+                optimization: \textit{cache} its address \\
+                ~ \\
+                check for updated version once in a while
+            };
+        \end{visibleenv}
+    \end{visibleenv}
+\end{tikzpicture}
+\end{frame}

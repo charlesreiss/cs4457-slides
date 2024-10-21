@@ -1,0 +1,97 @@
+\begin{frame}{DNS messages (1)}
+    \begin{itemize}
+    \item client sends query to server
+    \item server responds with response
+    \vspace{.5cm}
+    \item response and query have same format
+        \begin{itemize}
+        \item but different fields set/used
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{DNS header}
+\begin{tikzpicture}
+\tikzset{
+    blabel/.style={font=\small},
+    blabel alt/.style={font=\fontsize{9}{10}\selectfont},
+    flag/.style={alt=<2>{fill=red!10}},
+    opcode/.style={alt=<3>{fill=red!10}},
+    rcode/.style={alt=<4>{fill=red!10}},
+}
+\begin{scope}[yshift=0cm,x=0.45cm]
+    \draw (0, 0) rectangle ++(16, -1) node[midway,blabel] {ID};
+    \draw[flag] (16, 0) rectangle ++(1, -1) node[midway,blabel alt] {QR};
+    \draw (17, 0) rectangle ++(4, -1) node[midway,blabel] {opcode};
+    \draw[flag] (21, 0) rectangle ++(1, -1) node[midway,blabel alt] {AA};
+    \draw[flag] (22, 0) rectangle ++(1, -1) node[midway,blabel alt] {TC};
+    \draw[flag] (23, 0) rectangle ++(1, -1) node[midway,blabel alt] {RD};
+    \draw[flag] (24, 0) rectangle ++(1, -1) node[midway,blabel alt] {RA};
+    \draw (25, 0) rectangle ++(1, -1) node[midway,blabel] {\tt 0};
+    \draw[flag] (26, 0) rectangle ++(1, -1) node[midway,blabel alt] {AD};
+    \draw[flag] (26, 0) rectangle ++(1, -1) node[midway,blabel alt] {CD};
+    \draw[rcode] (28, 0) rectangle ++(4, -1) node[midway,blabel] {RCODE};
+    \draw (0, -1) rectangle ++(16, -1) node[midway,blabel] {QDCOUNT (0 or 1)};
+    \draw (16, -1) rectangle ++(16, -1) node[midway,blabel] {ANCOUNT};
+    \draw (0, -2) rectangle ++(16, -1) node[midway,blabel] {NSCOUNT};
+    \draw (16, -2) rectangle ++(16, -1) node[midway,blabel] {ARCOUNT};
+    \draw (0, -3) rectangle ++(32, -1.5) node[midway,blabel] {QDCOUNT questions};
+    \draw (0, -4.5) rectangle ++(32, -1.5) node[midway,blabel] {
+            ANCOUNT+NSCOUNT+ARCOUNT RRs
+    };
+    \coordinate (mark low) at (16, -2.1);
+\end{scope}
+\tikzset{
+    explain box low/.style={at={(mark low)},draw=red,very thick,align=left,anchor=north,fill=white},
+    explain box low2/.style={at={([yshift=-1cm]mark low)},
+        font=\small,draw=red,very thick,align=left,anchor=north,fill=white},
+}
+    \begin{visibleenv}<2>
+    \node[explain box low2] {
+        `flags' \\
+        QR = 1 if query, 0 if response \\
+        AA = 1 if authoritative \\
+        TC = 1 if truncated (packet size limit) \\
+        RD = 1 if query wants recursion (contact other servers) \\
+        RA = 1 if server supports recursion  \\
+        ~ \\
+        DNSSEC (PKI for DNS) additions: \\
+        AD = 1 if verified cryptographically (`authentic data') \\
+        CD = 1 if no cryptographic check requested (`checking disabled') \\
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<3>
+    \node[explain box low] {
+        opcode \\
+        0 for query \\
+        some other operations
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<4>
+    \node[explain box low] {
+        response code, 0 for no error
+    };
+    \end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{DNS message}
+    \begin{itemize}
+    \item header
+    \item 0 or 1 question
+        \begin{itemize}
+        \item domain name + class + type
+        \item (RR without TTL or value)
+        \item special type values for ANY, some other things
+        \end{itemize}
+    \item ANCOUNT RRs in `answer section':
+        \begin{itemize}
+        \item CNAMEs (even if that's not the question type)
+        \item matches for domain name (or CNAME) + class + type 
+        \end{itemize}
+    \item NSCOUNT+ARCOUNT RRs in `authority section' and `additional section
+        \begin{itemize}
+        \item not always included; usually NS or SOA records plus corresponding A/AAAA recods
+        \end{itemize}
+    \end{itemize}
+\end{frame}

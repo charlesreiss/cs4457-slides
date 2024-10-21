@@ -1,0 +1,43 @@
+\begin{frame}{DNS exercise (1)}
+    \begin{itemize}
+    \item ``www.cs.virginia.edu is 128.148.67.11 \myemph{for next 86400 seconds}''
+    \item (given record above)
+    if sysadmin changes IP address DNS server returns for www.cs.virginia.edu,
+    then what will happen to machines accessing website?
+        \begin{itemize}
+        \item A. they'll start using the new address after 86400 seconds, and use the old one before then.
+        \item B. different machines will use the new address at different times, but no longer than 86400 seconds from when it changes
+        \item C. machines will start using the new address almost immediately, but after some small delay after it is changed
+        \item D. machines may keep using the old address until they are rebooted
+        \item E. something else?
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{DNS exercise (2)}
+    \begin{itemize}
+    \item if sysadmin wants to change the IP address of www.cs.virginia.edu,
+            how do they do this without downtime?
+    \vspace{.5cm}
+    \item they can change the IP address the server returns and/or the time-to-live?
+    \item what should they change and when to smoothly transition to a new address?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{DNS exercise (3)}
+    \begin{itemize}
+    \item suppose initially
+        \begin{itemize}
+        \item *.foo.com DNS server (`nameserver') = 10.2.3.4, valid 200 s
+        \item www.foo.com = 10.1.2.3, valid 100 s
+        \end{itemize}
+    \item if at time 0 seconds, changed to:
+        \begin{itemize}
+        \item *.foo.com DNS server = 10.3.4.5, valid 100 s
+        \item www.foo.com DNS server = 10.3.5.1, valid 400 s
+        \end{itemize}
+    \item ex 0: when will new DNS server/www.foo.com start being used?
+    \item ex 1: when can we shut down old DNS server?
+    \item ex 2: when can we shut down old www.foo.com?
+    \end{itemize}
+\end{frame}

@@ -1,0 +1,143 @@
+\begin{frame}{selected RR types}
+\begin{tabular}{l|l|l|p{6cm}}
+text & id & purpose & data format \\ \hline
+\texttt{A} & 1 & IPv4 address & 32-bit integer (big-endian) \\
+\texttt{AAAA} & 28 & IPv6 address & 128-bit integer (big-endian) \\
+\texttt{NS} & 2 & authoritative name server & domain name \\
+\texttt{CNAME} & 5 & `canonical name' & domain name \\
+\texttt{TXT} & 16 & text string & arbitrary string \\
+\texttt{SRV} & 33 & service location & priority, weight, domain name, port \\
+\end{tabular}
+\end{frame}
+
+\begin{frame}[fragile]{CNAME}
+\begin{itemize}
+\item CNAME = delegate name to another name
+\end{itemize}
+\begin{Verbatim}[fontsize=\small]
+canvas.its.virginia.edu. 2711   IN      CNAME   \
+    universityofvirginia-vanity.instructure.com.
+universityofvirginia-vanity.instructure.com. 238 IN CNAME \
+    canvas-pdx-prod-c354-1908777142.us-west-2.elb.amazonaws.com.
+canvas-pdx-prod-c354-1908777142.us-west-2.elb.amazonaws.com. 2 IN A 34.208.211.157
+canvas-pdx-prod-c354-1908777142.us-west-2.elb.amazonaws.com. 2 IN A 44.238.73.244
+canvas-pdx-prod-c354-1908777142.us-west-2.elb.amazonaws.com. 2 IN A 52.26.9.245
+\end{Verbatim}
+\begin{itemize}
+\item connecting to canvas.its.virginia.edu?
+\item use one of 34.208.211.157, 44.238.73.244, 52.26.9.245
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{NS}
+\begin{Verbatim}[fontsize=\small]
+virginia.edu. 3600    IN      NS      uvaarpa.virginia.edu.
+virginia.edu. 3600    IN      NS      nom.virginia.edu.
+virginia.edu. 3600    IN      NS      eip-01-aws.net.virginia.edu.
+\end{Verbatim}
+\begin{itemize}
+\item these three servers are authoritative for virginia.edu
+\item (but need their A or AAAA records to actually contact them)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{SRV}
+\begin{Verbatim}
+_ldap._tcp.virginia.edu. 600    IN      SRV     0 100 389 vadcv4.virginia.edu.
+_ldap._tcp.virginia.edu. 600    IN      SRV     0 100 389 vadc5.virginia.edu.
+\end{Verbatim}
+\begin{itemize}
+\item virginia.edu's LDAP servers are vadcv4.virginia.edu port 389 and vadc5.virginia.edu port 389
+\item (LDAP = Lightweight Directory Access Protocol)
+    \begin{itemize}
+    \item example: lookup email ID by name
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{SRV records were late\ldots}
+\begin{itemize}
+\item SRV records seem like something we'd use all the time\ldots
+\item but only used with a few protocols
+\item why?
+\vspace{.5cm}
+\item SRV records added late (1996--2000)
+\item sending email already had its own record type (MX)
+\item poor support for querying them in standard networking libraries
+\item hard to get access to add them in many organizations
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{dig virginia.edu txt}
+\begin{Verbatim}[fontsize=\fontsize{8}{9}]
+virginia.edu.           3548    IN      TXT     "google-site-verification=zEwuk4FIG8_vtv2BZJOD6IWzg9JbNiJPH9mQdPNCXRw"
+virginia.edu.           3548    IN      TXT     "cisco-ci-domain-verification=268b991de3589451b38fcfeaa99473f8e4fb2522f96a1b478e04ec1bd5a25ff9"
+virginia.edu.           3548    IN      TXT     "miro-verification=9f3238c881466b3ccb99c4347b99e5504eafc118"
+virginia.edu.           3548    IN      TXT     "MS=ms40126609"
+virginia.edu.           3548    IN      TXT     "onetrust-domain-verification=d901adf09116474c89790a9752e0046c"
+virginia.edu.           3548    IN      TXT     "google-site-verification=rePHmrM7FEfSw62DHq9TpuMFUw66J6hgpFFh5cq89IM"
+virginia.edu.           3548    IN      TXT     "v=spf1 a mx ip4:52.254.56.82 ip4:52.137.91.139 ip4:128.143.125.90 ip4:128.143.125.91 include:spf.protection.outlook.com include:_spf.google.com include:spf.elluciancloud.com ~all"
+virginia.edu.           3548    IN      TXT     "docusign=6547d080-1c40-427c-8736-fafa466ff73f"
+virginia.edu.           3548    IN      TXT     "apple-domain-verification=zllSamqSFAw4lNQo"
+virginia.edu.           3548    IN      TXT     "v=msv1 t=537499f256ea46bd386f7543d18d28"
+virginia.edu.           3548    IN      TXT     "atlassian-domain-verification=zeQ45p2Vl1fXekKYCzmq4ONEpDEkGKx3Y8Qzqe/8YV2ibzq6DLImIdTNw9Cv4lda"
+virginia.edu.           3548    IN      TXT     "00256316"
+virginia.edu.           3548    IN      TXT     "yYMwnn+VY4w6aVf+cE4888ppz+MDXBKnaI0m5eteiMGgwWIBTOgA6aTSJM4QYRG6s49MnR2Fj0grzaOKokmCow=="
+virginia.edu.           3548    IN      TXT     "apple-domain-verification=mROwKUEMfwLBfltC"
+virginia.edu.           3548    IN      TXT     "e2ma-verification=rx8eb"
+virginia.edu.           3548    IN      TXT     "ZOOM_verify_PuU-eQzyQ7ONrij_vTP72A"
+virginia.edu.           3548    IN      TXT     "sending_domain1023271=f4a69653389ff4543a64e982f1cbc2e9db30eab95cccfb8be58d883ce7849448"
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}{TXT record usage}
+\begin{itemize}
+\item TXT records `just' hold arbitrary strings
+\item lots of machine-based usage of TXT records
+\item probably in part because it's too slow/hard to add new record types
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{TXT example: SPF}
+\begin{Verbatim}[fontsize=\small]
+virginia.edu. 3548    IN      TXT "v=spf1 a mx
+    ip4:52.254.56.82 ip4:52.137.91.139
+    ip4:128.143.125.90 ip4:128.143.125.91
+    include:spf.protection.outlook.com
+    include:_spf.google.com
+    include:spf.elluciancloud.com ~all"
+\end{Verbatim}
+\begin{itemize}
+\item SPF protocol for specifying who can send email from domain
+\item why in TXT record instead of its own type?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{RFC 6686, Appendix A excerpt} 
+\fontsize{13}{14}\selectfont
+At the time of SPF's initial development, the prospect of getting an
+RRTYPE allocated for SPF was not seriously considered, partly because
+doing so had high barriers to entry\ldots.
+
+\vspace{.5cm}
+
+Later, after RRTYPE 99 was assigned \ldots
+a plan was put into place to effect a gradual
+transition to using RRTYPE 99 instead of using RRTYPE 16.
+This plan failed to take effect for four primary reasons:\ldots
+
+\vspace{.5cm}
+
+1.\ldots existing nameservers (and, in fact, DNS-aware firewalls) would drop or
+reject requests for unknown RRTYPEs \ldots
+
+\vspace{.5cm}
+
+2. many DNS provisioning tools \ldots
+   were, and still are, typically lethargic about
+   adding support for new RRTYPEs
+
+\vspace{.5cm}
+
+\ldots
+\end{frame}

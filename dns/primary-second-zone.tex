@@ -1,0 +1,20 @@
+\begin{frame}{primary and secondary servers}
+\begin{itemize}
+\item usually have multiple DNS servers for each zone
+    \begin{itemize}
+    \item needed to handle outages
+    \end{itemize}
+\item DNS protocol supports \textit{zone transfers} to synchronize them
+    \begin{itemize}
+    \item DNS query for type \texttt{AXFR} returns all RRs as special case
+    \item (most public DNS servers block this from `normal'users)
+    \end{itemize}
+\item one server designed as `primary'; others are `secondary'
+\item special SOA (start of authority) record provides metadata about zone
+    \begin{itemize}
+    \item name of primary server to contact
+    \item serial number for current version (to quickly check if update)
+    \item how long to wait between updates, etc.
+    \end{itemize}
+\end{itemize}
+\end{frame}

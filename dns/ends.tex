@@ -1,0 +1,17 @@
+\begin{frame}{eDNS(0) (RFC 6891)}
+    \begin{itemize}
+    \item extend DNS protocol by sending psuedo-RR
+        \begin{itemize}
+        \item added in additoinal section of requests
+        \item name \texttt{.} (empty)
+        \item type OPT/44
+        \item CLASS, TTL fields reused for other stuff
+        \end{itemize}
+    \item specifies:
+        \begin{itemize}
+        \item \myemph{max size over UDP}
+        \item extra bits for RCODE
+        \item additoinal, variable length data
+        \end{itemize}
+    \end{itemize}
+\end{frame}
