@@ -22,14 +22,14 @@
 \begin{scope}[yshift=0cm,x=0.45cm]
     \draw (0, 0) rectangle ++(16, -1) node[midway,blabel] {ID};
     \draw[flag] (16, 0) rectangle ++(1, -1) node[midway,blabel alt] {QR};
-    \draw (17, 0) rectangle ++(4, -1) node[midway,blabel] {opcode};
+    \draw[opcode] (17, 0) rectangle ++(4, -1) node[midway,blabel] {opcode};
     \draw[flag] (21, 0) rectangle ++(1, -1) node[midway,blabel alt] {AA};
     \draw[flag] (22, 0) rectangle ++(1, -1) node[midway,blabel alt] {TC};
     \draw[flag] (23, 0) rectangle ++(1, -1) node[midway,blabel alt] {RD};
     \draw[flag] (24, 0) rectangle ++(1, -1) node[midway,blabel alt] {RA};
     \draw (25, 0) rectangle ++(1, -1) node[midway,blabel] {\tt 0};
     \draw[flag] (26, 0) rectangle ++(1, -1) node[midway,blabel alt] {AD};
-    \draw[flag] (26, 0) rectangle ++(1, -1) node[midway,blabel alt] {CD};
+    \draw[flag] (27, 0) rectangle ++(1, -1) node[midway,blabel alt] {CD};
     \draw[rcode] (28, 0) rectangle ++(4, -1) node[midway,blabel] {RCODE};
     \draw (0, -1) rectangle ++(16, -1) node[midway,blabel] {QDCOUNT (0 or 1)};
     \draw (16, -1) rectangle ++(16, -1) node[midway,blabel] {ANCOUNT};
@@ -43,7 +43,7 @@
 \end{scope}
 \tikzset{
     explain box low/.style={at={(mark low)},draw=red,very thick,align=left,anchor=north,fill=white},
-    explain box low2/.style={at={([yshift=-1cm]mark low)},
+    explain box low2/.style={at={([yshift=-2cm]mark low)},
         font=\small,draw=red,very thick,align=left,anchor=north,fill=white},
 }
     \begin{visibleenv}<2>
@@ -73,6 +73,19 @@
     };
     \end{visibleenv}
 \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{caching `domain name does not exist'}
+    \begin{itemize}
+    \item when domain does not exist (RCODE=3, ``NXDOMAIN''):
+    \vspace{.5cm}
+    \item (RFC 2308)
+    \item response should include SOA record
+        \begin{itemize}
+        \item recall: indicates primary server for zone and how often secondaries should update
+        \end{itemize}
+    \item can cache NXDOMAIN based on minimum of TTL and SOA record's update frequency
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{DNS message}

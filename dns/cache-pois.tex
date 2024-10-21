@@ -30,14 +30,14 @@
 };
 
 \node[computer] (attacker) at (0, 2) {};
-\node[computer] (attacker2) at (0, -4) {};
+\node[computer] (attacker2) at (2, -3) {};
 \node[font=\huge] at (attacker) {\emoji{smiling-face-with-horns}};
 \node[font=\huge] at (attacker2) {\emoji{smiling-face-with-horns}};
 \node[computer] (victim) at (0, -2) {};
 \node[network] (net) at (3.5, 0) {~~};
-\node[network] (net2) at (5, -4) {~~};
+\node[network] (net2) at (5, -3) {~~};
 \node[computer,label={south:dns.isp.com}] (resolver) at (7, 2) {};
-\node[computer,label={south:ns.foo.com}] (authority) at (10, -4) {};
+\node[computer,label={south:ns.foo.com}] (authority) at (10, -3) {};
 %
 \draw[connect] (attacker) -- (net);
 \draw[connect] (victim) -- (net);
@@ -55,18 +55,19 @@
 \end{visibleenv}
 \begin{visibleenv}<3>
 \draw[marked,-Latex] (resolver.south) -- ([yshift=-.1cm]net.center) 
-    node[pos=0.25,above right,marked pack] {
+    node[pos=0.35,below right,marked pack] {
         dns.isp.com $\rightarrow$ ns.foo.com: \\
         foo.com IN A ?
     } -- (net2.center) -- (authority);
 \end{visibleenv}
 \begin{visibleenv}<3>
-\draw[marked,-Latex] (attacker2) -- (net2.center)
-    node[pos=0.25,marked pack,above right] {
+\draw[marked alt,-Latex] (attacker2) -- ([xshift=-.3cm]net2.center)
+    node[pos=0.25,marked pack alt,below right=0.5cm] {
+        (`spoofed' by attacker) \\
         ns.foo.com $\rightarrow$ dns.isp.com: \\
         foo.com 9999999 IN A (attcker's IP) 
     }
-    -- ([yshift=-.2cm]net.center) -- ([yshift=-.2cm]resolver.west);
+    -- ([xshift=-.4cm,yshift=.2cm]net.center) -- ([yshift=-.2cm]resolver.west);
 \node[anchor=north west,draw=red,ultra thick,align=left,font=\small] at ([xshift=2cm]resolver.north east) {
     attacker's `spoofed' response \\
     causes dns.isp.com to record \\
@@ -108,7 +109,9 @@
     \item add additional randomness to DNS query
         \begin{itemize}
         \item randomize capitalization (assuming it's returned the same in response)
-        \item `DNS cookie' extension 
+        \item `DNS cookie' extension (RFC 7873; assuming remote server supports it)
         \end{itemize}
+    \item use TCP with random sequence number (slow)
     \end{itemize}
 \end{frame}
+

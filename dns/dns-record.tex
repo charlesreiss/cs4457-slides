@@ -86,25 +86,27 @@
     \node[anchor=north] at (16, -1) {\ldots};
 \end{scope}
 \begin{scope}[x=0.45cm,yshift=-1.5cm,xshift=1.5cm]
-    \draw (0, 0) rectangle ++(1, -1) node[midway] {3};
-    \draw (1, 0) rectangle ++(3, -1) node[midway] {\texttt{coresrv01a}};
-    \draw (4, 0) rectangle ++(2, -1);
-    \coordinate (ptr base) at (5, -.5);
+    \draw (0, 0) rectangle ++(1, -1) node[midway,font=\small\tt] {10};
+    \draw (1, 0) rectangle ++(10, -1) node[midway] {\texttt{coresrv01a}};
+    \draw (11, 0) rectangle ++(2, -1);
+    \draw[fill=black!30] (11, 0) rectangle ++ (0.25, -1);
+    \coordinate (ptr base) at (12, -.5);
 \end{scope}
-\draw[very thick,-Latex] (ptr base) |- ([yshift=-.5cm]ptr end) -- (ptr end);
+\draw[very thick,-Latex] (ptr base) |- ([yshift=-.4cm]ptr end) -- (ptr end);
 \end{tikzpicture}
 \begin{itemize}
 \item zero or more: length of $K>0$ followed by $K$ character case-insensitive \textit{label}
     \begin{itemize}
     \item labels limited to 64 bytes
     \end{itemize}
-\vspace{.5cm}
 \item then either:
-\item length of $0$ to indicate end-of-name \textit{or}
-\item ``pointer'' to earlier name in message
     \begin{itemize}
-    \item pointer encoded as \texttt{0xc000} + byte number in message (big endian)
-    \item upper two bits being set prevents confusion with length
+    \item length of $0$ to indicate end-of-name \textit{or}
+    \item ``pointer'' to earlier name in message
+        \begin{itemize}
+        \item pointer encoded as \texttt{0xc000} + byte number in message (big endian)
+        \item upper two bits being set prevents confusion with length
+        \end{itemize}
     \end{itemize}
 \end{itemize}
 \end{frame}

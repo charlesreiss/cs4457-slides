@@ -1,0 +1,37 @@
+\begin{frame}[fragile]{domain name system blocklists}
+\begin{itemize}
+    \item historically common non-domain-name use of DNS
+        \begin{itemize}
+        \item I'm including to illustrate idea of `other' DNS usage
+        \end{itemize}
+    \vspace{.5cm}
+    \item database identifying (typically) IP addresses for filtering
+    \item used for spam/bot detection/prevention
+        \begin{itemize}
+        \item these days tend to expect payment for serious use
+        \end{itemize}
+    \item typical idea similar to reverse IP lookups
+        \begin{itemize}
+        \item use specific IP address to mark `in' or `not in' list
+        \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{domain name system blocklists}
+\begin{itemize}
+    \item example: Team Cymru's Bogon list identifies invalid addresses
+\end{itemize}
+\begin{Verbatim}[fontsize=\small]
+# 248.1.1.1 is on blocklist
+$ dig 1.1.1.248.v4.fullbogons.cymru.com a
+...
+1.1.1.248.bogons.cymru.com. 21600 IN    A       127.0.0.2
+...
+
+# 128.143.67.31 is not on blocklist
+$ dig 31.67.143.128.v4.fullbogons.cymru.com a
+...
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 6153
+...
+\end{Verbatim}
+\end{frame}

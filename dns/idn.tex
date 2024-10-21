@@ -1,0 +1,36 @@
+\begin{frame}{internationalized domain names}
+    \begin{itemize}
+    \item \href{https://日本レジストリサービス.jp}{\texttt{https://}{\fontspec[Path=../dns/,Weight=800]{NotoSansJP-VariableFont_wght}日本レジストリサービス}\texttt{.jp/}}
+    \item how does this work?
+    \vspace{.5cm}
+    \item becomes: \url{https://xn--vckfdb7e3c7hma3m9657c16c.jp/}
+        \begin{itemize}
+        \item encoding scheme called \textit{punycode}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{IDN homograph attacks}
+    \begin{itemize}
+    \item \texttt{bаnkofamerica.com}
+        \begin{itemize}
+        \item \texttt{xn--bnkofamerica-x9j.com}
+        \item \texttt{а} = U+0430 = CYRLLIC SMALL LETTER A
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{defenses against homograph attacks}
+    \begin{itemize}
+    \item at registries, restrict domain registration
+        \begin{itemize}
+        \item disallow mixed scripts (e.g. latin and cyllric)
+        \item test if looks identical to registered domains
+        \end{itemize}
+    \item at browsers, restrict display in non-\texttt{xn-\ldots} form
+        \begin{itemize}
+        \item allow-list for `good' top-level domains (e.g. \texttt{.gr}, \texttt{.jp}, etc.)
+        \item otherwise, only allow known non-confusing combinations
+        \end{itemize}
+    \end{itemize}
+\end{frame}

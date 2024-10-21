@@ -22,11 +22,13 @@
     \vspace{.5cm}
     \item DNSSEC has multiple options:
         \begin{itemize}
-        \item signed `no result for X.Y.Z, type Q' message
-        \item signed `no result between W.Y.Z and Z.Y.Z' message
+        \item signed `no result between W.Y.Z, type Q and Z.Y.Z, type A' message
         \item signed `no result with hash(?) = A < hash(X) < B = hash(?)' message
         \end{itemize}
-    \item exercise: pro/cons?
+    \item can be generated in advance  (with signing keys kept `offline')
+        \begin{itemize}
+        \item can also generate dynamically to reveal less information
+        \end{itemize}
     \end{itemize}
 \end{frame}
 
@@ -44,6 +46,6 @@
 \end{frame}
 
 \begin{frame}{DNSSEC deployment: signing}
-via \url{https://ithi.research.icann.org/graph-m11.html}: \\
+via {\small\url{https://ithi.research.icann.org/graph-m11.html}}: \\
 \includegraphics[height=0.8\textheight]{../dns/ithi-dnssec-deploy-oct-domains}
 \end{frame}
