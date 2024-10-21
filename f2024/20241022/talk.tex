@@ -1,0 +1,75 @@
+\date{}
+\title{}
+\date{}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}{last time}
+    \begin{itemize}
+    \item removal in distance vector routing
+    \item count-to-infinity problem
+        \begin{itemize}
+        \item updates make distance vectors grow bigger and bigger
+        \end{itemize}
+    \item link-state routing
+        \begin{itemize}
+        \item everyone gets network map
+        \item reliable flooding
+        \item still transient routing loops
+        \end{itemize}
+    \item OSPF areas and `backbone
+    \end{itemize}
+\end{frame}
+
+\section{interdomain routing}
+\subsection{relationship types}
+\input{../routing/relate-types}
+
+\subsection{aside: connecting big networks}
+\input{../routing/aside-connect-big}
+
+\subsection{local/remote preferences}
+\input{../routing/distant-prefs}
+
+\subsection{sharing routes: BGP}
+\input{../routing/bgp-overview}
+
+\subsection{BGP route format}
+\input{../routing/bgp-route-format}
+
+\subsection{sharing routes: picture}
+\input{../routing/bgp-basic-picture}
+
+\subsection{sharing routes: multiple connections}
+\input{../routing/bgp-simple-multi}
+
+\subsection{BGP route preference order}
+\input{../routing/bgp-route-pref} % FIXME: show multi-exit discriminator
+
+
+\section{UVa, in practice}
+\input{../routing/in-practice-uva}
+
+\subsection{internet exchanges, peeringdb}
+\input{../routing/peeringdb-ixp}
+
+\subsection{BGP communities}
+\input{../routing/bgp-comm}
+
+\subsection{BGP hijacking/fat fingers}
+\input{../routing/hijack}
+
+\subsection{validating routes / sBGP}
+\input{../routing/aside-verification}
+
+
+\input{../dns/talk-inner}
+
+
+\section{backup slides}
+\begin{frame}{backup slides}
+\end{frame}
+
+\end{document}
