@@ -13,7 +13,7 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.connect(('128.143.67.8', 443))
 ...
 sock.send(...)
-sock.recv(...)
+some_bytes = sock.recv(max_size)
 \end{lstlisting}
 \end{frame}
 
@@ -32,7 +32,7 @@ sock = socket.socket(socket.AF_INET6, socket.SOCK_STREAM)
 sock.connect(('2607:f8b0:4004:c06::67', 443))
 ...
 sock.send(...)
-sock.recv(...)
+some_bytes = sock.recv(max_size)
 \end{lstlisting}
 \end{frame}
 

@@ -4,55 +4,50 @@
 \section{UDP}
 \input{../sockets/udp-format}
 
-\section{socket basics}
-\subsection{BSD socket history}
+\section{BSD socket history}
 \input{../sockets/socket-iface}
 
-\subsection{UDP sockets}
+\section{UDP sockets}
 \input{../sockets/udp-sock}
 % FIXME: rearrange to put UDP sockets first, then talk about TCP
 
-\section{TCP handshake}
-\input{../sockets/tcp-handshake}
+\subsection{netstat (UDP)}
+\input{../sockets/netstat-udp}
 
-\section{TCP state machine}
-\input{../sockets/tcp-state-machine}
+\section{TCP client sockets}
+\input{../sockets/conn-setup-client} 
 
-\subsection{netstat}
-\input{../sockets/netstat}
-
-\subsection{basic flow}
-\input{../sockets/socket-flow}
-
-\section{TCP sockets}
-\subsection{partial read/writes}
+\subsection{partial/split read/writes}
 \input{../sockets/socket-flow-part-read-write}
 \input{../sockets/incomplete-writes}
 
-\subsection{overview: sockets+server sockets}
-\input{../sockets/connection-setup}  
-
-\subsection{connection setup code: client}
-\input{../sockets/conn-setup-client} 
-
-\subsection{connection setup code: server}
-\input{../sockets/conn-setup-server} 
-
-\subsection{server flow (one connection)}
-\input{../sockets/server-flow-simple}
-
-\subsection{server flow (multiple connections)}
-\input{../sockets/server-flow-multi}
-
-\subsubsection{simultaneous read/write}
+\subsection{simultaneous read/write}
 \input{../sockets/simul-read-write}
 
+\section{TCP server sockets}
+\subsection{server socket idea}
+\input{../sockets/connection-setup}
+
+\subsection{TCP server setup}
+\input{../sockets/conn-setup-server}
+
+\section{connection internals/socket tracking}
+\subsection{TCP handshake}
+\input{../sockets/tcp-handshake}
+
+\subsection{TCP state machine}
+\input{../sockets/tcp-state-machine}
+
+\subsection{netstat (TCP)}
+\input{../sockets/netstat-tcp}
+
+\section{more socket customization}
 \subsection{setsockopt}
 \input{../sockets/setsockopt.tex}
 
-\section{Nagle, etc.}
+\subsection{Nagle, etc.}
 \input{../sockets/nagle-algo.tex}
 
-\subsection{broadcast}
+\subsubsection{broadcast}
 \input{../sockets/udp-broadcast.tex}
 

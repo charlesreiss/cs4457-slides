@@ -14,14 +14,12 @@ sock.bind((local_host, local_port))
 # local_host == "0.0.0.0" (v4) or "::" (v6) for "all possible"
 
 data1, (host1, port1) = sock.recvfrom(MAX_SIZE)
-data2, (host2, port2) = sock.recvfrom(MAX_SIZE)
-
-sock.sendto(data, (host3, port3))
+sock.sendto(data, (host2, port2))
 \end{Verbatim}
 \end{frame}
 
 \begin{frame}[fragile]{unconnected UDP sockets (Python, generic)}
-\begin{Verbatim}[fontsize=\small]
+\begin{Verbatim}[fontsize=\fontsize{9}{10}\selectfont]
 import socket
 possible_local_addrs = socket.getaddrinfo(
         local_host, local_port,
@@ -29,17 +27,15 @@ possible_local_addrs = socket.getaddrinfo(
         type=socket.SOCK_DGRAM,
         flags=socket.AI_PASSIVE)
 
-# now need to handle that local_host might have multiple addresses
 for af, socktype, proto, canonname, sockaddr in possible_local_addrs:
     sock = socket.socket(af, socktype, proto)
     sock.bind(sockaddr)
-    
     # then use sock for recvfrom/sendto somehow
 \end{Verbatim}
 \end{frame}
 
 \begin{frame}[fragile]{unconnected UDP sockets (Python, generic)}
-\begin{Verbatim}[fontsize=\small]
+\begin{Verbatim}[fontsize=\fontsize{9}{10}\selectfont]
 import socket
 possible_remote_addrs = socket.getaddrinfo(
         remote_host, remote_port,
@@ -47,7 +43,7 @@ possible_remote_addrs = socket.getaddrinfo(
         type=socket.SOCK_DGRAM,
         flags=0)
 
-for af, socktype, proto, canonname, sockaddr in possible_lremote_addrs:
+for af, socktype, proto, canonname, sockaddr in possible_remote_addrs:
     sock = socket.socket(af, socktype, proto)
     try:
         # hope local_host is acceptable for 'af'?
@@ -76,7 +72,7 @@ for af, socktype, proto, canonname, sockaddr in possible_lremote_addrs:
 \end{frame}
 
 \begin{frame}[fragile]{unconnected UDP sockets (C, IPv4)}
-\begin{Verbatim}[fontsize=\small]
+\begin{Verbatim}[fontsize=\fontsize{9}{10}\selectfont]
 int fd = socket(AF_INET, SOCK_DGRAM, 0 /* or IPPROTO_UDP */);
 /* for 10.1.2.3 port 12345 
    there are utility functions to help with this, so you 
@@ -119,7 +115,7 @@ remote_data2 = sock.recv(MAX_SIZE)
     \vspace{.5cm}
     \item later socket API for that is getaddrinfo()
         \begin{itemize}
-        \item also exists in C, but lots of cruft\ldots
+        \item also exists in C, but lots of extra stuff to handle types, etc.
         \end{itemize}
     \end{itemize}
 \end{frame}

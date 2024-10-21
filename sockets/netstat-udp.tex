@@ -1,0 +1,22 @@
+\begin{frame}[fragile]{netstat}
+\begin{Verbatim}[fontsize=\fontsize{9}{10}]
+$ netstat --udp -na
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State      
+udp        0      0 128.143.71.27:60001     0.0.0.0:*                          
+udp        0      0 128.143.71.27:60002     0.0.0.0:*                          
+udp        0      0 128.143.71.27:60003     0.0.0.0:*                          
+...
+udp        0      0 128.143.71.27:68        128.143.67.64:67        ESTABLISHED
+...
+udp        0      0 127.0.0.1:123           0.0.0.0:*                          
+udp        0      0 0.0.0.0:38269           0.0.0.0:*                          
+udp        0      0 0.0.0.0:55407           0.0.0.0:*                          
+udp        0      0 0.0.0.0:55786           0.0.0.0:*                          
+...
+udp6       0      0 :::45631                :::*                               
+udp6       0      0 :::111                  :::*                               
+udp6       0      0 fe80::1a66:daff:fe2:123 :::*                               
+...
+\end{Verbatim}
+\end{frame}
