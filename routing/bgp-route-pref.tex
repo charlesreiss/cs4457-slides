@@ -55,9 +55,17 @@
         \begin{itemize}
         \item typically add serveral copies of your AS number
         \end{itemize}
+    \item only announce network from certain of your routers
+        \begin{itemize}
+        \item problem: won't have all `backup' paths available
+        \end{itemize}
     \item announce a large network in more specific pieces
         \begin{itemize}
         \item 3fff:1234::/32 as 3fff:1234::/33 and 3fff:1234:8000::/33
+        \end{itemize}
+    \item get other networks to change how they forward your routes
+        \begin{itemize}
+        \item often enabled through `BGP communities'
         \end{itemize}
     \end{itemize}
 \end{frame}
