@@ -3,7 +3,18 @@
     \begin{itemize}
     \item tricky problem: validating `not present' responses
     \vspace{.5cm}
-    \item DNSSEC has multiple options:
+    \item `easy' if authoritiative server has private key, but\ldots
+        \begin{itemize}
+        \item violates model of signing everything `offline'
+        \item potential way to overload server with lots of requests
+        \item do we really want to cache \texttt{randomjunk.cs.virginia.edu} does not exist for each value of \texttt{randomjunk}?
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{DNSSEC and missing records}
+    \begin{itemize}
+    \item multiple options:
         \begin{itemize}
         \item signed `no result between W.Y.Z, type Q and Z.Y.Z, type A' message (NSEC)
         \item signed `no result with hash(?) = A < hash(X) < B = hash(?)' message (NSEC3)

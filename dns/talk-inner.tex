@@ -12,6 +12,9 @@
 \section{example}
 \input{../dns/dig-trace}
 
+\subsection{aside: presentation format}
+\input{../dns/pres-format}
+
 \subsection{TTLs and changing things}
 \input{../dns/dns-ttl}
 \input{../dns/dns-ttl-ex}
@@ -42,6 +45,13 @@
 % OPT pseudorecord; EDNS0; DNSSEC
 \input{../dns/ends}
 
+\section{cache poisoning}
+% spoofing protections
+    % port numbers, IDs, capitalization, TCP
+
+\input{../dns/cache-pois}
+
+
 \subsection{DNSSEC}
 \input{../dns/dnssec}
 
@@ -51,19 +61,17 @@
 \subsubsection{DS/DNSKEY}
 \input{../dns/dnssec-dnskey-ds}
 
+\subsubsection{root of trust}
+\input{../dns/dnssec-root-key}
+
+\subsubsection{DANE}
+\input{../dns/dnssec-dane}
+
 \subsubsection{DNSSEC and missing records}
 \input{../dns/dnssec-missing}
 
 \subsubsection{DNSSEC (lack of) deployment}
 \input{../dns/dnssec-deploy}
-
-\subsubsection{and TTLs}
-
-\section{cache poisoning}
-% spoofing protections
-    % port numbers, IDs, capitalization, TCP
-
-\input{../dns/cache-pois}
 
 \section{reverse lookups, PTR}
 \input{../dns/reverse}

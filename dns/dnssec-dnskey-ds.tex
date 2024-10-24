@@ -11,6 +11,9 @@
         \item DS record contains hash of DNSKEY + related info
         \end{itemize}
     \item DS records signed using RRSIG records
+        \begin{itemize}
+        \item combination of DS + DNSKEY tells you key is good
+        \end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -36,7 +39,10 @@ cloudflare.com. 3600  IN RRSIG DNSKEY ...
 \end{Verbatim}
 \begin{itemize}
 \item DS record signed by com. keyid 29942
-\item in this case: 257 = key-signing key, 256 = zone-signing key
+\item `flags' of 257 = key-signing key, 256 = zone-signing key
+    \begin{itemize}
+    \item not the key tag, that's derived from key itself
+    \end{itemize}
 \item RRSIG verifies that zone-signing key is endorsed from key-signing key
 \end{itemize}
 \end{frame}
