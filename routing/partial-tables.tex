@@ -4,10 +4,20 @@
     \vspace{.5cm}
     \item common shortcut if you have a couple ISPs:
     \item keep `short' routes (example: short AS path)
-    \item use default route for other cases
         \begin{itemize}
         \item to one of your ``primary'' ISPs
         \item maybe using ECMP
         \end{itemize}
+    \item have default route for other cases
+        \begin{itemize}
+        \item special route for 0.0.0.0/0, ::/0
+        \item to one of your ISPs
+        \end{itemize}
+    \item take advantage of more specific routes beating less specific
+        \begin{itemize}
+        \item typically also true in OSPF, RIP, etc.
+        \end{itemize}
     \end{itemize}
 \end{frame}
+
+
