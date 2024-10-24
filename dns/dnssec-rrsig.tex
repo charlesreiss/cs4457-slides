@@ -1,0 +1,49 @@
+\begin{frame}{RRSIG components}
+\begin{itemize}
+\item rr-type = type of resource record sign (example: NS, A, \ldots)
+    \begin{itemize}
+    \item covers ALL resource records for that type
+    \end{itemize}
+\item sig-type = which digital signature algorithm
+\item orig-ttl = original time-to-live
+\item expiration, inception = dates; when this is considered valid
+\item key tag + zone name = identifies which key is used
+    \begin{itemize}
+    \item zone name is something like `com.' or `example.com' or `cs.virginia.edu.'
+    \item key tag meant to distinguish between keys
+    \item (but still might be multiple keys with same tag+zone name!)
+    \end{itemize}
+\item signature = data from digital signature algorithm
+\end{itemize}
+\end{frame}
+
+\begin{frame}{awkwardness with TTLs}
+    \begin{itemize}
+    \item signature covers range of dates
+    \vspace{.5cm}
+    \item attacker can always `replay' record + signature within that range
+    \item TTL doesn't really do anything about it
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{RRSIG example}
+\begin{Verbatim}[fontsize=\fontsize{9}{10}]
+cloudflare.com.         86400   IN      NS      ns3.cloudflare.com.
+cloudflare.com.         86400   IN      NS      ns4.cloudflare.com.                 
+cloudflare.com.         86400   IN      NS      ns5.cloudflare.com.
+cloudflare.com.         86400   IN      NS      ns6.cloudflare.com.                    
+cloudflare.com.         86400   IN      NS      ns7.cloudflare.com.
+cloudflare.com.         86400   IN      RRSIG   NS 13 2 86400 \
+    20241025022114 20241023002114 34505 cloudflare.com. \
+    VtBeT5L8cznPZmXB81txqhj1SBs94CnI7ocA2cVsU7j3lChMYnpITUfNetWYTbu8go5OtKjL5HZG7r+90t051A==
+\end{Verbatim}
+\begin{itemize}
+\item RRSIG verifies all the NS records
+\item from 2024-10-23 02:21:14 UTC to 2024-10-25 02:21:14 UTC 
+\item key tag 34505 for cloudflare.com.
+\item VtBe\ldots is digital signature data
+    \begin{itemize}
+    \item pass to signature verification function with all the NS records to validate
+    \end{itemize}
+\end{itemize}
+\end{frame}

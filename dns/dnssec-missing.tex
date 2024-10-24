@@ -1,0 +1,49 @@
+
+\begin{frame}{DNSSEC and missing records}
+    \begin{itemize}
+    \item tricky problem: validating `not present' responses
+    \vspace{.5cm}
+    \item DNSSEC has multiple options:
+        \begin{itemize}
+        \item signed `no result between W.Y.Z, type Q and Z.Y.Z, type A' message (NSEC)
+        \item signed `no result with hash(?) = A < hash(X) < B = hash(?)' message (NSEC3)
+        \end{itemize}
+    \item can be generated in advance  (with signing keys kept `offline')
+        \begin{itemize}
+        \item can also generate dynamically to reveal less informationx
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{NSEC (`next secure')}
+\begin{Verbatim}[fontsize=\fontsize{9}{10}]
+$ dig +trace +dnssec weird.invalid
+...
+intuit. 86400   IN NSEC  investments. NS DS RRSIG NSEC
+intuit. 86400   IN RRSIG NSEC ...
+\end{Verbatim}
+\begin{itemize}
+\item there are no NS, DS, RRSIG, NSEC recods between `intuit.' and `investments.'
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{NSEC3}
+\begin{Verbatim}[fontsize=\fontsize{9}{10}]
+$ dig +trace +dnssec foo.example.com a
+...
+0qn0igs6chbcq47kevankt96i9obe5he.example.com. 3600 IN NSEC3 \
+    1 0 5 A4196F45E2097176 DCKKHGFRAJB05JCM258PTCEHOVGMIPAN \
+    A NS SOA MX TXT AAAA RRSIG DNSKEY NSEC3PARAM
+0qn0igs6chbcq47kevankt96i9obe5he.example.com. 3600 IN RRSIG NSEC3 ...
+\end{Verbatim}
+\begin{itemize}
+\item A4196\ldots is a `salt' to make hash unique
+    \begin{itemize}
+    \item defense against `rainbow tables'
+    \end{itemize}
+\item 0qn0\ldots and DCKK\ldots hashes of names on either side of `foo'
+    \begin{itemize}
+    \item record proves: no names in between exist
+    \end{itemize}
+\end{itemize}
+\end{frame}

@@ -1,0 +1,42 @@
+\begin{frame}{DNSKEY / DS}
+\begin{itemize}
+    \item DNSKEY records hold public keys
+        \begin{itemize}
+        \item gives zone key is intended for
+        \item doesn't tell you the key is actually good
+        \end{itemize}
+    \item DS records delegate from key to another
+        \begin{itemize}
+        \item each DNSKEY needs corresponding DS record
+        \item DS record contains hash of DNSKEY + related info
+        \end{itemize}
+    \item DS records signed using RRSIG records
+\end{itemize}
+\end{frame}
+
+\begin{frame}{multiple DNSKEYs}
+    \begin{itemize}
+    \item can/usually do have multiple keys per zone
+    \item typically ``Key-Signing Key'' (KSK) + ``Zone-Signing Key'' (ZSK)
+    \item goal: if ZSK is compromised, replace it
+    \item keep KSK protected much more heavily than ZS
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{DNSKEY/DS signing}
+\begin{Verbatim}[fontsize=\fontsize{9}{10}]
+;; records maintained by com. server:
+cloudflare.com. 86400 IN DS     2371 13 2 329968....F6D6 3826F2B9
+cloudflare.com. 86400 IN RRSIG  DS 13 2 86400 20241030011127 20241023000127 29942 com. wo...k80C Nfk...mZsYw==
+cloudflare.com. 3600  IN DNSKEY 257 3 13 mdss...kHAeF+ KkxL...KGQ==
+
+;; records maintained by cloudflare.com. servers:
+cloudflare.com. 3600  IN DNSKEY 256 3 13 oJMRES...5ar0IRd8 KqXXF...hSA==
+cloudflare.com. 3600  IN RRSIG DNSKEY ...
+\end{Verbatim}
+\begin{itemize}
+\item DS record signed by com. keyid 29942
+\item in this case: 257 = key-signing key, 256 = zone-signing key
+\item RRSIG verifies that zone-signing key is endorsed from key-signing key
+\end{itemize}
+\end{frame}

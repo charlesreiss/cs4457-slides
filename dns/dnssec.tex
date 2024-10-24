@@ -5,47 +5,36 @@
         \begin{itemize}
         \item no certificate authorities like web PKI
         \end{itemize}
-    \item digital signature for each delegation to new servers
-        \begin{itemize}
-        \item delegation to new zone includes keys for that zone
-        \item chain of signatures DNS client can check
-        \item everything can still be cached
-        \end{itemize}
-    \item makes DNS messages a lot bigger
+    \item each DNS zone has its own public key
+    \item all records within zone have a signature
+    \item delegation records have keys for subzones
     \end{itemize}
 \end{frame}
 
-
-\begin{frame}{DNSSEC and missing records}
+\begin{frame}{digital signature}
     \begin{itemize}
-    \item tricky problem: validating `not present' responses
+    \item generate (public key, private key) such that
+    \item Sign(private key, message) = signature
+    \item Verify(public key, signature, message) = 1
+    \item and it's really hard to generate $X$ s.t. \\
+        Verify(public key, $X$, signature) = 1 \\
+        if you don't know the private key
     \vspace{.5cm}
-    \item DNSSEC has multiple options:
-        \begin{itemize}
-        \item signed `no result between W.Y.Z, type Q and Z.Y.Z, type A' message
-        \item signed `no result with hash(?) = A < hash(X) < B = hash(?)' message
-        \end{itemize}
-    \item can be generated in advance  (with signing keys kept `offline')
-        \begin{itemize}
-        \item can also generate dynamically to reveal less information
-        \end{itemize}
+    \item distribute public key widely
     \end{itemize}
 \end{frame}
 
-\begin{frame}{DNSSEC deployment: validation}
+\begin{frame}{DNSSEC offline signing}
     \begin{itemize}
-    \item queries supporting validation: approx. 35\%
+    \item design goal: generate + sign zone
+    \item have digital signatures that can verify all records
+    \vspace{.5cm}
+    \item means: DNS servers don't need to actually sign anything!
+    \item can have signing keys offline
         \begin{itemize}
-        \item from \url{https://stats.labs.apnic.net/dnssec/}
-        \end{itemize}
-    \item approx. 45\% recursive resolvers support 
-        \begin{itemize}
-        \item from \url{https://ithi.research.icann.org/}
+        \item much lower security risk
         \end{itemize}
     \end{itemize}
 \end{frame}
 
-\begin{frame}{DNSSEC deployment: signing}
-via {\small\url{https://ithi.research.icann.org/graph-m11.html}}: \\
-\includegraphics[height=0.8\textheight]{../dns/ithi-dnssec-deploy-oct-domains}
-\end{frame}
+
