@@ -3,11 +3,13 @@
     \begin{itemize}
     \item tricky problem: validating `not present' responses
     \vspace{.5cm}
-    \item `easy' if authoritiative server has private key, but\ldots
+    \item `easy' idea: sign ``\texttt{randomjunk.cs.virginia. IN DOESNOTEXIST}''
+    \item problems:
         \begin{itemize}
         \item violates model of signing everything `offline'
         \item potential way to overload server with lots of requests
-        \item do we really want to cache \texttt{randomjunk.cs.virginia.edu} does not exist for each value of \texttt{randomjunk}?
+        \item do we really want to cache \texttt{randomjunk.cs.virginia.edu} does not exist?
+        \item \ldots for each value of \texttt{randomjunk}?
         \end{itemize}
     \end{itemize}
 \end{frame}
