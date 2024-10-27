@@ -1,0 +1,23 @@
+\begin{frame}[fragile]{multiple names, one IP}
+\begin{Verbatim}
+$ dig +short es.wikipedia.org aaaa
+dyna.wikimedia.org.
+2620:0:860:ed1a::1
+$ dig +short en.wikipedia.org aaaa
+dyna.wikimedia.org.
+2620:0:860:ed1a::1
+\end{Verbatim}
+\begin{itemize}
+\item how does this work?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Host/:authority header}
+\begin{itemize}
+\item when getting http://somehostname/path, send header
+\item \texttt{Host: somehostname} (HTTP/1.1)
+\item \texttt{:authority: somehostname} (HTTP/2, HTTP/3)
+\vspace{.5cm}
+\item allows for `virtual hosts'
+\end{itemize}
+\end{frame}

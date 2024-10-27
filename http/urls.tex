@@ -1,0 +1,55 @@
+\begin{frame}{URL / URIs}
+\begin{itemize}
+\item Uniform Resource Locators (URL)
+    \begin{itemize}
+    \item tells how to find ``resource'' on network
+    \item uniform --- one syntax for multiple protocols (types of servers, etc.)
+    \end{itemize}
+\item Unifrom Resources Identifiers
+    \begin{itemize}
+    \item superset of URLs
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{URI examples}
+\begin{Verbatim}[fontsize=\small,commandchars=X()]
+https://kytos02.cs.virginia.edu:443/cs3130-spring2023/
+                quizzes/quiz.php?qid=02#q2
+
+https://kytos02.cs.virginia.edu/cs3130-spring2023/
+                quizzes/quiz.php?qid=02
+
+https://www.cs.virginia.edu/
+
+sftp://cr4bd@portal.cs.virginia.edu/u/cr4bd/file.txt
+
+tel:+1-434-982-2200
+
+//www.cs.virginia.edu/~cr4bd/3130/S2023/
+/~cr4bd/3130/S2023
+    Xfbox(Xnormalfont scheme and/or host implied from context)
+\end{Verbatim}
+\end{frame}
+
+
+\begin{frame}[fragile]{URI generally}
+\begin{Verbatim}
+scheme://authority/path?query#fragment
+\end{Verbatim}
+\begin{itemize}
+\item scheme: --- what protocol
+\item //authority/
+    \begin{itemize}
+    \item authoirty = user@host:port OR host:port OR user@host OR host
+    \end{itemize}
+\item path
+    \begin{itemize}
+    \item which resource
+    \end{itemize}
+\item ?query --- usually key/value pairs 
+\item \#fragment --- place in resource
+\vspace{.5cm}
+\item most components (sometimes) optional
+\end{itemize}
+\end{frame}
