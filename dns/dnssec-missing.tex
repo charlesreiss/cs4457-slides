@@ -1,16 +1,13 @@
 
 \begin{frame}{DNSSEC and missing records}
     \begin{itemize}
-    \item tricky problem: validating `not present' responses
-    \vspace{.5cm}
     \item `easy' idea: sign ``\texttt{randomjunk.cs.virginia. IN DOESNOTEXIST}''
+    \vspace{.5cm}
     \item problems:
-        \begin{itemize}
-        \item violates model of signing everything `offline'
-        \item potential way to overload server with lots of requests
-        \item do we really want to cache \texttt{randomjunk.cs.virginia.edu} does not exist?
-        \item \ldots for each value of \texttt{randomjunk}?
-        \end{itemize}
+    \item violates model of signing everything `offline'
+    \item potential way to overload server with lots of requests
+    \item do we really want to cache \texttt{randomjunk.cs.virginia.edu} does not exist?
+    \item \ldots for each value of \texttt{randomjunk}?
     \end{itemize}
 \end{frame}
 

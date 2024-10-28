@@ -1,0 +1,22 @@
+\begin{frame}{other address families}
+    \begin{itemize}
+    \item AF\_UNIX {\small (= AF\_LOCAL in C, but not Python)}
+        \begin{itemize}
+        \item sockets can be represented in files on disk
+        \item support sending file descriptors usually
+        \end{itemize}
+    \item (not sure how portable?) AF\_RAW
+        \begin{itemize}
+        \item usually how wireshark captures packets on Linux
+        \item also supports writing packets
+        \end{itemize}
+    \item (Linux only) AF\_NETLINK 
+        \begin{itemize}
+        \item communicate with kernel networking code
+        \end{itemize}
+    \item AF\_AX25, AF\_APPLETALK, AF\_DECNET, \ldots
+        \begin{itemize}
+        \item other interesting protocols
+        \end{itemize}
+    \end{itemize}
+\end{frame}
