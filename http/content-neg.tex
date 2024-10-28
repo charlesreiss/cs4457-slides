@@ -1,0 +1,28 @@
+\begin{frame}{content negotiation}
+\begin{itemize}
+\item Firefox on my desktop $\rightarrow$ wikipedia:
+\item {\small\texttt{accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8}}
+    \begin{itemize}
+    \item list of formats and preference indicator for each (\texttt{q})
+    \item described using ``media types'' (RFC 6838)
+    \end{itemize}
+\item {\small\texttt{accept-language: en-US,en;q=0.5}}
+\item {\small\texttt{accept-encoding: gzip, deflate, br, zstd}}
+    \begin{itemize}
+    \item allowed compression formats
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{advice against content negotation}
+\begin{itemize}
+\item current HTTP standard (RFC 9110) says this approach ``has several disadvantages'':
+    \begin{itemize}
+    \item advises considering approaches where client chooses version
+    \end{itemize}
+\item `impossible for the server to accurately determine what might be ``best'' '
+\item `having the [client] describe its capabilities in every request can be very inefficient \ldots and a potential risk to the user's privacy'
+\item `complicates the implementation'
+\item `limits \ldots shared caching'
+\end{itemize}
+\end{frame}

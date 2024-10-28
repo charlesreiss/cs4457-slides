@@ -1,13 +1,15 @@
 \begin{frame}[fragile]{multiple names, one IP}
-\begin{Verbatim}
-$ dig +short es.wikipedia.org aaaa
+\begin{Verbatim}[commandchars=\\\{\}]
+$ \textbf{dig +short es.wikipedia.org aaaa}
 dyna.wikimedia.org.
 2620:0:860:ed1a::1
-$ dig +short en.wikipedia.org aaaa
+$ \textbf{dig +short en.wikipedia.org aaaa}
 dyna.wikimedia.org.
 2620:0:860:ed1a::1
 \end{Verbatim}
 \begin{itemize}
+\item es.wikipedia.org = Spanish Wikipedia
+\item en.wikipedia.org = English Wikipedia
 \item how does this work?
 \end{itemize}
 \end{frame}

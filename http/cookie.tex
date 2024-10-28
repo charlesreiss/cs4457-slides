@@ -1,0 +1,113 @@
+\begin{frame}{HTTP non-state}
+    \begin{itemize}
+    \item HTTP is a `stateless'
+    \item each request stands on its own
+        \begin{itemize}
+        \item processed independently of all other requests
+        \item even if multiple in a connection
+        \end{itemize}
+    \vspace{.5cm}
+    \item this is disappointing for websites: \\
+    supporting `login' functionality \\
+    supporting user preferences
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{HTTP cookies (RFC 6265)}
+example.com $\rightarrow$ client
+\begin{Verbatim}[fontsize=\small]
+HTTP/1.1 200 OK
+Set-Cookie: SessionID=31d4d96e407aad42; Path=/; Domain=example.com
+\end{Verbatim}
+client $\rightarrow$ example.com on later requests:
+\begin{Verbatim}[fontsize=\small]
+GET /some-path HTTP/1.1
+Host: example.com
+Cookie: SessionID=31d4d96e407aad42
+\end{Verbatim}
+\end{frame}
+
+
+\begin{frame}{session ID concept}
+    \begin{itemize}
+    \item assign random ID number to each `session' if no cookie set
+    \vspace{.5cm}
+    \item in some database:
+    \item if they add to shopping cart, associate ID number with shopping cart items
+    \item if user logs in, associate ID number with user
+    \item \ldots
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{selected cookie attributes}
+\begin{itemize}
+\item domain --- limit to subset of domains
+    \begin{itemize}
+    \item domain=example.com matches example.com, foo.example.com, but not other.com
+    \end{itemize}
+\item secure --- only send back on encrypted connections
+\item httponly --- do not expose to in-webpage scripts
+\item expires, max-age --- limit how long cookie kept around
+    \begin{itemize}
+    \item default = until browser closed
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{cookies and tracking}
+    \begin{itemize}
+    \item cookies often used for tracking users \textit{across websites}
+    \item and not by setting cookies valid for tons of domains
+    \vspace{.5cm}
+    \item how: websites load data from other websites
+        \begin{itemize}
+        \item separate HTTP requests with separate cookies
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{cookie tracking example}
+\begin{itemize}
+\item foo.com, bar.com, quux.com all include an image
+    \begin{itemize}
+    \item https://tracker.com/track-XXX.png where XXX is foo, bar or quux
+    \end{itemize}
+\item tracker.com can read cookie every time image is accessed
+    \begin{itemize}
+    \item and set a cookie to unique number if not set
+    \end{itemize}
+\item now tracker.com knows:
+    \begin{itemize}
+    \item when/if every visitor of foo.com visited bar.com and/or quux.com
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{more detailed tracking?}
+    \begin{itemize}
+    \item ``just'' learned about how many visitors visited combinations of websites
+    \item with some cooperation can get more info:
+        \begin{itemize}
+        \item which subpages on those websites
+        \item username or email entered into those websites
+        \item \ldots
+        \end{itemize}
+    \item one way to pass info: add extra data to image filename
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{third party cookie rules}
+    \begin{itemize}
+    \item some browsers might restrict `third-party cookies'
+        \begin{itemize}
+        \item cookies sent to Y because of visit to X
+        \end{itemize}
+    \item various options, with variable deployment:
+        \begin{itemize}
+        \item only make third-party cookies work if marked SameSite=None
+        \item separate cookie storage for each `root' website
+        \item ignore cookies from unvisited sites
+        \item disable only cookies that heuristically look like tracking
+        \end{itemize}
+    \end{itemize}
+\end{frame}

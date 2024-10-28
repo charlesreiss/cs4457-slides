@@ -1,0 +1,88 @@
+\begin{frame}{HTTP caching (RFC 9111)}
+    \begin{itemize}
+    \item making webpages fast --- let clients cache values for later
+    \item some problems:
+    \vspace{.5cm}
+    \item how to tell if something's out of date
+    \item how to tell if changes to cookies/accept-language/etc. change item
+    \end{itemize}
+\end{frame}
+
+\begin{frame}<1>[label=oodOpt]{is it out of date? options}
+    \begin{itemize}
+    \item \myemph<2>{expire date; max-age in seconds}
+    \item \myemph<3>{check with server if it has changed}
+    \end{itemize}
+\end{frame}
+
+\againframe<2>{oodOpt}
+
+\begin{frame}[fragile]{expires}
+\begin{Verbatim}
+HTTP/1.1 200 OK
+Date: Mon, 28 Oct 2024 00:29:02 GMT
+Expires: Mon, 28 Oct 2024 04:29:02 GMT
+...
+\end{Verbatim}
+\rule{0.9\textwidth}{1mm}
+\begin{Verbatim}
+HTTP/1.1 200 OK
+Cache-Control: max-age=14400
+...
+\end{Verbatim}
+\end{frame}
+
+\againframe<3>{oodOpt}
+
+\begin{frame}[fragile]{conditional GETs}
+\begin{Verbatim}[fontsize=\fontsize{12}{13}]
+GET /3/library/struct.html HTTP/1.1
+...
+
+HTTP/1.1 200 OK
+Date: Sun, 27 Oct 2024 20:01:15 GMT
+Last-Modified: Sun, 27 Oct 2024 18:50:46 GMT
+ETag: "671e8b86-13e32"
+\end{Verbatim}
+\rule{0.9\textwidth}{1mm}
+\begin{Verbatim}[fontsize=\fontsize{12}{13}]
+GET /3/library/struct.html HTTP/1.1
+If-Modified-Since: Sun, 27 Oct 2024 18:50:46 GMT
+If-None-Match: "671e8b86-13e32"
+...
+HTTP/1.1 304 Not Modified
+...
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{variable responses}
+\begin{Verbatim}
+HTTP/1.1 200 OK
+...
+Vary: Accept, Accept-Lnaguage, Cookie
+...
+\end{Verbatim}
+\begin{itemize}
+\item page contents may vary even though URL doesn't change
+\item Vary header says what things need to be the same
+\item typically used to discard cached responses
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{other cache-control settings}
+\begin{itemize}
+\item seen max-age=X, also\ldots
+\item no-store
+    \begin{itemize}
+    \item do not store a copy of this response
+    \end{itemize}
+\item no-cache
+    \begin{itemize}
+    \item do not use without checking for new version first (conditional GET or similar)
+    \end{itemize}
+\item private, public
+    \begin{itemize}
+    \item indicate if acceptable for cache shared between users
+    \end{itemize}
+\end{itemize}
+\end{frame}
