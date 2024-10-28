@@ -1,0 +1,37 @@
+\begin{frame}{REST}
+    \begin{itemize}
+    \item REpresentational State Transfer
+    \item idea for application interface on top of HTTP
+    \vspace{.5cm}
+    \item entities in system represented with URLs
+    \item GET requests to get state of that entity
+    \item PUT and/or POST requests to update entity state
+    \item DELETE requests to remove entity
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{example: Canvas API for announcements (1)}
+client $\rightarrow$ canvas HTTP server:
+\begin{Verbatim}[fontsize=\fontsize{9}{10}\selectfont]
+GET /api/v1/announcements?context_codes[]=course_name HTTP/1.1
+Authorization: Bearer [secret code]
+\end{Verbatim}
+\rule{0.9\textwidth}{1mm}
+\begin{Verbatim}[fontsize=\fontsize{9}{10}\selectfont]
+HTTP/1.1 200 OK
+...
+
+[{
+  "id": 1,
+  "title": "Hear ye",
+  "message": "Henceforth, all assignments must be...",
+  "posted_at": "2017-01-31T22:00:00Z",
+  "delayed_post_at": null,
+  "context_code": "course_name",
+  ...
+},{
+ ...
+]
+\end{Verbatim}
+\end{frame}
+

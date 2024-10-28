@@ -2,13 +2,19 @@
 \begin{itemize}
 \item `socket options' for extra settings
 \item Python: \texttt{sock.setsockopt(level, key, value)}
+    \begin{itemize}
+    \item e.g. \texttt{sock.setsockopt(socket.SOL\_SOCKET, socket.SO\_REUSEADDR, 1)}
+    \end{itemize}
 \item C: \texttt{setsockopt(sock, level, key, value)}
+    \begin{itemize}
+    \item e.g. \texttt{setsockopt(sock, SOL\_SOCKET, SO\_REUSEADDR, 1)}
+    \end{itemize}
 \vspace{.5cm}
 \item common level values
     \begin{itemize}
     \item \texttt{SOL\_SOCKET} --- OS-level
     \item \texttt{IPPROTO\_IP}
-    \item \texttt{IPPROTO\_IPV4}
+    \item \texttt{IPPROTO\_IPV6}
     \item \texttt{IPPROTO\_TCP}
     \end{itemize}
 \end{itemize}
@@ -22,6 +28,7 @@
         \end{itemize}
     \item \texttt{SO\_RCVBUF} --- buffer size used by OS for receiving bytes
     \item \texttt{SO\_SNDBUF} --- buffer size used by OS for sending bytes
+    \item \texttt{SO\_LINGER} --- make close() wait until messages acknowleged or timeout
     \vspace{.5cm}
     \item (full list on Linux: \texttt{man 7 socket})
     \end{itemize}

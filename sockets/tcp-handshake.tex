@@ -6,7 +6,13 @@ server & client & SYN+ACK & $Y$ & $X+1$ & ---\\
 client & server & ACK & $X+1$ & $Y+1$ & ---\\
 client & server & ACK & $X+1$ & $Y+1$ & initial data  \\
 \end{tabular}
-$X$, $Y$ selected at random
+\begin{itemize}
+\item $X$, $Y$ selected at random
+    \begin{itemize}
+    \item random selection to prevent attacker from `spoofing' connection
+    \item by sending packets with forged source addresses + guessing what to ACK
+    \end{itemize}
+\end{itemize}
 \end{frame}
 
 \begin{frame}
