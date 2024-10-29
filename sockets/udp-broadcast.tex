@@ -1,17 +1,20 @@
 \begin{frame}{broadcast/multicast}
 \begin{itemize}
-\item IPv4: can broadcast to every machine on local network
+\item UDP IPv4: can broadcast to every machine on local network
     \begin{itemize}
     \item set the SO\_BROADCAST socket option to 1
     \item send to special address 255.255.255.255 
     \item received at that port number on all machines
     \end{itemize}
-\item multicast (send-to-many) groups
+\item UDP multicast: (send-to-many) groups
     \begin{itemize}
-    \item request to receive: IP\_ADD\_MEMBERSHIP (v4), IPV6\_ADD\_MEMBERSHIP (v6)
+    \item to receive: IP\_ADD\_MEMBERSHIP (v4), IPV6\_ADD\_MEMBERSHIP (v6)
+        \begin{itemize}
+        \item via setsockopt
+        \end{itemize}
     \item each `multicast group' has IP address
     \item 224.0.0.0/24 and ff02::/16 = local network only
-    \item local network version usually implemented by broadcasting + filtering by IP
+    \item local network: can implement by broadcasting + filtering
     \item (non-local-network multicast is more complex\ldots)
     \end{itemize}
 \end{itemize}
