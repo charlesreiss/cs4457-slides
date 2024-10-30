@@ -1,0 +1,18 @@
+\begin{frame}{exercise}
+\fontsize{9}{10}\selectfont
+\begin{tabular}{lllll}
+time & IP & path & cookie header & set-cookie header \\
+1pm & 1.2.3.4 & /foo & SID=1234 & --- \\
+1pm & 1.2.3.4 & /bar & --- & SID=9999 \\
+2pm & 1.2.3.4 & /foo & --- & SID=2345 \\
+3pm & 2.3.4.5 & /quux & SID=2345 & --- \\
+4pm & 1.2.3.4  & /& SID=1234& --- \\
+4pm & 3.4.5.6 & /foo & SID=2345 & --- \\
+5pm & 1.2.3.4  & /quux & SID=1234& --- \\
+6pm & 1.2.3.4  & /quux & --- & SID=3456 \\
+\end{tabular}
+\begin{itemize}
+\item exercise: how many unique users?
+\item exercise: how many IPs per user?
+\end{itemize}
+\end{frame}

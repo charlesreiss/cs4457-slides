@@ -13,7 +13,7 @@
 \begin{frame}[fragile]{example: Canvas API for announcements (1)}
 client $\rightarrow$ canvas HTTP server:
 \begin{Verbatim}[fontsize=\fontsize{9}{10}\selectfont]
-GET /api/v1/announcements?context_codes[]=course_name HTTP/1.1
+GET /api/v1/courses/123456/discussion_topics?only_announcements=true
 Authorization: Bearer [secret code]
 \end{Verbatim}
 \rule{0.9\textwidth}{1mm}
@@ -22,16 +22,69 @@ HTTP/1.1 200 OK
 ...
 
 [{
-  "id": 1,
-  "title": "Hear ye",
-  "message": "Henceforth, all assignments must be...",
-  "posted_at": "2017-01-31T22:00:00Z",
-  "delayed_post_at": null,
-  "context_code": "course_name",
-  ...
-},{
- ...
-]
+    "id":1,
+    "title":"Welcome to the Course!",
+    "message":"...",
+    ...
+},
+{
+    "id":2,
+    ...
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{example: Canvas API for announcements (2)}
+client $\rightarrow$ canvas HTTP server:
+\begin{Verbatim}[fontsize=\fontsize{9}{10}\selectfont]
+POST /api/v1/courses/123456/discussion_topics
+Authorization: Bearer [secret code]
+Content-Type: application/json
+...
+
+{
+    "is_announcement":true,
+    "title":"Class Cancelled",
+    "message":"....."
+}
+\end{Verbatim}
+\rule{0.9\textwidth}{1mm}
+\begin{Verbatim}[fontsize=\fontsize{9}{10}\selectfont]
+HTTP/1.1 200 OK
+...
+
+{
+    "id": 41,
+    "title":"Class Cancelled",
+    ....
+}
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{example: Canvas API for announcements (3)}
+client $\rightarrow$ canvas HTTP server:
+\begin{Verbatim}[fontsize=\fontsize{9}{10}\selectfont]
+PUT /api/v1/courses/123456/discussion_topics/41
+Authorization: Bearer [secret code]
+Content-Type: application/json
+...
+
+{
+    "is_announcement":true,
+    "title":"Class Cancelled [updated!]",
+    "message":"UPDATE: prevoiusly,.."
+    ...
+}
+\end{Verbatim}
+\rule{0.9\textwidth}{1mm}
+\begin{Verbatim}[fontsize=\fontsize{9}{10}\selectfont]
+HTTP/1.1 200 OK
+...
+
+{
+    "id": 41,
+    "title":"Class Cancelled [updated!]",
+    ....
+}
 \end{Verbatim}
 \end{frame}
 
