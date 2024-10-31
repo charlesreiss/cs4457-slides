@@ -1,0 +1,22 @@
+\begin{frame}[fragile]{trailers}
+\begin{Verbatim}[fontsize=\small]
+GET /foo?bar HTTP/1.1
+TE: trailers
+...
+\rule{.9\textwidth}{1mm}
+\begin{Verbatim}[fontsize=\small]
+HTTP/1.1 200 OK
+Transfer-Coding: chunked
+Trailer: Expires
+Date: Wed, 30 Oct 2024 23:57:04 GMT
+
+12343
+...
+...
+42342
+...
+...
+0
+Expires: Mon, 4 Nov 2024 23:57:04 GMT
+\end{Verbatim}
+\end{frame}

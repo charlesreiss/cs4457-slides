@@ -136,3 +136,32 @@ Host: example.com
     \item split requests between multiple identical servers for performance
     \end{itemize}
 \end{frame}
+
+\begin{frame}[fragile]{non-HTTP in HTTP proxy}
+\small
+client $\rightarrow$ server:
+\begin{Verbatim}
+CONNECT ns.foo.com:53 HTTP/1.1
+Host: ns.foo.com:53
+\end{Verbatim}
+\rule{.9\textwidth}{1mm}
+server $\rightarrow$ client:
+\begin{Verbatim}
+HTTP/1.1 200 OK
+Some-header: some-value
+
+\end{Verbatim}
+\rule{.9\textwidth}{1mm}
+client $\rightarrow$ server: (dns request) \\
+server $\rightarrow$ client: (dns response from ns.foo.com) \\
+client $\rightarrow$ server: (dns request) \\
+server $\rightarrow$ client: (dns response from ns.foo.com) \\
+\ldots
+\end{frame}
+
+\begin{frame}{CONNECT}
+    \begin{itemize}
+    \item allows ``tunnelling'' arbitrary TCP connections through HTTP
+    \item often not implemented by HTTP proxies and/or very restricted
+    \end{itemize}
+\end{frame}

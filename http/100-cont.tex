@@ -1,0 +1,85 @@
+\begin{frame}[fragile]{delay for errors}
+\begin{Verbatim}
+PUT /some/file/location HTTP/1.1
+Content-Length: 5368709120
+
+(lots of data)
+\end{Verbatim}
+\rule{0.9\textwidth}{1mm}
+\begin{Verbatim}
+HTTP/1.1 403 Forbidden
+...
+...
+\end{Verbatim}
+\end{frame}
+
+
+\begin{frame}[fragile]{100 continue (error case)}
+\begin{Verbatim}[fontsize=\small]
+PUT /some/file/location HTTP/1.1
+Content-Length: 5368709120
+Expect: 100-continue
+
+\end{Verbatim}
+\rule{0.9\textwidth}{1mm}
+\begin{Verbatim}
+HTTP/1.1 403 Forbidden
+...
+...
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{100 continue (no error case)}
+\begin{Verbatim}[fontsize=\small]
+PUT /some/file/location HTTP/1.1
+Content-Length: 5368709120
+Expect: 100-continue
+
+\end{Verbatim}
+\rule{0.9\textwidth}{1mm}
+\begin{Verbatim}
+HTTP/1.1 100 Continue
+
+\end{Verbatim}
+\rule{0.9\textwidth}{1mm}
+\begin{Verbatim}[fontsize=\small]
+(now send lots of data)
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{if server does not support (good case)}
+\begin{Verbatim}[fontsize=\small]
+PUT /some/file/location HTTP/1.1
+Content-Length: 5368709120
+Expect: 100-continue
+
+\end{Verbatim}
+\rule{0.9\textwidth}{1mm}
+\begin{Verbatim}
+HTTP/1.1 417 Expectation Failed
+...
+\end{Verbatim}
+\rule{0.9\textwidth}{1mm}
+\begin{Verbatim}[fontsize=\small]
+PUT /some/file/location HTTP/1.1
+Content-Length: 5368709120
+
+(lots of data)
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{if server does not support (bad case)}
+\begin{Verbatim}[fontsize=\small]
+PUT /some/file/location HTTP/1.1
+Content-Length: 5368709120
+Expect: 100-continue
+
+\end{Verbatim}
+\rule{0.9\textwidth}{1mm}
+client waits a while, but gets not response
+\rule{0.9\textwidth}{1mm}
+\begin{Verbatim}[fontsize=\small]
+
+(lots data)
+\end{Verbatim}
+\end{frame}

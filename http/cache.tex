@@ -32,6 +32,13 @@ Cache-Control: max-age=14400
 \end{Verbatim}
 \end{frame}
 
+\begin{frame}{aside: why date + expire}
+    \begin{itemize}
+    \item server time and client time might differ
+    \item makes Expires idea not great\ldots
+    \end{itemize}
+\end{frame}
+
 \againframe<3>{oodOpt}
 
 \begin{frame}[fragile]{conditional GETs}
@@ -42,13 +49,13 @@ GET /3/library/struct.html HTTP/1.1
 HTTP/1.1 200 OK
 Date: Sun, 27 Oct 2024 20:01:15 GMT
 Last-Modified: Sun, 27 Oct 2024 18:50:46 GMT
-ETag: "671e8b86-13e32"
+ETag: 671e8b86-13e32
 \end{Verbatim}
 \rule{0.9\textwidth}{1mm}
 \begin{Verbatim}[fontsize=\fontsize{12}{13}]
 GET /3/library/struct.html HTTP/1.1
 If-Modified-Since: Sun, 27 Oct 2024 18:50:46 GMT
-If-None-Match: "671e8b86-13e32"
+If-None-Match: 671e8b86-13e32
 ...
 HTTP/1.1 304 Not Modified
 ...

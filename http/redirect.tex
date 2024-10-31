@@ -1,0 +1,30 @@
+\begin{frame}[fragile]{HTTP redirects}
+\begin{Verbatim}
+HTTP/1.1 301 Moved Permanently
+Location: https://foo.com/quux/bar
+Content-Type: text/plain
+
+(This text may be shown by clients that don't process the redirect
+automatically, or if there's a problem following it. It is up
+to the serer what to put here, but typical might be something like:)
+
+Redirecting to https://foo.com/quux/bar
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}{HTTP redirect codes}
+    \begin{itemize}
+    \item a bunch of different status codes:
+        \begin{itemize}
+        \item 301 Moved Permanently
+        \item 302 Found
+        \item 303 See Other
+        \item 307 Temporary Redirect
+        \item 308 Permanent Redirect
+        \end{itemize}
+    \item mostly behave all the same, but\ldots
+        \begin{itemize}
+        \item POST request receiving 301/302 redirects into GET request
+        \end{itemize}
+    \end{itemize}
+\end{frame}
