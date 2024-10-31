@@ -7,6 +7,26 @@
 \end{frame}
 
 \begin{frame}{last time}
+    \begin{itemize}
+    \item port numbers
+    \item socket API
+        \begin{itemize}
+        \item socket address families, stream/datagram
+        \item sendto/send, recvfrom/recv
+        \item setsockopt
+        \end{itemize}
+    \item server socket concept
+        \begin{itemize}
+        \item bind() + listen() --- server socket
+        \item accept(server socket) --- connection socket
+        \end{itemize}
+    \item TCP state machine
+        \begin{itemize}
+        \item three-way handshake (1 RTT before data)
+        \item keeping sockets around in case of retransmission of connection-close ACKs
+        \end{itemize}
+    \item SO\_REUSEADDR
+    \end{itemize}
 \end{frame}
 
 \section{broadcast}
@@ -20,5 +40,37 @@
 \section{backup slides}
 \begin{frame}{backup slides}
 \end{frame}
+
+\section{cache poisoning}
+% spoofing protections
+    % port numbers, IDs, capitalization, TCP
+
+\input{../dns/cache-pois}
+
+
+\subsection{DNSSEC}
+\input{../dns/dnssec}
+
+\subsubsection{RRSIG}
+\input{../dns/dnssec-rrsig}
+
+\subsubsection{DS/DNSKEY}
+\input{../dns/dnssec-dnskey-ds}
+
+\subsubsection{root of trust}
+\input{../dns/dnssec-root-key}
+
+\subsubsection{DANE}
+\input{../dns/dnssec-dane}
+
+\subsubsection{DNSSEC and missing records}
+\input{../dns/dnssec-missing}
+
+\subsubsection{DNSSEC (lack of) deployment}
+\input{../dns/dnssec-deploy}
+
+\section{reverse lookups, PTR}
+\input{../dns/reverse}
+
 
 \end{document}

@@ -8,9 +8,9 @@
     \end{itemize}
 \item UDP multicast: (send-to-many) groups
     \begin{itemize}
-    \item to receive: IP\_ADD\_MEMBERSHIP (v4), IPV6\_ADD\_MEMBERSHIP (v6)
+    \item IP\_ADD\_MEMBERSHIP (v4), IPV6\_ADD\_MEMBERSHIP (v6)
         \begin{itemize}
-        \item via setsockopt
+        \item register to receive via setsockopt
         \end{itemize}
     \item each `multicast group' has IP address
     \item 224.0.0.0/24 and ff02::/16 = local network only
@@ -35,7 +35,7 @@
 \end{frame}
 
 \begin{frame}[fragile]{multicast DNS response}
-\includegraphics[height=0.85\textheight]{../sockets/mdns-response}
+\includegraphics[width=\textwidth]{../sockets/mdns-response}
 \end{frame}
 
 \begin{frame}{.local domain}
