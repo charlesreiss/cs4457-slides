@@ -6,7 +6,10 @@
 \begin{tikzpicture}
 \begin{axis}[
     xlabel={distance from transmitter (m)},
-    ylabel={lost signal (dB)}
+    ylabel={lost signal (dB)},
+    width=12cm,
+    height=5.5cm,
+    xmode=log,
 ]
 \addplot table {freespacemodel.table};
 %\addplot[domain=0.1:100,samples=100] { 20*log(d/1000.0)/log(10) + 20*log(2.4)/log(10) + 92.45 };
@@ -14,5 +17,303 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{multipath interference}
+
+\begin{frame}{receiving multiple nodes}
+\begin{tikzpicture}
+\begin{pgfonlayer}{fg}
+    \draw[fill=black] (0, 0) circle (.2cm)
+        node[above=1mm] {D};
+    \draw[fill=black] (2, -1) circle (.2cm)
+        node[below=1mm] {A};
+    \draw[fill=black] (12, 1) circle (.2cm)
+        node[below=1mm] {B};
+\end{pgfonlayer}
+\tikzset{
+    signal/.style={draw,violet,line width=1.4mm,-Latex},
+    signal fade/.style={draw,violet!60!white,line width=.8mm},
+    signal fade2/.style={draw,violet!30!white,line width=.4mm},
+    signal end/.style={-{Latex[sep=0.2cm]}},
+    signalB/.style={draw,blue,line width=1.4mm,-Latex},
+    signal fadeB/.style={draw,blue!60!white,line width=.8mm},
+    signal fade2B/.style={draw,blue!30!white,line width=.4mm},
+}
+\draw[signal,signal end] (2, -1) -- (0, 0);
+\draw[signalB,-] (12, 1) -- (10, 10/12);
+\draw[signal fadeB,-] (10, 10/12) -- (8, 8/12);
+\draw[signal fade2B,signal end] (8, 8/12) -- (0, 0);
+\end{tikzpicture}
+\begin{itemize}
+\item A's signal much much stronger at D
+\item D may still receive A's signal\ldots
+\item because B relatively too weak to interfere
+\end{itemize}
+\end{frame}
+
+\begin{frame}{collision (non-)detection}
+\begin{tikzpicture}
+\begin{pgfonlayer}{fg}
+    \draw[fill=black] (7, 0) circle (.2cm)
+        node[above=1mm] {D};
+    \draw[fill=black] (2, 1) circle (.2cm)
+        node[below=1mm] {A};
+    \draw[fill=black] (12, 1) circle (.2cm)
+        node[below=1mm] {B};
+\end{pgfonlayer}
+\tikzset{
+    signal/.style={draw,violet,line width=1.4mm,-Latex},
+    signal fade/.style={draw,violet!60!white,line width=.8mm},
+    signal fade2/.style={draw,violet!30!white,line width=.4mm},
+    signal end/.style={-{Latex[sep=0.2cm]}},
+    signalB/.style={draw,blue,line width=1.4mm,-Latex},
+    signal fadeB/.style={draw,blue!60!white,line width=.8mm},
+    signal fade2B/.style={draw,blue!30!white,line width=.4mm},
+}
+\draw[signal,-] (2, 1) -- (4, 3/5);
+\draw[signal fade,signal end] (4, 3/5) -- (7, 0);
+\draw[signalB,-] (12, 1) -- (10, 3/5);
+\draw[signal fadeB,signal end] (10, 3/5) -- (7, 0);'
+\begin{visibleenv}<1>
+    \node[anchor=north,draw=red,align=left,very thick] at (7, -0.2) {
+        D receives junk
+    };
+\end{visibleenv}
+\begin{visibleenv}<2>
+\draw[signal,-] (2, 1) -- (4.5, 1);
+\draw[signal fade,-] (4.5, 1) -- (7, 1);
+\draw[signal fade2,signal end] (7, 1) -- (12, 1);
+\draw[red,very thick] (12, 1) circle (.3cm);
+    \node[anchor=north,draw=red,align=left,very thick] at (12, 0.2) {
+        B's own transmission\\
+        is much stronger than A's \\
+        cannot detect collision itself
+    };
+\end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{carrier-sense}
+\begin{tikzpicture}
+\begin{pgfonlayer}{fg}
+    \draw[fill=black] (7, 0) circle (.2cm)
+        node[above=1mm] {D};
+    \draw[fill=black] (2, 1) circle (.2cm)
+        node[below=1mm] {A};
+    \draw[fill=black] (12, 1) circle (.2cm)
+        node[below=1mm] {B};
+\end{pgfonlayer}
+\tikzset{
+    signal/.style={draw,violet,line width=1.4mm,-Latex},
+    signal fade/.style={draw,violet!60!white,line width=.8mm},
+    signal fade2/.style={draw,violet!30!white,line width=.4mm},
+    signal end/.style={-{Latex[sep=0.2cm]}},
+}
+\draw[signal,-] (2, 1) -- (4, 3/5);
+\draw[signal fade,signal end] (4, 3/5) -- (7, 0);
+\draw[signal,-] (2, 1) -- (4.5, 1);
+\draw[signal fade,-] (4.5, 1) -- (7, 1);
+\draw[signal fade2,signal end] (7, 1) -- (12, 1);
+\draw[red,very thick] (12, 1) circle (.3cm);
+    \node[anchor=north,draw=red,align=left,very thick] at (12, 0.2) {
+        B can detect A's transmitting \\
+        avoid starting transmission now
+    };
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{carrier-not-sensing}
+\begin{tikzpicture}
+\begin{pgfonlayer}{fg}
+    \draw[fill=black] (7, 0) circle (.2cm)
+        node[above=1mm] {D};
+    \draw[fill=black] (2, 1) circle (.2cm)
+        node[below=1mm] {A};
+    \draw[fill=black] (14, 1) circle (.2cm)
+        node[below=1mm] {B};
+\end{pgfonlayer}
+\tikzset{
+    signal/.style={draw,violet,line width=1.4mm,-Latex},
+    signal fade/.style={draw,violet!60!white,line width=.8mm},
+    signal fade2/.style={draw,violet!30!white,line width=.4mm},
+    signal fade3/.style={draw,violet!15!white,line width=.2mm},
+    signal end/.style={-{Latex[sep=0.2cm]}},
+    range mark/.style={draw,violet!50!black,dotted,line width=1mm},
+}
+\begin{scope}
+    \clip (1, -6) rectangle (15, 2);
+    \draw[overlay,range mark,fill=violet!10] (2, 1) circle (10.5 cm);
+        \node[font=\Huge] at (4, -2) {A's range};
+\end{scope}
+\draw[signal,-] (2, 1) -- (4, 3/5);
+\draw[signal fade,signal end] (4, 3/5) -- (7, 0);
+\draw[signal,-] (2, 1) -- (4.5, 1);
+\draw[signal fade,-] (4.5, 1) -- (7, 1);
+\draw[signal fade2,-] (7, 1) -- (9, 1);
+\draw[signal fade3,signal end] (9, 1) -- (12.5, 1);
+\draw[red,very thick] (14, 1) circle (.3cm);
+    \node[anchor=north,draw=red,align=left,very thick,fill=white] at (14, 0.2) {
+        B doesn't know \\ A is transmitting \\
+        because A's signal\\
+        is too weak
+    };
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{`hidden node' problem}
+\begin{tikzpicture}
+\begin{pgfonlayer}{fg}
+    \draw[fill=black] (4, 0) circle (.2cm)
+        node[above=1mm] {D};
+    \draw[fill=black] (2, 1) circle (.2cm)
+        node[below=1mm] {A};
+    \draw[fill=black] (6, 0.5) circle (.2cm)
+        node[below=1mm] {B};
+\end{pgfonlayer}
+\tikzset{
+    signal/.style={draw,violet,line width=1.4mm,-Latex},
+    signalB/.style={draw,blue,line width=1.4mm,-Latex},
+    signal fade/.style={draw,violet!60!white,line width=.8mm},
+    signal fade2/.style={draw,violet!30!white,line width=.4mm},
+    signal fade3/.style={draw,violet!15!white,line width=.2mm},
+    signal end/.style={-{Latex[sep=0.2cm]}},
+    range mark/.style={draw,violet!50!black,dotted,line width=1mm},
+    range markB/.style={draw,blue!50!black,dashed,line width=1mm},
+}
+\draw[signal,signal end] (2, 1) -- (4,0);
+\draw[signalB,signal end] (6, .5) -- (4,0);
+\begin{scope}
+    \clip (-1, -6) rectangle (15, 2);
+    \draw[overlay,range mark] (2, 1) circle (3.5 cm);
+    \draw[overlay,range markB] (6, 0.5) circle (3.5 cm);
+\end{scope}
+\end{tikzpicture}
+\begin{itemize}
+\item B is a `hidden node' for A and vice-versa
+\end{itemize}
+\end{frame}
+
+\begin{frame}{carrier false sensing}
+\begin{tikzpicture}
+\begin{pgfonlayer}{fg}
+    \draw[fill=black] (4, 1) circle (.2cm)
+        node[below=1mm] {A};
+    \draw[fill=black] (1, -1) circle (.2cm)
+        node[below=1mm] {C};
+    \draw[fill=black] (9, 1) circle (.2cm)
+        node[below=1mm] {B};
+    \draw[fill=black] (12, 1) circle (.2cm)
+        node[below=1mm] {D};
+\end{pgfonlayer}
+\tikzset{
+    signal/.style={draw,violet,line width=1.4mm,-Latex},
+    signal fade/.style={draw,violet!60!white,line width=.8mm},
+    signal fade2/.style={draw,violet!30!white,line width=.4mm},
+    signal fade3/.style={draw,violet!15!white,line width=.2mm},
+    signal end/.style={-{Latex[sep=0.2cm]}},
+    signalB/.style={draw,blue,line width=1.4mm,-Latex},
+    signal fadeB/.style={draw,blue!60!white,line width=.8mm},
+    signal fade2B/.style={draw,blue!30!white,line width=.4mm},
+    range mark/.style={draw,violet!50!black,dotted,line width=1mm},
+    range markB/.style={draw,blue!50!black,dashed,line width=1mm},
+}
+\draw[signal,signal end] (4, 1) -- (1, -1);
+\begin{visibleenv}<1>
+\draw[signalB,signal end] (9, 1) -- (12, 1);
+\end{visibleenv}
+\begin{visibleenv}<2>
+\draw[signal fade,signal end] (4, 1) -- (9, 1);
+\end{visibleenv}
+\begin{scope}
+    \clip (1, -6) rectangle (15, 2);
+    \draw[overlay,range mark] (4, 1) circle (6cm);
+    \draw[overlay,range markB] (9, 1) circle (6cm);
+\end{scope}
+\begin{visibleenv}<1>
+    \node[align=left,anchor=north,red,very thick] at (6, -.5) {
+        A$\rightarrow$C and B$\rightarrow$D won't collide! \\
+    };
+\end{visibleenv}
+\begin{visibleenv}<2>
+    \node[align=left,anchor=north,red,very thick,fill=white,draw=red] at (6, -.5) {
+        B will detect carrier \\
+        may avoid transmitting to D \\
+        even though there is no interference!
+    };
+\end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}{hidden/exposed node summary}
+\begin{tikzpicture}
+\begin{scope}[x=0.3cm,y=0.5cm]
+    \begin{pgfonlayer}{fg}
+        \draw[fill=black] (4, 1) circle (.2cm)
+            node[below=1mm] {A};
+        \draw[fill=black] (1, -1) circle (.2cm)
+            node[below=1mm] {C};
+        \draw[fill=black] (9, 1) circle (.2cm)
+            node[below=1mm] {B};
+        \draw[fill=black] (12, 1) circle (.2cm)
+            node[below=1mm] {D};
+    \end{pgfonlayer}
+    \tikzset{
+        signal/.style={draw,violet,line width=1.4mm,-Latex},
+        signal fade/.style={draw,violet!60!white,line width=.8mm},
+        signal fade2/.style={draw,violet!30!white,line width=.4mm},
+        signal fade3/.style={draw,violet!15!white,line width=.2mm},
+        signal end/.style={-{Latex[sep=0.2cm]}},
+        signalB/.style={draw,blue,line width=1.4mm,-Latex},
+        signal fadeB/.style={draw,blue!60!white,line width=.8mm},
+        signal fade2B/.style={draw,blue!30!white,line width=.4mm},
+        range mark/.style={draw,violet!50!black,dotted,line width=.4mm},
+        range markB/.style={draw,blue!50!black,dashed,line width=.4mm},
+    }
+    \draw[violet,dotted,very thick,signal end] (4, 1) -- (1, -1);
+    \draw[blue,dotted,very thick,signal end] (9, 1) -- (12, 1);
+    \begin{scope}
+        \clip (-5, -5) rectangle (20, 4);
+        \draw[overlay,range mark] (4, 1) circle (2cm);
+        \draw[overlay,range markB] (9, 1) circle (2cm);
+    \end{scope}
+    \node[anchor=west,align=left,font=\small] at (18, 0) {
+        \textit{exposed node problem}: A and B \\
+        detect each other's transmissions \\
+        but don't interfere 
+    };
+\end{scope}
+\begin{scope}[yshift=-4cm,x=0.3cm,y=0.5cm]
+    \begin{pgfonlayer}{fg}
+        \draw[fill=black] (1, 1) circle (.2cm)
+            node[below=1mm] {A};
+        \draw[fill=black] (4, -1) circle (.2cm)
+            node[below=1mm] {C};
+        \draw[fill=black] (8, -1) circle (.2cm)
+            node[below=1mm] {B};
+    \end{pgfonlayer}
+    \tikzset{
+        signal/.style={draw,violet,line width=1.4mm,-Latex},
+        signal fade/.style={draw,violet!60!white,line width=.8mm},
+        signal fade2/.style={draw,violet!30!white,line width=.4mm},
+        signal fade3/.style={draw,violet!15!white,line width=.2mm},
+        signal end/.style={-{Latex[sep=0.2cm]}},
+        signalB/.style={draw,blue,line width=1.4mm,-Latex},
+        signal fadeB/.style={draw,blue!60!white,line width=.8mm},
+        signal fade2B/.style={draw,blue!30!white,line width=.4mm},
+        range mark/.style={draw,violet!50!black,dotted,line width=.4mm},
+        range markB/.style={draw,blue!50!black,dashed,line width=.4mm},
+    }
+    \begin{scope}
+        \clip (-1, -5) rectangle (15, 4);
+        \draw[overlay,range mark] (0, 1) circle (2cm);
+        \draw[overlay,range markB] (8, -1) circle (2cm);
+    \end{scope}
+    \draw[violet,dotted,very thick,signal end] (1, 1) -- (4, -1);
+    \draw[blue,dotted,very thick,signal end] (8, -1) -- (4, -1);
+    \node[anchor=west,align=left,font=\small] at (18, 0) {
+        \textit{hidden node problem}: A and B interfere \\
+        when sending to C\\
+        but can't detect each other's transmissions
+    };
+\end{scope}
+\end{tikzpicture}
 \end{frame}

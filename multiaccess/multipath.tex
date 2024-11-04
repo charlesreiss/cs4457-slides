@@ -1,0 +1,93 @@
+
+\begin{frame}{multipath interference}
+\begin{tikzpicture}
+\begin{pgfonlayer}{fg}
+    \draw[fill=black] (0, 0) circle (.2cm);
+    \draw[fill=black] (12, -4) circle (.2cm);
+    \begin{scope}[ultra thick]
+        \draw (-2, 2) rectangle (13, -5);
+    \end{scope}
+\end{pgfonlayer}
+\tikzset{
+    signal/.style={draw,violet,line width=.8mm,-Latex},
+    signal fade/.style={draw,violet!60!white,line width=.8mm},
+    signal fade2/.style={draw,violet!30!white,line width=.8mm},
+    signal end/.style={-{Latex[sep=0.2cm]}},
+}
+\draw[signal] (0, 0) -- (12 / 3, 6 / 3);
+\draw[signal fade,signal end] (12 / 3, 6 / 3) -- (12, -4);
+\draw[signal] (0, 0) -- (-14 / 7, -4 / 7);
+\draw[signal fade,signal end] (-14 / 7, -4 / 7) -- (12, -4);
+\draw[signal] (0, 0) -- (14 * 13 / 14, -4 * 13 / 14);
+\draw[signal fade, signal end] (14 * 13 / 14, -4 * 13 / 14) -- (12, -4);
+\draw[signal] (0, 0) -- (14 * 5 / 6, -6 * 5 / 6);
+\draw[signal fade, signal end] (14 * 5 / 6, -6 * 5 / 6) -- (12, -4);
+
+\draw[signal,signal end] (0, 0) -- (12, -4);
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{simple self-interference}
+\begin{tikzpicture}
+\begin{axis}[name=top1,hide axis,width=7cm,height=4cm,ymin=-1,ymax=1]
+    \addplot[domain=0:1000,samples=1000] {sin(x*4) * sin(0.75+x/3)};
+    \coordinate (top1 tl) at (axis cs:0, 1);
+    \coordinate (top1 br) at (axis cs:1000, -1);
+\end{axis}
+\coordinate (middle base) at ([yshift=-2cm]top1.east);
+\coordinate (low base) at ([yshift=-4cm]top1.east);
+\begin{axis}[anchor=east,name=middle1,at={(middle base)},width=7cm,height=4cm,hide axis,
+    ymin=-2,ymax=2]
+    \addplot[domain=0:1000,samples=1000] {0.4*(sin((x+45)*4) * sin(0.75+(x + 45)/3))};
+    \coordinate (middle1 tl) at (axis cs:0, 1);
+    \coordinate (middle1 br) at (axis cs:1000, -1);
+\end{axis}
+\begin{axis}[hide axis,width=7cm,height=4cm,anchor=east,name=combine1,at={(low base)},
+    ymin=-1,ymax=1]
+    \addplot[domain=0:1000,samples=1000] {
+     sin(x*4) * sin(0.75+x/3) +
+     0.5*(sin((x+45)*4) * sin(0.75+(x + 45)/3))
+    };
+\end{axis}
+\coordinate (top2 base) at ([xshift=2cm]top1.east);
+\begin{axis}[anchor=west,at={(top2 base)},name=top2,hide axis,width=7cm,height=4cm,ymin=-1,ymax=1]
+    \addplot[domain=0:1000,samples=1000] {sin(x*4) * sin(0.75+x/3)};
+    \coordinate (top2 tl) at (axis cs:0, 1);
+    \coordinate (top2 br) at (axis cs:1000, -1);
+\end{axis}
+\coordinate (middle base2) at ([yshift=-2cm]top2.east);
+\coordinate (low base2) at ([yshift=-4cm]top2.east);
+\begin{axis}[anchor=east,name=middle2,at={(middle base2)},width=7cm,height=4cm,hide axis,
+    ymin=-1,ymax=1]
+    \addplot[domain=0:1000,samples=1000] {0.4*(sin((x+25)*4) * sin(0.75+(x + 45)/3))};
+    \coordinate (middle2 tl) at (axis cs:0, 1);
+    \coordinate (middle2 br) at (axis cs:1000, -1);
+\end{axis}
+\begin{axis}[hide axis,width=7cm,height=4cm,anchor=east,name=combine2,at={(low base2)},
+    ymin=-1,ymax=1]
+    \addplot[domain=0:1000,samples=1000] {
+     sin(x*4) * sin(0.75+x/3) +
+     0.5*(sin((x+25)*4) * sin(0.75+(x + 25)/3))
+    };
+\end{axis}
+\node[font=\large]  at (middle1.west) {+};
+\node[font=\large]  at (middle2.west) {+};
+\draw[ultra thick] (middle1.south west) -- (middle1.south east);
+\draw[ultra thick] (middle2.south west) -- (middle2.south east);
+\begin{visibleenv}<2>
+\draw[red] (top1 tl) rectangle (top1 br);
+\node[font=\small,anchor=west,red] at (top1.east) {original};
+\draw[blue] (middle1 tl) rectangle (middle1 br);
+\node[font=\small,anchor=west,blue] at (middle1.east) {reflected};
+\end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{multipath interference}
+    \begin{itemize}
+    \item quite complicated to predict in three dimensions, variable reflectivity, \ldots
+    \item can help and hurt signal reception
+    \end{itemize}
+\end{frame}
+
+
