@@ -1,3 +1,4 @@
+\usetikzlibrary{arrows.meta}
 \begin{frame}{carrier sense}
     \begin{itemize}
     \item channel can be `busy' or not
@@ -11,3 +12,54 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}{using carrier sense}
+    \begin{itemize}
+    \item simple idea: don't transmit if channel already busy
+    \vspace{.5cm}
+    \item problem: then when do you transmit?
+    \item some options:
+        \begin{itemize}
+        \item never, lose the packet
+        \item immediately when it stops being busy
+        \item sometime after it stops being busy
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{`slots'}
+\begin{itemize}
+\item if packets take a fixed amount of time\ldots
+\item want to wait whole number of packet times
+    \begin{itemize}
+    \item immediately after, one after, two after, three after
+    \end{itemize}
+\item avoids requiring almost 2 packets worth of `quiet' time
+\item can synchronize by observing end of last transmission
+\end{itemize}
+\begin{tikzpicture}
+\begin{scope}[x=3cm]
+    \draw[line width=1mm,-Latex] (-0.5, 0) -- (4, 0) node[above,midway] {time};
+    \draw[thick,fill=violet] (0.0, -0.5) rectangle ++(1, -1);
+    \foreach \x in {1,2,3} {
+        \draw[dotted,line width=0.7mm] (\x, -0.25) -- ++ (0, -2);
+    }
+\end{scope}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{802.11b typical slots}
+    \begin{itemize}
+    \item $20 \mu\text{s}$ slots
+    \item $50 \mu\text{s}$ interframe spacing (IFS)
+        \begin{itemize}
+        \item includes time to receive ACK of packet
+        \end{itemize}
+    \vspace{.5cm}
+    \item transmit first time after IFS (if idle)
+    \item transmit second time after IFS + rand($0$, $2^5$) slots
+        \begin{itemize}
+        \item plus time spent by other seen transmissions
+        \end{itemize}
+    \item third time after rand($0$, $2^6$) slots, etc.
+    \end{itemize}
+\end{frame}

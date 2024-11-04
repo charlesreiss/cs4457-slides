@@ -1,3 +1,4 @@
+\usetikzlibrary{arrows.meta}
 \begin{frame}{running example}
 \begin{itemize}
     \item based on Abramson, ``The Aloha System---Another alternative for computer comunications'' (1970)
@@ -28,16 +29,36 @@
     \end{itemize}
 \end{frame}
 
+
+\begin{frame}{quiet time to avoid collisions}
+\begin{tikzpicture}
+\begin{scope}[x=3cm]
+    \draw[line width=1mm,-Latex] (-0.5, 0) -- (4, 0) node[above,midway] {time};
+    \draw[thick,fill=violet] (1.5, -0.5) rectangle ++(1, -1);
+    \draw[thick,fill=violet,opacity=0.5] (0.55, -2) rectangle ++(1, -1);
+    \draw[thick,fill=violet,opacity=0.5] (2.45, -2) rectangle ++(1, -1);
+    \path[fill=red!60!black] (0.5,-1.7) rectangle ++(2, -.2);
+    \path[fill=green] (-0.5,-1.7) rectangle ++(1, -.2);
+    \path[overlay,fill=green] (2.5,-1.7) rectangle ++(2, -.2);
+    \draw[dotted,very thick] (1.5, -3) -- (1.5, -0.5);
+    \draw[dotted,very thick] (2.5, -3) -- (2.5, -0.5);
+\end{scope}
+\end{tikzpicture}
+\begin{itemize}
+\item to avoid collision with 1 ms packet\ldots
+\item can't start packet less than 1 ms before
+\item can't start packet less than 1 ms after
+\item $\rightarrow$ need 2 ms without packet starting for no collision
+\end{itemize}
+\end{frame}
 % FIXME: diagram of 1.5 ms apart starts and collision
 
 \begin{frame}{chance of collisions? (1)}
     \begin{itemize}
-    \item $k$ messages/second from each of the nodes
-    \item mean time between transmissions = $\frac{1}{k}$ s
-    \item for two \frac{1}{1000} s transmission to overlap they need to start
-        within \frac{2}{1000} s of each other
+    \item to avoid collision when sending 1 ms packet
+    \item need no other packet to be sent in 2ms period around its start time
     \vspace{.5cm}
-    \item so of overlap $1-e^{-\frac{2}{1000}k}$
+    \item with $k$ packets/sec, chance is approx $1-e^{-\frac{2}{1000}k}$
     \end{itemize}
 \end{frame}
 

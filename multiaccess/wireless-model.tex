@@ -1,0 +1,18 @@
+\begin{frame}{free space wireless transmission}
+\begin{itemize}
+\item assuming 2.4GHz Wifi, no obstacles, omnidirectional transmission:
+\item 10 dB loss = $\frac{1}{10}$th power; 20 dB loss = $\frac{1}{100}$th power
+\end{itemize}
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel={distance from transmitter (m)},
+    ylabel={lost signal (dB)}
+]
+\addplot table {freespacemodel.table};
+%\addplot[domain=0.1:100,samples=100] { 20*log(d/1000.0)/log(10) + 20*log(2.4)/log(10) + 92.45 };
+\end{axis}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{multipath interference}
+\end{frame}
