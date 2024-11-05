@@ -1,9 +1,142 @@
-
-\begin{frame}{ready-to-send/clear-to-send}
+\usetikzlibrary{calc}
+\begin{frame}{request-to-send/clear-to-send}
     \begin{itemize}
     \item can't detect likely interference at sender
-    \item but can at receiver
     \vspace{.5cm}
     \item idea: have receiver tell when it's okay to transmit
+    \item sender$\rightarrow$receiver: request-to-send
+    \item receiver$\rightarrow$sender: clear-to-send
+    \end{itemize}
+\begin{tikzpicture}
+    \tikzset{
+        signal/.style={draw,violet,line width=1.4mm,-Latex},
+        signal fade/.style={draw,violet!60!white,line width=.8mm},
+        signal fade2/.style={draw,violet!30!white,line width=.4mm},
+        signal fade3/.style={draw,violet!15!white,line width=.2mm},
+        signal end/.style={-{Latex[sep=0.2cm]}},
+        signalB/.style={draw,blue,line width=1.4mm,-Latex},
+        signal fadeB/.style={draw,blue!60!white,line width=.8mm},
+        signal fade2B/.style={draw,blue!30!white,line width=.4mm},
+        range mark/.style={draw,violet!50!black,dotted,line width=.4mm},
+        range markB/.style={draw,blue!50!black,dashed,line width=.4mm},
+    }
+    \begin{scope}[name prefix=rdy-,x=1.2cm,y=0.4cm]
+        \begin{pgfonlayer}{fg}
+            \draw[fill=black] (4, -1) circle (.2cm)
+                coordinate (C)
+                node[below=1mm] {C};
+            \draw[fill=black] (8, -1) circle (.2cm)
+                coordinate (B)
+                node[below=1mm] {B};
+        \end{pgfonlayer}
+        \draw[signal fade,signal end] (C) -- (B)
+            node[font=\small,pos=0.8,midway,draw,very thick,fill=white,sloped] {send 1000B?};
+    \end{scope}
+    \begin{scope}[xshift=8cm,name prefix=clr-,x=0.9cm,y=0.4cm]
+        \begin{pgfonlayer}{fg}
+            \draw[fill=black] (4, -1) circle (.2cm)
+                coordinate (C)
+                node[below=1mm] {C};
+            \draw[fill=black] (8, -1) circle (.2cm)
+                coordinate (B)
+                node[below=1mm] {B};
+        \end{pgfonlayer}
+        \draw[signal fade,signal end] (B) -- (C)
+            node[font=\small,pos=0.5,midway,draw, very thick,fill=white,sloped] {C: 1000B now!};
+    \end{scope}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{overhearing clear-to-send}
+\begin{tikzpicture}
+    \tikzset{
+        signal/.style={draw,violet,line width=1.4mm,-Latex},
+        signal fade/.style={draw,violet!60!white,line width=.8mm},
+        signal fade2/.style={draw,violet!30!white,line width=.4mm},
+        signal fade3/.style={draw,violet!15!white,line width=.2mm},
+        signal end/.style={-{Latex[sep=0.2cm]}},
+        signalB/.style={draw,blue,line width=1.4mm,-Latex},
+        signal fadeB/.style={draw,blue!60!white,line width=.8mm},
+        signal fade2B/.style={draw,blue!30!white,line width=.4mm},
+        range mark/.style={draw,violet!50!black,dotted,line width=.4mm},
+        range markB/.style={draw,blue!50!black,dashed,line width=.4mm},
+    }
+    \begin{scope}[xshift=5cm,name prefix=clr-,x=1.5cm,y=0.4cm]
+        \begin{pgfonlayer}{fg}
+            \draw[fill=black] (1, 1) circle (.2cm)
+                coordinate (A)
+                node[below=1mm] {A};
+            \draw[fill=black] (4, -1) circle (.2cm)
+                coordinate (C)
+                node[below=1mm] {C};
+            \draw[fill=black] (8, -1) circle (.2cm)
+                coordinate (B)
+                node[below=1mm] {B};
+        \end{pgfonlayer}
+        \draw[signal fade,signal end] (C) -- (B)
+            node[font=\small,pos=0.5,midway,draw, very thick,fill=white,sloped] {B: 1000B now!};
+        \draw[signal fade,signal end] (C) -- (A)
+            node[font=\small,pos=0.5,midway,draw, very thick,fill=white,sloped] {B: 1000B now!};
+    \end{scope}
+\end{tikzpicture}
+\begin{itemize}
+\item A can infer that B is transmitting to C
+\item \ldots and for how long!
+\vspace{.5cm}
+\item A can avoid interfering, even if out of range of carrier-sense
+\end{itemize}
+\end{frame}
+
+\begin{frame}{overhearing ready-to-send}
+\begin{tikzpicture}
+    \tikzset{
+        signal/.style={draw,violet,line width=1.4mm,-Latex},
+        signal fade/.style={draw,violet!60!white,line width=.8mm},
+        signal fade2/.style={draw,violet!30!white,line width=.4mm},
+        signal fade3/.style={draw,violet!15!white,line width=.2mm},
+        signal end/.style={-{Latex[sep=0.2cm]}},
+        signalB/.style={draw,blue,line width=1.4mm,-Latex},
+        signal fadeB/.style={draw,blue!60!white,line width=.8mm},
+        signal fade2B/.style={draw,blue!30!white,line width=.4mm},
+        range mark/.style={draw,violet!50!black,dotted,line width=.4mm},
+        range markB/.style={draw,blue!50!black,dashed,line width=.4mm},
+    }
+    \begin{scope}[xshift=5cm,name prefix=clr-,x=1.2cm,y=0.4cm]
+        \begin{pgfonlayer}{fg}
+            \draw[fill=black] (1, 1) circle (.2cm)
+                coordinate (A)
+                node[below=1mm] {A};
+            \draw[fill=black] (4, -4) circle (.2cm)
+                coordinate (C)
+                node[below=1mm] {C};
+            \draw[fill=black] (8, -1) circle (.2cm)
+                coordinate (B)
+                node[below=1mm] {B};
+        \end{pgfonlayer}
+        \draw[signal fade,signal end] (B) -- (C)
+            node[font=\small,pos=0.5,midway,draw, very thick,fill=white,sloped] {C: send 1000B?};
+        \draw[signal fade] (B) -- ($(B)!0.7!(A)$)
+            node[font=\small,pos=0.8,midway,draw, very thick,fill=white,sloped] {C: send 1000B?};
+        \draw[signal fade2,signal end] ($(B)!0.7!(A)$) -- (A);
+    \end{scope}
+\end{tikzpicture}
+\begin{itemize}
+\item if A can hear B's request-to-send\ldots
+\item A should avoid sending until after B should get clear-to-send
+\end{itemize}
+\end{frame}
+
+\begin{frame}{exercise: request-to-send advantage}
+    \begin{itemize}
+    \item assume:
+        \begin{itemize}
+        \item $1 \mu\text{s}$ request-to-send/clear-to-send messages
+        \item $100 \mu\text{s}$ messages sent
+        \item chance of collision proportional to message lengths
+        \end{itemize}
+    \item exercise: effect of using RTS/CTS (versus only carrier-sense) for\ldots
+    \item 2 nodes transmitting to one with no hidden nodes?
+    \item 2 nodes hidden from each other transmitting to one?
     \end{itemize}
 \end{frame}
+

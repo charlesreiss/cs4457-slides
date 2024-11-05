@@ -37,10 +37,10 @@
 \coordinate (middle base) at ([yshift=-2cm]top1.east);
 \coordinate (low base) at ([yshift=-4cm]top1.east);
 \begin{axis}[anchor=east,name=middle1,at={(middle base)},width=7cm,height=4cm,hide axis,
-    ymin=-2,ymax=2]
+    ymin=-1,ymax=1]
     \addplot[domain=0:1000,samples=1000] {0.4*(sin((x+45)*4) * sin(0.75+(x + 45)/3))};
-    \coordinate (middle1 tl) at (axis cs:0, 1);
-    \coordinate (middle1 br) at (axis cs:1000, -1);
+    \coordinate (middle1 tl) at (axis cs:0, 0.4);
+    \coordinate (middle1 br) at (axis cs:1000, -0.4);
 \end{axis}
 \begin{axis}[hide axis,width=7cm,height=4cm,anchor=east,name=combine1,at={(low base)},
     ymin=-1,ymax=1]
@@ -59,9 +59,9 @@
 \coordinate (low base2) at ([yshift=-4cm]top2.east);
 \begin{axis}[anchor=east,name=middle2,at={(middle base2)},width=7cm,height=4cm,hide axis,
     ymin=-1,ymax=1]
-    \addplot[domain=0:1000,samples=1000] {0.4*(sin((x+25)*4) * sin(0.75+(x + 45)/3))};
-    \coordinate (middle2 tl) at (axis cs:0, 1);
-    \coordinate (middle2 br) at (axis cs:1000, -1);
+    \addplot[domain=0:1000,samples=1000] {0.4*(sin((x+25)*4) * sin(0.75+(x + 25)/3))};
+    \coordinate (middle2 tl) at (axis cs:0, 0.4);
+    \coordinate (middle2 br) at (axis cs:1000, -0.4);
 \end{axis}
 \begin{axis}[hide axis,width=7cm,height=4cm,anchor=east,name=combine2,at={(low base2)},
     ymin=-1,ymax=1]
@@ -75,9 +75,11 @@
 \draw[ultra thick] (middle1.south west) -- (middle1.south east);
 \draw[ultra thick] (middle2.south west) -- (middle2.south east);
 \begin{visibleenv}<2>
-\draw[red] (top1 tl) rectangle (top1 br);
+\draw[very thick,red] (top1 tl) rectangle (top1 br);
+\draw[very thick,red] (top2 tl) rectangle (top2 br);
 \node[font=\small,anchor=west,red] at (top1.east) {original};
-\draw[blue] (middle1 tl) rectangle (middle1 br);
+\draw[very thick,blue] (middle1 tl) rectangle (middle1 br);
+\draw[very thick,blue] (middle2 tl) rectangle (middle2 br);
 \node[font=\small,anchor=west,blue] at (middle1.east) {reflected};
 \end{visibleenv}
 \end{tikzpicture}
@@ -87,7 +89,77 @@
     \begin{itemize}
     \item quite complicated to predict in three dimensions, variable reflectivity, \ldots
     \item can help and hurt signal reception
+    \vspace{.5cm}
+    \item contributes to irregular dead zones, etc.
     \end{itemize}
 \end{frame}
 
+\begin{frame}{deliberate multipath}
+    \begin{itemize}
+    \item can have:
+    \item multiple sending antennas (inputs)
+    \item multiple receiving antennas (outputs)
+    \item some simple ideas:
+    \vspace{.5cm}
+    \item receive signal twice, hope one antenna not dead zone
+    \item send signal twice, have receiver tell you which is better
+    \end{itemize}
+\end{frame}
 
+% FIXME: beamforming
+
+\begin{frame}{multiple spatial streams}
+\begin{tikzpicture}
+\begin{scope}[every path/.style={fill=black!50,draw=black!50,text=black}]
+    \path (-.5, .5) rectangle ++(.5, -4) node[midway] {A};
+    \path (12, .5) -- (12.5, 0.3) -- (11.5, -3.5) -- (11, -3.3) -- cycle;
+    \node at (11.7, -1.5) {B};
+    \path (0, 0) circle (2mm) coordinate (A1) node[above right=1mm]{$A_1$};
+    \path (0, -3) circle (2mm) coordinate (A2) node[below right=1mm]{$A_2$};
+    \path (11.7, 0) circle (2mm) coordinate (B1) node[above left=1mm]{$B_1$};
+    \path (11, -3) circle (2mm) coordinate (B2) node[below left=1mm]{$B_2$};
+\end{scope}
+\tikzset{
+    strong/.style={line width=1.2mm,arrows={{Butt Cap[sep=5mm]}-{Latex[sep=5mm]}}},
+    stronger/.style={line width=1.3mm,arrows={{Butt Cap[sep=5mm]}-{Latex[sep=5mm]}}},
+    medium/.style={line width=1mm,arrows={{Butt Cap[sep=5mm]}-{Latex[sep=5mm]}}},
+    weak/.style={line width=0.8mm,arrows={{Butt Cap[sep=5mm]}-{Latex[sep=5mm]}}},
+}
+\foreach \x/\y/\lw in {A1/B1/strong,A2/B2/stronger,A1/B2/medium,A2/B1/weak} {
+    \draw[\lw] (\x) -- (\y);
+}
+\end{tikzpicture}
+\begin{itemize}
+\item<2-> signals might mix based on relative strengths, say
+\begin{align*}
+B_1 &\sim& 0.9A_1 &+& 0.7A_2 \\
+B_2 &\sim& A_1 &+& 1.2A_2 
+\end{align*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{simplified multipath model}
+\begin{align*}
+B_1 &\sim& 0.9A_1 &+& 0.7A_2 \\
+B_2 &\sim& A_1 &+& 1.2A_2 
+\end{align*}
+\begin{itemize}
+\item if we can estimate coefficients\ldots
+\item B can solve for $A_1$, $A_2$
+\vspace{.5cm}
+\item A can send with pattern to help estimate coefficients:
+    \begin{itemize}
+    \item example: send full power from $A_1$ ($(B_1,B_2)=(0.9, 1)$), then from $A_2$ ($(B_1,B_2)=(0.7, 1.2)$)
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{correlation problem}
+    \begin{itemize}
+    \item when two `spatial streams' correlated, harder to solve for them
+    \item example: suppose $(B_1,B_2)=(A_1+A_2,A_1+1.1A_2)$
+    \vspace{.5cm}
+    \item $A_2=10B_1-10B_2$
+    \item need 10x precision in $B_1$, $B_2$ to get 1x precision in $A_2$
+    \end{itemize}
+\end{frame}
