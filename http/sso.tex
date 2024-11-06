@@ -1,0 +1,17 @@
+\begin{frame}{single-sign on}
+\begin{itemize}
+\item client $\rightarrow$ foo.com: GET /foo
+\item foo.com $\rightarrow$ client: redirect to https://sso.com/login?from=foo.com&\ldots
+\item client $\rightarrow$ sso.com: GET /login?from=foo.com&\ldots
+    \begin{itemize}
+    \item sent with cookies set by sso.com
+    \end{itemize}
+\item sso.com $\rightarrow$ client: web page with form action=http://foo.com/... and method=post
+    \begin{itemize}
+    \item possibly with script to submit automatically
+    \item data in form tells foo.com about username, etc.
+    \item cryptographically signed or similar
+    \end{itemize}
+\item client $\rightarrow$ foo.com: POST /... with data from sso.com
+\end{itemize}
+\end{frame}

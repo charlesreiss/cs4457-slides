@@ -10,7 +10,9 @@ SLIDEDECKS = \
     queuing \
     routing \
     sockets \
-    dns
+    dns \
+    http \
+    multiaccess
 
 
 all: $(patsubst %,_dist/%.pdf,$(SLIDEDECKS))
