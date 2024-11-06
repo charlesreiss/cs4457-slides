@@ -12,12 +12,65 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}{shared wires}
+    \begin{itemize}
+    \item used to be how Ethernet worked
+        \begin{itemize}
+        \item before Ethernet switches were ubiquitous
+        \end{itemize}
+    \item how cable Internet works
+        \begin{itemize}
+        \item shared line to many customers in area
+        \item need to share
+        \end{itemize}
+    \item usually how fiber-to-the-home works
+        \begin{itemize}
+        \item ``passive optical network''
+        \item connect multiple fibers optically
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{multiple channels}
     \begin{itemize}
     \item can have multiple channels over single medium
-    \item typically: radio or light frequencies
+    \item typically: radio or electrical signal or light frequencies
+    \item sender/receiver separate channels electrically/optically
     \vspace{.5cm}
-    \item<2-> for now: worry about coordinating a single channel
+    \item to start: will worry about coordinating one chnanel
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{wireless spectrum}
+    \begin{itemize}
+    \item most useful radio spectrum \textit{licensed}
+    \item gov't gives exclusive rights (within some region) to specific organizations/poeple 
+        \begin{itemize}
+        \item example: cellular, TV, satellite, air traffic control, etc.
+        \end{itemize}
+    \item a lot of computer networking uses \textit{unlicensed} bands
+        \begin{itemize}
+        \item use without specific permission allowed
+        \item still limits on power, procedures to avoid interference
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{selected unlicensed bands}
+    \begin{itemize}
+    \item approx. frequencies unlicensed in US (not everywhere)
+    \vspace{.5cm}
+    \item 902--928 MHz (802.15.4 (IoT focused))
+    \item 2.4--2.5 GHz (802.15.4; 802.11b/g/n/ax/\ldots; bluetooth; microwave ovens)
+    \item 5.15 GHz--5.25 GHz (802.11a/n/ac/ax/\ldots)
+    \item 5.25 GHz--5.73 GHz (802.11a/n/ac/ax/\ldots; also weather radar)
+        \begin{itemize}
+        \item requires `dynamic frequency selection'
+        \end{itemize}
+    \item 5.73 GHz--5.85 GHz (802.11a/n/ac/ax/\ldots)
+    \item 5.93 GHz--7.12 GHz (802.11ax/\ldots)
+    \item 24.0-24.2 GHz
+    \item 57--64 GHz
     \end{itemize}
 \end{frame}
 
