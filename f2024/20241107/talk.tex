@@ -1,0 +1,62 @@
+\date{}
+\title{}
+\date{}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.14}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}{last time (1)}
+    \begin{itemize}
+    \item sockets and broadcast/multicast
+        \begin{itemize}
+        \item multicast DNS
+        \item service discovery
+        \end{itemize}
+    \item other address families (AF\_UNIX, AF\_RAW, \ldots)
+    \item HTTP message format
+        \begin{itemize}
+        \item method, URL, headers, status, body
+        \end{itemize}
+    \item persistent connections, pipelining
+    \item HTTP/2, HTTP/3 multiplexing
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{last time (2)}
+    \begin{itemize}
+    \item content negotiation
+    \item HTTP caching
+        \begin{itemize}
+        \item conditional GETS, max-age/expires
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+
+\subsection{exercise}
+\input{../http/cookie-ex}
+
+\section{supercookies}
+\input{../http/cache-as-cookies}
+
+\section{trailers}
+\input{../http/trailers}
+
+\section{proxies and reverse proxies}
+\input{../http/proxies}
+
+\subsection{aside: wikimedia architecture}
+\input{../http/wikimedia-arch}
+
+\input{../multiaccess/talk-inner}
+
+\section{backup slides}
+\begin{frame}{backup slides}
+\end{frame}
+\section{caching}
+\input{../http/cache}
+
+\end{document}
