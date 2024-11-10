@@ -31,7 +31,7 @@
     \item assume we run this only packets about to be forwarded in router
     \end{itemize}
 \end{itemize}
-\begin{Verbatim}[fontsize=\fontsize{9}{10}]
+\begin{Verbatim}[fontsize=\small]
 ip6 saddr 3fff::2 protocol tcp accept
 drop
 \end{Verbatim}
@@ -46,11 +46,13 @@ drop
     \item assume we run this only packets about to be forwarded in router
     \end{itemize}
 \end{itemize}
-\begin{Verbatim}[fontsize=\fontsize{9}{10}]
+\begin{Verbatim}[fontsize=\fontsize{11}{12}]
 iifname ethInt protocol tcp accept
-iifname ethExt protocol tcp flags & (fin|syn|rst||ack) == syn drop
+iifname ethExt protocol \
+    tcp flags & (fin|syn|rst|ack) == syn drop
 iifname ethExt ip6 daddr 3fff::2 protocol tcp accept
-iifname ethExt ip6 daddr 3fff::2 icmpv6 { destination-unreachavble, time-exceeded } accept
+iifname ethExt ip6 daddr 3fff::2 \
+    icmpv6 { destination-unreachavble, time-exceeded } accept
 drop
 \end{Verbatim}
 \end{frame}

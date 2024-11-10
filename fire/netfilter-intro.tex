@@ -1,6 +1,11 @@
 \begin{frame}[fragile]{Linux firewall: nftables}
 \begin{itemize}
-\item one version of packet filtering: Linux's nftables
+\item Linux's nftables --- one Linux kernel packet filter interface
+    \begin{itemize}
+    \item command-line tools + system call API implemented in kernel
+    \item will show syntax for \texttt{nft} tool
+    \item also some other kernel APIs: eBPF `programs', iptables
+    \end{itemize}
 \item different ``hooks'' where filtering can happen, list for IP:
     \begin{itemize}
     \item prerouting
@@ -12,19 +17,21 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{some nftables}
-(disclaimer: not the best way to write these rules:)
+\begin{frame}[fragile]{}
 \begin{Verbatim}[fontsize=\fontsize{9}{10}\selectfont]
+# for use with 'nft' on Linux; probably not the best way to write these rules:
 table inet filter {
     chain EXTERNAL-INPUT {
         ip6 saddr {3fff:14::/32, 3fff:30::/32} drop
+        ip saddr 198.51.100.0/24 drop
         ip6 daddr 3fff:14:1:15 tcp dport {80, 443} accept
         ip6 daddr 3fff:14:1::/48 tcp dport 22 accept
         drop
     }
     chain INTERNAL-INPUT {
         ip6 saddr != {3fff:14::/32, 3fff:30::/32} drop
-        udp dport 113 drop
+        ip saddr != 198.51.100.0/24 drop
+        udp dport 137 drop
         accept
     }
     chain INPUT {
