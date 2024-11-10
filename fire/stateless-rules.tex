@@ -1,0 +1,40 @@
+\begin{frame}{firewall rules}
+    \begin{itemize}
+    \item simple idea: look at packet's fields
+    \item table indicating whether to reject
+    \vspace{.5cm}
+    \item similar idea to routing, but\ldots
+    \item table matches fields other than destination
+    \item table acitons are `drop', `reject', etc.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{``stateless'' firewall}
+    \begin{itemize}
+    \item this design: table is set once by sysadmin
+    \item doesn't change based on connections, etc.
+        \begin{itemize}
+        \item might change based on manual reconfiguration, etc.
+        \end{itemize}
+    \vspace{.5cm}
+    \item called ``stateless''
+    \vspace{.5cm}
+    \item firewall doesn't track `state' based on current activity
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{exercise: what info do we need}
+    \begin{itemize}
+    \item what fields do we need to match these
+        \begin{itemize}
+        \item (and/or can we not handle without something more stateful?)
+        \end{itemize}
+    \vspace{.5cm}
+    \item DNS queries to recursive DNS server from external servers
+    \item packets with source address that does not match network
+    \item from known malicious sources
+    \item connecting from outside  to TCP servers not on allowlist
+    \item connecting from inside using services (HTTP, etc.) not on allowlist
+    \end{itemize}
+\end{frame}

@@ -1,0 +1,22 @@
+\begin{frame}{zones of trust}
+    \begin{itemize}
+    \item most common kind of firewall policy, three zones:
+    \item internal network
+        \begin{itemize}
+        \item can send most things
+        \item can't receive unsolicited traffic from external network
+        \item where typical laptops/desktops live
+        \end{itemize}
+    \item DMZ (`demilitrized zone')
+        \begin{itemize}
+        \item not `protected' from external networks
+        \item access to internal network similar to being within it
+        \item where externally accessible services live
+        \end{itemize}
+    \item external network
+        \begin{itemize}
+        \item can only unsolicited to DMZ
+        \item where the rest of the Internet lives
+        \end{itemize}
+    \end{itemize}
+\end{frame}

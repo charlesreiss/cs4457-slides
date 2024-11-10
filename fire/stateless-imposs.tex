@@ -1,0 +1,57 @@
+\begin{frame}{limits of packet matching?}
+    \begin{itemize}
+    \item so far: showing stateless filtering
+    \vspace{.5cm}
+    \item can stateless filtering to do a lot\ldots:
+    \item match more header fields
+    \item check if packet contents match pattern
+    \vspace{.5cm}
+    \item but some fundamental limits of design
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{filtering connections? (1)}
+    \begin{itemize}
+    \item let's say we're writing rule on router between 3fff::/16 network
+    and internet
+    \item want to rule allow\ldots
+    \item TCP connections from 3fff::2 to outside machines
+    \item and drop all other traffic
+    \vspace{.5cm}
+    \item can't really do this with stateless rules
+    \item but can come close
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{exercise (1)}
+\begin{itemize}
+\item goal: allow 3fff::2 outside TCP connections only
+\item how is this going to break?
+    \begin{itemize}
+    \item assume we run this only packets about to be forwarded in router
+    \end{itemize}
+\end{itemize}
+\begin{Verbatim}[fontsize=\fontsize{9}{10}]
+ip6 saddr 3fff::2 protocol tcp accept
+drop
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{exercise}
+\begin{itemize}
+\item goal: allow 3fff::2 outside TCP connections only
+\item assume \texttt{ethInt} = inside; \texttt{ethExt} = outside
+\item is this good enough?
+    \begin{itemize}
+    \item assume we run this only packets about to be forwarded in router
+    \end{itemize}
+\end{itemize}
+\begin{Verbatim}[fontsize=\fontsize{9}{10}]
+iifname ethInt protocol tcp accept
+iifname ethExt protocol tcp flags & (fin|syn|rst||ack) == syn drop
+iifname ethExt ip6 daddr 3fff::2 protocol tcp accept
+iifname ethExt ip6 daddr 3fff::2 icmpv6 { destination-unreachavble, time-exceeded } accept
+drop
+\end{Verbatim}
+\end{frame}
+

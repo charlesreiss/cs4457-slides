@@ -1,0 +1,40 @@
+\begin{frame}[fragile]{Linux firewall: nftables}
+\begin{itemize}
+\item one version of packet filtering: Linux's nftables
+\item different ``hooks'' where filtering can happen, list for IP:
+    \begin{itemize}
+    \item prerouting
+    \item input (if received locally), forward (otherwise)
+    \item output (if sent from local program)
+    \item postrouting
+    \end{itemize}
+\item each hook has multiple ``chains'' of ``rules''
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{some nftables}
+(disclaimer: not the best way to write these rules:)
+\begin{Verbatim}[fontsize=\fontsize{9}{10}\selectfont]
+table inet filter {
+    chain EXTERNAL-INPUT {
+        ip6 saddr {3fff:14::/32, 3fff:30::/32} drop
+        ip6 daddr 3fff:14:1:15 tcp dport {80, 443} accept
+        ip6 daddr 3fff:14:1::/48 tcp dport 22 accept
+        drop
+    }
+    chain INTERNAL-INPUT {
+        ip6 saddr != {3fff:14::/32, 3fff:30::/32} drop
+        udp dport 113 drop
+        accept
+    }
+    chain INPUT {
+        type filter hook input priority 0
+        iifname lo accept
+        iifname ethExt jump EXTERNAL-INPUT
+        iifname ethInt jump INTERNAL-INPUT
+        reject
+    }
+}
+\end{Verbatim}
+\end{frame}
+
