@@ -35,9 +35,29 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}{quiz Q1C/D/E}
+    \begin{itemize}
+    \item UDP socket, not connected
+    \item bind() --- no packets, just record address locally
+        \begin{itemize}
+        \item reserves (UDP, 10.11.12.13, 12345, any, any)
+        \item can have different protocol: (TCP, 10.11.12.13, 12345, any, any)
+        \item or different IPs machine has: (UDP, 127.0.0.1, 12345, any, any)
+        \end{itemize}
+    \item sendto() --- one packet
+    \item recvfrom() --- packet sent by some other machine
+        \begin{itemize}
+        \item could be received from any machine, since no connect()
+        \item (yes, 11.12.13.14 would be a good guess since it might be replying)
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{assignment}
+\end{frame}
 
 \subsection{exercise}
-\input{../http/cookie-ex}
+\input{../http/cookie-track}
 
 \section{supercookies}
 \input{../http/cache-as-cookies}
