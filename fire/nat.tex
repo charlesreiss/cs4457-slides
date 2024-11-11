@@ -1,0 +1,118 @@
+\begin{frame}{network address translation (NAT) (1)}
+    \begin{itemize}
+    \item internal network uses private IPv4 addresses
+    \item need to translate to (fewer) public IPv4 addresses
+    \item add `internal IP+port' to connection tracking state
+    \item use that info to rewrite packets
+    \end{itemize}
+\small\tt
+\begin{tabular}{l|l|l|l|l}
+proto & remote IP + port & public IP  + port & internal IP + port \\
+TCP & 128.143.67.8:443 & 198.51.100.17:43232 & 192.168.1.54:59549 \\ 
+TCP & 128.143.67.8:443 & 198.51.100.17:59948 & 192.168.1.13:59549 \\ 
+UDP & 216.239.32.10:53 & 198.51.100.17:39554 & 192.168.1.2:31923 \\ 
+\end{tabular}
+\end{frame}
+
+\begin{frame}{symmetric v nonsymmetric NAT}
+    \begin{itemize}
+    \item recall, UDP supports receiving from multiple places with on IP+port
+    \item so maybe our table entry should be:
+    \end{itemize}
+\begin{tabular}{l|l|l|l|l}
+UDP & \myemph{(any)} & 198.51.100.17:39554 & 192.168.1.2:31923 \\ 
+\end{tabular}
+    \begin{itemize}
+    \item could also maybe do this for TCP to simplify translation
+    \vspace{.5cm}
+    \item sometimes called \textit{symmetric NAT}
+    \item not always what NATs do
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{network address translation (NAT) (2)}
+    \begin{itemize}
+    \item distribute private IPv4 addresses from on internal network
+        \begin{itemize}
+        \item most common use case: home routers for IPv4
+        \item also used by many companies, ISPs, etc.
+        \end{itemize}
+    \item can support tons of connections with one IPv4 address
+        \begin{itemize}
+        \item recall: different (remote IP+port, local port) = diff connnection
+        \end{itemize}
+    \item can use multiple public IPs if risk of running out of port numbers
+        \begin{itemize}
+        \item likely common in big NAT installations
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{running servers inside NAT (1)}
+    \begin{itemize}
+    \item so far: can't accept connections on the private network
+    \vspace{.5cm}
+    \item simple solution: sysadmin configures port forwarding
+    \tiem basically static connection table entries:
+    \edn{itemize}
+\begin{tabular}{l|l|l|l|l}
+proto & remote IP + port & public IP  + port & internal IP + port \\
+TCP & (any) & 198.51.100.17:443 & 192.168.1.100:443 \\ 
+TCP & (any) & 198.51.100.17:22 & 192.168.1.100:22 \\ 
+\end{tabular}
+\end{frame}
+
+\begin{frame}<2>[label=servInNat]{running servers inside NAT (2)}
+    \begin{itemize}
+    \item often want to accept connections not configured by sysadmin
+    \item example: direct video call between two users
+        \begin{itemize}
+        \item would be better to send directly
+        \end{itemize}
+    \vspace{.5cm}
+    \item some classes of solution:
+        \begin{itemize}
+        \item \myemph<2>{ask router to add table entry}
+        \item \myemph<3>{coordinate with other end to setup connection}
+        \item \myemph<4>{go through realy}
+        \end{itemize}
+    \item extra issues:
+        \begin{itemize}
+        \item \myemph<5>{two hosts behind same NAT? nested NATs?}
+    \end{itemize}
+\end{frame}
+
+\againframe<2>{servInNat}
+
+\begin{frame}{router protocols}
+    \begin{itemize}
+    \item several (related) protocols for router-helped NAT traversal
+        \begin{itemize}
+        \item Port Control Protocol, NAT Port Mapping Protocol, UPnP Internet Gateway Protocol
+        \end{itemze}
+    \item discovered via UDP multicast and/or DHCP
+    \item all provide:
+        \begin{itemize}
+        \item way of learning next external IP
+        \item way to requesting externally accessible port
+        \end{itemize}
+    \item typical have lease times for external ports
+        \begin{itemize}
+        \item host is expected to renew periodically
+        \end{itemize}
+\end{frame}
+
+\againframe<3>{servInNat}
+
+\begin{frame}
+\end{frame}
+
+\againframe<4>{servInNat}
+
+\begin{frame}{external relays}
+    \begin{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{
+\end{frame}

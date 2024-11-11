@@ -1,0 +1,39 @@
+\begin{frame}{SYN floods}
+    \begin{itemize}
+    \item easy to create \textit{tons} of connections
+        \begin{itemize}
+        \item attacker $\rightarrow$ server some port: TCP flags=SYN, \ldots
+        \item attacker $\rightarrow$ server some port: TCP flags=SYN, \ldots
+        \item \ldots
+        \end{itemize}
+    \item can forge source IP address to make this harder to evade
+    \vspace{.5cm}
+    \item problem for stateful firewalls and servers themselves
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{aside: SYN cookies}
+    \begin{itemize}
+    \item common mitigation for \textit{end-hosts}: SYN cookies
+    \item don't store info about connections in SYN state
+    \item encode info MAC of conn.info in SYN+ACK's sequence number
+        \begin{itemize}
+        \item MAC = message authentication code $\approx$ keyed hash
+        \end{itemize}
+    \item check MAC when initial ACK received
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Linux synproxy}
+    \begin{itemize}
+    \item Linux tool for stateful firewall SYN floods:
+    \item `synproxy': firewall uses SYN cookies itself
+        \begin{itemize}
+        \item replies instead of sending ACK directly to machine
+        \end{itemize}
+    \item requires knowledge of what SYN+ACK should look like
+    \item means firewall will break more TCP features?
+    \end{itemize}
+\end{frame}
+

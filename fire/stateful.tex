@@ -24,6 +24,17 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}{connection tracking?}
+    \begin{itemize}
+    \item simple idea for TCP:
+    \item see SYN: add (TCP, source IP+port, dest IP+port) to table
+    \item see FIN, FIN+ACK, ACK: remove row from table after timeout
+    \item (plus other timeouts, error cases, etc.)
+    \vspace{.5cm}
+    \item mirrors TCP state machine
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{Linux conntrack}
     \begin{itemize}
     \item in-kernel table of active ``connections''
@@ -60,10 +71,49 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Linux conntrack timeouts}
+\begin{frame}[fragile]{nft with conntrack}
+\begin{Verbatim}
+table inet filter {
+    chain input {
+        type filter hook input priority 0
+
+        ct state established accept
+        ct state related accept
+        ct state invalid drop
+        iifname ethInt ct state new accept
+        drop
+    }
+}
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}{connection state timeouts}
     \begin{itemize}
     \item problem: TCP connection with no activity for 30 minutes
     \item should it stay in table?
     \item how about after 8 hours?
+    \vspace{.5cm}
+    \item Linux conntrack, configurable timeouts:
+        \begin{itemize}
+        \item default: 5 days if in ESTABLISHED TCP state machine state
+        \item lower for other connection TCP states (e.g. middle of handshake)
+        \end{itemize}
+    \item could disagree with end-host timeouts!
+        \begin{itemize}
+        \item mysterious connection dropping
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{TCP keep-alive}
+    \begin{itemize}
+    \item for TCP: SO\_KEEPALIVE socket option
+    \item enables periodic ``keep-alive'' messages
+        \begin{itemize}
+        \item periodically send empty probe packets, resend last byte of data
+        \item threshold for number of probes after which to consider connection lost
+        \end{itemize}
+    \vspace{.5cm}
+    \item also many protocols have periodic `ping/pong' messages
     \end{itemize}
 \end{frame}
