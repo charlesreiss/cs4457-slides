@@ -78,8 +78,8 @@ UDP & 192.0.2.99:8999 & 198.51.100.17:39554 & 192.168.1.2:31923 \\
     \item so far: can't accept connections on the private network
     \vspace{.5cm}
     \item simple solution: sysadmin configures port forwarding
-    \tiem basically static connection table entries:
-    \edn{itemize}
+    \item basically static connection table entries:
+    \end{itemize}
 \begin{tabular}{l|l|l|l|l}
 proto & remote IP + port & public IP  + port & internal IP + port \\
 TCP & (any) & 198.51.100.17:443 & 192.168.1.100:443 \\ 
@@ -87,7 +87,7 @@ TCP & (any) & 198.51.100.17:22 & 192.168.1.100:22 \\
 \end{tabular}
 \end{frame}
 
-\begin{frame}<2>[label=servInNat]{running servers inside NAT (2)}
+\begin{frame}<1>[label=servInNat]{running servers inside NAT (2)}
     \begin{itemize}
     \item often want to accept connections not configured by sysadmin
     \item example: direct video call between two users
@@ -104,6 +104,7 @@ TCP & (any) & 198.51.100.17:22 & 192.168.1.100:22 \\
     \item extra issues:
         \begin{itemize}
         \item \myemph<5>{two hosts behind same NAT? nested NATs?}
+        \end{itemize}
     \end{itemize}
 \end{frame}
 
@@ -114,7 +115,7 @@ TCP & (any) & 198.51.100.17:22 & 192.168.1.100:22 \\
     \item several (related) protocols for router-helped NAT traversal
         \begin{itemize}
         \item Port Control Protocol, NAT Port Mapping Protocol, UPnP Internet Gateway Protocol
-        \end{itemze}
+        \end{itemize}
     \item discovered via UDP multicast and/or DHCP
     \item all provide:
         \begin{itemize}
@@ -125,17 +126,70 @@ TCP & (any) & 198.51.100.17:22 & 192.168.1.100:22 \\
         \begin{itemize}
         \item host is expected to renew periodically
         \end{itemize}
+    \end{itemize}
 \end{frame}
 
 \againframe<3>{servInNat}
 
-\begin{frame}
+\begin{frame}{using learned mappings}
+    \begin{itemize}
+    \item if endpoint-independent NAT:
+    \item choose local (private) IP address + port
+    \item contact external server to learn corresponding public IP address + port
+        \begin{itemize}
+        \item protocol for this: STUN (RFC 5389)
+        \end{itemize}
+    \item communicate that IP address + port to other end
+        \begin{itemize}
+        \item example: via video call setup server
+        \end{itemize}
+    \item both connect to other IP address + port
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{complications (1)}
+    \begin{itemize}
+    \item potential issue: firewall rule might block unsolicited packets
+        \begin{itemize}
+        \item might need entry in connection table to get packet not dropped
+        \end{itemize}
+    \item for UDP: both ends send packet first to setup firewall rule
+    \item for TCP: simulatenous connection attempts may work
+        \begin{itemize}
+        \item TCP state machine supports `simulatenous open'
+        \item probably one SYN needs to be resent
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{complications (2)}
+    \begin{itemize}
+    \item potential issue: ``clever'' NATs corrupt addresses
+    \vspace{.5cm}
+    \item one bad NAT idea: automatically change private IP + port to public IP + port in packet contents
+    \item \ldots just look for matching bytes and substitute them! (don't worry about understanding the protocol)
+    \item shouldn't do this: probably corrupt downloads/break things
+        \begin{itemize}
+        \item some NATs did/do it anyways
+        \end{itemize}
+    \vspace{.5cm}
+    \item STUN workaround: `obfuscate' address+port with XOR
+    \end{itemize}
 \end{frame}
 
 \againframe<4>{servInNat}
 
 \begin{frame}{external relays}
     \begin{itemize}
+    \item RFC 8656: Traversal Using Relays around NAT (TURN)
+    \item support for setting up relays dynamically
+    \vspace{.5cm}
+    \item STUN + TURN often used with WebRTC
+    \item WebRTC = web browser video/audio-conference support
+    \item video conferencing provider might run STUN/TURN servers
+        \begin{itemize}
+        \item info passed to WebRTC-based webapp
+        \end{itemize}
     \end{itemize}
 \end{frame}
 
