@@ -1,0 +1,69 @@
+\date{}
+\title{}
+\date{}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.14}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}{last time}
+\end{frame}
+
+\section{carrier-sense multiple access}
+\input{../multiaccess/carrier-sense.tex}
+
+\subsection{collision detection versus avoidance}
+    % FIXME: diagram for ethernet collision detection + retransmit
+\input{../multiaccess/collision-detect.tex}
+
+\section{wireless model, hidden and exposed nodes} 
+    % FIXME: exposed nodes with walls
+\input{../multiaccess/wireless-model}
+
+\section{RTS/CTS}
+\input{../multiaccess/rts-cts}
+
+\subsection{RTS/CTS exercise}
+\input{../multiaccess/rts-cts-help}
+
+\section{multipath}
+\input{../multiaccess/multipath}
+
+% FIXME: short interframe spacing
+
+\section{aside: assignment}
+\begin{frame}{assignment}
+    \begin{itemize}
+    \item upcoming wireless assignment
+    \item one receiver, many senders
+    \item free space model (no multipath)
+    \item can only change senders:
+        \begin{itemize}
+        \item get channel sense/ACK info
+        \item choose channel
+        \item choose timing of transmissions
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\section{ad-hoc v base stations}
+\input{../multiaccess/probe-base}
+
+\subsection{mobility}
+\input{../multiaccess/mobility}
+
+\subsection{mesh networks}
+\input{../multiaccess/mesh-network}
+
+\section{centralized planning}
+\input{../multiaccess/ftdma}
+
+\input{../fire/talk-inner.tex}
+
+\section{backup slides}
+\begin{frame}{backup slides}
+\end{frame}
+
+\end{document}
