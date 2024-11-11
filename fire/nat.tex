@@ -14,21 +14,6 @@ UDP & 216.239.32.10:53 & 198.51.100.17:39554 & 192.168.1.2:31923 \\
 \end{tabular}
 \end{frame}
 
-\begin{frame}{symmetric v nonsymmetric NAT}
-    \begin{itemize}
-    \item recall, UDP supports receiving from multiple places with on IP+port
-    \item so maybe our table entry should be:
-    \end{itemize}
-\begin{tabular}{l|l|l|l|l}
-UDP & \myemph{(any)} & 198.51.100.17:39554 & 192.168.1.2:31923 \\ 
-\end{tabular}
-    \begin{itemize}
-    \item could also maybe do this for TCP to simplify translation
-    \vspace{.5cm}
-    \item sometimes called \textit{symmetric NAT}
-    \item not always what NATs do
-    \end{itemize}
-\end{frame}
 
 \begin{frame}{network address translation (NAT) (2)}
     \begin{itemize}
@@ -47,6 +32,46 @@ UDP & \myemph{(any)} & 198.51.100.17:39554 & 192.168.1.2:31923 \\
         \end{itemize}
     \end{itemize}
 \end{frame}
+
+\begin{frame}{endpoint-independent mapping}
+    \begin{itemize}
+    \item recall: UDP supports receiving from multiple places with on socket
+    \item so maybe our table entry should be:
+    \end{itemize}
+\begin{tabular}{l|l|l|l|l}
+UDP & \myemph{(any)} & 198.51.100.17:39554 & 192.168.1.2:31923 \\ 
+\end{tabular}
+    \begin{itemize}
+    \item also might make sense for TCP
+        \begin{itemize}
+        \item some applications may deliberate reuse source port
+        \end{itemize}
+    \item most common NAT implementation, but limits number of hosts that can be supported
+    \vspace{.5cm}
+    \item (can also achieve this effect by choose public IP+port consistently)
+        \begin{itemize}
+        \item example: hash of private IP + port
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{mapping versus filtering}
+    \begin{itemize}
+    \item packet filtering can be separate from translation
+    \end{itemize}
+NAT table: \\
+\begin{tabular}{l|l|l|l|l}
+UDP & \myemph{(any)} & 198.51.100.17:39554 & 192.168.1.2:31923 \\ 
+\end{tabular} \\
+connection table for filtering:\\
+\begin{tabular}{l|l|l|l|l}
+UDP & 203.0.113.34:4444 & 198.51.100.17:39554 & 192.168.1.2:31923 \\ 
+UDP & 192.0.2.99:8999 & 198.51.100.17:39554 & 192.168.1.2:31923 \\ 
+\end{tabular}
+    \begin{itemize}
+    \item firewall rule could
+\end{frame}
+
 
 \begin{frame}{running servers inside NAT (1)}
     \begin{itemize}
