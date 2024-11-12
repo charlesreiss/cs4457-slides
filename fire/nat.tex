@@ -117,10 +117,12 @@ UDP & \myemph{(any)} & 198.51.100.17:39554 & 192.168.1.2:31923 \\
     \item packet filtering can be separate from translation
     \end{itemize}
 NAT table: \\
+\small
 \begin{tabular}{l|l|l|l|l}
 UDP & \myemph{(any)} & 198.51.100.17:39554 & 192.168.1.2:31923 \\ 
 \end{tabular} \\
 connection table for filtering:\\
+\small
 \begin{tabular}{l|l|l|l|l}
 UDP & 203.0.113.34:4444 & 198.51.100.17:39554 & 192.168.1.2:31923 \\ 
 UDP & 192.0.2.99:8999 & 198.51.100.17:39554 & 192.168.1.2:31923 \\ 
@@ -135,6 +137,7 @@ UDP & 192.0.2.99:8999 & 198.51.100.17:39554 & 192.168.1.2:31923 \\
     \item simple solution: sysadmin configures port forwarding
     \item basically static connection table entries:
     \end{itemize}
+\small
 \begin{tabular}{l|l|l|l|l}
 proto & remote IP + port & public IP  + port & internal IP + port \\
 TCP & (any) & 198.51.100.17:443 & 192.168.1.100:443 \\ 
