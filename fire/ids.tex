@@ -1,0 +1,68 @@
+\begin{frame}{fancier firewalls?}
+    \begin{itemize}
+    \item some additional actions we might like from firewalls:
+    \vspace{.5cm}
+    \item more options for actions
+        \begin{itemize}
+        \item log interesting packets for later
+        \item send alert to sysadmin about weird activity
+        \item trigger block of host sending traffic
+        \item \ldots
+        \end{itemize}
+    \item fancier rules
+        \begin{itemize}
+        \item pattern matching on TCP stream
+        \item pattern matching on HTTP URIs
+        \item pattern matching on app-layer stuff
+        \item heuristics, machine-learning-based rules
+        \item \ldots
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{IDS / IPS}
+    \begin{itemize}
+    \item IDS = intrusion detection system
+        \begin{itemize}
+        \item usually `passive' monitoring
+        \item logging lots of stuff for analysis later
+        \item sometimes `alerting' sysadmin/security team
+        \end{itemize}
+    \item IPS = intrusion prevention system
+        \begin{itemize}
+        \item IDS + acting on alerts automatically
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{example Snort rule [reformatted]}
+\begin{Verbatim}[fontsize=\small]
+alert tcp $HOME_NET any -> $EXTERNAL_NET $HTTP_PORTS (
+msg:"MALWARE-CNC Win.Trojan.Rovnix variant outbound connection";
+flow:to_server, established; http_method; content:"POST";
+http_uri; content:"/vbulletin/post.php?qu=",fast_pattern,nocase;
+http_header; content:!"User-Agent:"; content:!"Accept";
+metadata:impact_flag red,ruleset community;
+service:http;
+reference:url,www.virustotal.com/en/file/a184775757cf30f9593977ee0344cd6c54deb4b14a012a7af8e3a2cdbb85a749/analysis/;
+classtype:trojan-activity;
+sid:34868;
+rev:2;
+)
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Zeek: another IDS example}
+    \begin{itemize}
+    \item Zeek --- old (c. 1996) open source IDS
+    \item different focus than Snort (though supports similar things)
+    \vspace{.5cm}
+    \item main idea: produces log files from traffic analysis
+    \item examples:
+        \begin{itemize}
+        \item list of all SSH connections
+        \item copies of downloaded files
+        \item list of all HTTP URIs
+        \end{itemize}
+    \end{itemize}
+\end{frame}
