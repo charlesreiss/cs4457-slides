@@ -1,9 +1,24 @@
+\begin{frame}{wifi polling mode}
+    \begin{itemize}
+    \item wifi has rarely used ``polling'' mode
+    \vspace{.5cm}
+    \item access point tells everyone when to transmit/not transmit
+    \item periodically `poll' stations for more traffic
+    \item can be mixed with periods allowing normal CSMA/CA
+        \begin{itemize}
+        \item carrier sense multiple access with collision avoidance
+        \end{itemize}
+    \vspace{.5cm}
+    \item exercise: pro/con
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{deliberate scheduling}
 \begin{itemize}
 \item so far: 
     \begin{itemize}
-    \item devices decide when to try to send
-    \item channel supporting one transmitter
+    \item devices decide when to try to send or reply to requests
+    \item one channel supporting one transmitter/receiver
     \end{itemize}
 \vspace{.5cm}
 \item alternate idea (cellular networks): divide

@@ -9,11 +9,11 @@
         \begin{itemize}
         \item example: `Connection reset by peer'
         \item (C: return -1 + set errno)
-        \end{iteimze}
+        \end{itemize}
     \item send()/sendall()
         \begin{itemize}
-        \item usually BrokenPipeError
-        \item (C: SIGPIPE, unless ignored; then EPIPE)
+        \item usually BrokenPipeError, possibly other error
+        \item (C: SIGPIPE, unless ignored/MSG\_NOSIGNAL; then EPIPE)
         \end{itemize}
     \end{itemize}
 \end{frame}

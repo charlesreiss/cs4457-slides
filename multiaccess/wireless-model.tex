@@ -17,6 +17,28 @@
 \end{tikzpicture}
 \end{frame}
 
+\begin{frame}{signal to noise ratio}
+    \begin{itemize}
+    \item often measure power of signal versus power of `noise'
+        \begin{itemize}
+        \item simple model: noise `noise floor' + interfering transmission
+        \end{itemize}
+    \vspace{.5cm}
+    \item theory (Shannon-Hartley): max bitrate = $B\log_2\left(1+\frac{S}{N}\right)$
+    \item $B$ = bandwidth of channel
+    \item $S$, $N$ = power per bandwidth of signal, noise (non-log scale)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{signal to noise ratio and bitrate}
+    \begin{itemize}
+    \item can recover from more intereference with lower bitrate
+    \vspace{.5cm}
+    \item example: 802.11b supports 1, 2, 5.5, 11 Mbit/sec
+    \item most devices measure signal-to-noise ratio and set bitrate
+    \end{itemize}
+\end{frame}
+
 
 \begin{frame}{receiving multiple nodes}
 \begin{tikzpicture}

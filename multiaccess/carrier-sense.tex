@@ -34,7 +34,7 @@
     \item immediately after, one after, two after, three after
     \end{itemize}
 \item avoids requiring almost 2 packets worth of `quiet' time
-\item can synchronize by observing end of last transmission
+\item can synchronize by observing end of last transmission, or central clock
 \end{itemize}
 \begin{tikzpicture}
 \begin{scope}[x=3cm]
@@ -45,6 +45,21 @@
     }
 \end{scope}
 \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{fixed-size frames, slots}
+    \begin{itemize}
+    \item `slotted' Aloha
+    \item challenge: synchronize everyone's timing
+    \item then: everyone chooses slots to (re)transmit in
+    \item but: not using carrier-sense before sending
+        \begin{itemize}
+        \item if everyone sync'd, not useful with fixed-size packets
+        \end{itemize}
+    \vspace{.5cm}
+    \item requires 1-packet-unit empty periods
+    \item 36\% utilization (twice for naive version)
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{802.11b typical slots}
@@ -61,5 +76,18 @@
         \item plus time spent by other seen transmissions
         \end{itemize}
     \item third time after rand($0$, $2^6$) slots, etc.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{802.11b packet lengths}
+    \begin{itemize}
+    \item variable bit rate: max = 11Mbit
+    \item approx 300--12000 bit frames
+        \begin{itemize}
+        \item = 27 to 1090 microseconds
+        \end{itemize}
+    \vspace{.5cm}
+    \item do carrier sense before transmitting always
+    \item different purpose for slots than slotted Aloha
     \end{itemize}
 \end{frame}
