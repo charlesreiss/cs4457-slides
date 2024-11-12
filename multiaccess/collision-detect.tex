@@ -53,3 +53,41 @@
 \draw[signal2] (9, -8) -- (0, -8);
 \end{tikzpicture}
 \end{frame}
+
+\begin{frame}{exercise: Ethernet cable length/delay}
+    \begin{itemize}
+    \item copper cable: about 2/3rds speed of light propogation
+    \item 100Mbit ethernet has 32byte minimum frame size
+    \vspace{.5cm}
+    \item exercise: maximum cable length with collision detection?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{exercise: 802.11b distance}
+    \begin{itemize}
+    \item 50 $\mu s$ minimum interframe spacing
+    \item 10 $\mu s$ slots after that if contention
+    \item speed of light propogation
+    \item need to detect channel quiet this time minimum before transmitting
+    \item 11Mbps max bitrate; $\sim$288 minimum frame size
+    \vspace{.5cm}
+    \item exercise: 50 $\mu s$ includes time for ACK --- maximum distance before too little?
+    \item exercise: what distance before carrier sense not useful?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\begin{itemize}
+\item 50 microsecond around 15000 metres
+\item 10 microsecond means signal goes approx. 3000 metres
+    \begin{itemize}
+    \item distance where we won't detect transmission in previous slot accurately
+    \item one way for carrier sense not to be very useful
+    \end{itemize}
+\item 288/11 approx. 27 microsec 
+\item have 50 microsecond to detect transmission
+    \begin{itemize}
+    \item gives around 23 microsec propogation delay $\sim$ 8000 metres
+    \end{itemize}
+\end{itemize}
+\end{frame}
