@@ -26,6 +26,29 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}{detecting connection close}
+    \begin{itemize}
+    \item other end stops sending
+        \begin{itemize}
+        \item called close or (less common) shutdown or went down
+        \end{itemize}
+    \item (clean close) recv()/recvfrom() returns empty buffer
+    \item (unclean close) recv()/recvfrom() throw exception
+        \begin{itemize}
+        \item example: `Connection reset by peer'
+        \item (C: return -1 + set errno)
+        \end{iteimze}
+    \item send()/sendall()
+        \begin{itemize}
+        \item usually BrokenPipeError
+        \item (C: SIGPIPE, unless ignored; then EPIPE)
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{homework q-and-a}
+\end{frame}
+
 \begin{frame}[label=slotEx]{exercise: slots and variable packet size}
     \begin{itemize}
     \item say: packet time is 1$\mu s$ to 10$\mu s$
