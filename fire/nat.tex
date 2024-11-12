@@ -1,3 +1,41 @@
+\usetikzlibrary{arrows.meta,calc,shapes.misc,shapes}
+\begin{frame}{NAT idea}
+\begin{tikzpicture}
+\tikzset{network/.style={draw,very thick,cloud,aspect=2}}
+\node[align=center,network] (outside) at (0, 0){external};
+\node[draw,very thick,minimum height=2cm,align=center](router) at (5, 0) {
+    router \\
+    {\fontsize{9}{10}\tt 203.0.113.43} \\
+    {\fontsize{9}{10}\tt 192.168.1.1} 
+};
+\node[align=center,network] (inside) at (9.5, 0){internal\\\fontsize{9}{10}\tt 192.168.1.*};
+\foreach \x/\v in {2/2, 1/3, 0/4, -1/5, -2/6} {
+    \node[draw,very thick,circle,
+        label={[overlay,font=\fontsize{8}{9}\selectfont]right:192.168.1.\v}
+    ] (i-\x) at (12, \x) {};
+    \draw (inside) -- (i-\x);
+}
+\begin{pgfonlayer}{bg}
+\begin{scope}[line width=1mm,black!50]
+    \draw (outside) -- (router);
+    \draw (router) -- (inside);
+\end{scope}
+\end{pgfonlayer}
+\tikzset{
+    box/.style={draw,ultra thick,align=center,fill=white,font=\fontsize{13}{14}\selectfont}
+}
+\node[box] (before) at ([yshift=-3cm]$(outside.east)!0.3!(router)$) {
+    1.2.3.4:443 \\ $\rightarrow$ \\ \myemph{203.0.113.43}:54923
+};
+\node[box] (after) at ([yshift=-3cm]$(router)!0.8!(inside.west)$) {
+    1.2.3.4:443 \\ $\rightarrow$ \\ \myemph{192.168.1.4}:39129
+};
+\draw[dotted,thick] (before.north) -- (before.north |- outside.east);
+\draw[dotted,thick] (after.north) -- (after.north |- outside.east);
+
+\end{tikzpicture}
+\end{frame}
+
 \begin{frame}{network address translation (NAT) (1)}
     \begin{itemize}
     \item internal network uses private IPv4 addresses
@@ -14,6 +52,25 @@ UDP & 216.239.32.10:53 & 198.51.100.17:39554 & 192.168.1.2:31923 \\
 \end{tabular}
 \end{frame}
 
+
+\begin{frame}{NAT illusion}
+    \begin{itemize}
+    \item NAT illusion:
+    \item private IP address communicating directly with public IP
+    \vspace{.5cm}
+    \item inside network, talking to outside:
+        \begin{itemize}
+        \item use private local address
+        \item use public remote address
+        \item never see router's address
+        \end{itemize}
+    \item outside network, talking to inside
+        \begin{itemize}
+        \item use public local address
+        \item use router's public address
+        \end{itemize}
+    \end{itemize}
+\end{frame}
 
 \begin{frame}{network address translation (NAT) (2)}
     \begin{itemize}
@@ -68,8 +125,6 @@ connection table for filtering:\\
 UDP & 203.0.113.34:4444 & 198.51.100.17:39554 & 192.168.1.2:31923 \\ 
 UDP & 192.0.2.99:8999 & 198.51.100.17:39554 & 192.168.1.2:31923 \\ 
 \end{tabular}
-    \begin{itemize}
-    \item firewall rule could
 \end{frame}
 
 
