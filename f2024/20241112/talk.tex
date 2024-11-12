@@ -41,20 +41,20 @@
         % showing sense in slot before
 \end{frame}
 
-% FIXME: correction re: retransmission
-
 \section{carrier-sense multiple access}
 \input{../multiaccess/carrier-sense.tex}
 
-\againframe<2>{slotEx}
 
 \subsection{collision detection versus avoidance}
     % FIXME: diagram for ethernet collision detection + retransmit
 \input{../multiaccess/collision-detect.tex}
 
+\againframe<2>{slotEx}
+
 \section{wireless model, hidden and exposed nodes} 
     % FIXME: exposed nodes with walls
 \input{../multiaccess/wireless-model}
+\againframe<2>{slotEx}
 
 \section{RTS/CTS}
 \input{../multiaccess/rts-cts}
@@ -92,7 +92,11 @@
 \input{../multiaccess/mesh-network}
 
 \section{centralized planning}
+%FIXME: wifi polling mode
 \input{../multiaccess/ftdma}
+
+\begin{frame}{in-between: wifi polling mode}
+\end{frame}
 
 \input{../fire/talk-inner.tex}
 
