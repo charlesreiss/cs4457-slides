@@ -26,9 +26,10 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{exercise: slots and variable packet size}
+\begin{frame}[label=slotEx]{exercise: slots and variable packet size}
     \begin{itemize}
-    \item let's say packet time is 0.1ms to 1ms
+    \item say: packet time is 1$\mu s$ to 10$\mu s$
+    \item say: minimum 0.1$\mu s$ to detect carrier
     \item use algorithm where we retransmit $K=rand(0, 32)$ slots after last transmission if there was contention
     \item what slot size to use?
     \end{itemize}
@@ -44,6 +45,8 @@
 
 \section{carrier-sense multiple access}
 \input{../multiaccess/carrier-sense.tex}
+
+\againframe<2>{slotEx}
 
 \subsection{collision detection versus avoidance}
     % FIXME: diagram for ethernet collision detection + retransmit
