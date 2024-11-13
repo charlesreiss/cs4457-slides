@@ -57,11 +57,46 @@
 \begin{frame}{exercise: Ethernet cable length/delay}
     \begin{itemize}
     \item copper cable: about 2/3rds speed of light propogation
-    \item 100Mbit ethernet has 32byte minimum frame size
+    \item 100Mbit ethernet has 64byte minimum frame size
     \vspace{.5cm}
     \item exercise: maximum cable length with collision detection?
     \end{itemize}
 \end{frame}
+
+\begin{frame}{solution}
+\begin{tikzpicture}[y=0.7cm]
+\tikzset{
+    wire/.style={draw,very thick,Circle-Circle},
+    signal1/.style={draw,line width=1mm,red,-Latex},
+    signal2/.style={draw,line width=2mm,dotted,violet,-Latex},
+}
+\draw[wire] (0, -6) node[left]{A} -- (12, -6) node[right] {B};
+\draw[signal1] (0, -6) -- (12, -6);
+\draw[signal2] (12, -6) -- (1, -6);
+\node[draw=red,line width=2mm,minimum width=.5cm,minimum height=.5cm,cross out] at (13, -6) {};
+\end{tikzpicture}
+\begin{itemize}
+\item A and B maximally far apart on network and collide
+    \begin{itemize}
+    \item need them to detect collision and resend
+    \item if they're maximum distance, then anyone else will get interference
+    \end{itemize}
+\item A transmits at time 0, takes $X$ time units to reach B
+\item B transmits at time $X-\epsilon$, then detects collision
+\item need A to also detect collision before it finishes sending frame
+\item maximum packet length is how much we can send in $2X$ time units
+\item 2X = 64 times 8 / 100Mbps  = 5.12 $\mu$ s; X = 2.56 $\mu$s
+\end{itemize}
+\end{frame}
+
+\begin{frame}{propogation delay}
+\begin{itemize}
+\item transmission time for 64 bytes is 2.56 $\mu$s
+\item propogation delay: approx 0.2 meters/ns or 200 meters/$\mu$s
+\item 2.56 $\mu$s is about 512 meteres
+\end{itemize}
+\end{frame}
+
 
 \begin{frame}{exercise: 802.11b distance}
     \begin{itemize}
