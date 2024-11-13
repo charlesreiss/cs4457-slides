@@ -27,3 +27,38 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}{cellular networks}
+    \begin{itemize}
+    \item for wifi networks, feasible to track device locations centrally mostly
+    \vspace{.5cm}
+    \item need/have something more complex for cellular networks
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{a confusing picture}
+\includegraphics[width=\textwidth]{sysapp-fig53}
+\end{frame}
+
+\begin{frame}{cellular mobility model}
+    \begin{itemize}
+    \item cellular networks: base stations don't know how to route to each end-host in whole cell network
+    \vspace{.5cm}
+    \item cell phone (UE) $\rightarrow$ base station (BBU) $\rightarrow$ service gateway (SGW) $\rightarrow$ PDN gateway (PGW)
+    \vspace{.5cm}
+    \item central `mobility management entity' (MME) sets up `tunnels' for steps above
+        \begin{itemize}
+        \item coordinates with home subscriber server (HSS)
+        \item base stations don't track full routing information
+        \end{itemize}
+    \item PDN gateway stays stable so IP address can stay the same
+        \begin{itemize}
+        \item PDN gateway = gateway to actual Internet
+        \end{itemize}
+    \item in `roaming' situation:
+        \begin{itemize}
+        \item service gateway run by network you're connected to
+        \item PDN gateway run by `home' network
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
