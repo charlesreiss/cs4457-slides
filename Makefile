@@ -12,7 +12,9 @@ SLIDEDECKS = \
     sockets \
     dns \
     http \
-    multiaccess
+    multiaccess \
+    fire \
+    encap
 
 
 all: $(patsubst %,_dist/%.pdf,$(SLIDEDECKS))
