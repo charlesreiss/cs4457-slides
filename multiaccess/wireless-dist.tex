@@ -1,0 +1,40 @@
+
+\begin{frame}{exercise: 802.11b distance}
+    \begin{itemize}
+    \item 50 $\mu s$ minimum interframe spacing
+    \item 10 $\mu s$ slots after that if contention
+    \item speed of light propogation
+    \item need to detect channel quiet this time minimum before transmitting
+    \item 11Mbps max bitrate; $\sim$288 minimum frame size
+    \vspace{.5cm}
+    \item exercise: 50 $\mu s$ includes time for ACK --- maximum distance before too little?
+    \item exercise: what distance before carrier sense not useful?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{802.11b distance}
+\begin{itemize}
+\item 50 $\mu s$ around 15000 metres for signals in IFS
+    \begin{itemize}
+    \item implies max distance for ACKs not being squashed of 7500 meteres
+    \end{itemize}
+\item 10 $\mu s$ means signal goes approx. 3000 metres
+    \begin{itemize}
+    \item distance where we won't detect transmission in previous slot accurately
+    \item won't be sufficient to have chosen different retransmission slots
+    \end{itemize}
+\item 288 bit frame/11 Mbit approx. 27 microsec to transmit
+\end{itemize}
+\end{frame}
+
+\begin{frame}{very long-distance wifi}
+    \begin{itemize}
+    \item people have done very long distance wifi
+        \begin{itemize}
+        \item parabolic dishes, more recent versions than 802.11b
+        \end{itemize}
+    \item increase ACK timeouts and/or turn off ACKs
+    \vspace{.5cm}
+    \item Wifi records are point-to-point with very directional antennas
+    \end{itemize}
+\end{frame}

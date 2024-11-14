@@ -76,9 +76,9 @@
 \node[draw=red,line width=2mm,minimum width=.5cm,minimum height=.5cm,cross out] at (13, -6) {};
 \end{tikzpicture}
 \begin{itemize}
-\item A and B maximally far apart on network and collide
+\item worst case: A and B maximally far apart on network and collide
     \begin{itemize}
-    \item need them to detect collision and resend
+    \item need each of them to detect collision and resend
     \item if they're maximum distance, then anyone else will get interference
     \end{itemize}
 \item A transmits at time 0, takes $X$ time units to reach B
@@ -98,31 +98,3 @@
 \end{frame}
 
 
-\begin{frame}{exercise: 802.11b distance}
-    \begin{itemize}
-    \item 50 $\mu s$ minimum interframe spacing
-    \item 10 $\mu s$ slots after that if contention
-    \item speed of light propogation
-    \item need to detect channel quiet this time minimum before transmitting
-    \item 11Mbps max bitrate; $\sim$288 minimum frame size
-    \vspace{.5cm}
-    \item exercise: 50 $\mu s$ includes time for ACK --- maximum distance before too little?
-    \item exercise: what distance before carrier sense not useful?
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{}
-\begin{itemize}
-\item 50 microsecond around 15000 metres
-\item 10 microsecond means signal goes approx. 3000 metres
-    \begin{itemize}
-    \item distance where we won't detect transmission in previous slot accurately
-    \item one way for carrier sense not to be very useful
-    \end{itemize}
-\item 288/11 approx. 27 microsec 
-\item have 50 microsecond to detect transmission
-    \begin{itemize}
-    \item gives around 23 microsec propogation delay $\sim$ 8000 metres
-    \end{itemize}
-\end{itemize}
-\end{frame}
