@@ -1,0 +1,70 @@
+\date{}
+\title{}
+\date{}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+
+\begin{frame}{last time}
+    \begin{itemize}
+    \item carrier sense idea
+    \item collision detection
+        \begin{itemize}
+        \item requirement 1: can sense collision
+        \item requirement 2: packets that overlap for receivers also overlap for transmitters
+        \end{itemize}
+    \item hidden nodes, exposed nodes
+    \item request-to-send, clear-to-send
+    \end{itemize}
+\end{frame}
+
+\input{../multiaccess/collision-detect}
+
+\section{multipath}
+\input{../multiaccess/multipath}
+
+% FIXME: short interframe spacing
+
+\section{aside: assignment}
+\begin{frame}{assignment}
+    \begin{itemize}
+    \item upcoming wireless assignment
+    \item one receiver, many senders
+    \item free space model (no multipath)
+    \item can only change senders:
+        \begin{itemize}
+        \item get channel sense/ACK info
+        \item choose channel
+        \item choose timing of transmissions
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\section{ad-hoc v base stations}
+\input{../multiaccess/probe-base}
+
+\subsection{mobility}
+\input{../multiaccess/mobility}
+
+\subsection{mesh networks}
+\input{../multiaccess/mesh-network}
+
+\section{centralized planning}
+%FIXME: wifi polling mode
+\input{../multiaccess/ftdma}
+
+\input{../fire/talk-inner.tex}
+
+\section{backup slides}
+\begin{frame}{backup slides}
+\end{frame}
+
+\section{RTS/CTS}
+\input{../multiaccess/rts-cts}
+
+\subsection{RTS/CTS exercise}
+\input{../multiaccess/rts-cts-help}
+
+\end{document}
