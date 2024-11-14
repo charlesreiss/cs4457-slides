@@ -9,21 +9,40 @@ link-layer          & OpenVPN, \ldots & ? & VLAN, MPLS \\\hline
 \end{tabular}
 \end{frame}
 
+\begin{frame}{encapsulation steps}
+    \begin{itemize}
+    \item 1. getting the stuff to encapsulate
+    \item 2. sending it encapsulated
+    \vspace{.5cm}
+    \item will start by focusing on first problem
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[label=encapChanges]{encapsulating w/ app changes}
+    \begin{itemize}
+    \item application might have special code to handle connecting differently
+    \item + might take advantage of extra information in encapsulation
+    \vspace{.5cm}
+    \item example: many application's TLS support
+    \item example: web browser HTTP/SOCKS proxy support
+    \end{itemize}
+\end{frmae}
+
 \begin{frame}<2>[label=encapChanges]{encapsulating w/o app changes}
 \begin{itemize}
 \item generally: easier to do for lower layers
 \vspace{.5cm}
-\item link-layer
+\item link-layer in something
     \begin{itemize}
     \item \myemph<2>{``virtual'' (probably Ethernet) device}
     \item \myemph<2>{sends/receives from `tunnel'}
     \end{itemize}
-\item IP
+\item IP in something
     \begin{itemize}
     \item \myemph<3>{``virtual'' IP link}
     \item \myemph<3>{destination routing table can go to}
     \end{itemize}
-\item UDP/TCP
+\item UDP/TCP in something
     \begin{itemize}
     \item \myemph<4>{replace socket API}
     \item \myemph<5>{convince application to connect to different IP address?}
@@ -123,11 +142,33 @@ address & next hop & dev & priority\\ \hline
 \againframe<5>{encapChanges}
 
 \begin{frame}
-    % FIXME
+    \begin{itemize}
+    \item example: \texttt{stunnel} for `tunneling' TCP in TLS
+    \item run on port X, configure to connect to some remote host
+    \item configure non-TLS-aware program to connect to localhost port X
+    \item \ldots instead of remote host
+    \end{itemize}
 \end{frame}
 
 \againframe<6>{encapChanges}
 
+\begin{frame}{ethernet to socket translation?}
+    \begin{itemize}
+    \item know of programs that capture Ethernet, extract socket() operations
+    \item examples: slirp, passt
+    \item current main use:
+        \begin{itemize}
+        \item networking for virtual machines \ldots
+        \item \ldots without permission to configure new virtual network devices
+        \end{itemize}
+    \vspace{.5cm}
+    \item but these don't support then tunneling the TCP/UDP connections
+        \begin{itemize}
+        \item instead just make normal socket calls
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
 \begin{frame}
-    % FIXME
+\includegraphics[width=\textwidth]{../encap/passt}
 \end{frame}
