@@ -26,7 +26,7 @@ link-layer          & OpenVPN, \ldots & ? & VLAN, MPLS \\\hline
     \item example: many application's TLS support
     \item example: web browser HTTP/SOCKS proxy support
     \end{itemize}
-\end{frmae}
+\end{frame}
 
 \begin{frame}<2>[label=encapChanges]{encapsulating w/o app changes}
 \begin{itemize}
@@ -141,11 +141,15 @@ address & next hop & dev & priority\\ \hline
 
 \againframe<5>{encapChanges}
 
-\begin{frame}
+\begin{frame}{socket-in-socket}
     \begin{itemize}
+    \item example: SSH connection forwarding
+        \begin{itemize}
+        \item \texttt{ssh -L X:remotehost:remoteport hostname}
+        \end{itemize}
     \item example: \texttt{stunnel} for `tunneling' TCP in TLS
     \item run on port X, configure to connect to some remote host
-    \item configure non-TLS-aware program to connect to localhost port X
+    \item configure program to connect to localhost port X
     \item \ldots instead of remote host
     \end{itemize}
 \end{frame}
