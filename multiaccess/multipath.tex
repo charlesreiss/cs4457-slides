@@ -85,12 +85,13 @@
 \end{tikzpicture}
 \end{frame}
 
+
 \begin{frame}{multipath interference}
     \begin{itemize}
     \item quite complicated to predict in three dimensions, variable reflectivity, \ldots
     \item varies on frequency
         \begin{itemize}
-        \item switching to close-by different channel may help/hurt
+        \item switching to close different channel may change a lot
         \end{itemize}
     \item can help and hurt signal reception
     \item especially bad when `inter-symbol interference'
@@ -98,18 +99,18 @@
         \item can be mitigated some by choice of message encoding
         \end{itemize}
     \vspace{.5cm}
-    \item contributes to irregular dead zones, etc.
+    \item contributes to irregular `dead zones', etc.
     \end{itemize}
 \end{frame}
 
-\begin{frame}{deliberate multipath}
+\begin{frame}{deliberate multipath / MIMO}
     \begin{itemize}
     \item can have:
-    \item multiple sending antennas (inputs)
-    \item multiple receiving antennas (outputs)
+    \item multiple sending antennas (inputs) (MI)
+    \item multiple receiving antennas (outputs) (MO)
     \item some simple ideas:
     \vspace{.5cm}
-    \item receive signal twice, hope one antenna not dead zone
+    \item receive signal twice, hope one antenna not in dead zone
     \item send signal twice, have receiver tell you which is better
     \end{itemize}
 \end{frame}
