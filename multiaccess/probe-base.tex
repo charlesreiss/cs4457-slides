@@ -67,6 +67,17 @@
 \end{frame}
 
 \begin{frame}{wifi data}
+\begin{tikzpicture}
+\node (A) at (0, 0) {A};
+\node (ap1) at (4, 0) {AP1};
+\node (ap2) at (8, 0) {AP2};
+\node (B) at (12, 0) {B};
+\begin{scope}[-Latex]
+\draw (A) -- (ap1);
+\draw (ap1) -- (ap2);
+\draw (ap2) -- (B);
+\end{scope}
+\end{tikzpicture}
     \begin{itemize}
     \item receiver/transmitter address --- this hop
     \item source/destination address --- final soruce/destination
@@ -78,3 +89,4 @@
         \end{itemize}
     \end{itemize}
 \end{frame}
+
