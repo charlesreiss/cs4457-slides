@@ -1,18 +1,24 @@
 
 \section{encapsulation motivations}
-
 \input{../encap/encap-why}
+\subsection{use case: connect networks}
+\input{../encap/connect-net-usecase}
+
+% FIXME: use-case: on diff network
 
 \section{encapsulation options, generally}
-
 \input{../encap/encap-opt}
 
 \subsection{capturing packets}
+\againframe<2>{encapSteps}
 \input{../encap/encap-capture}
 
-\subsection{sending packets}
+\section{sending encapsulated}
+\againframe<3>{encapSteps}
 
-\section{transport layer granularity}
+\subsection{transport layer granularity}
+
+\againframe<2>{encapOpt}
 
 \subsection{SOCKS}
 \input{../encap/socks}
@@ -28,14 +34,45 @@
 
 \section{network layer granularity}
 
+\againframe<3>{encapOpt}
+
+% FIXME:
+    % problem: need to run window-size protocol twice
+    % only support clever transport stuff (example: SACK)
+        % if all parties do
+    % (but could do clever transport stuff local to proxy)
+    % if we tunnel IP packets, no need to redo that
+
+% FIXME: slide for connect one machie use-case
 
 \subsection{GRE}
-\subsection{OpenVPN and/or WireGuard and/or IPsec}
+
+\input{../encap/gre}
+% FIXME:
+    % packet format
+    % note: careful header size limit
+    % note: configured at both ends
+
+\subsection{also over UDP, TCP}
+
+\subsection{adding encryption/authentication}
+
+\subsection{setup protocols, SPIs}
+
 \subsection{issues with over TCP}
 
 \section{link-layer granularity}
 
 \subsection{VLANs}
 
-\subsection{?MPLS?}
+\subsubsection{switches add/remove VLANs}
 
+\subsubsection{increasing frame size}
+
+\subsubsection{VLAN nesting}
+
+\subsection{MPLS}
+
+\subsubsection{motivation}
+
+\subsubsection{format}

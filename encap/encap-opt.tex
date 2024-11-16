@@ -1,20 +1,18 @@
-\begin{frame}{encapsulation options [incomplete]}
+\begin{frame}<1>[label=encapOpt]{encapsulation options [incomplete]}
 \small
 \begin{tabular}{l||p{4cm}|p{4cm}|p{2cm}}
 left in above       & TCP/UDP/higher layers & IP & link-layer \\ \hline \hline
-above TCP/UDP       & HTTP proxy, DNS over HTTP(S) & --- & --- \\ \hline
-TCP/UDP             & SOCKS, HTTP CONNECT, SSH conn forwarding, TLS & --- & --- \\\hline
-IP                  & OpenVPN, WireGuard & GRE, IPsec & MPLS \\\hline
-link-layer          & OpenVPN, \ldots & ? & VLAN, MPLS \\\hline
+\myemph<2>{above TCP/UDP}       & HTTP proxy, DNS over HTTP(S) & --- & --- \\ \hline
+\myemph<3>{TCP/UDP}             & SOCKS, HTTP CONNECT, SSH conn forwarding, TLS & --- & --- \\\hline
+\myemph<4>{IP}                  & OpenVPN, WireGuard & GRE, IPsec & MPLS \\\hline
+\myemph<5>{link-layer}          & OpenVPN, \ldots & ? & VLAN, MPLS \\\hline
 \end{tabular}
 \end{frame}
 
-\begin{frame}{encapsulation steps}
+\begin{frame}<1>[label=encapSteps]{encapsulation steps}
     \begin{itemize}
-    \item 1. getting the stuff to encapsulate
-    \item 2. sending it encapsulated
-    \vspace{.5cm}
-    \item will start by focusing on first problem
+    \item 1. \myemph<2>{getting the stuff to encapsulate}
+    \item 2. \myemph<3>{sending it encapsulated}
     \end{itemize}
 \end{frame}
 
