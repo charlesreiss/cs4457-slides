@@ -1,0 +1,55 @@
+\begin{frame}{SSH protocol overview}
+    \begin{itemize}
+    \item SSH transport layer protocol
+        \begin{itemize}
+        \item handles encryption + integrity + host authentication
+        \item uses key exchange, with key share signed by host key
+        \item rest of connection uses symmetric encryption + MACs 
+        \end{itemize}
+    \item transport layer supports sending packets
+        \begin{itemize}
+        \item initial 1-type ``message number'' identifies type
+        \item packets encrypted+MAC'd once that is negotiated
+        \end{itemize}
+    \item on top of transport layer:
+    \vspace{.5cm}
+    \item SSH (user) authentication protocol
+        \begin{itemize}
+        \item handles passwords, etc.
+        \end{itemize}
+    \item SSH connection protocol
+        \begin{itemize}
+        \item handles terminal sessions, forwarded connections
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{SSH connection protocol}
+\begin{itemize}
+    \item open channels identified by 32-bit integers
+    \item each channel has:
+        \begin{itemize}
+        \item type (\myemph<2>{\texttt{session} or \texttt{pty-req} or \texttt{tcpip-forward} or \ldots})
+        \item \myemph<3>{``window size''}
+        \item maximum packet size
+        \end{itemize}
+    \item seperate packets for
+        \begin{itemize}
+        \item opening/closing channels
+        \item adjusting ``window size''
+        \item sending data
+        \item sending metadata (example: terminal window size)
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{SSH window sizes}
+    \begin{itemize}
+    \item SSH connection protocol considers \textit{window size} to be \\
+        amount of data that can be sent
+    \item not same as TCP idea since no acknowledgments
+    \vspace{.5cm}
+    \item decrements by X when X bytes sent
+    \item increases by Y on window adjust message with Y
+    \end{itemize}
+\end{frame}

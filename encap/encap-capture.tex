@@ -1,0 +1,172 @@
+\begin{frame}[label=encapChanges]{encapsulating w/ app changes}
+    \begin{itemize}
+    \item application might have special code to handle connecting differently
+    \item + might take advantage of extra information in encapsulation
+    \vspace{.5cm}
+    \item example: many application's TLS support
+    \item example: web browser HTTP/SOCKS proxy support
+    \end{itemize}
+\end{frame}
+
+\begin{frame}<2>[label=encapChanges]{encapsulating w/o app changes}
+\begin{itemize}
+\item generally: easier to do for lower layers
+\vspace{.5cm}
+\item link-layer in something
+    \begin{itemize}
+    \item \myemph<2>{``virtual'' (probably Ethernet) device}
+    \item \myemph<2>{sends/receives from `tunnel'}
+    \end{itemize}
+\item IP in something
+    \begin{itemize}
+    \item \myemph<3>{``virtual'' IP link}
+    \item \myemph<3>{destination routing table can go to}
+    \end{itemize}
+\item UDP/TCP in something
+    \begin{itemize}
+    \item \myemph<4>{replace socket API}
+    \item \myemph<5>{convince application to connect to different IP address?}
+    \item \myemph<6>{terminate UDP/TCP connection at `wrong' machine}
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\againframe<2>{encapChanges}
+
+\begin{frame}[fragile]{Linux tap devices}
+\begin{Verbatim}[fontsize=\fontsize{10}{11}]
+# create virtual ethernet device mydev
+$ ip tuntap add dev mydev mode tap
+# mark ethernet device as up
+$ ip link set mydev up
+$ dhclient mydev # or other commands to use/config device
+\end{Verbatim}
+(dhclient is a DHCP client) \\
+---
+\begin{Verbatim}[fontsize=\fontsize{10}{11}]
+int opentap(const char * name) {
+    ... /* setup code, not shown*/
+}
+...
+int fd = opentap("mydev");
+...
+write(fd, ethernetPacket, packetSize)
+/* and (probably in separate threads) */
+read(fd, buffer, SIZE); processEthernetPacket(buffer);
+\end{Verbatim}
+\end{frame}
+
+\againframe<3>{encapChanges}
+
+\begin{frame}[fragile]{Linux tun devices}
+    \begin{itemize}
+    \item same as `tap' devices, but\ldots
+    \item get IP packets, not ethernet packets
+    \end{itemize}
+\begin{Verbatim}[fontsize=\fontsize{12}{13}]
+# create virtual ethernet device mydev
+$ ip tuntap add dev mydev mode tun
+# setup device to be routed to, example:
+$ ip address add 10.0.0.2 dev mydev
+$ ip route add 10.0.0.0/24 dev mydev
+$ ip -6 address add 3fff:1234::1 dev mydev
+$ ip -6 route add 3fff:1234::/32 dev mydev
+\end{Verbatim}
+    \begin{itemize}
+    \item tunneling program can then open device and read/write IP packets
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{full tunnel routing table}
+say 198.51.100.5 is running tunnel sever, \\
+and 10.0.2.5  is gateway beyond tunnel, \\
+and 203.0.113.54 is local gateway: \\
+\begin{tabular}{l|l|l|l}
+address & next hop & dev & priority\\ \hline
+10.0.2.0/24 & --- & tunnel & normal \\
+198.51.100.5/32 & 208.0.113.54 & real & high\\
+(default) & 203.0.113.54 & real & normal \\
+(default) & 10.0.2.5 & tunnel & high \\
+\end{tabular}
+\end{frame}
+
+\begin{frame}{alternate idea}
+    \begin{itemize}
+    \item shown: creating special route for tunnel destination
+    \item alternate idea: tell OS to use correct interface/IP address
+    \item most OSes: which IP address is bound = which network interface to use
+        \begin{itemize}
+        \item but would need to discover correct IP address
+        \item might be tricky if wireless + wifi connections, or wifi changes
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{split tunnel routing table}
+say 198.51.100.5 is running tunnel sever, \\
+and 10.0.2.5  is gateway beyond tunnel, \\
+and 10.0.0.0/16, 198.51.100.0/24 are tunneled networks \\
+and 203.0.113.54 is local gateway: \\
+\begin{tabular}{l|l|l|l}
+address & next hop & dev & priority\\ \hline
+10.0.2.0/24 & --- & tunnel & normal \\
+10.0.0.0/16 & 10.0.2.5& tunnel & normal \\
+198.51.100.0/24 & 10.0.2.5& tunnel & normal \\
+198.51.100.5/32 & 208.0.113.54 & real & high\\
+(default) & 203.0.113.54 & real & normal \\
+\end{tabular}
+\end{frame}
+
+\againframe<4>{encapChanges}
+
+\begin{frame}[fragile]{`transparent' proxy via library}
+\includegraphics[width=\textwidth]{../encap/proxy-chains}
+\begin{itemize}
+\item configures dynamic library loader to load its library
+    \begin{itemize}
+    \item \texttt{LD\_PRELOAD}
+    \end{itemize}
+\item with special versions of \texttt{connect}
+\end{itemize}
+\end{frame}
+
+\againframe<5>{encapChanges}
+
+\begin{frame}{socket-in-socket}
+    \begin{itemize}
+    \item example: SSH connection forwarding
+        \begin{itemize}
+        \item \texttt{ssh -L X:remotehost:remoteport hostname}
+        \end{itemize}
+    \item example: \texttt{stunnel} for `tunneling' TCP in TLS
+    \item run on port X, configure to connect to some remote host
+    \item configure program to connect to localhost port X
+    \item \ldots instead of remote host
+    \end{itemize}
+\end{frame}
+
+\againframe<6>{encapChanges}
+
+\begin{frame}[fragile]{`transparent' proxy via IP interception}
+    \begin{itemize}
+    \item example use case: shared HTTP cache used automatically
+        \begin{itemize}
+        \item if company/ISP wants everyone to use cache for performance
+        \item if company wants to audit all HTTP proxy
+        \end{itemize}
+    \item configure router/firewall to diret all HTTP TCP connections to proxy
+    \item either:
+        \begin{itemize}
+        \item configure proxy machine to accept connections on all IP addresses \textit{or}
+        \item have router/firewall do network address translation (other direction)
+        \end{itemize}
+    \item HTTP proxy \texttt{squid} on Linux, some firewall boxes support this mode
+    \item I don't think this is a good idea\ldots
+        \begin{itemize}
+        \item problematic with encryption
+        \item proxy won't support newer HTTP stuff
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+

@@ -1,0 +1,18 @@
+
+\begin{frame}{ethernet to socket translation?}
+    \begin{itemize}
+    \item know of programs that capture Ethernet, extract socket() operations
+    \item examples: slirp, passt
+    \item current main use:
+        \begin{itemize}
+        \item networking for virtual machines \ldots
+        \item \ldots without permission to configure new virtual network devices
+        \end{itemize}
+    \vspace{.5cm}
+    \item but these don't support then tunneling the TCP/UDP connections
+        \begin{itemize}
+        \item instead just make normal socket calls
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
