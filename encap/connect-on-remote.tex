@@ -1,0 +1,61 @@
+
+
+\usetikzlibrary{arrows.meta,calc,patterns,shapes}
+\providecommand{\computer}{%
+    \includegraphics[width=1cm]{../common/Noun_project_216.pdf}
+}
+\providecommand{\switch}{%
+    \includegraphics[width=0.9cm]{../common/fig-switch.pdf}
+}
+\providecommand{\bigswitch}{%
+    \includegraphics[width=1.4cm]{../common/fig-switch.pdf}
+}
+\providecommand{\router}{%
+    \includegraphics[width=0.9cm]{../common/fig-router.pdf}
+}
+
+\begin{frame}[label=connTwoNet]{on a remote network}
+\begin{tikzpicture}
+\tikzset{
+    connect/.style={draw,very thick,Latex-Latex},
+    computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
+    switch/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\switch}},
+    big switch/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\bigswitch}},
+    router/.style={inner sep=0mm,outer sep=-2mm,execute at begin node={\router},circle},
+    packet/.style={minimum width=.4cm,minimum height=0.2cm,inner sep=0mm,outer sep=0mm,draw},
+    packet lg/.style={minimum width=.6cm,minimum height=0.2cm,inner sep=0mm,outer sep=0mm,draw},
+    network/.style={draw,cloud,font=\small,aspect=3,inner sep=-.05cm},
+    tunnel/.style={dotted,line width=1mm,dotted,blue,Latex-Latex,opacity=0.7},
+}
+\begin{scope}[xshift=0cm,yshift=1cm,name prefix=norm-]
+    \node[computer] (comp) at (0, 0) {};
+    \node[network,minimum height=1.7cm,minimum width=2.7cm] (internet) at (0, 3)  {
+        internet
+    };
+    \node[network] (company) at (4, 2) {company};
+    \node[draw,thick] (server) at (4, 0) {server};
+    \foreach \x/\y in {comp/internet,internet/company,company/server} {
+        \draw[connect] (\x) -- (\y);
+    }
+    \draw[tunnel]
+        (comp.north) -- ([yshift=-.4cm,xshift=0cm]internet.center)
+            -- ([yshift=-.0cm,xshift=1cm]internet.center) -- (company.center)
+            -- (server.north);
+\end{scope}
+\node at (2, 6) { actual connections };
+\node at (10, 6) { logical connections };
+\draw[ultra thick] (6, -1) -- ++ (0, 7);
+\begin{scope}[xshift=8cm,yshift=1cm,name prefix=alt-]
+    \node[computer] (comp) at (0, 0) {};
+    \node[network,minimum height=1.7cm,minimum width=2.7cm] (internet) at (0, 3)  {
+        internet
+    };
+    \node[network] (company) at (4, 2) {company};
+    \node[draw,thick] (server) at (4, 0) {server};
+    \foreach \x/\y in {internet/company,company/server,comp/company} {
+        \draw[connect] (\x) -- (\y);
+    }
+\end{scope}
+\end{tikzpicture}
+\end{frame}
+

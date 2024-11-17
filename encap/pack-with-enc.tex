@@ -1,0 +1,19 @@
+\begin{frame}{encapsulatoin with encryption}
+    \begin{itemize}
+    \item GRE = sends packets as is
+    \vspace{.5cm}
+    \item often want to add encryption + authentication
+    \item typically:
+        \begin{itemize}
+        \item TLS-handshake like \textit{key exchange} protocol to setup conncetion
+        \item add space for message authentication code, nonce
+        \item encrypt data with symmetric keys
+        \end{itemize}
+    \item example protocols:
+        \begin{itemize}
+        \item IKE (key exchange) + IPsec ESP (actual tunnel)
+        \item OpenVPN (both)
+        \item WireGuard (both)
+        \end{itemize}
+    \end{itemize}
+\end{frame}

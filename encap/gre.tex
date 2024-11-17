@@ -34,14 +34,14 @@
             node[box label] {(IP or UDP header (for tunnel))};
         \path[box,hi on=2] (0, 0) rectangle ++(1, -1) node[box label flags] {C};
         \path[box,hi on=0] (1, 0) rectangle ++(1, -1) node[box label flags] {0};
-        \path[box,hi on=2] (2, 0) rectangle ++(1, -1) node[box label flags] {K};
+        \path[box,hi on=2,hi on=3] (2, 0) rectangle ++(1, -1) node[box label flags] {K};
         \path[box,hi on=2] (3, 0) rectangle ++(1, -1) node[box label flags] {S};
         \path[box,hi on=0] (4, 0) rectangle (12, -1) node[box label] {0};
-        \path[box,hi on=0] (4, 0) rectangle (12, -1) node[box label] {vers\\0};
+        \path[box,hi on=0] (12, 0) rectangle (16, -1) node[box label] {vers\\0};
         \path[box,hi on=0] (16, 0) rectangle (32, -1) node[box label] {protocol type \\ (EtherType)};
         \path[box,hi on=0] (0, -1) rectangle (16, -2) node[box label] {checksum (if C set)};
         \path[box,hi on=0] (16, -1) rectangle (32, -2) node[box label] {0 (if C set)};
-        \path[box,hi on=0] (0, -2) rectangle (32, -2) node[box label] {key (if K set)};
+        \path[box,hi on=0,hi on=3] (0, -2) rectangle (32, -3) node[box label] {key (if K set)};
         \path[box,hi on=0] (0, -3) rectangle (32, -4) node[box label] {sequence number (if S set)};
         \path[overlay,shading=axis,top color=black!20,bottom color=white] (0, -4) rectangle (32, -5)
             node[box label] {
@@ -49,8 +49,15 @@
                 (probably IPv4 or IPv6)
             };
         \begin{visibleenv}<2>
-            \node[explain box 1] {
+            \node[explain box 2] {
                 checksum, `key' ($\sim$ port), sequence number optional
+            };
+        \end{visibleenv}
+        \begin{visibleenv}<3>
+            \node[explain box 2] {
+                key to allow multiple connections \\
+                if over UDP, could use separate ports instead \\
+                (but usualy not over UDP)
             };
         \end{visibleenv}
     \end{scope}

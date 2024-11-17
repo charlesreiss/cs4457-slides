@@ -1,0 +1,15 @@
+\begin{frame}{TCP-in-TCP problems}
+    \begin{itemize}
+    \item sometimes run IP tunnel over TCP
+        \begin{itemize}
+        \item example: picky firewall rules, or non-UDP-supporting NAT
+        \end{itemize}
+    \item outer TCP connection adds extra buffering
+        \begin{itemize}
+        \item more than UDP, because will usually buffer instead of dropping
+        \end{itemize}
+    \vspace{.5cm}
+    \item $\rightarrow$ very high round-trip time if not careful
+    \item can result in very poor TCP performance
+    \end{itemize}
+\end{frame}

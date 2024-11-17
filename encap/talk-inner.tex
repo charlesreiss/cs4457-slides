@@ -1,10 +1,18 @@
 
 \section{encapsulation motivations}
-\input{../encap/encap-why}
+\subsection{use case: on remote network}
+\input{../encap/connect-on-remote}
 \subsection{use case: connect networks}
 \input{../encap/connect-net-usecase}
 
-% FIXME: use-case: on diff network
+%FIXME: use-case: multiple networks
+
+\subsection{summary/additional}
+\input{../encap/encap-why}
+
+% FIXME: use-case: two networks
+
+% FIXME: split out other motivations
 
 \section{encapsulation options, generally}
 \input{../encap/encap-opt}
@@ -47,29 +55,21 @@
 
 \subsection{GRE}
 
-\input{../encap/gre}
-% FIXME:
-    % packet format
-    % note: careful header size limit
-    % note: configured at both ends
+\againframe<2>{connTwoNet}
 
-\subsection{also over UDP, TCP}
+\input{../encap/gre} % FIXME: frame size issue
 
 \subsection{adding encryption/authentication}
-
-\subsection{setup protocols, SPIs}
+\input{../encap/pack-with-enc}
 
 \subsection{issues with over TCP}
+\input{../encap/net-over-tcp}
 
 \section{link-layer granularity}
 
 \subsection{VLANs}
 
-\subsubsection{switches add/remove VLANs}
-
-\subsubsection{increasing frame size}
-
-\subsubsection{VLAN nesting}
+\input{../encap/vlan}
 
 \subsection{MPLS}
 
