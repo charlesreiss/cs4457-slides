@@ -29,11 +29,12 @@
     \item $E_X(Y)$ = Y encrypted to X
     \item to create `circuit': A $\leftrightarrow$ OR1 $\leftrightarrow$ OR2 $\leftrightarrow$ B
         \begin{itemize}
+        \item A = probably browser, B = probably webserver
         \item OR = onion router
         \item can choose different number of ORs if desired
         \end{itemize}
     \item A sends OR1 via TLS: \\
-        ``please setup circuit to OR2: '' + $E_{OR2}$(``please setup circuit to B'')
+        ``please setup circuit to OR2: '' + $E_{OR2}$(``please connect to B'')
     \item OR1 sends A's encrypted data to OR2 with OR1's circuit ID
     \item OR2 sends back responses via OR1 + OR1's circuit iD
     \item OR1 uses circuit ID to send back to A
@@ -43,6 +44,9 @@
 \begin{frame}{Tor circuit idea (2)}
     \begin{itemize}
     \item A $\leftrightarrow$ OR1 $\leftrightarrow$ OR2 $\leftrightarrow$ B
+        \begin{itemize}
+        \item A = probably browser, B = probably webserver
+        \end{itemize}
     \vspace{.5cm}
     \item OR1 doesn't know who A is sending to
     \item OR2 doesn't know who is sending to B
