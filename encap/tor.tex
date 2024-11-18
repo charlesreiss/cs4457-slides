@@ -29,12 +29,16 @@
     \item $E_X(Y)$ = Y encrypted to X
     \item to create `circuit': A $\rightarrow$ OR 1 $\rightarrow$ OR 2 $\rightarrow$ B
     \item A sends OR1 via TLS: \\
-        ``please send OR2: '' + $E_{OR2}$(``please connect to B'')
+        ``please send OR2: '' + $E_{OR2}$(``send to OR3: $E_{OR3}$(``please connect to B'')'')
+        \begin{itemize}
+        \item OR = onion router
+        \item can choose different number of ORs if desired
+        \end{itemize}
+    \item similar procedure in reverse for getting response
     \vspace{.5cm}
     \item OR1 doesn't know who A is sending to
-    \item OR2 doesn't know who is sending to B
-    \item fine if they're actually independently operated
-    \item A can do more `layers' if desired
+    \item OR3 doesn't know who is sending to B
+    \item fine if OR1, OR2, OR3 independently operated
     \end{itemize}
 \end{frame}
 
@@ -48,16 +52,17 @@
     \item at about the same time I see B receive 1000 bytes, then send 1749 bytes
     \item \ldots would be a big tell
     \vspace{.5cm}
-    \item worse: B or OR 1 or OR 2 can deliberately generate patterns of traffic to help ID A
+    \item worse: B or OR 1 or OR 3 can deliberately generate patterns of traffic to help ID A
     \end{itemize}
 \end{frame}
 
 \begin{frame}{mitigations for traffic analysis?}
     \begin{itemize}
-    \item fixed-sized 512B `cells' sent between nodes
+    \item general idea: add data or delay to make everything `the same'
+    \item add padding to traffic sent on `circuit'
         \begin{itemize}
-        \item padding added to full size
-        \item lowers resolution of observed sizes
+        \item 512-byte cells only (can't see exact sizes in bytes)
+        \item additional padding cells added, too
         \end{itemize}
     \item ``cover traffic'' sent periodically between A and OR1
         \begin{itemize}
