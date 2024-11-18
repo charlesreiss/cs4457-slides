@@ -86,3 +86,15 @@
     \item ATYP = address type (IPv4/IPv6/DNS name)
     \end{itemize}
 \end{frame}
+
+\begin{frame}{SOCKS as interface}
+    \begin{itemize}
+    \item relatively easy to add SOCKS support to (esp. TCP) program
+    \item but SOCKS doesn't support encryption, etc.
+    \vspace{.5cm}
+    \item common trick: run SOCKS proxy program on localhost (127.0.0.1/::1)
+    \item that program sets up `tunnel' with encryption, etc. to other machine
+    \vspace{.5cm}
+    \item idea supported by OpenSSH, Tor
+    \end{itemize}
+\end{frame}
