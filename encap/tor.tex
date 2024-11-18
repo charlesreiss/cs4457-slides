@@ -1,0 +1,76 @@
+\begin{frame}{Tor}
+    \begin{itemize}
+    \item Tor --- ``onion routing''
+    \item suppose connecting from A to B and A to C
+    \item goal: connection is anonymous
+    \item method: proxy through several `onion routers'
+    \vspace{.5cm}
+    \item attacker should only know:
+        \begin{itemize}
+        \item A is sending to someone via Tor
+        \item B is receiving from someone via Tor
+        \item C is receiving from someone via Tor
+        \end{itemize}
+    \item not be able to tie A and B or A and C or B and C together otherwise
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Tor threat model}
+    \begin{itemize}
+    \item (from Digledine, Mathewson, Syverson, ``Tor: A Second-Generation Onion Router'')
+    \item an advserary ``who can observe some fraction of network traffic; who can generate, modify,
+        delete, or delay traffic; who can operate onion routers of their own; and who can compromise some
+        fraction of onion routers''
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Tor circuit idea}
+    \begin{itemize}
+    \item $E_X(Y)$ = Y encrypted to X
+    \item to create `circuit': A $\rightarrow$ OR 1 $\rightarrow$ OR 2 $\rightarrow$ B
+    \item A sends OR1 via TLS: \\
+        ``please send OR2: '' + $E_{OR2}$(``please connect to B'')
+    \vspace{.5cm}
+    \item OR1 doesn't know who A is sending to
+    \item OR2 doesn't know who is sending to B
+    \item fine if they're actually independently operated
+    \item A can do more `layers' if desired
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Tor circuit}
+\includegraphics[heigth=0.9\textheight]{../encap/tor-fig1}}
+\end{frame}
+
+\begin{frame}{traffic analysis problem}
+    \begin{itemize}
+    \item problem 1: if I see A send 1000 bytes, then receive 1749 bytes, and\ldots
+    \item at about the same time I see B receive 1000 bytes, then send 1749 bytes
+    \item \ldots would be a big tell
+    \vspace{.5cm}
+    \item worse: B or OR 1 or OR 2 can deliberately generate patterns of traffic to help ID A
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{mitigations for traffic analysis?}
+    \begin{itemize}
+    \item fixed-sized 512B `cells' sent between nodes
+        \begin{itemize}
+        \item padding added to full size
+        \item lowers resolution of observed sizes
+        \end{itemize}
+    \item ``cover traffic'' sent periodically between A and OR1
+        \begin{itemize}
+        \item 1.5 s to 9.5 s in each direction if no traffic
+        \item idea: hard for attacker to tell when user active
+        \end{itemize}
+    \item but real-time nature limits possible mitigations
+        \begin{itemize}
+        \item similar idea for email avoids with random delays
+        \item \ldots but can't really browse the web that way
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{application-layer tells}
+\end{frame}
