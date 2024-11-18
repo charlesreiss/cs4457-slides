@@ -89,18 +89,18 @@ in \& label \& dest \& op \& out \\
 \node[router,alt=<5>{fill=red!10}] (mid1) at (5, 6) {};
 \matrix[alt=<5>{draw=red,very thick},route table no in no dest,anchor=south,hi row={2-4}{2}] (mid1 table) at ([xshift=-1.5cm]mid1.north) {
 label \& op \& out \\
-4 \& swap 1 \& 1 \\
-5 \& swap 2 \& 1 \\
-7 \& swap 1 \& 2 \\
-8 \& swap 9 \& 0 \\
+24 \& swap 1 \& 21 \\
+25 \& swap 2 \& 21 \\
+27 \& swap 1 \& 22 \\
+28 \& swap 9 \& 0 \\
 \ldots \& \ldots \& \ldots \\
 };
 \matrix[route table,anchor=north,hi row={2}{4}] at ([yshift=-.3cm]out0.south) {
 in \& label \& dest \& op \& out \\
-1 \& --- \& 3fff:2::/32\& push 7 \& 0\\
-1 \& --- \& default \& push 8 \& 0\\
-0 \& 1 \& --- \& pop \& 1 \\
-0 \& 2 \& --- \& pop \& 2 \\
+1 \& --- \& 3fff:2::/32\& push 27 \& 0\\
+1 \& --- \& default \& push 28 \& 0\\
+0 \& 21 \& --- \& pop \& 21 \\
+0 \& 22 \& --- \& pop \& 22 \\
 \ldots \& \ldots \& \ldots \& \ldots \& \ldots \\
 };
 \foreach \x/\y/\xp/\yp in {in0/mid1/2/0,mid1/out0/1/0,mid1/out1/2/0} {
@@ -111,10 +111,10 @@ in \& label \& dest \& op \& out \\
         dest=3fff:1::aa \& \ldots \\
     };
     \matrix[msg,anchor=west] at ([xshift=.5cm]in0.east) {
-        |[alt={<3>{fill=red!15}}]| 4 \& dest=3fff:1::aa \& \ldots \\
+        |[alt={<3>{fill=red!15}}]| 24 \& dest=3fff:1::aa \& \ldots \\
     };
     \matrix[msg,anchor=west] at ([xshift=.5cm,yshift=1cm]mid1.east) {
-        |[alt={<3>{fill=red!15}}]| 1 \& dest=3fff:1::aa \& \ldots \\
+        |[alt={<3>{fill=red!15}}]| 21 \& dest=3fff:1::aa \& \ldots \\
     };
 \end{visibleenv}
 \begin{visibleenv}<3>
@@ -135,7 +135,7 @@ in \& label \& dest \& op \& out \\
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{label distribution protocol}
+\begin{frame}{Label Distribution Protocol}
     \begin{itemize}
     \item share with neighbors list of:
         \begin{itemize}
@@ -147,6 +147,9 @@ in \& label \& dest \& op \& out \\
         \item setup appropriate \texttt{swap} entries
         \item send other neighbors update about new labels
         \end{itemize}
+    \vspace{.5cm}
+    \item if using normal routing protocol to decide which neighbors routes to accept,
+    just a funny way to implement routing tables
     \end{itemize}
 \end{frame}
 
@@ -225,29 +228,29 @@ in \& label \& dest \& op \& out \\
     node[pos=0,left] {A};
 \matrix[route table no dest,anchor=north] at (0, 5.5) {
 in \& label  \& op \& out \\
-0 \& ---  \& push 12 \& 1 \\
+0 \& ---  \& push 32 \& 1 \\
 --- \& 1 \& pop \& 0 \\
 \ldots \& \ldots \& \ldots \& \ldots \\
 };
 \node[router] (mid1) at (4, 6) {};
 \matrix[route table no dest no in,anchor=north] at (4, 4) {
 label  \& op \& out \\
-12 \& swap 17 \& 4 \\
-6 \& swap 1 \& 0 \\
+32 \& swap 37 \& 4 \\
+26 \& swap 21 \& 0 \\
 \ldots \& \ldots \& \ldots \\
 };
 \node[router] (mid2) at (8, 6) {};
 \matrix[route table no dest no in,anchor=north] at (8, 5.5) {
 label  \& op \& out \\
-17 \& swap 0 \& 6 \\
-19 \& swap 12 \& 3 \\
+37 \& swap 20 \& 6 \\
+39 \& swap 32 \& 3 \\
 \ldots \& \ldots \& \ldots \\
 };
 \node[router] (out0) at (11, 6) {};
 \matrix[route table no dest,anchor=north] at (11, 4) {
 in \& label  \& op \& out \\
-0 \& --- \& push 17 \& 1 \\
---- \& 0 \& swap 9 \& 6 \\
+0 \& --- \& push 37 \& 1 \\
+--- \& 0 \& swap 29 \& 6 \\
 \ldots \& \ldots \& \ldots \& \ldots \\
 };
 \draw[connect,->](out0.east) -- ++(1, 0) node[port beginning]{0}
@@ -261,6 +264,41 @@ in \& label  \& op \& out \\
     \draw[connect,<->] (\x) -- (\y) node[port beginning] {\xp} node[port] {\yp};
 }
 \end{tikzpicture}
+\end{frame}
+
+
+\begin{frame}{MPLS tunnels for traffic engineering}
+    \begin{itemize}
+    \item if multiple paths from A to B often want to:
+        \begin{itemize}
+        \item balance between them to use available bandwidth
+        \item prioritize important traffic on `better' path
+        \item \ldots
+        \end{itemize}
+    \item plain OSPF can't really do any of this unless equal cost
+    \vspace{.5cm}
+    \item MPLS gives mechanism to do this kind of balancing:
+        \begin{itemize}
+        \item setup labels along desired paths
+        \item choosing new path (or failover) = changing `swap X' to `swap Y'
+        \item can configure backup paths in advance and turn them on later
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{RSVP-TE}
+    \begin{itemize}
+    \item RSVP-TE (RFC 3209): protocol for setting up MPLS tunnels
+    \item idea: routers figure out labels, etc.
+    \item end-user can (optionally) specify\ldots
+    \vspace{.5cm}
+    \item that tunnel go through specific routers
+    \item also setting up `fast reroute' backup paths
+    \item bandwidth reservation 
+        \begin{itemize}
+        \item routers give you error if bandwidth not gaurenteed
+        \end{itemize}
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{nested labels}
@@ -282,3 +320,25 @@ in \& label  \& op \& out \\
     \item \ldots
     \end{itemize}
 \end{frame}
+
+\begin{frame}[fragile]{actual label format}
+\begin{Verbatim}
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ Label
+|                Label                  | Exp |S|       TTL     | Stack
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ Entry
+
+                    Label:  Label Value, 20 bits
+                    Exp:    Experimental Use, 3 bits
+                    S:      Bottom of Stack, 1 bit
+                    TTL:    Time to Live, 8 bits
+\end{Verbatim}
+\begin{itemize}
+\item TTL here is different than we've seen:
+\item only processed when label popped
+\item typically (re)set to mirror IP TTL if MPLS run over IP
+\end{itemize}
+\end{frame}
+
+
