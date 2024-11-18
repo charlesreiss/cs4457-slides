@@ -24,21 +24,33 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Tor circuit idea}
+\begin{frame}{Tor circuit idea (1)}
     \begin{itemize}
     \item $E_X(Y)$ = Y encrypted to X
-    \item to create `circuit': A $\rightarrow$ OR 1 $\rightarrow$ OR 2 $\rightarrow$ B
-    \item A sends OR1 via TLS: \\
-        ``please send OR2: '' + $E_{OR2}$(``send to OR3: $E_{OR3}$(``please connect to B'')'')
+    \item to create `circuit': A $\leftrightarrow$ OR1 $\leftrightarrow$ OR2 $\leftrightarrow$ B
         \begin{itemize}
         \item OR = onion router
         \item can choose different number of ORs if desired
         \end{itemize}
-    \item similar procedure in reverse for getting response
+    \item A sends OR1 via TLS: \\
+        ``please setup circuit to OR2: '' + $E_{OR2}$(``please setup circuit to B'')
+    \item OR1 sends A's encrypted data to OR2 with OR1's circuit ID
+    \item OR2 sends back responses via OR1 + OR1's circuit iD
+    \item OR1 uses circuit ID to send back to A
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Tor circuit idea (2)}
+    \begin{itemize}
+    \item A $\leftrightarrow$ OR1 $\leftrightarrow$ OR2 $\leftrightarrow$ B
     \vspace{.5cm}
     \item OR1 doesn't know who A is sending to
-    \item OR3 doesn't know who is sending to B
-    \item fine if OR1, OR2, OR3 independently operated
+    \item OR2 doesn't know who is sending to B
+    \item fine if OR1, OR2 independently operated
+        \begin{itemize}
+        \item in practice: probably add additional OR to circuit
+        \item otherwise, require large portion of ORs to be independent
+        \end{itemize}
     \end{itemize}
 \end{frame}
 
@@ -78,4 +90,35 @@
 \end{frame}
 
 \begin{frame}{application-layer tells}
+    \begin{itemize}
+    \item browser reveals a lot of information:
+        \begin{itemize}
+        \item browser, OS version
+        \item screen size
+        \item fonts available
+        \item timezone
+        \item \ldots
+        \end{itemize}
+    \item problematic for anonymity
+        \begin{itemize}
+        \item helps B limit possible other ends very seriously
+        \end{itemize}
+    \vspace{.5cm}
+    \item Tor browser (modified Firefox, essentially) mitigation: \\
+        limited set of screen sizes, OS versions, fonts, etc. allowed
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{other Tor browser paranoia}
+    \begin{itemize}
+    \item scripts disabled by default
+        \begin{itemize}
+        \item seriously limits `ordinary' browser security vulnerabilities
+        \end{itemize}
+    \item cookies, caches cleared when browser closed
+    \item HTTPS-only by default
+        \begin{itemize}
+        \item really dangerous otherwise since we don't trust last onion router
+        \end{itemize}
+    \end{itemize}
 \end{frame}
