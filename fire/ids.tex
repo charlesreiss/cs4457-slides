@@ -36,7 +36,7 @@
 \end{frame}
 
 \begin{frame}[fragile]{example Snort rule [reformatted]}
-\begin{Verbatim}[fontsize=\small]
+\begin{Verbatim}[fontsize=\fontsize{10}{11}\selectfont]
 alert tcp $HOME_NET any -> $EXTERNAL_NET $HTTP_PORTS (
 msg:"MALWARE-CNC Win.Trojan.Rovnix variant outbound connection";
 flow:to_server, established; http_method; content:"POST";
