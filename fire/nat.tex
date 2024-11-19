@@ -96,6 +96,7 @@ UDP & 216.239.32.10:53 & 198.51.100.17:39554 & 192.168.1.2:31923 \\
     \item so maybe our table entry should be:
     \end{itemize}
 \begin{tabular}{l|l|l|l|l}
+proto & remote IP + port & public IP  + port & internal IP + port \\
 UDP & \myemph{(any)} & 198.51.100.17:39554 & 192.168.1.2:31923 \\ 
 \end{tabular}
     \begin{itemize}
@@ -119,11 +120,13 @@ UDP & \myemph{(any)} & 198.51.100.17:39554 & 192.168.1.2:31923 \\
 NAT table: \\
 \small
 \begin{tabular}{l|l|l|l|l}
+proto & remote IP + port & public IP  + port & internal IP + port \\
 UDP & \myemph{(any)} & 198.51.100.17:39554 & 192.168.1.2:31923 \\ 
 \end{tabular} \\
 connection table for filtering:\\
 \small
 \begin{tabular}{l|l|l|l|l}
+proto & remote IP + port & public IP  + port & internal IP + port \\
 UDP & 203.0.113.34:4444 & 198.51.100.17:39554 & 192.168.1.2:31923 \\ 
 UDP & 192.0.2.99:8999 & 198.51.100.17:39554 & 192.168.1.2:31923 \\ 
 \end{tabular}
@@ -157,7 +160,7 @@ TCP & (any) & 198.51.100.17:22 & 192.168.1.100:22 \\
         \begin{itemize}
         \item \myemph<2>{ask router to add table entry}
         \item \myemph<3>{coordinate with other end to setup connection}
-        \item \myemph<4>{go through realy}
+        \item \myemph<4>{go through relay}
         \end{itemize}
     \item extra issues:
         \begin{itemize}
@@ -251,3 +254,34 @@ TCP & (any) & 198.51.100.17:22 & 192.168.1.100:22 \\
     \end{itemize}
 \end{frame}
 
+\begin{frame}{exercise: nested NATs}
+    \begin{itemize}
+    \item how do these solutions deal with nested network address translation?
+        \begin{itemize}
+        \item when, if ever, will these solutions break
+        \end{itemize}
+    \vspace{.5cm}
+    \item 1. A and B ask NAT for external port
+    \item 2. A and B learn external IP+port and use simulatenous UDP connection
+    \item 3. A and B use external relay
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{aside: address reuse in NAT}
+    \begin{itemize}
+    \item with nested network address translation might have\ldots
+    \item home network (10/8) $\leftrightarrow$ ISP's NAT (10/8) $\leftrightarrow$ internet (`real')
+    \vspace{.5cm}
+    \item conceptually nothing prevents this from working
+        \begin{itemize}
+        \item NAT box translates 10.x.y.z addresses to different 10.a.b.c address
+        \item routing with 10.w.x.y `gateway' also specifies interface
+        \item (yes, can't contact other IPs in ISP's 10/8 network easily from home network, but probably don't care)
+        \end{itemize}
+    \item \ldots but confuses a lot of implementations
+    \item reason for special CGNAT IP space 100.64/10
+        \begin{itemize}
+        \item supposed to only be used by devices that can handling nesting like this
+        \end{itemize}
+    \end{itemize}
+\end{frame}
