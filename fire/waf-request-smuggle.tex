@@ -1,0 +1,31 @@
+
+\begin{frame}[fragile]{request smuggling}
+\begin{Verbatim}[fontsize=\small]
+POST /foo HTTP/1.1
+Content-Length: 5
+Content-Length: 41
+
+XXXXXBADMETHOD HTTP/1.1
+Header-for-bad: GET /malicious HTTP/1.1
+...
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}{general ambiguity problem}
+\begin{itemize}
+\item when protocol ambiguous, filtering rules ineffective
+\item usually lots of `corner cases' where this can happen
+    \begin{itemize}
+    \item multiple content-length heaers
+    \item unused flag bits being set to 1
+    \item multiple versions of TCP segment or fragment
+    \item \ldots
+    \end{itemize}
+\item common defense: ``normalization''
+    \begin{itemize}
+    \item remove things you don't understand
+    \item make everything fit simple profile
+    \item problem: breaking any fancy HTTP/TCP/etc. features
+    \end{itemize}
+\end{itemize}
+\end{frame}
