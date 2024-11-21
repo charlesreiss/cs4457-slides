@@ -1,0 +1,18 @@
+\begin{frame}{encapsulation overheads}
+\begin{tabular}{l||p{4cm}|p{4cm}|p{2cm}}
+left in above       & TCP/UDP/higher layers & IP & link-layer \\ \hline \hline
+above TCP/UDP       & HTTP proxy, DNS over HTTP(S) & --- & --- \\ \hline
+TCP/UDP             & SOCKS, HTTP CONNECT, SSH conn forwarding, TLS & --- & --- \\\hline
+IP                  & OpenVPN, WireGuard & GRE, IPsec & MPLS \\\hline
+link-layer          & OpenVPN, \ldots & ? & VLAN, MPLS \\\hline
+\end{tabular}
+\begin{itemize}
+\item which of these types of options\ldots
+    \begin{itemize}
+    \item best for throughput?
+    \item best for latency?
+    \item best if both ends are behind a NAT?
+    \item bets for compatibility?
+    \end{itemize}
+\end{itemize}
+\end{frame}

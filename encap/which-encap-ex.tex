@@ -1,0 +1,34 @@
+\begin{frame}{which encapuslation (1)}
+    \begin{itemize}
+    \item suppose I have two racks of servers in two different buildings
+    \item want them to be in the same subnetwork
+        \begin{itemize}
+        \item so they'll find each other with broadcast, multicast DNS
+        \end{itemize}
+    \item how should I do this if\ldots
+        \begin{itemize}
+        \item the two buildings are connected via Ethernet also used for internet access?
+        \item the two buildings are connected via an IP link leased from an ISP?
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{which encapuslation (2)}
+    \begin{itemize}
+    \item suppose I have a rack of servers in my building, but I'm migrating to the cloud
+    \item I've moved one server to a cloud provider\ldots
+    \item I don't want to reconfigure the other servers that talk to it\ldots
+    \vspace{.5cm}
+    \item what would be some options to do this? what else do we need to know about the server?
+    \item what would be useful features for cloud provider to give us?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{which encapsulation (3)}
+    \begin{itemize}
+    \item I need to have my machines which handle payment processing go be behind a firewall
+    \item but they're in the same rack as machines which should have a direct internet connection
+    \vspace{.5cm}
+    \item how should I do this?
+    \end{itemize}
+\end{frame}

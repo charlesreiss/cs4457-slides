@@ -346,7 +346,7 @@ in \& label  \& op \& out \\
     },
 }
 
-\draw[connect,<->] (-1.5, 6) -- (in0.west) node[port]{0}
+\draw[connect,<->] (-1.5, 6) -- (in0.west) node[port]{0};
 \node[router] (in0) at (0, 6) {};
 \matrix[route table no dest no  in,anchor=north] at (0, 5.5) {
 label  \& op \& out \\
@@ -368,7 +368,7 @@ label  \& op \& out \\
 28 \& swap 25 \& 1 \\
 \ldots \& \ldots \& \ldots \\
 };
-\draw[connect,<->] (-13.5, 6) -- (out0.east) node[port]{1}
+\draw[connect,<->] (-13.5, 6) -- (out0.east) node[port]{1};
 \foreach \x/\y/\xp/\yp in {in0/out0/1/1,in0/mid1/2/1,mid1/out0/3/2} {
     \draw[connect,<->] (\x) -- (\y) node[port beginning] {\xp} node[port] {\yp};
 }
