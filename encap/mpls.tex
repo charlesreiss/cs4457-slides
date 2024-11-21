@@ -266,7 +266,6 @@ in \& label  \& op \& out \\
 \end{tikzpicture}
 \end{frame}
 
-
 \begin{frame}{MPLS tunnels for traffic engineering}
     \begin{itemize}
     \item if multiple paths from A to B often want to:
@@ -284,6 +283,96 @@ in \& label  \& op \& out \\
         \item can configure backup paths in advance and turn them on later
         \end{itemize}
     \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{rapid failover}
+\begin{tikzpicture}
+\tikzset{
+    box/.style={draw,thick},
+    box unused/.style={draw,thick,pattern=north west lines},
+    box label/.style={midway,font=\small,align=center},
+    computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
+    switch/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\switch}},
+    router/.style={inner sep=-.5mm,outer sep=0mm,execute at begin node={\router}},
+    port/.style={pos=0.95,fill=white,circle,draw,inner sep=0mm},
+    port beginning/.style={pos=0.05,fill=white,circle,draw,inner sep=0mm},
+    box label flags/.style={midway,font=\fontsize{8}{9}\selectfont,align=center},
+    hi on/.style={alt=<#1>{ultra thick,fill=red!10}},
+    explain box 1/.style={draw=red,line width=0.8mm,fill=white,anchor=center,at={(explain box loc 1)},align=center},
+    explain box 2/.style={draw=red,line width=0.8mm,fill=white,anchor=center,at={(explain box loc 2)},align=center},
+    explain box 3/.style={draw=red,line width=0.8mm,fill=white,anchor=center,at={(explain box loc 3)},align=center},
+    route table/.style={
+        matrix of nodes,ampersand replacement=\&,
+        column sep=-.3mm, row sep=-.3mm,
+        nodes={align=center,font=\fontsize{9}{10}\selectfont\tt,text depth=1mm,text height=3mm,minimum height=0.4cm,inner sep=0mm,draw,line width=.3mm},
+        column 1/.style={nodes={text width=.7cm}},
+        column 2/.style={nodes={text width=0.7cm}},
+        column 3/.style={nodes={text width=1.7cm,font=\fontsize{7}{8}\selectfont\tt}},
+        column 4/.style={nodes={text width=1.5cm}},
+        column 5/.style={nodes={text width=.5cm}},
+        row 1/.style={nodes={draw=none,font=\fontsize{9}{10}\selectfont}},
+    },
+    route table no in no dest/.style={
+        matrix of nodes,ampersand replacement=\&,
+        column sep=-.3mm, row sep=-.3mm,
+        nodes={align=center,font=\fontsize{9}{10}\selectfont\tt,text depth=1mm,text height=3mm,minimum height=0.4cm,inner sep=0mm,draw,line width=.3mm},
+        column 1/.style={nodes={text width=0.7cm}},
+        column 2/.style={nodes={text width=1.5cm}},
+        column 3/.style={nodes={text width=.5cm}},
+        row 1/.style={nodes={draw=none,font=\fontsize{9}{10}\selectfont}},
+    },
+    route table no dest/.style={
+        matrix of nodes,ampersand replacement=\&,
+        column sep=-.3mm, row sep=-.3mm,
+        nodes={align=center,font=\fontsize{9}{10}\selectfont\tt,text depth=1mm,text height=3mm,minimum height=0.4cm,inner sep=0mm,draw,line width=.3mm},
+        column 1/.style={nodes={text width=0.7cm}},
+        column 2/.style={nodes={text width=0.7cm}},
+        column 3/.style={nodes={text width=1.5cm}},
+        column 4/.style={nodes={text width=.5cm}},
+        row 1/.style={nodes={draw=none,font=\fontsize{9}{10}\selectfont}},
+    },
+    route table no dest no in/.style={route table no in no dest},
+    connect/.style={draw,very thick},
+    msg/.style={
+        matrix of nodes,nodes={draw,violet,line width=.3mm,font=\fontsize{8}{9}\selectfont\tt,
+            inner sep=0mm,inner xsep=.5mm,text height=3mm,text depth=.5mm},
+        fill=white,
+        column sep=-.3mm,inner sep=0mm},
+    >=Latex,
+    hi row/.style 2 args={
+        alt=<#1>{
+            row #2/.style={nodes={fill=red!15}}
+        }
+    },
+}
+
+\draw[connect,<->] (-1.5, 6) -- (in0.west) node[port]{0}
+\node[router] (in0) at (0, 6) {};
+\matrix[route table no dest no  in,anchor=north] at (0, 5.5) {
+label  \& op \& out \\
+21 \& swap 25 \& 1 \\
+(backup) 21 \& swap 27 \& 2 \\
+27 \& swap 30 \& 0 \\
+ \ldots \& \ldots \& \ldots \\
+};
+\node[router] (mid1) at (12, 6) {};
+\matrix[route table no dest no in,anchor=north] at (12, 5.5) {
+label  \& op \& out \\
+25 \& swap 27 \& 3 \\ 
+ \ldots \& \ldots \& \ldots \\
+};
+\node[router] (out0) at (6, 4) {};
+\matrix[route table no dest no in,anchor=north] at (6, 3.5) {
+label  \& op \& out \\
+27 \& swap 24 \& 3 \\
+28 \& swap 25 \& 1 \\
+\ldots \& \ldots \& \ldots \\
+};
+\draw[connect,<->] (-13.5, 6) -- (out0.east) node[port]{1}
+\foreach \x/\y/\xp/\yp in {in0/out0/1/1,in0/mid1/2/1,mid1/out0/3/2} {
+    \draw[connect,<->] (\x) -- (\y) node[port beginning] {\xp} node[port] {\yp};
+}
+\end{tikzpicture}
 \end{frame}
 
 \begin{frame}{RSVP-TE}
@@ -322,7 +411,7 @@ in \& label  \& op \& out \\
 \end{frame}
 
 \begin{frame}[fragile]{actual label format}
-\begin{Verbatim}
+\begin{Verbatim}[fontsize=\small]
  0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ Label
