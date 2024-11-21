@@ -1,0 +1,14 @@
+
+
+\begin{frame}{TCP keep-alive}
+    \begin{itemize}
+    \item for TCP: SO\_KEEPALIVE socket option
+    \item enables periodic ``keep-alive'' messages
+        \begin{itemize}
+        \item periodically send empty probe packets, resend last byte of data
+        \item threshold for number of probes after which to consider connection lost
+        \end{itemize}
+    \vspace{.5cm}
+    \item also many protocols have periodic `ping/pong' messages
+    \end{itemize}
+\end{frame}
