@@ -1,8 +1,8 @@
 \begin{frame}{encapsulatoin with encryption}
     \begin{itemize}
-    \item GRE = sends packets as is
+    \item GRE = sends packets as is, setup in advance
     \vspace{.5cm}
-    \item often want to add encryption + authentication
+    \item often want to add autoconfiguration + encryption + authentication
     \item typically:
         \begin{itemize}
         \item TLS-handshake like \textit{key exchange} protocol to setup conncetion
@@ -11,7 +11,7 @@
         \end{itemize}
     \item example protocols:
         \begin{itemize}
-        \item IKE (key exchange) + IPsec ESP (actual tunnel)
+        \item IKE (setup/key exchange) + IPsec ESP (actual tunnel)
         \item OpenVPN (both)
         \item WireGuard (both)
         \end{itemize}
