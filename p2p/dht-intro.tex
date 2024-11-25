@@ -1,0 +1,22 @@
+\begin{frame}{distributed hash tables}
+    \begin{itemize}
+    \item to avoid flood to search when searching:
+    \item for every search term X, choose node to hold results for it
+    \item some questions:
+    \vspace{.5cm}
+    \item how to choose node?
+        \begin{itemize}
+        \item hash(X) closest to hash(node ID)
+        \end{itemize}
+    \item what if node goes down?
+        \begin{itemize}
+        \item next-closest hash(node ID)s act as backup
+        \end{itemize}
+    \item how to find specific node?
+        \begin{itemize}
+        \item small network: full index of nodes
+        \item otherwise: nodes track nearby hash(node ID) \ldots
+        \item then forward to node with closer hash(node ID)
+        \end{itemize}
+    \end{itemize}
+\end{frame}

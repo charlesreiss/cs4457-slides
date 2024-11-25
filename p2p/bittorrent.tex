@@ -53,11 +53,24 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}{connecting to peers}
+    \begin{itemize}
+    \item nodes connect to a set of peers
+        \begin{itemize}
+        \item later: getting a list
+        \end{itemize}
+    \item exchange info about what pieces are available
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{a planning question}
     \begin{itemize}
     \item if A has whole file (parts 1--12), B has parts 1, 3, 5; C has parts 2, 4, 7.
     \vspace{.5cm}
-    \item could spend a lot of effort planning who sends what to whom\ldotsS
+    \item could spend a lot of effort planning who sends what to whom\ldots
+        \begin{itemize}
+        \item take advantage of differences in speeds between nodes
+        \end{itemize}
     \item but\ldots
         \begin{itemize}
         \item no central authority
@@ -101,6 +114,23 @@
     \item `choke' nodes that have not in a while
         \begin{itemize}
         \item at least if you have `better' choices to upload to
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{flow control}
+    \begin{itemize}
+    \item even ignoring tit-for-tat\ldots
+    \vspace{.5cm}
+    \item don't want to just download from/upload to 10k peers at once
+        \begin{itemize}
+        \item lots of overhead (TCP, otherwise) relative to data siez
+        \end{itemize}
+    \item signaling protocol:
+        \begin{itemize}
+        \item uploaders indicate peer choked (can get data)/unchoked  (cannot)
+        \item downloaders indicate they are interested/not interested
+        \item only transfer if interested + unchoked
         \end{itemize}
     \end{itemize}
 \end{frame}
