@@ -1,0 +1,83 @@
+\usetikzlibrary{shapes.misc,shapes}
+
+\begin{frame}{one possible DHT design}
+\begin{tikzpicture}
+
+\draw (0, 0) circle (3.3cm);
+\foreach \x in {30,40,70,110,135,170,190,205,260,300,330} {
+    \path[fill=black] (\x:3.3cm) circle (.1cm)
+        coordinate (node-\x);
+};
+\draw (90:3.3cm) node[above right,font=\small] {$0$};
+\draw (90:3.3cm) node[above left, font=\small] {$2^{128}$};
+\draw (90:3.2cm) -- (90:3.4cm);
+\begin{visibleenv}<2>
+    \draw[violet,ultra thick] (225:3.3cm) -- (225:3.5cm) node[left] {Hash(K)};
+    \foreach \x/\whch/\dir in {170/second backup/left,190/first backup/left,205/primary/left} {
+        \draw[violet,ultra thick] (\x:3.45cm) -- (\x:4cm) node[\dir,font=\small] {\whch~copy of K's value};
+    }
+\end{visibleenv}
+\begin{visibleenv}<3-5>
+    \path[draw=red,ultra thick,fill=black!50] (50:3.3cm) circle (.1cm);
+    \begin{visibleenv}<3-4>
+        \draw[red,very thick] (50:3.3cm) arc (50:70:3.3cm);
+    \end{visibleenv}
+    \begin{visibleenv}<3>
+        \path (50:3.4cm) node[below left,red,align=left] {
+            new node here\ldots \\
+            will take over this range
+        };
+    \end{visibleenv}
+    \begin{visibleenv}<4>
+        \path (50:3.4cm) node[below left,red,align=left] {
+            needs to move values \\
+            from previous node
+        };
+        \path[ultra thick,draw,violet,dotted,Latex-] (50:3.4cm) to[bend left] (40:3.4cm);
+    \end{visibleenv}
+    \begin{visibleenv}<5>
+        \path (50:3.4cm) node[below left,red,align=left] {
+            also needs to obtain \\
+            keys it backs up
+        };
+        \draw[red,very thick] (70:3.3cm) arc (70:135:3.3cm);
+        \path[ultra thick,draw,violet,dotted,Latex-] (50:3.4cm) to[bend left] (40:3.4cm);
+        \path[ultra thick,draw,violet,dotted,Latex-] (50:3.4cm) to[bend right] (70:3.4cm);
+    \end{visibleenv}
+\end{visibleenv}
+\begin{visibleenv}<6-7>
+    \node[draw=red,cross out] at (110:3.3cm) {};
+    \begin{visibleenv}<6>
+        \path (110:3.4cm) node[left=1cm,red,align=left] {
+            if this node goes down\ldots \\
+            its keys assigned to next node \\
+            which already has a copy because \\
+            it is the first backup
+        };
+        \draw[red,very thick] (110:3.3cm) arc (110:135:3.3cm);
+        \path[draw=red,ultra thick] (70:3.3cm) circle (.1cm);
+    \end{visibleenv}
+    \begin{visibleenv}<7>
+        \draw[red,very thick] (110:3.3cm) arc (110:135:3.3cm);
+        \path[draw=red,ultra thick] (30:3.3cm) circle (.1cm);
+        \path (110:3.4cm) node[left=1cm,red,align=left] {
+            if this node goes down\ldots \\
+            also need to send new last backup(s) \\
+            to get copy of its former range
+        };
+        \path[ultra thick,draw,violet,dotted,-Latex] (70:3.4cm) to[bend left] (30:3.4cm);
+    \end{visibleenv}
+\end{visibleenv}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{DHT node tracking}
+    \begin{itemize}
+    \item every node tracks its `nearby' (by Hash(node ID)) neighbors
+        \begin{itemize}
+        \item at least immediate successor\ldots
+        \item but probably more to handle failures
+        \end{itemize}
+    \item node needs to react if neighbor goes down by taking over for its keys
+    \end{itemize}
+\end{frame}
