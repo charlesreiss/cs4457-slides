@@ -14,7 +14,8 @@ SLIDEDECKS = \
     http \
     multiaccess \
     fire \
-    encap
+    encap \
+    p2p
 
 
 all: $(patsubst %,_dist/%.pdf,$(SLIDEDECKS))
