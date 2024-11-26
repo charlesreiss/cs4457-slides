@@ -155,17 +155,16 @@ address & next hop & dev & priority\\ \hline
         \item if company/ISP wants everyone to use cache for performance
         \item if company wants to audit all HTTP proxy
         \end{itemize}
-    \item configure router/firewall to diret all HTTP TCP connections to proxy
+    \item configure router/firewall to direct all HTTP TCP connections to proxy
     \item either:
         \begin{itemize}
         \item configure proxy machine to accept connections on all IP addresses \textit{or}
         \item have router/firewall do network address translation (other direction)
         \end{itemize}
-    \item HTTP proxy \texttt{squid} on Linux, some firewall boxes support this mode
+    \item HTTP proxy \texttt{squid} on Linux, some firewall boxes support this
     \item I don't think this is a good idea\ldots
         \begin{itemize}
-        \item problematic with encryption
-        \item proxy won't support newer HTTP stuff
+        \item problematic with encryption, new HTTP features
         \end{itemize}
     \end{itemize}
 \end{frame}

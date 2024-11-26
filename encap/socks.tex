@@ -14,11 +14,11 @@
     \draw (13, 0) node[above] {end-server} -- ++(0, -7);
 \end{scope}
 \tikzset{
-    msg/.style={font=\small},
+    msg/.style={font=\small,inner sep=0.2mm},
     send/.style={thick,-Latex},
 }
 \draw[send] (0, -.5) -- ++(6.5, 0) node[midway,above,msg] {open TCP connection};
-\draw[send] (6.5, -.75) -- ++(6.5, 0);
+%\draw[send] (6.5, -.75) -- ++(6.5, 0);
 \draw[send] (0, -1) -- ++(6.5, 0) node[midway,above,msg] {CONNECT end-server:end-server-port};
 \draw[send] (6.5, -1.5) -- ++(6.5, 0) node[midway,above,msg] {open TCP connection};
 \draw[send] (6.5, -2) -- ++(6.5, 0) node[midway,above,msg] {open TCP connection};
@@ -26,7 +26,7 @@
 \draw[send] (6.5, -2.5) -- ++(-6.5, 0) node[midway,above,msg] {reply w/ success status};
 %
 \draw[ultra thick,red] (-.5, -4) rectangle (13.5, -7);
-\node[align=left,anchor=south,font=\small,red] at (4, -3.25) {
+\node[align=left,anchor=south,font=\small,red] at (4, -4.25) {
     now client can use TCP connection \\ as if directly to server
 };
 \draw[send] (0, -4.5) -- ++(6.5, 0) node[midway,above,msg] {data for server};
@@ -44,16 +44,16 @@
     \draw (13, 0) node[above] {end-server} -- ++(0, -7);
 \end{scope}
 \tikzset{
-    msg/.style={font=\small},
+    msg/.style={font=\small,inner sep=0.2mm},
     send/.style={thick,-Latex},
     send misc/.style={thick,dotted,-Latex},
 }
 \draw[send] (0, -.5) -- ++(6.5, 0) node[midway,above,msg] {open TCP connection};
-\draw[send] (6.5, -.75) -- ++(6.5, 0);
+%\draw[send] (6.5, -.75) -- ++(6.5, 0);
 \draw[red,send] (0, -1) -- ++(6.5, 0) node[midway,above,msg] {BIND 0:0 \textit{or} BIND end-server:port};
-\draw[red,send] (6.5, -1.5) -- ++(6.5, 0) node[midway,above,msg] {reply w/ local IP + local port};
+\draw[red,send] (6.5, -1.5) -- ++(-6.5, 0) node[midway,above,msg] {reply w/ local IP + local port};
 \draw[red,send] (13, -2) -- ++(-6.5, 0) node[midway,above,msg] {open TCP connection};
-\draw[send] (6.5, -2.25) -- ++(6.5, 0) node[midway,above,msg] {open TCP connection};
+%\draw[send] (6.5, -2.25) -- ++(6.5, 0) node[midway,above,msg] {open TCP connection};
 \draw[send] (6.5, -2.5) -- ++(-6.5, 0) node[midway,above,msg] {reply w/ success status};
 %
 \draw[ultra thick,red] (-.5, -4) rectangle (13.5, -7);
@@ -71,11 +71,11 @@
     \item send/receives UDP packets with ``request header'':
     \end{itemize}
 \begin{Verbatim}
-      +----+------+------+----------+----------+----------+
-      |RSV | FRAG | ATYP | DST.ADDR | DST.PORT |   DATA   |
-      +----+------+------+----------+----------+----------+
-      | 2  |  1   |  1   | Variable |    2     | Variable |
-      +----+------+------+----------+----------+----------+
++----+------+------+----------+----------+----------+
+|RSV | FRAG | ATYP | DST.ADDR | DST.PORT |   DATA   |
++----+------+------+----------+----------+----------+
+| 2  |  1   |  1   | Variable |    2     | Variable |
++----+------+------+----------+----------+----------+
 \end{Verbatim}
     \begin{itemize}
     \item FRAG = which fragment number
