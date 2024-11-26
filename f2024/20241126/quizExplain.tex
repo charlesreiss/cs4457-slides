@@ -27,6 +27,20 @@
 \end{tikzpicture}
 \end{frame}
 
+\begin{frame}{base station time management}
+    \begin{itemize}
+    \item base station is choosing when it receives data
+    \item should try to account for propogation delay
+    \vspace{.5cm}
+    \item still going to need some quiet time between slots
+        \begin{itemize}
+        \item imperfect clock/propogation delay measurements
+        \item interference from multipath, etc.?
+        \end{itemize}
+    \item want to minimize that time to get more bandwidth
+    \end{itemize}
+\end{frame}
+
 
 \begin{frame}{quiz Q3C}
     \begin{itemize}
@@ -40,5 +54,16 @@
         \begin{itemize}
         \item seemed to be a theme of non-trivial number of comments
         \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{rough FTP timeline with PORT}
+    \begin{itemize}
+    \item FTP client (control) $\leftrightarrow$ server: SYN, SYN/ACK, ACK 
+    \item \ldots
+    \item FTP client (control) $\leftrightarrow$ server: TCP data: ``PORT (data IP+port)''
+    \item FTP client (control) $\leftrightarrow$ server: TCP data: ``RETR filename''
+    \item server $\leftrightarrow$ FTP client (data): SYN, SYN/ACK, ACK
+    \item server $\leftrightarrow$ FTP client (data): TCP data: file data
     \end{itemize}
 \end{frame}
