@@ -10,7 +10,7 @@
 \begin{tikzpicture}
 \begin{scope}[ultra thick]
     \draw (0, 0) node[above] {client} -- ++(0, -7);
-    \draw (6.5, 0) node[above,align=center] {SOCKS\\server} -- ++(0, -7);
+    \draw (6.5, 0) node[above,align=center] {SOCKS\\proxy} -- ++(0, -7);
     \draw (13, 0) node[above] {end-server} -- ++(0, -7);
 \end{scope}
 \tikzset{
@@ -40,7 +40,7 @@
 \begin{tikzpicture}
 \begin{scope}[ultra thick]
     \draw (0, 0) node[above] {client} -- ++(0, -7);
-    \draw (6.5, 0) node[above,align=center] {SOCKS\\server} -- ++(0, -7);
+    \draw (6.5, 0) node[above,align=center] {SOCKS\\proxy} -- ++(0, -7);
     \draw (13, 0) node[above] {end-server} -- ++(0, -7);
 \end{scope}
 \tikzset{
@@ -51,7 +51,7 @@
 \draw[send] (0, -.5) -- ++(6.5, 0) node[midway,above,msg] {open TCP connection};
 %\draw[send] (6.5, -.75) -- ++(6.5, 0);
 \draw[red,send] (0, -1) -- ++(6.5, 0) node[midway,above,msg] {BIND 0:0 \textit{or} BIND end-server:port};
-\draw[red,send] (6.5, -1.5) -- ++(-6.5, 0) node[midway,above,msg] {reply w/ local IP + local port};
+\draw[red,send] (6.5, -1.5) -- ++(-6.5, 0) node[midway,above,msg] {reply w/ IP+port on proxy};
 \draw[red,send] (13, -2) -- ++(-6.5, 0) node[midway,above,msg] {open TCP connection};
 %\draw[send] (6.5, -2.25) -- ++(6.5, 0) node[midway,above,msg] {open TCP connection};
 \draw[send] (6.5, -2.5) -- ++(-6.5, 0) node[midway,above,msg] {reply w/ success status};
