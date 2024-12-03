@@ -89,18 +89,18 @@ in \& label \& dest \& op \& out \\
 \node[router,alt=<5>{fill=red!10}] (mid1) at (5, 6) {};
 \matrix[alt=<5>{draw=red,very thick},route table no in no dest,anchor=south,hi row={2-4}{2}] (mid1 table) at ([xshift=-1.5cm]mid1.north) {
 label \& op \& out \\
-24 \& swap 1 \& 21 \\
-25 \& swap 2 \& 21 \\
-27 \& swap 1 \& 22 \\
-28 \& swap 9 \& 0 \\
+24 \& swap 21 \& 1 \\
+25 \& swap 22 \& 1 \\
+27 \& swap 21 \& 2 \\
+28 \& swap 29 \& 0 \\
 \ldots \& \ldots \& \ldots \\
 };
 \matrix[route table,anchor=north,hi row={2}{4}] at ([yshift=-.3cm]out0.south) {
 in \& label \& dest \& op \& out \\
 1 \& --- \& 3fff:2::/32\& push 27 \& 0\\
 1 \& --- \& default \& push 28 \& 0\\
-0 \& 21 \& --- \& pop \& 21 \\
-0 \& 22 \& --- \& pop \& 22 \\
+0 \& 21 \& --- \& pop \& 1 \\
+0 \& 22 \& --- \& pop \& 2 \\
 \ldots \& \ldots \& \ldots \& \ldots \& \ldots \\
 };
 \foreach \x/\y/\xp/\yp in {in0/mid1/2/0,mid1/out0/1/0,mid1/out1/2/0} {
@@ -316,7 +316,7 @@ in \& label  \& op \& out \\
         matrix of nodes,ampersand replacement=\&,
         column sep=-.3mm, row sep=-.3mm,
         nodes={align=center,font=\fontsize{9}{10}\selectfont\tt,text depth=1mm,text height=3mm,minimum height=0.4cm,inner sep=0mm,draw,line width=.3mm},
-        column 1/.style={nodes={text width=0.7cm}},
+        column 1/.style={nodes={text width=2.7cm}},
         column 2/.style={nodes={text width=1.5cm}},
         column 3/.style={nodes={text width=.5cm}},
         row 1/.style={nodes={draw=none,font=\fontsize{9}{10}\selectfont}},
@@ -325,7 +325,7 @@ in \& label  \& op \& out \\
         matrix of nodes,ampersand replacement=\&,
         column sep=-.3mm, row sep=-.3mm,
         nodes={align=center,font=\fontsize{9}{10}\selectfont\tt,text depth=1mm,text height=3mm,minimum height=0.4cm,inner sep=0mm,draw,line width=.3mm},
-        column 1/.style={nodes={text width=0.7cm}},
+        column 1/.style={nodes={text width=2.7cm}},
         column 2/.style={nodes={text width=0.7cm}},
         column 3/.style={nodes={text width=1.5cm}},
         column 4/.style={nodes={text width=.5cm}},
@@ -350,25 +350,27 @@ in \& label  \& op \& out \\
 \node[router] (in0) at (0, 6) {};
 \matrix[route table no dest no  in,anchor=north] at (0, 5.5) {
 label  \& op \& out \\
-21 \& swap 25 \& 1 \\
-(backup) 21 \& swap 27 \& 2 \\
+21 \& swap 25 \& 2 \\
+(backup) 21 \& swap 27 \& 1 \\
 27 \& swap 30 \& 0 \\
  \ldots \& \ldots \& \ldots \\
 };
 \node[router] (mid1) at (12, 6) {};
-\matrix[route table no dest no in,anchor=north] at (12, 5.5) {
+\matrix[route table no dest no in,anchor=north] at (10, 4.5) {
 label  \& op \& out \\
-25 \& swap 27 \& 3 \\ 
+25 \& swap 31 \& 2 \\ 
+30 \& swap 27 \& 1 \\ 
+30 (backup) \& swap 28 \& 3 \\ 
  \ldots \& \ldots \& \ldots \\
 };
 \node[router] (out0) at (6, 4) {};
-\matrix[route table no dest no in,anchor=north] at (6, 3.5) {
+\matrix[route table no dest no in,anchor=north] at (6, 2.5) {
 label  \& op \& out \\
-27 \& swap 24 \& 3 \\
-28 \& swap 25 \& 1 \\
+27 \& swap 24 \& 2 \\
+28 \& swap 27 \& 1 \\
 \ldots \& \ldots \& \ldots \\
 };
-\draw[connect,<->] (-13.5, 6) -- (out0.east) node[port]{1};
+%\draw[connect,<->] (13.5, 6) -- (out0.east) node[port]{1};
 \foreach \x/\y/\xp/\yp in {in0/out0/1/1,in0/mid1/2/1,mid1/out0/3/2} {
     \draw[connect,<->] (\x) -- (\y) node[port beginning] {\xp} node[port] {\yp};
 }
