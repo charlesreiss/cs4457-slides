@@ -1,0 +1,135 @@
+\date{}
+\title{}
+\date{}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}{last time}
+    \begin{itemize}
+    \item encapsulation motivations
+        \begin{itemize}
+        \item be on network remotely
+        \item pretend to have different switch setup
+        \item \ldots
+        \end{itemize}
+    \item encapsulation from which layer?
+    \item capturing streams/packets `transparently'
+    \item transport layer
+        \begin{itemize}
+        \item SOCKS --- TCP connection to proxy, redirected
+        \item SSH --- multiple TCP connections, framed in separate messages
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{some quiz key adjustments}
+    \begin{itemize}
+    \item week09, DNS query counting
+    \end{itemize}
+\end{frame}
+
+\section{encapsulation options, generally}
+\input{../encap/encap-opt}
+
+\subsection{TOR}
+\input{../encap/tor} % FIXME: incomplete
+
+\section{network layer granularity}
+
+\againframe<4>{encapOpt}
+
+% FIXME:
+    % problem: need to run window-size protocol twice
+    % only support clever transport stuff (example: SACK)
+        % if all parties do
+    % (but could do clever transport stuff local to proxy)
+    % if we tunnel IP packets, no need to redo that
+
+% FIXME: slide for connect one machie use-case
+
+\subsection{GRE}
+
+\input{../encap/connect-net-twonet}
+%\againframe<2>{connTwoNet}
+\input{../encap/gre}
+
+\subsection{adding encryption/authentication}
+\input{../encap/pack-with-enc}
+
+\subsection{issues with over TCP}
+\input{../encap/net-over-tcp}
+
+\section{link-layer granularity}
+
+\againframe<2>{connTwoNet}
+
+\subsection{VLANs}
+
+\input{../encap/vlan}
+
+\subsection{MPLS}
+
+\input{../encap/mpls}
+
+\section{encapsulation costs}
+\input{../encap/encap-costs-ex}
+
+\section{which encapsulation for}
+\input{../encap/which-encap-ex}
+
+\section{backup slides}
+\begin{frame}{backup slides}
+\end{frame}
+
+\input{../p2p/talk-inner}
+
+\section{encapsulation motivations}
+\subsection{use case: on remote network}
+\input{../encap/connect-on-remote}
+\subsection{use case: connect networks}
+\input{../encap/connect-net-usecase}
+
+\subsection{use case: two networks}
+\input{../encap/connect-net-twonet}
+
+%FIXME: use-case: multiple networks
+
+\subsection{summary/additional}
+\input{../encap/encap-why}
+
+\subsection{aside: encryption via encapsulation}
+\input{../encap/encap-encrypt}
+
+% FIXME: use-case: two networks
+
+% FIXME: split out other motivations
+
+\section{encapsulation options, generally}
+\input{../encap/encap-opt}
+
+\subsection{capturing packets}
+\againframe<2>{encapSteps}
+\input{../encap/encap-capture}
+
+\section{sending encapsulated}
+\againframe<3>{encapSteps}
+
+\subsection{transport layer granularity}
+
+\againframe<3>{encapOpt}
+
+\subsection{SOCKS}
+\input{../encap/socks}
+
+\subsection{exercise: what if}
+\input{../encap/conn-forward-bw-errors}
+
+\subsection{SSH connection forwarding}
+\input{../encap/ssh-conn-forward}
+
+\subsection{exercise: what if revised}
+\input{../encap/ssh-conn-window-size}
+
+\end{document}
