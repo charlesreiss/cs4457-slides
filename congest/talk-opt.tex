@@ -1,0 +1,68 @@
+
+\section{CUBIC, briefly}
+\input{../congest/cubic}
+
+% FIXME: \subsection{exercise: convergence times}
+
+\section{`fast retransmit' and `fast recovery'}
+\againframe<3>{jacobsonFixes}
+
+\subsection{recall: duplicate ACKs}
+\input{../reliable/dup-ack-opt}
+
+\subsection{duplicate ACKs}
+\input{../congest/dup-ack-window} % FIXME: missing from elsewhere
+
+\subsection{intuition: self-clocking}
+\input{../congest/self-clock-idea}
+
+\section{missing piece: reverse path}
+\input{../congest/reverse-path}
+
+\section{aside: some queuing theory}
+\input{../congest/diversion-queuing-theory}
+
+\section{deep queues?}
+\input{../congest/buffer-bloat}
+
+\section{missing Jacobson pieces}
+\subsection{variance estimation}
+\againframe<5>{jacobsonFixes}
+\input{../congest/variance-estimate}
+
+\subsection{exponential backoff}
+\againframe<6>{jacobsonFixes}
+\input{../congest/exp-backoff}
+
+\section{TCP variants}
+\input{../congest/tcp-variant-names}
+
+
+\section{`fast retransmit' and `fast recovery'}
+\againframe<3>{jacobsonFixes}
+
+\subsection{recall: duplicate ACKs}
+\input{../reliable/dup-ack-opt}
+
+\subsection{duplicate ACKs}
+\input{../congest/dup-ack-window}
+
+\subsection{intuition: self-clocking}
+\input{../congest/self-clock-idea}
+
+
+\section{deep queues?}
+\input{../congest/buffer-bloat}
+
+\section{other congestion signals}
+
+\input{../congest/other-signals}
+
+\subsection{explicit congestion notification}
+\againframe<2>{otherSig}
+\input{../congest/ecn}
+
+\subsection{watching latency, etc.}
+\againframe<3>{otherSig}
+\input{../congest/watch-latency}
+
