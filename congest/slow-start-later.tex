@@ -1,0 +1,14 @@
+
+\begin{frame}{``slow start'' later}
+    % FIXME: diagram
+    \begin{itemize}
+    \item heuristic: slow start if window size is `small' compared to last packet loss
+        \begin{itemize}
+        \item compromise: find correct size v. overload network
+        \end{itemize}
+    \vspace{.5cm}
+    \item method:
+    \item set \texttt{ssthresh} = bytes in flight / 2 on packet loss
+    \item use slow start when window size < \texttt{ssthresh}
+    \end{itemize}
+\end{frame}

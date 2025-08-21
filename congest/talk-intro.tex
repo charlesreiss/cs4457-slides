@@ -12,19 +12,10 @@
 \section{a little history}
 \input{../congest/collapse-history}
 
-\section{changing cross-traffic}
-\input{../congest/cross-traffic}
+% FIXME: up/down pattern with constant bandwidth available [from CUBIC?]
+    % FIXME: use to ask question why do we keep trying to increase window?
 
-\section{part 1: window sizing}
-\againframe<2>{jacobsonFixes}
-
-\section{focus on steady state}
-\input{../congest/focus-steady-state}
-
-\section{up/down pattern (rough)}
-\input{../congest/window-change-rough}
-    % FIXME: show sawtooth pattern
-
+% FIXME: preview actual window size graphs in simulation
 \section{performance collapse}
 \input{../congest/overload}
 
@@ -34,27 +25,37 @@
 \subsection{exercise: convergence times}
 \input{../congest/convergence-time}
 
-\section{heuristic: fast decrease}
+% FIXME: no slow start example versus real
+
+\section{changing cross-traffic}
+\input{../congest/cross-traffic}
+
+
+\section{up/down pattern (rough)}
+\input{../congest/window-change-rough}
+    % FIXME: show sawtooth pattern
+
+\section{heuristic: fast decrease (v1)}
+\input{../congest/heuristic-decrease-to-1}
+
+\section{heuristic: fast decrease (v2)}
 \input{../congest/heuristic-decrease}
 
+\section{AIMD}
+\input{../congest/aimd}
+
+\section{part 1: window sizing}
+\againframe<2>{jacobsonFixes}
+
+\section{focus on steady state}
+\input{../congest/focus-steady-state}
     % FIXME: hilite distance measurement oof down parts on sawtooth pattern
 
 \section{some graphs}
 \input{../congest/tcp-normal-graphs}
 
-\section{`slow start'}
-\againframe<4>{jacobsonFixes}
 
-\input{../congest/slow-start} % FIXME: picture
-
-\subsection{exercise}
-\input{../congest/slow-start-ex}
-
-\subsection{some more graphs}
-\againframe<2>{vegasrenotrace}
-\input{../congest/graphs-with-slow-start}
-
-\subsection{exercise: non-congestion losses}
+\subsection{exercise: non-congestion losses} % FIXME: modify for decrease to 1
 \input{../congest/non-congest-losses}
 
 

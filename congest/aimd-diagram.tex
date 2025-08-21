@@ -1,16 +1,4 @@
 \usetikzlibrary{arrows.meta,calc,shapes}
-\begin{frame}{showing AIMD}
-    \begin{itemize}
-    \item slides based on Chiu and Jain, ``Analysis of the Increase and Decrease Algorithms for Congestion Avoidance in Computer Networks'''
-    \item 1989 paper
-    \vspace{.5cm}
-    \item you might notice 1989 is well after TCP was in use
-        \begin{itemize}
-        \item (kinda deployed without all the theory being developed\ldots
-        \item \ldots and it's still not really a solved problem)
-        \end{itemize}
-    \end{itemize}
-\end{frame}
 
 \begin{frame}{picturing sharing}
 \begin{tikzpicture}
@@ -102,13 +90,4 @@
     \end{visibleenv}
 \end{scope}
 \end{tikzpicture}
-\end{frame}
-
-\begin{frame}{some assumptions we made}
-    \begin{itemize}
-    \item \ldots that may not always be true
-    \vspace{.5cm}
-    \item both flows experience drops when network overloaded
-    \item same additive increase factor (for 45 degree angle)
-    \end{itemize}
 \end{frame}

@@ -3,10 +3,15 @@
 
 % FIXME: add TCP cwnd, ssthresh dynamics
 
+% FIXME: show model-theoretical throughput without contention
+
+\input{../congest/talk-sharing}
+
 % FIXME: interlude here about modeling bandwidth with no contention
     % FIXME: lead into interlude about simulation, NS-3, etc.
     % FIXME: split congest stuff before sharing
 
-\input{../congest/talk-sharing}
 
-\input{../congest/talk-opt}
+% FIXME: motivate optimizations with graph / plot of actual bandwidth without slow-start/etc.
+
+\input{../congest/talk-opt} % FIXME: separate out/simplify? window size inflation for dup-acks?
