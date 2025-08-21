@@ -10,16 +10,17 @@
 }
 
 
-\begin{frame}{networks / hosts aka end systems}
+\begin{frame}\frametitle{networks / hosts aka end systems}
+\myalttextD{%
 \begin{tikzpicture}
 \tikzset{
     connect/.style={draw,very thick,Latex-Latex},
-    computer/.style={inner sep=0mm,outer sep=0mm,alt=<4>{label={[font=\small,label distance=0mm,text=red]south:`host'}},execute at begin node={\computer}},
+    computer/.style={inner sep=0mm,outer sep=0mm,beameralt=<4>{label={[font=\small,label distance=0mm,text=red]south:`host'}},execute at begin node={\computer}},
 }
 \node[
       cloud,draw,very thick,aspect=2,
       minimum width=4cm,minimum height=3cm,
-      alt=<2-3>{draw=red,fill=red!10,label={[text=red]center:`network'}},
+      beameralt=<2-3>{draw=red,fill=red!10,label={[text=red]center:`network'}},
      ] (net-cloud) at (0,0) {};
 \foreach \x/\d in {0/5cm,45/4cm,90/3cm,135/4cm,180/5cm,225/4cm,270/3cm,315/4cm} {
     \node[computer] (c-\x) at (\x:\d) {};
@@ -55,9 +56,19 @@
 };
 \end{visibleenv}
 \end{tikzpicture}
+}{
+Picture showing computers connected via lines with arrowheads on both ends to a cloud.
+}{
+Same diagram as previous slide. The cloud is labeled as a `network' and a box reads ``networks connect computers''.
+}{
+Same diagram as previous slide. The cloud is labeled as a `network' and a box reads ``cloud represents any network (whether local or not). Iconography predates cloud computing.''
+}{
+Same diagram as previous slide. The computers are labeled `hosts' and a box reads ``computers on edge of network called hosts or end systems (even if also `severs').''
+}
 \end{frame}
 
-\begin{frame}{direct connections?}
+\begin{frame}\frametitle{direct connections?}
+\myalttext{%
 \begin{tikzpicture}
 \tikzset{
     connect/.style={draw,very thick,Latex-Latex},
@@ -74,9 +85,13 @@
     }
 }
 \end{tikzpicture}
+}{%
+Picture showing 8 computers connected to each other via 56 lines (one for each pair of computers).
+}
 \end{frame}
 
-\begin{frame}{shared medium: radio?}
+\begin{frame}\frametitle{shared medium: radio?}
+\myalttext{%
 \begin{tikzpicture}
 \tikzset{
     connect/.style={draw,very thick,Latex-Latex},
@@ -93,13 +108,17 @@
 %    %\end{visibleenv}
 }
 \end{tikzpicture}
+}{%
+Picture showing the same 8 computers with wifi-like symbols indicating they communicate via radio.%
+}
 \end{frame}
 
-\begin{frame}{shared medium: wires}
+\begin{frame}\frametitle{shared medium: wires}
+\myalttextC{%
 \begin{tikzpicture}
 \tikzset{
     connect/.style={draw,very thick,arrows={Latex-Circle[width=0.3cm,length=0.3cm]},
-        alt=<2>{arrows={Latex-Circle[width=0.3cm,length=0.3cm,red]}}},
+        beameralt=<2>{arrows={Latex-Circle[width=0.3cm,length=0.3cm,red]}}},
     computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
 }
 \draw[line width=1mm] (-5,-1.5) coordinate (wire start) -- (5, 1.5) coordinate (wire end);
@@ -121,20 +140,28 @@
 % FIXME: also fiber splitter
 \end{visibleenv}
 \end{tikzpicture}
+}{
+Picture showing 8 computers connected via vertical lines to a single horizontal line representing a wire.
+}{
+Same picture as before with the connection between the vertical lines and horizontal lines highlighted, and a picture of a Thicknet transciever, a device
+that screws into coax cable to provide an electrical connection.
+}{
+Same picture as before with the addition of a picture of a 4-port Ethernet hub --- a Netgear-branded box with four RJ-45 ports.
+}
 \end{frame}
 
-\begin{frame}{switches / nodes / links}
+\begin{frame}\frametitle{switches / nodes / links}
 \begin{tikzpicture}
 \tikzset{
-    computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer},alt=<3>{fill=red!10}},
+    computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer},beameralt=<3>{fill=red!10}},
     switch/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\switch},
-                   alt=<2>{
+                   beameralt=<2>{
                        fill=red!10,
                         label={[font=\small,label distance=0mm,text=red]south:`switch'}
                    },
-                   alt=<3>{fill=red!10}},
-    connect/.style={draw,very thick,Latex-Latex,alt=<4>{red}},
-    connect big/.style={draw,ultra thick,Latex-Latex,alt=<4>{red}},
+                   beameralt=<3>{fill=red!10}},
+    connect/.style={draw,very thick,Latex-Latex,beameralt=<4>{red}},
+    connect big/.style={draw,ultra thick,Latex-Latex,beameralt=<4>{red}},
 }
 \node[
       cloud,draw,opacity=0.25,very thick,aspect=2,
@@ -194,7 +221,7 @@
     computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
     switch/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\switch}},
     router/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\router},circle,
-        alt=<2>{fill=red!10}},
+        beameralt=<2>{fill=red!10}},
     connect/.style={draw,very thick,Latex-Latex},
     connect big/.style={draw,ultra thick,Latex-Latex},
 }

@@ -1,4 +1,4 @@
-\ProvidesClass{mytalk}[2018/09/08 version 0.03]
+\ProvidesClass{mytalk}[2025/08/21 version 0.04]
 \NeedsTeXFormat{LaTeX2e}
 
 \RequirePackage{silence}
@@ -7,6 +7,8 @@
 
 \RequirePackage{etoolbox}
 
+\RequirePackage[implicit=false]{hyperref}
+\RequirePackage{pdfcomment}
 
 \newtoggle{heldback}
 \togglefalse{heldback}
@@ -37,6 +39,31 @@
 \RequirePackage[normalem]{ulem} % for sout
 
 \renewcommand<>{\sout}[1]{\alt#2{\beameroriginal{\sout}{#1}}{#1}}
+%\newcommand{\myalttext}[2]{%
+%\BeginAccSupp{method=pdfstringdef,unicode,ActualText=#2}%
+%#1%
+%\EndAccSupp{}%
+%}
+\newcommand{\myalttext}[2]{%
+\pdftooltip{#1}{#2}%
+}
+\newcommand{\myalttextB}[3]{%
+\only<1>{\pdftooltip{#1}{#2}}%
+\only<2->{\pdftooltip{#1}{#3}}%
+}
+
+\newcommand{\myalttextC}[4]{%
+\only<1>{\pdftooltip{#1}{#2}}%
+\only<2>{\pdftooltip{#1}{#3}}%
+\only<3->{\pdftooltip{#1}{#3}}%
+}
+
+\newcommand{\myalttextD}[5]{%
+\only<1>{\pdftooltip{#1}{#2}}%
+\only<2>{\pdftooltip{#1}{#3}}%
+\only<3>{\pdftooltip{#1}{#3}}%
+\only<4->{\pdftooltip{#1}{#4}}%
+}
 
 \newfontfamily\sourcecodepro[
     UprightFont=*-Regular,
@@ -146,8 +173,11 @@
     my callout2/.style={draw,fill=blue!20!white,rectangle callout,callout absolute pointer=(#1),below right=5pt of {#1}},
     ampersand replacement=\&,
     invisible/.style={opacity=0},
-    visible on/.style={alt=#1{}{invisible}},
+    visible on/.style={beameralt=#1{}{invisible}},
     alt/.code args={<#1>#2#3}{%
+      \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
+    },
+    beameralt/.code args={<#1>#2#3}{%
       \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
     },
     tight matrix node/.style={draw,rectangle,inner sep=1pt, outer sep=0pt,text width=1cm,minimum height=.4cm,anchor=center},
