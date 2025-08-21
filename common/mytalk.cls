@@ -10,6 +10,7 @@
 \RequirePackage[implicit=false]{hyperref}
 \RequirePackage{pdfcomment}
 
+
 \newtoggle{heldback}
 \togglefalse{heldback}
 
@@ -29,7 +30,6 @@
 \setcounter{tocdepth}{5}
 
 \RequirePackage{fontspec}
-\RequirePackage{emoji}
 \RequirePackage{tikz}
 \RequirePackage{comment}
 \RequirePackage{graphicx}
@@ -37,6 +37,10 @@
 \RequirePackage{listings}
 \RequirePackage{lmodern}
 \RequirePackage[normalem]{ulem} % for sout
+\RequirePackage{pdfpages}
+\RequirePackage{emoji}
+\RequirePackage{pdfcomment}
+\RequirePackage{contour}
 
 \renewcommand<>{\sout}[1]{\alt#2{\beameroriginal{\sout}{#1}}{#1}}
 %\newcommand{\myalttext}[2]{%
@@ -95,6 +99,8 @@
 \pgfdeclarelayer{fg}
 \pgfsetlayers{bg,main,fg}
 
+\RequirePackage{contour}
+
 
 % HIGHLIGHT TOOLS
 \newcounter{image}
@@ -140,6 +146,8 @@
     \setbeamerfont*{itemize/enumerate body}{size=\fontsize{15}{17}}%
     \setbeamerfont*{itemize/enumerate subbody}{size=\fontsize{13}{15}}%
     \setlength\leftmargini{0em}%
+    \setbeamerfont{alerted text}{shape=\ifmmode\relax\else\itshape\fi}%
+    \setbeamercolor{alerted text}{fg=red!50!orange}%
 }
 \tikzset{tikzmark prefix/.expand once=\thepage-\the\beamer@slideinframe-}
 \mode<all>
