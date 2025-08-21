@@ -1,20 +1,20 @@
 \usetikzlibrary{arrows.meta,calc,patterns,shapes}
 \providecommand{\computer}{%
-    \includegraphics[width=1cm]{../common/Noun_project_216.pdf}
+    \includegraphics[width=1cm,alt={computer}]{../common/Noun_project_216.pdf}
 }
 \providecommand{\switch}{%
-    \includegraphics[width=0.9cm]{../common/fig-switch.pdf}
+    \includegraphics[width=0.9cm,alt={switch}]{../common/fig-switch.pdf}
 }
 \providecommand{\bigswitch}{%
-    \includegraphics[width=1.4cm]{../common/fig-switch.pdf}
+    \includegraphics[width=1.4cm,alt={switch}]{../common/fig-switch.pdf}
 }
 \providecommand{\router}{%
-    \includegraphics[width=0.9cm]{../common/fig-router.pdf}
+    \includegraphics[width=0.9cm,alt={router}]{../common/fig-router.pdf}
 }
 
 
 
-\begin{frame}{flows / packets}
+\begin{frame}\frametitle{flows / packets}
 \begin{tikzpicture}
 \tikzset{
     connect one/.style={draw,very thick,-Latex},
@@ -23,7 +23,7 @@
     big switch/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\bigswitch}},
     packet/.style={minimum width=.4cm,minimum height=0.2cm,inner sep=0mm,outer sep=0mm,draw},
     packet lg/.style={minimum width=.6cm,minimum height=0.2cm,inner sep=0mm,outer sep=0mm,draw},
-    c1c2/.style={fill=violet!40,draw=black,thin,alt=<2>{thick,draw=red}},
+    c1c2/.style={fill=violet!40,draw=black,thin,slidealt=<2>{thick,draw=red}},
 }
 \node[computer] (c1) at (-5, 1) {};
 \node at (c1) {1};
@@ -43,7 +43,7 @@
     node[above=0.05cm,sloped,packet lg,c1c2,pos=0.6] {};
 \node[packet,c1c2,anchor=north east] at ([yshift=-.1cm,xshift=-.1cm]s1.north east) {};
 \node[packet lg,c1c2,anchor=north east] at ([yshift=-.3cm,xshift=-.1cm]s1.north east) {};
-
+%
 \node[packet,c1c2,anchor=north east] at ([yshift=-.1cm,xshift=-.1cm]s2.north east) {};
 \node[packet,c1c2,anchor=north east] at ([yshift=-.3cm,xshift=-.1cm]s2.north east) {};
 \node[packet,c1c2,anchor=north east] at ([yshift=-.5cm,xshift=-.1cm]s2.north east) {};
@@ -74,9 +74,9 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{(de)multiplexing}
+\begin{frame}\frametitle{(de)multiplexing}
 \begin{tikzpicture}
-\tikzset{
+\tikzset{%
     connect one/.style={draw,very thick,-Latex},
     connect one lg/.style={draw,line width=1mm,-Latex},
     connect one sm/.style={draw,thick,-Latex},
@@ -87,13 +87,13 @@
     packet lg/.style={minimum width=.6cm,minimum height=0.2cm,inner sep=0mm,outer sep=0mm,draw},
     c1c2/.style={fill=violet!40,draw=black,thin},
     c3c4/.style={pattern=checkerboard,pattern color=green!70,draw=black,thin},
-    buffer 1/.style={alt=<5>{draw=red,thick},alt=<8>{draw=red,thick}},
-    buffer 2/.style={alt=<5>{draw=red,thick}},
+    buffer 1/.style={slidealt=<5>{draw=red,thick},slidealt=<8>{draw=red,thick}},
+    buffer 2/.style={slidealt=<5>{draw=red,thick}},
 }
 \node[computer] (c1) at (-5, 1) {};
 \node at (c1) {1};
-\node[big switch,alt=<3-4>{fill=red!10},alt=<6>{fill=red!10}] (s1) at (-2,-.5) {};
-\node[big switch,alt=<3-4>{fill=red!10}] (s2) at (2,.5) {};
+\node[big switch,slidealt=<3-4>{fill=red!10},slidealt=<6>{fill=red!10}] (s1) at (-2,-.5) {};
+\node[big switch,slidealt=<3-4>{fill=red!10}] (s2) at (2,.5) {};
 \node[computer] (c2) at (6, 2) {};
 \node at (c2) {2};
 \node[computer] (c3) at (-5, -1) {};
@@ -107,7 +107,7 @@
     node[above=0.05cm,sloped,packet,c1c2,pos=0.1] {}
     node[above=0.05cm,sloped,packet lg,c1c2,pos=0.5] {}
     node[above=0.05cm,sloped,packet,c1c2,pos=0.8] {};
-\draw[connect one,alt={<2>{draw=red,ultra thick}}] (s1) -- (s2)
+\draw[connect one,slidealt={<2>{draw=red,ultra thick}}] (s1) -- (s2)
     node[above=0.05cm,sloped,packet,c1c2,pos=0.3] {}
     node[above=0.05cm,sloped,packet,c3c4,pos=0.6] {}
     node[above=0.05cm,sloped,packet,c1c2,pos=0.8] {};
@@ -128,36 +128,35 @@
 \node[packet,c1c2,buffer 1,anchor=north east,opacity=0.3,draw=red] at ([yshift=-1.3cm,xshift=-.1cm]s1.north east) {};
 \node[packet,c1c2,buffer 1,anchor=north east,opacity=0.1,draw=red] at ([yshift=-1.5cm,xshift=-.1cm]s1.north east) {};
 \end{visibleenv}
-
 \node[packet,c1c2,buffer 2,anchor=north east] at ([yshift=-.1cm,xshift=-.1cm]s2.north east) {};
 \node[packet,c1c2,buffer 2,anchor=north east] at ([yshift=-.3cm,xshift=-.1cm]s2.north east) {};
 \node[packet,c1c2,buffer 2,anchor=north east] at ([yshift=-.5cm,xshift=-.1cm]s2.north east) {};
 \node[packet lg,c3c4,buffer 2,anchor=south east] at ([yshift=.1cm,xshift=-.1cm]s2.south east) {};
 \coordinate (box loc) at (-4, -1.5);
-\tikzset{
-    explain box/.style={
+\tikzset{%
+    explain box/.style={%
         overlay,draw=red, align=left, very thick, anchor=north west,at=(box loc)
     },
 }
 \begin{visibleenv}<2>
-\node[explain box] {
+\node[explain box] {%
     two or more flows can \\
     share one or more links
 };
 \end{visibleenv}
 \begin{visibleenv}<3>
-\node[explain box] {
+\node[explain box] {%
     left switch \textit{\myemph{multiplexes}} the two flows onto one link \\
     right switch \textit{\myemph{demultiplexes}} them to separate them
 };
 \end{visibleenv}
 \begin{visibleenv}<4>
-\node[explain box] {
-    this picture: multiplexed by dividing up \textit{time} on link \\
+\node[explain box] {%
+    this picture: multiplexed by dividing up \textit{time} on link
 };
 \end{visibleenv}
 \begin{visibleenv}<5>
-\node[explain box] {
+\node[explain box] {%
     switches usually have \textit{\myemph{buffers}} (also called \textit{\myemph{queues}}) \\
     hold waiting packets \\
     ~ \\
@@ -167,7 +166,7 @@
 };
 \end{visibleenv}
 \begin{visibleenv}<6-7>
-\node[explain box] {
+\node[explain box] {%
     incomplete list of causes of `bursts': \\
     ~ \\
     \myemph<6>{multiple unsynchronized flows} \\
@@ -175,17 +174,17 @@
 };
 \end{visibleenv}
 \begin{visibleenv}<8>
-\node[explain box] {
+\node[explain box] {%
     if buffer full, switch must \textit{\myemph{drop}} packets \\
     will happen eventually if overall rate faster than outgoing link \\
-    ~ \\
+    ~\\
     scenario is called \textit{\myemph{congestion}}
 };
 \end{visibleenv}
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{buffer usage: fast to slow, store + forward}
+\begin{frame}\frametitle{buffer usage: fast to slow, store + forward}
 \begin{tikzpicture}
 \tikzset{
     axis/.style={draw,thick,-Latex},
@@ -256,7 +255,7 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{buffer usage: fast to slow, cut-through}
+\begin{frame}\frametitle{buffer usage: fast to slow, cut-through}
 \begin{tikzpicture}
 \tikzset{
     axis/.style={draw,thick,-Latex},

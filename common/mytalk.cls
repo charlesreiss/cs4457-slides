@@ -181,8 +181,11 @@
     my callout2/.style={draw,fill=blue!20!white,rectangle callout,callout absolute pointer=(#1),below right=5pt of {#1}},
     ampersand replacement=\&,
     invisible/.style={opacity=0},
-    visible on/.style={beameralt=#1{}{invisible}},
+    visible on/.style={slidealt=#1{}{invisible}},
     alt/.code args={<#1>#2#3}{%
+      \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
+    },
+    slidealt/.code args={<#1>#2#3}{%
       \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
     },
     beameralt/.code args={<#1>#2#3}{%
