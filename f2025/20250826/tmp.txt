@@ -1,0 +1,5333 @@
+latexrun -W no-overfull --latex-cmd=lualatex --latex-args=-shell-escape talk-slides.tex
+This is LuaHBTeX, Version 1.22.0 (TeX Live 2025) 
+ system commands enabled.
+(./talk-slides.tex
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-08-13>
+
+(/home/charles/texlive/2025/texmf-dist/tex/latex/pdfmanagement-testphase/pdfman
+agement-testphase.sty
+(/home/charles/texlive/2025/texmf-dist/tex/latex/tagpdf/tagpdf-base.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/pdfmanagement-testphase/pdfman
+agement.ltx))
+! Undefined control sequence.
+<recently read> \DeclareDocumentMetadata 
+                                         
+l.2 \DeclareDocumentMetadata
+                            {pdfversion=2.0}
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2 \DeclareDocumentMetadata{p
+                              dfversion=2.0}
+(/home/charles/texlive/2025/texmf-dist/tex/latex/tagpdf/tagpdf.sty
+(/home/charles/texlive/2025/texmf-dist/tex/latex/tagpdf/tagpdf-luatex.def)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/tagpdf/tagpdf-mc-code-lua.sty)
+
+! Undefined control sequence.
+\pdf_object_new_indexed:nn ...backend_object_new: 
+                                                  \__pdf_object_record:neN {...
+
+l.932 ...ject_new_indexed:nn { __tag/struct }{ 1 }
+                                                  
+! Undefined control sequence.
+\pdf_object_new:n #1->\__pdf_backend_object_new: 
+                                                 \__pdf_object_record:nN {#1...
+
+l.1055 \pdf_object_new:n { __tag/tree/parenttree }
+                                                  
+! Undefined control sequence.
+\pdf_object_new:n #1->\__pdf_backend_object_new: 
+                                                 \__pdf_object_record:nN {#1...
+
+l.1163 \pdf_object_new:n { __tag/tree/rolemap }
+                                               
+! Undefined control sequence.
+\pdf_object_new:n #1->\__pdf_backend_object_new: 
+                                                 \__pdf_object_record:nN {#1...
+
+l.1222 \pdf_object_new:n { __tag/tree/namespaces }
+                                                  
+! Undefined control sequence.
+<argument> \__pdf_backend_version_major: 
+                                         
+l.1339 \pdf_version_compare:NnTF < {2.0}
+                                        
+! Missing number, treated as zero.
+<to be read again> 
+                   <
+l.1339 \pdf_version_compare:NnTF < {2.0}
+                                        
+! Undefined control sequence.
+<argument> \__pdf_backend_version_major: 
+                                         
+l.1400 \pdf_version_compare:NnTF < {2.0}
+                                        
+! Missing number, treated as zero.
+<to be read again> 
+                   <
+l.1400 \pdf_version_compare:NnTF < {2.0}
+                                        
+! Undefined control sequence.
+<argument> \__pdf_backend_version_major: 
+                                         
+l.1473 \pdf_version_compare:NnT < {2.0}
+                                       
+! Missing number, treated as zero.
+<to be read again> 
+                   <
+l.1473 \pdf_version_compare:NnT < {2.0}
+                                       
+! Undefined control sequence.
+<argument> \__pdf_backend_version_major: 
+                                         
+l.1546 \pdf_version_compare:NnF < {2.0}
+                                       
+! Missing number, treated as zero.
+<to be read again> 
+                   <
+l.1546 \pdf_version_compare:NnF < {2.0}
+                                       
+! Undefined control sequence.
+<argument> \__pdf_backend_version_major: 
+                                         
+l.1577 \pdf_version_compare:NnTF < {2.0}
+                                        
+! Missing number, treated as zero.
+<to be read again> 
+                   <
+l.1577 \pdf_version_compare:NnTF < {2.0}
+                                        
+! Undefined control sequence.
+<argument> \__pdf_backend_version_major: 
+                                         
+l.1671 \pdf_version_compare:NnTF < {2.0}
+                                        
+! Missing number, treated as zero.
+<to be read again> 
+                   <
+l.1671 \pdf_version_compare:NnTF < {2.0}
+                                        
+! Undefined control sequence.
+<argument> \__pdf_backend_version_major: 
+                                         
+l.1751 \pdf_version_compare:NnTF < {2.0}
+                                        
+! Missing number, treated as zero.
+<to be read again> 
+                   <
+l.1751 \pdf_version_compare:NnTF < {2.0}
+                                        
+! Undefined control sequence.
+<argument> \__pdf_backend_version_major: 
+                                         
+l.1792 \pdf_version_compare:NnTF < {2.0}
+                                        
+! Missing number, treated as zero.
+<to be read again> 
+                   <
+l.1792 \pdf_version_compare:NnTF < {2.0}
+                                        
+! Undefined control sequence.
+<argument> \__pdf_backend_version_major: 
+                                         
+l.1911 \pdf_version_compare:NnTF < {2.0}
+                                        
+! Missing number, treated as zero.
+<to be read again> 
+                   <
+l.1911 \pdf_version_compare:NnTF < {2.0}
+                                        
+! Undefined control sequence.
+\pdf_name_from_unicode_e:n ...me_from_unicode_e:n 
+                                                  {#1}
+l.2264 ...name_from_unicode_e:n {StructTreeRoot} }
+                                                  
+! Undefined control sequence.
+\pdf_name_from_unicode_e:n ...me_from_unicode_e:n 
+                                                  {#1}
+l.2269 ...name_from_unicode_e:n {StructTreeRoot} }
+                                                  
+! Undefined control sequence.
+<argument> \__pdf_backend_version_major: 
+                                         
+l.2286 \pdf_version_compare:NnF < {2.0}
+                                       
+! Missing number, treated as zero.
+<to be read again> 
+                   <
+l.2286 \pdf_version_compare:NnF < {2.0}
+                                       
+! Undefined control sequence.
+<argument> \__pdf_backend_version_major: 
+                                         
+l.2304 \pdf_version_compare:NnTF < {2.0}
+                                        
+! Missing number, treated as zero.
+<to be read again> 
+                   <
+l.2304 \pdf_version_compare:NnTF < {2.0}
+                                        
+! Undefined control sequence.
+\pdf_name_from_unicode_e:n ...me_from_unicode_e:n 
+                                                  {#1}
+l.4264 ...pagination}{/O/Artifact/Type/Pagination}
+                                                  
+) (./mytalk.cls
+Document Class: mytalk 2018/09/08 version 0.03
+Missing character: There is no p (U+0070) in font nullfont!
+Missing character: There is no d (U+0064) in font nullfont!
+Missing character: There is no f (U+0066) in font nullfont!
+Missing character: There is no v (U+0076) in font nullfont!
+Missing character: There is no e (U+0065) in font nullfont!
+Missing character: There is no r (U+0072) in font nullfont!
+Missing character: There is no s (U+0073) in font nullfont!
+Missing character: There is no i (U+0069) in font nullfont!
+Missing character: There is no o (U+006F) in font nullfont!
+Missing character: There is no n (U+006E) in font nullfont!
+Missing character: There is no = (U+003D) in font nullfont!
+Missing character: There is no 2 (U+0032) in font nullfont!
+Missing character: There is no . (U+002E) in font nullfont!
+Missing character: There is no 0 (U+0030) in font nullfont!
+Missing character: There is no p (U+0070) in font nullfont!
+Missing character: There is no d (U+0064) in font nullfont!
+Missing character: There is no f (U+0066) in font nullfont!
+Missing character: There is no v (U+0076) in font nullfont!
+Missing character: There is no e (U+0065) in font nullfont!
+Missing character: There is no r (U+0072) in font nullfont!
+Missing character: There is no s (U+0073) in font nullfont!
+Missing character: There is no i (U+0069) in font nullfont!
+Missing character: There is no o (U+006F) in font nullfont!
+Missing character: There is no n (U+006E) in font nullfont!
+Missing character: There is no = (U+003D) in font nullfont!
+Missing character: There is no 2 (U+0032) in font nullfont!
+Missing character: There is no . (U+002E) in font nullfont!
+Missing character: There is no 0 (U+0030) in font nullfont!
+Missing character: There is no p (U+0070) in font nullfont!
+Missing character: There is no d (U+0064) in font nullfont!
+Missing character: There is no f (U+0066) in font nullfont!
+Missing character: There is no v (U+0076) in font nullfont!
+Missing character: There is no e (U+0065) in font nullfont!
+Missing character: There is no r (U+0072) in font nullfont!
+Missing character: There is no s (U+0073) in font nullfont!
+Missing character: There is no i (U+0069) in font nullfont!
+Missing character: There is no o (U+006F) in font nullfont!
+Missing character: There is no n (U+006E) in font nullfont!
+Missing character: There is no = (U+003D) in font nullfont!
+Missing character: There is no 2 (U+0032) in font nullfont!
+Missing character: There is no . (U+002E) in font nullfont!
+Missing character: There is no 0 (U+0030) in font nullfont!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 2--3
+[]pdfversion=2.0
+(/home/charles/texlive/2025/texmf-dist/tex/latex/silence/silence.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+(/home/charles/texlive/2025/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/home/charles/texlive/2025/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+(/home/charles/texlive/2025/texmf-dist/tex/generic/xkeyval/keyval.tex))))
+(/home/charles/texlive/2025/texmf-dist/tex/latex/etoolbox/etoolbox.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/pdfcomment/pdfcomment.sty
+(/home/charles/texlive/2025/texmf-dist/tex/generic/luatex85/luatex85.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/datetime2/datetime2.sty
+(/home/charles/texlive/2025/texmf-dist/tex/latex/tracklang/tracklang.sty
+(/home/charles/texlive/2025/texmf-dist/tex/generic/tracklang/tracklang.tex)))
+(/home/charles/texlive/2025/texmf-dist/tex/latex/zref/zref-savepos.sty
+(/home/charles/texlive/2025/texmf-dist/tex/latex/zref/zref-base.sty
+(/home/charles/texlive/2025/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/infwarerr/infwarerr.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.st
+y) (/home/charles/texlive/2025/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+(/home/charles/texlive/2025/texmf-dist/tex/generic/iftex/iftex.sty))
+(/home/charles/texlive/2025/texmf-dist/tex/generic/etexcmds/etexcmds.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/auxhook/auxhook.sty)))
+(/home/charles/texlive/2025/texmf-dist/tex/latex/refcount/refcount.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/base/ifthen.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/tools/calc.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/marginnote/marginnote.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/iftex/ifpdf.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/iftex/ifluatex.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/soulpos/soulpos.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pdfescape/pdfescape.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/hycolor/hycolor.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/hyperref/nameref.sty
+(/home/charles/texlive/2025/texmf-dist/tex/generic/gettitlestring/gettitlestrin
+g.sty (/home/charles/texlive/2025/texmf-dist/tex/latex/kvoptions/kvoptions.sty)
+)) (/home/charles/texlive/2025/texmf-dist/tex/generic/stringenc/stringenc.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/intcalc/intcalc.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/hyperref/puenc.def)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/url/url.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/bitset/bitset.sty
+(/home/charles/texlive/2025/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))
+
+Package hyperref Warning: Option `pdfpagelabels' is turned off
+(hyperref)                because \thepage is undefined.
+
+)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/pdfmanagement-testphase/hgener
+ic-testphase.def
+(/home/charles/texlive/2025/texmf-dist/tex/latex/pdfmanagement-testphase/hyperr
+ef-colorschemes.def)
+! Undefined control sequence.
+<argument> \__pdf_backend_version_major: 
+                                         
+l.1349 ...tr_if_eq_p:ee{\pdf_version_major:}{-1} }
+                                                  
+! Missing number, treated as zero.
+<to be read again> 
+                   >
+l.1349 ...tr_if_eq_p:ee{\pdf_version_major:}{-1} }
+                                                  
+! Undefined control sequence.
+<argument> \__pdf_backend_version_major: 
+                                         
+l.1349 ...tr_if_eq_p:ee{\pdf_version_major:}{-1} }
+                                                  
+! Missing number, treated as zero.
+<to be read again> 
+                   =
+l.1349 ...tr_if_eq_p:ee{\pdf_version_major:}{-1} }
+                                                  
+! Undefined control sequence.
+\pdf_version_major: ...pdf_backend_version_major: 
+                                                  
+l.1349 ...tr_if_eq_p:ee{\pdf_version_major:}{-1} }
+                                                  
+! Undefined control sequence.
+<argument> \__pdf_backend_version_major: 
+                                         
+l.1418   }
+          
+! Missing number, treated as zero.
+<to be read again> 
+                   >
+l.1418   }
+          
+! Undefined control sequence.
+<argument> \__pdf_backend_version_major: 
+                                         
+l.1418   }
+          
+! Missing number, treated as zero.
+<to be read again> 
+                   =
+l.1418   }
+          
+! Undefined control sequence.
+\pdf_version_major: ...pdf_backend_version_major: 
+                                                  
+l.1418   }
+          
+! Undefined control sequence.
+<argument> \__pdf_backend_version_major: 
+                                         
+l.1418   }
+          
+! Missing number, treated as zero.
+<to be read again> 
+                   >
+l.1418   }
+          
+! Undefined control sequence.
+<argument> \__pdf_backend_version_major: 
+                                         
+l.1418   }
+          
+! Missing number, treated as zero.
+<to be read again> 
+                   =
+l.1418   }
+          
+! Undefined control sequence.
+\pdf_version_major: ...pdf_backend_version_major: 
+                                                  
+l.1418   }
+          
+! Undefined control sequence.
+<argument> \__pdf_backend_version_major: 
+                                         
+l.1418   }
+          
+! Missing number, treated as zero.
+<to be read again> 
+                   >
+l.1418   }
+          
+! Undefined control sequence.
+<argument> \__pdf_backend_version_major: 
+                                         
+l.1418   }
+          
+! Missing number, treated as zero.
+<to be read again> 
+                   =
+l.1418   }
+          
+! Undefined control sequence.
+\pdf_version_major: ...pdf_backend_version_major: 
+                                                  
+l.1418   }
+          
+! Undefined control sequence.
+<argument> \__pdf_backend_version_major: 
+                                         
+l.1418   }
+          
+! Missing number, treated as zero.
+<to be read again> 
+                   >
+l.1418   }
+          
+! Undefined control sequence.
+<argument> \__pdf_backend_version_major: 
+                                         
+l.1418   }
+          
+! Missing number, treated as zero.
+<to be read again> 
+                   =
+l.1418   }
+          
+! Undefined control sequence.
+\pdf_version_major: ...pdf_backend_version_major: 
+                                                  
+l.1418   }
+          
+! Undefined control sequence.
+<argument> \__pdf_backend_version_major: 
+                                         
+l.1418   }
+          
+! Missing number, treated as zero.
+<to be read again> 
+                   >
+l.1418   }
+          
+! Undefined control sequence.
+<argument> \__pdf_backend_version_major: 
+                                         
+l.1418   }
+          
+! Missing number, treated as zero.
+<to be read again> 
+                   =
+l.1418   }
+          
+! Undefined control sequence.
+\pdf_version_major: ...pdf_backend_version_major: 
+                                                  
+l.1418   }
+          
+! Undefined control sequence.
+\pdfannot_link_margin:n ..._backend_link_margin:n 
+                                                  {#1}
+l.2135  }
+         
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2135  }
+         
+! Undefined control sequence.
+<recently read> \__pdf_backend_pageobject_ref:n 
+                                                
+l.2135  }
+         
+Missing character: There is no 1 (U+0031) in font nullfont!
+Missing character: There is no p (U+0070) in font nullfont!
+Missing character: There is no t (U+0074) in font nullfont!
+Missing character: There is no 1 (U+0031) in font nullfont!
+Missing character: There is no p (U+0070) in font nullfont!
+Missing character: There is no t (U+0074) in font nullfont!
+Missing character: There is no 1 (U+0031) in font nullfont!
+Missing character: There is no p (U+0070) in font nullfont!
+Missing character: There is no t (U+0074) in font nullfont!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 2135--2672
+[]1pt 
+! Undefined control sequence.
+<argument> \c_sys_backend_str 
+                              
+l.3511 \str_case:VnF \c_sys_backend_str
+                                       
+)) (/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamer.cls
+Document Class: beamer 2025/08/13 v3.76 A class for typesetting presentations
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerbasemodes.sty
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerbasedecode.sty))
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerbaseoptions.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/geometry/geometry.sty
+(/home/charles/texlive/2025/texmf-dist/tex/generic/iftex/ifvtex.sty))
+(/home/charles/texlive/2025/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/home/charles/texlive/2025/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfutil-common
+.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.
+def)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.te
+x (/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/pgf.revision.tex)))
+(/home/charles/texlive/2025/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.t
+ex
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibrary
+filtered.code.tex)))
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.te
+x)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.
+tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.co
+de.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.ba
+sic.code.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.tr
+igonometric.code.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.ra
+ndom.code.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.co
+mparison.code.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.ba
+se.code.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.ro
+und.code.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.mi
+sc.code.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.in
+tegerarithmetics.code.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.te
+x)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.t
+ex))) (/home/charles/texlive/2025/texmf-dist/tex/latex/extsizes/size14.clo)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/home/charles/texlive/2025/texmf-dist/tex/latex/graphics/graphicx.sty
+(/home/charles/texlive/2025/texmf-dist/tex/latex/graphics/graphics.sty
+(/home/charles/texlive/2025/texmf-dist/tex/latex/graphics/trig.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/graphics-def/luatex.def)))
+(/home/charles/texlive/2025/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.
+tex (/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg)
+
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-luate
+x.def
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-commo
+n-pdf.def)))
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpa
+th.code.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotoc
+ol.code.tex))
+(/home/charles/texlive/2025/texmf-dist/tex/latex/xcolor/xcolor.sty
+(/home/charles/texlive/2025/texmf-dist/tex/latex/graphics-cfg/color.cfg)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/graphics/mathcolor.ltx))
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.
+tex (/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/math/pgfint.code.tex
+)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints
+.code.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathco
+nstruct.code.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathus
+age.code.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes
+.code.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphi
+cstate.code.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransf
+ormations.code.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.
+code.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobject
+s.code.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathpr
+ocessing.code.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows
+.code.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.
+code.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.
+code.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreextern
+al.code.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers
+.code.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransp
+arency.code.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatter
+ns.code.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.co
+de.tex)))
+(/home/charles/texlive/2025/texmf-dist/tex/latex/pgf/utilities/xxcolor.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/base/atbegshi-ltx.sty)
+
+! LaTeX Error: Option clash for package hyperref.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.377 
+      
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerbaserequires.sty
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerbasecompatibility
+.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerbasefont.sty
+(/home/charles/texlive/2025/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/home/charles/texlive/2025/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/home/charles/texlive/2025/texmf-dist/tex/latex/sansmathaccent/sansmathaccent.
+sty (/home/charles/texlive/2025/texmf-dist/tex/latex/koma-script/scrlfile.sty
+(/home/charles/texlive/2025/texmf-dist/tex/latex/koma-script/scrlfile-hook.sty
+(/home/charles/texlive/2025/texmf-dist/tex/latex/koma-script/scrlogo.sty)))))
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerbasetranslator.st
+y (/home/charles/texlive/2025/texmf-dist/tex/latex/translator/translator.sty))
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerbasemisc.sty
+! Undefined control sequence.
+\pdfannot_link_off: ...pdfannot_backend_link_off: 
+                                                  
+l.158 \onecolumn
+                
+
+! Package xcolor Error: Undefined color `.'.
+
+See the xcolor package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.158 \onecolumn
+                
+! Undefined control sequence.
+\pdfannot_link_on: ->\__pdfannot_backend_link_on: 
+                                                  
+l.158 \onecolumn
+                
+! Undefined control sequence.
+\pdfannot_link_off: ...pdfannot_backend_link_off: 
+                                                  
+l.158 \onecolumn
+                
+
+! Package xcolor Error: Undefined color `.'.
+
+See the xcolor package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.158 \onecolumn
+                
+! Undefined control sequence.
+\pdfannot_link_on: ->\__pdfannot_backend_link_on: 
+                                                  
+l.158 \onecolumn
+                
+! Undefined control sequence.
+\pdf_destination:nn ...pdf_backend_destination:nn 
+                                                  {#1}{#2}
+l.158 \onecolumn
+                
+[1{/home/charles/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+Missing character: There is no p (U+0070) in font nullfont!
+Missing character: There is no d (U+0064) in font nullfont!
+Missing character: There is no f (U+0066) in font nullfont!
+Missing character: There is no v (U+0076) in font nullfont!
+Missing character: There is no e (U+0065) in font nullfont!
+Missing character: There is no r (U+0072) in font nullfont!
+Missing character: There is no s (U+0073) in font nullfont!
+Missing character: There is no i (U+0069) in font nullfont!
+Missing character: There is no o (U+006F) in font nullfont!
+Missing character: There is no n (U+006E) in font nullfont!
+Missing character: There is no = (U+003D) in font nullfont!
+Missing character: There is no 2 (U+0032) in font nullfont!
+Missing character: There is no . (U+002E) in font nullfont!
+Missing character: There is no 0 (U+0030) in font nullfont!
+Missing character: There is no 1 (U+0031) in font nullfont!
+Missing character: There is no p (U+0070) in font nullfont!
+Missing character: There is no t (U+0074) in font nullfont!
+])
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerbasetwoscreens.st
+y)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerbaseoverlay.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerbasetitle.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerbasesection.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerbaseframe.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerbaseverbatim.sty)
+
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerbaseframesize.sty
+)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerbaseframecomponen
+ts.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerbasecolor.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerbasenotes.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerbasetoc.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerbasetemplates.sty
+
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerbaseauxtemplates.
+sty (/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerbaseboxes.sty
+)))
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerbaselocalstructur
+e.sty (/home/charles/texlive/2025/texmf-dist/tex/latex/tools/enumerate.sty))
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerbasenavigation.st
+y
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerbasenavigationsym
+bols.tex))
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerbasetheorems.sty
+(/home/charles/texlive/2025/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/home/charles/texlive/2025/texmf-dist/tex/latex/amsmath/amstext.sty
+(/home/charles/texlive/2025/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/home/charles/texlive/2025/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/home/charles/texlive/2025/texmf-dist/tex/latex/amscls/amsthm.sty))
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerbasethemes.sty))
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerthemedefault.sty
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerfontthemedefault.
+sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamercolorthemedefault
+.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerinnerthemedefault
+.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerouterthemedefault
+.sty))) (/home/charles/texlive/2025/texmf-dist/tex/latex/fontspec/fontspec.sty
+(/home/charles/texlive/2025/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/home/charles/texlive/2025/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/home/charles/texlive/2025/texmf-dist/tex/latex/l3backend/l3backend-luatex.def
+)))
+(/home/charles/texlive/2025/texmf-dist/tex/latex/fontspec/fontspec-luatex.sty
+(/home/charles/texlive/2025/texmf-dist/tex/latex/base/fontenc.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
+(/home/charles/texlive/2025/texmf-dist/tex/latex/emoji/emoji.sty
+(/home/charles/texlive/2025/texmf-dist/tex/latex/emoji/emoji-table.def))
+(/home/charles/texlive/2025/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/home/charles/texlive/2025/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.
+code.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.co
+de.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-vers
+ion-0-65.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-vers
+ion-1-18.sty))
+(/home/charles/texlive/2025/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/utilities/pgffor.code.te
+x))
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.
+code.tex
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryplot
+handlers.code.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.
+code.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libra
+ries/tikzlibrarytopaths.code.tex)))
+(/home/charles/texlive/2025/texmf-dist/tex/latex/comment/comment.sty
+Excluding comment 'comment')
+(/home/charles/texlive/2025/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/listings/listings.sty
+(/home/charles/texlive/2025/texmf-dist/tex/latex/listings/lstpatch.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/listings/lstmisc.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/listings/listings.cfg))
+(/home/charles/texlive/2025/texmf-dist/tex/latex/lm/lmodern.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/ulem/ulem.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/tikzmark/tikzlibrarytikzmark.c
+ode.tex
+(/home/charles/texlive/2025/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.s
+ty))
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerthemeboxes.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamercolorthemedolphin
+.sty)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/beamer/beamerfontthemeprofessi
+onalfonts.sty)) (./talk.tex
+! Undefined control sequence.
+<argument> ...vate_indexed_structure_destination: 
+                                                  
+\use:n #1->#1
+             
+\__hook begindocument/before ...ure_destination: }
+                                                  \RequirePackage {bookmark}...
+
+\document ->\UseOneTimeHook {begindocument/before}
+                                                  \@kernel@after@begindocume...
+
+l.4 \begin{document}
+                    
+(/home/charles/texlive/2025/texmf-dist/tex/latex/bookmark/bookmark.sty
+(/home/charles/texlive/2025/texmf-dist/tex/latex/bookmark/bkm-pdftex.def))
+
+LaTeX Warning: Unused global option(s):
+    [aspectratio=169].
+
+(./latex.out/talk-slides.aux)
+! Undefined control sequence.
+\pdf_name_from_unicode_e:n ...me_from_unicode_e:n 
+                                                  {#1}
+\exp_args:Nnne ...l_exp_not:w \tex_expanded:D {{#4
+                                                  }}}}
+\__tag_struct_set_tag_info:nnn ...nicode_e:n {#2}}
+                                                  \__tag_struct_prop_gput:nn...
+
+<argument> ..._tag_tl }{\g__tag_struct_tag_NS_tl }
+                                                  \__tag_check_structure_has...
+
+...
+l.4 \begin{document}
+                    
+(/home/charles/texlive/2025/texmf-dist/tex/generic/soul/soulutf8.sty
+
+Package soulutf8 Warning: This package is obsolete,
+(soulutf8)                use the soul package directly. 
+(soulutf8)                 on input line 29.
+
+) (/home/charles/texlive/2025/texmf-dist/tex/generic/soul/soul.sty
+(/home/charles/texlive/2025/texmf-dist/tex/generic/soul/soul-ori.sty))
+*geometry* driver: auto-detecting
+*geometry* detected driver: luatex
+(/home/charles/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+(/home/charles/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg))
+
+(/home/charles/texlive/2025/texmf-dist/tex/latex/translator/translator-basic-di
+ctionary-English.dict)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/translator/translator-bibliogr
+aphy-dictionary-English.dict)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/translator/translator-environm
+ent-dictionary-English.dict)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/translator/translator-months-d
+ictionary-English.dict)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/translator/translator-numbers-
+dictionary-English.dict)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/translator/translator-theorem-
+dictionary-English.dict) (./latex.out/talk-slides.nav)
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.7 \end{frame}
+               
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[2
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n2'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.2'
+]
+[3
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n3'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.3'
+] (../intro/talk-inner.tex
+(/home/charles/texlive/2025/texmf-dist/tex/generic/stringenc/se-ascii-print.def
+) (../intro/nodes-links.tex
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibraryarro
+ws.meta.code.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libra
+ries/tikzlibrarycalc.code.tex)
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libra
+ries/tikzlibraryshapes.code.tex
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libra
+ries/tikzlibraryshapes.geometric.code.tex
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibr
+aryshapes.geometric.code.tex))
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libra
+ries/tikzlibraryshapes.misc.code.tex
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibr
+aryshapes.misc.code.tex))
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libra
+ries/tikzlibraryshapes.symbols.code.tex
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibr
+aryshapes.symbols.code.tex))
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libra
+ries/tikzlibraryshapes.arrows.code.tex
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibr
+aryshapes.arrows.code.tex))
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libra
+ries/tikzlibraryshapes.callouts.code.tex
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibr
+aryshapes.callouts.code.tex))
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libra
+ries/tikzlibraryshapes.multipart.code.tex
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibr
+aryshapes.multipart.code.tex)))
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.65 \end{frame}
+                
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\only' on input line 65.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\only' on input line 65.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\only' on input line 65.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\only' on input line 65.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[4
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n4'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.4'
+]
+[5
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n5'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.5'
+<../common/Noun_project_216.pdf>]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.65 \end{frame}
+                
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\only' on input line 65.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\only' on input line 65.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\only' on input line 65.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\only' on input line 65.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[6
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n6'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.6'
+]
+[7
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n7'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.7'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.65 \end{frame}
+                
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\only' on input line 65.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\only' on input line 65.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\only' on input line 65.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\only' on input line 65.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[8
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n8'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.8'
+]
+[9
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n9'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.9'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.65 \end{frame}
+                
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\only' on input line 65.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\only' on input line 65.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\only' on input line 65.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\only' on input line 65.
+
+
+Overfull \vbox (13.30644pt too high) detected at line 65
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[10
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n10'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.10'
+]
+[11
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n11'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.11'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.88 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[12
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n12'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.12'
+]
+[13
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n13'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.13'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.111 \end{frame}
+                 
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[14
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n14'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.14'
+]
+[15
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n15'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.15'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.145 \end{frame}
+                 
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\only' on input line 145.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\only' on input line 145.
+
+
+Overfull \hbox (23.64026pt too wide) in paragraph at lines 145--145
+[]|[][] 
+
+Overfull \vbox (37.44194pt too high) detected at line 145
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[16
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n16'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.16'
+]
+[17
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n17'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.17'
+<../intro/ThicknetTransceiver.jpeg><../intro/4_port_netgear_ethernet_hub.jpg>]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.145 \end{frame}
+                 
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\only' on input line 145.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\only' on input line 145.
+
+
+Overfull \hbox (23.64026pt too wide) in paragraph at lines 145--145
+[]|[][] 
+
+Overfull \vbox (37.44194pt too high) detected at line 145
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[18
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n18'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.18'
+]
+[19
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n19'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.19'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.145 \end{frame}
+                 
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\only' on input line 145.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\only' on input line 145.
+
+
+Overfull \hbox (23.64026pt too wide) in paragraph at lines 145--145
+[]|[][] 
+
+Overfull \vbox (37.44194pt too high) detected at line 145
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[20
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n20'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.20'
+]
+[21
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n21'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.21'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.208 \end{frame}
+                 
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[22
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n22'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.22'
+]
+[23
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n23'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.23'
+<../common/fig-switch.pdf>]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.208 \end{frame}
+                 
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[24
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n24'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.24'
+]
+[25
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n25'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.25'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.208 \end{frame}
+                 
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[26
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n26'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.26'
+]
+[27
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n27'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.27'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.208 \end{frame}
+                 
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[28
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n28'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.28'
+]
+[29
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n29'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.29'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.276 \end{frame}
+                 
+
+Overfull \vbox (10.61003pt too high) detected at line 276
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[30
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n30'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.30'
+]
+[31
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n31'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.31'
+<../common/fig-router.pdf>]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.276 \end{frame}
+                 
+
+Overfull \vbox (10.61003pt too high) detected at line 276
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[32
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n32'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.32'
+]
+[33
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n33'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.33'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.276 \end{frame}
+                 
+
+Overfull \vbox (10.61003pt too high) detected at line 276
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[34
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n34'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.34'
+]
+[35
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n35'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.35'
+]) (../intro/flows.tex
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libra
+ries/tikzlibrarypatterns.code.tex
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/libraries/pgflibrarypatt
+erns.code.tex))
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.75 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[36
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n36'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.36'
+]
+[37
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n37'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.37'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.75 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[38
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n38'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.38'
+]
+[39
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n39'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.39'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.186 \end{frame}
+                 
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[40
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n40'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.40'
+]
+[41
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n41'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.41'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.186 \end{frame}
+                 
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[42
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n42'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.42'
+]
+[43
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n43'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.43'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.186 \end{frame}
+                 
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[44
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n44'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.44'
+]
+[45
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n45'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.45'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.186 \end{frame}
+                 
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[46
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n46'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.46'
+]
+[47
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n47'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.47'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.186 \end{frame}
+                 
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[48
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n48'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.48'
+]
+[49
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n49'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.49'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.186 \end{frame}
+                 
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[50
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n50'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.50'
+]
+[51
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n51'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.51'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.186 \end{frame}
+                 
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[52
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n52'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.52'
+]
+[53
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n53'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.53'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.186 \end{frame}
+                 
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[54
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n54'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.54'
+]
+[55
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n55'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.55'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.257 \end{frame}
+                 
+
+Overfull \hbox (17.80106pt too wide) in paragraph at lines 257--257
+[][]  
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[56
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n56'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.56'
+]
+[57
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n57'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.57'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.257 \end{frame}
+                 
+
+Overfull \hbox (17.80106pt too wide) in paragraph at lines 257--257
+[][]  
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[58
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n58'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.58'
+]
+[59
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n59'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.59'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.327 \end{frame}
+                 
+
+Overfull \hbox (28.43506pt too wide) in paragraph at lines 327--327
+[][]  
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[60
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n60'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.60'
+]
+[61
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n61'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.61'
+]) (../intro/channel-types.tex
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.9 \end{frame}
+               
+(/home/charles/texlive/2025/texmf-dist/tex/latex/lm/ot1lmr.fd)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/lm/omllmm.fd)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/lm/omslmsy.fd)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/lm/omxlmex.fd)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/home/charles/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd)
+Underfull \vbox (badness 10000) has occurred while \output is active
+[62
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n62'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.62'
+]
+[63
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n63'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.63'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.33 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[64
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n64'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.64'
+]
+[65
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n65'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.65'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.33 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[66
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n66'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.66'
+]
+[67
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n67'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.67'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.45 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[68
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n68'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.68'
+]
+[69
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n69'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.69'
+]) (../intro/channel-sockets.tex
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.18 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[70
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n70'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.70'
+]
+[71
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n71'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.71'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.27 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[72
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n72'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.72'
+]
+[73
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n73'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.73'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.34 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[74
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n74'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.74'
+]
+[75
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n75'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.75'
+]) (../intro/client-server.tex
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.15 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[76
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n76'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.76'
+]
+[77
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n77'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.77'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.24 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[78
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n78'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.78'
+]
+[79
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n79'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.79'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.35 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[80
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n80'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.80'
+]
+[81
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n81'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.81'
+]) (../intro/terms-exercise.tex
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.48 \end{frame}
+                
+(./latex.out/talk-slides.vrb)
+Overfull \vbox (0.37152pt too high) detected at line 48
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[82
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n82'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.82'
+]
+[83
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n83'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.83'
+]) (../intro/standardization.tex
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.15 \end{frame}
+                
+! Undefined control sequence.
+\pdf_name_from_unicode_e:n ...me_from_unicode_e:n 
+                                                  {#1}
+\exp_args:Nnne ...l_exp_not:w \tex_expanded:D {{#4
+                                                  }}}}
+\__tag_struct_set_tag_info:nnn ...nicode_e:n {#2}}
+                                                  \__tag_struct_prop_gput:nn...
+
+<argument> ..._tag_tl }{\g__tag_struct_tag_NS_tl }
+                                                  \__tag_check_structure_has...
+
+...
+l.15 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[84
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n84'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.84'
+]
+[85
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n85'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.85'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.32 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[86
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n86'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.86'
+]
+[87
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n87'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.87'
+]) (../intro/separate-tasks.tex
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.33 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[88
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n88'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.88'
+]
+[89
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n89'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.89'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.33 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[90
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n90'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.90'
+]
+[91
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n91'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.91'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.33 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[92
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n92'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.92'
+]
+[93
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n93'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.93'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.33 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[94
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n94'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.94'
+]
+[95
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n95'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.95'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.33 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[96
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n96'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.96'
+]
+[97
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n97'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.97'
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.43 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[98
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n98'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.98'
+]
+[99
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n99'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.99'
+]) (../intro/layer-model.tex
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.33 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[100
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n100'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.100'
+
+]
+[101
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n101'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.101'
+
+<../intro/systemsapproach-1-fig-13.pdf>]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.33 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[102
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n102'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.102'
+
+]
+[103
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n103'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.103'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.33 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[104
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n104'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.104'
+
+]
+[105
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n105'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.105'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.64 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[106
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n106'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.106'
+
+]
+[107
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n107'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.107'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.74 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[108
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n108'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.108'
+
+]
+[109
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n109'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.109'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.96 \end{frame}
+                
+
+Overfull \vbox (2.30046pt too high) detected at line 96
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[110
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n110'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.110'
+
+]
+[111
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n111'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.111'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.109 \end{frame}
+                 
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--109
+[]\TU/lmss/m/n/12 reach cor­rect pro­gram,
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--109
+[]\TU/lmss/m/n/12 reach cor­rect ma­chine
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[112
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n112'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.112'
+
+]
+[113
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n113'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.113'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.109 \end{frame}
+                 
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--109
+[]\TU/lmss/m/n/12 reach cor­rect pro­gram,
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--109
+[]\TU/lmss/m/n/12 reach cor­rect ma­chine
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[114
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n114'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.114'
+
+]
+[115
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n115'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.115'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.135 \end{frame}
+                 
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[116
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n116'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.116'
+
+]
+[117
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n117'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.117'
+
+<../intro/systemsapproach-1-fig-14.pdf>]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.135 \end{frame}
+                 
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[118
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n118'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.118'
+
+]
+[119
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n119'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.119'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.153 \end{frame}
+                 
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[120
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n120'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.120'
+
+]
+[121
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n121'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.121'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.153 \end{frame}
+                 
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[122
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n122'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.122'
+
+]
+[123
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n123'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.123'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.153 \end{frame}
+                 
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[124
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n124'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.124'
+
+]
+[125
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n125'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.125'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.170 \end{frame}
+                 
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[126
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n126'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.126'
+
+]
+[127
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n127'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.127'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.170 \end{frame}
+                 
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[128
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n128'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.128'
+
+]
+[129
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n129'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.129'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.195 \end{frame}
+                 
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[130
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n130'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.130'
+
+]
+[131
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n131'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.131'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.195 \end{frame}
+                 
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[132
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n132'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.132'
+
+]
+[133
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n133'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.133'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.205 \end{frame}
+                 
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[134
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n134'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.134'
+
+]
+[135
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n135'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.135'
+
+]) (../intro/what-is-wireshark.tex
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.10 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[136
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n136'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.136'
+
+]
+[137
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n137'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.137'
+
+]) (../intro/wireshark-ex.tex
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libra
+ries/tikzlibrarydecorations.pathreplacing.code.tex
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libra
+ries/tikzlibrarydecorations.code.tex
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorat
+ions.code.tex))
+(/home/charles/texlive/2025/texmf-dist/tex/generic/pgf/libraries/decorations/pg
+flibrarydecorations.pathreplacing.code.tex))
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.87 \end{frame}
+                
+(./latex.out/talk-slides.vrb)
+Overfull \hbox (26.87317pt too wide) in paragraph at lines 85--87
+[][]  
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[138
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n138'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.138'
+
+]
+[139
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n139'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.139'
+
+<../intro/wireshark-example1.png>]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.87 \end{frame}
+                
+(./latex.out/talk-slides.vrb)
+Overfull \hbox (26.87317pt too wide) in paragraph at lines 85--87
+[][]  
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[140
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n140'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.140'
+
+]
+[141
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n141'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.141'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.87 \end{frame}
+                
+(./latex.out/talk-slides.vrb)
+Overfull \hbox (26.87317pt too wide) in paragraph at lines 85--87
+[][]  
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[142
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n142'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.142'
+
+]
+[143
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n143'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.143'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.87 \end{frame}
+                
+(./latex.out/talk-slides.vrb)
+Overfull \hbox (26.87317pt too wide) in paragraph at lines 85--87
+[][]  
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[144
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n144'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.144'
+
+]
+[145
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n145'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.145'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.87 \end{frame}
+                
+(./latex.out/talk-slides.vrb)
+Overfull \hbox (26.87317pt too wide) in paragraph at lines 85--87
+[][]  
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[146
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n146'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.146'
+
+]
+[147
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n147'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.147'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.87 \end{frame}
+                
+(./latex.out/talk-slides.vrb)
+Overfull \hbox (26.87317pt too wide) in paragraph at lines 85--87
+[][]  
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[148
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n148'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.148'
+
+]
+[149
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n149'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.149'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.87 \end{frame}
+                
+(./latex.out/talk-slides.vrb)
+Overfull \hbox (26.87317pt too wide) in paragraph at lines 85--87
+[][]  
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[150
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n150'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.150'
+
+]
+[151
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n151'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.151'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.142 \end{frame}
+                 
+
+Overfull \hbox (29.71861pt too wide) in paragraph at lines 142--142
+[][]  
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[152
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n152'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.152'
+
+]
+[153
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n153'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.153'
+
+<../intro/wireshark-doh-zoom.png>]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.207 \end{frame}
+                 
+(./latex.out/talk-slides.vrb)
+Overfull \hbox (2.59105pt too wide) in paragraph at lines 63--207
+[][]  
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[154
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n154'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.154'
+
+]
+[155
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n155'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.155'
+
+<../intro/wireshark-hi-ethernet.png>]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.207 \end{frame}
+                 
+(./latex.out/talk-slides.vrb)
+Overfull \hbox (2.59105pt too wide) in paragraph at lines 63--207
+[][]  
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[156
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n156'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.156'
+
+]
+[157
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n157'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.157'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.207 \end{frame}
+                 
+(./latex.out/talk-slides.vrb)
+Overfull \hbox (2.59105pt too wide) in paragraph at lines 63--207
+[][]  
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[158
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n158'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.158'
+
+]
+[159
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n159'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.159'
+
+<../intro/wireshark-hi-ipv4.png>]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.207 \end{frame}
+                 
+(./latex.out/talk-slides.vrb)
+Overfull \hbox (2.59105pt too wide) in paragraph at lines 63--207
+[][]  
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[160
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n160'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.160'
+
+]
+[161
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n161'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.161'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.207 \end{frame}
+                 
+(./latex.out/talk-slides.vrb)
+Overfull \hbox (2.59105pt too wide) in paragraph at lines 63--207
+[][]  
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[162
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n162'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.162'
+
+]
+[163
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n163'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.163'
+
+<../intro/wireshark-hi-tcp.png>]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.207 \end{frame}
+                 
+(./latex.out/talk-slides.vrb)
+Overfull \hbox (2.59105pt too wide) in paragraph at lines 63--207
+[][]  
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[164
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n164'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.164'
+
+]
+[165
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n165'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.165'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.207 \end{frame}
+                 
+(./latex.out/talk-slides.vrb)
+Overfull \hbox (2.59105pt too wide) in paragraph at lines 63--207
+[][]  
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[166
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n166'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.166'
+
+]
+[167
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n167'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.167'
+
+<../intro/wireshark-hi-tls.png>]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.207 \end{frame}
+                 
+(./latex.out/talk-slides.vrb)
+Overfull \hbox (2.59105pt too wide) in paragraph at lines 63--207
+[][]  
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[168
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n168'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.168'
+
+]
+[169
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n169'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.169'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.207 \end{frame}
+                 
+(./latex.out/talk-slides.vrb)
+Overfull \hbox (2.59105pt too wide) in paragraph at lines 63--207
+[][]  
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[170
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n170'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.170'
+
+]
+[171
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n171'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.171'
+
+<../intro/wireshark-hi-http.png>]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.207 \end{frame}
+                 
+(./latex.out/talk-slides.vrb)
+Overfull \hbox (2.59105pt too wide) in paragraph at lines 63--207
+[][]  
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[172
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n172'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.172'
+
+]
+[173
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n173'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.173'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.207 \end{frame}
+                 
+(./latex.out/talk-slides.vrb)
+Overfull \hbox (2.59105pt too wide) in paragraph at lines 63--207
+[][]  
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[174
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n174'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.174'
+
+]
+[175
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n175'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.175'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.207 \end{frame}
+                 
+(./latex.out/talk-slides.vrb)
+Overfull \hbox (2.59105pt too wide) in paragraph at lines 63--207
+[][]  
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[176
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n176'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.176'
+
+]
+[177
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n177'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.177'
+
+<../intro/wireshark-hi-dns-in-tls.png>]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.207 \end{frame}
+                 
+(./latex.out/talk-slides.vrb)
+Overfull \hbox (2.59105pt too wide) in paragraph at lines 63--207
+[][]  
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[178
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n178'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.178'
+
+]
+[179
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n179'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.179'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.220 \end{frame}
+                 
+
+Overfull \hbox (0.17343pt too wide) in paragraph at lines 220--220
+[][]  
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[180
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n180'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.180'
+
+]
+[181
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n181'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.181'
+
+<../intro/wireshark-menu-tcp-filter.png>]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.277 \end{frame}
+                 
+
+Overfull \hbox (5.10118pt too wide) in paragraph at lines 277--277
+[][]  
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[182
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n182'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.182'
+
+]
+[183
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n183'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.183'
+
+<../intro/wireshark-filtered.png>]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.277 \end{frame}
+                 
+
+Overfull \hbox (5.10118pt too wide) in paragraph at lines 277--277
+[][]  
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[184
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n184'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.184'
+
+]
+[185
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n185'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.185'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.277 \end{frame}
+                 
+
+Overfull \hbox (5.10118pt too wide) in paragraph at lines 277--277
+[][]  
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[186
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n186'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.186'
+
+]
+[187
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n187'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.187'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.277 \end{frame}
+                 
+
+Overfull \hbox (5.10118pt too wide) in paragraph at lines 277--277
+[][]  
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[188
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n188'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.188'
+
+]
+[189
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n189'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.189'
+
+]) (../intro/end-to-end.tex
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.10 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[190
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n190'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.190'
+
+]
+[191
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n191'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.191'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.12 \againframe<2>{endToEndStatement}
+                                      
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[192
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n192'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.192'
+
+]
+[193
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n193'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.193'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.29 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[194
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n194'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.194'
+
+]
+[195
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n195'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.195'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.29 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[196
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n196'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.196'
+
+]
+[197
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n197'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.197'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.29 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[198
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n198'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.198'
+
+]
+[199
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n199'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.199'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.37 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[200
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n200'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.200'
+
+]
+[201
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n201'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.201'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.40 \againframe<3>{endToEndStatement}
+                                      
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[202
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n202'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.202'
+
+]
+[203
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n203'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.203'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.55 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[204
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n204'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.204'
+
+]
+[205
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n205'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.205'
+
+])) (../logistics/talk-inner.tex
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.19 \end{frame}
+                
+! Undefined control sequence.
+\pdf_name_from_unicode_e:n ...me_from_unicode_e:n 
+                                                  {#1}
+\exp_args:Nnne ...l_exp_not:w \tex_expanded:D {{#4
+                                                  }}}}
+\__tag_struct_set_tag_info:nnn ...nicode_e:n {#2}}
+                                                  \__tag_struct_prop_gput:nn...
+
+<argument> ..._tag_tl }{\g__tag_struct_tag_NS_tl }
+                                                  \__tag_check_structure_has...
+
+...
+l.19 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[206
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n206'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.206'
+
+]
+[207
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n207'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.207'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.41 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[208
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n208'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.208'
+
+]
+[209
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n209'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.209'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.61 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[210
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n210'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.210'
+
+]
+[211
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n211'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.211'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.80 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[212
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n212'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.212'
+
+]
+[213
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n213'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.213'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.95 \end{frame}
+                
+
+Overfull \vbox (1.28746pt too high) detected at line 95
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[214
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n214'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.214'
+
+]
+[215
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n215'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.215'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.105 \end{frame}
+                 
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[216
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n216'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.216'
+
+]
+[217
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n217'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.217'
+
+]
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.112 \end{frame}
+                 
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[218
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n218'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.218'
+
+]
+[219
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n219'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.219'
+
+])
+! Undefined control sequence.
+\__pdfmanagement_handler/Page/?_gremove:n ...ve:n 
+                                                  {#1}
+\__keys_set_keyval:nnn ...ctive: \__keys_execute: 
+                                                  \str_set:Nn \l__keys_modul...
+
+\__keys_set:nnn ...al:n \__keys_set_keyval:nn {#3}
+                                                  \str_set:Nn \l__keys_modul...
+
+<inserted text> ..._set:nn {hyp}{pdfpageduration=}
+                                                  \clist_set_eq:NN \l__keys_...
+
+...
+l.15 \end{frame}
+                
+
+Underfull \vbox (badness 10000) has occurred while \output is active
+[220
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n220'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.220'
+
+]
+! Undefined control sequence.
+<recently read> \__pdf_backend_metadata_stream:n 
+                                                 
+<to be read again> 
+                   {
+\g__pdfmeta_xmp_packet_tl ->
+                            
+<?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczk...
+\exp_args:No ...>\exp_after:wN #1\exp_after:wN {#2
+                                                  }
+...
+l.15 \end{frame}
+                
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+[221
+warning  (pdf backend): ignoring duplicate destination with the name 'Navigatio
+n221'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'page.221'
+
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+Missing character: There is no 
+ (U+000A) in font [lmsans12-regular]:+tlig;!
+] (./latex.out/talk-slides.aux)
+
+Package tagpdf Info: Finalizing the tagging structure:
+(tagpdf)             Writing out ~4 structure objects
+(tagpdf)             with ~444 'MC' leaf nodes.
+(tagpdf)             Be patient if there are lots of objects!
+
+Package tagpdf Info: writing ParentTree
+! error:  (pdf backend): referenced object has wrong type font; should be obj
+!  ==> Fatal error occurred, no output PDF file produced!
+failed to extract job name from latex log
+There were errors; talk-slides.pdf not updated
+make: *** [../Makefile.inc:6: talk-slides.pdf] Error 1
