@@ -119,3 +119,49 @@ pointToPoint.EnablePcapAll("tcp-bulk-send", false);
 % FIXME: show screenshot of wireshark on output
 % FIXME: show .tr file
 
+\begin{FragileFrame}
+\frametitle{running example: --help}
+\begin{Verbatim}[fontsize=\fontsize{9}{10},commandchars=\\\{\}]
+$ \myemph{./ns3 run examples/tcp/tcp-bulk-send -- --help}
+[0/2] Re-checking globbed directories...
+ninja: no work to do.
+tcp-bulk-send [Program Options] [General Arguments]
+
+Program Options:
+    --tracing:   Flag to enable/disable tracing [false]
+    --maxBytes:  Total number of bytes for application to send [0]
+
+General Arguments:
+    --PrintGlobals:              Print the list of globals.
+    --PrintGroups:               Print the list of groups.
+    --PrintGroup=[group]:        Print all TypeIds of group.
+    --PrintTypeIds:              Print all TypeIds.
+    --PrintAttributes=[typeid]:  Print all attributes of typeid.
+    --PrintVersion:              Print the ns-3 version.
+    --PrintHelp:                 Print this help message.
+\end{Verbatim}
+\end{FragileFrame}
+
+\begin{FragileFrame}
+\frametitle{running example}
+\begin{Verbatim}[fontsize=\fontsize{9}{10},commandchars=\\\{\}]
+$ \myemph{./ns3 run examples/tcp/tcp-bulk-send -- --maxBytes=1000000 --tracing=true}
+[0/2] Re-checking globbed directories...
+ninja: no work to do.
+Total Bytes Received: 566016
+
+$ \myemph{wireshark tcp-bulk-send-0-0.pcap}
+$ \myemph{wireshark tcp-bulk-send-1-0.pcap}
+$ \myemph{wireshark tcp-bulk-send-2-0.pcap}
+$ \myemph{wireshark tcp-bulk-send-2-1.pcap}
+\end{Verbatim}
+    \hrule
+\begin{itemize}
+\item packet traces for each simulated interface: (host)-(interface).pcap
+\item also .tr file with all events
+\item only 566016 bytes received because 10 second simulation only
+    \begin{itemize}
+    \item 500Kbit/s = 62KByte/s @ 10 s = about 620KByte
+    \end{itemize}
+\end{itemize}
+\end{FragileFrame}
