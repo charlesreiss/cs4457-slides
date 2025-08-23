@@ -15,7 +15,8 @@ SLIDEDECKS = \
     multiaccess \
     fire \
     encap \
-    p2p
+    p2p \
+    sim
 
 
 all: $(patsubst %,_dist/%.pdf,$(SLIDEDECKS))

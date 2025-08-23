@@ -21,7 +21,7 @@ cat >$NAME/talk.tex <<'_END_'
 
 
 \section{backup slides}
-\begin{frame}{backup slides}
+\begin{frame}\frametitle{backup slides}
 \end{frame}
 
 \end{document}

@@ -151,6 +151,7 @@ Same picture as before with the addition of a picture of a 4-port Ethernet hub -
 \end{frame}
 
 \begin{frame}\frametitle{switches / nodes / links}
+\myalttext{
 \begin{tikzpicture}
 \tikzset{
     computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer},beameralt=<3>{fill=red!10}},
@@ -211,11 +212,21 @@ Same picture as before with the addition of a picture of a 4-port Ethernet hub -
 };
 \end{visibleenv}
 \end{tikzpicture}
+}{
+Diagram of computers connected by a network. Lines with arrowheads
+at both ends extend from the computers to a number of boxes (with
+a design of crossing lines with arrowheads). Later frames
+repeat the diagram and indicate the boxes are called `switches';
+every participant (computers and switches) are called `nodes';
+and the lines connecting them are called `links' (regardless
+of whether implemented with wires or radio or whatever).
+}
 \end{frame}
 
 % FIXME: picture of physical switch
 
-\begin{frame}{routers / internetwork}
+\begin{frame}\frametitle{routers / internetwork}
+\myalttext{%
 \begin{tikzpicture}
 \tikzset{
     computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
@@ -241,7 +252,7 @@ Same picture as before with the addition of a picture of a 4-port Ethernet hub -
       cloud,draw,opacity=0.25,very thick,aspect=2,
       minimum width=3cm,minimum height=2cm,
      ] (net-4) at (2,-3) {};
-
+%
 \node[
       cloud,draw,opacity=0.25,very thick,aspect=2,
       minimum width=3cm,minimum height=2cm,
@@ -279,5 +290,8 @@ Same picture as before with the addition of a picture of a 4-port Ethernet hub -
 };
 \end{visibleenv}
 \end{tikzpicture}
+}{Diagram of clouds representing networks connected via bidirectional
+links to circles with two diagonal arrowheads representing `routers' 
+or `gateways' that connect network.
+}
 \end{frame}
-

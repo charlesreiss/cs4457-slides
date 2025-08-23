@@ -1,0 +1,89 @@
+\begin{frame}\frametitle{TCPSocketState}
+\begin{itemize}
+\item class to track socket state
+    \begin{itemize}
+    \item regarldess of congestion control algorithm
+    \end{itemize}
+\item includes (notably for us)
+    \begin{itemize}
+    \item `congesiton state'
+    \item congestion window (cwnd)
+    \item slow start threshold (ssthresh)
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{TCP congestion states}
+\begin{itemize}
+\item OPEN --- normal
+\item DISORDER --- dupacks/SACKs below threshold for recovery
+\item RECOVERY --- retransmitting due to dup-ACK/simple SACK
+    \begin{itemize}
+    \item temporarily inflated window to account for dropped packets
+    \end{itemize}
+\item LOSS --- retransmitting due to timeout/etc.
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{configurable TCP behavior}
+\begin{itemize}
+\item TCPRecoveryOps: handle recovery
+    \begin{itemize}
+    \item EnterRecovery (called on start of retransmitting)
+    \item default: cwnd $\rightarrow$ ssthresh
+    \item DoRecovery (called for ACK when retransmitting)
+    \item default: cwnd $\rightarrow$ cwnd + 1 packet
+    \item ExitRecovery (called when `back to normal')
+    \item default: cwnd $\rightarrow$ ssthresh
+    \end{itemize}
+\item \myemph{TCPCongestionOps}:
+    \begin{itemize}
+    \item IncreaseWindow (called when new segments ACKed)
+    \item GetSsThresh (called after loss)
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}\frametitle{assingment TCP changes}
+\begin{itemize}
+\item will customize a \texttt{MyTcpCongestionOps}
+\item \ldots which inherits from TCPNewReno
+\vspace{.5cm}
+\item you can customize increase (IncreaseWindow) and decrease (GetSsThresh)
+\end{itemize}
+\end{frame}
+
+\begin{FragileFrame}
+\frametitle{TcpNewReno}
+\begin{Verbatim}[fontsize=\fontsize{9}{10}]
+void
+TcpNewReno::IncreaseWindow(Ptr<TcpSocketState> tcb, uint32_t segmentsAcked)
+{
+    NS_LOG_FUNCTION(this << tcb << segmentsAcked);
+ 
+    if (tcb->m_cWnd < tcb->m_ssThresh)
+    {
+        segmentsAcked = SlowStart(tcb, segmentsAcked);
+    }
+ 
+    if (tcb->m_cWnd >= tcb->m_ssThresh)
+    {
+        CongestionAvoidance(tcb, segmentsAcked);
+    }
+}
+\end{Verbatim}
+\end{FragileFrame}
+
+
+\begin{frame}\frametitle{aside: more advanced congestion hooks}
+\begin{itemize}
+\item TcpCongestionOps also has access to
+    \begin{itemize}
+    \item ECN (explicit congestion notification) info
+    \item timestamps
+    \item exactly when duplicate ACKs below threshold/ recovery/etc. occurs
+    \end{itemize}
+\item used by more advanced TCP implementatoins
+\end{itemize}
+\end{frame}

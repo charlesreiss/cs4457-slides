@@ -1,0 +1,121 @@
+\begin{frame}\frametitle{NS-3}
+    \begin{itemize}
+    \item discrete event simulator planned for AIMD assignment
+    \item written in C++
+        \begin{itemize}
+        \item (yes, I know it's not the most familiar language)
+        \item (obvious alternative simulators aren't in better languages\ldots)
+        \end{itemize}
+    \item create simulations by writing C++ programs
+    \end{itemize}
+\end{frame}
+
+\begin{FragileFrame}
+\frametitle{an NS-3 event handler}
+\providecommand{\myemphA}[1]{\myemph<2>{#1}}
+\providecommand{\myemphB}[1]{\myemph<3>{#1}}
+\providecommand{\myemphC}[1]{\myemph<4>{#1}}
+\begin{Verbatim}[fontsize=\fontsize{9}{10},commandchars=\\QX]
+bool \myemphAQPointToPointChannel::TransmitStartX(
+    Ptr<const Packet> p,
+    Ptr<PointToPointNetDevice> src,
+    Time txTime
+) {
+  // ...
+  uint32_t wire = src == \myemphBQm_Xlink[0].\myemphBQm_Xsrc ? 0 : 1;
+
+  \myemphCQ\myemphAQSimulator::ScheduleWithContextXX(
+    \myemphBQm_Xlink[wire].m_dst->GetNode()->GetId(),
+    txTime + \myemphBQm_Xdelay,
+    &\myemphAQPointToPointNetDevice::ReceiveX, \myemphBQm_Xlink[wire].m_dst, p->Copy());
+
+  // Call the tx anim callback on the net device
+  \myemphBQm_XtxrxPointToPoint(p, src, ...)
+  return true;
+}
+\end{Verbatim}
+\begin{tikzpicture}[overlay,remember picture]
+    \coordinate (place) at ([yshift=-1cm,xshift=-1cm]current page.north east);
+    \tikzset{%
+        box/.style={at=(place),anchor=north east,draw=orange!70!black,very thick,align=left,fill=white,font=\small}
+    }
+    \begin{visibleenv}<2>
+        \node[box] {X::Y = Y method/variable of X class};
+    \end{visibleenv}
+    \begin{visibleenv}<3>
+        \node[box] {%
+            convention: member variables with \texttt{m\textunderscore} \\
+            (C++ member variable $\sim$ Java instance variable)
+        };
+    \end{visibleenv}
+    \begin{visibleenv}<4>
+        \node[box] {%
+            setup future event; args: \\
+            context (for logging mostly) \\
+            time event will trigger \\
+            method to run + arguments to pass
+        };
+    \end{visibleenv}
+\end{tikzpicture}
+\end{FragileFrame}
+
+\begin{FragileFrame}
+\frametitle{sample NS-3 simulation --- setup (1)}
+{\scriptsize \texttt{ns3/examples/tcp/tcp-bulk-send.cc}}
+\begin{Verbatim}[fontsize=\fontsize{9}{10}]
+// nodes = routers or endpoints
+NodeContainer nodes;
+nodes.Create(2);
+
+// create simulated point-to-point link
+    // also supported: multi-access links
+PointToPointHelper pointToPoint;
+pointToPoint.SetDeviceAttribute("DataRate", StringValue("500Kbps"));
+pointToPoint.SetChannelAttribute("Delay", StringValue("5ms"));
+
+// setup emulated NICs (which have queues, etc.)
+NetDeviceContainer devices;
+devices = pointToPoint.Install(nodes);
+
+// setup emulated TCP/IP implementation
+InternetStackHelper internet;
+internet.Install(nodes);
+
+...
+\end{Verbatim}
+\end{FragileFrame}
+
+\begin{FragileFrame}
+\frametitle{sample  NS-3 simulation --- setup (2)}
+{\scriptsize \texttt{ns3/examples/tcp/tcp-bulk-send.cc}}
+\begin{Verbatim}[fontsize=\fontsize{9}{10}]
+// Simulated "applications" that send/receive data
+BulkSendHelper source("ns3::TcpSocketFactory", InetSocketAddress(i.GetAddress(1), port));
+source.SetAttribute("MaxBytes", UintegerValue(10000000));
+ApplicationContainer sourceApps = source.Install(nodes.Get(0));
+sourceApps.Start(Seconds(0));
+sourceApps.Stop(Seconds(10));
+PacketSinkHelper sink("ns3::TcpSocketFactory", InetSocketAddress(Ipv4Address::GetAny(), port));
+ApplicationContainer sinkApps = sink.Install(nodes.Get(1));
+sinkApps.Start(Seconds(0));
+sinkApps.Stop(Seconds(10));
+\end{Verbatim}
+\end{FragileFrame}
+
+\begin{FragileFrame}
+\frametitle{sample NS-3 simulation --- setup (3)}
+{\scriptsize \texttt{ns3/examples/tcp/tcp-bulk-send.cc}}
+\begin{Verbatim}[fontsize=\fontsize{9}{10}]
+AsciiTraceHelper ascii;
+
+// produces text trace file of simulator events
+pointToPoint.EnableAsciiAll(ascii.CreateFileStream("tcp-bulk-send.tr"));
+
+// produces PCAP files you can open in Wireshark
+pointToPoint.EnablePcapAll("tcp-bulk-send", false);
+\end{Verbatim}
+\end{FragileFrame}
+
+% FIXME: show screenshot of wireshark on output
+% FIXME: show .tr file
+

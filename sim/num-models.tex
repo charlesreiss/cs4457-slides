@@ -1,0 +1,95 @@
+\usetikzlibrary{arrows.meta}
+\begin{frame}{models that give numbers?}
+    \begin{itemize}
+    \item deciding on congestion control 
+    \item would like to do math to say how well they'll do
+    \vspace{.5cm}
+    \item common approach: but gets complicated
+    \item simple example: estimating average rate of TCP-like AIMD with no congestion
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{models that give numbers? (1)}
+    \begin{itemize}
+        \item {\scriptsize figure adapted from Mathis et al, ``The Macroscopic Behavior of the TCP Congestion Avoidance Algorithm''}
+    \end{itemize}
+\pdftooltip{%
+\begin{tikzpicture}
+    \draw[very thick,-Latex] (0, 0) -- (0, 4) node[align=center,font=\small,midway,left=0.5cm]{window size\\(packets)}
+        node[pos=1.0,left]{W} node[pos=0,left]{0};
+    \draw[very thick,-Latex] (0, 0) -- (6, 0) node[font=\small,midway,below=0.5cm] {time (round-trips)};
+    \draw[blue, dotted] (0, 2) -- (2, 4);
+    \draw[blue] (2, 2) -- (4, 4) -- (4, 2) -- (6, 4);
+    \node[anchor=north] at (2, 0) {W/2};
+    \node[anchor=north] at (4, 0) {2W/2};
+    \node[anchor=north] at (6, 0) {3W/2};
+    \begin{visibleenv}<2->
+    \path[fill=violet] (0, 0) -- (0, 2) -- (2, 4) -- (2, 0);
+    \node[violet,anchor=west,align=left] at (2, 1) {%
+        $\frac{W}{2}\cdot \frac{1}{2}\left(\frac{W}{2} + W\right)$ packets sent \\ in one cycle
+    };
+    \end{visibleenv}
+\end{tikzpicture}
+}{Graph of window size (in packets) in terms of round trip time, showing a sawtooth pattern, where the window size increases
+    from W/2 to W over W round-trips, then decreases to W/2 and repeats the cycle indefinitely.
+  The area under the first cycle of the curve is highlighted and calculated to be 
+    W/2 times 0.5 times (W/2 + W) [using the area of a trapazoid formula], and is labeled as equal to the number of packets transmitted during the first cycle.}
+\end{frame}
+
+\begin{frame}{models that give numbers? (2)}
+    \begin{itemize}
+    \item $\frac{W}{2}\cdot \frac{1}{2}\left(\frac{W}{2} + W\right)$ per $W/2$ round trips
+        \begin{itemize}
+        \item $\frac{3W}{4}$ packets per round trip time
+        \end{itemize}
+    \item packet loss should occur when window size = bandwidth-delay product
+        \begin{itemize}
+        \item at the capacity of the link(s)
+        \end{itemize}
+    \item so $W=\text{link BW} \cdot \text{RTT}$
+    \item $\implies$ 3/4 link BW achieved total
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{exercise: what things did this model miss?}
+\end{frame}
+
+\begin{frame}{some answers}
+    \begin{itemize}
+    \item RTT/delay depends on how many packets queued
+    \item packet loss could occur for other reasons
+        \begin{itemize}
+        \item competing connections
+        \item network errors
+        \end{itemize}
+    \item `bursty' connection could trigger packet loss earlier
+    \item extra packets being sent for retransmissions
+    \item packet loss could trigger timeout/multiple decreases
+    \item behavior of other connections sharing links
+    \item delays in sending ACKs depending how fast receiver's CPU is
+    \item \ldots
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{more sophisticated models?}
+    \begin{itemize}
+    \item we can add to formulas to account for other things
+    \item this is something people do, but\ldots
+    \vspace{.5cm}
+    \item most common technique is \textit{discrete event simulation}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{interlude: loss rate → transfer rate}
+    \begin{itemize}
+        \item {\scriptsize adapted from Mathis et al, ``The Macroscopic Behavior of the TCP Congestion Avoidance Algorithm''}
+    \item packet loss rate $p$ = 1 per (number of packets sent in W/2 round trips)
+    \item $3/4 \times W \times W/2$ packets sent in W/2 round trips
+        \begin{itemize}
+        \item $p=\frac{3}{8}W^2$
+        \end{itemize}
+    \item solving for $W = \sqrt{\frac{8}{3p}}$
+    \item average transfer rate = $\frac{3}{4}W=C \cdot \sqrt{1/p}$ (for some $C$)
+    \end{itemize}
+\end{frame}

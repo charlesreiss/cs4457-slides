@@ -114,7 +114,7 @@
 
 \newcommand{\mymainitemsep}{0.75em}
 \patchcmd{\@listI}{\itemsep3\p@}{\itemsep\mymainitemsep}{}{}
-\newcommand{\itemflush}{\vspace{-1em}\setlength{\itemindent}{0pt}\setlength{\leftmarginii}{1em}}
+%\newcommand{\itemflush}{\vspace{-1em}\setlength{\itemindent}{0pt}\setlength{\leftmarginii}{1em}}
 
 \usepackage{ifluatex}
 \ifluatex
@@ -208,6 +208,12 @@
         nodes={tight matrix node noline},
     },
 }
+\newenvironment{FragileFrame}{%
+    \begin{frame}[environment=FragileFrame,fragile]
+}{%
+    \end{frame}
+}
+
 
 \endinput
 

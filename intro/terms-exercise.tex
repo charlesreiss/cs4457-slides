@@ -1,15 +1,16 @@
 \usetikzlibrary{arrows.meta,calc,shapes}
 \providecommand{\computer}{%
-    \includegraphics[width=1cm]{../common/Noun_project_216.pdf}
+    \includegraphics[width=1cm,alt=computer]{../common/Noun_project_216.pdf}
 }
 \providecommand{\switch}{%
-    \includegraphics[width=0.9cm]{../common/fig-switch.pdf}
+    \includegraphics[width=0.9cm,alt=switch]{../common/fig-switch.pdf}
 }
 \providecommand{\router}{%
-    \includegraphics[width=0.9cm]{../common/fig-router.pdf}
+    \includegraphics[width=0.9cm,alt=router]{../common/fig-router.pdf}
 }
 
-\begin{frame}[fragile]{exercise}
+\begin{frame}[fragile]\frametitle{exercise} % FIXME: text description
+\myalttext{
 \begin{tikzpicture}
 \tikzset{
     computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
@@ -36,6 +37,7 @@
     \draw[connect] (\x) -- (\y);
 }
 \end{tikzpicture}
+}{video stream server <-> circle <-> {square <-> {user C, square <-> used D}, square <-> unlabeled computer, square <-> {user A, user B}}}
     \begin{itemize}
     \item if each of users A--D are receiving (potentially different) video 
     and audio from the video streaming server, then\ldots
@@ -46,3 +48,4 @@
         \end{itemize}
     \end{itemize}
 \end{frame}
+

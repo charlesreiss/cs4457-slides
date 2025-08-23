@@ -1,0 +1,37 @@
+
+% FIXME: options for testing new congestion control/routing/etc.
+
+    % spectrum: model <-> simulation <-> implementation
+
+% Model examples
+    % TCP bandwidth
+        % flow model for sharing
+        % oops, this neglects...
+    % TCP bandwidth models
+        % complex: https://dl.acm.org/doi/pdf/10.1145/285243.285291
+        % simpler: https://dl.acm.org/doi/pdf/10.1145/263932.264023
+            % proportional to loss rate idea
+        % early: https://dl.acm.org/doi/pdf/10.1145/122431.122434 [1
+
+        % exercise: effect of SACK?
+        % exercise: what things does this neglect:
+
+\section{revisiting AIMD model}
+
+\input{../congest/aimd-diagram}
+\input{../congest/aimd-diagram-assume}
+
+\section{numerical models}
+
+\input{../sim/num-models}
+
+\section{discrete event simulation}
+\input{../sim/discrete-sim}
+
+\section{example of NS-3}
+\input{../sim/discrete-sim-ns3}
+
+\section{NS-3's TCP modeling and the assignment}
+\input{../sim/ns3-tcp-model}
+
+

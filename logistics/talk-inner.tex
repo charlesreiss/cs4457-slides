@@ -1,5 +1,5 @@
 
-\begin{frame}{main textbooks}
+\begin{frame}\frametitle{main textbooks (1)}
     \begin{itemize}
     \item Peterson and Davie, \textit{Computer Networks:  A Systems Approach}
         \begin{itemize}
@@ -18,7 +18,18 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{coursework}
+\begin{frame}\frametitle{textbooks (2)}
+    \begin{itemize}
+    \item Dordal, \textit{An Introdcution to Computer Networks}
+        \begin{itemize}
+        \item secondary textbook
+        \item \url{https://intronetworks.cs.luc.edu/}
+        \item more coverage of low-level wireless, ethernet
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{coursework}
     \begin{itemize}
     \item weekly quizzes
         \begin{itemize}
@@ -34,19 +45,66 @@
         \end{itemize}
     \item final exam
         \begin{itemize}
-        \item last exam slot(!)
+        \item 16 December
         \item 20\% of overall course grade
         \end{itemize}
     \end{itemize}
 \end{frame}
 
-\begin{frame}{due times/late policy}
+\begin{frame}\frametitle{homeworks preview (1)}
+    \begin{itemize}
+    \item framing --- transmit messages using bits in Python
+    \item reliable1/2 --- stream of messages with automatic resending
+    \item P4* --- forwarding messages locally
+    \item AIMD* --- simulating variations on TCP
+    \item packet scheduling --- prioritizing network traffic
+    \item DV routing --- forwarding messages far
+    \item DNS --- mapping names to addresses
+    \item webserver
+    \item wireless*
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{assignment infrastructure}
+    \begin{itemize}
+    \item most assignments in Python
+    \item P4 --- requires some VM setup
+        \begin{itemize}
+        \item network/switch emulation software that really needs root on Linux
+        \end{itemize}
+    \item AIMD --- using C++ simulator
+        \begin{itemize}
+        \item goal: tweak and measure working TCP implementation
+        \item mostly small modifications, \textit{shouldn't} need much C++ knowledge
+        \item (the other obvious simulator is mainly in Tcl, which seems worse idea)
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{notable changes}
+    \begin{itemize}
+    \item AIMD assignment is new
+        \begin{itemize}
+        \item previous assignment was implementing simple congestion control
+        \item (congestion control = avoiding overloading network)
+        \item too many corner cases
+        \item did not complement lecture material on modern congestion control
+        \end{itemize}
+    \item framing assignment has new test program
+    \item maybe other changes, time-depending
+        \begin{itemize}
+        \item would like to rework wireless assignment
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{due times/late policy}
     \begin{itemize}
     \item assignments usually due Friday @ 11:59pm
         \begin{itemize}
         \item 90\% credit for submissions up to 72 hours late, no questions asked
         \end{itemize}
-    \item quizzes usually due Tuesday @ 9:15am
+    \item quizzes usually due Tuesday @ 3:15pm
         \begin{itemize}
         \item done online, untimed, open notes/book
         \item late submissions not normally accepted (may discuss during lecture)
@@ -60,7 +118,7 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{collaboration}
+\begin{frame}\frametitle{collaboration}
     \begin{itemize}
     \item quizzes, homeworks are individual
     \vspace{.5cm}
@@ -75,11 +133,18 @@
         \item sharing code/detailed psuedocode/answers
         \item getting code/etc. from web forums, LLMs, etc.
         \end{itemize}
-    \item LLM rule of thumb: can ask LLM for things you'd ask classmate for
     \end{itemize}
 \end{frame}
 
-\begin{frame}{aside: selected standard python libraries}
+\begin{frame}\frametitle{gen AI}
+    \begin{itemize}
+    \item rule of thumb: can ask things you could ask fellow students
+    \vspace{.5cm}
+    \item no: having LLM write your code, your writeup, \ldots
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{aside: selected standard python libraries}
     \begin{itemize}
     \item \texttt{bisect} --- search/insert within sorted list
     \item \texttt{collections}'s \texttt{deque} --- ordered list with fast insertion/deletion at both ends
@@ -94,7 +159,7 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{lectures}
+\begin{frame}\frametitle{lectures}
     \begin{itemize}
     \item will attempt to record (but sometimes technical stuff happens)
         \begin{itemize}
@@ -104,7 +169,7 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{homework/topic sync}
+\begin{frame}\frametitle{homework/topic sync}
     \begin{itemize}
     \item rough plan on schedule page
     \item imagine things might get out of sync
