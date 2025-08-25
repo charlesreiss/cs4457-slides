@@ -1,0 +1,155 @@
+
+\begin{frame}\frametitle{buffer usage: fast to slow, store + forward}
+\myalttext{
+\begin{tikzpicture}
+\tikzset{
+    axis/.style={draw,thick,-Latex},
+    scale mark/.style={draw,thin},
+    scale label/.style={font=\small},
+    packet/.style={ultra thick,fill=violet!20},
+    y=.6cm
+}
+\begin{scope} % input
+    \begin{scope}[shift={(0.1, 0)}]
+        \clip (0, 0) rectangle (12.5, 3.2);
+        \draw[packet] (0, 0) coordinate (A recv start) rectangle (2, 3) node[midway] {packet A};
+        \draw[packet] (2, 0) rectangle (4, 3) node[midway] {packet B};
+        \draw[packet] (4, 0) rectangle (6, 3) node[midway] {packet C};
+        \draw[packet] (10, 0) rectangle (12, 3) node[midway] {packet D};
+    \end{scope}
+    \draw[axis] (0, 0) -- ++ (12.5, 0);
+    \draw[axis] (0, 0) -- ++ (0, 3.3)
+        node[midway,left=.5cm,align=right] { input };
+    \draw[scale mark] (0, 3) -- ++ (.25, 0) node[pos=0,left,scale label] {capacity};
+\end{scope} 
+\begin{scope}[shift={(0, -5)}]% buffer usage
+    \begin{scope}
+        \clip (0,0) rectangle (12.5, 4);
+        \draw[violet, ultra thick] (0, 0) -- (0.1, 0) -- (0.1, 1) -- (2.1, 1) -- (2.1, 2) -- (4.1, 2) -- (4.1, 3)
+            -- (5.1, 3) -- (5.1, 2) -- (8.1, 2) -- (8.1, 1) -- (10.1, 1) -- (10.1, 2) -- 
+            (11.1, 2) -- (11.1, 1) -- (14, 1);
+    \end{scope}
+    \draw[axis] (0, 0) -- ++ (12.5, 0);
+    \draw[axis] (0, 0) -- ++ (0, 4.3)
+    node[midway,left=.5cm,align=right] (usage label) { buffer \\ reserved };
+    \node[font=\small,anchor=north,align=center] at (usage label.south) {
+        packets
+    };
+    \draw[scale mark] (0, 1) -- ++ (.25, 0) node[pos=0,left,scale label] {1};
+    \draw[scale mark] (0, 2) -- ++ (.25, 0) node[pos=0,left,scale label] {2};
+    \draw[scale mark] (0, 3) -- ++ (.25, 0) node[pos=0,left,scale label] {3};
+    \draw[scale mark] (0, 4) -- ++ (.25, 0) node[pos=0,left,scale label] {4};
+%
+\end{scope}
+\begin{scope}[shift={(0, -8)}] % output
+    \begin{scope}
+        \clip (0, 0) rectangle (12.5, 2.2);
+        \begin{scope}[shift={(2.1, 0)}]
+            \draw[packet] (0, 0) coordinate (A send start) rectangle (3, 2) node[midway] {packet A};
+            \draw[packet] (3, 0) rectangle (6, 2) node[midway] {packet B};
+            \draw[packet] (6, 0) rectangle (9, 2) node[midway] {packet C};
+            \draw[packet] (10, 0) rectangle (13, 2) node[midway] {packet D};
+        \end{scope}
+    \end{scope}
+    \draw[axis] (0, 0) -- ++ (12.5, 0);
+    \draw[axis] (0, 0) -- ++ (0, 2.3)
+        node[midway,left=.5cm,align=right] { output };
+    \draw[scale mark] (0, 2) -- ++ (.25, 0) node[pos=0,left,scale label] {capacity};
+\end{scope}
+\begin{visibleenv}<2>
+    \draw[draw=red,dotted,ultra thick,Latex-Latex] (A send start) -- ++(-2cm, 0);
+    \draw[draw=red,dotted,ultra thick] (A send start) -- ++(0cm, 6cm);
+    \draw[draw=red,dotted,ultra thick] ([xshift=-2cm]A send start) -- ++(0cm, 6cm);
+    \node[draw=red,ultra thick,align=left,fill=white,anchor=west] at  (2.2, -3) {
+        \textit{store and forward} \\
+        switch stores whole packet in buffer\\
+        then sends it out \\
+        ~ \\
+        our default in this class
+    };
+\end{visibleenv}
+\end{tikzpicture}
+}{
+*store and forward* switches are illustrated as taking in packets and buffering them
+as they received, and only sending packets after they are fully contained in the buffer.
+These are the most common type of switches, by far.
+}
+\end{frame}
+
+\begin{frame}\frametitle{buffer usage: fast to slow, cut-through}
+\myalttext{
+\begin{tikzpicture}
+\tikzset{
+    axis/.style={draw,thick,-Latex},
+    scale mark/.style={draw,thin},
+    scale label/.style={font=\small},
+    packet/.style={ultra thick,fill=violet!20},
+    y=.6cm
+}
+\begin{scope} % input
+    \begin{scope}[shift={(0.1, 0)}]
+        \clip (0, 0) rectangle (12.5, 3.2);
+        \draw[packet] (0, 0) coordinate (A recv start) rectangle (2, 3) node[midway] {packet A};
+        \draw[packet] (2, 0) rectangle (4, 3) node[midway] {packet B};
+        \draw[packet] (4, 0) rectangle (6, 3) node[midway] {packet C};
+        \draw[packet] (10, 0) rectangle (12, 3) node[midway] {packet D};
+    \end{scope}
+    \draw[axis] (0, 0) -- ++ (12.5, 0);
+    \draw[axis] (0, 0) -- ++ (0, 3.3)
+        node[midway,left=.5cm,align=right] { input };
+    \draw[scale mark] (0, 3) -- ++ (.25, 0) node[pos=0,left,scale label] {capacity};
+\end{scope} 
+\begin{scope}[shift={(0, -5)}]% buffer usage
+    \begin{scope}
+        \clip (0,0) rectangle (12.5, 4);
+        \draw[violet, ultra thick] (0, 0) -- (0.1, 0) -- (0.1, 1) -- (2.1, 1) -- (2.1, 2) -- 
+            (3.6, 2) -- (3.6, 1) -- (4.1, 1) -- (4.1, 2) -- (6.6, 2) -- (6.6, 1) --
+            (9.6, 1) -- (9.6, 0) -- (10.1, 0) -- (10.1, 1) -- (13.6, 1) -- (13.6, 0);
+    \end{scope}
+    \draw[axis] (0, 0) -- ++ (12.5, 0);
+    \draw[axis] (0, 0) -- ++ (0, 4.3)
+    node[midway,left=.5cm,align=right] (usage label) { buffer \\ reserved };
+    \node[font=\small,anchor=north,align=center] at (usage label.south) {
+        packets
+    };
+    \draw[scale mark] (0, 1) -- ++ (.25, 0) node[pos=0,left,scale label] {1};
+    \draw[scale mark] (0, 2) -- ++ (.25, 0) node[pos=0,left,scale label] {2};
+    \draw[scale mark] (0, 3) -- ++ (.25, 0) node[pos=0,left,scale label] {3};
+    \draw[scale mark] (0, 4) -- ++ (.25, 0) node[pos=0,left,scale label] {4};
+%
+\end{scope}
+\begin{scope}[shift={(0, -8)}] % output
+    \begin{scope}
+        \clip (0, 0) rectangle (12.5, 2.2);
+        \begin{scope}[shift={(0.6, 0)}]
+            \draw[packet] (0, 0) coordinate (A send start) rectangle (3, 2) node[midway] {packet A};
+            \draw[packet] (3, 0) rectangle (6, 2) node[midway] {packet B};
+            \draw[packet] (6, 0) rectangle (9, 2) node[midway] {packet C};
+            \draw[packet] (10, 0) rectangle (13, 2) node[midway] {packet D};
+        \end{scope}
+    \end{scope}
+    \draw[axis] (0, 0) -- ++ (12.5, 0);
+    \draw[axis] (0, 0) -- ++ (0, 2.3)
+        node[midway,left=.5cm,align=right] { output };
+    \draw[scale mark] (0, 2) -- ++ (.25, 0) node[pos=0,left,scale label] {capacity};
+\end{scope}
+\begin{visibleenv}<1>
+    \draw[draw=red,dotted,ultra thick] (A send start) -- ++(-.5cm, 0);
+    \draw[draw=red,dotted,ultra thick] (A send start) -- ++(0cm, 6cm);
+    \draw[draw=red,dotted,ultra thick] ([xshift=-.5cm]A send start) -- ++(0cm, 6cm);
+    \node[draw=red,ultra thick,align=left,fill=white,anchor=west] at  (2.2, -3) {
+        \textit{cut-through} forwarding \\
+        switch sends packet out as it's being received \\
+        ~ \\
+        uncommon and much more complex to implement
+    };
+\end{visibleenv}
+\end{tikzpicture}
+}{
+*cut-through* switches are illustrated as sending packets as they are being received
+as long as no other packets are waiting. Though more efficient,
+these are uncommon as they are more difficult to implement than
+store-and-forward switches (because of, for example, error handling)
+}
+\end{frame}
+% FIXME: multiplexing at end hosts
