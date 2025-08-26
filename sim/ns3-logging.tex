@@ -1,20 +1,19 @@
-\begin{FragileFrame}\frametitle{NS-3 logging}
+\begin{FragileFrame}
+\frametitle{NS-3 logging}
     \begin{itemize}
     \item NS3 logging tools
         \begin{itemize}
         \item \url{https://www.nsnam.org/docs/manual/html/logging-asserts.html}
         \end{itemize}
     \item doing logging:
-    \end{itemize}
-\begin{lstlisting}[language=C++]
+\begin{Verbatim}
 // at top of file
 NS_LOG_COMPONENT_DEFINE("SomeLabel");
 ...
 // when you want to log
 NS_LOG_INFO("value of x=" << x);
     // INFO could be DEBUG, ERROR, ... too
-\end{lstlisting}
-    \begin{itemize}
+\end{Verbatim}
     \item enabling logging:
         \begin{itemize}
         \item in C++: \texttt{LogComponentEnable("SomeLabel", LOG\_LEVEL\_DEBUG)}
