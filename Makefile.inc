@@ -12,7 +12,7 @@ LATEX2=lualatex-dev
 	latexrun -W no-overfull --latex-cmd=$(LATEX) --latex-args=-shell-escape $<
 
 talk-slides2.pdf: talk-slides2.tex .FORCE
-	latexrun -W no-overfull --latex-cmd=$(LATEX2) --latex-args=-shell-escape talk-slides2.tex
+	TEXINPUTS=.:../common: latexrun -W no-overfull --latex-cmd=$(LATEX2) --latex-args=-shell-escape talk-slides2.tex
 
 test2.pdf: test2.tex .FORCE
 	latexrun -W no-overfull --latex-cmd=$(LATEX2) --latex-args=-shell-escape talk-slides.tex
