@@ -5,6 +5,7 @@ build
 *.fls
 *.log
 talk-slides.pdf
+talk-slides2.pdf
 test.pdf
 test.tex
 latex.out
