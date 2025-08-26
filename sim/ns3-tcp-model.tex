@@ -148,3 +148,18 @@ TcpNewReno::GetSsThresh(Ptr<const TcpSocketState> state, uint32_t bytesInFlight)
 \item used by more advanced TCP implementatoins
 \end{itemize}
 \end{frame}
+
+\begin{frame}{assignment preview}
+\begin{itemize}
+\item start with \texttt{MyTcpCongestionOps}
+    \begin{itemize}
+    \item basically copy of NewRenoTcp
+    \end{itemize}
+\item setup to take `mode' parameter
+    \begin{itemize}
+    \item mode 0: default behavior
+    \item mode 1 (added by you): take more bandwidth
+    \item mode 2 (added by you): take less bandwidth
+    \end{itemize}
+\end{itemize}
+\end{frame}

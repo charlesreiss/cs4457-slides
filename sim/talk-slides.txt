@@ -1,0 +1,446 @@
+1
+
+picturing sharing
+overloaded
+flow 2
+bandwidth
+
+underloaded
+
+flow 1 bandwidth
+
+2
+
+picturing sharing
+
+flow 2
+bandwidth
+
+overloaded
+multiplicative decrease
+moves bandwidths along line to origin
+example: (90%, 40%) to (45%, 20%)
+underloaded
+
+flow 1 bandwidth
+
+2
+
+picturing sharing
+overloaded
+flow 2
+bandwidth
+
+underloaded
+
+additive decrease
+moves bandwidths
+at 45-degree angle
+example: (45%, 20%) to (55%, 30%)
+
+flow 1 bandwidth
+
+2
+
+picturing sharing
+overloaded
+flow 2
+bandwidth
+
+underloaded
+
+flow 1 bandwidth
+
+2
+
+nd
+wi
+dt
+h
+
+picturing sharing
+
+flow 2
+bandwidth
+
+eq
+
+ua
+l
+
+ba
+
+overloaded
+
+underloaded
+
+flow 1 bandwidth
+
+2
+
+nd
+wi
+dt
+h
+
+picturing sharing
+
+flow 2
+bandwidth
+
+eq
+
+ua
+l
+
+ba
+
+overloaded
+
+underloaded
+
+flow 1 bandwidth
+
+multiplicative decrease brings
+closer to equal bandwidth line
+additive increase keeps same
+distance from line
+
+2
+
+some assumptions we made
+…that are probably not true
+both flows experience drops equally when network overloaded
+same additive increase factor (for 45 degree angle)
+
+3
+
+models that give numbers?
+deciding on congestion control
+would like to do math to say how well they’ll do
+common approach: but gets complicated
+simple example: estimating average rate of TCP-like AIMD with no
+congestion
+
+4
+
+models that give numbers? (1)
+figure adapted from Mathis et al, “The Macroscopic Behavior of the TCP Congestion Avoidance Algorithm”
+
+W
+window size
+(packets)
+
+0
+
+W/2
+
+2W/2
+
+time (round-trips)
+
+3W/2
+
+5
+
+models that give numbers? (1)
+figure adapted from Mathis et al, “The Macroscopic Behavior of the TCP Congestion Avoidance Algorithm”
+
+W
+window size
+(packets)
+
+0
+
+W 1 W
+·
++W
+2 2 2
+in one cycle
+W/2
+
+(︄
+
+)︄
+
+2W/2
+
+3W/2
+
+time (round-trips)
+
+packets sent
+
+5
+
+models that give numbers? (2)
+W 1 W
+·
++ W per W/2 round trips
+2 2 2
+(︄
+
+)︄
+
+3W
+packets per round trip time
+4
+
+packet loss should occur when window size = bandwidth-delay
+product
+at the capacity of the link(s)
+
+so W = link BW · RTT
+=⇒ 3/4 link BW achieved total
+6
+
+exercise: what things did this model miss?
+
+7
+
+some answers
+RTT/delay depends on how many packets queued
+packet loss could occur for other reasons
+competing connections
+network errors
+
+‘bursty’ connection could trigger packet loss earlier
+extra packets being sent for retransmissions
+packet loss could trigger timeout/multiple decreases
+behavior of other connections sharing links
+delays in sending ACKs depending how fast receiver’s CPU is
+8
+
+more sophisticated models?
+we can add to formulas to account for other things
+this is something people do, but…
+most common technique is discrete event simulation
+
+9
+
+interlude: loss rate → transfer rate
+adapted from Mathis et al, “The Macroscopic Behavior of the TCP Congestion Avoidance Algorithm”
+
+packet loss rate p = 1 per (number of packets sent in W/2 round
+trips)
+3/4 × W × W/2 packets sent in W/2 round trips
+3
+p = W2
+8
+⌜
+⃓
+⃓ 8
+solving for W = ⎷
+
+3p
+
+√︂
+3
+average transfer rate = W = C · 1/p (for some C)
+4
+
+10
+
+discrete-event simulation
+event queue (sorted by time)
+
+(time, action)
+
+new events
+
+run action
+
+network state
+
+outputs
+(example: packet trace, counters)
+
+11
+
+action example 1
+take next packet from send queue for link X
+compute whether packet is lost due to error
+compute when packet is done transmitting
+
+schedule new event to handle next packet in queue at that time
+
+compute reception time of packet on other end of link
+
+schedule new event to handle packet being received at that time
+
+12
+
+action example 2
+take next packet on link 0 of switch
+compute next link for packet
+add packet to queue for next link
+schedule new events:
+
+to dequeue from next link (if not scheduled already)
+
+13
+
+NS-3
+discrete event simulator planned for AIMD assignment
+written in C++
+
+(yes, I know it’s not the most familiar language)
+(obvious alternative simulators aren’t in better languages…)
+
+create simulations by writing C++ programs
+
+14
+
+an NS-3 event handler
+bool PointToPointChannel::TransmitStart(
+Ptr<const Packet> p,
+Ptr<PointToPointNetDevice> src,
+Time txTime
+) {
+// ...
+uint32_t wire = src == m_link[0].m_src ? 0 : 1;
+Simulator::ScheduleWithContext(
+m_link[wire].m_dst->GetNode()->GetId(),
+txTime + m_delay,
+&PointToPointNetDevice::Receive, m_link[wire].m_dst, p->Copy());
+
+}
+
+// Call the tx anim callback on the net device
+m_txrxPointToPoint(p, src, ...)
+return true;
+
+15
+
+an NS-3 event handler
+
+bool PointToPointChannel::TransmitStart( X::Y = Y method/variable of X class
+Ptr<const Packet> p,
+Ptr<PointToPointNetDevice> src,
+Time txTime
+) {
+// ...
+uint32_t wire = src == m_link[0].m_src ? 0 : 1;
+Simulator::ScheduleWithContext(
+m_link[wire].m_dst->GetNode()->GetId(),
+txTime + m_delay,
+&PointToPointNetDevice::Receive, m_link[wire].m_dst, p->Copy());
+
+}
+
+// Call the tx anim callback on the net device
+m_txrxPointToPoint(p, src, ...)
+return true;
+
+15
+
+an NS-3 event handler
+
+convention: member variables with m_
+
+bool PointToPointChannel::TransmitStart(
+(C++ member variable ∼ Java instance variable)
+Ptr<const Packet> p,
+Ptr<PointToPointNetDevice> src,
+Time txTime
+) {
+// ...
+uint32_t wire = src == m_link[0].m_src ? 0 : 1;
+Simulator::ScheduleWithContext(
+m_link[wire].m_dst->GetNode()->GetId(),
+txTime + m_delay,
+&PointToPointNetDevice::Receive, m_link[wire].m_dst, p->Copy());
+
+}
+
+// Call the tx anim callback on the net device
+m_txrxPointToPoint(p, src, ...)
+return true;
+
+15
+
+an NS-3 event handler
+
+setup future event; args:
+
+bool PointToPointChannel::TransmitStart(
+context (for logging mostly)
+Ptr<const Packet> p,
+Ptr<PointToPointNetDevice> src,
+time event will trigger
+Time txTime
+method to run + arguments to pass
+) {
+// ...
+uint32_t wire = src == m_link[0].m_src ? 0 : 1;
+Simulator::ScheduleWithContext(
+m_link[wire].m_dst->GetNode()->GetId(),
+txTime + m_delay,
+&PointToPointNetDevice::Receive, m_link[wire].m_dst, p->Copy());
+
+}
+
+// Call the tx anim callback on the net device
+m_txrxPointToPoint(p, src, ...)
+return true;
+
+15
+
+sample NS-3 simulation — setup (1)
+ns3/examples/tcp/tcp-bulk-send.cc
+
+// nodes = routers or endpoints
+NodeContainer nodes;
+nodes.Create(2);
+// create simulated point-to-point link
+// also supported: multi-access links
+PointToPointHelper pointToPoint;
+pointToPoint.SetDeviceAttribute("DataRate", StringValue("500Kbps"));
+pointToPoint.SetChannelAttribute("Delay", StringValue("5ms"));
+// setup emulated NICs (which have queues, etc.)
+NetDeviceContainer devices;
+devices = pointToPoint.Install(nodes);
+// setup emulated TCP/IP implementation
+InternetStackHelper internet;
+internet.Install(nodes);
+...
+
+16
+
+sample NS-3 simulation — setup (2)
+ns3/examples/tcp/tcp-bulk-send.cc
+
+// Simulated "applications" that send/receive data
+BulkSendHelper source("ns3::TcpSocketFactory", InetSocketAddress(i.GetAddress(1),
+source.SetAttribute("MaxBytes", UintegerValue(10000000));
+ApplicationContainer sourceApps = source.Install(nodes.Get(0));
+sourceApps.Start(Seconds(0));
+sourceApps.Stop(Seconds(10));
+PacketSinkHelper sink("ns3::TcpSocketFactory", InetSocketAddress(Ipv4Address::GetA
+ApplicationContainer sinkApps = sink.Install(nodes.Get(1));
+sinkApps.Start(Seconds(0));
+sinkApps.Stop(Seconds(10));
+
+17
+
+sample NS-3 simulation — setup (3)
+ns3/examples/tcp/tcp-bulk-send.cc
+
+AsciiTraceHelper ascii;
+
+// produces text trace file of simulator events
+pointToPoint.EnableAsciiAll(ascii.CreateFileStream("
+// produces PCAP files you can open in Wireshark
+pointToPoint.EnablePcapAll("tcp-bulk-send", false);
+
+18
+
+sample NS-3 simulation
+
+19
+
+backup slides
+
+20
+
+
