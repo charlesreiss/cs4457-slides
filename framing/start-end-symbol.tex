@@ -56,36 +56,3 @@
 \end{visibleenv}
 \end{frame}
 
-\begin{frame}[fragile]{escaping?}
-    \begin{itemize}
-    \item can think of replacement similar to escaping strings in C
-        \begin{itemize}
-        \item start/end marker is \verb|"|
-        \item \verb|"| $\rightarrow$ \verb|\"|
-        \item \verb|\| $\rightarrow$ \verb|\\|
-        \end{itemize}
-    \item represent \verb|foo \R"3"13\| using \verb|"foo \\R\"3\"13\\"|
-    \item but needed tweaks to idea to work with bits instead of bytes
-    \vspace{.5cm}
-    \item<2-> some physical layers allow transmitting bytes at a time
-    \item<2-> example: upcoming assignment
-    \item<2-> framing protocols for those (example: PPP) use \textbackslash-like idea
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{help from physical layer?}
-    \begin{itemize}
-    \item suppose instead of transmitting 0 or 1
-    \item \ldots physical layer transmits 0 or 1 or 2 or 3 or 4
-    \item probably going to `waste' one of these values
-        \begin{itemize}
-        \item example: transmit every two bits as 0 or 1 or 2 or 3
-        \end{itemize}
-    \vspace{.5cm}
-    \item<2-> idea: take advantage of leftover `symbol' 4
-    \item<2-> use it to send start/end
-        \begin{itemize}
-        \item similar idea used in many versions of Ethernet
-        \end{itemize}
-    \end{itemize}
-\end{frame}

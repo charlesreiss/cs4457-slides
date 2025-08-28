@@ -1,4 +1,4 @@
-\begin{frame}{framing homework}
+\begin{frame}\frametitle{framing homework}
     \begin{itemize}
     \item implement send+receive messages (strings of bytes) using bits
     \item \texttt{send\_message(MESSAGE)}
@@ -14,3 +14,21 @@
         \end{itemize}
     \end{itemize}
 \end{frame}
+
+\begin{FragileFrame}
+\frametitle{bit bytearrays}
+\begin{Verbatim}[fontsize=\fontsize{9}{10}]
+# In the given code for the assignment:
+def bytes_to_bits(the_bytes):
+    result = bytearray()
+    for a_byte in the_bytes:
+        for i in range(8):
+            result.append(0 if (a_byte & (0x1 << i)) == 0 else 1)
+    return result
+\end{Verbatim}
+\begin{itemize}
+    \item \verb|bytes_to_bytes(b'\x93') == bytearray([1,0,0,1, 0,0,1,1])|
+    \item using bytearray of \texttt{0}s and \texttt{1}s
+    \item (because Python doesn't have convenient bitarray type)
+\end{itemize}
+\end{FragileFrame}
