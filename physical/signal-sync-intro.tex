@@ -1,0 +1,24 @@
+
+
+\begin{frame}{self-synchronizing?}
+    \begin{itemize}
+    \item can resynchronize clock by looking for transitions
+    \item but doesn't work if lots of consecutive 0s or 1s
+    \vspace{.5cm}
+    \item also, need to know where low and high point is
+    \item important to have transitions to low/high to calibrate this
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{self-sync and `start-message'}
+    \begin{itemize}
+    \item one idea: set start-message to have lots of 0/1/0/1/0/1/0/1/etc.
+        \begin{itemize}
+        \item something 10Mbit Ethernet does
+        \end{itemize}
+    \item but probably not enough to ensure things stay in sync on big message
+    \vspace{.5cm}
+    \item alternate strategy --- use encoding that adds extra transitions
+    \item example: Manchester encoding
+    \end{itemize}
+\end{frame}
