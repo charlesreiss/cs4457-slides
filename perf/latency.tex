@@ -69,7 +69,7 @@
 \begin{tikzpicture}
 \tikzset{
     connect/.style={draw,very thick,Latex-Latex},
-    computer/.style={inner sep=0mm,outer sep=0mm,alt=<4>{label={[font=\small,label distance=0mm,text=red]south:`host'}},execute at begin node={\computer}},
+    computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
     switch/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\switch}},
 }
 \node[computer,label={center:S}] (s) {};
