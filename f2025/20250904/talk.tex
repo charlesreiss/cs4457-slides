@@ -1,0 +1,68 @@
+\date{}
+\title{}
+\date{}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}\frametitle{last time}
+    \begin{itemize}
+    \item looking at wireshark
+    \item stop-and-wait protocol
+    \item performance
+        \begin{itemize}
+        \item Mbit = $10^6$ bits
+        \item latency = transmission + propagation + queuing (+ processing?)
+        \item round-trip time
+        \item jitter $\sim$ variation in latency/interpacket gap time
+        \item bandwidth (possible); throughput (achieved)
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{quiz logistics}
+\end{frame}
+
+\begin{frame}\frametitle{assignment Q and A}
+\end{frame}
+
+\begin{frame}\frametitle{reliable1}
+    \begin{itemize}
+    \item stop-and-wait in simulator
+    \item implementing layer 4
+        \begin{itemize}
+        \item sender: get from application; send to network
+        \item receiver: get from network; send to application
+        \end{itemize}
+    \item need to keep messages sent together
+        \begin{itemize}
+        \item messages sent in separate packets
+        \item messages never split up when being sent
+        \end{itemize}
+    \item also need to implement RTT estimates for timeouts
+    \end{itemize}
+\end{frame}
+
+\input{../reliable/talk-window}
+
+\section{TCP example}
+
+\subsection{TCP segment format}
+\input{../reliable/tcp-segment-basic}
+
+\subsection{TCP connection example 1}
+\input{../reliable/tcp-example-1}
+
+\subsection{TCP connection example}
+\input{../reliable/tcp-example-2}
+
+
+
+\section{backup slides}
+\begin{frame}\frametitle{backup slides}
+\end{frame}
+
+\end{document}
