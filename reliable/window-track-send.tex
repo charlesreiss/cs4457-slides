@@ -59,12 +59,11 @@ send window size (SWS) & 5 \\
     \end{itemize}
 \end{itemize}
 \begin{tabular}{l}
-A. only possible if network reorders frames \\
-B. only possible from undetected frame corruption \\
-C. lost ACK for frame $\le$ 10\\
-D. lost ACK for frame $>$ 10\\
-E. lost frame 11 \\
-F. resent frame from timeout \\
+A. if network reorders frames \\
+B. lost ACK for frame $\le$ 10\\
+C. lost ACK for frame $>$ 10\\
+D. lost frame 11 \\
+E. resent frame from timeout \\
 \end{tabular}
 \end{frame}
 
@@ -99,7 +98,7 @@ send, we should
 A. send it now, advancing LFS \\
 B. wait until we get an ACK for 5 or 6 to send it \\
 C. wait until we get an ACK for 6 to send it \\
-D. wait until the frame with sequence number 6 is resent to send it
+D. wait until the frame with sequence number 6 is resent to send it \\
 D. something else \\
 \end{tabular}
 \end{frame}
@@ -116,8 +115,8 @@ send, we should
 \end{itemize}
 \begin{tabular}{l}
 A. send it now, advancing LFS \\
-B. wait until we get an ACK for 5 or 6 to send it \\
-C. wait until we get an ACK for 6 to send it \\
+B. wait until we get an ACK for 5 or 6 or 7 or 8 to send it \\
+C. wait until we get an ACK for 6 or 7 or 8 to send it \\
 D. decline to accept the data because we will never be able to send it \\
 E. something else \\
 \end{tabular}
