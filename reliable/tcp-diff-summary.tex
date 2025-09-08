@@ -1,0 +1,29 @@
+\begin{frame}{TCP}
+    \begin{itemize}
+    \item transmission control protocol (TCP)
+    \item implements reliable streams of bytes
+    \item similar mechanism to what we've described
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{TCP extras/differences}
+    \begin{itemize}
+    \item bidirectional ---
+        \begin{itemize}
+        \item separate sequence numbers in each direction
+        \item can combine data (from A to B) with acknowledgment (from B to A)
+        \end{itemize}
+    \item sequence numbers are byte numbers ---
+        \begin{itemize}
+        \item can retransmit data in different sized packets
+        \item sequence numbers = index of \textit{first byte} sent
+        \item acknowledgment numbers = 1 + index of \textit{last byte} acknowledged
+        \end{itemize}
+    \item dynamic/variable window sizes
+        \begin{itemize}
+        \item we'll discuss strategies later
+        \end{itemize}
+    \item offical name for packets = \textit{segments}
+    \end{itemize}
+\end{frame}
+
