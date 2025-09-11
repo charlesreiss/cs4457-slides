@@ -10,9 +10,24 @@
     \includegraphics[width=0.9cm]{../common/fig-router.pdf}
 }
 
+\begin{frame}
+\frametitle{recall: broadcast}
+\begin{itemize}
+\item MAC address FF:FF:FF:FF:FF:FF = everyone on network
+\item `simple' implementation: send to all but incoming port
+\vspace{.5cm}
+\item one way to do this in P4:
+    \begin{itemize}
+    \item setup multicast group that includes all ports
+    \item send to that multicast group in ingress processing
+    \item drop the packet in egress processing if port number matches incoming port
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
 \begin{frame}[label=noBackwardsQ]{aside: no backwards broadcast}
     \begin{itemize}
-    \item recall: broadcast sent to all but incoming port
+    \item broadcast \textit{sent to all but incoming port}
     \item question: what would happen if we didn't do this?
         \begin{itemize}
         \item multiple may apply

@@ -82,6 +82,16 @@ dst MAC addr \& port \\
     \end{itemize}
 \end{frame}
 
+\begin{frame}{key trick: backup plan}
+    \begin{itemize}
+    \item Ethernet designed for multi-access
+    \item can simulate that by broadcasting all frames
+    \vspace{.5cm}
+    \item what to do if switch table is incomplete?
+    \item just broadcast to everyone!
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{MAC learning}
 \begin{tikzpicture}
 \tikzset{
