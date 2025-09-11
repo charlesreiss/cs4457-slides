@@ -1,0 +1,96 @@
+\date{}
+\title{}
+\date{}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{last time}
+\begin{itemize}
+\item TCP packet format
+    \begin{itemize}
+    \item two instances of sliding window protocol
+    \item seq number = first byte number of this packet
+        \begin{itemize}
+        \item or first byte number of next data packet
+        \end{itemize}
+    \item ack number = 1 + last byte number (of other end) ack'd
+    \item seq/ack sent regardless of whether data packet or not
+    \end{itemize}
+\item switched networks from multi-access
+    \begin{itemize}
+    \item will explain Ethernet frame format we'll see
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{common timeout bugs}
+\end{frame}
+
+
+\section{datagrams and Ethernet format}
+
+\input{../switches/datagrams}
+
+% FIXME: example in wireshark
+
+\subsection{versus virtual circuits}
+
+\input{../switches/vs-virtual-circuits}
+
+\section{switch architecture}
+
+\subsection{not programmable}
+\input{../switches/switch-not-program}
+
+\subsection{control v dataplane}
+\input{../switches/control-v-dataplane}
+
+\subsection{what is P4}
+\input{../switches/p4-whatis}
+\subsection{P4 dataplane}
+\subsubsection{switch parts}
+\input{../switches/p4-switch-parts}
+\subsubsection{header management}
+\input{../switches/p4-headers}
+\subsubsection{exercise}
+\input{../switches/p4-header-exer}
+\subsubsection{ingress processing}
+\input{../switches/p4-ingress}
+\subsubsection{exercise}
+\input{../switches/p4-table-exer}
+\subsubsection{egress processing}
+\input{../switches/p4-egress}
+
+\subsection{P4 controlplane}
+\input{../switches/p4-controlplane}
+
+\section{basic Ethernet switching / MAC learning}
+
+\againframe<10>{ethernetFormat}
+
+% FIXME: show before/after wireshark picture form assignment
+
+\input{../switches/in-ethernet}
+
+% FIXME: example of using tcpdump/etc. in implementation
+
+\subsection{aside: no loops please}
+
+\input{../switches/no-loops-please}
+
+\section{preview: internetworks}
+
+\input{../switches/preview-routing}
+
+\section{backup slides}
+\begin{frame}\frametitle{backup slides}
+\end{frame}
+
+\section{switched networks}
+
+\input{../switches/switched-network}
+\end{document}
