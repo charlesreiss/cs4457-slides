@@ -1,0 +1,77 @@
+\date{}
+\title{}
+\date{}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{last time}
+\begin{itemize}
+\item Ethernet frame format
+    \begin{itemize}
+    \item 48-bit MAC addresses
+    \item filtering for multi-access or as last-resort
+    \end{itemize}
+\item data plane / control plane separation
+    \begin{itemize}
+    \item data plane: make most/fast decisions, usually simple table lookups
+    \item control plane: `slow' path that sets up data plane; handles complex cases
+    \end{itemize}
+\item software-defined networking idea
+    \begin{itemize}
+    \item user-programmable networking hardware
+    \item idea of possibly centralized control-plane directing many switches/routers
+    \end{itemize}
+\item P4 as dataplane example
+    \begin{itemize}
+    \item looking at it since switch vendors don't reveal internals
+    \item designed to support using specialize matching hardware
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\section{P4}
+\subsection{P4 dataplane}
+\subsubsection{ingress processing}
+\input{../switches/p4-ingress}
+\subsubsection{exercise}
+\input{../switches/p4-table-exer}
+\subsubsection{egress processing}
+\input{../switches/p4-egress}
+
+\subsection{P4 controlplane}
+\input{../switches/p4-controlplane}
+
+\section{basic Ethernet switching / MAC learning}
+
+%\againframe<10>{ethernetFormat}
+
+% FIXME: show before/after wireshark picture form assignment
+
+\input{../switches/in-ethernet}
+
+% FIXME: example of using tcpdump/etc. in implementation
+
+\subsection{aside: no loops please}
+
+\input{../switches/no-loops-please}
+
+\section{preview: internetworks}
+
+\input{../switches/preview-routing}
+
+\input{../arp/talk-inner}
+
+\section{backup slides}
+\begin{frame}\frametitle{backup slides}
+\end{frame}
+
+\input{../switches/datagrams}
+
+\subsubsection{switch parts}
+\input{../switches/p4-switch-parts}
+
+\end{document}
