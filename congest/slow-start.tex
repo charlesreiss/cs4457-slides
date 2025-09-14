@@ -2,9 +2,16 @@
     \begin{itemize}
     \item not very well named
     \vspace{.5cm}
-    \item exponential(ish) increase to find \textit{initial} window size
+    \item exponential(ish) increase to find window size 
+        \begin{itemize}
+        \item used on connection setup or some losses
+        \end{itemize}
+    \vspace{.5cm}
+    \item history: original TCP set high window size
+    \item slow start is ``slow'' because it starts at a small size always
+    \item \ldots but it grows \myemph{really quickly}
     \end{itemize}
-\end{frame}
+\end{frame}|
 
 \begin{frame}{``slow start''}
     \begin{itemize}

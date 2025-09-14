@@ -1,3 +1,4 @@
+
 \section{`slow start'}
 \againframe<4>{jacobsonFixes}
 \input{../congest/slow-start} % FIXME: picture
@@ -6,15 +7,26 @@
 \subsection{exercise}
 \input{../congest/slow-start-ex}
 
-\section{slow start later}
-\input{../congest/slow-start-later}
+\section{original TCP congestion control (restated)}
+\input{../congest/tcp-tahoe}
+
+\section{`fast retransmit' and `fast recovery'}
+\againframe<3>{jacobsonFixes}
+
+\input{../congest/tcp-reno-intro}
+
+\subsection{recall: duplicate ACKs}
+\input{../reliable/dup-ack-opt}
+
+\subsection{duplicate ACKs}
+\input{../congest/dup-ack-window}
+
+\subsection{self-clocking and fast retransmit}
+\input{../congest/self-clock-idea}
 
 \subsection{some more graphs}
 \againframe<2>{vegasrenotrace}
 \input{../congest/graphs-with-slow-start}
-
-\section{CUBIC, briefly}
-\input{../congest/cubic}
 
 % FIXME: \subsection{exercise: convergence times}
 
@@ -51,18 +63,8 @@
 \section{TCP variants}
 \input{../congest/tcp-variant-names}
 
-
-\section{`fast retransmit' and `fast recovery'}
-\againframe<3>{jacobsonFixes}
-
-\subsection{recall: duplicate ACKs}
-\input{../reliable/dup-ack-opt}
-
-\subsection{duplicate ACKs}
-\input{../congest/dup-ack-window}
-
-\subsection{intuition: self-clocking}
-\input{../congest/self-clock-idea}
+\section{CUBIC, briefly}
+\input{../congest/cubic}
 
 
 \section{deep queues?}

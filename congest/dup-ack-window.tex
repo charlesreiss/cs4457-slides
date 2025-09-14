@@ -2,11 +2,33 @@
     \begin{itemize}
     \item TCP calls this idea of retransmission from duplicate ACKs  \\
         ``fast retransmission''
+    \item means we typically don't wait for timeouts
         \begin{itemize}
-        \item was actually not done in early versions of TCP
+        \item \ldots assuming just one loss
         \end{itemize}
-    \vspace{.5cm}
-    \item but problem: what to do with congestion window
-    \item solution called `fast recovery'
     \end{itemize}
+\end{frame}
+
+\begin{frame}{fast retransmit delays}
+\begin{tabular}{llll}
+recv'd & sent \\
+--- & data 0-7 \\
+ACK 0 & ~ \\
+~ & data 8 \\
+ACK 1 & ~ \\
+~ & data 9 \\
+ACK 1 & ~  \\
+ACK 1 & ~  \\
+~ & data 2 \\
+ACK 1 & ~ \\
+ACK 1 & ~ \\
+ACK 1 & ~ \\
+ACK 1 & ~ \\
+ACK 9 & ~ \\
+data 10-\ldots \\
+\end{tabular}
+\begin{itemize}
+\item delayed sending new packets until ACK 9
+\item \ldots but probably could've done that earlier?
+\end{itemize}
 \end{frame}
