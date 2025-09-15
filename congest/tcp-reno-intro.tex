@@ -1,28 +1,17 @@
 \begin{frame}
 \frametitle{TCP (New)Reno}
 \begin{itemize}
-    \item base for `modern' TCP
-    \item track two variables
-        \begin{itemize}
-        \item \texttt{cwnd} = congestion window
-        \item \texttt{ssthresh} = `slow start threshold'
-        \end{itemize}
-    \item two modes of operation:
+    \item base for `modern' TCP (changes from Tahoe highlighted)
     \item \textit{congestion avoidance} (cwnd $\ge$ ssthresh; no known loss)
         \begin{itemize}
-        \item represents ``steady state'' --- our focus for now
         \item no loss: cwnd += 1 segment per round-trip-time
         \item \myemph{on loss (dup ACK): cwnd = cwnd/2; ssthresh = new cwnd}
-        \item on loss (timeout); cwnd = 2 segments
+        \item on loss (timeout): cwnd = 2 segments
         \end{itemize}
     \item \textit{recovery} (known loss)
         \begin{itemize}
-        \item retransmit on 3 duplicate ACKs/timeout
-        \item + some extra optimizations (``fast recovery'')
-        \end{itemize}
-    \item \textit{``slow start''} (cwnd < ssthresh)
-        \begin{itemize}
-        \item (we'll explain this later)
+        \item resend immediately on third dup ACK
+        \item \myemph{send new data based on self-clocking idea (``fast recovery'')}
         \end{itemize}
     \end{itemize}
 \end{frame}

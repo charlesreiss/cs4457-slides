@@ -1,4 +1,4 @@
-\begin{frame}{TCP Tahoe}
+\begin{frame}{TCP Tahoe (1)}
     \begin{itemize}
     \item first version of TCP congestion control
     \item track two variables
@@ -6,7 +6,15 @@
         \item \texttt{cwnd} = congestion window
         \item \texttt{ssthresh} = `slow start threshold'
         \end{itemize}
-    \item two modes of operation:
+    \item three modes of operation:
+    \item \textit{congestion avoidance} (cwnd $\ge$ ssthresh; no known loss)
+    \item \textit{recovery} (known loss)
+    \item \textit{``slow start''} (cwnd < ssthresh)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{TCP Tahoe (2)}
+    \begin{itemize}
     \item \textit{congestion avoidance} (cwnd $\ge$ ssthresh; no known loss)
         \begin{itemize}
         \item represents ``steady state'' --- our focus for now
@@ -15,7 +23,7 @@
         \end{itemize}
     \item \textit{recovery} (known loss)
         \begin{itemize}
-        \item retransmit packet after third duplicate ACK of previous packet :or timeout
+        \item retransmit packet after third duplicate ACK of previous packet \\ (or timeout)
         \end{itemize}
     \item \textit{``slow start''} (cwnd < ssthresh)
         \begin{itemize}

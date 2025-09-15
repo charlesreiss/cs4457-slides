@@ -1,12 +1,5 @@
 \begin{frame}{TCP Tahoe}
     \begin{itemize}
-    \item first version of TCP congestion control
-    \item track two variables
-        \begin{itemize}
-        \item \texttt{cwnd} = congestion window (init. 2 segments)
-        \item \texttt{ssthresh} = `slow start threshold' (init. $\infty$)
-        \end{itemize}
-    \item two modes of operation:
     \item \textit{congestion avoidance} (cwnd $\ge$ ssthresh)
         \begin{itemize}
         \item no loss: cwnd += 1 segment per round-trip-time
