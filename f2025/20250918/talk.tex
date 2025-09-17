@@ -1,0 +1,81 @@
+\date{}
+\title{}
+\date{}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{last time}
+\begin{itemize}
+\item P4 control plane operations
+    \begin{itemize}
+    \item edit table entries; receive packets to process them; setup multicasting
+    \end{itemize}
+\item IP addresses (format, allocation)
+\item routing (network addrs) v switching (MAC addrs) tables
+\item IP address ranges; CIDR notation
+\item putting IP on Ethernet
+    \begin{itemize}
+    \item need for neighbor table
+    \item gateways in routing tables
+    \end{itemize}
+\item ARP protocol
+    \begin{itemize}
+    \item send/request MAC:IPv4 address mappings
+    \item take advantage of local network broadcast
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\subsection{ARP, ND}
+
+\input{../arp/protocols}
+
+\subsection{what if there are two}
+
+% FIXME: scenario where 10.0.2.9 is machine A, then machine B
+% FIXME: scenario where machine A and B both think they are 10.0.2.9
+\input{../arp/dup-address}
+
+\subsection{ARP hijacking}
+
+\input{../arp/arp-hijack}
+
+% FIXME: ARP proxies?
+
+\section{exercise}
+\input{../arp/ip-mac-exer}
+
+\section{DHCP}
+% FIXME: diagram with multiple DHCP servers
+\input{../arp/dhcp} % FIXME: incomplete
+
+
+\subsection{DHCP relays}
+
+\input{../arp/dhcp-relay} % FIXME: DHCP relay diagram
+
+\subsection{DHCPv6}
+
+% FIXME
+% FIXME
+
+\section{IPv6 autoconfiguration}
+
+\input{../arp/ipv6-autoconf}
+% FIXME
+
+\input{../congest/talk-inner}
+
+\section{backup slides}
+\begin{frame}\frametitle{backup slides}
+\end{frame}
+
+\input{../congest/talk-backup}
+
+
+\end{document}
