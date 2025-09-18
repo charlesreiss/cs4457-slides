@@ -40,18 +40,18 @@
 \item but has:
     \begin{itemize}
     \item 100 packets/second from test flow (checking window size) 
-    \item 20 packets/second from other session
+    \item 10 packets/second from other session
     \end{itemize}
-\item expected \textit{loss rate} (\% packets lost)? $\frac{100+20-50}{100+20}=58\%$
-\item expected \% test flow packets lost? $58\%$
-\item expected \% other session packets lost? $58\%$
+\item expected \textit{loss rate} (\% packets lost)? $\frac{100+10-50}{100+10}=54\%$
+\item expected \% test flow packets lost? $54\%$
+\item expected \% other session packets lost? $54\%$
 \item<2-> \myemph{\ldots but I missed something}
 \end{itemize}
 \end{frame}
 
 \begin{frame}{a virtuous cycle}
 \begin{itemize}
-\item what is other session going to when 58\% of its packets are lost?
+\item what is other session going to when 54\% of its packets are lost?
     \begin{itemize}
     \item probably resend them
     \end{itemize}
@@ -61,7 +61,7 @@
     \end{itemize}
 \vspace{.5cm}
 \item if other session doesn't slow down, then\ldots
-\item $10$ pkt/s $\rightarrow10+58\%\cdot10+58\%^2\cdot10 \ldots\approx 48$ pkt/s
+\item $10$ pkt/s $\rightarrow10+54\%\cdot10+54\%^2\cdot10 \ldots\approx 22$ pkt/s
 \end{itemize}
 \end{frame}
 
@@ -72,13 +72,13 @@
 \item but has:
     \begin{itemize}
     \item 100 packets/second from test flow (checking window size) 
-    \item 20 packets/second from other session $\rightarrow 48$ with resends
+    \item 10 packets/second from other session $\rightarrow 22$ with resends
     \end{itemize}
-\item expected \textit{loss rate} (\% packets lost)? $\frac{100+48-50}{100+48}=66\%$
-\item expected \% test flow packets lost? $66\%$
-\item expected \% other session packets lost? $66\%$
+\item expected \textit{loss rate} (\% packets lost)? $\frac{100+22-50}{100+22}=59\%$
+\item expected \% test flow packets lost? $59\%$
+\item expected \% other session packets lost? $59\%$
     \begin{itemize}
-    \item<2-> means that 48 pkt/sec is slight underestimate
+    \item<2-> means that 22 pkt/sec is slight underestimate
     \item<2-> though realistically other session should slow down
     \end{itemize}
 \end{itemize}
@@ -86,7 +86,7 @@
 
 \begin{frame}{aside: latency (1)}
 \begin{itemize}
-\item 58\% packet loss $\rightarrow$ average packet sent 2.4 times
+\item 589% packet loss $\rightarrow$ average packet sent 2.4 times
 \item need one round-trip time (RTT) to detect loss
     \begin{itemize}
     \item probably from duplicate ACK
@@ -99,7 +99,7 @@
 
 \begin{frame}{aside: high-percentile latency}
 \begin{itemize}
-\item 58\% packet loss
+\item 59\% packet loss
 \item about 10\% of time need more than 4 retransmissions
 \item about 5\% of the time need more than 5 retransmissions
 \item about 1\% of the time need more than 8 retransmissions
@@ -122,10 +122,4 @@
 \vspace{.5cm}
 \item<2-> $\approx$ 8 times slower with same window size
 \end{itemize}
-\end{frame}
-
-\begin{frame}{performance v load}
-\begin{tikzpicture}
-
-\end{tikzpicture}
 \end{frame}
