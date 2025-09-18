@@ -55,8 +55,8 @@
         \path[box,hi on=0] (16, -1) rectangle ++(16, -1) node[box label] {opcode (request or reply)};
         \path[box,hi on=0] (0, -2) rectangle ++(32, -1.5) node[box label] {sender HW addr};
         \path[box,hi on=0] (0, -3.5) rectangle ++(32, -1.5) node[box label] {sender protocol addr};
-        \path[box,hi on=0] (0, -5) rectangle ++(32, -1.5) node[box label] {dest HW addr};
-        \path[box,hi on=3] (0, -6.5) rectangle ++(32, -1.5) node[box label] {dest protocol addr};
+        \path[box,hi on=3] (0, -5) rectangle ++(32, -1.5) node[box label] {dest HW addr};
+        \path[box,hi on=0] (0, -6.5) rectangle ++(32, -1.5) node[box label] {dest protocol addr};
         \foreach \offset in {-2.75,-4.25,-5.75, -7.25} {
             \draw[line width=1mm,white] (-.2, \offset - .05) -- ++(.4, .1);
             \draw[line width=1mm,white] (32 -.2, \offset - .05) -- ++(.4, .1);
