@@ -14,8 +14,14 @@
         \begin{itemize}
         \item some used in modern TCP implementations
         \end{itemize}
+    \item usually \textit{more aggressive} than ``normal'' TCP
+        \begin{itemize}
+        \item examples we'll talk about later: CUBIC, Compound TCP \\
+            (common defaults on recentish OSes)
+        \item needed to fully utilize bandwidth on fast network
+        \end{itemize}
     \vspace{.5cm}
-    \item on Internet, need to be compatible with ``normal'' TCP
+    \item concern: are these ``stealing'' all the bandwidth from normal TCP?
     \item ``TCP-friendly''
         \begin{itemize}
         \item should not make TCP used alongside them behave poorly
@@ -23,7 +29,7 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{examples: checking versus TCP}
+\begin{frame}{examples: TCP-unfriendliness}
 \begin{tikzpicture}
 \node (a) {
 \includegraphics[height=0.9\textheight]{../congest/cubic-sack-compare}
