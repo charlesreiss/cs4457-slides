@@ -1,0 +1,81 @@
+\date{}
+\title{}
+\date{}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\input{../congest/collapse-history}
+
+\begin{frame}
+\frametitle{last time}
+\begin{itemize}
+\item ARP and duplicate IPs, intentional hijacking
+\item DHCP --- get IP address + gateway by asking via broadcast
+\item stateless autoconfiguration in IPv6
+    \begin{itemize}
+        \item choose arbitrary address within /64
+    \end{itemize}
+\item congestion collapse problem
+    \begin{itemize}
+    \item all flows lose when one flow overloads network
+    \item retransmissions likely to make overload worse
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{searching for performance}
+\input{../congest/find-window}
+
+\section{changing cross-traffic}
+\input{../congest/cross-traffic}
+
+\section{up/down pattern (rough)}
+\input{../congest/window-change-rough}
+    % FIXME: show sawtooth pattern
+
+\section{heuristic: slow increase}
+\input{../congest/heuristic-increase}
+
+\subsection{exercise: convergence times}
+\input{../congest/convergence-time}
+
+\section{heuristic: fast decrease (v1)}
+\input{../congest/heuristic-decrease-to-1}
+
+\section{original TCP congestion control}
+\input{../congest/tcp-tahoe-intro}
+
+\section{part 1: window sizing}
+\againframe<2>{jacobsonFixes}
+
+\section{focus on steady state}
+\input{../congest/focus-steady-state}
+
+\section{revised TCP congestion control}
+\input{../congest/tcp-reno-intro}
+
+\section{heuristic: fast decrease (v2)}
+\input{../congest/heuristic-decrease}
+
+\section{AIMD}
+\input{../congest/aimd}
+
+    % FIXME: hilite distance measurement oof down parts on sawtooth pattern
+
+\section{some graphs}
+\input{../congest/tcp-normal-graphs}
+
+
+\subsection{exercise: non-congestion losses} % FIXME: modify for decrease to 1
+\input{../congest/non-congest-losses}
+
+
+\section{backup slides}
+\begin{frame}\frametitle{backup slides}
+\end{frame}
+
+\input{../congest/talk-backup}
+
+\end{document}
