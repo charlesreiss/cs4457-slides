@@ -24,6 +24,14 @@
     \item all flows lose when one flow overloads network
     \item retransmissions likely to make overload worse
     \end{itemize}
+\item window size $\sim$ data `in flight'
+    \begin{itemize}
+    \item ideal $\approx$ bandwidth-delay product
+    \end{itemize}
+\item TCP slow increase
+    \begin{itemize}
+    \item window size += 1 segment per round-trip-time
+    \end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -37,17 +45,13 @@
 \input{../congest/window-change-rough}
     % FIXME: show sawtooth pattern
 
-\section{heuristic: slow increase}
-\input{../congest/heuristic-increase}
-
-\subsection{exercise: convergence times}
-\input{../congest/convergence-time}
-
 \section{heuristic: fast decrease (v1)}
 \input{../congest/heuristic-decrease-to-1}
 
 \section{original TCP congestion control}
 \input{../congest/tcp-tahoe-intro}
+
+% FIXME: ss -i look
 
 \section{part 1: window sizing}
 \againframe<2>{jacobsonFixes}
@@ -88,6 +92,12 @@
 \section{backup slides}
 \begin{frame}\frametitle{backup slides}
 \end{frame}
+\section{heuristic: slow increase}
+\input{../congest/heuristic-increase}
+
+\subsection{exercise: convergence times}
+\input{../congest/convergence-time}
+
 
 \input{../congest/talk-backup}
 
