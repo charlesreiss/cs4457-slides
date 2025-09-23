@@ -1,0 +1,44 @@
+\date{}
+\title{}
+\date{}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\subsection{RTT-unfairness}
+\input{../congest/rtt-unfair}
+
+\subsection{other unfairness}
+\input{../congest/other-unfair}
+
+\subsubsection{unfairness in practice}
+\input{../congest/unfair-practice} % FIXME: forward ref to CUBIC
+
+\section{CUBIC, briefly}
+\input{../congest/cubic}
+
+
+% FIXME: interlude here about modeling bandwidth with no contention
+    % FIXME: lead into interlude about simulation, NS-3, etc.
+    % FIXME: split congest stuff before sharing
+
+
+% FIXME: motivate optimizations with graph / plot of actual bandwidth without slow-start/etc.
+
+\input{../congest/talk-opt} % FIXME: separate out/simplify? window size inflation for dup-acks?
+
+\section{backup slides}
+\begin{frame}\frametitle{backup slides}
+\end{frame}
+\section{heuristic: slow increase}
+\input{../congest/heuristic-increase}
+
+\subsection{exercise: convergence times}
+\input{../congest/convergence-time}
+
+
+\input{../congest/talk-backup}
+
+
+\end{document}

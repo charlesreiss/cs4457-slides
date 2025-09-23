@@ -1,18 +1,37 @@
-\begin{frame}{CUBIC: default congestion control today}
+\begin{frame}
+\frametitle{CUBIC: default congestion control today}
     \begin{itemize}
     \item default in Linux (since 2006), OS X (since 2014), Windows (since 2019)
         \begin{itemize}
         \item sysadmin has other options they can configure
         \item can be changed on connection-by-connection basis
         \end{itemize}
+    \item includes improvements to recovery we'll talk about later
+    \item but mostn notably has non-additive increase
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{CUBIC increase algorithm}
     \item big idea: faster increase when further away from window size of last loss
         \begin{itemize}
-        \item cubic function with saddle at that window size
+        \item cubic function with saddle point at that window size
+        \item function parameterized by time since loss
         \end{itemize}
-    \item intuition: 
+    \item intuition for `steady state':
         \begin{itemize}
-        \item search faster if away from ``steady state''
-        \item avoid excess losses from `probing' if at ``steady state''
+        \item guess correct window size is close to last loss
+        \item quickly get to around that window size
+        \item search slowly/precisely around that size to fine tune size
+        \end{itemize}
+    \item intuition for non-steady state:
+        \begin{itemize}
+        \item try to quickly probe for roughly how small/big it is
+        \item kinda looks like `slow start'-type probing
+            \begin{itemize}
+            \item but smooth interpolate rate from fast to very slow
+            \end{itemize}
+        \item worry about getting more precise size on next pass
         \end{itemize}
     \end{itemize}
 \end{frame}
@@ -26,4 +45,11 @@
 from Ha, Rhee, and Xu, ``CUBIC: A New TCP-Friendly High-Speed TCP Variant''
 };
 \end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+    \frametitle{other CUBIC changes}
+    \begin{itemize}
+        \item different multiplicative decrease factor (divide by 1.4)
+    \end{itemize}
 \end{frame}
