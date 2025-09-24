@@ -10,10 +10,11 @@
 \section{original TCP congestion control (restated)}
 \input{../congest/tcp-tahoe}
 
+\section{original TCP congestion control (restated)}
+\input{../congest/tcp-reno}
+
 \section{`fast retransmit' and `fast recovery'}
 \againframe<3>{jacobsonFixes}
-
-\input{../congest/tcp-reno-intro}
 
 \subsection{recall: duplicate ACKs}
 \input{../reliable/dup-ack-opt}
@@ -25,7 +26,9 @@
 \input{../congest/self-clock-idea}
 
 \subsection{some more graphs}
-\againframe<2>{vegasrenotrace}
+\subsubsection{repeated graph}
+\input{../congest/tcp-normal-graphs.tex}
+\subsubsection{non-repeated graph}
 \input{../congest/graphs-with-slow-start}
 
 % FIXME: \subsection{exercise: convergence times}

@@ -78,21 +78,28 @@ ACK 1 & ~ & 2 \\
 \end{itemize}
 \end{frame}
 
-\begin{frame}{fast recovery example}
+\begin{frame}
+\frametitle{fast recovery example}
 {\fontsize{9}{10}\selectfont
 \begin{tabular}{lllll}
 recv'd & sent & packets in flight & send window size (range) & cwnd = target packets in flight\\ \hline
 --- & data 0-7 & 8 & 8 (0-7) & 8\\
 ACK 0 & ~ & 5 & 8 (0-7) & 8 \\
 ~ & data 8 & 6 & 8 (1-8) & 8\\
-ACK 1 & ~ & 5  & 6 (2-7) & 8\\
-~ & data 7 & 6 & 6 (2-7) & 8\\
-ACK 1 & ~  & 5 & 6 (2-7) & 8\\
-ACK 1 & ~  & 4 & 6 (2-7) & 8\\
-ACK 1 & ~ & 3 & 6 (2-7) & 4 \\
-~ & data 2 & 4 & 6 (2-9) & 4\\
-ACK 1 & ~ & 3 & 6 (2-7) & 4 \\
-ACK 1 & ~ & 3 & 6 (2-7) & 4 \\
+ACK 1 & ~ & 5  & 8 (1-8) & 8\\
+~ & data 9 & 6 & 8 (2-9) & 8\\
+ACK 1 & ~  & 5 & 8 (2-9) & 8\\
+ACK 1 & ~  & 4 & 8 (2-9) & 8\\
+ACK 1 & ~ & 3 &  8 (2-9) & 4 \\
+~ & data 2 & 4 & 8 (2-9) & 4\\
+ACK 1 & ~ & 3 &  8 (2-9) & 4 \\
+~ & data 10 & 4 & 9 (2-10) & 4\\
+ACK 1 & ~ & 3 &  9 (2-10) & 4 \\
+~ & data 11 & 4 &  10 (2-11) & 4 \\
 \end{tabular}
 }
+\begin{itemize}
+    \item during recovery, ``inflate'' effective send window size
+    \item try to make actual packets in flight match new congestion window size
+\end{itemize}
 \end{frame}

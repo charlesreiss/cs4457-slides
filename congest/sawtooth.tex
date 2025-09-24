@@ -1,0 +1,9 @@
+\usetikzlibrary{arrows.meta}
+
+\begin{frame}{sawtooth pattern}
+\begin{tikzpicture}
+\draw[very thick,-Latex] (0, 0) -- ++ (14, 0) node[midway,below] {time};
+\draw[very thick,-Latex] (0, 0) -- ++(0, 6) node[midway,left,align=right] {pkts\\in\\flight};
+\draw[dotted,ultra thick] (0, 2.5) -- (5, 5) -- (5, 2.5) -- (10, 5) -- (10, 2.5) -- (14, 4.5);
+\end{tikzpicture}
+\end{frame}

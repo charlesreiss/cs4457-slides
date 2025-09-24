@@ -1,0 +1,21 @@
+\begin{frame}
+\frametitle{TCP (New)Reno [with slow start]}
+\begin{itemize}
+    \item \textit{congestion avoidance} (cwnd $\ge$ ssthresh; no known loss)
+        \begin{itemize}
+        \item no loss: cwnd += 1 segment per round-trip-time
+        \item on loss (dup ACK): cwnd = cwnd/2; ssthresh = new cwnd
+        \item on loss (timeout): cwnd = 2 segments
+        \end{itemize}
+    \item \textit{recovery} (known loss)
+        \begin{itemize}
+        \item resend immediately on third dup ACK
+        \item send new data based on self-clocking idea (``fast recovery'')
+        \end{itemize}
+    \item \textit{``slow start''} (cwnd < ssthresh)
+        \begin{itemize}
+        \item no loss: cwnd += 1 segment per newly ack'd segment
+        \item on loss: ssthresh = cwnd/2; cwnd = cwnd/2;
+        \end{itemize}
+    \end{itemize}
+\end{frame}

@@ -13,6 +13,7 @@
 
 \begin{frame}
     \frametitle{CUBIC increase algorithm}
+    \begin{itemize}
     \item big idea: faster increase when further away from window size of last loss
         \begin{itemize}
         \item cubic function with saddle point at that window size
@@ -27,11 +28,7 @@
     \item intuition for non-steady state:
         \begin{itemize}
         \item try to quickly probe for roughly how small/big it is
-        \item kinda looks like `slow start'-type probing
-            \begin{itemize}
-            \item but smooth interpolate rate from fast to very slow
-            \end{itemize}
-        \item worry about getting more precise size on next pass
+        \item worry about getting more precise size on later `pass'
         \end{itemize}
     \end{itemize}
 \end{frame}

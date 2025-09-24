@@ -1,13 +1,44 @@
 \date{}
 \title{}
 \date{}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
 \begin{document}
 \begin{frame}
     \titlepage
 \end{frame}
+\input{../congest/collapse-history}
 
-\subsection{RTT-unfairness}
-\input{../congest/rtt-unfair}
+
+\begin{frame}
+    \frametitle{last time}
+    \begin{itemize}
+        \item `standard' Reno congestion control
+            \begin{itemize}
+            \item modes: congestion avoidance / recovery / slow start
+            \item +1 segment/RTT in avoidance
+            \item $\div$2 on dup ACK; reset to start on timeout
+            \end{itemize}
+        \item defining fairness
+            \begin{itemize}
+            \item tricky when uneven capability (e.g. some links are slower)
+            \item min-max fair = can't increase share without hurting making it worse for less-well-off
+            \item Jain's Fairness Index = example numerical for difference from equal shares
+            \end{itemize}
+        \item additive increase, multiplicative decrease is approx. min-max fair
+        \item unfairness from variable round-trip times
+    \end{itemize}
+\end{frame}
+
+\section{sawtooth pattern}
+% FIXME: add slide;add to main slide deck
+\input{../congest/sawtooth.tex}
+
+\section{Linux socket info}
+\input{../congest/linux-ss}
+
+
+\section{unfairness}
 
 \subsection{other unfairness}
 \input{../congest/other-unfair}
@@ -15,8 +46,6 @@
 \subsubsection{unfairness in practice}
 \input{../congest/unfair-practice} % FIXME: forward ref to CUBIC
 
-\section{CUBIC, briefly}
-\input{../congest/cubic}
 
 
 % FIXME: interlude here about modeling bandwidth with no contention
@@ -31,6 +60,8 @@
 \section{backup slides}
 \begin{frame}\frametitle{backup slides}
 \end{frame}
+\subsection{RTT-unfairness}
+\input{../congest/rtt-unfair}
 \section{heuristic: slow increase}
 \input{../congest/heuristic-increase}
 
