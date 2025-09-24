@@ -1,0 +1,22 @@
+\begin{FragileFrame}
+\frametitle{Linux's ss command}
+\begin{Verbatim}[commandchars=\\\{\},fontsize=\fontsize{10}{11}]
+$ ss --info --numeric --tcp state established
+...
+Recv-Q  Send-Q   Local Address:Port         Peer Address:Port 
+0       2583232  128.143.71.27:5201         128.143.63.240:55926
+\myemph{cubic} wscale:7,7 rto:204 \myemph{rtt:1.891/0.125} ato:40 \myemph{mss:1448} pmtu:1500
+rcvmss:536 advmss:1448 \myemph{cwnd:309 ssthresh:64} bytes_sent:152936312
+bytes_acked:152698840 bytes_received:37 segs_out:105620 segs_in:7024
+data_segs_out:105619 data_segs_in:1 send 1.89Gbps lastrcv:1312
+pacing_rate 2.27Gbps delivery_rate 996Mbps delivered:105456
+busy:1308ms unacked:164 rcv_space:14600 rcv_ssthresh:64076
+notsent:2345760 minrtt:0.219
+\end{Verbatim}
+\begin{itemize}
+\item \texttt{cubic} = which congestion control algorithm
+\item \texttt{cwnd} = 309 segments; \texttt{ssthresh} = 64 segments
+\item cwnd = 309 segments $\times$ 1488B max segment size = 437 KiB
+\item packet rate $\approx$ cwnd / rtt = 224 MiB/sec = 1879 Mbit/s
+\end{itemize}
+\end{FragileFrame}
