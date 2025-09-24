@@ -12,6 +12,24 @@
 \end{frame}
 
 \begin{frame}
+    \frametitle{increase intuition}
+    \begin{itemize}
+        \item `standard' TCP basically has two increase algorithms:
+        \item slow start --- quickly explore window sizes
+        \item congestion avoidance --- slowly probe for maximum
+        \vspace{.5cm}
+        \item abrupt transition between these is suspect
+            \begin{itemize}
+            \item should have gradual exploration $\rightarrow$ fine-tuning switch
+            \end{itemize}
+        \item heuristic for when to use slow start-style is suspect
+            \begin{itemize}
+            \item half way from last loss $\approx$ guess?
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
     \frametitle{CUBIC increase algorithm}
     \begin{itemize}
     \item big idea: faster increase when further away from window size of last loss
@@ -32,6 +50,7 @@
         \end{itemize}
     \end{itemize}
 \end{frame}
+
 
 \begin{frame}{}
 \begin{tikzpicture}
