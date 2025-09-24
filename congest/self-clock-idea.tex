@@ -82,7 +82,7 @@ ACK 1 & ~ & 2 \\
 \frametitle{fast recovery example}
 {\fontsize{9}{10}\selectfont
 \begin{tabular}{lllll}
-recv'd & sent & packets in flight & send window size (range) & cwnd = target packets in flight\\ \hline
+recv'd & sent & est. packets in flight & send window size (range) & cwnd = target packets in flight\\ \hline
 --- & data 0-7 & 8 & 8 (0-7) & 8\\
 ACK 0 & ~ & 5 & 8 (0-7) & 8 \\
 ~ & data 8 & 6 & 8 (1-8) & 8\\
