@@ -30,9 +30,12 @@
         \item timeout for $i$th retransmission is $2^i \times \text{base timeout}$
         \end{itemize}
     \item intuition: avoids overloading network by being a lot less aggressive
-    \item not aware of good theoretically results in TCP context
         \begin{itemize}
-        \item famous result that this type of backoff is good for things like deciding when to retransmit on sahred wireless link
+        \item what you `should' do for repeated timeouts due to congestion
+        \end{itemize}
+    \item not aware of good theoretical results in TCP context
+        \begin{itemize}
+        \item famous result that this type of backoff is good for things like deciding when to retransmit on shared wired/wireless medium
         \item (Goodman et al, ``On Stability of Ethernet'')
         \end{itemize}
     \end{itemize}
