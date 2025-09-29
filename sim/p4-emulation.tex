@@ -8,4 +8,31 @@
     \item no actual hardware for network device
     \item connected to program (implementing P4 switch) and/or other virtual network devices
     \end{itemize}
+\item emulation runs `as fast as it can':
+    \begin{itemize}
+    \item performance based on speed of programs talking to simulated devices
+    \end{itemize}
+\item could add artificial delays/bandwidht constraints to emulate more realistic networks
+    \begin{itemize}
+    \item make things more realistic by making things slower?
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{emulation constraints}
+\begin{itemize}
+\item does not reflect real network deployment in important ways
+    \begin{itemize}
+        \item especially for evaluating congestion control\ldots
+    \end{itemize}
+\vspace{.5cm}
+\item performance of one simulated hosts affects others because shared machine
+\item performance will be unrealistically low for large networks
+\item round-trip timing affected a lot by packet processing speeds
+\item speed of packets being sent limited by how fast CPU is
+    \begin{itemize}
+    \item never going to get to `real' speed of hardware-accelerated switches
+    \end{itmeize}
+\end{itemize}
 \end{frame}
