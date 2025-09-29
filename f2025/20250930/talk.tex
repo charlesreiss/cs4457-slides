@@ -1,0 +1,65 @@
+\date{}
+\title{}
+\date{}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{last time}
+    \begin{itemize}
+    \item sawtooth pattern with loss-based congestion control
+    \item congestion control and queues
+        \begin{itemize}
+        \item impracticality of running network at 100\%
+        \item loss-based congestion control tends to fill buffers
+        \end{itemize}
+    \item self-clocking idea
+        \begin{itemize}
+        \item duplicate acks = extra packets in flight
+        \end{itemize}
+    \item sending new data during recovery
+        \begin{itemize}
+        \item estimating packets in flight v cwnd
+        \end{itemize}
+    \item TCP-fairness
+    \end{itemize}
+\end{frame}
+
+\section{TCP variants}
+\input{../congest/tcp-variant-names}
+
+\subsection{CUBIC}
+\input{../congest/cubic}
+
+\section{other congestion signals}
+
+\input{../congest/other-signals}
+
+\subsection{explicit congestion notification}
+\againframe<2>{otherSig}
+\input{../congest/ecn}
+
+\subsection{watching latency, etc.}
+\againframe<3>{otherSig}
+\input{../congest/watch-latency}
+
+\subsection{actual CC usage data}
+\input{../congest/overall-data}
+
+\input{../sim/talk-inner}
+
+
+\section{backup slides}
+\begin{frame}\frametitle{backup slides}
+\end{frame}
+\section{deep queues?}
+\input{../congest/buffer-bloat}
+
+\subsection{self-clocking and fast retransmit}
+\input{../congest/self-clock-idea}
+
+\end{document}
