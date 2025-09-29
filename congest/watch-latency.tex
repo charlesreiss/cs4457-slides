@@ -103,6 +103,23 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}{Westwood TCP}
+    \begin{itemize}
+    \item Vegas = watch latency versus window size
+        \begin{itemize}
+        \item intuition: if window size $\uparrow$ $\implies$ latency $\uparrow$, window size too high
+        \end{itemize}
+    \item alternate idea: bandwidth versus window size
+        \begin{itemize}
+        \item intuition: if window size $\uparrow$ $\implies$ bandwidth unchanged, window size too high
+        \end{itemize}
+    \vspace{.5cm}
+    \item Westwood TCP:
+    \item estimate actual bandwidth based on ACK rate
+    \item set ssthresh based on bandwidth + min RTT
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{BBR-style congestion control}
     \begin{itemize}
     \item \myemph<2>{if queues are empty}, larger window:

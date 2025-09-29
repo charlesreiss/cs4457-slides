@@ -7,11 +7,18 @@
 \subsection{exercise}
 \input{../congest/slow-start-ex}
 
+
 \section{original TCP congestion control (restated)}
 \input{../congest/tcp-tahoe}
 
 \section{original TCP congestion control (restated)}
 \input{../congest/tcp-reno}
+
+\subsection{some more graphs}
+\subsubsection{repeated graph}
+\input{../congest/tcp-normal-graphs.tex}
+\subsubsection{non-repeated graph}
+\input{../congest/graphs-with-slow-start}
 
 \section{`fast retransmit' and `fast recovery'}
 \againframe<3>{jacobsonFixes}
@@ -22,14 +29,12 @@
 \subsection{duplicate ACKs}
 \input{../congest/dup-ack-window}
 
+\subsection{SACK}
+\input{../congest/sack}
+
 \subsection{self-clocking and fast retransmit}
 \input{../congest/self-clock-idea}
 
-\subsection{some more graphs}
-\subsubsection{repeated graph}
-\input{../congest/tcp-normal-graphs.tex}
-\subsubsection{non-repeated graph}
-\input{../congest/graphs-with-slow-start}
 
 % FIXME: \subsection{exercise: convergence times}
 
@@ -58,9 +63,6 @@
 \subsection{CUBIC}
 \input{../congest/cubic}
 
-
-\section{deep queues?}
-\input{../congest/buffer-bloat}
 
 \section{other congestion signals}
 
