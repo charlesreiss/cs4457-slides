@@ -1,0 +1,64 @@
+\date{}
+\title{}
+\date{}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{last time}
+\begin{itemize}
+\item non-loss-based congestion control
+\item explicit congestion notification
+    \begin{itemize}
+    \item switches marking packets
+    \item echoing back to original sender, treat like loss
+    \end{itemize}
+\item congestion control based on delay, bandwidth
+    \begin{itemize}
+    \item detect when queues get filled, don't increase more
+    \item more packets in flight = more delay $\implies$ filling queues
+    \item more packets in flight = same bandwidth $\implies$ filling queues
+    \end{itemize}
+\item network `emulation' (like on P4 VM)
+\item discrete event simulators
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{assignment Q and A}
+\end{frame}
+
+\section{discrete event simulation}
+\input{../sim/discrete-sim}
+
+\section{example of NS-3}
+\input{../sim/discrete-sim-ns3}
+
+\section{NS-3's TCP modeling and the assignment}
+\input{../sim/ns3-tcp-model}
+
+\section{aside: NS-3 logging}
+\input{../sim/ns3-logging}
+\input{../queuing/talk-inner}
+
+
+\section{backup slides}
+\begin{frame}\frametitle{backup slides}
+\end{frame}
+
+
+\section{revisiting AIMD model}
+
+\input{../congest/aimd-diagram}
+
+\section{numerical models}
+
+\input{../sim/num-models}
+
+% FIXME: emulation
+\section{P4's emulation}
+\input{../sim/p4-emulation}
+\end{document}
