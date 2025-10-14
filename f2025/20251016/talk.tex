@@ -1,0 +1,154 @@
+\date{}
+\title{}
+\date{}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{last time}
+\begin{itemize}
+    \item distributed versus centralized routing
+        \begin{itemize}
+        \item our focus on distributed
+        \end{itemize}
+    \item routing metrics
+        \begin{itemize}
+        \item algorithms based on minimum sum of `costs'
+        \item imperfect match to optimizing bandwidth (typical goal?)
+        \end{itemize}
+    \item flooding for routing
+    \item spanning tree protocol
+        \begin{itemize}
+        \item share info about current tree with neighbors
+        \item agreement: aim for \textit{particular tree} (min root, distance, etc.)
+        \item use local info to choose best links
+        \end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Bellman-Ford}
+\input{../routing/bellman-ford}
+
+\section{distance vector routing}
+\subsection{distributing Bellman-Ford}
+\input{../routing/bellman-ford-dist}
+
+\subsection{aside: networks and routers}
+\input{../routing/network-v-router-dv} 
+
+\subsection{algorithm}
+\input{../routing/dv-algo}
+
+\subsection{RIP}
+\input{../routing/rip-protocol}
+
+
+\subsection{handling removal}
+\input{../routing/removalp} % FIXME: fill in diagram
+
+\subsection{count-to-infinity}
+\input{../routing/count-to-infty} % FIXME: diagram
+
+\section{link state}
+\subsection{idea}
+\input{../routing/link-state-idea}
+\subsection{link state advertisements}
+\input{../routing/link-state-adv}
+\subsection{link state database}
+\input{../routing/link-state-db}
+\subsection{reliable flooding}
+\input{../routing/ls-reliable-flood}
+
+\subsection{shortest path first}
+\input{../routing/ls-shortest-path}
+
+
+\subsection{shortest path algorithm}
+\input{../routing/bestFirstExample}
+
+\subsection{shortest path consistency}
+\input{../routing/sp-consistency}
+
+\subsection{convergence}
+\input{../routing/ls-v-dv-converge}
+
+\subsection{networks versus routers}
+\input{../routing/network-v-router-ls} 
+
+\section{multipath/load balancing}
+\input{../routing/multipath}
+
+\section{scalability: OSPF areas} % textbook sec 4.1.1.
+
+\subsection{motivation / basic idea}
+
+\input{../routing/area-big-net}
+
+\subsection{areas are DV}
+
+\input{../routing/area-is-dv}
+
+\subsection{always route through backbone}
+\input{../routing/ospf-backbone}
+
+\section{interdomain routing}
+\input{../routing/interdomain-problems}
+
+\subsection{terminology: autonomous system}
+\input{../routing/define-as}
+
+\subsection{relationship types}
+\input{../routing/relate-types}
+
+\subsection{aside: connecting big networks}
+\input{../routing/aside-connect-big}
+
+\subsection{local/remote preferences}
+\input{../routing/distant-prefs}
+
+\subsection{sharing routes: BGP}
+\input{../routing/bgp-overview}
+
+\subsection{BGP route format}
+\input{../routing/bgp-route-format}
+
+\subsection{sharing routes: picture}
+\input{../routing/bgp-basic-picture}
+
+\subsection{sharing routes: multiple connections}
+\input{../routing/bgp-simple-multi}
+
+\subsection{BGP route preference order}
+\input{../routing/bgp-route-pref} % FIXME: show multi-exit discriminator
+
+\section{UVa, in practice}
+\input{../routing/in-practice-uva}
+
+\subsection{internet exchanges, peeringdb}
+\input{../routing/peeringdb-ixp}
+
+\subsection{BGP communities}
+\input{../routing/bgp-comm}
+
+\subsection{BGP hijacking/fat fingers}
+\input{../routing/hijack}
+
+\subsection{validating routes / sBGP}
+\input{../routing/aside-verification}
+
+
+\subsection{aside: partial tables}
+\input{../routing/partial-tables}
+
+\section{backup slides}
+\begin{frame}\frametitle{backup slides}
+\end{frame}
+
+\section{aside: metrics}
+\input{../routing/metrics}
+
+
+
+\end{document}
