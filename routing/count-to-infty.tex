@@ -86,7 +86,7 @@
     row 2/.style={nodes={fill=violet!10}},
 ] (A dv) at (A.north) {
     A \& B \& C \& D \\
-    0/A \& 2/B \& 4/C \& \only<1-2>{3/B}\only<3->{\myemph<3>{9/B}} \\
+    0/A \& 2/B \& 4/C \& \only<1-2>{3/B}\only<3->{\infty/---} \\
 };
 \matrix[anchor=north,one dv,
     row 2/.style={nodes={fill=yellow!10}},
@@ -104,19 +104,15 @@
     row 2/.style={nodes={fill=green!10}},
 ] (B dv) at ([yshift=.25cm,xshift=4cm]B.south west) {
     A \& B \& C \& D \\
-    4/A \& 0/B \& 2/C \& \only<1>{\noroute}\only<2-3>{\myemph<2>{7/A}}\only<4>{\myemph<4>{13/A}} \\
+    4/A \& 0/B \& 2/C \& \noroute
 };
 \begin{visibleenv}<2>
 \draw[msg link] (A) -- (B)
-    node[midway,above left,msg data] { I'm A: A=0,B=2,C=4,D=3 };
+    node[midway,above left,msg data] { I'm A: A=0,B=2,C=4,D=\sout{3}{\large \infty} (poison reverse)};
 \end{visibleenv}
 \begin{visibleenv}<3>
 \draw[msg link] (B) -- (A)
-    node[midway,above left,msg data] { I'm B: A=4,B=0,C=2,D=7 };
-\end{visibleenv}
-\begin{visibleenv}<4>
-\draw[msg link] (A) -- (B)
-    node[midway,above left,msg data] { I'm A: A=4,B=0,C=2,D=7 };
+    node[midway,above left,msg data] { I'm B: A=4,B=0,C=2,D=\infty };
 \end{visibleenv}
 \end{scope}
 \end{tikzpicture}

@@ -3,86 +3,7 @@
 \providecommand{\noroute}{$\infty$/---}
 \providecommand{\mymark}[2]{\alt<#1->{\myemph<#1>{#2}}{}}
 
-
-\begin{frame}{links going down}
-    \begin{itemize}
-    \item problem with our update rule:
-    \item assumes routes only get better
-    \vspace{.5cm}
-    \item reality: sometimes links go down
-    \item need to find different route
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{updating for removal (1)}
-    \begin{itemize}
-    \item let's say I'm A and my distance vector is:
-        \begin{itemize}
-        \item A=0 via A, B=4 via B, C=5 via D, D=4 via D
-        \end{itemize}
-    \item if my link to D goes down, new distance vector should be?
-        \begin{itemize}
-        \item<2-> A=0 via A, B=4 via B, C=$\infty$ via no one, D=$\infty$ via no one
-        \end{itemize}
-    \vspace{.5cm}
-    \item<2-> later updates might fix $\infty$s
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{updating for removal (2)}
-    \begin{itemize}
-    \item let's say I'm A and my distance vector is:
-        \begin{itemize}
-        \item B=4 via B, C=5 via D, D=4 via D
-        \end{itemize}
-    \item and D tells me its distance vector is
-        \begin{itemize}
-        \item B=8 via A, C=$\infty$ via no one, D=0 via D
-        \end{itemize}
-    \item then my (A)'s new distance vector should be?
-        \begin{itemize}
-        \item<2->B=4 via B, C=$\infty$ via no one, D=4 via D
-        \end{itemize}
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{updating for removal (3)}
-    \begin{itemize}
-    \item let's say I'm A and my distance vector is:
-        \begin{itemize}
-        \item B=4 via B, C=5 via D, D=4 via D
-        \end{itemize}
-    \item and D tells me its distance vector is
-        \begin{itemize}
-        \item B=8 via A, C=5 via A, D=0 via D
-        \end{itemize}
-    \item then my (A)'s new distance vector should be?
-        \begin{itemize}
-        \item<2->B=4 via B, C=$\infty$ via no one, D=4 via D
-        \end{itemize}
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{updating for removal (4)}
-    \begin{itemize}
-    \item let's say I'm A and my distance vector is:
-        \begin{itemize}
-        \item B=4 via B, C=5 via D, D=4 via D
-        \end{itemize}
-    \item and D tells me its distance vector is
-        \begin{itemize}
-        \item B=3 via B, C=8 via B, D=0 via D
-        \end{itemize}
-    \item then my (A)'s new distance vector should be?
-        \begin{itemize}
-        \item<2->B=4 via B, C=12 via D, D=4 via D
-        \end{itemize}
-    \vspace{.5cm}
-    \item<2-> probably later update from B will overwrite route to C
-    \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{removal?}
+\begin{frame}[fragile]{count to infinity}
 \begin{tikzpicture}
 \tikzset{
     computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
@@ -115,16 +36,16 @@
 \node[tn,n real] (B) at (5, -2) {B};
 \node[tn,n real] (C) at (-5, -2) {C};
 \node[tn,n real] (D) at (0, -4) {D};
-\draw[connect big] ([yshift=1mm]A.east) -- ([xshift=1mm]B.north) node[midway,above] {2};
-\draw[connect] ([xshift=-1mm]B.north) -- ([yshift=-1mm]A.east) node[midway,below] {4};
+\draw[connect big,alt=<3>{red,dotted,line width=1mm},alt=<5>{red,dotted,line width=1mm}] ([yshift=1mm]A.east) -- ([xshift=1mm]B.north) node[midway,above] {2};
+    \draw[connect,alt=<4>{red,dotted,line width=1mm},alt=<6>{red,dotted,line width=1mm}] ([xshift=-1mm]B.north) -- ([yshift=-1mm]A.east) node[midway,below] {4};
 \draw[connect big] ([yshift=1mm]A.west) -- ([xshift=-1mm]C.north) node[midway,above] {1};
 \draw[connect big] ([xshift=1mm]C.north) -- ([yshift=-1mm]A.west) node[midway,below] {2};
 \draw[connect big] ([yshift=1mm]C.east) -- ([yshift=1mm]B.west) node[midway,above] {2};
 \draw[connect big] ([yshift=-1mm]B.west) -- ([yshift=-1mm]C.east) node[midway,below] {2};
 \draw[connect] ([xshift=1mm]C.south) -- ([yshift=1mm]D.west) node[midway,above] {4};
 \draw[connect] ([yshift=-1mm]D.west) -- ([xshift=-1mm]C.south) node[midway,below] {5};
-\draw[connect big,alt=<1>{red},alt=<2>{dotted,black!20}] ([xshift=-1mm]B.south) -- ([yshift=1mm]D.east) node[midway,above] {1};
-\draw[connect big,alt=<1>{red},alt=<2>{dotted,black!20}] ([yshift=-1mm]D.east) -- ([xshift=1mm]B.south) node[midway,below] {2};
+\draw[connect big,alt=<1>{red,dotted,line width=1mm},alt=<2>{dotted,black!20}] ([xshift=-1mm]B.south) -- ([yshift=1mm]D.east) node[midway,above] {1};
+\draw[connect big,alt=<1>{red,dotted,line width=1mm},alt=<2>{dotted,black!20}] ([yshift=-1mm]D.east) -- ([xshift=1mm]B.south) node[midway,below] {2};
 \tikzset{
     one dv/.style={
         tight matrix,
@@ -135,7 +56,7 @@
     row 2/.style={nodes={fill=violet!10}},
 ] (A dv) at (A.north) {
     A \& B \& C \& D \\
-    0/A \& 2/B \& 4/C \& 3/B \\
+    0/A \& 2/B \& 4/C \& \only<1-3>{3/B}\only<4-5>{\mymark{4}{11/B}}\only<6->{\mymark{6}{17/B}} \\
 };
 \matrix[anchor=north,one dv,
     row 2/.style={nodes={fill=yellow!10}},
@@ -153,8 +74,20 @@
     row 2/.style={nodes={fill=green!10}},
 ] (B dv) at ([yshift=.25cm,xshift=4cm]B.south west) {
     A \& B \& C \& D \\
-    4/A \& 0/B \& 2/C \& \only<1>{1/D}\mark{2}{\noroute} \\
+    4/A \& 0/B \& 2/C \& \only<1>{1/D}\only<2>{\mymark{2}{\noroute}}\only<3-4>{\mymark{3}{7/A}}\only<5-6>{\mymark{5}{13/A}} \\
 };
+\begin{visibleenv}<3>
+\draw[msg link] (A) -- (B)
+    node[midway,above left,msg data] { I'm A: A=0,B=2,C=4,D=3 };
+\end{visibleenv}
+\begin{visibleenv}<4>
+\draw[msg link] (B) -- (A)
+    node[midway,above left,msg data] { I'm B: A=4,B=0,C=2,D=7 };
+\end{visibleenv}
+\begin{visibleenv}<5>
+\draw[msg link] (A) -- (B)
+    node[midway,above left,msg data] { I'm A: A=4,B=0,C=2,D=11 };
+\end{visibleenv}
 \end{scope}
 \end{tikzpicture}
 \end{frame}

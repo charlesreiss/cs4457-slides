@@ -1,5 +1,22 @@
 \usetikzlibrary{arrows.meta,matrix}
 
+\begin{frame}
+\frametitle{distributing Bellman-Ford outline (1)}
+\begin{itemize}
+\item \myemph<1>{on each node A run:}
+\item repeatedly: 
+\item for each link \myemph{from A} (going to B, distance c)
+    \begin{itemize}
+    \item for each node X: 
+    \item if $c + d(B, X) < d(A, X)$, \\
+    \item then $d(A,X) \leftarrow c+d(B,X)$, $p(A,X) = B$
+    \end{itemize}
+\vspace{.5cm}
+\item<2-> \myemph<2>{on node A: track $d(A, X)$, $p(A, X)$}
+\item<3-> \myemph<3>{node A needs to get $d(B, X)$ to run algorithm}
+\end{itemize}
+\end{frame}
+
 \providecommand{\noroute}{$\infty$/---}
 \providecommand{\mymark}[2]{\alt<#1->{\myemph<#1>{#2}}{}}
 \begin{frame}[fragile]{distributing Bellman-Ford}

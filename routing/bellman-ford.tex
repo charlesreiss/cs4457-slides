@@ -1,14 +1,15 @@
 \usetikzlibrary{arrows.meta,matrix}
-\begin{frame}{all-pairs Bellman-Ford}
+\begin{frame}
+\frametitle{all-pairs Bellman-Ford (1)}
     \begin{itemize}
     \item one algorithm to find all shortest paths in graph (network)
     \vspace{.5cm}
     \item $d(A,B) = \text{best distance from A to B}$
     \item $p(A,B) = \text{next node on path from A to B}$
-    \item initially $d(X,X) = \infty$ for all nodes $X$
+    \item initially $d(X,Y) = \infty$ for all nodes $X$, $Y$
     \item repeatedly* do the following:
     \vspace{.5cm}
-    \item for each link from A to B, distance $c$:
+    \item for each link: (A to B, distance $c$):
         \begin{itemize}
         \item for each node X:
         \item if $c + d(B, X) < d(A, X)$, \\
@@ -17,9 +18,28 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}
+\frametitle{all-pairs Bellman-Ford (2)}
+    \begin{itemize}
+        \item for each link (A to B, distance $c$):
+        \begin{itemize}
+        \item for each node X:
+        \item \myemph<2>{if $c + d(B, X) < d(A, X)$}, \\
+        \item then \myemph<3>{$d(A,X) \leftarrow c+d(B,X)$, $p(A,X) = B$}
+        \end{itemize}
+    \vspace{.5cm}
+    \item<2->
+        \myemph<2>{if A$\rightarrow$B$\rightarrow$X faster than current A$\rightarrow$X route} \\
+        \myemph<2>{then choose it over current route}
+    \item<3->
+        \myemph<3>{when choosing: update distance A$\rightarrow$X + next link for A$\rightarrow$X}
+    \end{itemize}
+\end{frame}
+
 \providecommand{\noroute}{$\infty$/---}
 \providecommand{\mymark}[2]{\alt<#1->{\myemph<#1>{#2}}{}}
-\begin{frame}[fragile]{running Bellman-Ford}
+\begin{frame}[fragile]
+\frametitle{running Bellman-Ford}
 \begin{tikzpicture}
 \tikzset{
     computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
