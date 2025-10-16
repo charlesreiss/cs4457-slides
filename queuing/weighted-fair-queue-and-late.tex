@@ -33,23 +33,21 @@
 \begin{frame}
 \frametitle{tracking round numbers}
 \begin{itemize}
-\item N active queues $\implies$ virtual time speed is 1/Nth real time
-    \begin{itemize}
-    \item (plus need more adjustments for weights)
-    \end{itemize}
-\item if packets for A, B queued at time 0--100
+\item suppose packets for A, B queued at time 0--100
     \begin{itemize}
     \item virtual time 0--100 (full speed)
     \end{itemize}
 \item then packets for A, B, C queued at time 100-200
     \begin{itemize}
     \item virtual time 100--133 (one-third speed)
+    \item \ldots and last packet for A finish at time 200\ldots
     \end{itemize}
-\item if packets for B, C queued at time 200-400
+\item then packets for B, C queued at time 200-400
     \begin{itemize}
     \item virtual time 133--183 (one-half speed)
+    \item \ldots and last packet for B finishes at time 400
     \end{itemize}
-\item if packets for C queued at time 400-500
+\item then packets for C queued at time 400-500
     \begin{itemize}
     \item virtual time 183-283 (full speed)
     \end{itemize}
