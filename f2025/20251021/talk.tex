@@ -1,0 +1,120 @@
+\date{}
+\title{}
+\date{}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{last time}
+\begin{itemize}
+    \item Bellman-Ford algorithm
+    \item distributing 
+        \begin{itemize}
+        \item each node handles its outgoing edges
+        \end{itemize}
+    \item sharing distance vectors
+    \item split horizon with poison reverse
+        \begin{itemize}
+        \item discourage loops by giving $\infty$ to certain neighbors
+        \end{itemize}
+    \item count-to-infinity
+    \item link-state idea
+        \begin{itemize}
+        \item reliable flooding of full network map
+        \end{itemize}
+\end{itemize}
+\end{frame}
+
+\usetikzlibrary{matrix}
+
+\section{link state}
+\subsection{shortest path first}
+\input{../routing/ls-shortest-path}
+
+
+\subsection{shortest path algorithm}
+\input{../routing/bestFirstExample}
+
+\subsection{shortest path consistency}
+\input{../routing/sp-consistency}
+
+\subsection{convergence}
+\input{../routing/ls-v-dv-converge}
+
+\subsection{networks versus routers}
+\input{../routing/network-v-router-ls} 
+
+\section{multipath/load balancing}
+\input{../routing/multipath}
+
+\section{scalability: OSPF areas} % textbook sec 4.1.1.
+
+\subsection{motivation / basic idea}
+
+\input{../routing/area-big-net}
+
+\subsection{areas are DV}
+
+\input{../routing/area-is-dv}
+
+\subsection{always route through backbone}
+\input{../routing/ospf-backbone}
+
+\section{interdomain routing}
+\input{../routing/interdomain-problems}
+
+\subsection{terminology: autonomous system}
+\input{../routing/define-as}
+
+\subsection{relationship types}
+\input{../routing/relate-types}
+
+\subsection{aside: connecting big networks}
+\input{../routing/aside-connect-big}
+
+\subsection{local/remote preferences}
+\input{../routing/distant-prefs}
+
+\subsection{sharing routes: BGP}
+\input{../routing/bgp-overview}
+
+\subsection{BGP route format}
+\input{../routing/bgp-route-format}
+
+\subsection{sharing routes: picture}
+\input{../routing/bgp-basic-picture}
+
+\subsection{sharing routes: multiple connections}
+\input{../routing/bgp-simple-multi}
+
+\subsection{BGP route preference order}
+\input{../routing/bgp-route-pref} % FIXME: show multi-exit discriminator
+
+\section{UVa, in practice}
+\input{../routing/in-practice-uva}
+
+\subsection{internet exchanges, peeringdb}
+\input{../routing/peeringdb-ixp}
+
+\subsection{BGP communities}
+\input{../routing/bgp-comm}
+
+\subsection{BGP hijacking/fat fingers}
+\input{../routing/hijack}
+
+\subsection{validating routes / sBGP}
+\input{../routing/aside-verification}
+
+
+\subsection{aside: partial tables}
+\input{../routing/partial-tables}
+
+
+
+\section{backup slides}
+\begin{frame}\frametitle{backup slides}
+\end{frame}
+
+\end{document}
