@@ -1,0 +1,71 @@
+\usetikzlibrary{shapes.misc,graphs,graphdrawing}
+\usegdlibrary{force}
+\begin{frame}[fragile]
+\frametitle{quiz Q3}
+\begin{tikzpicture}
+\graph[spring layout, node distance=1cm,nodes={inner sep=0mm,font=\small}] {
+    A -- {N1, N2};
+    B -- {N2, N3};
+    C -- {N2, N4};
+    D -- {N4, N5};
+    E -- {N1, N5};
+    E -- N6;
+    A --[red,dotted,ultra thick] B --[red,dotted,ultra thick] C --[red,dotted,ultra thick] A;
+    A --[red,dotted,ultra thick] E --[red,dotted,ultra thick] D --[red,dotted,ultra thick] C;
+};
+\end{tikzpicture}
+\begin{itemize}
+\item with split horizon, count-to-infinity needs loop
+    \begin{itemize}
+    \item example trigger: C goes via D (after N1 gone)
+    \item then updates go around loop
+        \begin{itemize}
+        \item C tells A about its route, A tells E, \ldots, D tells C updated distance
+        \item then C tells A update distance, repeat
+        \end{itemize}
+    \item keeps increasing distance with each run around loop
+    \end{itemize}
+\item A--B--C is another possible loop
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{quiz Q3B}
+\begin{tikzpicture}
+\graph[spring layout, node distance=1cm,nodes={inner sep=0mm,font=\small}] {
+    A[draw,ultra thick,cross out] -- {N1, N2};
+    B -- {N2, N3};
+    C[draw,ultra thick,cross out] -- {N2, N4};
+    D -- {N4, N5};
+    E -- {N1, N5};
+    E -- N6;
+    A --[red,dotted,ultra thick] B --[red,dotted,ultra thick] C --[red,dotted,ultra thick] A;
+    A --[red,dotted,ultra thick] E --[red,dotted,ultra thick] D --[red,dotted,ultra thick] C;
+};
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{quiz Q1}
+\begin{tikzpicture}
+\graph[spring layout, node distance=1cm,nodes={inner sep=0mm,font=\small}] {
+    A --[thick] {N1, N2};
+    B -- {N2, N3};
+    C --[] {N2, N4};
+    D --[] {N4, N5};
+    E --[] {N1, N5};
+    E -- N6;
+    F --[red,ultra thick] {N1, N5};
+};
+\end{tikzpicture}
+\begin{itemize}
+\item old A$\rightarrow$N5 path: A $\rightarrow$N1$\rightarrow$E$\rightarrow$N5; new: A $\rightarrow$N1$\rightarrow$F$\rightarrow$N5
+    \begin{itemize}
+    \item A will tell everyone but F about this even with split horizon
+    \end{itemize}
+\item old E$\rightarrow$N1 path: E$\rightarrow$N1
+    \begin{itemize}
+    \item E won't update distance, because no better path
+    \end{itemize}
+\end{itemize}
+\end{frame}
