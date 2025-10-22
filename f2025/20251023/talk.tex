@@ -1,0 +1,80 @@
+\date{}
+\title{}
+\date{}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+
+\section{last time}
+\begin{frame}
+\frametitle{last time}
+\begin{itemize}
+    \item routes via Dijkstras (best-first search)
+    \item convergence time for distance vector v link-state
+    \item OSPF areas --- distance vector with link-state
+        \begin{itemize}
+        \item goal: routers avoid tracking whole huge network
+        \item no-loop rules: no going through areas except backbone
+        \item exception: explicitly configured virtual links to backbone
+        \end{itemize}
+    \item interdomain routing
+        \begin{itemize}
+        \item business constraints --- someone needs to pay for traffic
+        \item choosing routes by business priorities? (cost, performance, \ldots)
+        \end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{interdomain routing}
+
+\subsection{relationship types}
+\input{../routing/relate-types}
+
+\subsection{aside: connecting big networks}
+\input{../routing/aside-connect-big}
+
+\subsection{local/remote preferences}
+\input{../routing/distant-prefs}
+
+\subsection{sharing routes: BGP}
+\input{../routing/bgp-overview}
+
+\subsection{BGP route format}
+\input{../routing/bgp-route-format}
+
+\subsection{sharing routes: picture}
+\input{../routing/bgp-basic-picture}
+
+\subsection{sharing routes: multiple connections}
+\input{../routing/bgp-simple-multi}
+
+\subsection{BGP route preference order}
+\input{../routing/bgp-route-pref} % FIXME: show multi-exit discriminator
+
+\section{UVa, in practice}
+\input{../routing/in-practice-uva}
+
+\subsection{internet exchanges, peeringdb}
+\input{../routing/peeringdb-ixp}
+
+\subsection{BGP communities}
+\input{../routing/bgp-comm}
+
+\subsection{BGP hijacking/fat fingers}
+\input{../routing/hijack}
+
+\subsection{validating routes / sBGP}
+\input{../routing/aside-verification}
+
+
+\subsection{aside: partial tables}
+\input{../routing/partial-tables}
+
+
+\section{backup slides}
+\begin{frame}\frametitle{backup slides}
+\end{frame}
+
+\end{document}
