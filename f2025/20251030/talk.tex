@@ -30,8 +30,12 @@
 \begin{frame}
 \frametitle{note on quiz Q4}
     \begin{itemize}
-        \item some impression that \textit{customer P}'s preference would affect BGP announcements
+        \item \textit{customer P} had preference that one link was backup
         \item we asked about provider \textbf{Q's} announcements
+            \begin{itemize}
+                \item customer P can implement preference use local pref \\
+                    (which takes precednece over everything but more specific usually)
+            \end{itemize}
         \item these generally won't reflect P's preferences
             \vspace{.5cm}
         \item (Q gets paid regardless of which link P uses\ldots)
@@ -67,6 +71,8 @@
 \end{frame}
 
 \input{../dns/talk-inner-extra}
+
+\input{../http/talk-inner}
 
 \section{backup slides}
 \begin{frame}\frametitle{backup slides}
