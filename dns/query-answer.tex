@@ -10,7 +10,7 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{DNS header}
+\begin{frame}{DNS message}
 \begin{tikzpicture}
 \tikzset{
     blabel/.style={font=\small},
@@ -43,7 +43,7 @@
 \end{scope}
 \tikzset{
     explain box low/.style={at={(mark low)},draw=red,very thick,align=left,anchor=north,fill=white},
-    explain box low2/.style={at={([yshift=-2cm]mark low)},
+    explain box low2/.style={at={([yshift=1cm]mark low)},
         font=\small,draw=red,very thick,align=left,anchor=north,fill=white},
 }
     \begin{visibleenv}<2>
@@ -75,18 +75,83 @@
 \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{caching `domain name does not exist'}
-    \begin{itemize}
-    \item when domain does not exist (RCODE=3, ``NXDOMAIN''):
-    \vspace{.5cm}
-    \item (RFC 2308)
-    \item response should include SOA record
-        \begin{itemize}
-        \item recall: indicates primary server for zone and how often secondaries should update
-        \end{itemize}
-    \item can cache NXDOMAIN based on minimum of TTL and SOA record's update frequency
-    \end{itemize}
-\end{frame}
+\begin{FragileFrame}
+\frametitle{response with no answer+authority+additional}
+\begin{Verbatim}[fontsize=\fontsize{10}{11}]
+$ dig @nom.virginia.edu cs.virginia.edu ns +noedns
+...
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 33036
+;; flags: qr rd; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; QUESTION SECTION:
+;cs.virginia.edu.               IN      NS
+
+;; AUTHORITY SECTION:
+cs.virginia.edu.        3600    IN      NS      coresrv01a.cs.virginia.edu.
+
+;; ADDITIONAL SECTION:
+coresrv01a.cs.virginia.edu. 3600 IN     A       128.143.67.64
+\end{Verbatim}
+\end{FragileFrame}
+
+\begin{FragileFrame}
+\frametitle{response with 2 answers}
+\begin{Verbatim}[fontsize=\fontsize{10}{11}]
+$ dig @coresrv01a.cs.virginia.edu cs.virginia.edu a +noedns
+...
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 5084
+;; flags: qr aa rd; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
+;; WARNING: recursion requested but not available
+
+;; QUESTION SECTION:
+;cs.virginia.edu.               IN      A
+
+;; ANSWER SECTION:
+cs.Virginia.EDU.        172800  IN      A       128.143.67.8
+cs.Virginia.EDU.        172800  IN      A       128.143.67.64
+\end{Verbatim}
+\end{FragileFrame}
+
+\begin{FragileFrame}
+\frametitle{response with CNAME answer to A query}
+\begin{Verbatim}[fontsize=\fontsize{10}{11}]
+$ dig @nom.virginia.edu canvas.its.virginia.edu +noedns
+...
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 32583
+;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
+;; WARNING: recursion requested but not available
+
+;; QUESTION SECTION:
+;canvas.its.virginia.edu.       IN      A
+
+;; ANSWER SECTION:
+canvas.its.virginia.edu. 3600   IN      CNAME   universityofvirginia-vanity.instructure.com.
+\end{Verbatim}
+\end{FragileFrame}
+
+\begin{FragileFrame}
+\frametitle{response  with CNAME chain in answers + authority}
+\begin{Verbatim}[fontsize=\fontsize{10}{11}]
+$ dig @ns-1354.awsdns-41.org. universityofvirignia-vanity.instructure.com. +noedns
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 60997
+;; flags: qr aa rd; QUERY: 1, ANSWER: 2, AUTHORITY: 4, ADDITIONAL: 0
+;; WARNING: recursion requested but not available
+
+;; QUESTION SECTION:
+;universityofvirignia-vanity.instructure.com. IN        A
+
+;; ANSWER SECTION:
+universityofvirignia-vanity.instructure.com. 300 IN CNAME cluster1.instructure.com.
+cluster1.instructure.com. 900   IN      CNAME   canvas-iad-prod-c1-1262762608.us-east-1.elb.amazonaws.com.
+
+;; AUTHORITY SECTION:
+instructure.com.        172800  IN      NS      ns-1354.awsdns-41.org.
+instructure.com.        172800  IN      NS      ns-1799.awsdns-32.co.uk.
+instructure.com.        172800  IN      NS      ns-2.awsdns-00.com.
+instructure.com.        172800  IN      NS      ns-996.awsdns-60.net.
+\end{Verbatim}
+\end{FragileFrame}
 
 \begin{frame}{DNS message}
     \begin{itemize}
@@ -99,12 +164,12 @@
         \end{itemize}
     \item ANCOUNT RRs in `answer section':
         \begin{itemize}
-        \item CNAMEs (even if that's not the question type)
-        \item matches for domain name (or CNAME) + class + type 
+        \item matches for question domain name + class + type 
+        \item special case: CNAMEs always match; can include CNAMEs of name
         \end{itemize}
-    \item NSCOUNT+ARCOUNT RRs in `authority section' and `additional section
+    \item NSCOUNT+ADCOUNT RRs in `authority section' and `additional' section
         \begin{itemize}
-        \item not always included; usually NS or SOA records plus corresponding A/AAAA recods
+        \item NS or SOA records (authority); associated A/AAAA records (additional)
         \end{itemize}
     \end{itemize}
 \end{frame}
