@@ -1,0 +1,77 @@
+\date{}
+\title{}
+\date{}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\input{../common/listingsLib}
+
+\begin{frame}
+\frametitle{last time}
+    \begin{itemize}
+        \item DNS hierarchy
+            \begin{itemize}
+            \item labels starting at end
+            \item zones with sets of authoritative servers
+            \item zones might not match one to one with labels
+                \begin{itemize}
+                \item example virginia.edu/its.virginia in same zone, but cs.virginia.edu separate
+                \end{itemize}
+            \end{itemize}
+        \item recursive versus authoritative servers
+        \item caching and time-to-live
+        \item smooth DNS handovers
+        \item DNS record types, wire format
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{note on quiz Q4}
+    \begin{itemize}
+        \item some impression that \textit{customer P}'s preference would affect BGP announcements
+        \item we asked about provider \textbf{Q's} announcements
+        \item these generally won't reflect P's preferences
+            \vspace{.5cm}
+        \item (Q gets paid regardless of which link P uses\ldots)
+    \end{itemize}
+\end{frame}
+
+
+\section{primary, secondary, zone xfers}
+\input{../dns/primary-second-zone} % FIXME: more detail?
+
+\section{DNS query+answer format}
+\input{../dns/query-answer}
+
+\section{DNS over UDP, TCP}
+% size limitations
+\input{../dns/send-over}
+
+\begin{frame}
+\frametitle{sockets interlude}
+    \begin{itemize}
+    \item going to talk about sockets API for UDP/TCP
+    \item then get back to some bonus DNS topics
+    \end{itemize}
+\end{frame}
+
+\input{../sockets/talk-inner}
+
+\begin{frame}
+\frametitle{end of sockets interlude}
+    \begin{itemize}
+        \item back to DNS
+    \end{itemize}
+\end{frame}
+
+\input{../dns/talk-inner-extra}
+
+\section{backup slides}
+\begin{frame}\frametitle{backup slides}
+\end{frame}
+\section{common record types}
+\input{../dns/common-record}
+
+\end{document}
