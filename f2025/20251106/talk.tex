@@ -1,0 +1,43 @@
+\date{}
+\title{}
+\date{}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{last time}
+    \begin{itemize}
+        \item DNS messages
+            \begin{itemize}
+                \item header + question + records
+                \item answers, authority
+            \end{itemize}
+        \item socket API
+            \begin{itemize}
+                \item socket(), [connect()], recv[from]()/send[to]()
+                \item server socket: socket(), listen(), accept() $\rightarrow$ addr, normal socket
+            \end{itemize}
+        \item partial recv/sends
+        \item TCP 3-way handshake (SYN/SYN+ACK/ACK), state machine diagram
+            \begin{itemize}
+                \item TIME\_WAIT in case of old packets; SO\_REUSEADDR
+                \item FIN+ACK for connection close
+            \end{itemize}
+        \item Nagle's algorithm
+        \item started: DNS cache poisoning
+    \end{itemize}
+\end{frame}
+
+\input{../dns/talk-inner-extra}
+
+\input{../http/talk-inner}
+
+\section{backup slides}
+\begin{frame}\frametitle{backup slides}
+\end{frame}
+
+\input{../dns/talk-backup}
+
+\end{document}

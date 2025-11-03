@@ -3,26 +3,17 @@
     \item public key infrastructure for DNS
     \item single set of root keys from ICANN/IANA
         \begin{itemize}
-        \item no certificate authorities like web PKI
+        \item not multiple certificate authorities like web PKI
         \end{itemize}
     \item each DNS zone has its own public key
-    \item all records within zone have a signature
+    \item all records within zone have a digital signature
     \item delegation records have keys for subzones
+        \begin{itemize}
+        \item similar to TLS certificates
+        \end{itemize}
     \end{itemize}
 \end{frame}
 
-\begin{frame}{digital signature}
-    \begin{itemize}
-    \item generate (public key, private key) such that
-    \item Sign(private key, message) = signature
-    \item Verify(public key, signature, message) = 1
-    \item and it's really hard to generate $X$ s.t. \\
-        Verify(public key, $X$, signature) = 1 \\
-        if you don't know the private key
-    \vspace{.5cm}
-    \item distribute public key widely
-    \end{itemize}
-\end{frame}
 
 \begin{frame}{DNSSEC offline signing}
     \begin{itemize}
@@ -33,6 +24,11 @@
     \item can have signing keys offline
         \begin{itemize}
         \item much lower security risk
+        \end{itemize}
+    \vspace{.5cm}
+    \item challenges:
+        \begin{itemize}
+        \item representing missing domain names (solution sketch: ``no domain names between A and C'' record)
         \end{itemize}
     \end{itemize}
 \end{frame}
