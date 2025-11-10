@@ -1,12 +1,13 @@
 \begin{frame}[fragile]{HTTP redirects}
-\begin{Verbatim}
+\begin{Verbatim}[fontsize=\small]
 HTTP/1.1 301 Moved Permanently
 Location: https://foo.com/quux/bar
 Content-Type: text/plain
 
-(This text may be shown by clients that don't process the redirect
-automatically, or if there's a problem following it. It is up
-to the serer what to put here, but typical might be something like:)
+(This text may be shown by clients that don't process the
+redirect automatically, or if there's a problem following
+it. It is up to the server what to put here, but typical
+might be something like:)
 
 Redirecting to https://foo.com/quux/bar
 \end{Verbatim}

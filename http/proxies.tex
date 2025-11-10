@@ -142,16 +142,16 @@ Host: example.com
 client $\rightarrow$ server:
 \begin{Verbatim}
 CONNECT ns.foo.com:53 HTTP/1.1
-Host: ns.foo.com:53
+Host: ns.foo.com:50
 \end{Verbatim}
-\rule{.9\textwidth}{1mm}
+\rule{.95\textwidth}{1mm} \\
 server $\rightarrow$ client:
 \begin{Verbatim}
 HTTP/1.1 200 OK
 Some-header: some-value
 
 \end{Verbatim}
-\rule{.9\textwidth}{1mm}
+\rule{.95\textwidth}{1mm} \\
 client $\rightarrow$ server: (dns request) \\
 server $\rightarrow$ client: (dns response from ns.foo.com) \\
 client $\rightarrow$ server: (dns request) \\

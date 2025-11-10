@@ -17,13 +17,13 @@
 example.com $\rightarrow$ client
 \begin{Verbatim}[fontsize=\small]
 HTTP/1.1 200 OK
-Set-Cookie: SessionID=31d4d96e407aad42; Path=/; Domain=example.com
+Set-Cookie: SessionID=31d4d96; Path=/; Domain=example.com
 \end{Verbatim}
 client $\rightarrow$ example.com on later requests:
 \begin{Verbatim}[fontsize=\small]
 GET /some-path HTTP/1.1
 Host: example.com
-Cookie: SessionID=31d4d96e407aad42
+Cookie: SessionID=31d4d96
 \end{Verbatim}
 \end{frame}
 
