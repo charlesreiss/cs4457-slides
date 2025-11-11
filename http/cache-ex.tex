@@ -1,0 +1,21 @@
+\begin{FragileFrame}
+\frametitle{cache exercise (1)}
+\begin{Verbatim}[fontsize=\small]
+HTTP/1.1 200 OK
+Cache-Control: max-age=300
+ETag: 1234-5678
+\end{Verbatim}
+\rule{0.98\textwidth}{0.2mm}
+\begin{Verbatim}[fontsize=\small]
+HTTP/1.1 200 OK
+Cache-Control: no-cache
+Last-Modified: Tue, 11 Nov 2025 03:33:13 GMT
+Date: Tue, 11 Nov 2025 04:53:13 GMT
+\end{Verbatim}
+\rule{0.98\textwidth}{0.2mm}
+For which of the above:
+\begin{itemize}
+\item reuse cached response in 1 minute? 10 minutes?
+\item reuse cached response after checking server in 1 minute? 10 minutes?
+\end{itemize}
+\end{FragileFrame}
