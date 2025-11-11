@@ -1,0 +1,24 @@
+\begin{frame}{HTTP authentication (RFC 7235)}
+    \begin{itemize}
+    \item relatively uncommon today compared to cookies (next topic)
+    \vspace{.5cm}
+    \item server$\rightarrow$ client: 401 Unauthorized with \textit{WWW-Authenticate} header
+        \begin{itemize}
+        \item typically: web browser shows login prompt
+        \end{itemize}
+    \item client$\rightarrow$ server: Authorization header
+        \begin{itemize}
+            \item example: \texttt{Authorization: Basic dGVzdDoxMjPCow==}
+            \item \texttt{test:123} in Base64 (username test, password 123)
+            \item example: \texttt{Authorization: Bearer mF\_9.B5f-4.1JqM}
+            \item bearer `token' obtained \myemph<2>{out of band} (common in application `APIs')
+        \end{itemize}
+    \end{itemize}
+\begin{tikzpicture}[overlay,remember picture]
+\begin{visibleenv}<2>
+    \node[anchor=north,draw=red,ultra thick,fill=white] (token) at ([yshift=-1cm]current page.north) {
+    \includegraphics[height=0.6\textheight,alt={Canvas's dialog labeled `New Access Token'. Says `Access tokens are what allow third-party applications to access Canvas resources on your benhalf. These tokens are normally created autommatically for applications as needed, ut if you're developing a new or limited project you can just generate the token from here.' and has a prompt for information and a `Generate Token' button.}]{../http/http-bearer-make-canvas}
+};
+\end{visibleenv}
+\end{tikzpicture}
+\end{frame}
