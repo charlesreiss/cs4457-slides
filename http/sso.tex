@@ -8,10 +8,18 @@
     \end{itemize}
 \item sso.com $\rightarrow$ client: web page with form action=http://foo.com/... and method=post
     \begin{itemize}
-    \item possibly with script to submit automatically
     \item data in form tells foo.com about username, etc.
     \item cryptographically signed or similar
+    \item remember login: possibly script to submit automatically
     \end{itemize}
 \item client $\rightarrow$ foo.com: POST /... with data from sso.com
 \end{itemize}
 \end{frame}
+
+\begin{frame}{single-sign on and third-party cookie awkwardness}
+    \begin{itemize}
+    \item single-sign on flow also gives a way to do tracking\ldots
+    \item not `third-party' cookies since the `root' web page becomes the single-sign on site
+    \end{itemize}
+\end{frame}
+

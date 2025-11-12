@@ -1,0 +1,65 @@
+\date{}
+\title{}
+\date{}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.14}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{last time}
+    \begin{itemize}
+    \item HTTP trailers
+    \item cookies
+        \begin{itemize}
+        \item set-cookie and cookie headers
+        \item used for tracking
+        \item third-party cookie heuristics
+        \end{itemize}
+    \item HTTP caching
+        \begin{itemize}
+        \item headers controlling validity
+        \item ability to revalidate
+        \end{itemize}
+    \item supercookies (cache, sharing connections, etc. as cookies)
+        \begin{itemize}
+        \item mitigations through separate caches/connections/etc.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\section{proxies and reverse proxies}
+\input{../http/proxies}
+
+% FIXME: exercise
+    % proxy + reverse proxy
+        % which headers, URIs?
+        % caching ideas
+\subsection{exercise}
+\input{../http/proxy-ex}
+
+\subsection{aside: wikimedia architecture}
+\input{../http/wikimedia-arch}
+
+\section{SSO}
+\input{../http/sso}
+
+\section{REST}
+\input{../http/rest}
+
+\subsection{REST exercise}
+\input{../http/rest-ex}
+
+\input{../multiaccess/talk-inner}
+
+\section{backup slides}
+\begin{frame}\frametitle{backup slides}
+\end{frame}
+
+\section{supercookies}
+\input{../http/cache-as-cookies}
+
+
+\end{document}

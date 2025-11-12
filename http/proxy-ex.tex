@@ -1,0 +1,18 @@
+\begin{frame}
+    \frametitle{proxy exercise}
+    \begin{itemize}
+    \item suppose we have webapp at running on existing server https://foo.com/
+    \item \ldots and it serves images at https://foo.com/images/IMAGENAME
+        \begin{itemize}
+        \item but it slow at doing so
+        \end{itemize}
+    \vspace{.5cm}
+    \item we want to use faster, caching webserver to server images
+    \item if we add a new server to do this, options to configure \\
+        both the new and existing server?
+        \begin{itemize}
+        \item do we need changes to webapp code?
+        \item which should be proxies/reverse proxies?
+        \end{itemize}
+    \end{itemize}
+\end{frame}
