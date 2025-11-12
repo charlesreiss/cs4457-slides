@@ -1,6 +1,8 @@
 \date{}
 \title{}
 \date{}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.14}
 \begin{document}
 \begin{frame}
     \titlepage
@@ -22,6 +24,36 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}
+    \frametitle{quiz Q4}
+    \begin{itemize}
+        \item form can only specify one method
+        \item method=POST since POST request
+        \item inputs become part of \textit{body} of request
+            \begin{itemize}
+                \item not query, since that's how GET requests work
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{quiz Q5}
+    \begin{itemize}
+        \item POST is not `safe' --- cannot automatically resend
+            \begin{itemize}
+            \item example: ordering a product
+            \end{itemize}
+        \item pipelining --- multiple requests \textit{before} receiving response
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{assignment Q+A}
+\end{frame}
+
+\begin{frame}
+    \frametitle{wireless logistics}
+\end{frame}
 
 \subsection{trailers}
 \input{../http/trailers}
@@ -65,6 +97,7 @@
 \subsection{REST exercise}
 \input{../http/rest-ex}
 
+\input{../multiaccess/talk-inner}
 
 \section{backup slides}
 \begin{frame}\frametitle{backup slides}
