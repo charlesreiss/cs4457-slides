@@ -1,7 +1,8 @@
+\usetikzlibrary{calc}
+
 \begin{frame}{free space wireless transmission}
 \begin{itemize}
-\item assuming 2.4GHz Wifi, no obstacles, omnidirectional transmission:
-\item 10 dB loss = $\frac{1}{10}$th power; 20 dB loss = $\frac{1}{100}$th power
+\item assuming 2.4GHz Wifi, no obstacles, omnidirectional transmission
 \end{itemize}
 \begin{tikzpicture}
 \begin{axis}[
@@ -17,16 +18,60 @@
 \end{tikzpicture}
 \end{frame}
 
+\begin{frame}\frametitle{modifying free space}
+    \begin{itemize}
+    \item above model assumes no directionality to antennas
+        \begin{itemize}
+        \item signal going twice as far = needs to spread out $2^3$ times as much (3D)
+        \end{itemize}
+    \item can do better with directional signal
+        \begin{itemize}
+        \item wifi distance records use this strategy + other changes
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{signal to noise ratio}
     \begin{itemize}
     \item often measure power of signal versus power of `noise'
         \begin{itemize}
-        \item simple model: noise `noise floor' + interfering transmission
+        \item simple model: noise = `noise floor' + interfering transmission
         \end{itemize}
+    \item how strong the `symbols' (for framing protocol) are relative to everything else
+    \item more signal to noise = more bits per unit time
+        \begin{itemize}
+        \item signal to noise limits maximum achievable regardless of how clever framing is
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{free space example}
+    \begin{itemize}
+    \item 100 mW signal (= 20 dBm)
+    \item at 10 metres for 2.4GHz, about 60 dB of loss $\sim 10^-4$ mW of power in antenna
     \vspace{.5cm}
+    \item suppose `noise floor' is 80 dBm = $10^{-8}$ mW
+    \item signal to noise ratio = $10^{-4}/10^{-8} = 10^{4} = 10000 = 40 \text{dB}$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{SNR and bitrate}
+    \begin{itemize}
     \item theory (Shannon-Hartley): max bitrate = $B\log_2\left(1+\frac{S}{N}\right)$
     \item $B$ = bandwidth of channel
     \item $S$, $N$ = power per bandwidth of signal, noise (non-log scale)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{SNR and bitrate example}
+    \begin{itemize}
+    \item max bitrate = $B\log_2\left(1+\frac{S}{N}\right)$
+    \item $B$ = bandwidth = 40MHz maximum for 802.11n in the 2.4Ghz band
+    \item $S$, $N$ = power per bandwidth of signal, noise (non-log scale)
+    \item previous computation $\frac{S}{N} = 10000$ for 10 metre distance
+    \item $\rightarrow 40MHz\log_2\left(1 + \frac{10000}{1}\right) = \log_2(10001)\text{Mbit/s} \approx 531 \text{Mbit/sec}$
     \end{itemize}
 \end{frame}
 
@@ -37,6 +82,24 @@
     \item example: 802.11b supports 1, 2, 5.5, 11 Mbit/sec
     \item most devices measure signal-to-noise ratio and set bitrate
     \end{itemize}
+\end{frame}
+
+\begin{frame}
+\includegraphics[height=0.9\textheight]{../multiaccess/haratcherev-fig1.png}
+\imagecredit{Haratcherev, Langendoen, Lagendijk, Sips, ``Hybrid Rate Control for IEEE 802.11'' (MobiWac'04), Figure 1}
+\end{frame}
+
+\begin{frame}
+\frametitle{rate control}
+\begin{itemize}
+    \item not always best to transmit at fastest rate
+    \item $\rightarrow$ rate control algorithms
+    \item typical method:
+        \begin{itemize}
+        \item have menu of encoding schemes, with different rates, SnR
+        \item measure succes rate and/or signal to noise rate
+        \end{itemize}
+\end{itemize}
 \end{frame}
 
 

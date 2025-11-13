@@ -64,7 +64,7 @@
 
 \begin{frame}{chance of collision}
 \begin{tikzpicture}
-\begin{axis}[xlabel=1 ms messages per second,ylabel=chance of collision (per message)]
+\begin{axis}[xlabel=1 ms messages per second,ylabel=chance of collision (per message),width=13cm,height=6cm]
 \addplot[domain=1:600,color=red,samples=1000]{1-exp(-(2 * x)/1000};
 \end{axis}
 \end{tikzpicture}
@@ -86,13 +86,15 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{retranmissions (plot)}
+\begin{frame}{retransmissions (plot)}
 \begin{tikzpicture}
-\begin{axis}[xlabel={packet generation rate (1ms packets/sec/machine)}, ylabel={rate with retranmissions}]
+\begin{axis}[xlabel={packet generation rate (1ms packets/sec/machine)}, ylabel={rate with retranmissions},width=13cm,height=6cm]
 \addplot[domain=1:500,color=red,samples=1000] (x * exp(-2*x/1000), x);
 \end{axis}
 \end{tikzpicture}
 \end{frame}
+
+
 
 \begin{frame}{thinking about result}
     \begin{itemize}
@@ -110,3 +112,17 @@
     \item seems pretty bad for shared channel efficiency!
     \end{itemize}
 \end{frame}
+
+\begin{frame}
+\frametitle{some assumptions we made}
+    \begin{itemize}
+    \item exponential model assumes transmission time of message X doesn't affect transmission time of message Y
+    \vspace{.5cm}
+    \item if node A has messages A1, A2 to transmit, it won't start transmitting A2 until after A1 done
+        \begin{itemize}
+        \item means this model is probably pessimistic with only a few transmitters
+        \end{itemize}
+    \item assumes nodes won't look at prior other transmissions to decide when to transmit
+    \end{itemize}
+\end{frame}
+
