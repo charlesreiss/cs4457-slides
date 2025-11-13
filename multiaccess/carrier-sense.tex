@@ -1,4 +1,26 @@
 \usetikzlibrary{arrows.meta}
+
+\begin{frame}{`slots'}
+\begin{itemize}
+\item if packets take a fixed amount of time\ldots
+\item want to wait whole number of packet times
+    \begin{itemize}
+    \item immediately after, one after, two after, three after
+    \end{itemize}
+\item avoids requiring almost 2 packets worth of `quiet' time
+\item can synchronize by observing end of last transmission, or central clock
+\end{itemize}
+\begin{tikzpicture}
+\begin{scope}[x=3cm]
+    \draw[line width=1mm,-Latex] (-0.5, 0) -- (4, 0) node[above,midway] {time};
+    \draw[thick,fill=violet] (0.0, -0.5) rectangle ++(1, -1);
+    \foreach \x in {1,2,3} {
+        \draw[dotted,line width=0.7mm] (\x, -0.25) -- ++ (0, -2);
+    }
+\end{scope}
+\end{tikzpicture}
+\end{frame}
+
 \begin{frame}{carrier sense}
     \begin{itemize}
     \item channel can be `busy' or not
@@ -24,27 +46,6 @@
         \item sometime after it stops being busy
         \end{itemize}
     \end{itemize}
-\end{frame}
-
-\begin{frame}{`slots'}
-\begin{itemize}
-\item if packets take a fixed amount of time\ldots
-\item want to wait whole number of packet times
-    \begin{itemize}
-    \item immediately after, one after, two after, three after
-    \end{itemize}
-\item avoids requiring almost 2 packets worth of `quiet' time
-\item can synchronize by observing end of last transmission, or central clock
-\end{itemize}
-\begin{tikzpicture}
-\begin{scope}[x=3cm]
-    \draw[line width=1mm,-Latex] (-0.5, 0) -- (4, 0) node[above,midway] {time};
-    \draw[thick,fill=violet] (0.0, -0.5) rectangle ++(1, -1);
-    \foreach \x in {1,2,3} {
-        \draw[dotted,line width=0.7mm] (\x, -0.25) -- ++ (0, -2);
-    }
-\end{scope}
-\end{tikzpicture}
 \end{frame}
 
 \begin{frame}{fixed-size frames, slots}
