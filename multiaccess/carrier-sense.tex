@@ -62,12 +62,63 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}{exercise: slot timing}
+    \begin{itemize}
+    \item assume radio propogation at $2.9 \times 10^8$ m/s
+    \item transmitting 1500-byte frames (including all headers, etc.) at 100 Mbit/sec
+    \item over 5 km x 5 km area
+    \vspace{.5cm}
+    \item if we want slots that hold whole packet\ldots
+    \item how long should slots need to be?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{exercise solution}
+    \begin{itemize}
+    \item 1500-byte = 12000-bit @ 100Mbit/sec = 120 $\mu$s
+    \item 5 km x 5 km $\rightarrow$ $\sim$ 7 km max distance
+    \item 7000 m @ $2.9  \times 10^8$ m/s = 24 $\mu$s
+    \item probably would need slot time around 140-150 $\mu$s?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{slots and variable-length packets}
+    \begin{itemize}
+    \item with variable-length packets + carrier-sense, slots still useful
+    \item \ldots but don't expect packets to occupy one slot
+    \vspace{.5cm}
+    \item idea: divide time up into slots
+    \item slot time $\sim$ amount of time needed to detect transmission
+        \begin{itemize}
+        \item will depend on physical layer way to transmit packet bits
+        \end{itemize}
+    \item don't transmit if detected non-ending transmission in previous slot
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{exercise: variable length slot advantage}
+\begin{itemize}
+\item suppose we transmitting a 1000 $\mu$s packets
+\item use 10 $\mu$s slots
+    \begin{itemize}
+    \item and can reliably detect if a slot was occupied
+    \end{itemize}
+\item transmit algorithm:
+    \begin{itemize}
+    \item wait for network to be quiet for 1 slot
+    \item transmit in rand(0, $2^\text{attempts}$) slots
+    \end{itemize}
+\item two transmitters after previous packet --- expected time for next packet?
+\end{itemize}
+\end{frame}
+
+
 \begin{frame}{802.11b typical slots}
     \begin{itemize}
     \item $20 \mu\text{s}$ slots
     \item $50 \mu\text{s}$ interframe spacing (IFS)
         \begin{itemize}
-        \item includes time to receive ACK of packet
+        \item includes time to receive ACK of packet, switch from receive to xmit
         \end{itemize}
     \vspace{.5cm}
     \item transmit first time after IFS (if idle)
@@ -91,3 +142,4 @@
     \item different purpose for slots than slotted Aloha
     \end{itemize}
 \end{frame}
+
