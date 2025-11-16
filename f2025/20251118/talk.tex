@@ -1,0 +1,73 @@
+\date{}
+\title{}
+\date{}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.14}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{last time}
+    \begin{itemize}
+    \item HTTP proxies / reverse proxies
+    \item single-sign on
+    \item REST APIs
+    \vspace{.5cm}
+    \item multiaccess media and collisions
+    \item achievable results without carrier sense
+        \begin{itemize}
+        \item approx 17\% without slots; 36\% with synchronized slots
+        \end{itemize}
+    \item started: adding carrier sense
+        \begin{itemize}
+        \item listen for other transmissions before transmitting
+        \item use \textit{randomized} backoff if collision/error
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\section{carrier-sense multiple access}
+\input{../multiaccess/carrier-sense.tex}
+
+\subsection{collision detection versus avoidance}
+\input{../multiaccess/collision-detect.tex}
+
+\section{wireless model, hidden and exposed nodes} 
+    % FIXME: exposed nodes with walls
+\input{../multiaccess/wireless-model}
+
+\section{RTS/CTS}
+\input{../multiaccess/rts-cts}
+
+\subsection{RTS/CTS exercise}
+\input{../multiaccess/rts-cts-help}
+
+\section{multipath}
+\input{../multiaccess/multipath}
+
+% FIXME: short interframe spacing
+
+\section{aside: assignment}
+\begin{frame}\frametitle{assignment}
+\end{frame}
+
+\section{ad-hoc v base stations}
+\input{../multiaccess/probe-base}
+
+\subsection{mobility}
+\input{../multiaccess/mobility}
+
+\subsection{mesh networks}
+\input{../multiaccess/mesh-network}
+
+\section{centralized planning}
+\input{../multiaccess/ftdma}
+
+
+\section{backup slides}
+\begin{frame}\frametitle{backup slides}
+\end{frame}
+
+\end{document}
