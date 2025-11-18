@@ -1,0 +1,41 @@
+\begin{frame}
+    \frametitle{quiz notes: Q1}
+    \begin{itemize}
+    \item had potential for Date / max-age disagreement
+    \item I had assumed: need to worry about missync'd clock
+    \item RFC 9111 algorithm (not mandatory):
+    \item age at reception = max of
+        \begin{itemize}
+        \item received time - date header value (if ``implementation's clock reasonablye well synchornized to origin server's clock'')
+        \item received time - requested time + `Age' header (if present)
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{quiz notes: Q2}
+    \begin{itemize}
+        \item REST model: URIs represent entities in database
+        \item ``enroll'' is not an entity name
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{quiz notes: Q3}
+    \begin{itemize}
+        \item this reverse proxy would be the HTTP server for quux.com
+        \item idea of reverse proxies: translate requests to another HTTP server
+        \item going to look like normal requests to that other HTTP server
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{quiz notes: Q4}
+    \begin{itemize}
+        \item meant to write waits `100 microseconds \textit{after previous transmission ends}'
+        \item omitting that text means a lot of weird probability figuring
+            \begin{itemize}
+                \item (and this isn't a probability course)
+            \end{itemize}
+    \end{itemize}
+\end{frame}
