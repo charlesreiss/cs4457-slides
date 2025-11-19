@@ -36,16 +36,31 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}
+    \frametitle{cellular network model}
+    \begin{itemize}
+    \item cellular networks: base stations don't have full routing info
+    \item instead: base stations identify gateway each end-host uses
+    \item connections to gateways configured centrally
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{a confusing picture}
 \includegraphics[width=\textwidth]{../multiaccess/sysapp-fig53}
 \end{frame}
 
-\begin{frame}{cellular mobility model}
+
+\begin{frame}
+    \frametitle{cellular mobility model (1)}
+    \begin{tabular}{ccccccc}
+        cell phone&$\rightarrow$& base station%
+        & $\rightarrow$ &%
+        service gateway%
+        & $\rightarrow$ &%
+        PDN gateway\\%
+        (UE) & & (BBU) & & (SGW) & & (PGW) \\
+    \end{tabular}
     \begin{itemize}
-    \item cellular networks: base stations don't know how to route to each end-host in whole cell network
-    \vspace{.5cm}
-    \item cell phone (UE) $\rightarrow$ base station (BBU) $\rightarrow$ service gateway (SGW) $\rightarrow$ PDN gateway (PGW)
-    \vspace{.5cm}
     \item central `mobility management entity' (MME) sets up `tunnels' for steps above
         \begin{itemize}
         \item coordinates with home subscriber server (HSS)
@@ -55,11 +70,24 @@
         \begin{itemize}
         \item PDN gateway = gateway to actual Internet
         \end{itemize}
-    \item in `roaming' situation:
-        \begin{itemize}
-        \item service gateway run by network you're connected to
-        \item PDN gateway run by `home' network
-        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{cellular mobility model (2)}
+    \begin{tabular}{ccccccc}
+        cell phone&$\rightarrow$& base station%
+        & $\rightarrow$ &%
+        service gateway%
+        & $\rightarrow$ &%
+        PDN gateway\\%
+        (UE) & & (BBU) & & (SGW) & & (PGW) \\
+    \end{tabular}
+    \vspace{.5cm}
+    \begin{itemize}
+    \item if `roaming':
+    \item service gateway run by network you're connected to
+    \item PDN gateway run by `home' network
     \end{itemize}
 \end{frame}
 
