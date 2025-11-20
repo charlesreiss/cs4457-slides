@@ -21,11 +21,24 @@ an Unplanned 802.11b Mesh Network (MobiCom'05)}
     \end{itemize}
 \end{frame}
 
+\begin{frame}
+    \frametitle{mesh network efficiency}
+    \begin{itemize}
+    \item A $\rightarrow$ B $\rightarrow$ C
+    \item if A, B, C all using one channel:
+    \item how fast can A send messages to C?
+    \vspace{.5cm}
+    \item A can't send second message until B forwards first to C
+    \item only get $\sim$ half the channel capacity
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{link-state/distance vector for wireless}
     \begin{itemize}
     \item no explicit list of links/networks
     \item instead: periodically broadcast and see who responds
     \item keep track of signal strength/reliability/etc. for routing metrics
+    \item \ldots then can run `normal' routing protocol we learned
     \end{itemize}
 \end{frame}
 
