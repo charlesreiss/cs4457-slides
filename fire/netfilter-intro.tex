@@ -34,7 +34,7 @@ table inet filter {
         udp dport 137 drop
         accept
     }
-    chain INPUT {
+    chain FORWARD {
         type filter hook input priority 0
         iifname lo accept
         iifname ethExt jump EXTERNAL-INPUT
