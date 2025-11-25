@@ -45,3 +45,18 @@ table inet filter {
 \end{Verbatim}
 \end{frame}
 
+\begin{frame}\frametitle{aside: eBPF}
+    \begin{itemize}
+    \item extended Berkeley Packet Filter
+    \item little assembly language
+        \begin{itemize}
+        \item load, store, arithmetic, conditional jump, return
+        \end{itemize}
+    \item verifier makes sure there are no loops, out-of-bounds memory acceses
+    \item Linux: converted into actual machine code and run inside kernel
+    \item can be used for packet filtering, routing decisions, + other tasks
+        \begin{itemize}
+        \item allows for extra flexibility without loading new drivers
+        \end{itemize}
+    \end{itemize}
+\end{frame}
