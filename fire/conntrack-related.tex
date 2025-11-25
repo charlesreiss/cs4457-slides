@@ -43,7 +43,7 @@
 \begin{frame}[fragile]{nft with conntrack}
 \begin{Verbatim}
 table inet filter {
-    chain input {
+    chain forward {
         type filter hook input priority 0
 
         ct state established accept
