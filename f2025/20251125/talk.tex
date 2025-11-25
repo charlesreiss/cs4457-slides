@@ -1,0 +1,88 @@
+\date{}
+\title{}
+\date{}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{last time}
+    \begin{itemize}
+    \item ad-hoc and infrastructure mode
+        \begin{itemize}
+        \item association with SSID
+        \item multiple APs per SSID
+        \item distribution networks
+        \end{itemize}
+    \item mesh networks
+    \item mobility via proxying
+    \item base stations planning channel use
+        \begin{itemize}
+        \item broadcast periodic schedules of frequency use
+        \item fallback to wifi-like ideas for `new' devices
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\section{firewall use cases}
+\section{stateless firewall idea}
+\input{../fire/stateless-rules}
+
+\subsection{nftables rules}
+\input{../fire/netfilter-intro}
+
+\subsection{things we can't do}
+\input{../fire/stateless-imposs}
+
+\section{oops: layers}
+\input{../fire/oops-layers}
+
+\subsection{aside: WAF}
+\input{../fire/waf}
+
+\subsection{WAF ambiguity}
+\input{../fire/waf-request-smuggle}
+
+\section{stateful firewalls}
+\input{../fire/stateful}
+
+\input{../fire/conntrack-related}
+
+\section{TCP keep-alive}
+\input{../fire/tcp-keep}
+
+\subsection{state size}
+\input{../fire/state-size}
+
+\subsection{aside: SYN floods}
+\input{../fire/syn-flood}
+
+\subsection{aside: DoS pattern}
+\input{../fire/dos-pattern}
+
+\section{NAT}
+\input{../fire/nat}
+
+\section{IDS}
+\input{../fire/ids}
+
+% FIXME: Zeek example?
+
+\section{encapsulation}
+\input{../encap/talk-inner}
+
+\section{backup slides}
+\begin{frame}\frametitle{backup slides}
+\end{frame}
+
+\input{../fire/firewall-examples}
+
+\section{firewall: placement, state}
+\input{../fire/placement-state}
+
+\subsection{zones of trust idea}
+\input{../fire/zone-of-trust}
+
+
+\end{document}
