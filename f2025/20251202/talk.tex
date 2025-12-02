@@ -1,0 +1,63 @@
+\date{}
+\title{}
+\date{}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{last time}
+    \begin{itemize}
+    \item stateless firewall rules
+    \item packet filters and fragments
+    \item web application firewalls
+        \begin{itemize}
+        \item filter HTTP messages, not packets
+        \end{itemize}
+    \item ambiguity in firewalls
+        \begin{itemize}
+        \item differing interpretations at firewall/end host
+        \item example: request smuggling
+        \end{itemize}
+    \item stateful firewalls
+        \begin{itemize}
+        \item Linux connection tracking
+        \item related connections: one FTP connection = two+ TCP ones
+        \item problems with timeouts / state sizes
+        \end{itemize}
+    \item denial-of-service, SYN cookies
+    \end{itemize}
+\end{frame}
+\subsection{aside: DoS pattern}
+\input{../fire/dos-pattern}
+
+\section{NAT}
+\input{../fire/nat}
+
+\section{IDS}
+\input{../fire/ids}
+
+% FIXME: Zeek example?
+
+
+\section{encapsulation}
+\begin{frame}
+    \frametitle{encapsulation}
+\end{frame}
+\input{../encap/talk-inner}
+
+\section{backup slides}
+\begin{frame}\frametitle{backup slides}
+\end{frame}
+
+\section{stateful firewalls}
+\input{../fire/stateful}
+
+\input{../fire/conntrack-related}
+
+\subsection{aside: SYN floods}
+\input{../fire/syn-flood}
+
+
+\end{document}
