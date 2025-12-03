@@ -1,0 +1,86 @@
+\date{}
+\title{}
+\date{}
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+
+\begin{frame}
+\frametitle{last time}
+    \begin{itemize}
+    \item traversing NATs if endpoint-independent mappings
+    \item use cases for encapsulation
+    \item X in Y options for encapsulation
+    \item capturing data for encapsulation
+        \begin{itemize}
+        \item virtual IP/Ethernet devices
+        \item modifying sockets library / routing
+        \item connecting to `wrong' address
+        \end{itemize}
+    \item SOCKS protocol (TCP/UDP in TCP/UDP)
+        \begin{itemize}
+        \item error handling ugliness
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\section{encapsulation options, generally}
+\input{../encap/encap-opt}
+
+\subsection{SSH connection forwarding}
+\input{../encap/ssh-conn-forward}
+
+\subsection{exercise: what if revised}
+\input{../encap/ssh-conn-window-size}
+
+\subsection{TOR}
+\input{../encap/tor} % FIXME: incomplete
+
+\section{network layer granularity}
+
+\againframe<4>{encapOpt}
+
+% FIXME:
+    % problem: need to run window-size protocol twice
+    % only support clever transport stuff (example: SACK)
+        % if all parties do
+    % (but could do clever transport stuff local to proxy)
+    % if we tunnel IP packets, no need to redo that
+
+% FIXME: slide for connect one machie use-case
+
+\subsection{GRE}
+
+\input{../encap/gre}
+
+\subsection{adding encryption/authentication}
+\input{../encap/pack-with-enc}
+
+\subsection{issues with over TCP}
+\input{../encap/net-over-tcp}
+
+\section{link-layer granularity}
+
+\againframe<2>{connTwoNet}
+
+\subsection{VLANs}
+
+\input{../encap/vlan}
+
+\subsection{MPLS}
+
+\input{../encap/mpls}
+
+\section{encapsulation costs}
+\input{../encap/encap-costs-ex}
+
+\section{which encapsulation for}
+\input{../encap/which-encap-ex}
+
+\section{backup slides}
+\begin{frame}\frametitle{backup slides}
+\end{frame}
+
+\end{document}
