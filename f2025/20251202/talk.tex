@@ -7,7 +7,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{last time}
+    \frametitle{last time (1)}
     \begin{itemize}
     \item stateless firewall rules
     \item packet filters and fragments
@@ -20,6 +20,12 @@
         \item differing interpretations at firewall/end host
         \item example: request smuggling
         \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{last time (2)}
+    \begin{itemize}
     \item stateful firewalls
         \begin{itemize}
         \item Linux connection tracking
@@ -27,10 +33,17 @@
         \item problems with timeouts / state sizes
         \end{itemize}
     \item denial-of-service, SYN cookies
+    \item network address translation
+        \begin{itemize}
+        \item almost same information as connection tracking
+        \item endpoint-independent mapping option
+            \begin{itemize}
+            \item private IP:port$\rightarrow$same public IP:port regardless of remote IP:port
+            \end{itemize}
+        \end{itemize}
+    \item started: making connections through network address translation
     \end{itemize}
 \end{frame}
-\subsection{aside: DoS pattern}
-\input{../fire/dos-pattern}
 
 \section{NAT}
 \input{../fire/nat}

@@ -2,7 +2,7 @@
     \begin{itemize}
     \item multiple (`virtual') local networks over one network
     \item links/ports either shared or assigned to just one network
-    \item most common implementation: Ethernt 802.1q:
+    \item most common implementation: Ethernet 801.1q:
     \vspace{.5cm}
     \item on shared links, frames tagged with their `VLAN ID'
         \begin{itemize}
@@ -47,17 +47,31 @@
     \end{scope}
 \end{tikzpicture}
 \begin{itemize}
-    \item encapsulation typically added/removed by switches
-        \begin{itemize}
-        \item sysadmin configures specific ports to be on a VLAN
-        \item another common case: virtual machine software
-        \end{itemize}
     \item network IDs (`VLAN identifiers') configured by sysadmins
         \begin{itemize}
         \item special case: 0x0 = default (untagged), 0xFFF = reserved
         \end{itemize}
+    \item encapsulation typically added/removed by switches
     \item usually increase in supported frame size to accomodate tag
 \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{configuring Ethernet encapsulation}
+    \begin{itemize}
+    \item adding/removing VLAN identifiers --- options:
+    \vspace{.5cm}
+    \item configure switch to automatically tag input on specific ports and untag output
+        \begin{itemize}
+        \item example: some ports are `phone network', some are `desktop network'
+        \item typically: ports for hosts add/remove tags; for other switches don't
+        \end{itemize}
+    \item end-hosts handle tagging/untagging
+        \begin{itemize}
+        \item example: each virtual machine assigned its own tag
+        \item example: multiple `interfaces', each with own tag + IP address + routing
+        \end{itemize}
+    \end{itemize}
 \end{frame}
 
 

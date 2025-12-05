@@ -73,8 +73,8 @@
 %\draw[connect,->] (-1, 6) -- (in0.west) node[port]{1};
 \matrix[route table,anchor=north,hi row={2}{2}] at (0, 5.5) {
 in \& label \& dest \& op \& out \\
-0\& --- \& 3fff:1::/32 \& push 4 \& 2 \\
-0 \& --- \& 3fff:2::/32 \& push 7 \& 2 \\
+0\& --- \& 3fff:1::/32 \& push 24 \& 2 \\
+0 \& --- \& 3fff:2::/32 \& push 27 \& 2 \\
 2 \& 9 \& --- \& pop \& 0\\
 \ldots \& \ldots \& \ldots \& \ldots \& \ldots \\
 };
@@ -229,7 +229,7 @@ in \& label \& dest \& op \& out \\
 \matrix[route table no dest,anchor=north] at (0, 5.5) {
 in \& label  \& op \& out \\
 0 \& ---  \& push 32 \& 1 \\
---- \& 1 \& pop \& 0 \\
+--- \& 21 \& pop \& 0 \\
 \ldots \& \ldots \& \ldots \& \ldots \\
 };
 \node[router] (mid1) at (4, 6) {};
@@ -250,7 +250,7 @@ label  \& op \& out \\
 \matrix[route table no dest,anchor=north] at (11, 4) {
 in \& label  \& op \& out \\
 0 \& --- \& push 37 \& 1 \\
---- \& 0 \& swap 29 \& 6 \\
+--- \& 20 \& pop \& 6 \\
 \ldots \& \ldots \& \ldots \& \ldots \\
 };
 \draw[connect,->](out0.east) -- ++(1, 0) node[port beginning]{0}
@@ -264,6 +264,22 @@ in \& label  \& op \& out \\
     \draw[connect,<->] (\x) -- (\y) node[port beginning] {\xp} node[port] {\yp};
 }
 \end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+    \frametitle{MPLS tunnel applications}
+    \begin{itemize}
+    \item example: ISP selling connection from building A to building B
+        \begin{itemize}
+        \item make it appear like `Ethernet connection'
+        \item make it follow fixed path that has enough bandwidth/low latency
+        \end{itemize}
+    \item example: traffic engineering (next slide)
+        \begin{itemize}
+        \item customizing routing complex changes to OSPF/etc. metrics
+        \item recall: hard to express complex preferences in OSPF `distances'
+        \end{itemize}
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{MPLS tunnels for traffic engineering}
@@ -413,7 +429,7 @@ label  \& op \& out \\
 \end{frame}
 
 \begin{frame}[fragile]{actual label format}
-\begin{Verbatim}[fontsize=\small]
+\begin{Verbatim}[fontsize=\fontsize{9}{10}\selectfont]
  0                   1                   2                   3
  0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ Label
