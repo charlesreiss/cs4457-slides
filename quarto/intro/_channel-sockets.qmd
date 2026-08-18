@@ -8,13 +8,13 @@
    * create socket (socket())
    * select address (bind())
    * wait for+get connection (listen()+accept())
-   * read+write on connection(read()+recv*()+write()+send*())
+   * read+write on connection(read()+recv\*()+write()+send\*())
 
 * client (active end) 
 
    * create socket (socket())
    * connect to address (connect()
-   * read+write on connection(read()+recv*()+write()+send*())
+   * read+write on connection(read()+recv\*()+write()+send\*())
 
 
 
