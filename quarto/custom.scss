@@ -1,0 +1,270 @@
+/*-- scss:defaults --*/
+
+$presentation-heading-color: #3333b3;
+$code-color: #000000;
+$myoverbox-color: #ff6000;
+$myem-color: #ff6000;
+$font-family-monospace: "Source Code Pro","Courier New",monospace;
+
+/*-- scss:rules --*/
+
+.reveal .slide {
+    margin-left: 1.2ex ! important;  // move slide left to avoid drawing tool overlap
+}
+
+.reveal .slide ul li {
+    list-style-type: none;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+}
+
+.reveal .slide ul li > p {
+    margin-bottom: 0em;
+}
+
+.reveal .slide ul li ul li {
+    margin-top: 0em;
+    margin-bottom: 0.05em;
+    font-size: 90%;
+}
+
+.reveal .slide > ul {
+    margin-left: 0em;
+}
+
+.my-full {
+    height: 75%;
+}
+
+.my-full > p {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+}
+
+.my-full > p img {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+}
+
+.my-small, .my-small p {
+    font-size: 90%;
+    line-height: 1.0;
+}
+
+.reveal .slide > p {
+    line-height: 1.0;
+}
+
+.reveal .slide table td {
+    border: none;
+    padding-bottom: 0em;
+    padding-top: 0em;
+}
+
+.reveal .fragment.myem-only.current-fragment{
+    color: $myem-color;
+    font-style: italic;
+}
+
+.reveal .fragment.myem.visible {
+    color: $myem-color;
+    font-style: italic;
+}
+
+.reveal .fragment.mybox-one.current-fragment {
+    border: 3px red solid;
+}
+
+.reveal .fragment.mybox-two.current-fragment {
+    border: 3px blue solid;
+}
+
+.reveal code {
+    color: inherit;
+}
+
+.reveal em {
+    color: $myem-color;
+    font-style: italic;
+}
+
+.mypre {
+    white-space: pre;
+}
+
+
+p:has(> .mycredit:only-child), .mycredit:not(:only-child) {
+    position: absolute;
+    bottom: 0pt;
+    right: 0pt;
+    font-size: 0.5em;
+}
+
+section > ul {
+    margin: 0 0 0 0;
+}
+
+.reveal .slide ul li > hr.vspace, hr.vspace {
+    margin-top: 0.75em;
+    border: none;
+}
+
+.reveal div.sourceCode { border: none; }
+
+.reveal code .highlight-line {
+    background-color: #4f4;
+
+}
+
+.reveal code .highlight-line a:first-child::before {
+    background-color: white;
+}
+
+.reveal code.has-line-highlights > span:not(.highlight-line) {
+  opacity: 0.85 ! important;
+}
+
+
+i { font-style: italic; }
+
+div.myoverbox {
+    position: absolute;
+    font-size: 30px;
+    background-color: $body-bg;
+    top: 20%;
+    left: 50%;
+    max-width: 95%;
+    width: max-content;
+    transform: translate(-50%, 0%);
+    border: $myoverbox-color 5px solid;
+    padding: 3px 3px 3px 3px;
+} 
+
+.reveal div.myoverbox > p { margin: 0; }
+
+div.myoverbox.big {
+    font-size: 40px;
+    padding: 5px 5px 5px 5px;
+    border: $myoverbox-color 8px solid;
+}
+
+div.myoverbox.low {
+    top: auto;
+    bottom: 20%;
+}
+
+div.myoverbox.vlow {
+    top: auto;
+    bottom: 5%;
+}
+
+div.myoverbox.lowright {
+    top: auto;
+    bottom: 5%;
+    left: auto;
+    right: 5%;
+    transform: translate(0%, 0%);
+}
+
+div.myoverbox.highright {
+    bottom: auto;
+    top: 5%;
+    left: auto;
+    right: 5%;
+    transform: translate(0%, 0%);
+}
+
+
+div.myoverbox.midright {
+    bottom: auto;
+    top: 50%;
+    left: auto;
+    right: 5%;
+    transform: translate(0%, -50%);
+}
+
+code span { color: inherit; }
+
+.reveal .slide .tight p { line-height: 1; margin: 0.1em; }
+.reveal .slide .tightp p { line-height: 1; margin: 0.1em; }
+.reveal .slide .tight ul li { margin-top: 0.1em; margin-bottom: 0.05em; }
+.reveal .slide .tight ol li { margin-top: 0.0em; margin-bottom: 0.0em; }
+
+.reveal .slide table.cellborders td { border: 2px solid; }
+
+.reveal .slide table td p:only-child { margin: 0em; line-height: 1; }
+
+.reveal .slide table.tighttable td { padding-top: 0em; padding-bottom: 0em; }
+
+.reveal .slide table.race-timeline tr.top th {text-align:center;}
+.reveal .slide table.race-timeline tr.noborder th {border: 0;}
+.reveal .slide table.race-timeline td:not(:first-child) {padding-left: 3rem;}
+.reveal .slide table.race-timeline th:not(:first-child) {padding-left: 3rem;}
+.reveal .slide table.race-timeline.wide td:not(:first-child) {padding-left: 8rem;}
+.reveal .slide table.race-timeline.wide th:not(:first-child) {padding-left: 8rem;}
+.reveal .slide table.race-timeline td.fade {opacity: 70%;}
+
+.longcode pre code {
+    max-height: inherit;
+}
+
+.vm-contents-exercise .vm-contents-top {font-size: 70%;}
+
+.vm-contents-exercise .solve {
+    font-size: 60%; font-family: $font-family-monospace;
+}
+.vm-contents-exercise .solve p {
+    line-height: 1.1;
+}
+.vm-contents-exercise table td {
+    font-size: 60%; font-family: $font-family-monospace;
+}
+.vm-contents-exercise table th {
+    font-size: 60%; font-family: inherit;
+}
+
+.vm-contents-exercise table td { overflow: visible ! important; text-wrap: nowrap ! important; }
+
+.vm-contents-exercise table .physadd { width: 30%; }
+
+.vm-contents-exercise .colorOne { color: darken(rgb(0, 255, 0), 10%); }
+.vm-contents-exercise .colorTwo { color: darken(rgb(0, 0, 255), 10%); }
+.vm-contents-exercise .colorThree { color: purple; }
+.vm-contents-exercise .colorFour { color: dark(rgb(255, 255, 0), 10%); -webkit-text-stroke-color: black; -webkit-text-stroke-width: 1px; -webkit-text-fill-color: yellow; }
+.vm-contents-exercise .colorFive { color: black; -webkit-text-stroke-color: black; -webkit-text-stroke-width: 1px; -webkit-text-fill-color: lighten(red, 20%); }
+.vm-contents-exercise .ptlabel {
+    font-family: $font-family-sans-serif; font-style: italic;
+    margin: 0; margin-top: 0.5ex;
+    display: inline-block;
+}
+
+.vm-contents-exercise .unhidecolors:not(.visible) .colorOne:not(.myem-only.current-fragment) { color: inherit ! important; }
+.vm-contents-exercise .unhidecolors:not(.visible) .colorTwo:not(.myem-only.current-fragment) { color: inherit ! important; }
+.vm-contents-exercise .unhidecolors:not(.visible) .colorThree:not(.myem-only.current-fragment) { color: inherit ! important; }
+.vm-contents-exercise .unhidecolors:not(.visible) .colorFour { -webkit-text-fill-color: inherit! important; -webkit-text-stroke-width: inherit ! important;}
+.vm-contents-exercise .unhidecolors:not(.visible) .colorFive { -webkit-text-fill-color: inherit ! important; -webkit-text-stroke-width: inherit ! important;}
+.vm-contents-exercise .unhidecolors:not(.visible) .colorFour:not(.myem-only.current-fragment) { color: inherit ! important; }
+.vm-contents-exercise .unhidecolors:not(.visible) .colorFive:not(.myem-only.current-fragment) { color: inherit ! important; }
+
+.nomargin { margin: 0 ! important; padding: 0; }
+.nomargin > p { margin: 0; padding: 0; }
+
+.reveal .slide table.collines td:not(:last-child) {border-right: 2px solid black;}
+.reveal .slide .collines > table td:not(:last-child) {border-right: 2px solid black;}
+.reveal .slide .rowlines > table td {border-top: 2px solid black; border-bottom: 2px solid black;}
+.reveal .slide table.rowlines td {border-top: 2px solid black; border-bottom: 2px solid black;}
+
+.reveal .slide table.spaced td {padding-bottom: 1ex; }
+
+.reveal .slide.much-smaller { font-size: 50%; }
+
+.reveal .slide table.codetable td { font-family: $font-family-monospace; font-size: 80%; }
+.reveal .slide table.codetable td:not(:last-child) { padding-right: 5em; }
+
+@media print {
+    .slide-chalkboard-buttons {
+        display: none ! important
+    }
+}

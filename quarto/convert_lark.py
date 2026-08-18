@@ -1483,6 +1483,7 @@ class Tikzpicture(_MyAstItem):
         with fig_output_tex.open('w') as out_fh:
             out_fh.write(r'\documentclass[tikz]{standalone}' + '\n')
             out_fh.write(r'\input{common/tikzBase}' + '\n')
+            out_fh.write(r'\input{common/netshapes}' + '\n')
             out_fh.write('\\usetikzlibrary{' + (','.join(list(context.get_tikz_libraries()))) + '}\n')
             if len(context.get_gd_libraries()) > 0:
                 out_fh.write('\\usegdlibrary{' + (','.join(list(context.get_gd_libraries()))) + '}\n')
