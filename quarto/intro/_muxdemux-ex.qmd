@@ -3,13 +3,8 @@
 
 
 
-::: {.r-stack}
-![](/intro/texfig/muxdemux-ex.figure-1.svg){.fragment .fade-in-then-out fragment-index=1 fig-alt="A <-> S1 <-> S2 <-> B, S3 <-> C"}
+![](/intro/texfig/muxdemux-ex.figure-1.svg){fig-alt="A <-> S1 <-> S2 <-> B, S3 <-> C" width="100%"}
 
-![](/intro/texfig/muxdemux-ex.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="A <-> S1 <-> S2 <-> B, S3 <-> C"}
-
-
-:::
  
 
 * suppose A, B, C all sending to each other (all 6 pairs).

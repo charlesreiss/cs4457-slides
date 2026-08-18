@@ -11,23 +11,24 @@
 ### example: reliable file transfer  {.smaller}
 
 
-* want to make sure correct data transferred .5cm
+* want to make sure correct data transferred
+<hr class="vspace"/>
 * want to protect against: 
 
    * error in hardware/software on sending machine reading file
    * bits being flipped in memory on forwarding machine
    * communication system flipping bits in data
    * hosts crashing during communication
- .5cm
-* \it communication system can't help a lot of these things
-* \it authors experienced router with bad memory/processor
+<hr class="vspace"/>
+* communication system can't help a lot of these things
+* authors experienced router with bad memory/processor
 
 
 ### solution: end-to-end checks 
 
 
 * want reliable transfer: compare final files (with hash or similar) .5cm
-* ‘‘end-to-end'’ --- doesn’t care what middle systems do
+* "end-to-end" --- doesn’t care what middle systems do
 
 
 ### againframe(endToEndStatement)
@@ -35,13 +36,11 @@
 ### end-to-end in practice  {.smaller}
 
 
-* ‘‘narrow waist'’ of IP doesn’t provide many gaurnetees 
-
-   * no gaurentees about reliable transmission, duplicate suppression, message order, \ldots
-
-* but try to provide good service (‘‘best effort’’) .5cm
+* "narrow waist" of IP doesn’t provide many gaurnetees 
+   * no gaurentees about reliable transmission, duplicate suppression, message order, ...
+* but try to provide good service (‘‘best effort’’) 
+<hr class="vspace"/>
 * in design: typically middle systems won't know/care about what's forwarded 
-
    * but many exceptions
 
 

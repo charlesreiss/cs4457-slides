@@ -1,15 +1,7 @@
 
 ### flows / packets 
 
-
-
-::: {.r-stack .my-full}
 ![](/intro/texfig/flows-flows--packets.figure-1.svg){.fragment .fade-in-then-out fragment-index=1 fig-alt="Diagram showing data going via two switches from machine 1 to machine 2. This is labeled as a *flow*. Flows can be divided up into pieces called packets, frames, or segments (which name is best depends on context). The diagram shows the flow being divided into variably-sized packets, some of which are in transit on links between nodes and some of which are in queues on the switches."}
-
-![](/intro/texfig/flows-flows--packets.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="Diagram showing data going via two switches from machine 1 to machine 2. This is labeled as a *flow*. Flows can be divided up into pieces called packets, frames, or segments (which name is best depends on context). The diagram shows the flow being divided into variably-sized packets, some of which are in transit on links between nodes and some of which are in queues on the switches."}
-
-
-:::
 
 
 ### flows  {.smaller}

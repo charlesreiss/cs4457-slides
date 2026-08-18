@@ -16,13 +16,13 @@
 
 :::
 
-::: {.myoverbox .low .fragment fragment-index=2 .fade-in-then-out}
+::: {.myoverbox .vlow .fragment fragment-index=2 .fade-in-then-out}
 
 two or more flows can share one or more links
 
 :::
 
-::: {.myoverbox .low .fragment fragment-index=3 .fade-in-then-out}
+::: {.myoverbox .vlow .fragment fragment-index=3 .fade-in-then-out}
 
 left switch _multiplexes_ the two flows onto one link <br/>
 <br/>
@@ -30,13 +30,13 @@ right switch _demultiplexes_ them to separate them
 
 :::
 
-::: {.myoverbox .low .fragment fragment-index=4 .fade-in-then-out}
+::: {.myoverbox .vlow .fragment fragment-index=4 .fade-in-then-out}
 
 this picture: multiplexed by dividing up _time_ on link
 
 :::
 
-::: {.myoverbox .low .fragment fragment-index=5 .fade-in-then-out}
+::: {.myoverbox .vlow .fragment fragment-index=5 .fade-in-then-out}
 
 switches usually have _buffers_ (also called _queues_)<br/>
 holds waiting packets
@@ -50,13 +50,14 @@ holds waiting packets
 
 
 ::: {.r-stack .my-full}
+
 ![](/intro/texfig/muxdemux-bursts-and-dropping.figure-1.svg){.fragment .fade-out fragment-index=3 fig-alt="Same diagram as previous slide, but with the buffers highlighted."}
 
 ![](/intro/texfig/muxdemux-bursts-and-dropping.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="Same diagram as previous slide, but the queue on the right switch (before the shared link) is overflowing with packets."}
 
 :::
 
-::: {.myoverbox .low .fragment framgment-index=1 .fade-in-then-out}
+::: {.myoverbox .vlow .fragment fragment-index=1 .fade-in-then-out}
 
 switch absorb "bursts" of packets<br/>
 would be basically empty if we could send packets immediately
@@ -64,7 +65,7 @@ would be basically empty if we could send packets immediately
 :::
 
 
-::: {.myoverbox .low .fragment framgment-index=2 .fade-in-then-out}
+::: {.myoverbox .vlow .fragment fragment-index=2 .fade-in-then-out}
 
 incomplete list of causes of bursts:<br/>
 multiple unsynchronized flows <br/>
@@ -72,7 +73,7 @@ fast links produce packets faster than slow can send
 
 :::
 
-::: {.myoverbox .low .fragment framgment-index=3 .fade-in-then-out}
+::: {.myoverbox .vlow .fragment fragment-index=3 .fade-in-then-out}
 
 if buffer full, switch must _drop_ packets<br/>
 called _congestion<br/>

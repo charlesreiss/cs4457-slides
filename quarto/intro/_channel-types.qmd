@@ -3,7 +3,8 @@
 
 
 * want to avoid custom network for each application
-* but applications have different needs .5cm
+* but applications have different needs
+<hr class="vspace" />
 * $\rightarrow$ multiple application interfaces to networks
 * common implementation of common patterns
 
@@ -29,13 +30,14 @@
 
    * read/write bytes of data in remote memory
 
-* \ldots
+* ...
 
 
 ### focus on streams 
 
 
-* this class: focus on implementing streams of bytes .5cm
+* this class: focus on implementing streams of bytes
+<hr class="vspace"/>
 * why? 
 
    * most commonly used by applications on the Internet
