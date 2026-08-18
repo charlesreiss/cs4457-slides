@@ -10,13 +10,13 @@
     packet lg/.style={minimum width=.6cm,minimum height=0.2cm,inner sep=0mm,outer sep=0mm,draw},
     c1c2/.style={fill=violet!40,draw=black,thin},
     c3c4/.style={pattern=checkerboard,pattern color=green!70,draw=black,thin},
-    buffer 1/.style={slidealt=<5>{draw=red,thick},slidealt=<8>{draw=red,thick}},
-    buffer 2/.style={slidealt=<5>{draw=red,thick}},
+    buffer 1/.style={slidealt=<1>{draw=red,thick},slidealt=<3>{draw=red,thick}},
+    buffer 2/.style={slidealt=<1>{draw=red,thick}},
 }
 \node[computer] (c1) at (-5, 1) {};
 \node at (c1) {1};
-\node[big switch,slidealt=<3-4>{fill=red!10},slidealt=<6>{fill=red!10}] (s1) at (-2,-.5) {};
-\node[big switch,slidealt=<3-4>{fill=red!10}] (s2) at (2,.5) {};
+\node[big switch,slidealt=<2>{fill=red!10}] (s1) at (-2,-.5) {};
+\node[big switch] (s2) at (2,.5) {};
 \node[computer] (c2) at (6, 2) {};
 \node at (c2) {2};
 \node[computer] (c3) at (-5, -1) {};
@@ -30,7 +30,7 @@
     node[above=0.05cm,sloped,packet,c1c2,pos=0.1] {}
     node[above=0.05cm,sloped,packet lg,c1c2,pos=0.5] {}
     node[above=0.05cm,sloped,packet,c1c2,pos=0.8] {};
-\draw[connect one,slidealt={<2>{draw=red,ultra thick}}] (s1) -- (s2)
+\draw[connect one] (s1) -- (s2)
     node[above=0.05cm,sloped,packet,c1c2,pos=0.3] {}
     node[above=0.05cm,sloped,packet,c3c4,pos=0.6] {}
     node[above=0.05cm,sloped,packet,c1c2,pos=0.8] {};
@@ -43,7 +43,7 @@
 \node[packet,c3c4,buffer 1,anchor=north east] at ([yshift=-.1cm,xshift=-.1cm]s1.north east) {};
 \node[packet,c1c2,buffer 1,anchor=north east] at ([yshift=-.3cm,xshift=-.1cm]s1.north east) {};
 \node[packet lg,c1c2,buffer 1,anchor=north east] at ([yshift=-.5cm,xshift=-.1cm]s1.north east) {};
-\begin{visibleenv}<8>
+\begin{visibleenv}<3>
 \node[packet,c3c4,buffer 1,anchor=north east,opacity=0.9,draw=red] at ([yshift=-.7cm,xshift=-.1cm]s1.north east) {};
 \node[packet lg,c1c2,buffer 1,anchor=north east,opacity=0.8,draw=red] at ([yshift=-.9cm,xshift=-.1cm]s1.north east) {};
 \node[packet,c1c2,buffer 1,anchor=north east,opacity=0.7,draw=red] at ([yshift=-1.1cm,xshift=-.1cm]s1.north east) {};
@@ -55,26 +55,4 @@
 \node[packet,c1c2,buffer 2,anchor=north east] at ([yshift=-.3cm,xshift=-.1cm]s2.north east) {};
 \node[packet,c1c2,buffer 2,anchor=north east] at ([yshift=-.5cm,xshift=-.1cm]s2.north east) {};
 \node[packet lg,c3c4,buffer 2,anchor=south east] at ([yshift=.1cm,xshift=-.1cm]s2.south east) {};
-\coordinate (box loc) at (-4, -1.5);
-\tikzset{%
-    explain box/.style={%
-        overlay,draw=red, align=left, very thick, anchor=north west,at=(box loc)
-    },
-}
-\begin{visibleenv}<6-7>
-\node[explain box] {%
-    incomplete list of causes of `bursts': \\
-    ~ \\
-    \myemph<6>{multiple unsynchronized flows} \\
-    \myemph<7>{fast links produce packets faster for slow can send}
-};
-\end{visibleenv}
-\begin{visibleenv}<8>
-\node[explain box] {%
-    if buffer full, switch must \textit{\myemph{drop}} packets \\
-    will happen eventually if overall rate faster than outgoing link \\
-    ~\\
-    scenario is called \textit{\myemph{congestion}}
-};
-\end{visibleenv}
 \end{tikzpicture}

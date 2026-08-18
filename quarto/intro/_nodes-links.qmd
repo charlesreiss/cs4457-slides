@@ -4,14 +4,34 @@
 
 
 ::: {.r-stack .my-full}
-![](/intro/texfig/nodes-links-networks--hosts-aka-end-systems.figure-1.svg){.fragment .fade-in-then-out fragment-index=1 fig-alt="Picture showing computers connected via lines with arrowheads on both ends to a cloud."}
 
-![](/intro/texfig/nodes-links-networks--hosts-aka-end-systems.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="Same diagram as previous slide. The cloud is labeled as a ‘network’ and a box reads ‘‘networks connect computers’’."}
+![](/intro/texfig/nodes-links-networks.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="Picture showing computers connected via lines with arrowheads on both ends to a cloud."}
 
-![](/intro/texfig/nodes-links-networks--hosts-aka-end-systems.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="Same diagram as previous slide. The cloud is labeled as a ‘network’ and a box reads ‘‘cloud represents any network (whether local or not). Iconography predates cloud computing.’’"}
+![](/intro/texfig/nodes-links-networks.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="Same diagram as previous slide. The cloud is highlighted and labeled as a ‘network’."}
 
-![](/intro/texfig/nodes-links-networks--hosts-aka-end-systems.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="Same diagram as previous slide. The computers are labeled ‘hosts’ and a box reads ‘‘computers on edge of network called hosts or end systems (even if also ‘severs’).’’"}
+![](/intro/texfig/nodes-links-networks.figure-3.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="Same diagram as previous slide. The computers are labeled ‘hosts’."}
 
+:::
+
+::: {.myoverbox .highright .fragment .fade-in-then-out fragment-index=1}
+
+_networks_ connect computers.
+
+:::
+
+::: {.myoverbox .highright .fragment .fade-in-then-out fragment-index=2}
+
+the cloud represents any network (whether local or not)
+
+this iconography predates cloud computing
+
+:::
+
+::: {.myoverbox .highright .fragment .fade-in-then-out fragment-index=3}
+
+computers on the edge of a network are called _hosts_ or _end systems_
+
+(even if also "servers")
 
 :::
 
@@ -24,14 +44,7 @@
 ### shared medium: radio? 
 
 
-
-::: {.r-stack .my-full}
-![](/intro/texfig/nodes-links-shared-medium-radio.figure-1.svg){.fragment .fade-in-then-out fragment-index=1 fig-alt="Picture showing the same 8 computers with wifi-like symbols indicating they communicate via radio."}
-
-![](/intro/texfig/nodes-links-shared-medium-radio.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="Picture showing the same 8 computers with wifi-like symbols indicating they communicate via radio."}
-
-
-:::
+![](/intro/texfig/nodes-links-shared-medium-radio.figure.svg){fig-alt="Picture showing the same 8 computers with wifi-like symbols indicating they communicate via radio."}
 
 
 ### shared medium: wires 
@@ -45,8 +58,9 @@
 
 ![](/intro/texfig/nodes-links-shared-medium-wires.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="Same picture as before with the addition of a picture of a 4-port Ethernet hub --- a Netgear-branded box with four RJ-45 ports."}
 
-
 :::
+
+<!-- FIXME: convert to native stuff -->
 
 
 ### switches / nodes / links 
@@ -54,14 +68,41 @@
 
 
 ::: {.r-stack .my-full}
-![](/intro/texfig/nodes-links-switches--nodes--links.figure-1.svg){.fragment .fade-in-then-out fragment-index=1 fig-alt="Diagram of computers connected by a network. Lines with arrowheads at both ends extend from the computers to a number of boxes (with a design of crossing lines with arrowheads). Later frames repeat the diagram and indicate the boxes are called ‘switches’; every participant (computers and switches) are called ‘nodes’; and the lines connecting them are called ‘links’ (regardless of whether implemented with wires or radio or whatever)."}
+![](/intro/texfig/nodes-links-switches.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="Diagram of computers connected by a network. Lines with arrowheads at both ends extend from the computers to a number of boxes (with a design of crossing lines with arrowheads). Later frames repeat the diagram and indicate the boxes are called ‘switches’; every participant (computers and switches) are called ‘nodes’; and the lines connecting them are called ‘links’ (regardless of whether implemented with wires or radio or whatever)."}
 
-![](/intro/texfig/nodes-links-switches--nodes--links.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="Diagram of computers connected by a network. Lines with arrowheads at both ends extend from the computers to a number of boxes (with a design of crossing lines with arrowheads). Later frames repeat the diagram and indicate the boxes are called ‘switches’; every participant (computers and switches) are called ‘nodes’; and the lines connecting them are called ‘links’ (regardless of whether implemented with wires or radio or whatever)."}
+![](/intro/texfig/nodes-links-switches.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="Same diagram with switches highlighted."}
 
-![](/intro/texfig/nodes-links-switches--nodes--links.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="Diagram of computers connected by a network. Lines with arrowheads at both ends extend from the computers to a number of boxes (with a design of crossing lines with arrowheads). Later frames repeat the diagram and indicate the boxes are called ‘switches’; every participant (computers and switches) are called ‘nodes’; and the lines connecting them are called ‘links’ (regardless of whether implemented with wires or radio or whatever)."}
+![](/intro/texfig/nodes-links-switches.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="Same diagram with all machines (switches and normal computers) highlighted."}
 
-![](/intro/texfig/nodes-links-switches--nodes--links.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="Diagram of computers connected by a network. Lines with arrowheads at both ends extend from the computers to a number of boxes (with a design of crossing lines with arrowheads). Later frames repeat the diagram and indicate the boxes are called ‘switches’; every participant (computers and switches) are called ‘nodes’; and the lines connecting them are called ‘links’ (regardless of whether implemented with wires or radio or whatever)."}
+![](/intro/texfig/nodes-links-switches.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="Same diagram with links (all connections between machines, which are point-to-point in the diagram) highlighted."}
 
+:::
+
+::: {.myoverbox .highright .fragment fragment-index=2 .fade-in-then-out}
+
+hosts directly connected <br/>
+to _switches_<br/>
+
+implement network more efficient <br/>
+than shared medium
+
+:::
+
+::: {.myoverbox .highright .fragment fragment-index=3 .fade-in-then-out}
+
+machines on network <br/>
+(hosts, switches, ...) <br/>
+called _nodes_
+
+:::
+
+::: {.myoverbox .highright .fragment fragment-index=4 .fade-in-then-out}
+
+nodes connected by <br/>
+_links_ 
+
+(implemented by wires <br/>
+or radio or ...)
 
 :::
 
@@ -70,13 +111,43 @@
 
 
 
+
 ::: {.r-stack .my-full}
-![](/intro/texfig/nodes-links-routers--internetwork.figure-1.svg){.fragment .fade-in-then-out fragment-index=1 fig-alt="Diagram of clouds representing networks connected via bidirectional links to circles with two diagonal arrowheads representing ‘routers’  or ‘gateways’ that connect network."}
 
-![](/intro/texfig/nodes-links-routers--internetwork.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="Diagram of clouds representing networks connected via bidirectional links to circles with two diagonal arrowheads representing ‘routers’  or ‘gateways’ that connect network."}
+![](/intro/texfig/nodes-links-routers.figure-1.svg){fig-alt="Diagram of clouds representing networks connected via bidirectional links to circles with two diagonal arrowheads representing ‘routers’  or ‘gateways’ that connect network." .my-full .fragment fragment-index=2 .fade-out}
 
-![](/intro/texfig/nodes-links-routers--internetwork.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="Diagram of clouds representing networks connected via bidirectional links to circles with two diagonal arrowheads representing ‘routers’  or ‘gateways’ that connect network."}
-
+![](/intro/texfig/nodes-links-routers.figure-2.svg){fig-alt="Same figure with routers highlighted." .fragment fragment-index=2 .fade-in}
 
 :::
 
+
+::: {.myoverbox .fragment fragment-index=2 .fade-in-then-out .highright}
+
+_routers_ or _gateways_ connect networks
+
+:::
+
+::: {.myoverbox .fragment fragment-index=3 .fade-in-then-out .highright}
+
+connected networks form<br/>
+_internetwork_<br/><br/>
+example: the Internet
+
+:::
+
+
+### routers versus switches {.smaller}
+
+*  _router_ versus _switch_ division not so clear in practice
+*  historically "easy"
+   *  router uses internetwork protocol like IP to forward data
+      *  IP = Internet Protocol
+   *  switches does not understand IP (just copies bits for IP)
+*  but lots of things called "switches" that implement IP now
+   *  example: most datacenter "top-of-rack switches"
+*  this class default:
+   *  switch = "layer 2" like Ethernet
+   *  router = "layer 3" --- IP
+   *  if both --- we'll treat as one box containing switch(es) + router
+
+<!-- FIXME: diagram with top-of-rack switch -->

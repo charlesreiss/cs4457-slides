@@ -41,23 +41,4 @@
 \draw[connect big] (r3) -- (net-3);
 \draw[connect big] (r3) -- (net-5);
 \coordinate (box loc) at (6, 2);
-\tikzset{
-    explain box/.style={
-        overlay,draw=red, align=left, very thick, anchor=north west
-    },
-}
-\begin{visibleenv}<2>
-\node[explain box] at (box loc) {
-    \textit{\myemph{routers}} or \textit{\myemph{gateways}} \\
-    connect networks
-};
-\end{visibleenv}
-\begin{visibleenv}<3>
-\node[explain box] at (box loc) {
-    connected networks \\
-    form \textit{\myemph{internetwork}}
-    ~ \\
-    (example: the Internet)
-};
-\end{visibleenv}
 \end{tikzpicture}

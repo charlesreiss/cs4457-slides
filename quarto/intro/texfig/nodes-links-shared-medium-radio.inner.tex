@@ -5,12 +5,10 @@
 }
 \foreach \x/\d in {0/5cm,45/4cm,90/3cm,135/4cm,180/5cm,225/4cm,270/3cm,315/4cm} {
     \node[computer] (c-\x) at (\x:\d) {};
-%    %\begin{visibleenv}<2->
     \pgfmathsetmacro\oppX{\x+180}
     \path (c-\x.\oppX) -- ++(\oppX:0.1) coordinate (c-\x-wifi);
     \foreach \y in {0.2,0.35,0.5} {
         \draw[ultra thick] (c-\x-wifi) ++ (\oppX-50:\y) arc (\oppX-50:\oppX+50:\y);
     }
-%    %\end{visibleenv}
 }
 \end{tikzpicture}

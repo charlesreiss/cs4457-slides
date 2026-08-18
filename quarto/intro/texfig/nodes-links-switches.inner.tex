@@ -31,30 +31,4 @@
 \draw[connect big] (s1) -- (s2);
 \draw[connect big] (s1) -- (s3);
 \coordinate (box loc) at (4cm, 4.5cm);
-\begin{visibleenv}<2>
-\node[overlay,draw=red, align=left, very thick, anchor=north west] at (box loc) {
-    hosts directly connected to \\
-    \textit{\myemph{switches}} \\
-    that implement network \\
-    ~ \\
-    (more efficiently than \\
-    shared medium)
-};
-\end{visibleenv}
-\begin{visibleenv}<3>
-\node[overlay,draw=red, align=left, very thick, anchor=north west] at (box loc) {
-    machines on network \\
-    (hosts, switches, \ldots) \\
-    called \textit{\myemph{nodes}}
-};
-\end{visibleenv}
-\begin{visibleenv}<4>
-\node[overlay,draw=red, align=left, very thick, anchor=north west] at (box loc) {
-    nodes connected by \\
-   \textit{\myemph{links}} \\
-    ~ \\
-    (implemented by wires \\
-    or radio or \ldots)
-};
-\end{visibleenv}
 \end{tikzpicture}

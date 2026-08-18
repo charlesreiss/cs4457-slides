@@ -1,0 +1,16 @@
+\begin{tikzpicture}
+\tikzset{
+    connect/.style={draw,very thick,Latex-Latex},
+    computer/.style={inner sep=0mm,outer sep=0mm,beameralt=<4>{label={[font=\small,label distance=0mm,text=red]south:`host'}},execute at begin node={\computer}},
+}
+\node[
+      cloud,draw,very thick,aspect=2,
+      minimum width=4cm,minimum height=3cm,
+      beameralt=<2-3>{draw=red,fill=red!10,label={[text=red]center:`network'}},
+     ] (net-cloud) at (0,0) {};
+\foreach \x/\d in {0/5cm,45/4cm,90/3cm,135/4cm,180/5cm,225/4cm,270/3cm,315/4cm} {
+    \node[computer] (c-\x) at (\x:\d) {};
+    \draw[connect] (net-cloud) -- (c-\x);
+}
+\coordinate (box loc) at (4cm, 3.5cm);
+\end{tikzpicture}
