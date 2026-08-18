@@ -1,0 +1,27 @@
+
+### some challenges for streams  {.smaller}
+
+
+
+* separating data into pieces network can handle
+* putting pieces back together
+* getting network to send piece to correct remote network
+* getting network to send piece to correct machine
+* getting machine to send data to correct program
+* getting pieces into format wires/radio/fiber/etc. can handle
+* handling transmission errors
+ ![](/intro/texfig/separate-tasks-some-challenges-for-streams.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
+![](/intro/texfig/separate-tasks-some-challenges-for-streams.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
+![](/intro/texfig/separate-tasks-some-challenges-for-streams.figure-3.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=3}
+![](/intro/texfig/separate-tasks-some-challenges-for-streams.figure-4.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=4}
+![](/intro/texfig/separate-tasks-some-challenges-for-streams.figure-5.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=5}
+
+
+### layered model  {.smaller}
+
+
+* networking implemented in ‘layers’
+* upper layers implemented by making calls to lower layers .5cm
+* example: network implements ‘send data to (remote) machine’ function (‘‘network layer’’)
+* stream implementation calls this to implement ‘send stream to remote application’
+

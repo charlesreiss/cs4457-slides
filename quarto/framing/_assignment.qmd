@@ -1,0 +1,36 @@
+
+### framing homework  {.smaller}
+
+
+* implement send+receive messages (strings of bytes) using bits
+* send_message(MESSAGE)
+* handle_bit_from_network(BIT) 
+
+   * calls got_message_function(MESSAGE)
+ .5cm
+* but: 
+
+   * need to indicate message boundaries somehow
+   * need to handle bit flips and missing bits without losing everything
+
+
+
+### bit bytearrays  {.smaller}
+
+
+```
+# In the given code for the assignment:
+def bytes_to_bits(the_bytes):
+    result = bytearray()
+    for a_byte in the_bytes:
+        for i in range(8):
+            result.append(0 if (a_byte & (0x1 << i)) == 0 else 1)
+    return result
+
+```
+ 
+
+* `bytes_to_bytes(b'\x93') == ` <br> `bytearray([1,0,0,1, 0,0,1,1])`
+* using bytearray of 0s and 1s
+* (because Python doesn't have convenient bitarray type)
+

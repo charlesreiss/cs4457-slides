@@ -1,0 +1,173 @@
+
+### main textbooks (1)  {.smaller}
+
+
+* Peterson and Davie, Computer Networks:  A Systems Approach 
+
+   * available online https://book.asystemsapproach.org/, also paper version
+   * focused on higher-level goals, not details of specific implementations
+
+* Fall and Stevens, TCP/IP Illustrated: Volume 1, Second Edition: The Protocols  
+
+   * available via O'Reilly through library 
+
+      * link on schedule page, or search library catalog
+      * make account with your UVa email
+
+   * focused on details of the Internet and related systems
+
+
+
+### textbooks (2) 
+
+
+* Dordal, An Introdcution to Computer Networks  
+
+   * secondary textbook
+   * https://intronetworks.cs.luc.edu/
+   * more coverage of low-level wireless, ethernet
+
+
+
+### coursework  {.smaller}
+
+
+* weekly quizzes 
+
+   * approx 4 questions/week
+   * mostly autograded, will manually adjust based on work/comments
+   * 20% of overall course grade, lowest dropped automatically
+
+* homework assignments 
+
+   * mostly programming-based, mostly Python
+   * approx. weekly deadlines
+   * 60% of overall course grade
+
+* final exam 
+
+   * 16 December
+   * 20% of overall course grade
+
+
+
+### homeworks preview (1)  {.smaller}
+
+
+* framing --- transmit messages using bits in Python
+* reliable1/2 --- stream of messages with automatic resending
+* P4* --- forwarding messages locally
+* AIMD* --- simulating variations on TCP
+* packet scheduling --- prioritizing network traffic
+* DV routing --- forwarding messages far
+* DNS --- mapping names to addresses
+* webserver
+* wireless*
+
+
+### assignment infrastructure  {.smaller}
+
+
+* most assignments in Python
+* P4 --- requires some VM setup 
+
+   * network/switch emulation software that really needs root on Linux
+
+* AIMD --- using C++ simulator 
+
+   * goal: tweak and measure working TCP implementation
+   * mostly small modifications, shouldn't need much C++ knowledge
+   * (the other obvious simulator is mainly in Tcl, which seems worse idea)
+
+
+
+### notable changes  {.smaller}
+
+
+* AIMD assignment is new 
+
+   * previous assignment was implementing simple congestion control
+   * (congestion control = avoiding overloading network)
+   * too many corner cases
+   * did not complement lecture material on modern congestion control
+
+* framing assignment has new test program
+* maybe other changes, time-depending 
+
+   * would like to rework wireless assignment
+
+
+
+### due times/late policy  {.smaller}
+
+
+* assignments usually due Friday @ 11:59pm 
+
+   * 90% credit for submissions up to 72 hours late, no questions asked
+
+* quizzes usually due Tuesday @ 3:15pm 
+
+   * done online, untimed, open notes/book
+   * late submissions not normally accepted (may discuss during lecture)
+ .5cm
+* unusual circumstances --- contact me 
+
+   * can often grant exceptions/alternate arrangements
+   * more flexibility if contacted earlier
+
+
+
+### collaboration  {.smaller}
+
+
+* quizzes, homeworks are individual .5cm
+* yes: 
+
+   * review examples in textbook/lecture/etc.
+   * discuss high-level concepts (without detailed psuedocode for assignment, etc.)
+   * lookup up syntax/standard library documentation
+
+* no: 
+
+   * sharing code/detailed psuedocode/answers
+   * getting code/etc. from web forums, LLMs, etc.
+
+
+
+### gen AI 
+
+
+* rule of thumb: can ask things you could ask fellow students .5cm
+* no: having LLM write your code, your writeup, \ldots
+
+
+### aside: selected standard python libraries  {.smaller}
+
+
+* bisect --- search/insert within sorted list
+* collections's deque --- ordered list with fast insertion/deletion at both ends
+* heapq --- priority queue (using a heap)
+* struct --- convert between integers and bytes and vice-versa 
+
+   * array --- convert between integers and bytes in less flexible way
+ .5cm
+* not intending for you to reimplement common, non-networking tasks
+* may grant exceptions to use other libraries/etc. for generic tasks
+
+
+### lectures 
+
+
+* will attempt to record (but sometimes technical stuff happens) 
+
+   * will link recordings from schedule page
+
+* will not take attendance
+
+
+### homework/topic sync 
+
+
+* rough plan on schedule page
+* imagine things might get out of sync
+

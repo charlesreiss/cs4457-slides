@@ -1,0 +1,28 @@
+\begin{tikzpicture}
+\node (osi) at (0,0) {
+    \includegraphics[height=0.75\mypaperheight]{../intro/systemsapproach-1-fig-13.pdf}
+};
+\coordinate[overlay] (explain loc) at ([yshift=1cm,xshift=0cm]osi.north east);
+\tikzset{
+    explain box/.style={font=\small,alt=<2>{draw=red}{draw=black},very thick,align=left,at={(explain loc)}, anchor=north west},
+    alt explain box/.style={draw=red,ultra thick,anchor=north east,align=left,at={([yshift=-1cm]explain loc)},fill=white},
+}
+\begin{visibleenv}<2->
+\node[overlay,explain box] {
+    (7) \myemph<3>{application}: \\ \hspace{.5cm}what requests/etc. \\
+    (6) \myemph<3>{presentation}: \\ \hspace{.5cm}data format \\
+    (5) \myemph<3>{session}: \\ \hspace{.5cm}manage group of streams \\
+    (4) transport: \\ \hspace{.5cm}streams of data \\
+    (3) network: \\ \hspace{.5cm}message to correct network \\
+    (2) data link: \\ \hspace{.5cm}message $\rightarrow$ bits \\
+    \hspace{.5cm}message to correct machine \\
+    (1) physical: \\ \hspace{.5cm}send bits/\ldots 
+};
+\end{visibleenv}
+\begin{visibleenv}<3>
+\node[overlay,alt explain box] {
+    current Internet \\
+    usually* layers 5--7 merged together
+};
+\end{visibleenv}
+\end{tikzpicture}

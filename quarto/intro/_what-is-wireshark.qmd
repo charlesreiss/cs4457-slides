@@ -1,0 +1,9 @@
+
+### packet capture tools  {.smaller}
+
+
+* packet capture = log of everything sent/received on some link(s)
+* wireshark is popular tool for making, analyzing packet captures .5cm
+* will be showing screenshots from that .5cm
+* you can download these packet captures, follow along in wireshark
+

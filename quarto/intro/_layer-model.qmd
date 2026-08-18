@@ -1,0 +1,106 @@
+
+### OSI model 
+
+
+
+::: {.r-stack}
+![](/intro/texfig/layer-model-osi-model.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/intro/texfig/layer-model-osi-model.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/intro/texfig/layer-model-osi-model.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+
+:::
+ Figure 13 of Chapter 1 of Computer Networks: A Systems Approach (6th ed) (Peterson and Davie)
+
+### OSI model (text)  {.smaller}
+
+<table>
+<tr><td>\hline 7</td><td>application</td><td>what requests/etc.</td></tr>
+<tr><td>\hline 6</td><td>presentation</td><td>format of data</td></tr>
+<tr><td>\hline 5</td><td>session</td><td>coordinate multiple streams</td></tr>
+<tr><td>\hline 4</td><td>transport</td><td>streams of data</td></tr>
+<tr><td>\hline 3</td><td>network</td><td>message to correct network</td></tr>
+<tr><td>\hline 2</td><td>data link</td><td>message to correct machine</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>message into bits/symbols</td></tr>
+<tr><td>1</td><td>physical</td><td>transmit bits/symbols on medium</td></tr>
+<tr><td></td></tr>
+</table>
+ 
+
+* internet: usually combines layers 7/6/5
+
+
+### OSI model  {.smaller}
+
+
+* standardized by ISO (International Standards Organization) and ITU (International Telecommunications Union)
+* full set of protocols\ldots 
+
+   * file transfer, message sending, directory lookups \ldots
+
+* that were often implemented and sometimes used\ldots
+* but mostly lost out to IETF-standardized Internet protocols 
+
+   * Internet Engineering Task Force
+
+
+
+### OSI influence (1) 
+
+
+* term ‘layer 7’, ‘layer 4’, ‘layer 3’, etc. almost always refer to OSI model
+* \ldots even though most of Internet does not follow it 
+
+   * early Internet protocols predate OSI
+
+
+
+### OSI influence (2)  {.smaller}
+
+
+* are a lot of Internet protocols influenced by OSI protocols .5cm
+* OSI's DAP (directory access protocol)  
+
+   * adapted into IETF's LDAP (lightweight directory access protocol)
+
+* OSI presentation layer ASN.1 used in\ldots 
+
+   * telephony (between telephone companies)
+   * inter-bank messaging
+   * lots of cryptography-related protocols
+   * \ldots
+
+* OSI's routing protocol IS-IS still common in large Internet-connected networks 
+
+   * (adapted to work alongside IETF protocols)
+
+
+
+### Internet layers  {.smaller}
+
+\small <table>
+<tr><td>OSI layer</td><td>name</td><td>examples</td><td>purpose</td></tr>
+<tr><td>\hline 7</td><td>application</td><td>HTTP, SSH,</td><td>application-defined meanings</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>SMTP, DNS, \ldots</td><td>&nbsp;</td></tr>
+<tr><td>\hline 4</td><td>transport</td><td>TCP, UDP, \ldots</td><td>reach correct program,\linebreak reliablity/streams</td></tr>
+<tr><td>\hline 3</td><td>network</td><td>IPv4, IPv6, \ldots</td><td>reach correct machine\linebreak(across networks)</td></tr>
+<tr><td>\hline 2</td><td>link</td><td>Ethernet, Wi-Fi, \ldots</td><td>coordinate shared wire/radio</td></tr>
+<tr><td>\hline 1</td><td>physical</td><td>\ldots</td><td>encode bits for wire/radio</td></tr>
+<tr><td>\hline</td></tr>
+</table>
+
+
+### Internet protocols and layers (non-exhaustive) 
+
+
+
+::: {.r-stack}
+![](/intro/texfig/layer-model-internet-protocols-and-layers-non-exhaus.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/intro/texfig/layer-model-internet-protocols-and-layers-non-exhaus.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+
+:::
+ Figure 14 of Chapter 1 of Computer Networks: A Systems Approach (6th ed) (Peterson and Davie)

@@ -1,0 +1,72 @@
+
+# network terminology {visibility="hidden"}
+
+## nodes / links / internetworks {visibility="hidden"}
+
+{{< include /intro/_nodes-links.qmd >}}
+
+## flows {visibility="hidden"}
+
+{{< include /intro/_flows.qmd >}}
+
+## muxing/demuxing {visibility="hidden"}
+
+{{< include /intro/_muxdemux.qmd >}}
+
+## exercise{visibility="hidden"}
+
+{{< include /intro/_muxdemux-ex.qmd >}}
+
+## store and forward {visibility="hidden"}
+
+{{< include /intro/_store-forward.qmd >}}
+
+## types of channels {visibility="hidden"}
+
+{{< include /intro/_channel-types.qmd >}}
+
+## channels and sockets{visibility="hidden"}
+
+{{< include /intro/_channel-sockets.qmd >}}
+
+## client/server{visibility="hidden"}
+
+{{< include /intro/_client-server.qmd >}}
+
+## exercise: terms {visibility="hidden"}
+
+{{< include /intro/_terms-exercise.qmd >}}
+
+# standardization {visibility="hidden"}
+
+{{< include /intro/_standardization.qmd >}}
+
+# building with layers {visibility="hidden"}
+
+## separation of responsibility {visibility="hidden"}
+
+{{< include /intro/_separate-tasks.qmd >}}
+
+## OSI/Internet model {visibility="hidden"}
+
+{{< include /intro/_layer-model.qmd >}}
+
+## layers are fuzzy {visibility="hidden"}
+
+{{< include /intro/_layer-model-fuzzy.qmd >}}
+
+# interlude: wireshark preview {visibility="hidden"}
+
+{{< include /intro/_what-is-wireshark.qmd >}}
+
+## some examples in wireshark {visibility="hidden"}
+
+{{< include /intro/_wireshark-ex.qmd >}}
+
+## end-to-end argument {visibility="hidden"}
+
+{{< include /intro/_end-to-end.qmd >}}
+
+## end-to-end exercise {visibility="hidden"}
+
+{{< include /intro/_end-to-end-ex.qmd >}}

@@ -1,0 +1,35 @@
+
+### stream abstraction and sockets  {.smaller}
+
+
+* BSD sockets are most used abstraction for using streams
+* server (passive end) 
+
+   * create socket (socket())
+   * select address (bind())
+   * wait for+get connection (listen()+accept())
+   * read+write on connection(read()+recv*()+write()+send*())
+
+* client (active end) 
+
+   * create socket (socket())
+   * connect to address (connect()
+   * read+write on connection(read()+recv*()+write()+send*())
+
+
+
+### sockets and other options 
+
+
+* sockets can also provide datagram abstraction 
+
+   * difference: mode where read/write keeps messages together
+
+
+
+### socket details later 
+
+
+* we're doing mostly bottom-up approach
+* will actually talk in detail about socket interface later in semester
+

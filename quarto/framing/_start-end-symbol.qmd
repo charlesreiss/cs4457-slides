@@ -1,0 +1,42 @@
+
+### start/end symbol  {.smaller}
+
+
+
+* alternate idea: use bit sequence to mark beginning/end
+* example choice: send 010 between each frame
+* send extra 010s when no frames to send
+ 
+
+::: {.r-stack}
+![](/framing/texfig/start-end-symbol.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/framing/texfig/start-end-symbol.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/framing/texfig/start-end-symbol.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+
+:::
+ 
+
+* problem: messages can contain 010 or end with 01
+* one solution: replace 01 in messages with 011  
+
+   * (need to undo replacement when receiving)
+
+ 
+<div class="fragment fade-in" data-fragment-index=3 >
+ 
+
+::: {.r-stack}
+![](/framing/texfig/start-end-symbol_2.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/framing/texfig/start-end-symbol_2.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/framing/texfig/start-end-symbol_2.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+
+:::
+ 
+</div>
+

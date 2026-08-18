@@ -1,0 +1,24 @@
+\begin{tikzpicture}
+\tikzset{
+    disappears/.style={opacity=0.1},
+}
+\matrix[tight matrix no line,nodes={text width=.35cm,font=\large\tt,name prefix=norm-}] (msg) {
+|[alias=h1]| 0 \& 1 \& 1 \& |[alias=s1]| 0 \& 1 \& |[alias=e1]| 0 \& 
+|[alias=h2]| 1 \& 0 \& 0 \& |[alias=s2]| 0 \& 1 \& 1 \& |[alias=e2]| 0 \& 
+|[alias=h3]| 1 \& 0 \& 0 \& |[alias=s3]| 0 \& 1 \& 1 \& |[alias=e3]| 1 \& \ldots \& ~ \& \ldots \\
+};
+\matrix[anchor=north west,tight matrix no line,nodes={text width=.35cm,font=\large\tt,name prefix=bad-}] (msg alt)
+at ([yshift=-1cm]msg.south west) {
+|[disappears]| \sout{0} \& |[alias=h1]| 1 \& 1 \& 0 \& |[alias=s1]| 1 \& 0 \& 
+1 \& 0 \& 0 \& |[alias=e1]| 0 \& |[alias=h2]| 1 \& 1 \& 0 \& 
+|[alias=s2]| 1 \& 0 \& 0 \& 0 \& 1 \& |[alias=e2]| 1 \& |[alias=h3]| 1 \& |[alias=s3]| \ldots \& |[alias=e3]| ~ \& \ldots \\
+};
+\foreach \x in {1,2,3} {
+    \foreach \pfx in {norm,bad} {
+        \node[inner sep=0mm,outer sep=0mm,draw,green,very thick,fit=(\pfx-s\x) (\pfx-e\x)] {};
+        \node[inner sep=0mm,outer sep=0mm,fill=blue,fill opacity=0.1,very thick,fit=(\pfx-h\x) (\pfx-s\x.west)] {};
+        \draw[very thick,decorate,decoration={brace,mirror}] 
+            ([xshift=.1cm,yshift=-.1cm]\pfx-h\x.south west) -- ([xshift=-.1cm,yshift=-.1cm]\pfx-e\x.south east) {};
+    }
+}
+\end{tikzpicture}

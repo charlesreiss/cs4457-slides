@@ -1,0 +1,34 @@
+
+### client/server  {.smaller}
+
+
+* server = entity that waits for + responds to clients
+* server: 
+
+   * always-on
+   * well-known how to contact
+
+* client 
+
+   * sometimes on
+   * only contacted by server responding to it
+
+
+
+### not client/server? 
+
+
+* not everything fits into client/server neatly .5cm
+* sometimes something is both client and server
+* sometimes no distinguished entities (‘‘peer-to-peer’’)
+
+
+### client/server and channels 
+
+
+* can have channels without client/server model .5cm
+* but the interface sockets provide assume client/server 
+
+   * (so you have to make something server-like to do peer-to-peer with sockets)
+
+

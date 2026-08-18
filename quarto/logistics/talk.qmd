@@ -1,0 +1,6 @@
+---
+title: "logistics"
+
+---
+
+{{< include ../logistics/_talk-inner.qmd >}}

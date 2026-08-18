@@ -1,0 +1,11 @@
+
+### controlling overhead 
+
+
+* shown using 011 to separate (and replace 01)
+* could use 0111 (and replace011s only)  
+
+   * fewer extra bits (even in worst case)
+
+* or 01111 or \ldots
+

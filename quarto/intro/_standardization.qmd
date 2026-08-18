@@ -1,0 +1,33 @@
+
+### IETF  {.smaller}
+
+
+* IETF = Internet Engineering Task Force 
+
+   * part of non-profit called Internet Society
+
+* most common internet protocols standardized by IETF
+* most IETF documents called RFCs 
+
+   * requests for comment
+   * have unique number
+
+* https://rfc-editor.org
+
+
+### other standard orgs  {.smaller}
+
+
+* Bluetooth Special Interest Group
+* IEEE (Institute of Electrical and Electronics Engineers) 
+
+   * Wifi, Ethernet, \ldots
+
+* 3GPP (3rd Generation Partnership Project) 
+
+   * cellular phone networks
+
+* SCTE (Society of Cable Televsion Engineers)
+* ITU (International Telecommunication Union)
+* ISO (International Organization for Standardization)
+

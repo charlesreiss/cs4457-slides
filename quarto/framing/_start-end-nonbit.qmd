@@ -1,0 +1,31 @@
+
+### escaping?  {.smaller}
+
+
+* can think of replacement similar to escaping strings in C 
+
+   * start/end marker is `"`
+   * `"` $\rightarrow$ `\"`
+   * `\` $\rightarrow$ `\\`
+
+* represent `foo \R"3"13\` using `"foo \\R\"3\"13\\"`
+* but needed tweaks to idea to work with bits instead of bytes .5cm
+* some physical layers allow transmitting bytes at a time
+* framing protocols for those (example: PPP) use \textbackslash-like idea
+
+
+### help from physical layer?  {.smaller}
+
+
+* suppose instead of transmitting 0 or 1
+* \ldots physical layer transmits 0 or 1 or 2 or 3 or 4
+* probably going to ‘waste’ one of these values 
+
+   * example: transmit every two bits as 0 or 1 or 2 or 3
+ .5cm
+* idea: take advantage of leftover ‘symbol’ 4
+* use it to send start/end 
+
+   * similar idea used in many versions of Ethernet
+
+

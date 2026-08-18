@@ -1,0 +1,13 @@
+
+### exercise  {.smaller}
+
+![](/intro/texfig/terms-exercise.figure.svg){fig-alt="video stream server <-> circle <-> square <-> user C, square <-> used D, square <-> unlabeled computer, square <-> user A, user B"}
+ 
+
+* if each of users A--D are receiving (potentially different) video  and audio from the video streaming server, then\ldots  
+
+   * how many flows?
+   * how many nodes are involved?
+   * how many switches/routers?
+
+

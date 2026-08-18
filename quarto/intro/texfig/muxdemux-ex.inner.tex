@@ -1,0 +1,23 @@
+\begin{tikzpicture}
+\tikzset{
+    connect one/.style={draw,very thick,-Latex},
+    connect/.style={draw,very thick,Latex-Latex},
+    computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
+    switch/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\switch}},
+    big switch/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\bigswitch}},
+    packet/.style={minimum width=.4cm,minimum height=0.2cm,inner sep=0mm,outer sep=0mm,draw},
+    packet lg/.style={minimum width=.6cm,minimum height=0.2cm,inner sep=0mm,outer sep=0mm,draw},
+    c1c2/.style={fill=violet!40,draw=black,thin,slidealt=<2>{thick,draw=red}},
+}
+\node[computer,label={center:A}] (A) at (0, 0) {};
+\node[computer,label={center:B}] (B) at (5, -2) {};
+\node[computer,label={center:C}] (C) at (10, 0) {};
+\node[switch,label={south:S1}] (S1) at (3, 0) {};
+\node[switch,label={south:S2}] (S2) at (5, 0) {};
+\node[switch,label={south:S3}] (S3) at (7, 0) {};
+\draw[connect] (A) -- (S1);
+\draw[connect] (S1) -- (S2);
+\draw[connect] (B) -- (S2);
+\draw[connect] (S2) -- (S3);
+\draw[connect] (S3) -- (C);
+\end{tikzpicture}

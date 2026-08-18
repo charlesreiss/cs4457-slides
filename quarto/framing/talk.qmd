@@ -1,0 +1,6 @@
+---
+title: "framing"
+
+---
+
+{{< include ../framing/_talk-inner.qmd >}}

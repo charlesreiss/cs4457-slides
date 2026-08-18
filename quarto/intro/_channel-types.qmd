@@ -1,0 +1,44 @@
+
+### channel abstractions  {.smaller}
+
+
+* want to avoid custom network for each application
+* but applications have different needs .5cm
+* $\rightarrow$ multiple application interfaces to networks
+* common implementation of common patterns
+
+
+### some abstractions  {.smaller}
+
+
+* stream 
+
+   * continuous stream of bytes from one program to another
+   * ‘connection’ from one program to another
+
+* datagrams 
+
+   * send small messages (datagrams)
+   * each datagram's destination independently set
+
+* remote procedure calls 
+
+   * make function calls that run on remote machine
+
+* remote memory access 
+
+   * read/write bytes of data in remote memory
+
+* \ldots
+
+
+### focus on streams 
+
+
+* this class: focus on implementing streams of bytes .5cm
+* why? 
+
+   * most commonly used by applications on the Internet
+   * many common tasks with other abstractions
+
+

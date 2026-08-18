@@ -1,0 +1,68 @@
+
+### fuzzy layers (1)  {.smaller}
+
+
+* ICMP (Internet Control Message Protocol)\ldots
+* implemented using a network layer\ldots 
+
+   * so seems like a transport layer protocol?
+
+* used to send errors/control messages about routing\ldots 
+
+   * routing is the network layer's job
+   * so ICMP is part of network layer?
+ .5cm
+* I think saying network layer is probably better\ldots
+* but we're not going to be picky about it
+
+
+### fuzzy layers (2)  {.smaller}
+
+
+* TLS (Transport Control Protocol)\ldots
+* implemented on top of TCP\ldots 
+
+   * so seems like a application layer protocol?
+
+* used to send other application layer protocols 
+
+   * so maybe a transport layer?
+   * or presentation layer?
+ .5cm
+* I'll call it an application layer\ldots
+
+
+### ‘extra’ layers  {.smaller}
+
+
+* layer terminology doesn't always work cleanly 
+
+   * often ‘‘extra’’ layers in practice
+
+* e.g. HTTPS: 
+
+   * HTTP (app layer) on TLS (another app layer) on TCP (network) on \ldots
+
+* e.g. DNS over HTTPS: 
+
+   * DNS (app layer) on HTTP on on TLS on TCP on \ldots
+
+* e.g. SFTP: 
+
+   * SFTP (app layer??) on SSH (another app layer) on TCP on \ldots
+
+* e.g. HTTP over OpenVPN: 
+
+   * HTTP on TCP on IP on OpenVPN on UDP on different IP on \ldots
+
+
+
+### protocols usually over HTTP  {.smaller}
+
+
+* SOAP (Simple Object Access Protocol) --- messaging/remote procedure calls
+* gRPC (originally form Google) --- remote procedure calls
+* HLS (HTTP Live Streaming) --- video streaming
+* DASH (Dynamic Adaptive Streaming over HTTP) --- video streaming
+* \ldots
+

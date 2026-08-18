@@ -1,0 +1,26 @@
+\begin{tikzpicture}
+\node[minimum width=15cm,minimum height=9cm] (current page) {};
+\begin{scope}[overlay]
+
+\begin{visibleenv}<2>
+    \node[draw=red,fill=white,ultra thick] at (current page.center) {
+        lots of work! don't want to implement all at once!
+    };
+\end{visibleenv}
+\begin{visibleenv}<3>
+    \node[draw=red,fill=white,ultra thick] at ([yshift=2cm]current page.center) {
+        some parts need to be different for different local networks
+    };
+\end{visibleenv}
+\begin{visibleenv}<4>
+    \node[draw=red,fill=white,ultra thick] at ([yshift=3cm]current page.center) {
+        some parts should not concern local network implementors
+    };
+\end{visibleenv}
+\begin{visibleenv}<5>
+    \node[draw=red,fill=white,ultra thick] at ([yshift=3cm]current page.center) {
+        some parts should be same for different abstraction
+    };
+\end{visibleenv}
+\end{scope}
+\end{tikzpicture}

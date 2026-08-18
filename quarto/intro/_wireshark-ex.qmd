@@ -1,0 +1,85 @@
+
+###  
+
+
+
+::: {.r-stack .my-full}
+![](/intro/texfig/wireshark-ex.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/intro/texfig/wireshark-ex.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/intro/texfig/wireshark-ex.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/intro/texfig/wireshark-ex.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+![](/intro/texfig/wireshark-ex.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+
+![](/intro/texfig/wireshark-ex.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
+
+![](/intro/texfig/wireshark-ex.figure-7.svg){.fragment .fade-in-then-out fragment-index=7}
+
+
+:::
+
+
+###  
+
+![](/intro/texfig/wireshark-ex_2.figure.svg)
+
+
+###  
+
+  
+
+::: {.r-stack}
+![](/intro/texfig/wireshark-ex_3.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/intro/texfig/wireshark-ex_3.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/intro/texfig/wireshark-ex_3.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/intro/texfig/wireshark-ex_3.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+![](/intro/texfig/wireshark-ex_3.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+
+![](/intro/texfig/wireshark-ex_3.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
+
+![](/intro/texfig/wireshark-ex_3.figure-7.svg){.fragment .fade-in-then-out fragment-index=7}
+
+![](/intro/texfig/wireshark-ex_3.figure-8.svg){.fragment .fade-in-then-out fragment-index=8}
+
+![](/intro/texfig/wireshark-ex_3.figure-9.svg){.fragment .fade-in-then-out fragment-index=9}
+
+![](/intro/texfig/wireshark-ex_3.figure-10.svg){.fragment .fade-in-then-out fragment-index=10}
+
+![](/intro/texfig/wireshark-ex_3.figure-11.svg){.fragment .fade-in-then-out fragment-index=11}
+
+![](/intro/texfig/wireshark-ex_3.figure-12.svg){.fragment .fade-in-then-out fragment-index=12}
+
+![](/intro/texfig/wireshark-ex_3.figure-13.svg){.fragment .fade-in-then-out fragment-index=13}
+
+
+:::
+
+
+###  
+
+![](/intro/texfig/wireshark-ex_4.figure.svg)
+
+
+###  
+
+
+
+::: {.r-stack .my-full}
+![](/intro/texfig/wireshark-ex_5.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/intro/texfig/wireshark-ex_5.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/intro/texfig/wireshark-ex_5.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/intro/texfig/wireshark-ex_5.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+
+:::
+

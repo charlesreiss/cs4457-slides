@@ -1,0 +1,9 @@
+
+### exercise: overhead  {.smaller}
+
+
+* let's say start/end symbol is 011
+* and we replace 01 with 010 .5cm
+* exercise (1): minimum number of bits used to send 1000 bit message?
+* exercise (2): maximum number of bits used to send 1000 bit message?
+

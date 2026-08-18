@@ -1,0 +1,33 @@
+
+### bad choice of start/end (1)  {.smaller}
+
+
+
+* let's say we choose delimiter 0000
+* what do we need to escape?
+ <table>
+<tr><td>A. any 0000</td></tr>
+<tr><td>A. any 000</td></tr>
+<tr><td>B. any 00</td></tr>
+<tr><td>C. any 0</td></tr>
+<tr><td></td></tr>
+</table>
+
+
+### bad choice of start/end (1)  {.smaller}
+
+
+* sending 10 and 01 
+
+   * 100000010000
+
+* sending 1 and 001 
+
+   * 100000010000
+ .5cm
+* oops!
+* textbook example: start/end = 01111110  
+
+   * (and escaping 11111 $\rightarrow$ 111110)
+
+

@@ -1,0 +1,63 @@
+\begin{tikzpicture}
+\tikzset{
+    computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
+    switch/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\switch}},
+    router/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\router},circle,
+        beameralt=<2>{fill=red!10}},
+    connect/.style={draw,very thick,Latex-Latex},
+    connect big/.style={draw,ultra thick,Latex-Latex},
+}
+\node[
+      cloud,draw,opacity=0.25,very thick,aspect=2,
+      minimum width=3cm,minimum height=2cm,
+     ] (net-1) at (-1,1) {};
+\node[
+      cloud,draw,opacity=0.25,very thick,aspect=2,
+      minimum width=3cm,minimum height=2cm,
+     ] (net-2) at (3,0) {};
+\node[
+      cloud,draw,opacity=0.25,very thick,aspect=2,
+      minimum width=3cm,minimum height=2cm,
+     ] (net-3) at (-2,-4) {};
+\node[
+      cloud,draw,opacity=0.25,very thick,aspect=2,
+      minimum width=3cm,minimum height=2cm,
+     ] (net-4) at (2,-3) {};
+%
+\node[
+      cloud,draw,opacity=0.25,very thick,aspect=2,
+      minimum width=3cm,minimum height=2cm,
+     ] (net-5) at (6,-4) {};
+% FIXME: routers
+\node[router] (r1) at (-2, -1.5) {};
+\draw[connect big] (r1) -- (net-1);
+\draw[connect big] (r1) -- (net-2);
+\draw[connect big] (r1) -- (net-3);
+\node[router] (r2) at (5, -2) {};
+\draw[connect big] (r2) -- (net-4);
+\draw[connect big] (r2) -- (net-5);
+\draw[connect big] (r2) -- (net-2);
+\node[router] (r3) at (3, -5) {};
+\draw[connect big] (r3) -- (net-3);
+\draw[connect big] (r3) -- (net-5);
+\coordinate (box loc) at (6, 2);
+\tikzset{
+    explain box/.style={
+        overlay,draw=red, align=left, very thick, anchor=north west
+    },
+}
+\begin{visibleenv}<2>
+\node[explain box] at (box loc) {
+    \textit{\myemph{routers}} or \textit{\myemph{gateways}} \\
+    connect networks
+};
+\end{visibleenv}
+\begin{visibleenv}<3>
+\node[explain box] at (box loc) {
+    connected networks \\
+    form \textit{\myemph{internetwork}}
+    ~ \\
+    (example: the Internet)
+};
+\end{visibleenv}
+\end{tikzpicture}

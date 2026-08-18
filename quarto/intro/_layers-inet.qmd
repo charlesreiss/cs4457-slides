@@ -1,0 +1,12 @@
+
+### layers 
+
+<table>
+<tr><td>\hline application</td><td>HTTP, SSH, SMTP, \ldots</td><td>application-defined meanings</td></tr>
+<tr><td>\hline transport</td><td>TCP, UDP, \ldots</td><td>reach correct program,\linebreak reliablity/streams</td></tr>
+<tr><td>\hline network</td><td>IPv4, IPv6, \ldots</td><td>reach correct machine\linebreak(across networks)</td></tr>
+<tr><td>\hline link</td><td>Ethernet, Wi-Fi, \ldots</td><td>coordinate shared wire/radio</td></tr>
+<tr><td>\hline physical</td><td>\ldots</td><td>encode bits for wire/radio</td></tr>
+<tr><td>\hline</td></tr>
+</table>
+

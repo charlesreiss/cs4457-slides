@@ -1,0 +1,62 @@
+
+### types of transmission errors 
+
+
+* desynchronization: 
+
+   * missing bits/bytes
+   * adding bits/bytes
+
+* flipping bits  
+
+   * from ‘noise’/‘interference’
+
+
+
+### againframe(transmitErrorType)
+
+### desynchronization and framing (1) 
+
+
+
+* with purely size-based framing  
+
+   * almost all future sizes messed up
+
+ ![](/framing/texfig/transmission-errors-desynchronization-and-framing-1.figure.svg)
+
+
+### desynchronization and framing (2)  {.smaller}
+
+
+
+* with start/end marker idea 
+
+   * can have start/end-marker corrupted or added by corruption
+   * may mess up multiple frames, but will eventually be resync'd
+
+ ![](/framing/texfig/transmission-errors-desynchronization-and-framing-2.figure.svg)
+
+
+### fixed-sized frames 
+
+
+* suppose all packets are same size
+* ‘‘clock-based framing’’
+* example: SONET looks for start symbol every 810 bytes 
+
+   * if starts being missing, try to resync
+
+
+
+### againframe(transmitErrorType)
+
+### flipping bits? 
+
+
+* flipping bits basically has same problems as synchornization 
+
+   * can corrupt sizes and start/end markers
+   * can add extra start/end markers
+
+

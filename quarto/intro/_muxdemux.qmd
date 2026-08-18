@@ -1,0 +1,50 @@
+
+### (de)multiplexing 
+
+
+
+::: {.r-stack .my-full}
+![](/intro/texfig/muxdemux-demultiplexing.figure-1.svg){.fragment .fade-in-then-out fragment-index=1 fig-alt="Diagram showing two flows (on between machines 1 and 2; the other between machines 3 and 4), each divided up into packets. The flows both pass from the source machine, to a first switch, then to a second switch, then to the destination machine. Packets from both flows are interleaved on the link connnecting the two switches. Interleaving the packets is called *multiplexing* and deinterleaving the packets is called *demultiplexing*. This diagram shows packets multiplexed in time, but other mechanisms are possible. The switches have *buffers* (or *queues*) that hold packets."}
+
+![](/intro/texfig/muxdemux-demultiplexing.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="Diagram showing two flows (on between machines 1 and 2; the other between machines 3 and 4), each divided up into packets. The flows both pass from the source machine, to a first switch, then to a second switch, then to the destination machine. Packets from both flows are interleaved on the link connnecting the two switches. Interleaving the packets is called *multiplexing* and deinterleaving the packets is called *demultiplexing*. This diagram shows packets multiplexed in time, but other mechanisms are possible. The switches have *buffers* (or *queues*) that hold packets."}
+
+![](/intro/texfig/muxdemux-demultiplexing.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="Diagram showing two flows (on between machines 1 and 2; the other between machines 3 and 4), each divided up into packets. The flows both pass from the source machine, to a first switch, then to a second switch, then to the destination machine. Packets from both flows are interleaved on the link connnecting the two switches. Interleaving the packets is called *multiplexing* and deinterleaving the packets is called *demultiplexing*. This diagram shows packets multiplexed in time, but other mechanisms are possible. The switches have *buffers* (or *queues*) that hold packets."}
+
+![](/intro/texfig/muxdemux-demultiplexing.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="Diagram showing two flows (on between machines 1 and 2; the other between machines 3 and 4), each divided up into packets. The flows both pass from the source machine, to a first switch, then to a second switch, then to the destination machine. Packets from both flows are interleaved on the link connnecting the two switches. Interleaving the packets is called *multiplexing* and deinterleaving the packets is called *demultiplexing*. This diagram shows packets multiplexed in time, but other mechanisms are possible. The switches have *buffers* (or *queues*) that hold packets."}
+
+![](/intro/texfig/muxdemux-demultiplexing.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 fig-alt="Diagram showing two flows (on between machines 1 and 2; the other between machines 3 and 4), each divided up into packets. The flows both pass from the source machine, to a first switch, then to a second switch, then to the destination machine. Packets from both flows are interleaved on the link connnecting the two switches. Interleaving the packets is called *multiplexing* and deinterleaving the packets is called *demultiplexing*. This diagram shows packets multiplexed in time, but other mechanisms are possible. The switches have *buffers* (or *queues*) that hold packets."}
+
+![](/intro/texfig/muxdemux-demultiplexing.figure-6.svg){.fragment .fade-in-then-out fragment-index=6 fig-alt="Diagram showing two flows (on between machines 1 and 2; the other between machines 3 and 4), each divided up into packets. The flows both pass from the source machine, to a first switch, then to a second switch, then to the destination machine. Packets from both flows are interleaved on the link connnecting the two switches. Interleaving the packets is called *multiplexing* and deinterleaving the packets is called *demultiplexing*. This diagram shows packets multiplexed in time, but other mechanisms are possible. The switches have *buffers* (or *queues*) that hold packets."}
+
+![](/intro/texfig/muxdemux-demultiplexing.figure-7.svg){.fragment .fade-in-then-out fragment-index=7 fig-alt="Diagram showing two flows (on between machines 1 and 2; the other between machines 3 and 4), each divided up into packets. The flows both pass from the source machine, to a first switch, then to a second switch, then to the destination machine. Packets from both flows are interleaved on the link connnecting the two switches. Interleaving the packets is called *multiplexing* and deinterleaving the packets is called *demultiplexing*. This diagram shows packets multiplexed in time, but other mechanisms are possible. The switches have *buffers* (or *queues*) that hold packets."}
+
+![](/intro/texfig/muxdemux-demultiplexing.figure-8.svg){.fragment .fade-in-then-out fragment-index=8 fig-alt="Diagram showing two flows (on between machines 1 and 2; the other between machines 3 and 4), each divided up into packets. The flows both pass from the source machine, to a first switch, then to a second switch, then to the destination machine. Packets from both flows are interleaved on the link connnecting the two switches. Interleaving the packets is called *multiplexing* and deinterleaving the packets is called *demultiplexing*. This diagram shows packets multiplexed in time, but other mechanisms are possible. The switches have *buffers* (or *queues*) that hold packets."}
+
+
+:::
+
+
+### bursts and dropping 
+
+
+
+::: {.r-stack .my-full}
+![](/intro/texfig/muxdemux-bursts-and-dropping.figure-1.svg){.fragment .fade-in-then-out fragment-index=1 fig-alt="Same diagram as previous slide, but with more packets in switch queues, eventually overflowing. Some possible causes of bursts are: multiple unsynchronized flows, or fast links producing packets faster than a slower can send.  When the buffer is not large enough to handle the burst, the switch will *drop* packets. This scenario is called *congestion*."}
+
+![](/intro/texfig/muxdemux-bursts-and-dropping.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="Same diagram as previous slide, but with more packets in switch queues, eventually overflowing. Some possible causes of bursts are: multiple unsynchronized flows, or fast links producing packets faster than a slower can send.  When the buffer is not large enough to handle the burst, the switch will *drop* packets. This scenario is called *congestion*."}
+
+![](/intro/texfig/muxdemux-bursts-and-dropping.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="Same diagram as previous slide, but with more packets in switch queues, eventually overflowing. Some possible causes of bursts are: multiple unsynchronized flows, or fast links producing packets faster than a slower can send.  When the buffer is not large enough to handle the burst, the switch will *drop* packets. This scenario is called *congestion*."}
+
+![](/intro/texfig/muxdemux-bursts-and-dropping.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="Same diagram as previous slide, but with more packets in switch queues, eventually overflowing. Some possible causes of bursts are: multiple unsynchronized flows, or fast links producing packets faster than a slower can send.  When the buffer is not large enough to handle the burst, the switch will *drop* packets. This scenario is called *congestion*."}
+
+![](/intro/texfig/muxdemux-bursts-and-dropping.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 fig-alt="Same diagram as previous slide, but with more packets in switch queues, eventually overflowing. Some possible causes of bursts are: multiple unsynchronized flows, or fast links producing packets faster than a slower can send.  When the buffer is not large enough to handle the burst, the switch will *drop* packets. This scenario is called *congestion*."}
+
+![](/intro/texfig/muxdemux-bursts-and-dropping.figure-6.svg){.fragment .fade-in-then-out fragment-index=6 fig-alt="Same diagram as previous slide, but with more packets in switch queues, eventually overflowing. Some possible causes of bursts are: multiple unsynchronized flows, or fast links producing packets faster than a slower can send.  When the buffer is not large enough to handle the burst, the switch will *drop* packets. This scenario is called *congestion*."}
+
+![](/intro/texfig/muxdemux-bursts-and-dropping.figure-7.svg){.fragment .fade-in-then-out fragment-index=7 fig-alt="Same diagram as previous slide, but with more packets in switch queues, eventually overflowing. Some possible causes of bursts are: multiple unsynchronized flows, or fast links producing packets faster than a slower can send.  When the buffer is not large enough to handle the burst, the switch will *drop* packets. This scenario is called *congestion*."}
+
+![](/intro/texfig/muxdemux-bursts-and-dropping.figure-8.svg){.fragment .fade-in-then-out fragment-index=8 fig-alt="Same diagram as previous slide, but with more packets in switch queues, eventually overflowing. Some possible causes of bursts are: multiple unsynchronized flows, or fast links producing packets faster than a slower can send.  When the buffer is not large enough to handle the burst, the switch will *drop* packets. This scenario is called *congestion*."}
+
+
+:::
+

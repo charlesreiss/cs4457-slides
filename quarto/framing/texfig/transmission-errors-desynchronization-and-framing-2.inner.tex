@@ -1,0 +1,29 @@
+\begin{tikzpicture}
+\tikzset{
+    disappears/.style={opacity=0.1},
+}
+\matrix[tight matrix no line,nodes={text width=.35cm,font=\large\tt,name prefix=norm-}] (msg norm) {
+|[alias=h1]| 0 \& 1 \& 0 \& |[alias=s1]| 0 \& |[alias=xform1s]| 0 \& 1 \& |[alias=xform1e,alias=e1]| 1 \&  
+|[alias=h2]| 0 \& 1 \& 0 \& |[alias=s2,alias=xform2s]| 0 \& 1 \& |[alias=xform2e]| 1 \& 1 \& |[alias=e2]| 0 \&
+|[alias=h3]| 0 \& 1 \& 0 \& |[alias=s3]| 0 \&|[alias=xform3s]| 0 \& 1 \& |[alias=xform3e,alias=e3]| 1 \& |[alias=e3]| 0 \& |[alias=h4]| 0 \& 1 \& 0 \& |[alias=s4]| ~ \\
+};
+\matrix[tight matrix no line,nodes={text width=.35cm,font=\large\tt,name prefix=bad-},
+    anchor=north west] (msg bad) at ([yshift=-1cm]msg norm.south west) {
+|[alias=h1]| 0 \& 1 \& 0 \& |[alias=s1]| 0 \& |[alias=xform1s]| 0 \& 1 \& |[alias=xform1e,alias=e1]| 1 \&  
+|[]| 0 \& |[disappears]| \sout{1} \& 0 \& |[alias=xform2s]| 0 \& 1 \& |[alias=xform2e]| 1 \& 1 \& |[alias=e1]| 0 \&
+|[alias=h2]| 0 \& 1 \& 0 \& |[alias=s2]| 0 \&|[alias=xform3s]| 0 \& 1 \& |[alias=xform3e,alias=e3]| 1 \& |[alias=e2]| 0 \& |[alias=h3]| 0 \& 1 \& 0 \& |[alias=s3]| ~ \\
+};
+\foreach \pfx/\maxM/\maxH/\maxS in {norm/3/4/3,bad/2/3/3} {
+    \foreach \x in {1,...,\maxM} {
+        \node[inner sep=0mm,outer sep=0mm,draw,green,very thick,fit=(\pfx-s\x) (\pfx-e\x)] {};
+        \draw[very thick,decorate,decoration={brace,mirror}] 
+            ([xshift=.1cm,yshift=-.1cm]\pfx-s\x.south west) -- ([xshift=-.1cm,yshift=-.1cm]\pfx-e\x.south east) {};
+    }
+    \foreach \x in {1,...,\maxH} {
+        \node[inner sep=0mm,outer sep=0mm,fill=blue,fill opacity=0.1,very thick,fit=(\pfx-h\x) (\pfx-s\x.west)] {};
+    }
+    \foreach \x in {1,...,\maxS} {
+        \fill[fill opacity=0.1,red,draw=violet,ultra thick,dotted] (\pfx-xform\x s.south west) rectangle (\pfx-xform\x e.north east);
+    }
+}
+\end{tikzpicture}

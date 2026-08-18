@@ -1,0 +1,37 @@
+
+### DocumentMetadata(tagging=on)
+
+### documentclass(mytalk2)
+
+###  
+
+
+
+::: {.r-stack .my-full}
+![](/intro/texfig/test-new.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/intro/texfig/test-new.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/intro/texfig/test-new.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/intro/texfig/test-new.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+![](/intro/texfig/test-new.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+
+
+:::
+
+
+### test 
+
+
+* foo
+* bar
+* quux
+
+
+# network terminology {visibility="hidden"}
+
+## flows {visibility="hidden"}
+
+{{< include /intro/_flows.qmd >}}

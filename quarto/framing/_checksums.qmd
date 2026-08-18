@@ -1,0 +1,63 @@
+
+### checksums 
+
+
+* unsolved issue: will generate frames with bad data .5cm
+* could rely on other layers to deal with that, but\ldots  
+
+   * a lot better to detect this early
+
+
+
+### checksum idea  {.smaller}
+
+
+* instead of sending ‘‘message’’ .5cm
+* say Hash(‘‘message’’) = 0xABCDEF12
+* then send ‘‘0xABCDEF12,message’’ .5cm
+* when receiving, recompute hash
+* discard message if checksum doesn't match
+
+
+### checksum functions  {.smaller}
+
+
+* hashes used to check messages called checksums
+* used at data link layer and upper layers 
+
+   * lots of places networks want to check messages aren't corrupted
+ .5cm
+* provides high probability we discard corrupted messages 
+
+   * larger checksum $\rightarrow$ higher probability
+
+
+
+### example common checksums  {.smaller}
+
+
+* IPv4, TCP --- 
+
+   * based on one's complement sum of data+metadata treated as 16-bit numbers
+   * one's complement addition = add normally with wraparound + add carry bit at end
+   * efficient to implement on processor with addition
+   * easy to compute incrementally
+
+* Ethernet 
+
+   * 32-bit ‘‘cyclic redundancy code’’
+   * easy to compute fast in hardware
+   * always detects up to 3 bits flipped (for sizes used in Ethernet)
+
+
+
+### beyond checksums 
+
+
+* checksums detect errors pretty reliably .5cm
+* can send some extra bits can correct some errors pretty reliably
+* ‘‘error correcting code’’ 
+
+   * efficient ways to do this? covered in ECE/CS 4434
+
+

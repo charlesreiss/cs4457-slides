@@ -1,0 +1,24 @@
+
+### aligning bits  {.smaller}
+
+
+
+* let's transmit these (binary) messages: 
+
+   * \tt 001
+   * \tt 0110
+   * \tt 0010
+
+ 
+
+::: {.r-stack}
+![](/framing/texfig/aligning-bits.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/framing/texfig/aligning-bits.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+
+:::
+ 
+
+* problem: can't tell where messages/start end
+

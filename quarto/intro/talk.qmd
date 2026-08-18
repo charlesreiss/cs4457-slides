@@ -1,0 +1,6 @@
+---
+title: "intro"
+
+---
+
+{{< include ../intro/_talk-inner.qmd >}}
