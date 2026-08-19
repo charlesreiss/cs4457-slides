@@ -2,17 +2,16 @@
 ### OSI model 
 
 
+![](/intro/systemsapproach-1-fig-13.svg){.my-full fig-alt="diagram showing two end-hosts with Application/Presentation/Session/Transport/Network/Data link/Physical layers; connected via  physical layer to nodes on within the network implementing Network/Data link/Physical."}
 
-::: {.r-stack}
-![](/intro/texfig/layer-model-osi-model.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+::: {.myoverbox .high .fragment fragment-index=1}
 
-![](/intro/texfig/layer-model-osi-model.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
-
-![](/intro/texfig/layer-model-osi-model.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
-
+current Internet:<br/>
+usually session/presentation/application layers merged together
 
 :::
- Figure 13 of Chapter 1 of Computer Networks: A Systems Approach (6th ed) (Peterson and Davie)
+
+[Figure 13 of Chapter 1 of Computer Networks: A Systems Approach (6th ed) (Peterson and Davie)]{.mycredit}
 
 ### OSI model (text)  {.smaller}
 
@@ -35,11 +34,11 @@
 
 
 * standardized by ISO (International Standards Organization) and ITU (International Telecommunications Union)
-* full set of protocols\ldots 
+* full set of protocols... 
 
-   * file transfer, message sending, directory lookups \ldots
+   * file transfer, message sending, directory lookups ...
 
-* that were often implemented and sometimes used\ldots
+* that were often implemented and sometimes used...
 * but mostly lost out to IETF-standardized Internet protocols 
 
    * Internet Engineering Task Force
@@ -64,12 +63,12 @@
 
    * adapted into IETF's LDAP (lightweight directory access protocol)
 
-* OSI presentation layer ASN.1 used in\ldots 
+* OSI presentation layer ASN.1 used in... 
 
    * telephony (between telephone companies)
    * inter-bank messaging
    * lots of cryptography-related protocols
-   * \ldots
+   * ...
 
 * OSI's routing protocol IS-IS still common in large Internet-connected networks 
 
@@ -79,15 +78,13 @@
 
 ### Internet layers  {.smaller}
 
-\small <table>
+<table>
 <tr><td>OSI layer</td><td>name</td><td>examples</td><td>purpose</td></tr>
-<tr><td>\hline 7</td><td>application</td><td>HTTP, SSH,</td><td>application-defined meanings</td></tr>
-<tr><td>&nbsp;</td><td>&nbsp;</td><td>SMTP, DNS, \ldots</td><td>&nbsp;</td></tr>
-<tr><td>\hline 4</td><td>transport</td><td>TCP, UDP, \ldots</td><td>reach correct program,\linebreak reliablity/streams</td></tr>
-<tr><td>\hline 3</td><td>network</td><td>IPv4, IPv6, \ldots</td><td>reach correct machine\linebreak(across networks)</td></tr>
-<tr><td>\hline 2</td><td>link</td><td>Ethernet, Wi-Fi, \ldots</td><td>coordinate shared wire/radio</td></tr>
-<tr><td>\hline 1</td><td>physical</td><td>\ldots</td><td>encode bits for wire/radio</td></tr>
-<tr><td>\hline</td></tr>
+<tr><td>7</td><td>application</td><td>HTTP, SSH,<br> SMTP DNS, ...</td><td>application-defined meanings</td></tr>
+<tr><td>4</td><td>transport</td><td>TCP, UDP, ...</td><td>reach correct program,\linebreak reliablity/streams</td></tr>
+<tr><td></td><td>network</td><td>IPv4, IPv6, ...</td><td>reach correct machine\linebreak(across networks)</td></tr>
+<tr><td>2</td><td>link</td><td>Ethernet, Wi-Fi, ...</td><td>coordinate shared wire/radio</td></tr>
+<tr><td>1</td><td>physical</td><td>...</td><td>encode bits for wire/radio</td></tr>
 </table>
 
 
@@ -95,11 +92,12 @@
 
 
 
-::: {.r-stack}
-![](/intro/texfig/layer-model-internet-protocols-and-layers-non-exhaus.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+::: {.r-stack .my-full}
+![](/intro/texfig/layer-model-internet-protocols-and-layers-non-exhaus.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="Diagram of internet protocols organization into layers: At top, the application layer (OSI layer 7) includes FTP and HTTP built on TCP, and DNS and TFTP in application layer built on UDP. Below them, the transport layer (OSI layer 4) includes TCP and UDP, both built on IP. Then, the network layer (OSI layer 3) includes only IP. Below that in the data link layer (OSI layer 2) are a variety of data link protocols (not named here) that IP can be built on."}
 
-![](/intro/texfig/layer-model-internet-protocols-and-layers-non-exhaus.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/intro/texfig/layer-model-internet-protocols-and-layers-non-exhaus.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="In these protocols, IP is exceptionally in that it is a 'narrow waist' &mdash; it is a single protocol supporting a variety of protocols in the layers above and below."}
 
 
 :::
- Figure 14 of Chapter 1 of Computer Networks: A Systems Approach (6th ed) (Peterson and Davie)
+
+[Figure 14 of Chapter 1 of Computer Networks: A Systems Approach (6th ed) (Peterson and Davie)]{.mycredit}
