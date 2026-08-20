@@ -105,11 +105,12 @@
 
    * 90% credit for submissions up to 72 hours late, no questions asked
 
-* quizzes usually due Tuesday @ 3:15pm 
+* quizzes usually due Tuesday @ 12:15pm
 
    * done online, untimed, open notes/book
    * late submissions not normally accepted (may discuss during lecture)
- .5cm
+
+<hr class="vspace"/>
 * unusual circumstances --- contact me 
 
    * can often grant exceptions/alternate arrangements
@@ -120,7 +121,10 @@
 ### collaboration  {.smaller}
 
 
-* quizzes, homeworks are individual .5cm
+* quizzes, homeworks are individual
+
+<hr class="vspace"/>
+
 * yes: 
 
    * review examples in textbook/lecture/etc.
@@ -138,7 +142,7 @@
 
 
 * rule of thumb: can ask things you could ask fellow students .5cm
-* no: having LLM write your code, your writeup, \ldots
+* no: having LLM write your code, your writeup, ...
 
 
 ### aside: selected standard python libraries  {.smaller}
@@ -148,9 +152,8 @@
 * collections's deque --- ordered list with fast insertion/deletion at both ends
 * heapq --- priority queue (using a heap)
 * struct --- convert between integers and bytes and vice-versa 
-
    * array --- convert between integers and bytes in less flexible way
- .5cm
+<hr class="vspace"/>
 * not intending for you to reimplement common, non-networking tasks
 * may grant exceptions to use other libraries/etc. for generic tasks
 
