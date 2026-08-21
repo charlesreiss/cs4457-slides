@@ -1,0 +1,4 @@
+
+# physical layer: synchronizing {visibility="hidden"}
+
+{{< include /physical/_signal-sync.qmd >}}

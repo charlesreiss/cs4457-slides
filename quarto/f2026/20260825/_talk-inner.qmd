@@ -1,0 +1,7 @@
+# CS 4457
+
+{{< include /logistics/_talk-inner.qmd >}}
+
+{{< include /intro/_talk-inner.qmd >}}
+
+{{< include /physical/_talk-inner.qmd >}}

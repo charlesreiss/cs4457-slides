@@ -1,0 +1,17 @@
+
+### Manchester encoding 
+
+![](/physical/texfig/signal-sync-manchester-encoding.figure.svg)
+ Figure 25 from Section 2.2 of Computer Networks: A Systems Approach (6th ed) (Peterson and Davie)
+
+### problem with Manchester  {.smaller}
+
+
+* fixed the problem of too few transitions .5cm
+* but now most transitions don't send information
+* means we aren't making good use of wire/etc. capacity .5cm
+* there are more clever compromises 
+
+   * (example: 4B5B encoding)
+
+

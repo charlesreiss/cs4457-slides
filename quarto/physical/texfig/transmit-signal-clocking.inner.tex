@@ -1,0 +1,49 @@
+\begin{tikzpicture}
+\tikzset{
+    axis/.style={draw,ultra thick,-Latex},
+    signal/.style={draw,very thick,violet},
+    axis label/.style={draw,thin,font=\small},
+    value/.style={font=\tt},
+},
+\begin{pgfonlayer}{fg}
+    \draw[axis] (0, 0) -- (0, 3);
+    \draw[axis] (0, 0) -- (14, 0);
+\end{pgfonlayer}
+\draw[axis label] (0, .3) -- ++ (-.2, 0) node[left] {low};
+\draw[axis label] (0, 2.1) -- ++ (-.2, 0) node[left] {high};
+\begin{scope}
+    \clip (0, 0) rectangle (14, 3);
+    \begin{scope}[yshift=.3cm,y=1.8cm]
+    \draw[signal] (0, 0) -- (2.85, 0) -- (2.85, 1) -- (5.05, 1) -- (5.05, 0) -- (9.05, 0) -- (9.05, 1) -- (11.1, 1) -- (11.1, 0) -- (16, 0);
+    \end{scope}
+    \fill[white,path fading=west] (12, 0) rectangle (13.8, 3);
+    \fill[white] (13.8, 0) rectangle (14, 3);
+\end{scope}
+\begin{visibleenv}<2,5>
+\begin{scope}[yshift=-.8cm,xshift=1cm,x=2cm]
+\foreach \x/\v in {0/0,1/1,2/0,3/0,4/1,5/0,6/0} {
+    \draw[thick,dotted] (\x, -0.5) -- ++(0, 4.5cm);
+    \node[value,anchor=north] at (\x+0.5, 0) {\v};
+}
+\end{scope}
+\end{visibleenv}
+\begin{visibleenv}<4,5>
+\begin{scope}
+\clip[overlay] (0, -10) rectangle (15, 10);
+\begin{scope}[yshift=-.2cm,xshift=1.35cm,x=1.6cm]
+\foreach \x/\v in {-1/0,0/0,1/1,2/0,3/0,4/0,5/1,6/0,7/0,8/0} {
+    \draw[thick,dashed] (\x, -.5) -- ++(0, 4cm);
+    \node[value,anchor=north] at (\x+0.5, 0) {\v};
+}
+\end{scope}
+\end{scope}
+\end{visibleenv}
+\begin{visibleenv}<3,5>
+\begin{scope}[yshift=-1.3cm,xshift=1cm,x=1cm]
+\foreach \x/\v in {0/0,1/0,2/1,3/1,4/0,5/0,6/0,7/0,8/1,9/1,10/0,11/0} {
+    \draw[thick,dashed] (\x, -.5) -- ++(0, 5cm);
+    \node[value,anchor=north] at (\x+0.5, 0) {\v};
+}
+\end{scope}
+\end{visibleenv}
+\end{tikzpicture}

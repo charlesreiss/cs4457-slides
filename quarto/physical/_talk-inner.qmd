@@ -1,0 +1,18 @@
+
+# physical layer, briefly {visibility="hidden"}
+
+## types of physical media {visibility="hidden"}
+
+{{< include /physical/_wires-fibers-radio.qmd >}}
+
+## transmitting a signal {visibility="hidden"}
+
+{{< include /physical/_transmit-signal.qmd >}}
+
+## synchronizing (short) {visibility="hidden"}
+
+{{< include /physical/_signal-sync-intro.qmd >}}
+
+## better options? {visibility="hidden"}
+
+{{< include /physical/_better-options.qmd >}}

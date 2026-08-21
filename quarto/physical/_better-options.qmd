@@ -1,0 +1,12 @@
+
+### other better encoding options  {.smaller}
+
+
+* vary more than just one thing 
+
+   * example: pulse amplitude and duration
+
+* use more than just low/high
+* \ldots much more .5cm
+* probably covered in ECE Signals course?
+

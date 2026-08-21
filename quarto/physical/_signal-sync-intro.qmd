@@ -1,0 +1,21 @@
+
+### self-synchronizing?  {.smaller}
+
+
+* can resynchronize clock by looking for transitions
+* but doesn't work if lots of consecutive 0s or 1s .5cm
+* also, need to know where low and high point is
+* important to have transitions to low/high to calibrate this
+
+
+### self-sync and ‘start-message’  {.smaller}
+
+
+* one idea: set start-message to have lots of 0/1/0/1/0/1/0/1/etc. 
+
+   * something 10Mbit Ethernet does
+
+* but probably not enough to ensure things stay in sync on big message .5cm
+* alternate strategy --- use encoding that adds extra transitions
+* example: Manchester encoding
+

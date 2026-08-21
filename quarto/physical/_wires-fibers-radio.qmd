@@ -1,0 +1,13 @@
+
+### physical media 
+
+
+
+::: {.r-stack .my-full}
+![](/physical/texfig/wires-fibers-radio.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/physical/texfig/wires-fibers-radio.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+
+:::
+

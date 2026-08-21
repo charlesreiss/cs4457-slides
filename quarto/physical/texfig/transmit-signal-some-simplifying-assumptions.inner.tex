@@ -1,0 +1,21 @@
+\begin{tikzpicture}
+\tikzset{
+    axis/.style={draw,ultra thick,-Latex},
+    signal/.style={draw,very thick,violet},
+    axis label/.style={draw,thin,font=\small},
+},
+\begin{pgfonlayer}{fg}
+    \draw[axis] (0, 0) -- (0, 3);
+    \draw[axis] (0, 0) -- (14, 0);
+\end{pgfonlayer}
+\draw[axis label] (0, .3) -- ++ (-.2, 0) node[left] {low};
+\draw[axis label] (0, 2.1) -- ++ (-.2, 0) node[left] {high};
+\begin{scope}
+    \clip (0, 0) rectangle (14, 3);
+    \begin{scope}[yshift=.3cm,y=1.8cm]
+    \draw[signal] (0, 0) -- (3, 0) -- (3, 1) -- (5, 1) -- (5, 0) -- (9, 0) -- (9, 1) -- (11, 1) -- (11, 0) -- (16, 0);
+    \end{scope}
+    \fill[white,path fading=west] (12, 0) rectangle (13.8, 3);
+    \fill[white] (13.8, 0) rectangle (14, 3);
+\end{scope}
+\end{tikzpicture}
