@@ -144,11 +144,13 @@ def main():
     parser.add_argument('--directory', type=Path)
     parser.add_argument('--incremental', action='store_true', default=True)
     parser.add_argument('--force', action='store_false', dest='incremental')
+    parser.add_argument('--nopdf', action='store_true', default=False)
     args = parser.parse_args()
     if args.directory:
         args.figures = args.directory / 'texfig'
         args.render_qmd = args.directory / 'talk.qmd'
-        args.render_html = args.directory / 'talk.html'
+        if not args.nopdf:
+            args.render_html = args.directory / 'talk.html'
     if args.create_top_qmd:
         create_top_qmd(args.create_top_qmd, include_path=args.include, backup_include_path=args.backup_include, empty=args.empty)
     if args.figures:
