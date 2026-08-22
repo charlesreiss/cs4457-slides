@@ -713,6 +713,8 @@ class _InlineCommand(_MyAstItem):
     def inner_text(self):
         if len(self.arguments) == 0:
             return self.command
+        elif self.command in (r'\vspace', r'\hspace'):
+            return ' '
         else:
             return ''.join(map(attrgetter('inner_text'), self.arguments)).strip()
 
@@ -727,149 +729,152 @@ class _InlineCommand(_MyAstItem):
         else:
             return sum(map(attrgetter('estimated_lines'), self.arguments))
 
-        def render(self, context: RenderContext) -> str:
-            before, after = None, None
-            start_arg : int | None = -1
-            is_tt = None
-            strip_ends = None
-            when = self.when
-            command = self.command
-            arguments = self.arguments
-            if re.match(r'^\\myemph[A-Z]$', command) is not None:
-                index = ord(command[len(r'\myemph')]) - ord('A')
-                when = When(f'<{index}>')
-                assert when.needs_fragment
-                command = r'\myemph'
-            if re.match(r'^\\myemph(AB|Two|Three|Four|Five|Six|Seven)$', command) is not None:
-                name = command[len(r'\myemph'):]
-                index = {
-                    'AB': '2-3',
-                    'Two': 2,
-                    'Three': 3,
-                    'Four': 4,
-                    'Five': 5,
-                    'Six': 6,
-                    'Seven': 7,
-                }[name]
-                when = When(f'<{index}>')
-                assert when.needs_fragment
-                command = r'\myemph'
-            if command == r'\varMark':
-                logging.debug('arguments = %s', arguments)
-                index_argument = arguments[0].inner_text
-                when = When(f'<{index_argument}>')
-                command = r'\myemph'
-                arguments = arguments[1:]
-            if when and when.needs_fragment:
-                if command in (r'\myemph',r'\btHL',):
-                    before = ''
-                    after = ''
-                    if when.is_after_fragment:
-                        before += '['
-                        after += ']{.fragment fragment-index=' + str(when.after_index) + ' .custom .myem}'
-                    if when.is_before_fragment:
-                        before += '['
-                        after += ']{.fragment fragment-index=' + str(when.before_index+1) + ' .custom .myem-until}'
-                    for index in when.middle_indices:
-                        before += '['
-                        after += ']{.fragment fragment-index=' + str(index) + ' .custom .myem-only}'
-                elif command in (r'\only',):
-                    before = ''
-                    after = ''
-                    if when.is_after_fragment:
-                        assert not when.is_multiple
-                        before += '['
-                        after += ']{.fragment fragment-index=' + str(when.after_index) + '}'
-                    elif when.is_before_fragment:
-                        assert not when.is_multiple
-                        before += '['
-                        after += ']{.fragment fragment-index=' + str(when.before_index+1) + 'until}'
-                    else:
-                        start = min(when.middle_indices)
-                        end = max(when.middle_indices)
-                        before += '[['
-                        after += ']{.fragment fragment-index=' + str(start) + ' .fade-in}'
-                        after += ']{.fragment fragment-index=' + str(end+1) + ' .fade-out}'
+    def render(self, context: RenderContext) -> str:
+        before, after = None, None
+        start_arg: int | None = -1
+        is_tt = None
+        strip_ends = None
+        when = self.when
+        command = self.command
+        arguments = self.arguments
+        if re.match(r'^\\myemph[A-Z]$', command) is not None:
+            index = ord(command[len(r'\myemph')]) - ord('A')
+            when = When(f'<{index}>')
+            assert when.needs_fragment
+            command = r'\myemph'
+        if re.match(r'^\\myemph(AB|Two|Three|Four|Five|Six|Seven)$', command) is not None:
+            name = command[len(r'\myemph'):]
+            index = {
+                'AB': '2-3',
+                'Two': 2,
+                'Three': 3,
+                'Four': 4,
+                'Five': 5,
+                'Six': 6,
+                'Seven': 7,
+            }[name]
+            when = When(f'<{index}>')
+            assert when.needs_fragment
+            command = r'\myemph'
+        if command == r'\varMark':
+            logging.debug('arguments = %s', arguments)
+            index_argument = arguments[0].inner_text
+            when = When(f'<{index_argument}>')
+            command = r'\myemph'
+            arguments = arguments[1:]
+        if when and when.needs_fragment:
+            if command in (r'\myemph',r'\btHL',):
+                before = ''
+                after = ''
+                if when.is_after_fragment:
+                    before += '['
+                    after += ']{.fragment fragment-index=' + str(when.after_index) + ' .custom .myem}'
+                if when.is_before_fragment:
+                    before += '['
+                    after += ']{.fragment fragment-index=' + str(when.before_index+1) + ' .custom .myem-until}'
+                for index in when.middle_indices:
+                    before += '['
+                    after += ']{.fragment fragment-index=' + str(index) + ' .custom .myem-only}'
+            elif command in (r'\only',):
+                before = ''
+                after = ''
+                if when.is_after_fragment:
+                    assert not when.is_multiple
+                    before += '['
+                    after += ']{.fragment fragment-index=' + str(when.after_index) + '}'
+                elif when.is_before_fragment:
+                    assert not when.is_multiple
+                    before += '['
+                    after += ']{.fragment fragment-index=' + str(when.before_index+1) + 'until}'
                 else:
-                    when_str = ''
-                    if when.raw_when is not None:
-                        when_str = str(when_raw_when)
-                    before, after = self.command + when_str + '{', '}'
+                    start = min(when.middle_indices)
+                    end = max(when.middle_indices)
+                    before += '[['
+                    after += ']{.fragment fragment-index=' + str(start) + ' .fade-in}'
+                    after += ']{.fragment fragment-index=' + str(end+1) + ' .fade-out}'
             else:
-                assert '<' not in command, command
-                assert '&' not in command, command
-                if command in (r'\tt', r'\texttt'):
-                    before, after = '<code>', '</code>'
-                    if len(arguments) > 0:
-                        inner = arguments[0].get_interesting_parts()
-                        if len(inner) == 1:
-                            if isinstance(inner[0], _InlineCommand) and len(inner[0].arguments) > 0:
-                                inner_inner = inner[0].arguments[-1].get_interesting_parts()
-                                if len(inner_inner) == 1:
-                                    inner = inner_inner
-                            if isinstance(inner[0], Tabular):
-                                before, after = '', ''
-                                is_tt = True
-                        else:
-                            logging.debug('inner = %s', inner)
-                    strip_ends = True
-                elif command in (r'\myemph',r'\btHL',):
-                    before, after = '<em>', '</em>'
-                elif command in (r'\textit', r'\itshape', r'\it'):
-                    before, after = '<i>', '</i>'
-                elif command in (r'\textbf', r'\bfseries'):
-                    before, after = '<em>', '</em>'
-                elif command in (r'\small',r'\scriptsize'):
-                    can_be_spanned = all(map(attrgetter('can_be_spanned'), arguments))
-                    if can_be_spanned:
-                        before, after = '[', ']{.my-small}'
+                when_str = ''
+                if when.raw_when is not None:
+                    when_str = str(when_raw_when)
+                before, after = self.command + when_str + '{', '}'
+        else:
+            assert '<' not in command, command
+            assert '&' not in command, command
+            if command in (r'\tt', r'\texttt'):
+                before, after = '<code>', '</code>'
+                if len(arguments) > 0:
+                    inner = arguments[0].get_interesting_parts()
+                    if len(inner) == 1:
+                        if isinstance(inner[0], _InlineCommand) and len(inner[0].arguments) > 0:
+                            inner_inner = inner[0].arguments[-1].get_interesting_parts()
+                            if len(inner_inner) == 1:
+                                inner = inner_inner
+                        if isinstance(inner[0], Tabular):
+                            before, after = '', ''
+                            is_tt = True
                     else:
-                        before, after = '<div class="my-small">', '</div>\n'
-                elif command in (r'\selectfont',):
-                    before, after = '', ''
-                elif command in (r'\hspace',):
-                    start_arg = None
-                    before, after = ' ', ''
-                elif command in (r'\hrule',):
-                    start_arg = None
-                    before, after = '<hr />', '\n'
-                elif command in (r'\hline',):
-                    start_arg = None
-                    before, after = '<!-- \hline -->', ''
-                elif command in (r'\textbackslash',):
-                    start_arg = None
-                    before, after = '\\', ''
-                elif command in (r'\vspace',):
-                    start_arg = None
-                    if arguments[0].inner_text.startswith('-'):
-                        before, after = '\n', ''
-                    else:
-                        before, after = '\n<hr class="vspace" />', ''
-                elif command in (r'\textasciicircum',):
-                    before, after = '^', ''
-                elif command in (r'\ldots,'):
-                    before, after = '\N{horizontal ellipsis}', ''
-                elif command in (r'\sout',):
-                    before, after = '~~', '~~'
-                elif command in (r'\imagecredit',):
-                    before, after = '[', ']{.mycredit}'
-                elif command in (r'\url',):
-                    before, after = '[', '](' + arguments[0].inner_text + ')'
-                elif command in (r'\titlepage',):
-                    return ''
-                elif command in (r'\normalfont',):
-                    before, after = '<span class="normal">', ''
-                elif command in (r'\textcolor',r'\color'):
-                    color_map = {
-                        'violet!80!black': 'darkviolet',
-                        'blue!80!black': 'darkblue',
-                        'green!80!black': 'darkgreen',
-                    }
-                    color = color_map.get(arguments[0].inner_text, arguments[0].inner_text)
-                    before, after = f'<span style="color: {color}">', '</span>'
+                        logging.debug('inner = %s', inner)
+                strip_ends = True
+            elif command in (r'\myemph',r'\btHL',):
+                before, after = '<em>', '</em>'
+            elif command in (r'\textit', r'\itshape', r'\it'):
+                before, after = '<i>', '</i>'
+            elif command in (r'\textbf', r'\bfseries'):
+                before, after = '<em>', '</em>'
+            elif command in (r'\small',r'\scriptsize'):
+                can_be_spanned = all(map(attrgetter('can_be_spanned'), arguments))
+                if can_be_spanned:
+                    before, after = '[', ']{.my-small}'
                 else:
-                    start_arg = 0
-                    before, after = command.replace('\\', '\\\\') + '{', '}'
+                    before, after = '<div class="my-small">', '</div>\n'
+            elif command in (r'\selectfont',):
+                before, after = '', ''
+            elif command in (r'\hspace',):
+                start_arg = None
+                before, after = ' ', ''
+            elif command in (r'\hrule',):
+                start_arg = None
+                before, after = '<hr />', '\n'
+            elif command in (r'\hline',):
+                start_arg = None
+                before, after = r'<!-- \hline -->', ''
+            elif command in (r'\textbackslash',):
+                start_arg = None
+                before, after = '\\', ''
+            elif command in (r'\vspace',):
+                logging.debug('found vspace')
+                start_arg = None
+                if arguments[0].inner_text.startswith('-'):
+                    before, after = '\n', ''
+                else:
+                    before, after = '\n<hr class="vspace" />', ''
+            elif command in (r'\textasciicircum',):
+                before, after = '^', ''
+            elif command in (r'\ldots,'):
+                before, after = '\N{horizontal ellipsis}', ''
+            elif command in (r'\sout',):
+                before, after = '~~', '~~'
+            elif command in (r'\imagecredit',):
+                before, after = '[', ']{.mycredit}'
+            elif command in (r'\url',):
+                before, after = '[', '](' + arguments[0].inner_text + ')'
+            elif command in (r'\titlepage',):
+                return ''
+            elif command in (r'\normalfont',):
+                before, after = '<span class="normal">', ''
+            elif command in (r'\ttbox',):
+                before, after = '<tt class="box">', '</tt>'
+            elif command in (r'\textcolor', r'\color'):
+                color_map = {
+                    'violet!80!black': 'darkviolet',
+                    'blue!80!black': 'darkblue',
+                    'green!80!black': 'darkgreen',
+                }
+                color = color_map.get(arguments[0].inner_text, arguments[0].inner_text)
+                before, after = f'<span style="color: {color}">', '</span>'
+            else:
+                start_arg = 0
+                before, after = command.replace('\\', '\\\\') + '{', '}'
 
         if context.raw_html and before == '[':
             classes = []
@@ -889,7 +894,8 @@ class _InlineCommand(_MyAstItem):
             before += '>'
             after = '</span>'
         result = before
-        if start_arg != None:
+        if start_arg is not None:
+            logging.debug('start_arg is %s', start_arg)
             for argument in arguments[start_arg:]:
                 with context.inner(tt=is_tt, strip_ends=strip_ends, frame_top=None) as inner_context:
                     result += argument.render(inner_context)
