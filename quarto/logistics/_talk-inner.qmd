@@ -54,15 +54,15 @@
 ### homeworks preview (1)  {.smaller}
 
 
-* framing --- transmit messages using bits in Python
 * reliable1/2 --- stream of messages with automatic resending
-* P4* --- forwarding messages locally
-* AIMD* --- simulating variations on TCP
+* P4 --- forwarding messages locally
+* AIMD --- simulating variations on TCP
 * packet scheduling --- prioritizing network traffic
 * DV routing --- forwarding messages far
 * DNS --- mapping names to addresses
 * webserver
-* wireless*
+* other application layer* (not made yet)
+* wireless
 
 
 ### assignment infrastructure  {.smaller}
@@ -70,43 +70,29 @@
 
 * most assignments in Python
 * P4 --- requires some VM setup 
-
    * network/switch emulation software that really needs root on Linux
-
 * AIMD --- using C++ simulator 
-
    * goal: tweak and measure working TCP implementation
    * mostly small modifications, shouldn't need much C++ knowledge
    * (the other obvious simulator is mainly in Tcl, which seems worse idea)
 
-
-
 ### notable changes  {.smaller}
 
 
-* AIMD assignment is new 
-
-   * previous assignment was implementing simple congestion control
-   * (congestion control = avoiding overloading network)
-   * too many corner cases
-   * did not complement lecture material on modern congestion control
-
-* framing assignment has new test program
-* maybe other changes, time-depending 
-
-   * would like to rework wireless assignment
-
-
+*  framing assignment removed
+*  new application layer assignment(s), topic TBD, a possible short list:
+   *  SMTP (email)
+   *  HTTP proxy/reverse proxy
+   *  HLS (HTTP Live Streaming)
+   *  ...
+*  may rework some assignments
 
 ### due times/late policy  {.smaller}
 
 
 * assignments usually due Friday @ 11:59pm 
-
    * 90% credit for submissions up to 72 hours late, no questions asked
-
 * quizzes usually due Tuesday @ 12:15pm
-
    * done online, untimed, open notes/book
    * late submissions not normally accepted (may discuss during lecture)
 
