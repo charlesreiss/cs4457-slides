@@ -1,0 +1,10 @@
+
+### sending two at a time  {.smaller}
+
+![](/reliable-window/texfig/two-at-a-time.figure.svg)
+ 
+
+* (ACK up to X = ACK X and everything before it)
+* key idea: always have two in flight
+* send next when previous ack'd
+

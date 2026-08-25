@@ -4,10 +4,10 @@
 
 
 ::: {.r-stack .my-full}
-![](/physical/texfig/wires-fibers-radio.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/physical/texfig/wires-fibers-radio.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="pictures of various physical media: a cable carrying red light; an a cable with four twisted-pairs and a plastic plug; a box with several lenses sitting atop a pole; a cable with a thick metalwire surrounded by a plastic jacket surrounded by a metal jacket surrounded by a  rubber jacket;  a Netgear-branded Wifi router; and a final box with ellipses."}
 
-![](/physical/texfig/wires-fibers-radio.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
-
+![](/physical/texfig/wires-fibers-radio.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="same picture with labels: fiber carrying light; bundle of wires; infrared through air; single wire; radio"}
 
 :::
+
 

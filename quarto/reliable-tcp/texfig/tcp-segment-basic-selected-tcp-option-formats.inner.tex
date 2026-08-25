@@ -1,0 +1,59 @@
+\begin{tikzpicture}
+    \tikzset{
+        box/.style={draw,thick},
+        box unused/.style={draw,thick,pattern=north west lines},
+        box label/.style={midway,font=\small,align=center},
+        box label flags/.style={midway,font=\fontsize{8}{9}\selectfont,align=center},
+        hi on/.style={alt=<#1>{ultra thick,fill=red!10}},
+        explain box 1/.style={draw=red,line width=0.8mm,fill=white,anchor=center,at={(explain box loc 1)},align=center},
+        explain box 2/.style={draw=red,line width=0.8mm,fill=white,anchor=center,at={(explain box loc 2)},align=center},
+        explain box 3/.style={draw=red,line width=0.8mm,fill=white,anchor=center,at={(explain box loc 3)},align=center},
+    }
+    \begin{scope}[x=4.7mm,y=9mm]
+        \coordinate (explain box loc 1) at (16, -5.1);
+        \coordinate (explain box loc 2) at (16, -6.1);
+        \coordinate (explain box loc 3) at (16, -1.1);
+        \path[box,hi on=3] (0, 0) rectangle (8, -1) node[box label] {kind (8b)};
+        \path[box,hi on=2] (8, 0) rectangle (16, -1) node[box label] {length (8b)};
+        \path[shading=axis,left color=black!20,right color=white] (16, 0) rectangle (32, -1) node[box label] {option data};
+
+        \node[anchor=south] at (16, -2) {\myemph<4>{window scale option}:};
+        \path[box,hi on=4,hi on=3] (0, -2) rectangle ++(8, -1) node[box label] {\tt 3};
+        \path[box,hi on=2,hi on=4] (8, -2) rectangle ++(8, -1) node[box label] {\tt 3};
+        \path[box,hi on=4] (16, -2) rectangle ++(8, -1) node[box label] {shift count};
+        
+        \node[anchor=south] at (16, -4) {\myemph<5>{timestamps}:};
+        \path[box,hi on=3] (0, -4) rectangle ++(8, -1) node[box label] {\tt 8};
+        \path[box,hi on=2] (8, -4) rectangle ++(8, -1) node[box label] {\tt 10};
+        \path[box] (16, -4) rectangle ++(16, -1) node[box label] {sender TS};
+        \path[box,hi on=6] (0, -5) rectangle ++(16, -1) node[box label] {echoed TS};
+    \end{scope}
+    \begin{visibleenv}<2>
+        \node[explain box 2] {
+            length field permits skipping unrecognized options
+        };
+    \end{visibleenv}
+    \begin{visibleenv}<3>
+        \node[explain box 2] {
+            unique kind codes for each option \\
+            list of valid codes maintained by IANA \\
+            (Internet Assigned Numbers Authority) 
+        };
+    \end{visibleenv}
+    \begin{visibleenv}<4>
+        \node[explain box 1] {
+            sent only in connection setup \\
+            only takes effect if both sides send it \\
+            sets amount to left-shift \\
+            all window size fields by
+        };
+    \end{visibleenv}
+    \begin{visibleenv}<6>
+        \node[explain box 3] {
+            echoed timestamp --- \\
+            only valid in ACK messages \\
+            copy of timestamp sent in message ACK'd \\
+            allows computing round-trip-time
+        };
+    \end{visibleenv}
+\end{tikzpicture}

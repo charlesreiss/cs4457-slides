@@ -3,4 +3,8 @@ title: "framing"
 
 ---
 
-{{< include ../framing/_talk-inner.qmd >}}
+{{< include /framing/_talk-inner.qmd >}}
+
+### backup slides
+
+{{< include /framing/_talk-backup.qmd >}}

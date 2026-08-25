@@ -1,13 +1,12 @@
+### transmission errors {.smaller}
 
-### checksums 
-
-
-* unsolved issue: will generate frames with bad data .5cm
-* could rely on other layers to deal with that, but\ldots  
-
-   * a lot better to detect this early
-
-
+*  problem: transmitting symbols has some errors
+*  bad cable, radio interference, mismatched clocks, ...
+<hr class="vspace"/>
+*  will get frames with incorrect data
+*  will get frames with missing/extra data from misdetecting start/end markers
+*  could pass "bogus" frames to next layer, but...
+*  better to detect this quickly
 
 ### checksum idea  {.smaller}
 
@@ -54,10 +53,11 @@
 ### beyond checksums 
 
 
-* checksums detect errors pretty reliably .5cm
-* can send some extra bits can correct some errors pretty reliably
+* checksums detect errors pretty reliably...
+* by sending extra bits
+<hr class="vspace"/>
+* sending extra bits can also correct some errors pretty reliably
 * ‘‘error correcting code’’ 
-
    * efficient ways to do this? covered in ECE/CS 4434
-
+* very common for wireless
 

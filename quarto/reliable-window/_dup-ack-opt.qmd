@@ -1,0 +1,15 @@
+
+### fast retransmit  {.smaller}
+
+
+* if large window + data packet 2 is lost, then sender will see
+* ACK 0, <em>ACK 1, ACK 1, ACK 1, ACK 1, ACK 1</em>
+* duplicate ACKs indicate missing packet 2
+* <em>shouldn't wait for timeout</em> 
+<hr class="vspace" />
+* $\rightarrow$ TCP heuristic: retransmit immediately after $\sim$3 duplicate ACKs 
+
+   * not 1 duplicate ACK to tolerate some reordering
+   * also some other details (we'll talk later)
+
+

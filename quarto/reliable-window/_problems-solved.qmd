@@ -1,0 +1,18 @@
+
+### sliding windows used to solve\ldots  {.smaller}
+
+
+* <i>flow control</i> 
+
+   * keep sender from getting too far ahead of receiver
+   * … by having <em>window sizes set correctly</em>
+   * how? receiver tells sender what window size is okay
+
+* <i>congestion control</i>  
+
+   * keep network from being overloaded
+   * (while making good use of available bandwidth)
+   * … by having <em>window sizes set correctly</em>
+   * how? it's complicated --- big topic later
+
+

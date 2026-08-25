@@ -5,3 +5,5 @@
 {{< include /intro/_talk-inner.qmd >}}
 
 {{< include /physical/_talk-inner.qmd >}}
+
+{{< include /framing/_talk-inner.qmd >}}

@@ -1,0 +1,8 @@
+---
+name: reliable-stop
+---
+
+{{< include /reliable-stop/_talk-inner.qmd >}}
+# backup slides
+
+{{< include /reliable-stop/_talk-inner.qmd >}}

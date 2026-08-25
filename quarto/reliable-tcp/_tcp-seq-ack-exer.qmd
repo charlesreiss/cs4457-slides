@@ -1,0 +1,23 @@
+
+### exercise (1)  {.smaller}
+
+<table>
+<tr><td>direction</td><td>seq</td><td>ack</td><td>data len</td></tr>
+<tr><td>$\rightarrow$</td><td>100</td><td>200</td><td>200</td></tr>
+<tr><td>$\rightarrow$</td><td>300</td><td>200</td><td>300</td></tr>
+<tr><td>$\leftarrow$</td><td>300</td><td>600</td><td>0</td></tr>
+<tr><td>$\leftarrow$</td><td>300</td><td>600</td><td>100</td></tr>
+<tr><td>$\rightarrow$</td><td>?</td><td>?</td><td>0</td></tr>
+</table>
+
+
+### exercise (2) 
+
+<table>
+<tr><td>direction</td><td>seq</td><td>ack</td><td>data len</td></tr>
+<tr><td>$\rightarrow$</td><td>100</td><td>200</td><td>200</td></tr>
+<tr><td>$\rightarrow$</td><td>300</td><td>200</td><td>300</td></tr>
+<tr><td>$\leftarrow$</td><td>?</td><td>?</td><td>100</td></tr>
+<tr><td>$\rightarrow$</td><td>600</td><td>300</td><td>0</td></tr>
+</table>
+

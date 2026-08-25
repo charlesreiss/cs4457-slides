@@ -1,0 +1,95 @@
+
+### TCP segment format 
+
+
+
+::: {.r-stack .my-full}
+![](/reliable-tcp/texfig/tcp-segment-basic-tcp-segment-format.figure-1.svg){.fragment .fade-out fragment-index=2}
+
+![](/reliable-tcp/texfig/tcp-segment-basic-tcp-segment-format.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/reliable-tcp/texfig/tcp-segment-basic-tcp-segment-format.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/reliable-tcp/texfig/tcp-segment-basic-tcp-segment-format.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+![](/reliable-tcp/texfig/tcp-segment-basic-tcp-segment-format.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+
+![](/reliable-tcp/texfig/tcp-segment-basic-tcp-segment-format.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
+
+![](/reliable-tcp/texfig/tcp-segment-basic-tcp-segment-format.figure-7.svg){.fragment .fade-in-then-out fragment-index=7}
+
+![](/reliable-tcp/texfig/tcp-segment-basic-tcp-segment-format.figure-8.svg){.fragment .fade-in-then-out fragment-index=8}
+
+![](/reliable-tcp/texfig/tcp-segment-basic-tcp-segment-format.figure-9.svg){.fragment .fade-in-then-out fragment-index=9}
+
+![](/reliable-tcp/texfig/tcp-segment-basic-tcp-segment-format.figure-10.svg){.fragment .fade-in-then-out fragment-index=10}
+
+
+:::
+
+
+### exercise: maximum throughput  {.smaller}
+
+
+
+* let's say we have a receiver window size of 65535 bytes
+* and a round-trip time of 100 ms 
+<hr class="vspace" />
+* if we want to avoid sending data the receiver will reject as outside its window, maximum throughput?
+ <table>
+<tr><td>A. around 32kbyte/sec</td><td>B. around 64kbyte/sec</td></tr>
+<tr><td>C. around 128kbyte/sec</td><td>D. around 320kbyte/sec</td></tr>
+<tr><td>E. around 640kbyte/sec</td><td>F. around 1280kbyte/sec</td></tr>
+<tr><td>G. something else</td></tr>
+</table>
+
+
+### selected TCP options  {.smaller}
+
+
+* window size scale factor 
+
+   * allow receiver window sizes greater than 64k
+   * needed to get reasonable bandwidth on modern networks
+
+* timestamps 
+
+   * allow figuring out round trip time to estimate timeout
+   * extend 32-bit sequence number, which is too small for multi-gigabit networks
+
+* selective acknowledgements 
+
+   * allow providing information about ‘holes’ in received data
+   * example: I got bytes 1--5000, 6000--7000, 8000--9000
+   * without it would only say 5000
+
+
+
+### selected TCP option formats 
+
+
+
+::: {.r-stack .my-full}
+![](/reliable-tcp/texfig/tcp-segment-basic-selected-tcp-option-formats.figure-1.svg){.fragment .fade-out fragment-index=2}
+
+![](/reliable-tcp/texfig/tcp-segment-basic-selected-tcp-option-formats.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/reliable-tcp/texfig/tcp-segment-basic-selected-tcp-option-formats.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/reliable-tcp/texfig/tcp-segment-basic-selected-tcp-option-formats.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+![](/reliable-tcp/texfig/tcp-segment-basic-selected-tcp-option-formats.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+
+![](/reliable-tcp/texfig/tcp-segment-basic-selected-tcp-option-formats.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
+
+
+:::
+
+
+### TCP connection setup preview 
+
+
+* client$\rightarrow$server: SYN flag + seq=randomA [no data]
+* server$\rightarrow$client: SYN+ACK flags  + seq=randomB ack=randomA+1 [no data]
+* client$\rightarrow$server: ACK flags  + seq=randomA+1 ack=randomB+1 [no data]
+

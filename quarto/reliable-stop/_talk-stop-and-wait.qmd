@@ -1,0 +1,14 @@
+
+# simple reliablity {visibility="hidden"}
+
+## adding acknowledgments {visibility="hidden"}
+
+{{< include /reliable-stop/_fail-lost.qmd >}}
+
+## sequence numbers {visibility="hidden"}
+
+{{< include /reliable-stop/_fail-split.qmd >}}
+
+## how many sequence numbers do we need? {visibility="hidden"}
+
+{{< include /reliable-stop/_1bit-seq-num.qmd >}}

@@ -1,0 +1,61 @@
+
+### a TCP connection 
+
+ ![](/reliable-tcp/texfig/tcp-example-2-a-tcp-connection.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
+![](/reliable-tcp/texfig/tcp-example-2-a-tcp-connection.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
+![](/reliable-tcp/texfig/tcp-example-2-a-tcp-connection.figure-3.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=3}
+![](/reliable-tcp/texfig/tcp-example-2-a-tcp-connection.figure-4.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=4}
+![](/reliable-tcp/texfig/tcp-example-2-a-tcp-connection.figure-5.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=5}
+![](/reliable-tcp/texfig/tcp-example-2-a-tcp-connection.figure-6.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=6}
+![](/reliable-tcp/texfig/tcp-example-2-a-tcp-connection.figure-7.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=7}
+
+
+### a TCP connection 
+
+ ![](/reliable-tcp/texfig/tcp-example-2-a-tcp-connection_2.figure.svg)
+
+
+### first data packet 
+
+
+
+::: {.r-stack .my-full}
+![](/reliable-tcp/texfig/tcp-example-2-first-data-packet.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/reliable-tcp/texfig/tcp-example-2-first-data-packet.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/reliable-tcp/texfig/tcp-example-2-first-data-packet.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/reliable-tcp/texfig/tcp-example-2-first-data-packet.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+![](/reliable-tcp/texfig/tcp-example-2-first-data-packet.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+
+![](/reliable-tcp/texfig/tcp-example-2-first-data-packet.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
+
+![](/reliable-tcp/texfig/tcp-example-2-first-data-packet.figure-7.svg){.fragment .fade-in-then-out fragment-index=7}
+
+![](/reliable-tcp/texfig/tcp-example-2-first-data-packet.figure-8.svg){.fragment .fade-in-then-out fragment-index=8}
+
+
+:::
+
+
+### sequence numbers graph 
+
+
+![](/reliable-tcp/tcptrace-example2.svg){}
+
+
+### reading thigs graph 
+
+
+* bottom line = last ack number
+* notches on bottom line = duplicate acks
+* red lines = selective ACK info
+
+
+### diff. timing in opposite direction 
+
+
+![](/reliable-tcp/tcptrace-example2-oppdir.svg){}
+

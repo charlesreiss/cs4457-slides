@@ -1,0 +1,29 @@
+
+### TCP 
+
+
+* transmission control protocol (TCP)
+* implements reliable streams of bytes
+* similar mechanism to what we've described
+
+
+### TCP extras/differences  {.smaller}
+
+
+* bidirectional --- 
+
+   * separate sequence numbers in each direction
+   * can combine data (from A to B) with acknowledgment (from B to A)
+
+* sequence numbers are byte numbers --- 
+
+   * can retransmit data in different sized packets
+   * sequence numbers = index of <i>first byte</i> sent
+   * acknowledgment numbers = 1 + index of <i>last byte</i> acknowledged
+
+* dynamic/variable window sizes 
+
+   * we'll discuss strategies later
+
+* offical name for packets = <i>segments</i>
+

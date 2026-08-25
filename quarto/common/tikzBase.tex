@@ -7,6 +7,7 @@
 \usepackage{listings}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{pgfplots}
 \usepackage[normalem]{ulem}
 \usepackage[default]{sourcecodepro}
 \ifluatex
@@ -19,8 +20,8 @@
 \newlength{\mypaperheight}\setlength{\mypaperheight}{9cm}
 \graphicspath{{}{./}{../}{../../}{../../common/}}
 \input{common/listingsLib}
-
-\usetikzlibrary{arrows.meta,calc,patterns,positioning,matrix,shapes.multipart,fit,decorations.pathreplacing,shapes.callouts,shapes.misc,chains}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta,calc,patterns,positioning,matrix,shapes.multipart,fit,decorations.pathreplacing,shapes.callouts,shapes.misc,chains,spy}
 \tikzset{ 
     ampersand replacement=\&,
     tight matrix node/.style={draw,rectangle,inner sep=1pt, outer sep=0pt,text width=1cm,minimum height=.4cm,anchor=center},

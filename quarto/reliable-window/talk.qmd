@@ -1,0 +1,8 @@
+---
+name: reliable-window
+---
+
+{{< include /reliable-window/_talk-inner.qmd >}}
+# backup slides
+
+{{< include /reliable-window/_talk-inner.qmd >}}

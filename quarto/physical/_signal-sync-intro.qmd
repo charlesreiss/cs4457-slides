@@ -3,7 +3,8 @@
 
 
 * can resynchronize clock by looking for transitions
-* but doesn't work if lots of consecutive 0s or 1s .5cm
+* but doesn't work if lots of consecutive symbols
+<hr class="vspace"/>
 * also, need to know where low and high point is
 * important to have transitions to low/high to calibrate this
 
@@ -12,10 +13,9 @@
 
 
 * one idea: set start-message to have lots of 0/1/0/1/0/1/0/1/etc. 
-
    * something 10Mbit Ethernet does
-
-* but probably not enough to ensure things stay in sync on big message .5cm
+* but probably not enough to ensure things stay in sync on big message
+<hr class="vspace/>
 * alternate strategy --- use encoding that adds extra transitions
-* example: Manchester encoding
+* example: Manchester encoding for 1-bit
 

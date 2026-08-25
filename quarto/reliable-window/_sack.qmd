@@ -1,0 +1,41 @@
+
+### multiple missing 
+
+
+
+::: {.r-stack}
+![](/reliable-window/texfig/sack-multiple-missing.figure-1.svg){.fragment .fade-out fragment-index=2 width=1000px}
+
+![](/reliable-window/texfig/sack-multiple-missing.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 width=1000px}
+
+
+:::
+ 
+
+* duplicate ACK heuristic will quickly resend 1, but not 3
+* would like to supply better information
+
+
+### selective acknowledgments 
+
+
+
+::: {.r-stack .my-full}
+![](/reliable-window/texfig/sack-selective-acknowledgments.figure-1.svg){.fragment .fade-out fragment-index=2 width=1000px}
+
+![](/reliable-window/texfig/sack-selective-acknowledgments.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 width=1000px}
+
+
+:::
+
+
+### selective acknowledgments in TCP  {.smaller}
+
+
+* optional feature (‘‘extension’’) described in RFC 2018
+* send list of ranges received
+* typically room for 3 ranges
+* if more than 3 ranges to report, then: 
+   * include range with most recently received frame
+   * include other ranges until sent three times
+

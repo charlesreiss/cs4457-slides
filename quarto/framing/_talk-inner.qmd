@@ -1,38 +1,14 @@
-
 # framing {visibility="hidden"}
 
 ## aligning the bits {visibility="hidden"}
 
 {{< include /framing/_aligning-bits.qmd >}}
 
-## size strategy {visibility="hidden"}
+## framing problem, briefly
 
-{{< include /framing/_align-size.qmd >}}
-
-## start/end symbol strategy {visibility="hidden"}
-
-{{< include /framing/_start-end-symbol.qmd >}}
-
-## exercise: start/end symbol overhead {visibility="hidden"}
-
-{{< include /framing/_start-end-overhead-exercise.qmd >}}
-
-## dealing with non-bit units {visibility="hidden"}
-
-{{< include /framing/_start-end-nonbit.qmd >}}
-
-## aside: start/end ambiguity {visibility="hidden"}
-
-{{< include /framing/_start-end-ambig.qmd >}}
-
-## types of transmission errors {visibility="hidden"}
-
-{{< include /framing/_transmission-errors.qmd >}}
+{{< include /framing/_simple.qmd >}}
 
 # checksums {visibility="hidden"}
 
 {{< include /framing/_checksums.qmd >}}
 
-# framing assignment {visibility="hidden"}
-
-{{< include /framing/_assignment.qmd >}}

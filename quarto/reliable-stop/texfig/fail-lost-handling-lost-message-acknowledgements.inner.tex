@@ -1,0 +1,15 @@
+\begin{tikzpicture}
+\tikzset{
+    box/.style={thick},
+    message/.style={draw,thick,-Latex},
+    failure/.style={draw,ultra thick,red,cross out,minimum width=1cm,minimum height=1cm},
+}
+\begin{scope}
+\draw[box] (0, 0) rectangle ++(2, -8) 
+    node[midway,align=center] {machine\\A};
+\draw[box] (13, 0) rectangle ++(2, -8) 
+    node[midway,align=center] {machine\\B};
+\draw[message] (2, -0.5) -- (13, -1) node[pos=0.35, above, sloped] {``The meeting is at 12pm.''};
+\draw[message] (13, -1.5) -- (2, -2) node[pos=0.25, sloped,below] {ACK!};
+\end{scope}
+\end{tikzpicture}

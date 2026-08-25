@@ -1,0 +1,66 @@
+
+### sequence number wraparound  {.smaller}
+
+
+* protocol so far requires arbitrarily large sequence numbers 
+
+   * doing $<$ and $>$ checks on sequence number, so they need to increase
+
+* would like to use smaller sequence numbers 
+
+   * think: transferring multi-gigabyte file
+
+* question: what goes wrong when we reuse sequeunce numbers?
+
+
+### sender/receiver desync: missing ACKs 
+
+
+
+::: {.r-stack .my-full}
+![](/reliable-window/texfig/window-size-wraparound-senderreceiver-desync-missing-acks.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="We have a scenario where all sent frames have been received, so LFS (last frame sent) at the sender is equal to LFR (last frame received) at the receiver. At the sender, last ACK received (LAR) is a window of frames behind; all these frames must be resent if an ACK is lost. At the receiver, the last accepted frame (lAF) is a window ahead of LFR (last frame received), and all these frames are accepted if an ACK is not lost."}
+
+![](/reliable-window/texfig/window-size-wraparound-senderreceiver-desync-missing-acks.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="The receiver needs to distinguish between one of its ACKs being lost and the corresponding frame being resent and a new frame being sent. So all the frames that could be resent if an ACK is lost and all the frames that would be sent new if no ACK is lost must have distinct numbers. This means we need distinct sequence numbers for two windows of frames."} 
+
+![](/reliable-window/texfig/window-size-wraparound-senderreceiver-desync-missing-acks.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="If each window size is 4, it is sufficient to use numbers 0 through 7 to handle this case"}
+
+
+:::
+
+
+### wraparound 
+
+![](/reliable-window/texfig/window-size-wraparound-wraparound.figure.svg)
+
+
+### loss and resend? 
+
+![](/reliable-window/texfig/window-size-wraparound-loss-and-resend.figure.svg)
+
+
+### very bad reordering 
+
+![](/reliable-window/texfig/window-size-wraparound-very-bad-reordering.figure.svg)
+
+
+### possible reason 
+
+![](/reliable-window/texfig/window-size-wraparound-possible-reason.figure.svg)
+
+
+### sequence numbers in practice  {.smaller}
+
+
+* TCP tries to assume 120 second ‘‘maximum segment lifetime’’ 
+
+   * segment = TCP's name for a packet
+
+* original TCP used 32-bit sequence number identifying <i>byte</i> number (not segment number)
+* problem: means wraparound happens on modern (Gigibit+) links in seconds! 
+<hr class="vspace" />
+* workaround: add <i>additional</i> 32-bit timestamp field 
+
+   * used to detect/discard duplicates
+   * can also be used to set timeouts and/or window sizes
+
+

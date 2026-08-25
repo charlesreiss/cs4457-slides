@@ -1,0 +1,27 @@
+\begin{tikzpicture}
+\tikzset{
+    connect one/.style={draw,very thick,Latex-Latex},
+    computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
+    switch/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\switch}},
+    router/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\router}},
+    big switch/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\bigswitch}},
+    packet/.style={minimum width=.4cm,minimum height=0.2cm,inner sep=0mm,outer sep=0mm,draw},
+    packet lg/.style={minimum width=.6cm,minimum height=0.2cm,inner sep=0mm,outer sep=0mm,draw},
+}
+\node[computer] (start) at (0,0) {};
+\node[computer] (end)  at (13,0) {};
+\node[router] (pre1) at (3, 3) {};
+\node[router] (pre2) at (4, .5) {};
+\node[router] (pre3) at (5, 3) {};
+\node[router] (A) at (6, 1) {};
+\node[router] (B) at (7, -1) {};
+\node[router] (C) at (8, 3) {};
+\node[router] (D) at (11, 0) {};
+\
+\node[router] (E) at (7.5, -2) {};
+\foreach \x/\y in {start/pre1,pre1/pre2,pre2/pre3,pre3/A,A/B,B/C,C/D,D/end,start/E,E/end} {
+    \draw[connect one] (\x) -- (\y);
+}
+\node[font=\small,draw,fill=white] at ($(C)!0.5!(D)$) {\myemph{0}: ``The ''};
+\node[font=\small,draw,fill=white] at ($(E)!0.7!(start)$) {\myemph{0}: ``12pm''};
+\end{tikzpicture}

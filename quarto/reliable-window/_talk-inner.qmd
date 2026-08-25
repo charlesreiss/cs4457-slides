@@ -1,0 +1,56 @@
+
+# sliding windows {visibility="hidden"}
+
+## sending two at a time {visibility="hidden"}
+
+{{< include /reliable-window/_two-at-a-time.qmd >}}
+
+## timeouts for EACH send {visibility="hidden"}
+
+{{< include /reliable-window/_two-at-a-time-timeout.qmd >}}
+
+## more than two at a time {visibility="hidden"}
+
+{{< include /reliable-window/_n-at-a-time.qmd >}}
+
+## lost ACKs {visibility="hidden"}
+
+{{< include /reliable-window/_n-at-a-time-lost.qmd >}}
+
+## duplicate ACKs happen {visibility="hidden"}
+
+{{< include /reliable-window/_two-at-a-time-dupack.qmd >}}
+
+## duplicate ACK optimization {visibility="hidden"}
+
+{{< include /reliable-window/_dup-ack-opt.qmd >}}
+
+## optimization: selective ACKs {visibility="hidden"}
+
+{{< include /reliable-window/_sack.qmd >}}
+
+## window tracking -- sender {visibility="hidden"}
+
+{{< include /reliable-window/_window-track-send.qmd >}}
+
+## window tracking -- receiver {visibility="hidden"}
+
+{{< include /reliable-window/_window-track-recv.qmd >}}
+
+## choosing a window size {visibility="hidden"}
+
+{{< include /reliable-window/_window-size-empirical-setup.qmd >}}
+
+{{< include /reliable-window/_window-size-empirical-graph.qmd >}}
+
+{{< include /reliable-window/_window-size-empirical.qmd >}}
+
+{{< include /reliable-window/_window-size-empirical-detail.qmd >}}
+
+## problems solved {visibility="hidden"}
+
+{{< include /reliable-window/_problems-solved.qmd >}}
+
+## sequence number wraparound {visibility="hidden"}
+
+{{< include /reliable-window/_window-size-wraparound.qmd >}}

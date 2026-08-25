@@ -1,0 +1,20 @@
+
+### stop-and-wait performance 
+
+
+* stop-and-wait protocol
+* assuming no packets lost/corrupted 
+<hr class="vspace" />
+* about <em>one packet per round-trip time</em>
+  * (assuming packet tranmission time short relative to round-trip time)
+
+
+### example: local ethernet  {.smaller}
+
+
+* my home wired network: 0.6 ms round trip time
+* typical packet has about 1400 bytes = 11200 bits of data
+* throughput with stop-and-wait: $11200 \text{b} / 0.6 \text{ms} \approx 19000 \text{b/ms} = 19\;000\;000 \text{b/s} = 19 \text{Mbit/s}$ 
+<hr class="vspace" />
+* available bandwidth is about [$1$ Gbit/s]{.fragment fragment-index=2 .custom .myem-only}
+

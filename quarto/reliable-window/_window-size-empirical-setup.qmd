@@ -1,0 +1,26 @@
+
+### simple network model  {.smaller}
+
+![](/reliable-window/texfig/window-size-empirical-setup-simple-network-model.figure.svg)
+ 
+
+* simulator from upcoming assignment 
+
+   * command line <code>--delay 1 --bandwidth-forward 10 --bandwidth-backward 100 --buffer 30</code>
+
+
+
+### exercise: forward latency  {.smaller}
+
+![](/reliable-window/texfig/window-size-empirical-setup-exercise-forward-latency.figure.svg)
+ 
+
+* minimum latency = 1 time unit
+* exercise: maximum latency?
+ <table>
+<tr><td>A. 1 time unit</td><td>B. 1.1 time unit</td><td>C. 1.2 time unit</td></tr>
+<tr><td>C. 1.4 time unit</td><td>D. 1.9 time unit</td><td>E. 2.0 time unit</td></tr>
+<tr><td>F. 2.1 time unit</td><td>G. something else</td></tr>
+<tr><td></td></tr>
+</table>
+

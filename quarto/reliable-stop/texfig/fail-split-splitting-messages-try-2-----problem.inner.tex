@@ -1,0 +1,19 @@
+\begin{tikzpicture}
+\tikzset{
+    box/.style={thick},
+    message/.style={draw,thick,-Latex},
+    failure/.style={draw,ultra thick,red,cross out,minimum width=1cm,minimum height=1cm},
+}
+\begin{scope}
+\draw[box] (0, 0) rectangle ++(2, -6) 
+    node[midway,align=center] {machine\\A};
+\draw[box] (13, 0) rectangle ++(2, -6) 
+    node[midway,align=center] {machine\\B};
+\draw[message] (2, -0.5) -- (13, -0.75) node[pos=0.25, above, sloped] {part 0: ``The meeting''};
+\draw[message] (13, -1) -- (2, -3) node[pos=0.25, sloped,below] {ACK};
+\draw[message] (2, -2) -- (13, -2.5) node[pos=0.25, above, sloped] {part 0: ``The meeting''};
+\draw[message] (13, -3) -- (2, -4.5) node[pos=0.25, sloped,below] {ACK};
+\draw[message] (2, -4) -- (11.5, -4.5) node[pos=0.5, above, sloped] {part 1: `` is at 12pm.''}
+    node[failure] {};
+\end{scope}
+\end{tikzpicture}

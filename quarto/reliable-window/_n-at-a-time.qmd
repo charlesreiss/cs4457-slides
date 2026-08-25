@@ -1,0 +1,9 @@
+
+### sending three at a time 
+
+![](/reliable-window/texfig/n-at-a-time.figure.svg)
+ 
+
+* choose ‘‘window size’’ to have in flight
+* send when previous acknowledged
+

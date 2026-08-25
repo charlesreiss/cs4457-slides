@@ -1,0 +1,5 @@
+
+### throughput and window size 
+
+![](/reliable-window/texfig/window-size-empirical-graph.figure.svg)
+

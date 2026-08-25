@@ -1,0 +1,40 @@
+
+### receiver window tracking 
+
+
+
+::: {.r-stack .my-full}
+![](/reliable-window/texfig/window-track-recv-receiver-window-tracking.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="To track frames at the receiver, the receiver tracks a 'last frame received' (LFR), currently 15 in this example, and 'last accepted frame' (LAF), currently 19 in this example."}
+
+![](/reliable-window/texfig/window-track-recv-receiver-window-tracking.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="Because LFR (last frame received) is 15, frames 15, 14, 13, etc. have already been received."}
+
+![](/reliable-window/texfig/window-track-recv-receiver-window-tracking.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="Because LFR (last frame received) is 15, frame 16 has not been received. The following frames up to and including frame 19, the value of LAF (last accepted frame), would be accepted by the receiver (in addition to frame 16) and may or may not have been received."}
+
+![](/reliable-window/texfig/window-track-recv-receiver-window-tracking.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="The total number of frames that would be accepted by the receiver (4 frames with sequence numbers 16, 17, 18, 19 in this examople) is at most the 'receive window size' (RWS)."}
+
+![](/reliable-window/texfig/window-track-recv-receiver-window-tracking.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 fig-alt="Since LAF (last accepted frame) is 19, frames 20, 21, etc. would be discarded by the receiver if they were received now."}
+
+
+:::
+
+
+### receiver logic summarized  {.smaller}
+
+
+* track variables: 
+
+   * LFR (last frame recv'd) --- excludes frames after a missing frame
+   * LAF (last accepted frame)
+   * RWS (receive window size)
+
+* when receiving frame $LFR < X \le LAF$:
+* LFR $\leftarrow$ (first missing frame after LFR) - 1 
+
+   * only advances if X $=$ LFR
+   * could advance by more than one if frames previously out of order
+
+* LAS $\leftarrow$ LFR + RWS 
+
+   * only advances if X $=$ LFR
+
+

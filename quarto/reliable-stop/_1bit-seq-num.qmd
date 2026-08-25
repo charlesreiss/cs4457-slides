@@ -1,0 +1,111 @@
+
+### sequence numbers  {.smaller}
+
+
+* call the ‘part’ label <i>sequence number</i> 
+
+   * for now: sequence number = message (or <i>segment</i>) number
+   * in TCP: sequence number = byte number
+ 
+<hr class="vspace" />
+* important question: how large can they get?
+* if we never reuse them --- infinite!
+* so <i>really</i> want to reuse them
+
+
+### 1-bit sequence number 
+
+![](/reliable-stop/texfig/1bit-seq-num-1-bit-sequence-number.figure.svg)
+
+
+### ‘stop and wait’ 
+
+
+* machine A is only sending <em>one thing at a time</em>
+* never start sending next thing until after sending previous thing
+
+
+### stop-and-wait exercise (receive, 1)  {.smaller}
+
+
+
+* machine B receives <tt class="box"><em>0</em>: X</tt>
+* machine B sends <tt class="box">ACK <em>0</em></tt>
+* machine B receives <tt class="box"><em>0</em>: X</tt> 
+<hr class="vspace" />
+* what should machine B do now?
+ <table>
+<tr><td>A. send <tt class="box">ACK <em>0</em></tt></td><td>B. send <tt class="box">ACK <em>1</em></tt></td><td>C. send nothing</td></tr>
+<tr><td></td></tr>
+</table>
+
+
+### stop-and-wait exercise (receive, 2)  {.smaller}
+
+
+
+* machine B receives <tt class="box"><em>0</em>: X</tt>
+* machine B sends <tt class="box">ACK <em>0</em></tt>
+* machine B receives <tt class="box"><em>1</em>: X</tt> 
+<hr class="vspace" />
+* what should machine B do now?
+ <table>
+<tr><td>A. send <tt class="box">ACK <em>0</em></tt></td><td>B. send <tt class="box">ACK <em>1</em></tt></td><td>C. send nothing</td></tr>
+<tr><td></td></tr>
+</table>
+
+
+### stop-and-wait exercise (receive, 3)  {.smaller}
+
+
+
+* machine B receives <tt class="box"><em>0</em>: X</tt>
+* machine B sends <tt class="box">ACK <em>0</em></tt>
+* machine B receives <tt class="box"><em>1</em>: Y</tt>
+* machine B sends <tt class="box">ACK <em>1</em></tt>
+* machine B receives <tt class="box"><em>0</em>: X</tt> 
+<hr class="vspace" />
+* what should machine B do now?
+ <table>
+<tr><td>A. send <tt class="box">ACK <em>0</em></tt></td><td>B. send <tt class="box">ACK <em>1</em></tt></td><td>C. send nothing</td></tr>
+<tr><td></td></tr>
+</table>
+
+
+### stop-and-wait exercise (send, 1)  {.smaller}
+
+
+
+* A trying to send ‘X’, then ‘Y’, then ‘Z’
+* machine A sends <tt class="box"><em>0</em>: X</tt>
+* machine A sends <tt class="box"><em>0</em>: X</tt>
+* machine A receives <tt class="box">ACK <em>0</em></tt>
+* machine A sends <tt class="box"><em>1</em>: Y</tt>
+* machine A receives <tt class="box">ACK <em>0</em></tt> 
+<hr class="vspace" />
+* what should machine A do now?
+ <table>
+<tr><td>A. send <tt class="box">0: X</tt> again</td><td>B. send <tt class="box">1: Y</tt> again</td></tr>
+<tr><td>C. send <tt class="box">0: Z</tt></td><td>D. something else</td></tr>
+<tr><td></td></tr>
+</table>
+
+
+### stop-and-wait exercise (send, 2)  {.smaller}
+
+
+
+* A trying to send ‘X’, then ‘Y’, then ‘Z’
+* machine A sends <tt class="box"><em>0</em>: X</tt>
+* machine A sends <tt class="box"><em>0</em>: X</tt>
+* machine A receives <tt class="box">ACK <em>0</em></tt>
+* machine A sends <tt class="box"><em>1</em>: Y</tt>
+* machine A receives <tt class="box">ACK <em>1</em></tt> 
+<hr class="vspace" />
+* what should machine A do now?
+ <table>
+<tr><td>A. send <tt class="box"><em>0</em>: X</tt> again</td><td>B. send <tt class="box"><em>1</em>: Y</tt> again</td></tr>
+<tr><td>C. send <tt class="box"><em>0</em>: Z</tt></td><td>D. something else</td></tr>
+<tr><td></td></tr>
+</table>
+

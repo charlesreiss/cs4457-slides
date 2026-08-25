@@ -3,28 +3,25 @@
 
 
 
-* can vary\ldots  
+* can vary...
 
    * voltage
    * radio/light intensity
    * radio/light frequency
-   * \ldots
+   * ...
 
- ![](/physical/texfig/transmit-signal-transmitting-a-signal.figure.svg)
+![](/physical/texfig/transmit-signal-transmitting-a-signal.figure.svg)
 
 
 ### some simplifying assumptions  {.smaller}
 
-
-
 * signal low/high --- no in between
 * only one ‘channel’  
-
    * won't have multiple wires/antennas/frequencies/etc.
    * won't modulate different things same time
-
 * want to send receive bits (0 or 1)
- ![](/physical/texfig/transmit-signal-some-simplifying-assumptions.figure.svg)
+
+![](/physical/texfig/transmit-signal-some-simplifying-assumptions.figure.svg){width=1050px}
 
 
 ### clocking 

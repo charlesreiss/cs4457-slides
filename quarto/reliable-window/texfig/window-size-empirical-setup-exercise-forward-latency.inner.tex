@@ -1,0 +1,22 @@
+\begin{tikzpicture}
+\draw[ultra thick,arrows={-Latex}] (0, 0) node[left] {sender} -- (1, 0);
+\draw[thick] (1, -.5) rectangle (3, .5);
+\foreach \x in {2,2.2,2.4,2.6,2.8} {
+    \draw (\x, -.5) -- (\x, .5);
+}
+\node[anchor=south,align=center] at (2, .5) {
+    loss when full
+};
+\node[anchor=north,align=center] at (2, -.5) (queue label) {
+    queue
+};
+\node[anchor=north,font=\small] at (queue label.south) {
+    capacity 10
+};
+\draw[ultra thick,arrows={-Latex}] (3, 0) -- (10, 0) node[right]{receiver}
+    node[midway,fill=white,draw=black,very thick,align=left] {
+        10 frames/time unit \\
+        1 time unit delay \\
+        \small (from transmit start)
+    };
+\end{tikzpicture}

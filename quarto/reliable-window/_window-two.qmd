@@ -1,0 +1,28 @@
+
+### implementing two-at-a-time  {.smaller}
+
+
+* on sender track:
+* last frame acknowleged (LFA) 
+
+   * update on acknowledgment
+
+* last frame number sent (LFN) 
+
+   * update after sending
+ 
+<hr class="vspace" />
+
+
+### sender state 
+
+
+
+::: {.r-stack .my-full}
+![](/reliable-window/texfig/window-two-sender-state.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/reliable-window/texfig/window-two-sender-state.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+
+:::
+

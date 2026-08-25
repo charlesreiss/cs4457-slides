@@ -1,0 +1,41 @@
+
+### dealing with network message lost 
+
+![](/reliable-stop/texfig/fail-lost-dealing-with-network-message-lost.figure.svg)
+
+
+### handling lost message: acknowledgements 
+
+![](/reliable-stop/texfig/fail-lost-handling-lost-message-acknowledgements.figure.svg)
+
+
+### handling lost message 
+
+
+
+::: {.r-stack .my-full}
+![](/reliable-stop/texfig/fail-lost-handling-lost-message.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/reliable-stop/texfig/fail-lost-handling-lost-message.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/reliable-stop/texfig/fail-lost-handling-lost-message.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+
+:::
+
+
+### protocol so far  {.smaller}
+
+
+* on sender: until ACK received: 
+
+   * (re)send frame of data
+   * wait fixed amount of time for ACK
+ 
+<hr class="vspace" />
+* on receiver: continuously: 
+
+   * wait for frame of data
+   * send ACK back
+
+

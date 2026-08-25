@@ -1,0 +1,53 @@
+\begin{tikzpicture}
+\tikzset{
+    seqlist/.style={tight matrix,nodes={text width=.8cm,minimum height=.8cm},column sep=.6mm},
+    dots/.style={draw=none,execute at begin node=\ldots,anchor=center,font=\huge,text width=1cm,align=center},
+    region mark/.style={very thick,decorate,decoration={brace,mirror}},
+    region mark label/.style={midway,below,align=center},
+    verified/.style={pattern color=black!30,pattern=checkerboard},
+    ack sent not recvd/.style={fill=blue!60},
+    unsent ready/.style={pattern color=yellow!30!black,pattern=checkerboard},
+    unsent/.style={pattern=crosshatch dots,pattern color=violet!70},
+}
+\begin{scope}[name prefix=s-]
+    \matrix[seqlist] (window) {
+        |[dots,alias=window-start]| ~ \& |[alias=after-window-start,verified,alias=LAR]| ~ \&
+        |[ack sent not recvd,alias=after LAR]| ~ \& |[ack sent not recvd]| ~ \& |[ack sent not recvd]| ~ \& 
+        |[ack sent not recvd,alias=LFS]| ~ \& 
+        |[alias=after LFS,unsent]| ~ \& |[unsent,alias=before-window-end]| ~  \&
+        |[unsent]| ~  \&
+        |[unsent]| ~  \&
+        |[unsent]| ~  \&
+        |[unsent,alias=before-window-end]| ~  \&
+        \& |[alias=window-end,dots]| \\
+    };
+    \node[anchor=east] at (window-start.west) {sender};
+    \draw[thick,Latex-] (LAR.north) -- ++(0,.5) node[above,align=center] (LAR label) {(LAR)\\last ACK recv'd};
+    \draw[thick,Latex-] (LFS.north) -- ++(0,.5) node[above,align=center] (LFS label) {(LFS)\\last frame sent};
+\end{scope}
+\begin{scope}[name prefix=r-,yshift=-3cm]
+    \matrix[seqlist] (window) {
+        |[dots,alias=window-start]| ~ \& |[alias=after-window-start,verified]| ~ \& 
+        |[alias=after LAR,ack sent not recvd]| ~ \& |[ack sent not recvd]| ~ \& 
+        |[ack sent not recvd]| ~ \& |[alias=LFR,ack sent not recvd]| ~ \&
+        |[unsent ready,alias=after LFR]| ~ \& |[unsent ready,alias=after after LFR]| ~ \&
+        |[unsent ready]| ~ \& |[unsent ready,alias=LAF]| ~ \& 
+        |[alias=after LAF,unsent]| ~ \& |[unsent,alias=before-window-end]| ~ \& |[alias=window-end,dots]| \\
+    };
+    \node[anchor=east] at (window-start.west) {receiver};
+    \draw[thick,Latex-] (LFR.north) -- ++(0,.5) node[above,align=center] {(LFR)\\last frame recv'd*};
+    \draw[thick,Latex-] (LAF.north) -- ++(0,.5) node[above,align=center] {(LAF)\\last accepted frame};
+    \draw[region mark] ([yshift=-.1cm]after LAR.south west) -- ([yshift=-.1cm]LFR.south east)
+        node[region mark label] {resent if \\ ACK lost};
+    \draw[region mark] ([yshift=-.1cm]after LFR.south west) -- ([yshift=-.1cm]LAF.south east)
+        node[region mark label] {expected if \\ ACK not lost};
+\end{scope}
+\begin{visibleenv}<2->
+\node[draw=red,ultra thick,fit=(s-after LAR) (r-LAF),label={[red,align=left,fill=white,fill opacity=0.95]west:need unique \\ numbers for all these}] {};
+\end{visibleenv}
+\begin{visibleenv}<3->
+\foreach \x/\lbl in {2/4,3/5,4/6,5/7,6/0,7/1,8/2,9/3,10/4,11/5,12/6,13/7} {
+    \node[fill=white,font=\small,text=red,circle,draw=red,ultra thick,anchor=south west,inner sep=0.1mm] at ([xshift=\x * .935cm - 0.4cm]s-window-start.north west) {\lbl};
+}
+\end{visibleenv}
+\end{tikzpicture}

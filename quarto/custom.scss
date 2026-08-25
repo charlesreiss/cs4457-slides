@@ -318,6 +318,11 @@ code span { color: inherit; }
 .reveal .slide table.codetable td { font-family: $font-family-monospace; font-size: 80%; }
 .reveal .slide table.codetable td:not(:last-child) { padding-right: 5em; }
 
+tt.box {
+   font-family: $font-family-monospace;
+   border: 2px solid black;
+}
+
 @media print {
     .slide-chalkboard-buttons {
         display: none ! important

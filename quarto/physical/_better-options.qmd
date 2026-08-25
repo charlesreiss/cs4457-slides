@@ -1,12 +1,10 @@
 
 ### other better encoding options  {.smaller}
-
-
 * vary more than just one thing 
-
    * example: pulse amplitude and duration
-
 * use more than just low/high
-* \ldots much more .5cm
+   * so more than just 0/1
+   * gives space for dedicated "start" symbol
 * probably covered in ECE Signals course?
+* used by almost all "fast" encodings
 

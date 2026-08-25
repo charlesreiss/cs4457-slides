@@ -1,0 +1,31 @@
+
+### packet transit time 
+
+
+
+::: {.r-stack .my-full}
+![](/reliable-window/texfig/transitTime.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/reliable-window/texfig/transitTime.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/reliable-window/texfig/transitTime.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+
+:::
+
+
+### filling the pipe  {.smaller}
+
+
+* round-trip time of 2 time units 
+
+   * from send data to receive ACK (assuming no queuing delay)
+
+* can send 10 data frames per time unit
+* = can send 20 data frames while waiting for ACK 
+<hr class="vspace" />
+* <em>‘‘bandwidth-delay product’’</em>  
+
+   * 10/time unit (banwidth) times 2 time unit (RTT = delay)
+
+

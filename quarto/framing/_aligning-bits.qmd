@@ -1,21 +1,19 @@
 
-### aligning bits  {.smaller}
+### aligning bits
 
 
 
 * let's transmit these (binary) messages: 
 
-   * \tt 001
-   * \tt 0110
-   * \tt 0010
-
- 
+   * `001`
+   * `0110`
+   * `0010`
 
 ::: {.r-stack}
-![](/framing/texfig/aligning-bits.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
 
-![](/framing/texfig/aligning-bits.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/framing/texfig/aligning-bits.figure-1.svg){.fragment .fade-in-then-out fragment-index=1 width=800px}
 
+![](/framing/texfig/aligning-bits.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 width=800px}
 
 :::
  

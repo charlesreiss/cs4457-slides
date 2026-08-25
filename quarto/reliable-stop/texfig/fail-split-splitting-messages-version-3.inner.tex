@@ -1,0 +1,22 @@
+\begin{tikzpicture}
+\tikzset{
+    box/.style={thick},
+    message/.style={draw,thick,-Latex},
+    failure/.style={draw,ultra thick,red,cross out,minimum width=1cm,minimum height=1cm},
+}
+\begin{scope}[xshift=1cm,x=0.9cm]
+\draw[box] (0, 0) rectangle ++(2, -6) 
+    node[midway,align=center] {machine\\A};
+\draw[box] (13, 0) rectangle ++(2, -6) 
+    node[midway,align=center] {machine\\B};
+\draw[message] (2, -0.5) -- (13, -0.75) node[pos=0.25, above, sloped] {part 0: ``The meeting''};
+\draw[message] (13, -1) -- (2, -3) node[pos=0.25, sloped,below] {ACK \myemph{part 0}};
+\draw[message] (2, -2) -- (13, -2.5) node[pos=0.25, above, sloped] {part 0: ``The meeting''};
+\draw[message] (13, -4) -- (2, -5) node[pos=0.25, sloped,below] {ACK \myemph{part 0}};
+\draw[message] (2, -3.5) -- (9, -3.6) node[pos=0.5, above, sloped] {part 1: `` is at 12pm.''}
+    node[failure] {};
+\draw[thick,decorate,decoration={brace,mirror}] (-0.1, -3.5) -- (-0.1, -5.5) node[inner sep=1mm,font=\small,align=right,midway,left] {timeout\\\myemph{for part 1}};
+\draw[message] (2, -5.5) -- (13, -5.75) node[pos=0.75, above, sloped] {part 1: `` is at 12pm.''};
+\draw[message] (13, -5.75) -- (2, -6) node[pos=0.25, below, sloped] {ACK \myemph{part 1}};
+\end{scope}
+\end{tikzpicture}

@@ -1,0 +1,14 @@
+
+### timeouts per message 
+
+
+
+::: {.r-stack .my-full}
+
+![](/reliable-window/texfig/two-at-a-time-timeout.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/reliable-window/texfig/two-at-a-time-timeout.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+
+:::
+

@@ -1,0 +1,58 @@
+
+### missing messages?  {.smaller}
+
+
+
+::: {.r-stack}
+![](/reliable-window/texfig/twoAndTimeouts.figure-1.svg){.fragment .fade-in-then-out fragment-index=1 width=1000px}
+
+![](/reliable-window/texfig/twoAndTimeouts.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 width=1000px}
+
+
+:::
+ 
+
+* question: what should receiver do with sequence number 2?
+* [one idea: ignore it?]{.fragment fragment-index=2 .custom .myem-only}
+* [better idea: send something back to sender]{.fragment fragment-index=3 .custom .myem-only}
+
+
+### not great: ignore it (1) 
+
+
+
+::: {.r-stack .my-full}
+![](/reliable-window/texfig/two-at-a-time-dupack-not-great-ignore-it-1.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/reliable-window/texfig/two-at-a-time-dupack-not-great-ignore-it-1.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+
+:::
+
+
+### not great: only ACK if next (2) 
+
+
+* <i>works</i> because we still have timeouts 
+<hr class="vspace" />
+* but we'd like to give more feedback to receiver
+
+
+### againframe(twoAndTimeouts)
+
+### better idea: always ACK  {.smaller}
+
+
+
+::: {.r-stack}
+![](/reliable-window/texfig/two-at-a-time-dupack-better-idea-always-ack.figure-1.svg){.fragment .fade-in-then-out fragment-index=1 width=1000px}
+
+![](/reliable-window/texfig/two-at-a-time-dupack-better-idea-always-ack.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 width=1000px}
+
+
+:::
+ 
+
+* only ACK $x$ if <em>everything up to and including $x$</em> received
+* intuition: ACK tells sender <em>where to start sending more</em>
+

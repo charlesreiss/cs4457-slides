@@ -11,25 +11,25 @@
 * getting pieces into format wires/radio/fiber/etc. can handle
 * handling transmission errors
 
-::: {.myoverbox .fragment fragment-index=1 .fade-in-then-out}
+::: {.myoverbox .fragment fragment-index=1 .fade-in-then-out .vlow}
 
 lots of work! don't want to implement all at once!
 
 :::
 
-::: {.myoverbox .fragment fragment-index=2 .fade-in-then-out}
+::: {.myoverbox .fragment fragment-index=2 .fade-in-then-out .vlow}
 
 some parts need to be different for different local networks
 
 :::
 
-::: {.myoverbox .fragment fragment-index=3 .fade-in-then-out}
+::: {.myoverbox .fragment fragment-index=3 .fade-in-then-out .vlow}
 
 some parts should not concern local network implementors
 
 :::
 
-::: {.myoverbox .fragment fragment-index=4 .fade-in-then-out}
+::: {.myoverbox .fragment fragment-index=4 .fade-in-then-out .vlow}
 
 some parts should be same for different abstraction
 

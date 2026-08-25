@@ -1,0 +1,33 @@
+
+### throughput and window size (detail) 
+
+![](/reliable-window/texfig/throughAndWindow.figure.svg)
+
+
+### filling the pipe 
+
+
+
+::: {.r-stack .my-full}
+![](/reliable-window/texfig/fullPipe.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/reliable-window/texfig/fullPipe.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/reliable-window/texfig/fullPipe.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+
+:::
+
+
+### on bursts  {.smaller}
+
+
+* max possible queuing delay suggests window size of 30 
+
+   * approx. 3 time units times 10
+
+* problem: ‘‘bursts’’ temporarily exceed queue size 
+<hr class="vspace" />
+* achievable average queue size not that high
+* sender could moderate by ‘‘pacing’’ packets
+

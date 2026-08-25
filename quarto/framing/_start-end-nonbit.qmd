@@ -1,9 +1,7 @@
 
 ### escaping?  {.smaller}
 
-
 * can think of replacement similar to escaping strings in C 
-
    * start/end marker is `"`
    * `"` $\rightarrow$ `\"`
    * `\` $\rightarrow$ `\\`

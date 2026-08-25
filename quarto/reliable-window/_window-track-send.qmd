@@ -1,0 +1,120 @@
+
+### sender window tracking 
+
+
+
+::: {.r-stack .my-full}
+![](/reliable-window/texfig/window-track-send-sender-window-tracking.figure-1.svg){.fragment .fade-out fragment=index=2 fig-alt="To track frames at the sender, the sneder tracks a 'last ACK received' (LAR), currently 15 in this example, and a 'last frame sent' (LFS), currently 19 in this example."}
+
+![](/reliable-window/texfig/window-track-send-sender-window-tracking.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="Because LAR (last ACK received) is 15, frames 15, 14, 13, 12, etc. have been verified received and can be discarded by the sender."}
+
+![](/reliable-window/texfig/window-track-send-sender-window-tracking.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="Because LAR (last ACK received) is 15 and LFS (last frame sent) is 19, frames 16, 17, 18, and 19 might need to be resent are considered 'in flight'."}
+
+![](/reliable-window/texfig/window-track-send-sender-window-tracking.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="Because LFS (last frame sent) is 19, frames 20, 21, etc. have yet to be sent."}
+
+![](/reliable-window/texfig/window-track-send-sender-window-tracking.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 fig-alt="The number of frames in flight (4 in this example; frames 16 through 19) is at most the 'send window size' (SWS)."}
+
+:::
+
+
+### exercise 1: out-of-bounds ACK  {.smaller}
+
+<table>
+<tr><td>last ACK recv'd (LAR)</td><td>10</td></tr>
+<tr><td>last frame sent (LFS)</td><td>15</td></tr>
+<tr><td>send window size (SWS)</td><td>5</td></tr>
+</table>
+ 
+
+* what probably happened if we receive an ACK for…  
+
+   * 9? 10? 13? 16?
+
+ <table>
+<tr><td>A. if network reorders frames</td></tr>
+<tr><td>B. lost ACK for frame $\le$ 10</td></tr>
+<tr><td>C. lost ACK for frame $>$ 10</td></tr>
+<tr><td>D. lost frame 11</td></tr>
+<tr><td>E. resent frame from timeout</td></tr>
+</table>
+
+
+### exercise 2: sender logic  {.smaller}
+
+<table>
+<tr><td>last ACK recv'd (LAR)</td><td>10</td></tr>
+<tr><td>last frame sent (LFS)</td><td>15</td></tr>
+<tr><td>send window size (SWS)</td><td>5</td></tr>
+</table>
+ 
+
+* In this case, there's a timeout that will trigger frame 13 to be resent. If still active, this timeout should be cancelled upon …
+ <table>
+<tr><td>A. receiving ACK 12</td><td>B. receiving ACK 13</td></tr>
+<tr><td>C. receiving ACK 14</td><td>D. sending frame 16</td></tr>
+</table>
+
+
+### exercise 3a: new data  {.smaller}
+
+<table>
+<tr><td>last ACK recv'd (LAR)</td><td>4</td></tr>
+<tr><td>last frame sent (LFS)</td><td>6</td></tr>
+<tr><td>send window size (SWS)</td><td>5</td></tr>
+<tr><td></td></tr>
+</table>
+ 
+
+* if we compute a new frame of data with sequence number 7 to eventually send, we should
+ <table>
+<tr><td>A. send it now, advancing LFS</td></tr>
+<tr><td>B. wait until we get an ACK for 5 or 6 to send it</td></tr>
+<tr><td>C. wait until we get an ACK for 6 to send it</td></tr>
+<tr><td>D. wait until the frame with sequence number 6 is resent to send it</td></tr>
+<tr><td>D. something else</td></tr>
+<tr><td></td></tr>
+</table>
+
+
+### exercise 3b: new data  {.smaller}
+
+<table>
+<tr><td>last ACK recv'd (LAR)</td><td>4</td></tr>
+<tr><td>last frame sent (LFS)</td><td>8</td></tr>
+<tr><td>send window size (SWS)</td><td>4</td></tr>
+<tr><td></td></tr>
+</table>
+ 
+
+* if we compute a new frame of data with sequence number 9 to eventually send, we should
+ <table>
+<tr><td>A. send it now, advancing LFS</td></tr>
+<tr><td>B. wait until we get an ACK for 5 or 6 or 7 or 8 to send it</td></tr>
+<tr><td>C. wait until we get an ACK for 6 or 7 or 8 to send it</td></tr>
+<tr><td>D. decline to accept the data because we will never be able to send it</td></tr>
+<tr><td>E. something else</td></tr>
+<tr><td></td></tr>
+</table>
+
+
+### sender logic summarized  {.smaller}
+
+
+* track variables: 
+
+   * LFS (last frame sent)
+   * LAR (last ACK recv'd)
+   * SWS (send window size)
+
+* when receiving ACK $LAR < X \le LFS$: 
+
+   * LAR $\leftarrow$ $X$
+   * clear any timers to resend frames $\le X$
+
+* whenever SWS [send window size] > LFS - LAR <i>and</i> <br> data for frame LFS + 1 is available: 
+
+   * send frame LFS + 1
+   * set timer to resend frame LFS + 1
+   * LFS $\leftarrow$ LFS + 1
+
+

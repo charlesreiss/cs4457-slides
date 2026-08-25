@@ -1,0 +1,8 @@
+---
+name: reliable-tcp
+---
+
+{{< include /reliable-tcp/_talk-inner.qmd >}}
+# backup slides
+
+{{< include /reliable-tcp/_talk-inner.qmd >}}

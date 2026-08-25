@@ -5,13 +5,13 @@
 
 * let's transmit these (binary) messages: 
 
-   * \tt 001
-   * \tt 0110
-   * \tt 0010
+   * `001`
+   * `0110`
+   * `0010`
 
 * put 3-bit message size at beginning of messages
- ![](/framing/texfig/align-size.figure.svg)
- 
+
+![](/framing/texfig/align-size.figure.svg)
 
 * read header, then determine number of bits to read before next header
 * assumption: no gaps between messages?  

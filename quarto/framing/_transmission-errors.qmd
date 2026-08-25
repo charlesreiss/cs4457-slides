@@ -1,19 +1,11 @@
 
 ### types of transmission errors 
 
-
 * desynchronization: 
-
    * missing bits/bytes
    * adding bits/bytes
-
-* flipping bits  
-
+* changing symbols
    * from ‘noise’/‘interference’
-
-
-
-### againframe(transmitErrorType)
 
 ### desynchronization and framing (1) 
 
@@ -47,9 +39,6 @@
 
    * if starts being missing, try to resync
 
-
-
-### againframe(transmitErrorType)
 
 ### flipping bits? 
 
