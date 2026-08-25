@@ -18,7 +18,7 @@
 ### not client/server? 
 
 
-* not everything fits into client/server neatly .5cm
+* not everything fits into client/server neatly 
 * sometimes something is both client and server
 * sometimes no distinguished entities (‘‘peer-to-peer’’)
 
@@ -26,7 +26,7 @@
 ### client/server and channels 
 
 
-* can have channels without client/server model .5cm
+* can have channels without client/server model
 * but the interface sockets provide assume client/server 
 
    * (so you have to make something server-like to do peer-to-peer with sockets)

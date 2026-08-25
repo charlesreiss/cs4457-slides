@@ -53,7 +53,7 @@ holds waiting packets
 
 ![](/intro/texfig/muxdemux-bursts-and-dropping.figure-1.svg){.fragment .fade-out fragment-index=3 fig-alt="Same diagram as previous slide, but with the buffers highlighted."}
 
-![](/intro/texfig/muxdemux-bursts-and-dropping.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="Same diagram as previous slide, but the queue on the right switch (before the shared link) is overflowing with packets."}
+![](/intro/texfig/muxdemux-bursts-and-dropping.figure-3.svg){.fragment .fade-in fragment-index=3 fig-alt="Same diagram as previous slide, but the queue on the right switch (before the shared link) is overflowing with packets."}
 
 :::
 
@@ -65,7 +65,7 @@ would be basically empty if we could send packets immediately
 :::
 
 
-::: {.myoverbox .vlow .fragment fragment-index=2 .fade-in-then-out}
+::: {.myoverbox .high .fragment fragment-index=2 .fade-in-then-out}
 
 incomplete list of causes of bursts:<br/>
 multiple unsynchronized flows <br/>
@@ -73,10 +73,10 @@ fast links produce packets faster than slow can send
 
 :::
 
-::: {.myoverbox .vlow .fragment fragment-index=3 .fade-in-then-out}
+::: {.myoverbox .high .fragment fragment-index=3 .fade-in-then-out}
 
 if buffer full, switch must _drop_ packets<br/>
-called _congestion<br/>
+called _congestion_<br/>
 <br/>
 will happen eventually if overall rate faster than link
 
