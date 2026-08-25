@@ -3,7 +3,7 @@
 
 
 
-![](/intro/texfig/muxdemux-ex.figure-1.svg){fig-alt="A <-> S1 <-> S2 <-> B, S3 <-> C" width="100%"}
+![](/intro/texfig/muxdemux-ex.figure.svg){fig-alt="A <-> S1 <-> S2 <-> B, S3 <-> C" width="100%"}
 
  
 
