@@ -1,0 +1,70 @@
+
+### latency (1)  {.smaller}
+
+
+
+* latency: time for message: SOURCE $\rightarrow$ DEST
+* example: [1000]{.fragment fragment-index=3 .custom .myem-only} bit message from S to D:
+ 
+
+::: {.r-stack}
+
+![](/perf/texfig/latency-latency-1.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="S <--> D via 50 Mbit, 500 meters of copper" width=1000px}
+
+![](/perf/texfig/latency-latency-1.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="S <--> D via (highlighted) 50 Mbit, 500 meters of copper" width=1000px}
+
+![](/perf/texfig/latency-latency-1.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="S <--> D via 50 Mbit (highlighted) 500 meters of copper" width=1000px}
+
+
+:::
+ 
+
+* [one]{.fragment fragment-index=2 .custom .myem-only} bit sent each [1/50M second = 0.02 $\mu$ s]{.fragment fragment-index=2 .custom .myem-only}
+* [1000 bits take $0.02 \times 1000 = 20\;\mu$ s to sent]{.fragment fragment-index=3 .custom .myem-only} 
+   * ‘‘transmission delay’’
+* + $2.2$ microseconds for bit to go down cable ($2.3\times10^8$ m/s) 
+   * ‘‘propogation delay’’
+* total latency of about 22.2 $\mu$ s
+
+
+### latency (1, ex)  {.smaller}
+
+
+
+![](/perf/texfig/latency-latency-1-ex.figure.svg){.fragment .fade-out fragment-index=2 fig-alt="S <--> D via 1 Gbit, 10 km of fiber" width=1000px}
+
+* exercise: latency for 20000 bit message from S to D 
+   * assume speed of signal through fiber of $2.0\times10^8$ m/s
+
+
+
+### latency (2)  {.smaller}
+
+
+
+* example: 1000 bit packet from S to D
+* assume when message is received: 
+
+   * 5 other 1000-bit packets in queue; no extra bits between packets
+   * no other switch processing time
+
+![](/perf/texfig/latency-latency-2.figure.svg){width=1000px}
+ 
+ 
+
+* S to switch, switch to D: 22.2 $\mu$ s [ (transmit+propogate delay)]{.my-small}
+* within switch: wait $20\times5=100\;mu$ s for 5 other packets ($20\mu s$ = 1 packet transmit delay) 
+
+   * ‘‘queueing delay’’
+
+* total latency: $22.2 + 100 + 22.2 = 144.4$ microseconds
+
+
+### round trip time 
+
+
+* round-trip-time (RTT): time for message:  <br> SOURCE $\rightarrow$ DEST $\rightarrow$ SOURCE 
+<hr class="vspace" />
+* much easier to measure than one-way latency
+* typically how we'll set latency
+

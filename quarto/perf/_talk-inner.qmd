@@ -1,0 +1,23 @@
+
+
+## bandwidth / throughput {visibility="hidden"}
+
+{{< include /perf/_throughput.qmd >}}
+
+## latency / round trip time {visibility="hidden"}
+
+{{< include /perf/_latency.qmd >}}
+
+## jitter {visibility="hidden"}
+
+{{< include /perf/_jitter.qmd >}}
+
+## empirical measurement {visibility="hidden"}
+
+{{< include /perf/_empirical-measure.qmd >}}
+
+# backup slides {visibility="hidden"}
+
+### backup slides 
+
+

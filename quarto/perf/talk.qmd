@@ -1,0 +1,6 @@
+---
+title: "perf"
+
+---
+
+{{< include ../perf/_talk-inner.qmd >}}

@@ -1,0 +1,15 @@
+
+### bandwidth / throughput  {.smaller}
+
+* bandwidth / data rate: maximum rate we can send per unit time 
+   * most commonly measuring the speed of a link
+* 1 gigabit/second = transmit 1 bit / nanosecond 
+
+<hr class="vspace" />
+
+* throughput: acheived rate per unit time 
+
+   * often lower than total bandwidth because of losses
+   * (we'll give several examples throughout the semester)
+
+

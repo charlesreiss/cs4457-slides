@@ -1,0 +1,12 @@
+
+### jitter  {.smaller}
+
+
+
+* variation in latency 
+
+   * most commonly from changing queuing delays
+
+ 
+![](/perf/SysApproach-1-Fig20.svg){width=1000px}
+[Figure 20 from Section 1.5 of <i>Computer Networks: A Systems Approach</i> (6th ed) (Peterson and Davie)]{.mycredit}

@@ -1,0 +1,18 @@
+
+# TCP differences {visibility="hidden"}
+
+{{< include /reliable-tcp/_tcp-diff-summary.qmd >}}
+
+## TCP seq/ack exercise {visibility="hidden"}
+
+{{< include /reliable-tcp/_tcp-seq-ack-exer.qmd >}}
+
+# TCP example {visibility="hidden"}
+
+## TCP segment format {visibility="hidden"}
+
+{{< include /reliable-tcp/_tcp-segment-basic.qmd >}}
+
+## TCP connection example {visibility="hidden"}
+
+{{< include /reliable-tcp/_tcp-example-2.qmd >}}

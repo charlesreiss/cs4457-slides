@@ -1,0 +1,7 @@
+### framing problem
+
+*  physical layer can transmit _symbols_
+   *  (possibly symbol = 1 bit)
+*  want longer messages
+*  we'll call messages at this level "frames"
+*  
