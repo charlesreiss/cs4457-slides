@@ -1,0 +1,26 @@
+## layers are fuzzy {visibility="hidden"}
+
+{{< include /intro/_layer-model-fuzzy.qmd >}}
+
+## end-to-end argument {visibility="hidden"}
+
+{{< include /intro/_end-to-end.qmd >}}
+
+## end-to-end exercise {visibility="hidden"}
+
+{{< include /intro/_end-to-end-ex.qmd >}}
+
+
+{{< include /physical/_talk-inner.qmd >}}
+
+{{< include /framing/_talk-inner.qmd >}}
+
+{{< include /reliable-stop/_talk-inner.qmd >}}
+
+# interlude: wireshark preview {visibility="hidden"}
+
+{{< include /intro/_what-is-wireshark.qmd >}}
+
+## some examples in wireshark {visibility="hidden"}
+
+{{< include /intro/_wireshark-ex.qmd >}}
