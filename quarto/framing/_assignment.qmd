@@ -7,7 +7,7 @@
 * handle_bit_from_network(BIT) 
 
    * calls got_message_function(MESSAGE)
- .5cm
+<hr class="vspace"/>
 * but: 
 
    * need to indicate message boundaries somehow

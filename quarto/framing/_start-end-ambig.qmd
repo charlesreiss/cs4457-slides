@@ -10,7 +10,6 @@
 <tr><td>A. any 000</td></tr>
 <tr><td>B. any 00</td></tr>
 <tr><td>C. any 0</td></tr>
-<tr><td></td></tr>
 </table>
 
 
@@ -24,7 +23,7 @@
 * sending 1 and 001 
 
    * 100000010000
- .5cm
+<hr class="vspace"/>
 * oops!
 * textbook example: start/end = 01111110  
 

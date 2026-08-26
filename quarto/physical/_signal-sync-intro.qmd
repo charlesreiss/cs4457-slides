@@ -11,11 +11,10 @@
 
 ### self-sync and ‘start-message’  {.smaller}
 
-
 * one idea: set start-message to have lots of 0/1/0/1/0/1/0/1/etc. 
    * something 10Mbit Ethernet does
 * but probably not enough to ensure things stay in sync on big message
-<hr class="vspace/>
+<hr class="vspace"/>
 * alternate strategy --- use encoding that adds extra transitions
 * example: Manchester encoding for 1-bit
 

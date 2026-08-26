@@ -11,9 +11,9 @@
 
 ::: {.r-stack}
 
-![](/framing/texfig/aligning-bits.figure-1.svg){.fragment .fade-in-then-out fragment-index=1 width=800px}
+![](/framing/texfig/aligning-bits.figure-1.svg){.fragment .fade-in fragment-index=1 width=800px fig-alt="{001}{0110}{0010}"}
 
-![](/framing/texfig/aligning-bits.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 width=800px}
+![](/framing/texfig/aligning-bits.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 width=800px fig-alt="00101100010"}
 
 :::
  

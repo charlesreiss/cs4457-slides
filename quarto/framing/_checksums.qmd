@@ -11,9 +11,11 @@
 ### checksum idea  {.smaller}
 
 
-* instead of sending ‘‘message’’ .5cm
+* instead of sending ‘‘message’’
+<hr class="vspace"/>
 * say Hash(‘‘message’’) = 0xABCDEF12
-* then send ‘‘0xABCDEF12,message’’ .5cm
+* then send ‘‘0xABCDEF12,message’’
+  <hr class="vpsace"/>
 * when receiving, recompute hash
 * discard message if checksum doesn't match
 

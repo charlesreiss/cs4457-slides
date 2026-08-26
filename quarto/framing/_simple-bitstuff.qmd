@@ -1,0 +1,13 @@
+
+### "bit stuffing"
+
+*  scheme in textbook called "bit stuffing"
+*  use `01111110` to represent "start/end of message"
+*  make sure `01111110` doesn't occur within messages accidentally:
+   *  on transmission: replace `11111` in message with `111110`
+   *  on receiving messages, replace each `111110` with `11111`
+
+### "bit stuffing" example
+
+*  messages: [`011111100`]{style="color: #a0a; text-decoration:underline"} and [`00000111`]{style="color:#aa0; text-decoration: underline"}
+*  <code>01111110[0[111110]{style="font-weight: bold"}100]{style="text-decoration:underline; color:#a0a"}011111110[00000111]{style="text-decoration:underline; color:#aa0"}01111110</code> 

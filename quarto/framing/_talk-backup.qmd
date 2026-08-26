@@ -1,4 +1,8 @@
 
+## bit stuffing summary
+
+{{< include /framing/_simple-bitstuff.qmd >}}
+
 ## size strategy {visibility="hidden"}
 
 {{< include /framing/_align-size.qmd >}}
