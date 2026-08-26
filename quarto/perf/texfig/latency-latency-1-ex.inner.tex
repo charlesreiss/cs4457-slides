@@ -1,0 +1,10 @@
+\begin{tikzpicture}
+\tikzset{
+    connect/.style={draw,very thick,Latex-Latex},
+    computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
+    switch/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\switch}},
+}
+\node[computer,label={center:S}] (s) {};
+\node[computer,label={center:D}] (d) at ([xshift=10cm]s.east) {};
+\draw[connect] (s) -- (d) node[midway,above] {1 Gbit, 10 kilometers of fibre};
+\end{tikzpicture}

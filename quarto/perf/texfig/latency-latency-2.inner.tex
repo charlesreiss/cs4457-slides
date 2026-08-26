@@ -1,0 +1,12 @@
+\begin{tikzpicture}
+\tikzset{
+    connect/.style={draw,very thick,Latex-Latex},
+    computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
+    switch/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\switch}},
+}
+\node[computer,label={center:S}] (s) {};
+\node[switch] (m) at ([xshift=6.25cm]s.east) {};
+\node[computer,label={center:D}] (d) at ([xshift=6.25cm]m.east) {};
+\draw[connect] (s) -- (m) node[font=\small,midway,above] {50 Mbit, 500 meters of copper};
+\draw[connect] (m) -- (d) node[font=\small,midway,above] {50 Mbit, 500 meters of copper};
+\end{tikzpicture}

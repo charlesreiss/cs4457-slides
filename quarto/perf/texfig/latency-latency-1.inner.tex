@@ -1,0 +1,9 @@
+\begin{tikzpicture}
+\tikzset{
+    connect/.style={draw,very thick,Latex-Latex},
+    computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
+}
+\node[computer,label={center:S}] (s) {};
+\node[computer,label={center:D}] (d) at ([xshift=10cm]s.east) {};
+\draw[connect] (s) -- (d) node[midway,above] {\myemph<2>{50 Mbit}, \myemph<3>{500 meters of copper}};
+\end{tikzpicture}
