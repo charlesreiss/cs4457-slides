@@ -4,7 +4,7 @@
 
 {{< include /framing/_aligning-bits.qmd >}}
 
-## framing problem, briefly
+## framing problem, briefly {visibility="hidden"}
 
 {{< include /framing/_simple.qmd >}}
 

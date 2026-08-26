@@ -13,35 +13,21 @@
 ![](/physical/texfig/transmit-signal-transmitting-a-signal.figure.svg)
 
 
-### some simplifying assumptions  {.smaller}
-
-* signal low/high --- no in between
-* only one ‘channel’  
-   * won't have multiple wires/antennas/frequencies/etc.
-   * won't modulate different things same time
-* want to send receive bits (0 or 1)
-
-![](/physical/texfig/transmit-signal-some-simplifying-assumptions.figure.svg){width=1050px}
-
 
 ### clocking 
 
-![](/physical/texfig/transmit-signal-clocking.figure.svg)
-
-
-### keeping a clock 
-
-
-
 ::: {.r-stack .my-full}
-![](/physical/texfig/transmit-signal-keeping-a-clock.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
 
-![](/physical/texfig/transmit-signal-keeping-a-clock.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/physical/texfig/transmit-signal-clocking.figure-1.svg){.fragment .fade-out fragment-index=2}
 
-![](/physical/texfig/transmit-signal-keeping-a-clock.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/physical/texfig/transmit-signal-clocking.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
 
-![](/physical/texfig/transmit-signal-keeping-a-clock.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+![](/physical/texfig/transmit-signal-clocking.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
 
+![](/physical/texfig/transmit-signal-clocking.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+![](/physical/texfig/transmit-signal-clocking.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
 
 :::
+
 

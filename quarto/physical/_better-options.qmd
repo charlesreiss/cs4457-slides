@@ -1,10 +1,11 @@
 
-### other better encoding options  {.smaller}
+### better encodings {.smaller}
+* need to keep sender/receiver in sync
+   * example: no long strings of low/high
 * vary more than just one thing 
    * example: pulse amplitude and duration
 * use more than just low/high
    * so more than just 0/1
    * gives space for dedicated "start" symbol
 * probably covered in ECE Signals course?
-* used by almost all "fast" encodings
 

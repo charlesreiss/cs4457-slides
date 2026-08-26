@@ -21,7 +21,7 @@ usually session/presentation/application layers merged together
 <tr><td>5</td><td>session</td><td>coordinate multiple streams</td></tr>
 <tr><td>4</td><td>transport</td><td>streams of data</td></tr>
 <tr><td>3</td><td>network</td><td>message to correct network</td></tr>
-<tr><td>2</td><td>data link</td><td rowspawn="2">message to correct machine<br>message into bits/symbols</td></tr>
+<tr><td>2</td><td>data link</td><td rowspan="2">message to correct machine<br>message into bits/symbols</td></tr>
 <tr><td></td><td></td></tr>
 <tr><td>1</td><td>physical</td><td>transmit bits/symbols on medium</td></tr>
 </table>
@@ -81,8 +81,8 @@ usually session/presentation/application layers merged together
 <table>
 <tr><td>OSI layer</td><td>name</td><td>examples</td><td>purpose</td></tr>
 <tr><td>7</td><td>application</td><td>HTTP, SSH,<br> SMTP DNS, ...</td><td>application-defined meanings</td></tr>
-<tr><td>4</td><td>transport</td><td>TCP, UDP, ...</td><td>reach correct program,\linebreak reliablity/streams</td></tr>
-<tr><td></td><td>network</td><td>IPv4, IPv6, ...</td><td>reach correct machine\linebreak(across networks)</td></tr>
+<tr><td>4</td><td>transport</td><td>TCP, UDP, ...</td><td>reach correct program, reliablity/streams</td></tr>
+<tr><td>3</td><td>network</td><td>IPv4, IPv6, ...</td><td>reach correct machine (across networks)</td></tr>
 <tr><td>2</td><td>link</td><td>Ethernet, Wi-Fi, ...</td><td>coordinate shared wire/radio</td></tr>
 <tr><td>1</td><td>physical</td><td>...</td><td>encode bits for wire/radio</td></tr>
 </table>

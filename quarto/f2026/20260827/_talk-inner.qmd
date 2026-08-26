@@ -1,6 +1,19 @@
+### last time {.smaller}
+
+*  logistics
+*  terms
+   *  (end) host/node/link
+   *  switch, router
+   *  (de)multiplexing
+   *  flows, packets
+*  layers
+   *  OSI model versus Internet (1/2/3/4/7)
+   *  application [7] / transport [4] / network [3] / link [2] / physical [1]
+
 ## layers are fuzzy {visibility="hidden"}
 
 {{< include /intro/_layer-model-fuzzy.qmd >}}
+
 
 ## end-to-end argument {visibility="hidden"}
 
@@ -10,12 +23,9 @@
 
 {{< include /intro/_end-to-end-ex.qmd >}}
 
-
 {{< include /physical/_talk-inner.qmd >}}
 
-{{< include /framing/_talk-inner.qmd >}}
-
-{{< include /reliable-stop/_talk-inner.qmd >}}
+{{< include /reliable-stop/_talk-stop-and-wait.qmd >}}
 
 # interlude: wireshark preview {visibility="hidden"}
 
@@ -24,3 +34,26 @@
 ## some examples in wireshark {visibility="hidden"}
 
 {{< include /intro/_wireshark-ex.qmd >}}
+
+# interlude: metrics {visibility="hidden"}
+
+### stop-and-wait issues 
+
+
+* two issues with stop-and-wait: 
+<hr class="vspace" />
+* doesn't use close to full capacity of network
+* not clear how to set timeouts
+
+
+### looking at metrics  {.smaller}
+
+
+* several important metrics we'll care about
+* (both for this and future topics) 
+<hr class="vspace" />
+* <i>throughput</i> and <i>bandwidth</i> ($\sim$ how much capacity used/available)
+* <i>latency</i> and <i>round-trip time</i> (RTT) ($\sim$ what timeouts needed)
+* <i>jitter</i> ($\sim$ safety margin for timeouts)
+
+{{< include /reliable-stop/_stop-and-wait-perf.qmd >}}

@@ -9,10 +9,6 @@
 
 {{< include /physical/_transmit-signal.qmd >}}
 
-## synchronizing (short) {visibility="hidden"}
-
-{{< include /physical/_signal-sync-intro.qmd >}}
-
 ## better options? {visibility="hidden"}
 
 {{< include /physical/_better-options.qmd >}}

@@ -7,9 +7,9 @@
 ### problem with Manchester  {.smaller}
 
 
-* fixed the problem of too few transitions .5cm
+* fixed the problem of too few transitions
 * but now most transitions don't send information
-* means we aren't making good use of wire/etc. capacity .5cm
+* means we aren't making good use of wire/etc. capacity
 * there are more clever compromises 
 
    * (example: 4B5B encoding)

@@ -27,10 +27,6 @@
 
 {{< include /framing/_transmission-errors.qmd >}}
 
-# checksums {visibility="hidden"}
-
-{{< include /framing/_checksums.qmd >}}
-
 # framing assignment {visibility="hidden"}
 
 {{< include /framing/_assignment.qmd >}}

@@ -1,4 +1,12 @@
 
+## simplest case
+
+{{< include /physical/_transmit-simple-case.qmd >}}
+
+## synchronizing (short) {visibility="hidden"}
+
+{{< include /physical/_signal-sync-intro.qmd >}}
+
 # physical layer: synchronizing {visibility="hidden"}
 
 {{< include /physical/_signal-sync.qmd >}}
