@@ -1,0 +1,11 @@
+
+### the simplest case {.smaller}
+
+* signal low/high --- no in between
+* only one ‘channel’  
+   * won't have multiple wires/antennas/frequencies/etc.
+   * won't modulate different things same time
+* want to send receive bits (0 or 1)
+
+![](/physical/texfig/transmit-signal-some-simplifying-assumptions.figure.svg){width=1050px}
+

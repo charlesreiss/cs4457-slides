@@ -1,0 +1,17 @@
+
+### keeping a clock 
+
+
+
+::: {.r-stack .my-full}
+![](/physical/texfig/transmit-signal-keeping-a-clock.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/physical/texfig/transmit-signal-keeping-a-clock.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/physical/texfig/transmit-signal-keeping-a-clock.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/physical/texfig/transmit-signal-keeping-a-clock.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+
+:::
+
