@@ -3,8 +3,8 @@ title: "physical"
 
 ---
 
-{{< include ../physical/_talk-inner.qmd >}}
+{{< include /physical/_talk-inner.qmd >}}
 
 # Backup slides
 
-{{< include ../physical/_talk-backup.qmd >}}
+{{< include /physical/_talk-backup.qmd >}}
