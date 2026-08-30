@@ -31,7 +31,7 @@
 
 
 
-![](/perf/texfig/latency-latency-1-ex.figure.svg){.fragment .fade-out fragment-index=2 fig-alt="S <--> D via 1 Gbit, 10 km of fiber" width=1000px}
+![](/perf/texfig/latency-latency-1-ex.figure.svg){fig-alt="S <--> D via 1 Gbit, 10 km of fiber" width=1000px}
 
 * exercise: latency for 20000 bit message from S to D 
    * assume speed of signal through fiber of $2.0\times10^8$ m/s
@@ -44,20 +44,19 @@
 
 * example: 1000 bit packet from S to D
 * assume when message is received: 
-
    * 5 other 1000-bit packets in queue; no extra bits between packets
    * no other switch processing time
 
 ![](/perf/texfig/latency-latency-2.figure.svg){width=1000px}
- 
- 
+
+::: {.fragment}
 
 * S to switch, switch to D: 22.2 $\mu$ s [ (transmit+propogate delay)]{.my-small}
 * within switch: wait $20\times5=100\;mu$ s for 5 other packets ($20\mu s$ = 1 packet transmit delay) 
-
    * ‘‘queueing delay’’
-
 * total latency: $22.2 + 100 + 22.2 = 144.4$ microseconds
+
+:::
 
 
 ### round trip time 

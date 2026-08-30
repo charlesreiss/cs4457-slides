@@ -4,13 +4,37 @@
 *  individual messages called _frames_
 *  various solutions:
    *  have extra symbols for message start/end/etc.
-      *  [probably most common with "fast" physical layers]{.myem-only .fragment .custom}
+      *  probably most common with "fast" physical layers
    *  detect electrically if transmission is happening
-   *  [choose sequence of bits/bytes to represent "start message"]{.myem-only .fragment .custom}
+   *  choose sequence of bits/bytes to represent "start message"
       *  needs way of "ecsaping" those bits/bytes if they occur within message data
+
+### framing problem
+
+*  dividing sequence of symbols into messages called _framing_
+*  individual messages called _frames_
+*  various solutions:
+   *  _have extra symbols for message start/end/etc._
+      *  probably most common with "fast" physical layers
+   *  detect electrically if transmission is happening
+   *  choose sequence of bits/bytes to represent "start message"
+      *  needs way of "ecsaping" those bits/bytes if they occur within message data
+
 
 ### spare symbols example
 
 *  Gigabit ethernet uses scheme with 625 symbols
    *  5 amplitude levels over 4 wires
+   *  (at 125Mhz)
 *  gives room for spare symbols for message start/end/etc.
+
+### framing problem
+
+*  dividing sequence of symbols into messages called _framing_
+*  individual messages called _frames_
+*  various solutions:
+   *  have extra symbols for message start/end/etc.
+      *  probably most common with "fast" physical layers
+   *  _detect electrically if transmission is happening_
+   *  choose sequence of bits/bytes to represent "start message"
+      *  needs way of "ecsaping" those bits/bytes if they occur within message data

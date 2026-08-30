@@ -25,6 +25,8 @@
 
 {{< include /physical/_talk-inner.qmd >}}
 
+{{< include /framing/_talk-inner.qmd >}}
+
 {{< include /reliable-stop/_talk-stop-and-wait.qmd >}}
 
 # interlude: wireshark preview {visibility="hidden"}
@@ -36,6 +38,8 @@
 {{< include /intro/_wireshark-ex.qmd >}}
 
 # interlude: metrics {visibility="hidden"}
+
+{{< include /perf/_talk-inner.qmd >}}
 
 ### stop-and-wait issues 
 
@@ -57,3 +61,13 @@
 * <i>jitter</i> ($\sim$ safety margin for timeouts)
 
 {{< include /reliable-stop/_stop-and-wait-perf.qmd >}}
+
+### {.empty}
+
+### backup slides
+
+{{< include /physical/_talk-backup.qmd >}}
+
+{{< include /framing/_talk-backup.qmd >}}
+
+{{< include 
