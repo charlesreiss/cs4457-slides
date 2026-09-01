@@ -27,7 +27,7 @@
 * used at data link layer and upper layers 
 
    * lots of places networks want to check messages aren't corrupted
- .5cm
+<hr class="vspace"/>
 * provides high probability we discard corrupted messages 
 
    * larger checksum $\rightarrow$ higher probability

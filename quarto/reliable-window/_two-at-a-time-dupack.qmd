@@ -4,7 +4,7 @@
 
 
 ::: {.r-stack}
-![](/reliable-window/texfig/twoAndTimeouts.figure-1.svg){.fragment .fade-in-then-out fragment-index=1 width=1000px}
+![](/reliable-window/texfig/twoAndTimeouts.figure-1.svg){.fragment .fade-out fragment-index=2 width=1000px}
 
 ![](/reliable-window/texfig/twoAndTimeouts.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 width=1000px}
 
@@ -13,8 +13,8 @@
  
 
 * question: what should receiver do with sequence number 2?
-* [one idea: ignore it?]{.fragment fragment-index=2 .custom .myem-only}
-* [better idea: send something back to sender]{.fragment fragment-index=3 .custom .myem-only}
+* _one idea: ignore it?_
+* better idea: send something back to sender
 
 
 ### not great: ignore it (1) 
@@ -22,7 +22,7 @@
 
 
 ::: {.r-stack .my-full}
-![](/reliable-window/texfig/two-at-a-time-dupack-not-great-ignore-it-1.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/reliable-window/texfig/two-at-a-time-dupack-not-great-ignore-it-1.figure-1.svg){.fragment .fade-out fragment-index=2}
 
 ![](/reliable-window/texfig/two-at-a-time-dupack-not-great-ignore-it-1.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
 
@@ -37,15 +37,30 @@
 <hr class="vspace" />
 * but we'd like to give more feedback to receiver
 
+### missing messages?  {.smaller}
 
-### againframe(twoAndTimeouts)
+
+
+::: {.r-stack}
+![](/reliable-window/texfig/twoAndTimeouts.figure-1.svg){.fragment .fade-out fragment-index=2 width=1000px}
+
+![](/reliable-window/texfig/twoAndTimeouts.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 width=1000px}
+
+
+:::
+ 
+
+* question: what should receiver do with sequence number 2?
+* one idea: ignore it?
+* _better idea: send something back to sender_
+
 
 ### better idea: always ACK  {.smaller}
 
 
 
 ::: {.r-stack}
-![](/reliable-window/texfig/two-at-a-time-dupack-better-idea-always-ack.figure-1.svg){.fragment .fade-in-then-out fragment-index=1 width=1000px}
+![](/reliable-window/texfig/two-at-a-time-dupack-better-idea-always-ack.figure-1.svg){.fragment .fade-out fragment-index=2 width=1000px}
 
 ![](/reliable-window/texfig/two-at-a-time-dupack-better-idea-always-ack.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 width=1000px}
 

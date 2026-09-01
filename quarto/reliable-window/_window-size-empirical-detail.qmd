@@ -9,7 +9,7 @@
 
 
 ::: {.r-stack .my-full}
-![](/reliable-window/texfig/fullPipe.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/reliable-window/texfig/fullPipe.figure-1.svg){.fragment .fade-out fragment-index=2}
 
 ![](/reliable-window/texfig/fullPipe.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
 
