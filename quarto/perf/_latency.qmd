@@ -65,5 +65,5 @@
 * round-trip-time (RTT): time for message:  <br> SOURCE $\rightarrow$ DEST $\rightarrow$ SOURCE 
 <hr class="vspace" />
 * much easier to measure than one-way latency
-* typically how we'll set latency
+* typically how we'll see latency
 
