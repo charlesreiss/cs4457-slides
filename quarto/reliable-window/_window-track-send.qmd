@@ -87,7 +87,7 @@
  
 
 * if we compute a new frame of data with sequence number 9 to eventually send, we should
- <table>
+<table>
 <tr><td>A. send it now, advancing LFS</td></tr>
 <tr><td>B. wait until we get an ACK for 5 or 6 or 7 or 8 to send it</td></tr>
 <tr><td>C. wait until we get an ACK for 6 or 7 or 8 to send it</td></tr>

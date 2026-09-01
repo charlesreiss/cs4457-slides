@@ -16,8 +16,3 @@
 
 {{< include /perf/_empirical-measure.qmd >}}
 
-# backup slides {visibility="hidden"}
-
-### backup slides 
-
-
