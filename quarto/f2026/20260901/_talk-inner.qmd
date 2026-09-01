@@ -1,3 +1,29 @@
+### last time {.smaller}
+
+*  physical layer options
+   *  vary something(s) over time
+   *  one "symbol" per time-step
+   *  need to have common clock between sender/receiver
+*  framing --- dividing symbols into messages ("frames")
+   *  escaping and/or extra "control" symbols
+*  checksums to catch errors (with high probability)
+*  acknowledgment + retransmissions
+   *  stop + wait protocol
+   *  1-bit sequence numbers if no reordering
+*  wireshark example
+
+### assignment notes
+
+*  implementing stop/wait in simulator
+*  `from_application`:
+   *  called to give you data from application layer
+   *  you return if you can accept it
+   *  (since you can't just loop + sleep until you can send it)
+*  timeouts
+   *  since simulated time, need to use our timer functions
+
+### assignment Q+A
+
 ## some examples in wireshark {visibility="hidden"}
 
 {{< include /intro/_wireshark-ex.qmd >}}
