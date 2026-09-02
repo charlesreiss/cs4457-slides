@@ -1,0 +1,43 @@
+
+### software defined networking (SDN) 
+
+
+* movement toward <i>programmable</i> networks 
+<hr class="vspace" />
+* ‘‘software-defined’’ 
+
+   * rules about how network works defined in ‘‘normal’’ software
+
+
+
+### control plane and data plane  {.smaller}
+
+
+* control plane 
+
+   * decides <i>how</i> to handle traffic
+   * ‘‘slow path’’, where complicated decisions are
+
+* data plane 
+
+   * actually implements the decisions made by the control plane
+   * ‘‘fast path’’, implementing simple rules
+ 
+<hr class="vspace" />
+* probably what switches did internally before SDN was a thing
+
+
+### separate control/data plane  {.smaller}
+
+
+* one SDN key idea: separate control and data plane
+* allow new [vendor-neutral]{.fragment fragment-index=2 .custom .myem-only} implementations of control plane 
+
+   * requires standard interface for programming data plane
+   * most prominent example: OpenFlow
+
+* easily allows for central ‘control plane’ server 
+
+   * instead of separate control plane running on each switch/router
+
+

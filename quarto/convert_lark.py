@@ -153,6 +153,8 @@ INLINE_VERBATIM.10: /
         \\lstinline![^!]+\!
         |
         \\verb\*?![^!]+\!
+        |
+        \\Verb\*?\|[^|]+\|
     /x
 TIKZPICTURE.10: /\\begin\{tikzpicture\}\s*(?:\[[^]]+\])?\s*\n
                 (?s:.*?)
@@ -756,6 +758,11 @@ class _InlineCommand(_MyAstItem):
             when = When(f'<{index}>')
             assert when.needs_fragment
             command = r'\myemph'
+        if re.match(r'^\\vemph[A-Z]$', command) is not None:
+            index = ord(command[len(r'\vemph')]) - ord('A')
+            when = When(f'<{index}>')
+            assert when.needs_fragment
+            command = r'\myemph'
         if command == r'\varMark':
             logging.debug('arguments = %s', arguments)
             index_argument = arguments[0].inner_text
@@ -1176,7 +1183,7 @@ class InlineVerbatim(_MyAstItem):
 
     def __init__(self, token):
         value = token.value
-        for prefix in (r'\lstinline', r'\PHPinline', r'\verb*', r'\verb'):
+        for prefix in (r'\lstinline', r'\PHPinline', r'\verb*', r'\verb', r'\Verb'):
             if value.startswith(prefix):
                 value = value[len(prefix):]
                 break 

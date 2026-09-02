@@ -1,0 +1,16 @@
+\begin{tikzpicture}
+\node[minimum width=15cm,minimum height=9cm] (current page) {};
+\begin{scope}[overlay]
+
+    \begin{visibleenv}<2>
+    \node[align=left,draw=red,fill=white,ultra thick] at ([yshift=-2cm]current page.center) {
+        use emit to put extracted bits back in packet \\
+        ~  \\
+        if header is not marked valid, emit does nothing \\
+        (\texttt{extract(hdr.foo)} marks \texttt{hdr.foo} valid, \\
+        can also use \texttt{hdr.foo.setValid()} and undo with \\
+        \texttt{hdr.foo.setInvalid()})
+    };
+    \end{visibleenv}
+\end{scope}
+\end{tikzpicture}

@@ -1,0 +1,13 @@
+\begin{tikzpicture}
+\node[minimum width=15cm,minimum height=9cm] (current page) {};
+\begin{scope}[overlay]
+
+    \begin{visibleenv}<2>
+    \node[align=left,draw=red,fill=white,ultra thick] at ([yshift=-2cm]current page.center) {
+        standard\_metadata --- `hard-coded' phase reads \texttt{egress\_spec} \\
+        ~ \\
+        special \texttt{egress\_spec} value for ``discard frame''
+    };
+    \end{visibleenv}
+\end{scope}
+\end{tikzpicture}

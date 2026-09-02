@@ -1,0 +1,33 @@
+\begin{tikzpicture}
+\tikzset{
+    computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
+    switch/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\switch},
+                   alt=<1>{
+                       fill=red!10,
+                        label={[font=\small,label distance=0mm,text=red]south:`switch'}
+                   }},
+    connect/.style={draw,very thick,Latex-Latex,alt=<4>{red}},
+    connect big/.style={draw,ultra thick,Latex-Latex,alt=<4>{red}},
+}
+\node[
+      cloud,draw,opacity=0.25,very thick,aspect=2,
+      minimum width=7cm,minimum height=4cm,
+     ] (net-cloud) at (0,0) {};
+\foreach \x/\d in {0/5cm,45/4cm,90/3cm,135/4cm,180/5cm,225/4cm,270/3cm,315/4cm} {
+    \node[computer] (c-\x) at (\x:\d) {};
+}
+\node[switch] (s1) at (2,-0.5) {};
+\node[switch] (s2) at (-1,0.5) {};
+\node[switch] (s3) at (0,-1) {};
+\draw[connect] (c-0) -- (s1);
+\draw[connect] (c-45) -- (s1);
+\draw[connect] (c-315) -- (s1);
+\draw[connect] (c-90) -- (s2);
+\draw[connect] (c-135) -- (s2);
+\draw[connect] (c-180) -- (s2);
+\draw[connect] (c-225) -- (s3);
+\draw[connect] (c-270) -- (s3);
+\draw[connect big] (s1) -- (s2);
+\draw[connect big] (s1) -- (s3);
+\coordinate (box loc) at (4cm, 4.5cm);
+\end{tikzpicture}

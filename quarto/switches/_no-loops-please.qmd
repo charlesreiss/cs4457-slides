@@ -1,0 +1,65 @@
+
+### recall: broadcast  {.smaller}
+
+
+* MAC address FF:FF:FF:FF:FF:FF = everyone on network
+* ‘simple’ implementation: send to all but incoming port 
+<hr class="vspace" />
+* one way to do this in P4: 
+
+   * setup multicast group that includes all ports
+   * send to that multicast group in ingress processing
+   * drop the packet in egress processing if port number matches incoming port
+
+
+
+### aside: no backwards broadcast  {.smaller}
+
+
+
+* broadcast <i>sent to all but incoming port</i>
+* question: what would happen if we didn't do this? 
+
+   * multiple may apply
+
+ <table>
+<tr><td>A. might cause host to receive duplicates</td></tr>
+<tr><td>B. might cause copies sent to non-incoming port to be dropped</td></tr>
+<tr><td>C. might cause frames sent at same time to be dropped</td></tr>
+<tr><td>D. might cause frames sent much later to be dropped</td></tr>
+<tr><td></td></tr>
+</table>
+
+
+### loop from backwards broadcast 
+
+![](/switches/texfig/no-loops-please-loop-from-backwards-broadcast.figure.svg)
+
+
+### loops  {.smaller}
+
+
+* each packet keeps getting sent indefinitely
+* remember: happens for <i>every packet sent</i>
+* quickly overwhelms link between switches 
+<hr class="vspace" />
+* but can just avoid by not sending back?
+
+
+### loops with only-to-other 
+
+![](/switches/texfig/no-loops-please-loops-with-only-to-other.figure.svg)
+
+
+### explosion from loops  {.smaller}
+
+
+* avoiding sending back is not enough
+* will get catastrophic failure of network! 
+<hr class="vspace" />
+* simple fix: only have one path from A to B 
+
+   * BUT means network is more fragile
+
+* we'll have better solutions when we talk about routing later
+

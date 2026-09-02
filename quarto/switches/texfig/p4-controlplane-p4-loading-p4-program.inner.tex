@@ -1,0 +1,32 @@
+\begin{tikzpicture}
+\node[minimum width=15cm,minimum height=9cm] (current page) {};
+\begin{scope}[overlay]
+
+\tikzset{
+    box/.style={
+        align=left,
+        draw=red,
+        fill=white,
+        ultra thick,
+        anchor=north,
+        at={([yshift=-1cm]current page.center)},
+    },
+}
+    \begin{visibleenv}<2>
+    \node[box] {
+        swtich supports having primary + backup controller, \\
+        so need to indicate this is primary controller now \\
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<3>
+    \node[box] {
+        ``forwarding pipeline'' = dataplane
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<4>
+    \node[box] {
+        P4 code compiled to file to load, specified here
+    };
+    \end{visibleenv}
+\end{scope}
+\end{tikzpicture}

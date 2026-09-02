@@ -1,0 +1,26 @@
+
+### P4 
+
+
+* P4 --- programming langauge for data planes
+* intended to be compiled to run on fast switches
+* includes ‘runtime’ defining how control plane configures data plane
+
+
+### future P4 assignment  {.smaller}
+
+
+* given:  
+
+   * simple P4 switch that doesn't know where to direct frames
+   * simpler controller (in Python) that configures switch
+   * simulated 4-machine network in VM
+
+* your task will be: 
+
+   * have controller write static configuration to direct to right place
+   * modify data plane to send information to control plane
+   * have controller change configuration based on info from data plane
+
+* (we'll discuss more details later)
+

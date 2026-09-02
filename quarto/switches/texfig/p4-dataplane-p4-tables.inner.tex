@@ -1,0 +1,37 @@
+\begin{tikzpicture}
+\node[minimum width=15cm,minimum height=9cm] (current page) {};
+\begin{scope}[overlay]
+
+\tikzset{
+    box/.style={
+        align=left,
+        draw=red,
+        fill=white,
+        ultra thick,
+        anchor=west,
+        at={([xshift=1cm]current page.center)},
+    },
+}
+    \begin{visibleenv}<2>
+    \node[box] {
+        declare a table with a name \\
+        done has part of ingress/outgress
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<3>
+    \node[box] {
+        key/value structure \\
+        keys usually from headers \\
+        values are actions to run
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<4>
+    \node[box] {
+        here, each table entry \\
+        contains whole address \\
+        P4 also supports \\
+        partially matched keys
+    };
+    \end{visibleenv}
+\end{scope}
+\end{tikzpicture}

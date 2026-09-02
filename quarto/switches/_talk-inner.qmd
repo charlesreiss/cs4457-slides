@@ -1,0 +1,70 @@
+
+# switched networks {visibility="hidden"}
+
+{{< include /switches/_switched-network.qmd >}}
+
+# datagrams and Ethernet format {visibility="hidden"}
+
+{{< include /switches/_datagrams.qmd >}}
+
+## versus virtual circuits {visibility="hidden"}
+
+{{< include /switches/_vs-virtual-circuits.qmd >}}
+
+# switch architecture {visibility="hidden"}
+
+## not programmable {visibility="hidden"}
+
+{{< include /switches/_switch-not-program.qmd >}}
+
+## control v dataplane {visibility="hidden"}
+
+{{< include /switches/_control-v-dataplane.qmd >}}
+
+## what is P4 {visibility="hidden"}
+
+{{< include /switches/_p4-whatis.qmd >}}
+
+## P4 dataplane {visibility="hidden"}
+
+## switch parts{visibility="hidden"}
+
+{{< include /switches/_p4-switch-parts.qmd >}}
+
+## header management{visibility="hidden"}
+
+{{< include /switches/_p4-headers.qmd >}}
+
+## exercise{visibility="hidden"}
+
+{{< include /switches/_p4-header-exer.qmd >}}
+
+## ingress processing{visibility="hidden"}
+
+{{< include /switches/_p4-ingress.qmd >}}
+
+## exercise{visibility="hidden"}
+
+{{< include /switches/_p4-table-exer.qmd >}}
+
+## egress processing{visibility="hidden"}
+
+{{< include /switches/_p4-egress.qmd >}}
+
+## P4 controlplane {visibility="hidden"}
+
+{{< include /switches/_p4-controlplane.qmd >}}
+
+# basic Ethernet switching / MAC learning {visibility="hidden"}
+
+### againframe(ethernetFormat)
+
+{{< include /switches/_in-ethernet.qmd >}}
+
+## aside: no loops please {visibility="hidden"}
+
+{{< include /switches/_no-loops-please.qmd >}}
+
+# preview: internetworks {visibility="hidden"}
+
+{{< include /switches/_preview-routing.qmd >}}

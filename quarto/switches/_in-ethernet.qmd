@@ -1,0 +1,64 @@
+
+### network and switch tables 
+
+
+
+::: {.r-stack .my-full}
+![](/switches/texfig/in-ethernet-network-and-switch-tables.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/switches/texfig/in-ethernet-network-and-switch-tables.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/switches/texfig/in-ethernet-network-and-switch-tables.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/switches/texfig/in-ethernet-network-and-switch-tables.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+
+:::
+
+
+### constructing switch tables  {.smaller}
+
+
+* could have system administrator input these by hand 
+
+   * through an SSH-like interface, probably
+
+* works, but error-prone, hard to change, etc. 
+<hr class="vspace" />
+* alternative: switch should figure it out
+
+
+### key trick: backup plan  {.smaller}
+
+
+* Ethernet designed for multi-access
+* can simulate that by broadcasting all frames 
+<hr class="vspace" />
+* what to do if switch table is incomplete?
+* just broadcast to everyone!
+
+
+### MAC learning 
+
+
+
+::: {.r-stack .my-full}
+![](/switches/texfig/in-ethernet-mac-learning.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/switches/texfig/in-ethernet-mac-learning.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/switches/texfig/in-ethernet-mac-learning.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/switches/texfig/in-ethernet-mac-learning.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+![](/switches/texfig/in-ethernet-mac-learning.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+
+![](/switches/texfig/in-ethernet-mac-learning.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
+
+![](/switches/texfig/in-ethernet-mac-learning.figure-7.svg){.fragment .fade-in-then-out fragment-index=7}
+
+![](/switches/texfig/in-ethernet-mac-learning.figure-8.svg){.fragment .fade-in-then-out fragment-index=8}
+
+
+:::
+

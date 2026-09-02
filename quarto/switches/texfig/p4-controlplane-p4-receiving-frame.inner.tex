@@ -1,0 +1,28 @@
+\begin{tikzpicture}
+\node[minimum width=15cm,minimum height=9cm] (current page) {};
+\begin{scope}[overlay]
+
+\tikzset{
+    box/.style={
+        align=left,
+        draw=red,
+        fill=white,
+        ultra thick,
+        anchor=north,
+        at={([yshift=0cm]current page.center)},
+    },
+}
+    \begin{visibleenv}<2>
+    \node[box] {
+        payload = bytes of frame  \\
+        (what would normally be sent on network)
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<3>
+    \node[box] {
+        extra metadata can be set by dataplane \\
+        example: which port packet came from
+    };
+    \end{visibleenv}
+\end{scope}
+\end{tikzpicture}

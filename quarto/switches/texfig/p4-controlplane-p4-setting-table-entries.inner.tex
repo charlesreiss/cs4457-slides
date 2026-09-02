@@ -1,0 +1,40 @@
+\begin{tikzpicture}
+\node[minimum width=15cm,minimum height=9cm] (current page) {};
+\begin{scope}[overlay]
+
+\tikzset{
+    box/.style={
+        align=left,
+        draw=red,
+        fill=white,
+        ultra thick,
+        anchor=north,
+        at={([yshift=-1cm]current page.center)},
+    },
+}
+    \begin{visibleenv}<2>
+    \node[box] {
+        p4info\_helper, switch objects created by setup code
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<3>
+    \node[box] {
+        full name of table, including stage it is defined in
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<4>
+    \node[box] {
+        match value --- format would be different \\
+        if key was \texttt{lpm} or \texttt{ternary} \\
+        instead of exact match
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<5>
+    \node[box] {
+        \texttt{write\_or\_overwrite\_table\_entry} not the `raw' function \\
+        (one I wrote based on one P4 tutorial authors wrote) \\
+        uses gRPC (remote procedure call) library, which adds some extra steps
+    };
+    \end{visibleenv}
+\end{scope}
+\end{tikzpicture}

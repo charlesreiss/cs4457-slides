@@ -1,0 +1,40 @@
+
+### P4: parsing  {.smaller}
+
+    
+<pre><code>parser MyParser(...) {
+    ...
+    state parse_ethernet {
+        <span data-fragment-index="0" class="fragment custom myem-only">packet.extract(hdr.ethernet);</span>
+        transition select(hdr.ethernet.etherType) {
+            TYPE_IPV4: parse_ipv4;
+            TYPE_IPV6: parse_ipv6
+            default: accept;
+        }
+    }
+
+    state parse_ipv4 {
+        <span data-fragment-index="0" class="fragment custom myem-only">packet.extract(hdr.ipv4)</span>
+        transition accept;
+    }
+    ....
+}
+</code></pre>
+ ![](/switches/texfig/p4-parse-deparse-p4-parsing.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
+![](/switches/texfig/p4-parse-deparse-p4-parsing.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
+
+
+### P4: deparsing  {.smaller}
+
+    
+<pre><code>control MyDeparser(packet_out packet, in headers hdr) {
+    apply {
+        <span data-fragment-index="0" class="fragment custom myem-only">packet.emit</span>(hdr.ethernet);
+        <span data-fragment-index="0" class="fragment custom myem-only">packet.emit</span>(hdr.ipv4);
+        <span data-fragment-index="0" class="fragment custom myem-only">packet.emit</span>(hdr.ipv6);
+    }
+}
+</code></pre>
+ ![](/switches/texfig/p4-parse-deparse-p4-deparsing.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
+![](/switches/texfig/p4-parse-deparse-p4-deparsing.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
+

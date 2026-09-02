@@ -1,0 +1,48 @@
+
+### P4 switch architecture 
+
+
+
+::: {.r-stack .my-full}
+![](/switches/texfig/p4arch.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/switches/texfig/p4arch.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/switches/texfig/p4arch.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/switches/texfig/p4arch.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+![](/switches/texfig/p4arch.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+
+![](/switches/texfig/p4arch.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
+
+![](/switches/texfig/p4arch.figure-7.svg){.fragment .fade-in-then-out fragment-index=7}
+
+![](/switches/texfig/p4arch.figure-8.svg){.fragment .fade-in-then-out fragment-index=8}
+
+
+:::
+
+
+### P4: switch parts  {.smaller}
+
+
+```
+V1Switch(
+MyParser(),
+MyVerifyChecksum(),
+MyIngress(),
+MyEgress(),
+MyComputeChecksum(),
+MyDeparser()
+) main;
+
+```
+ 
+
+* code to declare instance of dataplane from functions for each part
+* will look at most of these components 
+
+   * won't have reason to change verify/compute checksum
+
+

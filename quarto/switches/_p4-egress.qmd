@@ -1,0 +1,12 @@
+
+### egress processing  {.smaller}
+
+
+* same as ingress processing but different function 
+<hr class="vspace" />
+* usage in upcoming assignment: 
+
+   * ingress step duplicates packet to all output ports
+   * egress step step runs on each duplicate, drops excess one
+
+

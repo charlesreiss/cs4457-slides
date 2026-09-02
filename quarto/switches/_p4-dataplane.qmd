@@ -1,0 +1,356 @@
+
+### P4 
+
+
+* P4 --- programming langauge for data planes
+* intended to be compiled to run on fast switches
+* includes ‘runtime’ defining how control plane configures data plane
+
+
+### future P4 assignment  {.smaller}
+
+
+* given:  
+
+   * simple P4 switch that doesn't know where to direct frames
+   * simpler controller (in Python) that configures switch
+   * simulated 4-machine network in VM
+
+* your task will be: 
+
+   * have controller write static configuration to direct to right place
+   * modify data plane to send information to control plane
+   * have controller change configuration based on info from data plane
+
+* (we'll discuss more details later)
+
+
+### P4 switch architecture 
+
+
+
+::: {.r-stack .my-full}
+![](/switches/texfig/p4arch.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/switches/texfig/p4arch.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/switches/texfig/p4arch.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/switches/texfig/p4arch.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+![](/switches/texfig/p4arch.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+
+![](/switches/texfig/p4arch.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
+
+![](/switches/texfig/p4arch.figure-7.svg){.fragment .fade-in-then-out fragment-index=7}
+
+![](/switches/texfig/p4arch.figure-8.svg){.fragment .fade-in-then-out fragment-index=8}
+
+
+:::
+
+
+### P4: switch parts  {.smaller}
+
+
+```
+V1Switch(
+MyParser(),
+MyVerifyChecksum(),
+MyIngress(),
+MyEgress(),
+MyComputeChecksum(),
+MyDeparser()
+) main;
+
+```
+ 
+
+* code to declare instance of dataplane from functions for each part
+* will look at most of these components 
+
+   * won't have reason to change verify/compute checksum
+
+
+
+### P4: declaring headers (1)  {.smaller}
+
+    
+<pre><code>typedef bit&lt;48&gt; macAddr_t;
+<span data-fragment-index="0" class="fragment custom myem-only">@header</span> ethernet_t~ {
+    macAddr_t srcAddr;
+    macAddr_T dstAddr;
+    bit&lt;16&gt;   etherType;
+}
+</code></pre>
+ 
+
+* kinda like `typedef struct { ... } ethernet_t;`
+* order needs to <i>exactly</i> match what's sent on network 
+
+   * switch will do bit-by-bit copy into this struct
+
+
+
+### P4: declaring headers (2)  {.smaller}
+
+    
+<pre><code><span data-fragment-index="0" class="fragment custom myem-only">struct headers</span> {
+    <span data-fragment-index="1" class="fragment custom myem-only">ethernet_t</span>   ethernet;
+    <span data-fragment-index="1" class="fragment custom myem-only">ipv4_t</span>       ipv4;
+    <span data-fragment-index="1" class="fragment custom myem-only">ipv6_t</span>       ipv6;
+}
+</code></pre>
+ 
+
+* struct of all possible headers 
+
+   * from all layers the switch/router handles
+   * not all frames will use all of them, some may be mutually exclusive
+   * order does not need to match frame storage (will write code to handle that)
+
+* references header types defined previously
+
+
+### P4: parsing  {.smaller}
+
+
+```
+parser MyParser(
+    packet_in packet,
+    out headers hdr,
+    inout metadata meta,
+    inout standard_metadata_t standard_metadata) {
+
+```
+ 
+
+* function modifies ‘out’ parameters instead of returning
+* parser function --- takes parameters: 
+
+   * packet --- the input frame
+   * headers --- extracted headers (<code>struct headers</code>)
+   * meta --- program's local variables about frame (<code>struct metadata</code>)
+   * standard_metadata --- info for system about frame 
+
+      * where frame came from, where it should go, etc.
+
+
+
+
+### P4: parsing  {.smaller}
+
+    
+<pre><code>parser MyParser(...) {
+    <span data-fragment-index="0" class="fragment custom myem-only">state</span> start {
+        <span data-fragment-index="1" class="fragment custom myem-only">transition</span> <span data-fragment-index="2" class="fragment custom myem-only">parse_ethernet</span>;
+    }
+    <span data-fragment-index="0" class="fragment custom myem-only">state</span> <span data-fragment-index="2" class="fragment custom myem-only">parse_ethernet</span> {
+        <span data-fragment-index="3" class="fragment custom myem-only">packet.extract(hdr.ethernet);</span>
+        <span data-fragment-index="1" class="fragment custom myem-only">transition</span> select(hdr.ethernet.etherType) {
+            TYPE_IPV4: parse_ipv4;
+            TYPE_IPV6: parse_ipv6
+            default: accept;
+        }
+    }
+    ....
+}
+</code></pre>
+ ![](/switches/texfig/p4-dataplane-p4-parsing.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
+![](/switches/texfig/p4-dataplane-p4-parsing.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
+![](/switches/texfig/p4-dataplane-p4-parsing.figure-3.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=3}
+![](/switches/texfig/p4-dataplane-p4-parsing.figure-4.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=4}
+![](/switches/texfig/p4-dataplane-p4-parsing.figure-5.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=5}
+
+
+### P4: parsing  {.smaller}
+
+    
+<pre><code>parser MyParser(...) {
+    ...
+    state parse_ethernet {
+        <span data-fragment-index="0" class="fragment custom myem-only">packet.extract(hdr.ethernet);</span>
+        transition select(hdr.ethernet.etherType) {
+            TYPE_IPV4: parse_ipv4;
+            TYPE_IPV6: parse_ipv6
+            default: accept;
+        }
+    }
+
+    state parse_ipv4 {
+        <span data-fragment-index="0" class="fragment custom myem-only">packet.extract(hdr.ipv4)</span>
+        transition accept;
+    }
+    ....
+}
+</code></pre>
+ ![](/switches/texfig/p4-dataplane-p4-parsing_2.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
+![](/switches/texfig/p4-dataplane-p4-parsing_2.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
+
+
+### P4: deparsing  {.smaller}
+
+    
+<pre><code>control MyDeparser(packet_out packet, in headers hdr) {
+    apply {
+        <span data-fragment-index="0" class="fragment custom myem-only">packet.emit</span>(hdr.ethernet);
+        <span data-fragment-index="0" class="fragment custom myem-only">packet.emit</span>(hdr.ipv4);
+        <span data-fragment-index="0" class="fragment custom myem-only">packet.emit</span>(hdr.ipv6);
+    }
+}
+</code></pre>
+ ![](/switches/texfig/p4-dataplane-p4-deparsing.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
+![](/switches/texfig/p4-dataplane-p4-deparsing.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
+
+
+### P4: ingress processing  {.smaller}
+
+    
+
+* example: send <i>everything</i> to output port number 4
+ 
+<pre><code>control MyIngress(...) {
+    apply {
+        <span data-fragment-index="0" class="fragment custom myem-only">standard_metadata.egress_spec = 4;</span>
+    }
+}
+</code></pre>
+ ![](/switches/texfig/p4-dataplane-p4-ingress-processing.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
+![](/switches/texfig/p4-dataplane-p4-ingress-processing.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
+
+
+### switch decisions  {.smaller}
+
+
+* most decisions switches/routers make are table lookups 
+<hr class="vspace" />
+* take field from packet (e.g. destination)
+* lookup in table what to do with that (e.g. send to port X, throw error, etc.) 
+<hr class="vspace" />
+* P4 has special syntax for tables and table lookups
+
+
+### P4: tables  {.smaller}
+
+    
+<pre><code><span data-fragment-index="0" class="fragment custom myem-only">table</span> mac_dst_exact {
+    <span data-fragment-index="1" class="fragment custom myem-only">key</span> = {
+        <span data-fragment-index="1" class="fragment custom myem-only">hdr.ethernet.dstAddr</span> : <span data-fragment-index="2" class="fragment custom myem-only">exact</span>;
+    }
+    <span data-fragment-index="1" class="fragment custom myem-only">actions</span> = {
+        drop,
+        forward_to,
+    }
+    size = 1024;
+    default_action = drop();
+}
+</code></pre>
+ ![](/switches/texfig/p4-dataplane-p4-tables.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
+![](/switches/texfig/p4-dataplane-p4-tables.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
+![](/switches/texfig/p4-dataplane-p4-tables.figure-3.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=3}
+![](/switches/texfig/p4-dataplane-p4-tables.figure-4.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=4}
+
+
+### P4 table key types  {.smaller}
+
+
+* exact --- full entry
+* lpm --- longest prefix match 
+
+   * table entries contain ‘prefixes’ of header field(s)
+   * we'll see motivation for this when we talk about routing
+   * if multiple entries match, take longest one
+
+* ternary --- 0/1/don't care 
+
+   * table entries contain key and mask
+   * entry matches if bits included in mask match
+   * other view: keys represented with 0/1/don't care ‘trits’
+
+
+
+### content-addressable memory  {.smaller}
+
+
+* high-end routers/switches have <i>content addressable memory</i> (CAM)
+* … including <i>ternary content addressable memory</i> (TCAM) 
+<hr class="vspace" />
+* = hardware that implements a table lookup 
+
+   * ‘content’ $\approx$ key being looked up
+   * looks kinda like highly associative cache
+   * probably lots of comparators
+
+* allows multigigabit frame processing speeds
+* P4 goal: P4 programs compile to use CAM/TCAM when available
+
+
+### aside: TCAM cost  {.smaller}
+
+
+* 2.7x more transistors than SRAM (common cache technology)
+* probably much more power than SRAM
+* hard to find recent quotes for price/power
+* but probably 10s of dollars per megabyte 
+
+   * e.g., secondary market price of Broadcom chip with 40Mbit of this is $\sim$\$180
+   * chip needs 80W heatsink, max 900MHz clock rate
+   * but chip has a bunch of other functionality, of course
+
+
+
+### P4: using a table  {.smaller}
+
+    
+<pre><code>control MyIngress(...) {
+    ...
+    table mac_dst_exact = { 
+        /* seen earlier */ ...
+    }
+    apply {
+        <span data-fragment-index="0" class="fragment custom myem-only">mac_dst_exact.apply();</span>
+    }
+}
+</code></pre>
+ ![](/switches/texfig/p4-dataplane-p4-using-a-table.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
+![](/switches/texfig/p4-dataplane-p4-using-a-table.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
+
+
+### P4: actions  {.smaller}
+
+    
+<pre><code>control MyIngress(...) {
+    <span data-fragment-index="0" class="fragment custom myem-only">action drop()</span> {
+        mark_to_drop(<span data-fragment-index="1" class="fragment custom myem-only">standard_metadata</span>);
+    }
+    <span data-fragment-index="0" class="fragment custom myem-only">action forward_to(egressSpec_t port)</span> {
+        <span data-fragment-index="1" class="fragment custom myem-only">standard_metadata.egress_spec = port;</span>
+    }
+    <span data-fragment-index="0" class="fragment custom myem-only">action mark_and_forward(egressSpec_t port)</span> {
+        <span data-fragment-index="2" class="fragment custom myem-only">hdr.some_proto.value</span> = 1;
+        <span data-fragment-index="1" class="fragment custom myem-only">standard_metadata.egress_spec = port;</span>
+    }
+    ...
+}
+</code></pre>
+ ![](/switches/texfig/p4-dataplane-p4-actions.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
+![](/switches/texfig/p4-dataplane-p4-actions.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
+![](/switches/texfig/p4-dataplane-p4-actions.figure-3.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=3}
+![](/switches/texfig/p4-dataplane-p4-actions.figure-4.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=4}
+
+
+### P4: special actions  {.smaller}
+
+
+* some ways switch can direct packet (incomplete list) 
+<hr class="vspace" />
+* send to the control plane 
+
+   * special output port that goes to ‘general purpose’ CPU
+
+* multicast/broadcast to multiple ports 
+
+   * control plane can set <i>multicast groups</i>
+   * makes multiple copies of packets
+
+

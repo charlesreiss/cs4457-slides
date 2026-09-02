@@ -1,0 +1,63 @@
+
+### exercise: header representation (1)  {.smaller}
+
+
+* let's say packet format is: 
+
+   * 16 bit source address
+   * 16 bit destination address
+   * 1 bit flag ‘‘is timestamp present’’
+   * 1 bit flag ‘`is data present’
+   * 6 bits unused
+   * (optional) 32-bit timestamp
+   * (optional) 16-bit data size
+   * (optional) data
+
+* how to represent this? 
+
+   * how many structs?
+   * what's in the <code>header {…}</code>?
+
+
+
+###  
+
+
+
+### exercise: header parsing  {.smaller}
+
+
+```
+struct basic_hdr_t {
+    bit<16> src; bit<16> dst;
+    bit<1> has_timestamp; bit<1> has_data; bit<6> unused;
+};
+struct timestamp_t {
+    bit<32> timestamp;
+}
+struct data_hdr_t {
+    bit<16> size;
+}
+
+```
+ 
+
+* what states/transitions in parser?
+
+
+### states/transitions  {.smaller}
+
+
+* parse_basic: 
+
+   * has_timestamp: to parse_timestamp:
+   * has_data: to parse_data
+   * otherwise: accept
+
+* parse_timestamp: 
+
+   * has_data: to parse_data:
+   * otherwise: accept
+
+* parse_data: then accept
+

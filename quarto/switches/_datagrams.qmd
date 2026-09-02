@@ -1,0 +1,80 @@
+
+### typically sent on Ethernet 
+
+
+
+::: {.r-stack .my-full}
+![](/switches/texfig/ethernetFormat.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/switches/texfig/ethernetFormat.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/switches/texfig/ethernetFormat.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/switches/texfig/ethernetFormat.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+![](/switches/texfig/ethernetFormat.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+
+![](/switches/texfig/ethernetFormat.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
+
+![](/switches/texfig/ethernetFormat.figure-7.svg){.fragment .fade-in-then-out fragment-index=7}
+
+![](/switches/texfig/ethernetFormat.figure-8.svg){.fragment .fade-in-then-out fragment-index=8}
+
+
+:::
+
+
+### MAC addresses  {.smaller}
+
+
+* MAC [media access control] addresses
+* used by Ethernet, Wifi, and lots of other protocols
+* 48-bit number written in hex: <code>01:23:45:67:89:AB</code> 
+
+   * (sometimes seperated with <code>-</code> instead of <code>:</code>)
+
+* assigned by IEEE to networking manufacturers in blocks 
+
+   * Institution of Electrical and Electronics Engineers
+   * example: <code>00:02:B3:</code>…, <code>00:03:47:</code>…, (and many more) for Intel
+ 
+<hr class="vspace" />
+* individual addresses hard-coded in networking hardware 
+
+   * uniquely identify port/device
+
+
+
+### special MAC addresses  {.smaller}
+
+
+* <code>00:00:00:00:00:00</code> (all zeroes)
+* <code>FF:FF:FF:FF:FF:FF</code> (all ones), <code>FF:</code>… 
+
+   * special destination meaning ‘‘send to everyone’’ (on this network)
+   * called <i>broadcast</i>
+
+* <code>01:80:C2:</code>…, <code>33:33:</code>…, (and some more) 
+
+   * special destinations representing multiple receivers
+   * example: ‘all IPv6 routers on this network’ (<code>33:33:00:00:00:02</code>)
+   * called <i>multicast</i>
+
+
+
+### larger MAC addresses  {.smaller}
+
+
+* IEEE now calls MAC address EUI-48 (48-bit Extended Unique Identifier) 
+<hr class="vspace" />
+* also created EUI-64, with 64-bit addresses 
+
+   * way of mapping EUI-48s to EUI-64s
+   * turns out 48 bits might have been low
+
+* I'm not sure what status is on switching to 64-bit addresses 
+
+   * IEEE 802.15.4 (used in ZigBee, 6LoWPAN, some others) uses EUI-64
+   * I don't know other local network protocols that do
+
+

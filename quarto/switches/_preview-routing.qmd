@@ -1,0 +1,16 @@
+
+### preview: routing  {.smaller}
+
+
+* better ways to decide where to send packets
+* … but require coordinating between switches 
+
+   * avoid loops
+   * choose between multiple paths
+   * avoid ‘flooding’ for each new machine
+ 
+<hr class="vspace" />
+* problem also very important for large networks…
+* … like the Internet
+* we will revisit it when we talk about IP routing
+

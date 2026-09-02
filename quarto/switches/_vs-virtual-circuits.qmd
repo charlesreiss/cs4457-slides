@@ -1,0 +1,35 @@
+
+### datagram idea  {.smaller}
+
+
+* can always send something to anyone on network 
+
+   * just put destination MAC in frame
+
+* no need for reservations/‘connections’/etc. 
+
+   * not like the interface you've seen with [TCP] sockets
+ 
+<hr class="vspace" />
+* not the only model for networks (and internetworks)
+
+
+### virtual circuit  {.smaller}
+
+
+* other model: virtual circuit
+* two machines setup a ‘circuit’ 
+
+   * some sort of ‘special’ messages to do this
+
+* switches/routers <em>reserve resources</em> for circuit 
+
+   * ‘‘gaurenteed’’ bandwidth
+
+* transmitted data must be part of estabished circuit 
+<hr class="vspace" />
+* example: ATM (Asynchronous Transfer Mode) 
+
+   * used (?historically?) by some telephone networks
+
+

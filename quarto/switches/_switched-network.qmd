@@ -1,0 +1,70 @@
+
+### recall: multi-access media 
+
+
+
+::: {.r-stack .my-full}
+![](/switches/texfig/switched-network-recall-multi-access-media.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/switches/texfig/switched-network-recall-multi-access-media.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/switches/texfig/switched-network-recall-multi-access-media.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+
+:::
+
+
+### recall: switched network 
+
+
+
+::: {.r-stack .my-full}
+![](/switches/texfig/switched-network-recall-switched-network.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/switches/texfig/switched-network-recall-switched-network.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/switches/texfig/switched-network-recall-switched-network.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/switches/texfig/switched-network-recall-switched-network.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+
+:::
+
+
+### hubs and switches  {.smaller}
+
+![](/switches/texfig/switched-network-hubs-and-switches.figure.svg)
+ 
+
+* difference is hidden inside
+* hub: electrically connects hosts --- as if shared wires
+* switch: decides what to send on each output
+
+
+### history: multi-access to switched  {.smaller}
+
+
+* a lot of early networking technology was multi-access
+* wireless (wifi, cellular) and most home broadband still is 
+<hr class="vspace" />
+* most wired networks are <i>switched</i>  
+
+   * frames mostly directed to correct machine
+
+
+
+### switching versus routing  {.smaller}
+
+
+* switches --- forward frames for common network
+* routers --- forward packets between networks 
+<hr class="vspace" />
+* basically same functionality
+* differences: 
+
+   * extra layer for internetwork packets
+   * different mechanism to decide where to forward
+   * switch forwarding typically simpler
+
+* will start with simpler switching
+

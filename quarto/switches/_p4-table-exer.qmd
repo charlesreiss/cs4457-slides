@@ -1,0 +1,17 @@
+
+### exercise  {.smaller}
+
+
+* suppose we want to implement the following policy: 
+
+   * by default, packets sent to servers A, B, C, and D are dropped
+   * specific machines are given permission to contact server A
+   * the same is true for servers B and C and D
+   * some specific machines are give access to contact all servers
+
+* what tables would be useful to have? 
+
+   * what keys?
+   * what match strategy?
+
+

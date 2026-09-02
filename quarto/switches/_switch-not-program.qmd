@@ -1,0 +1,36 @@
+
+### an annoyance  {.smaller}
+
+
+* traditionally, switches/routers have been ‘fixed function’ specialized hardware 
+<hr class="vspace" />
+* special hardware needed for multigigabit performance
+* limited configuration options
+* usually non-automated configuration 
+
+   * login to each managed switch/router to change settings
+   * no standardization for configuration across vendors
+
+* little visibility into internal design 
+
+   * even though switches/routers often running complicated programs
+
+
+
+### the historical situation  {.smaller}
+
+
+* let's say I want to design a new extension to Ethernet 
+<hr class="vspace" />
+* historical options if want to test/deploy it…  
+
+   * implement it in slow/low-capacity software/FPGA switch 
+<hr class="vspace" />
+   * convince switch HW company to implement it 
+<hr class="vspace" />
+   * contort extension to fit with features not intended for use case 
+
+      * example: using VPN support to change path of frames on network
+
+
+

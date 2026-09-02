@@ -1,0 +1,6 @@
+---
+title: "switches"
+
+---
+
+{{< include ../switches/_talk-inner.qmd >}}

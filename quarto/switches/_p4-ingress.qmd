@@ -1,0 +1,152 @@
+
+### P4: ingress processing  {.smaller}
+
+    
+
+* example: send <i>everything</i> to output port number 4
+ 
+<pre><code>control MyIngress(...) {
+    apply {
+        <span data-fragment-index="0" class="fragment custom myem-only">standard_metadata.egress_spec = 4;</span>
+    }
+}
+</code></pre>
+ ![](/switches/texfig/p4-ingress-p4-ingress-processing.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
+![](/switches/texfig/p4-ingress-p4-ingress-processing.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
+
+
+### switch decisions  {.smaller}
+
+
+* most decisions switches/routers make are table lookups 
+<hr class="vspace" />
+* take field from packet (e.g. destination)
+* lookup in table what to do with that (e.g. send to port X, throw error, etc.) 
+<hr class="vspace" />
+* P4 has special syntax for tables and table lookups
+
+
+### P4: tables  {.smaller}
+
+    
+<pre><code><span data-fragment-index="0" class="fragment custom myem-only">table</span> mac_dst_exact {
+    <span data-fragment-index="1" class="fragment custom myem-only">key</span> = {
+        <span data-fragment-index="1" class="fragment custom myem-only">hdr.ethernet.dstAddr</span> : <span data-fragment-index="2" class="fragment custom myem-only">exact</span>;
+    }
+    <span data-fragment-index="1" class="fragment custom myem-only">actions</span> = {
+        drop,
+        forward_to,
+    }
+    size = 1024;
+    default_action = drop();
+}
+</code></pre>
+ ![](/switches/texfig/p4-ingress-p4-tables.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
+![](/switches/texfig/p4-ingress-p4-tables.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
+![](/switches/texfig/p4-ingress-p4-tables.figure-3.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=3}
+![](/switches/texfig/p4-ingress-p4-tables.figure-4.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=4}
+
+
+### P4 table key types  {.smaller}
+
+
+* exact --- full entry
+* lpm --- longest prefix match 
+
+   * table entries contain ‘prefixes’ of header field(s)
+   * we'll see motivation for this when we talk about routing
+   * if multiple entries match, take longest one
+
+* ternary --- 0/1/don't care 
+
+   * table entries contain key and mask
+   * entry matches if bits included in mask match
+   * other view: keys represented with 0/1/don't care ‘trits’
+
+
+
+### content-addressable memory  {.smaller}
+
+
+* high-end routers/switches have <i>content addressable memory</i> (CAM)
+* … including <i>ternary content addressable memory</i> (TCAM) 
+<hr class="vspace" />
+* = hardware that implements a table lookup 
+
+   * ‘content’ $\approx$ key being looked up
+   * looks kinda like highly associative cache
+   * probably lots of comparators
+
+* allows multigigabit frame processing speeds
+* P4 goal: P4 programs compile to use CAM/TCAM when available
+
+
+### aside: TCAM cost  {.smaller}
+
+
+* 2.7x more transistors than SRAM (common cache technology)
+* probably much more power than SRAM
+* hard to find recent quotes for price/power
+* but probably 10s of dollars per megabyte 
+
+   * e.g., secondary market price of Broadcom chip with 40Mbit of this is $\sim$\$180
+   * chip needs 80W heatsink, max 900MHz clock rate
+   * but chip has a bunch of other functionality, of course
+
+
+
+### P4: using a table  {.smaller}
+
+    
+<pre><code>control MyIngress(...) {
+    ...
+    table mac_dst_exact = { 
+        /* seen earlier */ ...
+    }
+    apply {
+        <span data-fragment-index="0" class="fragment custom myem-only">mac_dst_exact.apply();</span>
+    }
+}
+</code></pre>
+ ![](/switches/texfig/p4-ingress-p4-using-a-table.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
+![](/switches/texfig/p4-ingress-p4-using-a-table.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
+
+
+### P4: actions  {.smaller}
+
+    
+<pre><code>control MyIngress(...) {
+    <span data-fragment-index="0" class="fragment custom myem-only">action drop()</span> {
+        mark_to_drop(<span data-fragment-index="1" class="fragment custom myem-only">standard_metadata</span>);
+    }
+    <span data-fragment-index="0" class="fragment custom myem-only">action forward_to(egressSpec_t port)</span> {
+        <span data-fragment-index="1" class="fragment custom myem-only">standard_metadata.egress_spec = port;</span>
+    }
+    <span data-fragment-index="0" class="fragment custom myem-only">action mark_and_forward(egressSpec_t port)</span> {
+        <span data-fragment-index="2" class="fragment custom myem-only">hdr.some_proto.value</span> = 1;
+        <span data-fragment-index="1" class="fragment custom myem-only">standard_metadata.egress_spec = port;</span>
+    }
+    ...
+}
+</code></pre>
+ ![](/switches/texfig/p4-ingress-p4-actions.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
+![](/switches/texfig/p4-ingress-p4-actions.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
+![](/switches/texfig/p4-ingress-p4-actions.figure-3.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=3}
+![](/switches/texfig/p4-ingress-p4-actions.figure-4.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=4}
+
+
+### P4: special actions  {.smaller}
+
+
+* some ways switch can direct packet (incomplete list) 
+<hr class="vspace" />
+* send to the control plane 
+
+   * special output port that goes to ‘general purpose’ CPU
+
+* multicast/broadcast to multiple ports 
+
+   * control plane can set <i>multicast groups</i>
+   * makes multiple copies of packets
+
+

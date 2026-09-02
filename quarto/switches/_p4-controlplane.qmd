@@ -1,0 +1,108 @@
+
+### P4: control plane  {.smaller}
+
+
+* P4 control plane is a program 
+<hr class="vspace" />
+* sends commands to one or more switches: 
+
+   * [load P4 program into data plane]{.fragment fragment-index=2 .custom .myem-only}
+   * [set table entries]{.fragment fragment-index=3 .custom .myem-only}
+   * [configure multicast groups]{.fragment fragment-index=4 .custom .myem-only}
+   * [receive frames to process them]{.fragment fragment-index=5 .custom .myem-only}
+
+
+
+### aside: wrappers  {.smaller}
+
+
+* I'll show code from a P4 controller for upcoming assignment
+* written in Python, using custom library to make things convenient
+* works with softawre based reference switch 
+<hr class="vspace" />
+* no requirement to use Python or other specific language 
+
+   * controller sends commands over network/IPC to data plane
+
+* real raw code has more boilerplate/etc.
+* probably several things different for hardware-based switches
+
+
+### againframe(controlToC)
+
+### P4: loading P4 program  {.smaller}
+
+    
+<pre><code>p4info_helper =  ....
+switch = ....
+<span data-fragment-index="0" class="fragment custom myem-only">switch.MasterArbitrationUpdate()</span>
+switch.<span data-fragment-index="1" class="fragment custom myem-only">SetForwardingPipelineConfig</span>(
+    p4info=p4info_helper.p4info,
+    <span data-fragment-index="2" class="fragment custom myem-only">bmv2_json_file_path=bmv2_file_path</span>
+)
+</code></pre>
+ ![](/switches/texfig/p4-controlplane-p4-loading-p4-program.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
+![](/switches/texfig/p4-controlplane-p4-loading-p4-program.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
+![](/switches/texfig/p4-controlplane-p4-loading-p4-program.figure-3.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=3}
+![](/switches/texfig/p4-controlplane-p4-loading-p4-program.figure-4.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=4}
+
+
+### againframe(controlToC)
+
+### P4: setting table entries  {.smaller}
+
+    
+<pre><code><span data-fragment-index="3" class="fragment custom myem-only">write_or_overwrite_table_entry</span>(
+    <span data-fragment-index="0" class="fragment custom myem-only">p4info_helper=p4info_helper, switch=switch,</span>
+    table_name='<span data-fragment-index="1" class="fragment custom myem-only">MyIngress.mac_dst_exact</span>',
+    match_fields={
+        'hdr.ethernet.dstAddr': <span data-fragment-index="2" class="fragment custom myem-only">some_address</span>,
+    },
+    action_name='forward_to',
+    action_params={'port': port},
+)
+</code></pre>
+ ![](/switches/texfig/p4-controlplane-p4-setting-table-entries.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
+![](/switches/texfig/p4-controlplane-p4-setting-table-entries.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
+![](/switches/texfig/p4-controlplane-p4-setting-table-entries.figure-3.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=3}
+![](/switches/texfig/p4-controlplane-p4-setting-table-entries.figure-4.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=4}
+![](/switches/texfig/p4-controlplane-p4-setting-table-entries.figure-5.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=5}
+
+
+### againframe(controlToC)
+
+### P4: multicast groups  {.smaller}
+
+    
+<pre><code>switch.Write<span data-fragment-index="2" class="fragment custom myem-only">PRE</span>Entry(
+    p4info_helper.buildMulticastGroupEntry(
+        <span data-fragment-index="0" class="fragment custom myem-only">multicast_group_id=1</span>, 
+        <span data-fragment-index="1" class="fragment custom myem-only">replicas</span>=\[
+            {'egress_port': 1, 'instance': 0},
+            {'egress_port': 2, 'instance': 0},
+            {'egress_port': 3, 'instance': 0},
+            {'egress_port': 4, 'instance': 0},
+        ]
+    )
+)
+</code></pre>
+ ![](/switches/texfig/p4-controlplane-p4-multicast-groups.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
+![](/switches/texfig/p4-controlplane-p4-multicast-groups.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
+![](/switches/texfig/p4-controlplane-p4-multicast-groups.figure-3.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=3}
+![](/switches/texfig/p4-controlplane-p4-multicast-groups.figure-4.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=4}
+
+
+### againframe(controlToC)
+
+### P4: receiving frame  {.smaller}
+
+    
+<pre><code>    for item in switch.stream_msg_resp:
+        if item.HasField('packet'):
+            do_something_with(<span data-fragment-index="0" class="fragment custom myem-only">item.packet.payload</span>,
+                              <span data-fragment-index="1" class="fragment custom myem-only">item.packet.metadata</span>)
+</code></pre>
+ ![](/switches/texfig/p4-controlplane-p4-receiving-frame.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
+![](/switches/texfig/p4-controlplane-p4-receiving-frame.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
+![](/switches/texfig/p4-controlplane-p4-receiving-frame.figure-3.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=3}
+
