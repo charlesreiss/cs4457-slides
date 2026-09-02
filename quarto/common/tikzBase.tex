@@ -222,6 +222,9 @@
   \bool_gset_false:N \g_overlay_need_continue_bool
   \int_gset:Nn \g_overlay_current_slide_int {#1}
 }
+\NewDocumentCommand{\insertoverlaynumber}{}{
+    \int_use:N\g_overlay_current_slide_int%
+}
 
 \ExplSyntaxOff
 
