@@ -7,12 +7,17 @@
  
 <pre><code>control MyIngress(...) {
     apply {
-        <span data-fragment-index="0" class="fragment custom myem-only">standard_metadata.egress_spec = 4;</span>
+        <span data-fragment-index="1" class="fragment custom myem-only">standard_metadata.egress_spec = 4;</span>
     }
 }
 </code></pre>
- ![](/switches/texfig/p4-ingress-p4-ingress-processing.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
-![](/switches/texfig/p4-ingress-p4-ingress-processing.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
+
+::: {.myoverbox .fragment fragment-index=1 .low}
+
+*  standard\_metadata --- "hard-coded" phase reads `egress_spec`
+*  special `egress_spec` value for "discard frame"
+
+:::
 
 
 ### switch decisions  {.smaller}
@@ -26,14 +31,14 @@
 * P4 has special syntax for tables and table lookups
 
 
-### P4: tables  {.smaller}
+### P4: tables
 
     
-<pre><code><span data-fragment-index="0" class="fragment custom myem-only">table</span> mac_dst_exact {
-    <span data-fragment-index="1" class="fragment custom myem-only">key</span> = {
-        <span data-fragment-index="1" class="fragment custom myem-only">hdr.ethernet.dstAddr</span> : <span data-fragment-index="2" class="fragment custom myem-only">exact</span>;
+<pre><code><span data-fragment-index="2" class="fragment custom myem-only">table</span> mac_dst_exact {
+    <span data-fragment-index="3" class="fragment custom myem-only">key</span> = {
+        <span data-fragment-index="3" class="fragment custom myem-only">hdr.ethernet.dstAddr</span> : <span data-fragment-index="4" class="fragment custom myem-only">exact</span>;
     }
-    <span data-fragment-index="1" class="fragment custom myem-only">actions</span> = {
+    <span data-fragment-index="3" class="fragment custom myem-only">actions</span> = {
         drop,
         forward_to,
     }
@@ -41,10 +46,29 @@
     default_action = drop();
 }
 </code></pre>
- ![](/switches/texfig/p4-ingress-p4-tables.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
-![](/switches/texfig/p4-ingress-p4-tables.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
-![](/switches/texfig/p4-ingress-p4-tables.figure-3.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=3}
-![](/switches/texfig/p4-ingress-p4-tables.figure-4.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=4}
+
+::: {.myoverbox .midright .fragment fragment-index=2 .fade-in-then-out}
+
+*  declare a table wtih a name
+*  done as part of ingress/egress
+
+:::
+
+::: {.myoverbox .midright .fragment fragment-index=3 .fade-in-then-out}
+
+* key/value structure
+* keys usually from headers
+* values are the actions to run
+
+:::
+
+::: {.myoverbox .midright .fragment fragment-index=4 .fade-in-then-out}
+
+* here, each table entry<br/>contains whole address
+
+* P4 also supports partially matched keys
+
+:::
 
 
 ### P4 table key types  {.smaller}
@@ -95,7 +119,7 @@
 
 
 
-### P4: using a table  {.smaller}
+### P4: using a table  
 
     
 <pre><code>control MyIngress(...) {
@@ -104,35 +128,57 @@
         /* seen earlier */ ...
     }
     apply {
-        <span data-fragment-index="0" class="fragment custom myem-only">mac_dst_exact.apply();</span>
+        <span data-fragment-index="2" class="fragment custom myem-only">mac_dst_exact.apply();</span>
     }
 }
 </code></pre>
- ![](/switches/texfig/p4-ingress-p4-using-a-table.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
-![](/switches/texfig/p4-ingress-p4-using-a-table.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
+
+::: {.myoverbox .midright .fragment fragment-index=2}
+
+apply operation invokes the action specified
+
+:::
 
 
 ### P4: actions  {.smaller}
 
     
 <pre><code>control MyIngress(...) {
-    <span data-fragment-index="0" class="fragment custom myem-only">action drop()</span> {
-        mark_to_drop(<span data-fragment-index="1" class="fragment custom myem-only">standard_metadata</span>);
+    <span data-fragment-index="2" class="fragment custom myem-only">action drop()</span> {
+        mark_to_drop(<span data-fragment-index="3" class="fragment custom myem-only">standard_metadata</span>);
     }
-    <span data-fragment-index="0" class="fragment custom myem-only">action forward_to(egressSpec_t port)</span> {
-        <span data-fragment-index="1" class="fragment custom myem-only">standard_metadata.egress_spec = port;</span>
+    <span data-fragment-index="2" class="fragment custom myem-only">action forward_to(egressSpec_t port)</span> {
+        <span data-fragment-index="3" class="fragment custom myem-only">standard_metadata.egress_spec = port;</span>
     }
-    <span data-fragment-index="0" class="fragment custom myem-only">action mark_and_forward(egressSpec_t port)</span> {
-        <span data-fragment-index="2" class="fragment custom myem-only">hdr.some_proto.value</span> = 1;
-        <span data-fragment-index="1" class="fragment custom myem-only">standard_metadata.egress_spec = port;</span>
+    <span data-fragment-index="2" class="fragment custom myem-only">action mark_and_forward(egressSpec_t port)</span> {
+        <span data-fragment-index="4" class="fragment custom myem-only">hdr.some_proto.value</span> = 1;
+        <span data-fragment-index="3" class="fragment custom myem-only">standard_metadata.egress_spec = port;</span>
     }
     ...
 }
 </code></pre>
- ![](/switches/texfig/p4-ingress-p4-actions.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
-![](/switches/texfig/p4-ingress-p4-actions.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
-![](/switches/texfig/p4-ingress-p4-actions.figure-3.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=3}
-![](/switches/texfig/p4-ingress-p4-actions.figure-4.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=4}
+
+::: {.myoverbox .midright .fade-in-then-out .fragment fragment-index=2}
+
+*  actions basically function calls for pacekt
+
+*  can include parameters that are stored in table
+
+:::
+
+::: {.myoverbox .midright .fade-in-then-out .fragment fragment-index=3}
+
+typically actions set standard\_metdata <br/>
+to indicate where to send frame next
+
+:::
+
+::: {.myoverbox .midright .fade-in-then-out .fragment fragment-index=4}
+
+actions can also edit packet headers <br/>
+or do other table lookups
+
+:::
 
 
 ### P4: special actions  {.smaller}

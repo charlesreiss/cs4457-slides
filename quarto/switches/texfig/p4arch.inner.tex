@@ -43,10 +43,6 @@
 }
 \end{scope}
 \begin{visibleenv}<2>
-    \node[explain box] {
-        queues of frames to be processed \\
-        if needed, hold packets in between processing steps 
-    };
 \end{visibleenv}
 \begin{visibleenv}<3>
     \foreach \x in {in,out} {
@@ -54,9 +50,6 @@
             ([xshift=-.2cm]parser-\x-bottom-right) --
             ([xshift=.2cm]deparser-\x-bottom-left);
     }
-    \node[explain box] {
-        \textit{ingress} and \textit{egress} pipelines
-    };
 \end{visibleenv}
 \begin{visibleenv}<4>
     \foreach \x in {in} {
@@ -64,10 +57,6 @@
             ([xshift=-.2cm]parser-\x-bottom-right) --
             ([xshift=.2cm]deparser-\x-bottom-left);
     }
-    \node[explain box] {
-        ingress pipeline: processes every input frame \\
-        primary job: decide where to forward frame (if anywhere) 
-    };
 \end{visibleenv}
 \begin{visibleenv}<5>
     \foreach \x in {out} {
@@ -75,10 +64,6 @@
             ([xshift=-.2cm]parser-\x-bottom-right) --
             ([xshift=.2cm]deparser-\x-bottom-left);
     }
-    \node[explain box] {
-        egress pipeline: process every output frame \\
-        run one time for \myemph{each copy} output
-    };
 \end{visibleenv}
 \begin{visibleenv}<6>
     \foreach \x in {in,out} {
@@ -86,9 +71,6 @@
             ([xshift=-.2cm]parser-\x-bottom-right) --
             ([xshift=.2cm]parser-\x-bottom-left);
     }
-    \node[explain box] {
-        parser: decode frame fields into temporary storage
-    };
 \end{visibleenv}
 \begin{visibleenv}<7>
     \foreach \x in {in,out} {
@@ -96,9 +78,6 @@
             ([xshift=-.2cm]deparser-\x-bottom-right) --
             ([xshift=.2cm]deparser-\x-bottom-left);
     }
-    \node[explain box] {
-        deparser: converted decoded fields back into bytes for network
-    };
 \end{visibleenv}
 \begin{visibleenv}<8>
     \foreach \x in {ingress-in,egress-out} {
@@ -106,10 +85,5 @@
             ([xshift=-.2cm]\x-bottom-right) --
             ([xshift=.2cm]\x-bottom-left);
     }
-    \node[explain box] {
-        ``match/action pipelines'' \\
-        do series of table lookups based on parsed fields \\
-        each table lookup specifies next action
-    };
 \end{visibleenv}
 \end{tikzpicture}

@@ -2,33 +2,15 @@
 ### recall: multi-access media 
 
 
+![](/switches/texfig/switched-network-recall-multi-access-media.figure.svg){fig-alt="diagram of multiple computers connected to a single wire, overlayed with photographs of two pieces of equipment that enable this: an ethernet tap (that physically drills into a coax cable) and an Ethernet hub (that electrically connects several ethernet cables plugged into it)"}
 
-::: {.r-stack .my-full}
-![](/switches/texfig/switched-network-recall-multi-access-media.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
-
-![](/switches/texfig/switched-network-recall-multi-access-media.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
-
-![](/switches/texfig/switched-network-recall-multi-access-media.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
-
-
-:::
 
 
 ### recall: switched network 
 
 
 
-::: {.r-stack .my-full}
-![](/switches/texfig/switched-network-recall-switched-network.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
-
-![](/switches/texfig/switched-network-recall-switched-network.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
-
-![](/switches/texfig/switched-network-recall-switched-network.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
-
-![](/switches/texfig/switched-network-recall-switched-network.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
-
-
-:::
+![](/switches/texfig/switched-network-recall-switched-network.figure.svg){fig-alt="Diagram of a single network (represented by a cloud) implemented by several switches. Each computer is conencted to one of the switches, and two of the switches are each connectedto a third."}
 
 
 ### hubs and switches  {.smaller}
@@ -41,17 +23,16 @@
 * switch: decides what to send on each output
 
 
-### history: multi-access to switched  {.smaller}
+### history: multi-access to switched
 
 
 * a lot of early networking technology was multi-access
 * wireless (wifi, cellular) and most home broadband still is 
 <hr class="vspace" />
 * most wired networks are <i>switched</i>  
-
    * frames mostly directed to correct machine
-
-
+* often same frame format as multi-access
+   * switching is "optimization" where hosts don't need to handle irrelevant frames
 
 ### switching versus routing  {.smaller}
 
@@ -61,10 +42,7 @@
 <hr class="vspace" />
 * basically same functionality
 * differences: 
-
    * extra layer for internetwork packets
-   * different mechanism to decide where to forward
-   * switch forwarding typically simpler
-
+   * (typically) more complex mechanism to decide where to forward
 * will start with simpler switching
 

@@ -4,22 +4,77 @@
 
 
 ::: {.r-stack .my-full}
-![](/switches/texfig/ethernetFormat.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
 
-![](/switches/texfig/ethernetFormat.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/switches/texfig/ethernetFormat.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="Ethernet frame contents (in order): preamble+start marker, source MAC address, destination MAC address, type, data (for next layer), checksum, interpacket gap."}
 
-![](/switches/texfig/ethernetFormat.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/switches/texfig/ethernetFormat.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="preamble+start marker and the interpacket gap are highlighted in the diagram"}
 
-![](/switches/texfig/ethernetFormat.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+![](/switches/texfig/ethernetFormat.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="type field is highlighted in the diagram"}
 
-![](/switches/texfig/ethernetFormat.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+![](/switches/texfig/ethernetFormat.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="type field is still highlighted"}
 
-![](/switches/texfig/ethernetFormat.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
+![](/switches/texfig/ethernetFormat.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 fig-alt="destination MAC address is highlighted"}
 
-![](/switches/texfig/ethernetFormat.figure-7.svg){.fragment .fade-in-then-out fragment-index=7}
+![](/switches/texfig/ethernetFormat.figure-6.svg){.fragment .fade-in-then-out fragment-index=6 fig-alt="destination MAC address is still highlighted"}
 
-![](/switches/texfig/ethernetFormat.figure-8.svg){.fragment .fade-in-then-out fragment-index=8}
+![](/switches/texfig/ethernetFormat.figure-7.svg){.fragment .fade-in-then-out fragment-index=7 fig-alt="source MAC address is highlighted"}
 
+![](/switches/texfig/ethernetFormat.figure-8.svg){.fragment .fade-in-then-out fragment-index=8 fig-alt="the barrier between the type and data is highlighted"}
+
+:::
+
+::: {.myoverbox .fragment .fade-in-then-out fragment-index=2 .low}
+
+explicit start marker <br/>
+end indicated by `gap' between signals
+
+:::
+
+::: {.myoverbox .fragment .fade-in-then-out fragment-index=3 .low}
+
+type field indicates which next layer in use <br/>
+often varies on frame-by-frame basis
+
+:::
+
+
+::: {.myoverbox .fragment .fade-in-then-out fragment-index=4 .low}
+
+actually `type/length` for historical reasons<br/>
+but most commonly just used for type these days
+
+:::
+
+::: {.myoverbox .fragment .fade-in-then-out fragment-index=5 .low}
+
+*  destination address indicates who frame is for
+*  present regardless of whether switching is in use
+*  each host _filters_ out frames for "wrong" addresses
+
+:::
+
+::: {.myoverbox .fragment .fade-in-then-out fragment-index=6 .low}
+
+since destination address always present<br/>
+switches can always send every frame to everyone
+
+(just less efficient)
+
+:::
+
+
+::: {.myoverbox .fragment .fade-in-then-out fragment-index=7 .low}
+
+*  who the frame came from
+*  gives "return address"
+
+:::
+
+
+::: {.myoverbox .fragment .fade-in-then-out fragment-index=8 .low}
+
+*  sometimes extra stuff ("tags")
+*  (used for VLANs, which is a topic for much later)
 
 :::
 

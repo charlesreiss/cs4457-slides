@@ -6,8 +6,8 @@
 
    * 16 bit source address
    * 16 bit destination address
-   * 1 bit flag ‘‘is timestamp present’’
-   * 1 bit flag ‘`is data present’
+   * 1 bit flag "is timestamp present"
+   * 1 bit flag "is data present"
    * 6 bits unused
    * (optional) 32-bit timestamp
    * (optional) 16-bit data size

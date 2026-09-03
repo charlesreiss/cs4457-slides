@@ -21,53 +21,9 @@
     \node[label large] at (6, -3) {data (for next layer)};
 \begin{visibleenv}<8>
 \draw[red,ultra thick] (2, -2) -- (2, -3);
-\draw[box,red,ultra thick,fill=white] (4.5, -3) rectangle (11.5, -4) 
-    node[midway,label] {sometimes extra stuff (``tags'')};
 \end{visibleenv}
 \draw[box] (0, -4) rectangle (4, -5) node[midway,label] {checksum};
 \draw[start and end,box,missing] (4, -4) rectangle (12, -5)
     node[midway,label,fill=white] {`interpacket gap'};
 \draw[start and end,box,missing] (0, -5) rectangle (4, -6);
-\begin{visibleenv}<2>
-\node[align=left,draw=red,ultra thick,fill=white] at (6, -3) {
-    explicit start marker \\
-    end indicated by `gap' between signals
-};
-\end{visibleenv}
-\begin{visibleenv}<3>
-\node[align=left,draw=red,ultra thick,fill=white] at (8, -3) {
-    type field indicates which next layer in use \\
-    often varies on frame-by-frame basis \\
-};
-\end{visibleenv}
-\begin{visibleenv}<4>
-\node[align=left,draw=red,ultra thick,fill=white] at (8, -3) {
-    actually \texttt{type/length} for historical reasons \\
-    but most commonly used for type these days
-};
-\end{visibleenv}
-\begin{visibleenv}<5>
-\node[align=left,draw=red,ultra thick,fill=white] at (6, -4) {
-    destination address indicates who frame is for \\
-    present regardless of whether switching is in use \\
-    ~ \\
-    each host \myemph{filters} out frames for `wrong' destination address
-};
-\end{visibleenv}
-\begin{visibleenv}<6>
-\node[align=left,draw=red,ultra thick,fill=white] at (6, -4) {
-    since destination address always present \\
-    as last resort, switches can send every frame to everyone \\
-    ~ \\
-    will still work, just much less efficient
-};
-\end{visibleenv}
-\begin{visibleenv}<7>
-\node[align=left,draw=red,ultra thick,fill=white] at (6, -4) {
-    who the frame came from \\
-    gives `return address' for sending replies \\
-    ~ \\
-    will also be used by switches
-};
-\end{visibleenv}
 \end{tikzpicture}

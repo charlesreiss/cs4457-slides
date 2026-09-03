@@ -1,7 +1,6 @@
 \begin{tikzpicture}
 \tikzset{
-    connect/.style={draw,very thick,arrows={Latex-Circle[width=0.3cm,length=0.3cm]},
-        alt=<2>{arrows={Latex-Circle[width=0.3cm,length=0.3cm,red]}}},
+    connect/.style={draw,very thick,arrows={Latex-Circle[width=0.3cm,length=0.3cm]}},
     computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
 }
 \draw[line width=1mm] (-5,-1.5) coordinate (wire start) -- (5, 1.5) coordinate (wire end);
@@ -10,16 +9,12 @@
     \coordinate (connect-\x) at ($(wire start)!(c-\x.center)!(wire end)$);
     \draw[connect] (c-\x) -- (connect-\x) -- ([turn]0:.1cm);
 }
-\begin{visibleenv}<2-3>
 \node[anchor=north west,fill=white,draw=black,thick,label={[font=\tiny]south:Ali at gwc.org.uk / Alistair1978 via Wikimedia commons / CC-BY-SA 2.5}] 
     (thicknet) at (4, 3.5) {
     \includegraphics[width=4cm]{../intro/ThicknetTransceiver.jpeg}
 };
-\end{visibleenv}
-\begin{visibleenv}<3>
 \node[fill=white,draw=black,thick,anchor=north west] at ([yshift=-0.75cm]thicknet.south west) {
     \includegraphics[width=4cm]{../intro/4_port_netgear_ethernet_hub}
 };
 % FIXME: also fiber splitter
-\end{visibleenv}
 \end{tikzpicture}

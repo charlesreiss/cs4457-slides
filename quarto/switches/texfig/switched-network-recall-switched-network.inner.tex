@@ -1,13 +1,9 @@
 \begin{tikzpicture}
 \tikzset{
     computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
-    switch/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\switch},
-                   alt=<1>{
-                       fill=red!10,
-                        label={[font=\small,label distance=0mm,text=red]south:`switch'}
-                   }},
-    connect/.style={draw,very thick,Latex-Latex,alt=<4>{red}},
-    connect big/.style={draw,ultra thick,Latex-Latex,alt=<4>{red}},
+    switch/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\switch}},
+    connect/.style={draw,very thick,Latex-Latex},
+    connect big/.style={draw,ultra thick,Latex-Latex},
 }
 \node[
       cloud,draw,opacity=0.25,very thick,aspect=2,

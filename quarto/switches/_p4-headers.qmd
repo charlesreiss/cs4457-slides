@@ -3,7 +3,7 @@
 
     
 <pre><code>typedef bit&lt;48&gt; macAddr_t;
-<span data-fragment-index="0" class="fragment custom myem-only">@header</span> ethernet_t~ {
+<span data-fragment-index="0" class="fragment custom myem-only">@header</span> ethernet_t {
     macAddr_t srcAddr;
     macAddr_T dstAddr;
     bit&lt;16&gt;   etherType;
@@ -64,16 +64,16 @@ parser MyParser(
 
 
 
-### P4: parsing  {.smaller}
+### P4: parsing
 
     
 <pre><code>parser MyParser(...) {
-    <span data-fragment-index="0" class="fragment custom myem-only">state</span> start {
-        <span data-fragment-index="1" class="fragment custom myem-only">transition</span> <span data-fragment-index="2" class="fragment custom myem-only">parse_ethernet</span>;
+    <span data-fragment-index="2" class="fragment custom myem-only">state</span> start {
+        <span data-fragment-index="3" class="fragment custom myem-only">transition</span> <span data-fragment-index="3" class="fragment custom myem-only">parse_ethernet</span>;
     }
-    <span data-fragment-index="0" class="fragment custom myem-only">state</span> <span data-fragment-index="2" class="fragment custom myem-only">parse_ethernet</span> {
-        <span data-fragment-index="3" class="fragment custom myem-only">packet.extract(hdr.ethernet);</span>
-        <span data-fragment-index="1" class="fragment custom myem-only">transition</span> select(hdr.ethernet.etherType) {
+    <span data-fragment-index="2" class="fragment custom myem-only">state</span> <span data-fragment-index="3" class="fragment custom myem-only">parse_ethernet</span> {
+        <span data-fragment-index="4" class="fragment custom myem-only">packet.extract(hdr.ethernet);</span>
+        <span data-fragment-index="3" class="fragment custom myem-only">transition</span> select(hdr.ethernet.etherType) {
             TYPE_IPV4: parse_ipv4;
             TYPE_IPV6: parse_ipv6
             default: accept;
@@ -82,9 +82,29 @@ parser MyParser(
     ....
 }
 </code></pre>
- ![](/switches/texfig/p4-headers-p4-parsing.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
-![](/switches/texfig/p4-headers-p4-parsing.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
-![](/switches/texfig/p4-headers-p4-parsing.figure-3.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=3}
-![](/switches/texfig/p4-headers-p4-parsing.figure-4.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=4}
-![](/switches/texfig/p4-headers-p4-parsing.figure-5.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=5}
+
+::: {.myoverbox .fragment .fade-in-then-out .midright fragment-index=2}
+
+*  functions written as state machine
+
+*  execution starts in state `start`
+
+*  follows instructions in each state
+
+:::
+
+::: {.myoverbox .fragment .fade-in-then-out .low fragment-index=3}
+
+* transition statements say which state next
+
+* can be conditional using switch-statement-like syntax
+
+:::
+
+
+::: {.myoverbox .fragment .fade-in-then-out .midright fragment-index=4}
+
+`extract` operation copies from packet<br/>into specifiec `header` object
+
+:::
 
