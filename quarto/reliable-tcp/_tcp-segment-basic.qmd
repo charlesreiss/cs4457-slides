@@ -1,20 +1,18 @@
 
 ### TCP segment format 
 
-
-
 ::: {.r-stack .my-full}
-![](/reliable-tcp/texfig/tcp-segment-basic-tcp-segment-format.figure-1.svg){.fragment .fade-out fragment-index=2}
+![](/reliable-tcp/texfig/tcp-segment-basic-tcp-segment-format.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="TCP segment contents, showing (in order): (lower level header), source port (16 bits), destination port (16 bits), sequence number (32 bits), acknowledgment number (32 bits), data offset (4 bits), 4 unused bits, flag bits (CWR, ECE, URG< ACK, PSH, RST, SYN, FIN), window size (16 bits), checksum (16 bits), urgent pointer (16 bits), options (variable), data"}
 
-![](/reliable-tcp/texfig/tcp-segment-basic-tcp-segment-format.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/reliable-tcp/texfig/tcp-segment-basic-tcp-segment-format.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="source port, destination port (both 16 bits) highlighted"}
 
-![](/reliable-tcp/texfig/tcp-segment-basic-tcp-segment-format.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/reliable-tcp/texfig/tcp-segment-basic-tcp-segment-format.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="seuqence number (32 bits) highlighted"}
 
-![](/reliable-tcp/texfig/tcp-segment-basic-tcp-segment-format.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+![](/reliable-tcp/texfig/tcp-segment-basic-tcp-segment-format.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="acknowledgment number (32 bits) highlighted along with ACK flag bit"}
 
-![](/reliable-tcp/texfig/tcp-segment-basic-tcp-segment-format.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+![](/reliable-tcp/texfig/tcp-segment-basic-tcp-segment-format.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 fig-alt="window size (16 bits) highlighted"}
 
-![](/reliable-tcp/texfig/tcp-segment-basic-tcp-segment-format.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
+![](/reliable-tcp/texfig/tcp-segment-basic-tcp-segment-format.figure-6.svg){.fragment .fade-in-then-out fragment-index=6 fig-alt="urgent pointer (16 bits) and URG flag bit highlighted"}
 
 ![](/reliable-tcp/texfig/tcp-segment-basic-tcp-segment-format.figure-7.svg){.fragment .fade-in-then-out fragment-index=7}
 
@@ -22,8 +20,79 @@
 
 ![](/reliable-tcp/texfig/tcp-segment-basic-tcp-segment-format.figure-9.svg){.fragment .fade-in-then-out fragment-index=9}
 
-![](/reliable-tcp/texfig/tcp-segment-basic-tcp-segment-format.figure-10.svg){.fragment .fade-in-then-out fragment-index=10}
+![](/reliable-tcp/texfig/tcp-segment-basic-tcp-segment-format.figure-10.svg){.fragment .fade-in-then-out fragment-index=10 fig-alt="data offset (4 bits) and options highlighted"}
 
+:::
+
+::: {.myoverbox .low .fragment .fade-in-then-out fragment-index=2}
+
+ports identify program/socket on machines<br/>
+(we'll talk more when we cover sockets)
+
+machines identified in lower-layer headers
+
+:::
+
+::: {.myoverbox .low .fragment .fade-in-then-out fragment-index=3}
+
+byte number for first byte of data in this packet
+
+:::
+
+::: {.myoverbox .vlow .fragment .fade-in-then-out fragment-index=4}
+
+ack number = 1 + byte number of largest byte acknowledged <br/>
+only meaningful if ACK 'flag' is 1
+
+:::
+
+::: {.myoverbox .high .fragment .fade-in-then-out fragment-index=5}
+
+* window size is receive window size <br/> tells sender how much receiver will accept
+
+* sender window could/often will be different (not directly visible in packets)
+
+:::
+
+::: {.myoverbox .high .fragment .fade-in-then-out fragment-index=6}
+
+*  some fields releated to 'urgent data' mechanism 
+
+*  almost never used today
+
+:::
+
+::: {.myoverbox .high .fragment .fade-in-then-out fragment-index=7}
+
+PSH (push) 'flag' is hint that sender does not have more data to send right away
+
+:::
+
+::: {.myoverbox .high .fragment .fade-in-then-out fragment-index=8}
+
+RST (reset), SYN (synchronize), FIN flags <br/>
+used for connnection managemnet <br/>
+(we'll talk more when we cover sockets
+
+:::
+
+
+::: {.myoverbox .high .fragment .fade-in-then-out fragment-index=9}
+
+CWD (congestion window received) and <br/>
+ECE (explicit congestion notification echo) flags<br/>
+someties used as part of setting window sizes<br/>
+to match network conditions (later topic for us)
+
+:::
+
+::: {.myoverbox .high .fragment .fade-in-then-out fragment-index=10}
+
+* header can have variable number of "options"<br/>
+  technically optional, but almost always used today
+
+* size of header indicated by _data offset_<br/>
+  (data offset is in  units of 32-bit words, not bytes)
 
 :::
 
