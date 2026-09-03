@@ -740,7 +740,7 @@ class _InlineCommand(_MyAstItem):
         command = self.command
         arguments = self.arguments
         if re.match(r'^\\myemph[A-Z]$', command) is not None:
-            index = ord(command[len(r'\myemph')]) - ord('A')
+            index = ord(command[len(r'\myemph')]) - ord('A') + 2
             when = When(f'<{index}>')
             assert when.needs_fragment
             command = r'\myemph'
@@ -759,7 +759,7 @@ class _InlineCommand(_MyAstItem):
             assert when.needs_fragment
             command = r'\myemph'
         if re.match(r'^\\vemph[A-Z]$', command) is not None:
-            index = ord(command[len(r'\vemph')]) - ord('A')
+            index = ord(command[len(r'\vemph')]) - ord('A') + 2
             when = When(f'<{index}>')
             assert when.needs_fragment
             command = r'\myemph'
