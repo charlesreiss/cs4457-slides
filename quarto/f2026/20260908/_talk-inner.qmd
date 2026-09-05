@@ -1,0 +1,31 @@
+### last time {.smaller}
+
+*  sliding window sender logic
+   *  last ack received (LAR), last frame sent (LFS)
+*  sliding window receiver logic
+   *  last frame received (LFR), last accepted frame (LAF)
+*  sequence number wraparound
+*  bandwidth-delay product and ideal window sizes
+   *  complexity: queues increase delay when more is sent
+*  window size for flow/congestion control
+*  TCP sequence number = first byte in packet
+*  TCP ack number = next byte accepted
+
+### quiz
+
+###
+
+## TCP segment format {visibility="hidden"}
+
+{{< include /reliable-tcp/_tcp-segment-basic.qmd >}}
+
+## TCP connection example {visibility="hidden"}
+
+{{< include /reliable-tcp/_tcp-example-2.qmd >}}
+
+### backup slides
+
+# TCP differences {visibility="hidden"}
+
+{{< include /reliable-tcp/_tcp-diff-summary.qmd >}}
+
