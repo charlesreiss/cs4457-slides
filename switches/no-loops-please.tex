@@ -41,9 +41,10 @@ D. might cause frames sent much later to be dropped \\
 \end{tabular}
 \end{frame}
 
-\begin{frame}[fragile]{loop from backwards broadcast}
+\begin{frame}[fragile,label=loopBackwardBroadcast]{loop from backwards broadcast}
 \begin{tikzpicture}[remember picture]
 \tikzset{
+    forconversion/.style={alt=<5>{}{}},
     computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
     switch/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\switch}},
     connect/.style={draw,very thick,Latex-Latex},
@@ -106,9 +107,10 @@ D. might cause frames sent much later to be dropped \\
     \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{loops with only-to-other}
+\begin{frame}[fragile,label=loopToOther]{loops with only-to-other}
 \begin{tikzpicture}[remember picture]
 \tikzset{
+    forconversion/.style={alt=<5>{}{}},
     computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
     switch/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\switch}},
     connect/.style={draw,very thick,Latex-Latex},
