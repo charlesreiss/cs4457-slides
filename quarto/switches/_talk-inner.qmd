@@ -57,8 +57,6 @@
 
 # basic Ethernet switching / MAC learning {visibility="hidden"}
 
-### againframe(ethernetFormat)
-
 {{< include /switches/_in-ethernet.qmd >}}
 
 ## aside: no loops please {visibility="hidden"}

@@ -12,6 +12,10 @@
 
 {{< include /reliable-tcp/_tcp-segment-basic.qmd >}}
 
-## TCP connection example {visibility="hidden"}
+## TCP connection example 1 {visibility="hidden"}
+
+{{< include /reliable-tcp/_tcp-example-1.qmd >}}
+
+## TCP connection example 2 {visibility="hidden"}
 
 {{< include /reliable-tcp/_tcp-example-2.qmd >}}

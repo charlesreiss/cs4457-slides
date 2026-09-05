@@ -4,14 +4,13 @@
 
 
 ::: {.r-stack .my-full}
-![](/switches/texfig/in-ethernet-network-and-switch-tables.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/switches/texfig/in-ethernet-network-and-switch-tables.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="network with 6 hosts and two switches. Three hosts are connected to each switch and each switch is connected to each other. The four ports of the switches are numbered 1 through 4. The rightmost switch has hosts connected to ports 2, 3 and 4 and is connected to the other switch via port 1. The leftmost switch has hosts connected to ports 1, 2, and 3 and is connected to the other switch via its port 4."}
 
-![](/switches/texfig/in-ethernet-network-and-switch-tables.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/switches/texfig/in-ethernet-network-and-switch-tables.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="Each of the 6 hosts are assigned MAC addresses. For convenience, all the MAC addresses start 00:11:22:33:44 but end with a different byte. The hosts connected to the left switch have MAC addresses ending CC, DD, EE; the hosts connected to the right switch have MAC addresses ending AA, BB, FF"}
 
-![](/switches/texfig/in-ethernet-network-and-switch-tables.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/switches/texfig/in-ethernet-network-and-switch-tables.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="The left switch has a table with a destination MAC address column and a port column. The MAC addresses of all hosts in the network are listed: the three hosts connected directly to the switch (MAC addresses ending CC, DD, EE) are listed with their corresponding switch port number. The three hosts connected to the other switch (MAC addresses endign AA, BB, FF) are listed with port number 1, the left switch's port number for its link to the other switch."}
 
-![](/switches/texfig/in-ethernet-network-and-switch-tables.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
-
+![](/switches/texfig/in-ethernet-network-and-switch-tables.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="The right switch has a similar table, listing port number 4 (its port number for the link to the left switch) for the hosts directly connected to the left switch and listing its port numbers of its directly connected hosts."}
 
 :::
 
@@ -40,10 +39,11 @@
 
 ### MAC learning 
 
+<!-- FIXME: convert to new -->
 
 
 ::: {.r-stack .my-full}
-![](/switches/texfig/in-ethernet-mac-learning.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/switches/texfig/in-ethernet-mac-learning.figure-1.svg){.fragment .fade-out fragment-index=2}
 
 ![](/switches/texfig/in-ethernet-mac-learning.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
 

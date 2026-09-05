@@ -1,5 +1,5 @@
 
-### exercise  {.smaller}
+### exercise 
 
 
 * suppose we want to implement the following policy: 

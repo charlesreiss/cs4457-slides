@@ -1,5 +1,5 @@
 
-### P4: ingress processing  {.smaller}
+### P4: ingress processing
 
     
 
@@ -140,7 +140,7 @@ apply operation invokes the action specified
 :::
 
 
-### P4: actions  {.smaller}
+### P4: actions 
 
     
 <pre><code>control MyIngress(...) {
@@ -158,7 +158,7 @@ apply operation invokes the action specified
 }
 </code></pre>
 
-::: {.myoverbox .midright .fade-in-then-out .fragment fragment-index=2}
+::: {.myoverbox .lowright .fade-in-then-out .fragment fragment-index=2}
 
 *  actions basically function calls for pacekt
 
@@ -166,14 +166,14 @@ apply operation invokes the action specified
 
 :::
 
-::: {.myoverbox .midright .fade-in-then-out .fragment fragment-index=3}
+::: {.myoverbox .lowright .fade-in-then-out .fragment fragment-index=3}
 
 typically actions set standard\_metdata <br/>
 to indicate where to send frame next
 
 :::
 
-::: {.myoverbox .midright .fade-in-then-out .fragment fragment-index=4}
+::: {.myoverbox .lowright .fade-in-then-out .fragment fragment-index=4}
 
 actions can also edit packet headers <br/>
 or do other table lookups
@@ -181,7 +181,7 @@ or do other table lookups
 :::
 
 
-### P4: special actions  {.smaller}
+### P4: special actions 
 
 
 * some ways switch can direct packet (incomplete list) 

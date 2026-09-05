@@ -1,15 +1,15 @@
 
-### P4: control plane  {.smaller}
+### P4: control plane
 
 
 * P4 control plane is a program 
 <hr class="vspace" />
 * sends commands to one or more switches: 
 
-   * [load P4 program into data plane]{.fragment fragment-index=2 .custom .myem-only}
-   * [set table entries]{.fragment fragment-index=3 .custom .myem-only}
-   * [configure multicast groups]{.fragment fragment-index=4 .custom .myem-only}
-   * [receive frames to process them]{.fragment fragment-index=5 .custom .myem-only}
+   * load P4 program into data plane
+   * set table entries
+   * configure multicast groups
+   * receive frames to process them
 
 
 
@@ -28,9 +28,20 @@
 * probably several things different for hardware-based switches
 
 
-### againframe(controlToC)
 
-### P4: loading P4 program  {.smaller}
+### P4: control plane
+
+
+* P4 control plane is a program 
+<hr class="vspace" />
+* sends commands to one or more switches: 
+
+   * _load P4 program into data plane_
+   * set table entries
+   * configure multicast groups
+   * receive frames to process them
+
+### P4: loading P4 program
 
     
 <pre><code>p4info_helper =  ....
@@ -41,15 +52,41 @@ switch.<span data-fragment-index="3" class="fragment custom myem-only">SetForwar
     <span data-fragment-index="4" class="fragment custom myem-only">bmv2_json_file_path=bmv2_file_path</span>
 )
 </code></pre>
- ![](/switches/texfig/p4-controlplane-p4-loading-p4-program.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
-![](/switches/texfig/p4-controlplane-p4-loading-p4-program.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
-![](/switches/texfig/p4-controlplane-p4-loading-p4-program.figure-3.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=3}
-![](/switches/texfig/p4-controlplane-p4-loading-p4-program.figure-4.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=4}
+
+::: {.myoverbox .low .fragment .fade-in-then-out fragment-index=2}
+
+* switch supports having primary + backup controller
+* need to indicate that this program is primary controller now
+
+:::
+
+::: {.myoverbox .low .fragment .fade-in-then-out fragment-index=3}
+
+"forwarding pipeline" = dataplane
+
+:::
 
 
-### againframe(controlToC)
+::: {.myoverbox .low .fragment .fade-in-then-out fragment-index=4}
 
-### P4: setting table entries  {.smaller}
+P4 code compiled to file to load, specified by `bmv2_json_file_path` option
+
+:::
+
+
+### P4: control plane
+
+
+* P4 control plane is a program 
+<hr class="vspace" />
+* sends commands to one or more switches: 
+
+   * load P4 program into data plane
+   * _set table entries_
+   * configure multicast groups
+   * receive frames to process them
+
+### P4: setting table entries 
 
     
 <pre><code><span data-fragment-index="5" class="fragment custom myem-only">write_or_overwrite_table_entry</span>(
@@ -62,22 +99,55 @@ switch.<span data-fragment-index="3" class="fragment custom myem-only">SetForwar
     action_params={'port': port},
 )
 </code></pre>
- ![](/switches/texfig/p4-controlplane-p4-setting-table-entries.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
-![](/switches/texfig/p4-controlplane-p4-setting-table-entries.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
-![](/switches/texfig/p4-controlplane-p4-setting-table-entries.figure-3.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=3}
-![](/switches/texfig/p4-controlplane-p4-setting-table-entries.figure-4.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=4}
-![](/switches/texfig/p4-controlplane-p4-setting-table-entries.figure-5.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=5}
+
+::: {.myoverbox .low .fragment .fade-in-then-out fragment-index=2}
+
+p4info\_helper, switch objects created by setup code
+
+:::
+
+::: {.myoverbox .low .fragment .fade-in-then-out fragment-index=3}
+
+*  full name of table includes stage it is defined in
+*  (this example: _MyIngress._mac\_dst\_exact)
+
+:::
 
 
-### againframe(controlToC)
+::: {.myoverbox .low .fragment .fade-in-then-out fragment-index=4}
 
-### P4: multicast groups  {.smaller}
+*  `match_fields` specifies key to set
+*  format would be different if `lpm` or `ternary` instead of `exact` match
+
+:::
+
+::: {.myoverbox .low .fragment .fade-in-then-out fragment-index=5}
+
+*  `write_or_overwrite_table_entry` is not the "raw" function
+    *  (I wrote it based on P4 tutorial authors' version)
+
+:::
+
+
+### P4: control plane
+
+
+* P4 control plane is a program 
+<hr class="vspace" />
+* sends commands to one or more switches: 
+
+   * load P4 program into data plane
+   * set table entries
+   * _configure multicast groups_
+   * receive frames to process them
+
+### P4: multicast groups
 
     
 <pre><code>switch.Write<span data-fragment-index="4" class="fragment custom myem-only">PRE</span>Entry(
     p4info_helper.buildMulticastGroupEntry(
         <span data-fragment-index="2" class="fragment custom myem-only">multicast_group_id=1</span>, 
-        <span data-fragment-index="3" class="fragment custom myem-only">replicas</span>=\[
+        <span data-fragment-index="3" class="fragment custom myem-only">replicas</span>=[
             {'egress_port': 1, 'instance': 0},
             {'egress_port': 2, 'instance': 0},
             {'egress_port': 3, 'instance': 0},
@@ -86,15 +156,54 @@ switch.<span data-fragment-index="3" class="fragment custom myem-only">SetForwar
     )
 )
 </code></pre>
- ![](/switches/texfig/p4-controlplane-p4-multicast-groups.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
-![](/switches/texfig/p4-controlplane-p4-multicast-groups.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
-![](/switches/texfig/p4-controlplane-p4-multicast-groups.figure-3.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=3}
-![](/switches/texfig/p4-controlplane-p4-multicast-groups.figure-4.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=4}
+
+::: {.myoverbox .low .fragment .fade-in-then-out fragment-index=2}
+
+in P4 dataplane code can write<br/>
+`stndard_metadata.mcast_grp = 1` to use this
+
+:::
+
+::: {.myoverbox .low .fragment .fade-in-then-out fragment-index=3}
+
+*  `replicas` = list of ports to output to
+
+*  `instance` values can be inspected by egress dataplane code
+
+:::
 
 
-### againframe(controlToC)
+::: {.myoverbox .low .fragment .fade-in-then-out fragment-index=4}
 
-### P4: receiving frame  {.smaller}
+
+*  PRE = packet replication engine
+
+*  supports multicast groups (shown) and "clone sessions" (not shown)
+   *  clone sessions make extra copy of packet but keep original
+
+:::
+
+::: {.myoverbox .low .fragment .fade-in-then-out fragment-index=5}
+
+*  `write_or_overwrite_table_entry` is not the "raw" function
+    *  (I wrote it based on P4 tutorial authors' version)
+
+:::
+
+
+### P4: control plane
+
+
+* P4 control plane is a program 
+<hr class="vspace" />
+* sends commands to one or more switches: 
+
+   * load P4 program into data plane
+   * set table entries
+   * configure multicast groups
+   * _receive frames to process them_
+
+### P4: receiving frame 
 
     
 <pre><code>    for item in switch.stream_msg_resp:
@@ -102,7 +211,17 @@ switch.<span data-fragment-index="3" class="fragment custom myem-only">SetForwar
             do_something_with(<span data-fragment-index="2" class="fragment custom myem-only">item.packet.payload</span>,
                               <span data-fragment-index="3" class="fragment custom myem-only">item.packet.metadata</span>)
 </code></pre>
- ![](/switches/texfig/p4-controlplane-p4-receiving-frame.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
-![](/switches/texfig/p4-controlplane-p4-receiving-frame.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
-![](/switches/texfig/p4-controlplane-p4-receiving-frame.figure-3.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=3}
 
+::: {.myoverbox .low .fragment .fade-in-then-out fragment-index=2}
+
+*  payload = bytes of frame
+   *  (what would be sent on network)
+
+:::
+
+::: {.myoverbox .low .fragment .fade-in-then-out fragment-index=3}
+
+*  extra "metadata" can be set by dataplane
+   *  example: which port packet came in from
+
+:::

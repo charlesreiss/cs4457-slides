@@ -33,7 +33,22 @@
 
 ### loop from backwards broadcast 
 
-![](/switches/texfig/no-loops-please-loop-from-backwards-broadcast.figure.svg)
+
+<!-- FIXME: alt text -->
+
+::: {.r-stack .my-full}
+![](/switches/texfig/loopBackwardBroadcast.figure-1.svg){.fragment .fade-out fragment-index=2}
+
+![](/switches/texfig/loopBackwardBroadcast.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/switches/texfig/loopBackwardBroadcast.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/switches/texfig/loopBackwardBroadcast.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+![](/switches/texfig/loopBackwardBroadcast.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+
+
+:::
 
 
 ### loops  {.smaller}
@@ -48,7 +63,21 @@
 
 ### loops with only-to-other 
 
-![](/switches/texfig/no-loops-please-loops-with-only-to-other.figure.svg)
+<!-- FIXME: alt text -->
+
+::: {.r-stack .my-full}
+![](/switches/texfig/loopToOther.figure-1.svg){.fragment .fade-out fragment-index=2}
+
+![](/switches/texfig/loopToOther.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/switches/texfig/loopToOther.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/switches/texfig/loopToOther.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+![](/switches/texfig/loopToOther.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+
+
+:::
 
 
 ### explosion from loops  {.smaller}

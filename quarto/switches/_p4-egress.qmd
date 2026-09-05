@@ -1,5 +1,5 @@
 
-### egress processing  {.smaller}
+### egress processing
 
 
 * same as ingress processing but different function 
