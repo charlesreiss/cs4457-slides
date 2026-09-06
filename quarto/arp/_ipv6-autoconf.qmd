@@ -1,0 +1,105 @@
+
+### IPv6 autoconfiguration 
+
+
+* in IPv4, autoconfiguration ‘‘bolted on’’ 
+
+   * one protocol to be assigned address (DHCP)
+   * one protoocl to communicate IP address to other nodes on network (ARP)
+
+* IPv6 was designed later, so they thought about it early
+
+
+### big network address assignment 
+
+
+* IPv6 local networks are typically /64s 
+
+   * $2^{64}$ address available for local network
+
+* why so big? allow easy address assignment
+* StateLess Address Auto Configuration (SLAAC)
+
+
+### MAC-address based address assignment  {.smaller}
+
+
+
+* let's say my local network is 2001:db8:4999:3333::/64
+  <table>
+<tr><td>MAC address</td><td>IPv6 address</td></tr>
+<tr><td><code>[11:22:33:44:55:66]{.fragment fragment-index=2 .custom .myem-only}</code></td><td><code>2001:db8:4999:3333:[1122:33]{.fragment fragment-index=2 .custom .myem-only}ff:fe[44:5566]{.fragment fragment-index=2 .custom .myem-only}</code></td></tr>
+<tr><td><code>[01:A0:B3:CC:DD:FF]{.fragment fragment-index=2 .custom .myem-only}</code></td><td><code>2001:db8:4999:3333:[01a0:b3]{.fragment fragment-index=2 .custom .myem-only}ff:fe[cc:ddff]{.fragment fragment-index=2 .custom .myem-only}</code></td></tr>
+<tr><td>…</td><td>…</td></tr>
+</table>
+
+
+###   {.smaller}
+
+
+```
+Network Working Group                                          T. Narten
+Request for Comments: 3041                                           IBM
+Category: Standards Track                                      R. Draves
+                                                      Microsoft Research
+                                                                                                                  January 2001
+                                                                                                                     Privacy Extensions for Stateless Address Autoconfiguration in IPv6
+
+...
+Abstract
+
+                                  ........  Use of the extension causes
+   nodes to generate global-scope addresses from interface identifiers
+   that change over time, even in cases where the interface contains an
+   embedded IEEE identifier.  Changing the interface identifier (and the
+   global-scope addresses generated from it) over time makes it more
+   difficult for eavesdroppers and other information collectors to
+   identify when different addresses used in different transactions
+   actually correspond to the same node.
+
+```
+
+
+### late timeline 
+
+
+* privacy extensions weren't default until 
+
+   * MacOS X 10.7 (2011)
+   * Windows Vista (2007)
+   * Ubuntu 12.04 (2012)
+
+
+
+### SLAAC 
+
+
+* uses ICMPv6 (same as for neighbor discovery)
+* two modes: 
+
+   * when there's a router (get <i>global</i> addresses)
+   * when there's only a local network (get <i>link-local</i> addresses)
+
+
+
+### router adverisements  {.smaller}
+
+
+* nodes send a ICMPv6 <i>Router Solicitation</i> message
+* receive back a ICMPv6 <i>Router Advertisement</i> which can have: 
+<hr class="vspace" />
+* [prefix information]{.fragment fragment-index=2 .custom .myem-only} 
+
+   * nodes choose address starting with prefix
+   * check for duplicates using neighbor discovery
+
+* [DNS information]{.fragment fragment-index=3 .custom .myem-only}
+* [‘‘managed configuration’’ flag]{.fragment fragment-index=4 .custom .myem-only} 
+
+   * nodes use DHCPv6 to get configuration
+
+* [‘‘other configuration’’ flag]{.fragment fragment-index=5 .custom .myem-only}  
+
+   * nodes choose address using prefix, but more info avail via DHCPv6
+
+

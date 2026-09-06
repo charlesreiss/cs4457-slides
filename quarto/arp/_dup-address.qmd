@@ -1,0 +1,57 @@
+
+###  
+
+
+
+::: {.r-stack .my-full}
+![](/arp/texfig/dup-address.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/arp/texfig/dup-address.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+
+:::
+
+
+### gratituous ARP requests  {.smaller}
+
+
+* solution: send <i>unsolicited</i> ARP messages 
+<hr class="vspace" />
+* CC:…:01$\rightarrow$FF:…:FF: request: who has 10.0.2.9, tell 10.0.2.9=CC:…:01  
+<hr class="vspace" />
+* request not reply b/c concerns about old/broken implementations 
+
+   * ICMPv6 ND fixes this: <br> message is ‘advertisement’ ($\sim$ reply), not ‘solicitation’ ($\sim$ request)
+
+
+
+###  
+
+
+
+::: {.r-stack .my-full}
+![](/arp/texfig/dup-address_2.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/arp/texfig/dup-address_2.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+
+:::
+
+
+### duplicate addresses  {.smaller}
+
+
+* recommendations in RFC 5227 [ ‘‘IPv4 Address Conflict Detection’’]{.my-small} 
+<hr class="vspace" />
+* probe for IP address before using it 
+
+   * make sure to broadcast when starting to use address
+   * probably give up on address if conflict found
+
+* watch out for ARP messages indicating address in use
+* on detecting conflict choose between: 
+
+   * ‘defend’ address with more gratituous requests
+   * give up address
+
+

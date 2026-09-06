@@ -1,0 +1,27 @@
+\begin{tikzpicture}
+\tikzset{
+    computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
+    computer alt/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computerAlt}},
+    switch/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\switch}},
+    router/.style={inner sep=-1mm,outer sep=0mm,execute at begin node={\router},circle},
+    connect/.style={draw,very thick,Latex-Latex},
+    connect big/.style={draw,ultra thick,Latex-Latex},
+    addr label/.style={align=left,font=\fontsize{9}{10}\selectfont\tt},
+    arp table/.style={
+        tight matrix,
+        nodes={minimum height=.6cm},
+        column 1/.style={nodes={text width=2.05cm,font=\small\tt}},
+        column 2/.style={nodes={text width=1.75cm,font=\small\tt}},
+        %row 1/.style={nodes={font=\small}},
+    },
+}
+\begin{scope}
+    \node[computer,label={[addr label]north:MAC 77:\ldots:BB\\IP 10.0.2.2}] (n1-from) at (0, 0) {};
+    \node[computer alt,label={[addr label]south:MAC 99:\ldots:BA\\IP \myemph<2>{10.0.2.9}}] (n1-toA) at (-2, -4) {};
+    \node[computer alt,label={[addr label]south:MAC 09:\ldots:FE\\IP \myemph<2>{10.0.2.9}}] (n1-toB) at (2, -4) {};
+    \node[switch] (sw) at (0, -2) {};
+    \draw[connect] (n1-from) -- (sw);
+    \draw[connect] (n1-toA) -- (sw);
+    \draw[connect] (n1-toB) -- (sw);
+\end{scope}
+\end{tikzpicture}

@@ -1,0 +1,117 @@
+
+### IPv6 packet format 
+
+::: {.r-stack .my-full}
+![](/arp/texfig/ip-format-ipv6-packet-format.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="Diagram of IPv6 header contents: (after lower layer header) byte '6', diffserv/ECN, flow label, payload length, next header, hop limit/TTL, source IPv6 address (128 bits), destination IPv6 address (128 bits), extension headers (variable), then next layer's stuff"}
+
+![](/arp/texfig/ip-format-ipv6-packet-format.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="highlighting 'next header' field"}
+
+![](/arp/texfig/ip-format-ipv6-packet-format.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="highlighting 'payload length' field"}
+
+![](/arp/texfig/ip-format-ipv6-packet-format.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="highlighting 'hop limit/TTL' field"}
+
+![](/arp/texfig/ip-format-ipv6-packet-format.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 fig-alt="highlighting 'diffserv/ECN' and 'flow label' fields"}
+
+![](/arp/texfig/ip-format-ipv6-packet-format.figure-6.svg){.fragment .fade-in-then-out fragment-index=6 fig-alt="highlighting 128-bit source and destination address fields"}
+
+
+:::
+
+::: {.myoverbox .midlow .fragment fragment-index=2 .fade-in-then-out}
+
+*  if "extension header" present, identifies first extension header type
+   *  extension header idea similar to TCP "options" we saw earlier
+*  otherwise, type of next layer header (TCP, UDP, etc.)
+
+:::
+
+::: {.myoverbox .low .fragment fragment-index=3 .fade-in-then-out}
+
+*  payload = everything after fixed part of header
+   *  includes extension headers AND next layer's data
+
+:::
+
+::: {.myoverbox .low .fragment fragment-index=4 .fade-in-then-out}
+
+*  TTL = "time-to-live"
+*  limits how many times packet is forwarded
+*  used to prevent "routing loops"
+
+:::
+
+::: {.myoverbox .low .fragment fragment-index=5 .fade-in-then-out}
+
+*  diffserv (differentiated services)/flow label
+   *  optional hints for routers/switches about how important packet is
+*  ECN = explicit congestion notification
+   *  optional hints to support congestion control (later topic)
+
+:::
+
+### IPv4 packet format 
+
+
+
+::: {.r-stack .my-full}
+![](/arp/texfig/ip-format-ipv4-packet-format.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="Diagram of IPv4 header contents: (after lower layer header) byte '4', header length, diffserv/ECN, total length, identification, flags, fragment offset, hop limit/TTL, protocol, header checksum, source IPv4 address, destination IPv4 address, source IPv4 address (32 bits), destination IPv4 address (32 bits), options (variable)"}
+
+![](/arp/texfig/ip-format-ipv4-packet-format.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="highlighting 'header length' and 'total length'"}
+
+![](/arp/texfig/ip-format-ipv4-packet-format.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="highlighting 'identification', 'flags',  and 'fragment offset'"}
+
+![](/arp/texfig/ip-format-ipv4-packet-format.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="highlighting 'protocol'"}
+
+![](/arp/texfig/ip-format-ipv4-packet-format.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 fig-alt="highlighting 'hop limit/TTL'"}
+
+![](/arp/texfig/ip-format-ipv4-packet-format.figure-6.svg){.fragment .fade-in-then-out fragment-index=6 fig-alt="highlighting 'header checksum'"}
+
+![](/arp/texfig/ip-format-ipv4-packet-format.figure-7.svg){.fragment .fade-in-then-out fragment-index=7 fig-alt="highlighting source and destination address (each 32 bits)"}
+
+![](/arp/texfig/ip-format-ipv4-packet-format.figure-8.svg){.fragment .fade-in-then-out fragment-index=8 fig-alt="highlighting 'diffserv/ECN'"}
+
+:::
+
+::: {.myoverbox .low .fragment fragment-index=2 .fade-in-then-out}
+
+*  data length = length of next layer's data only
+*  header length includes variable 'options'
+
+:::
+
+::: {.myoverbox .low .fragment fragment-index=3 .fade-in-then-out}
+
+*  these fields for "fragments" support
+   *  packet sent in multiple pieces
+*  also exists in IPv6, but IPv6 uses extension headers for it
+*  we'll revisit fragments later
+
+:::
+
+::: {.myoverbox .low .fragment fragment-index=4 .fade-in-then-out}
+
+*  identifier for which protocol: common: TCP, UDP, ICMP
+
+:::
+
+::: {.myoverbox .low .fragment fragment-index=5 .fade-in-then-out}
+
+*  "time-to-live"/hop limit
+*  same idea as IPv6
+
+:::
+
+::: {.myoverbox .low .fragment fragment-index=6 .fade-in-then-out}
+
+*  checksum of header only
+*  IPv6 got rid of IP-level checksums entirely
+   *  probably because TCP, UDP, etc. do their own checksums anyways
+   *  (and these checksums include IP source/destination addresses)
+
+:::
+
+::: {.myoverbox .low .fragment fragment-index=8 .fade-in-then-out}
+
+*  same field format as IPv6
+
+:::

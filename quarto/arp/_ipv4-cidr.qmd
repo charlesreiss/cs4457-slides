@@ -1,0 +1,43 @@
+
+### IPv4 address blocks  {.smaller}
+
+
+* often will want to talk about group of IPv4 addresses
+* example: <span style="color: darkviolet">128.143.67.64</span>---<span style="color: darkgreen">128.143.67.127</span> (inclusive)
+* <code><span style="color: darkviolet">[10000000 10001111 01000011 001]{.fragment fragment-index=3 .custom .myem-only}[00000]{.fragment fragment-index=4 .custom .myem-only}</span></code>  --- 
+* <code><span style="color: darkgreen">[10000000 10001111 01000011 001]{.fragment fragment-index=3 .custom .myem-only}[11111]{.fragment fragment-index=4 .custom .myem-only}</span></code>
+* first 27 bits always same; anything for last bits
+* more convenient representation: 128.143.67.64/27
+* called ‘‘CIDR notation’’ 
+
+   * CIDR = classless inter-domain routing (will come up when we discuss routing)
+
+
+
+### CIDR notation examples  {.smaller}
+
+
+* 5.7.3.3/14 = 5.4.0.0/14 = 5.4.0.0---5.7.255.255 
+
+   * [also written 5.4/14]{.fragment fragment-index=2 .custom .myem-only}
+
+* 128.143.0.0/16 =  128.143.0.0---128.143.255.255 
+
+   * [also written 128.143/16]{.fragment fragment-index=2 .custom .myem-only}
+
+* 192.168.0.0/24 =  192.168.0.0---192.168.0.255
+* 10.0.0.0/8 = 10.0.0.0--10.255.255.255 
+
+   * [also written 10/8]{.fragment fragment-index=2 .custom .myem-only}
+
+
+
+### alternate notation: netmasks  {.smaller}
+
+
+* instead of writing 128.143.67.64/27 might say
+* 128.143.67.64 and ‘‘network mask’’ of 255.255.255.224
+* 255.255.255.224 = 27 1's 
+<hr class="vspace" />
+* if some-address bitwise-AND netmask = 128.143.67.64 bitwise-AND netmask, <br> then some-address is in the range
+

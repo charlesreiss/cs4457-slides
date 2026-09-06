@@ -1,0 +1,97 @@
+
+### autoconfiguration 
+
+
+
+* how do hosts get address + default routing table?
+* one answer: set manually
+ 
+![](/arp/ip-config-dialog){}
+
+
+### simple network config  {.smaller}
+
+
+
+* IP address: 10.0.2.45
+* (sub)net mask: /25 (aka 255.255.255.128) 
+
+   * varies which format is input
+
+* (default) gateway: 10.0.2.102
+ 
+<div class="fragment fade-in" data-fragment-index=2 >
+ ![](/arp/texfig/dhcp-simple-network-config.figure.svg)
+ 
+</div>
+
+
+### DHCP messages (1)  {.smaller}
+
+
+* protocol looks weird in packet traces because of history
+* built on top of UDP + IP
+* built as extension to older BOOTP (bootstrap protocol) 
+<hr class="vspace" />
+* common message format for different ‘‘operations’’
+
+
+### DHCP messages (2)  {.smaller}
+
+
+* from client (looking to configure itself): 
+
+   * DISCOVER (look for configuration server)
+   * REQUEST (get configuration from server)
+
+* from server (offering configurations): 
+
+   * OFFER (‘I am a configuration server’)
+   * ACK (here's a configuration)
+
+
+
+### DHCP request example 
+
+
+
+::: {.r-stack .my-full}
+![](/arp/texfig/dhcp-dhcp-request-example.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/arp/texfig/dhcp-dhcp-request-example.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/arp/texfig/dhcp-dhcp-request-example.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/arp/texfig/dhcp-dhcp-request-example.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+
+:::
+
+
+### DHCP ACK example 
+
+
+
+::: {.r-stack .my-full}
+![](/arp/texfig/dhcp-dhcp-ack-example.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/arp/texfig/dhcp-dhcp-ack-example.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/arp/texfig/dhcp-dhcp-ack-example.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+
+:::
+
+
+### DHCP leases 
+
+
+* DHCP ACKs specify a time limit 
+
+   * (example from prior slide (UVa eduroam): 30 minutes)
+
+* need to be renewed (new REQUEST + ACK) 
+
+   * REQUESTs can contain ‘desired address’ (= current address when renewing)
+
+

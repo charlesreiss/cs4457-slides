@@ -1,0 +1,22 @@
+
+### selected special IPv4 addresses  {.smaller}
+
+
+* 127.0.0.0 --- 127.255.255.255 --- localhost 
+
+   * AKA loopback
+   * the machine we're on
+   * typically only 127.0.0.1 is used
+
+* 192.168.0.0--192.168.255.255 and <br> 10.0.0.0--10.255.255.255 and <br> 172.16.0.0--172.31.255.255  
+
+   * ‘‘private’’ IP addresses
+   * not used on the Internet
+   * commonly connected to Internet with <em>network address translation</em>
+   * also 100.64.0.0--100.127.255.255 (but with restrictions)
+
+* 169.254.0.0-169.254.255.255 
+
+   * link-local addresses --- ‘never’ forwarded by routers
+
+

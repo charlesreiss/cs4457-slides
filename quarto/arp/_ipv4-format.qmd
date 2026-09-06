@@ -1,0 +1,12 @@
+
+### IPv4 addresses  {.smaller}
+
+
+* 32-bit numbers
+* typically written like 128.143.67.11 
+
+   * four 8-bit decimal values separated by dots
+   * first part is most significant
+   * same as $128\cdot 256^3+143\cdot 256^2 + 67\cdot256 + 11 = 2\,156\,782\,459$
+
+

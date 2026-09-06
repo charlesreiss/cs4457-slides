@@ -1,0 +1,24 @@
+
+### exercise (1) 
+
+![](/arp/texfig/ip-mac-exer-exercise-1.figure.svg)
+ 
+
+* if no one's neighbor tables are setup yet, how many frames get sent when 192.0.2.5 sends one IP packet to 195.51.100.4?
+
+
+### exercise (2) 
+
+
+
+::: {.r-stack}
+![](/arp/texfig/ip-mac-exer-exercise-2.figure-1.svg){.fragment width=900px .fade-out fragment-index=2}
+
+![](/arp/texfig/ip-mac-exer-exercise-2.figure-2.svg){.fragment width=900px .fade-in-then-out fragment-index=2}
+
+
+:::
+ 
+
+* what should 192.0.2.5's routing table look like? How about the router's routing table?
+

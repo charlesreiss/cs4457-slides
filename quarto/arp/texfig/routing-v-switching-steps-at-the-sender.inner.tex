@@ -1,0 +1,128 @@
+\begin{tikzpicture}
+\tikzset{
+    computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
+    switch/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\switch}},
+    router/.style={inner sep=-1mm,outer sep=0mm,execute at begin node={\router},circle},
+    connect/.style={draw,very thick,Latex-Latex},
+    connect big/.style={draw,ultra thick,Latex-Latex},
+    addr label/.style={align=left,font=\fontsize{9}{10}\selectfont\tt},
+}
+\node[computer,label={[addr label]south:MAC 00:\ldots:AA\\IP 10.0.1.2},alt=<2->{draw=red,ultra thick,fill=red!10}] (n1-c1) at (0, -2.5) {};
+\node[font=\bfseries] at (n1-c1) {src};
+\node[computer,label={[addr label]south:MAC 04:\ldots:BB\\IP 10.0.1.3}]  (n1-c2) at (0, 0) {};
+\node[switch] (n1-s1) at (3,-1) {};
+\node[switch] (n1-s2) at (5,-4) {};
+\node[computer,label={[addr label]south:MAC 05:\ldots:CC\\IP 10.0.1.4}] (n1-c3) at (1, -5) {};
+\draw[connect] (n1-c1) -- (n1-s1);
+\draw[connect] (n1-c2) -- (n1-s1);
+\draw[connect] (n1-c3) -- (n1-s2);
+\node[router,label={[addr label]south:MAC 02:\ldots:DD / 02:\ldots:DE\\IP: 10.0.1.1 / 10.0.2.15}] (n1n2) at (9, -5) {};
+\draw[connect big] (n1-s1) -- (n1-s2);
+\draw[connect big] (n1-s2) -- (n1n2);
+    \foreach \x [remember=\x as \lastx (initially n1-c1)] in {n1-s1,n1-s2,n1n2} {
+        \path[draw,dotted,blue,line width=1mm,arrows=-Latex] (\lastx) -- (\x);
+    }
+
+    \path (3.7, -1) ++ (0, 1.) coordinate (n1 frame base);
+    \begin{visibleenv}<3>
+        \node[font=\fontsize{9}{10}\tt,anchor=north west] (n1 outer pre 1) at (n1 frame base) {
+            \myemph<4>{00:\ldots:AA}\hspace{1mm}$\rightarrow$\hspace{1mm}???????
+        };
+    \end{visibleenv}
+    \begin{visibleenv}<4>
+        \node[font=\fontsize{9}{10}\tt,anchor=north west] (n1 outer pre 2) at (n1 frame base) {
+            \myemph<4>{00:\ldots:AA}\hspace{1mm}$\rightarrow$\hspace{1mm}\myemph<4>{\normalfont 10.0.1.1's MAC}
+        };
+    \end{visibleenv}
+    \begin{visibleenv}<5->
+        \node[font=\fontsize{9}{10}\tt,anchor=north west] (n1 outer) at (n1 frame base) {
+            00:\ldots:AA\hspace{1mm}$\rightarrow$\hspace{1mm}02:\ldots:DD
+        };
+    \end{visibleenv}
+   \begin{visibleenv}<2->
+        \node[
+            align=left,font=\fontsize{9}{10}\tt,anchor=north west,draw=black!50,very thick,
+            alt=<2>{fill=red!10},
+        ] (n1 inner) at ([xshift=1mm]n1 outer.south west) {
+            10.0.1.2 $\rightarrow$ \myemph<5>{10.0.2.2}\\
+            (actual data)
+        };
+    \end{visibleenv}
+    \begin{visibleenv}<2>
+        \path[draw=red,ultra thick,arrows=Latex-](n1 inner.east) -- ++(1cm, 0cm) node[right] {
+            packet from upper layer
+        };
+    \end{visibleenv}
+    \begin{visibleenv}<3>
+        \path[draw=red,ultra thick,arrows=Latex-,align=left] (n1 outer pre 1.east) -- ++(1cm, 0cm) node[right] {
+            need to send at link layer
+        };
+    \end{visibleenv}
+    \begin{visibleenv}<4>
+        \path[draw=red,ultra thick,arrows=Latex-,align=left] (n1 outer pre 2.east) -- ++(1cm, 0cm) node[right] {
+            routing table says: \\
+            to 10.0.1.1 \\
+            but need MAC address
+        };
+    \end{visibleenv}
+    \begin{visibleenv}<5>
+        \path[draw=red,ultra thick,arrows=Latex-,align=left] (n1 outer pre 1.east) -- ++(1cm, 0cm) node[right] {
+            need IP:MAC address table \\
+            called neighbor table \\
+            or ARP table
+        };
+    \end{visibleenv}
+\begin{pgfonlayer}{bg}
+    \begin{visibleenv}<3->
+    \node[inner sep=0mm,fill=white,draw=blue,very thick,
+          fit={(n1 outer) (n1 inner) ([yshift=-1mm]n1 inner.south) ([xshift=1mm]n1 inner.east)}
+    ] (n1 box) {};
+    \end{visibleenv}
+\end{pgfonlayer}
+\tikzset{
+    route table/.style={
+        matrix of nodes,ampersand replacement=\&,
+        nodes={execute at begin node={\strut}},
+        column 1/.style={nodes={draw,thin,text width=3cm,font=\fontsize{8}{9}\tt,minimum height=0.4cm,inner sep=.1mm}},
+        column 2/.style={nodes={draw,thin,text width=2cm,font=\fontsize{8}{9}\tt,minimum height=0.4cm,inner sep=.1mm}},
+        column 3/.style={nodes={draw,thin,text width=1cm,font=\fontsize{8}{9}\tt,minimum height=0.4cm,inner sep=.1mm}},
+        row 1/.style={nodes={draw=none,font=\fontsize{8}{9}\selectfont}},
+    }
+}
+%% FIXME: show this with build of IP packet without extra stuff
+\begin{pgfonlayer}{fg}
+    \begin{visibleenv}<4-5>
+    \matrix[
+        route table,anchor=north west,
+        label={[label distance=0mm,font=\small,alias=route table label]north:src's routing table},
+        inner sep=0mm,
+        row 3/.style={alt=<4>{nodes={draw=red,fill=red!10}}},
+    ] (route table) at (7, -2){
+    address \& gateway \& iface \\
+    10.0.1.0/24 \& --- \& wired \\
+    default \& |[alt=<5>{fill=red!10}]| 10.0.1.1 \& wired \\
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<5->
+    \matrix[
+        route table,anchor=north west,
+        label={[label distance=0mm,font=\small,alias=arp table label]north:src's neighbor table},
+        column 1/.style={nodes={draw,thin,text width=2cm,font=\fontsize{8}{9}\tt,minimum height=0.4cm,inner sep=.1mm}},
+        column 2/.style={nodes={draw,thin,text width=2cm,font=\fontsize{8}{9}\tt,minimum height=0.4cm,inner sep=.1mm}},
+        column 3/.style={nodes={draw,thin,text width=1cm,font=\fontsize{8}{9}\tt,minimum height=0.4cm,inner sep=.1mm}},
+        row 3/.style={alt=<4>{nodes={draw=red,fill=red!10}}},
+    ] (arp table) at ([yshift=-1cm]route table.south west){
+    IP address \& MAC addresss \\
+    |[alt=<5>{fill=red!10}]| 10.0.1.1 \& |[alt=<5>{fill=red!10}]| 05:\ldots:DD \\
+    10.0.1.4 \& 05:\ldots:CC \\
+    };
+    \end{visibleenv}
+\end{pgfonlayer}
+\begin{visibleenv}<4-5>
+    \node[fill=white,draw,thick,alt=<4>{ultra thick,draw=red},fit=(route table) (route table label),inner sep=.5mm] {};
+\end{visibleenv}
+\begin{visibleenv}<5>
+    \node[fill=white,draw,thick,alt=<5>{ultra thick,draw=red},fit=(arp table) (arp table label),inner sep=1mm] {};
+\end{visibleenv}
+% FIXME: show what happens on router
+\end{tikzpicture}

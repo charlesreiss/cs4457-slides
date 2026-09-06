@@ -1,0 +1,19 @@
+
+### IPv4 addresses  {.smaller}
+
+
+* 32-bit numbers
+* typically written like 128.143.67.11 
+
+   * four 8-bit decimal values separated by dots
+   * first part is most significant
+   * same as $128\cdot 256^3+143\cdot 256^2 + 67\cdot256 + 11 = 2\,156\,782\,459$
+ 
+<hr class="vspace" />
+* organizations get blocks of IPs 
+
+   * e.g. UVa has 128.143.0.0--128.143.255.255
+   * e.g. Google has 216.58.192.0--216.58.223.255 and 74.125.0.0--74.125.255.255 and 35.192.0.0--35.207.255.255
+
+* some IPs reserved for non-Internet use (127.*, 10.*, 192.168.*)
+

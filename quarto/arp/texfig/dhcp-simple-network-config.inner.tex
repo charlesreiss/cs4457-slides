@@ -1,0 +1,12 @@
+\begin{tikzpicture}
+\matrix[tight matrix,
+    nodes={minimum height=0.4cm},
+    column 1/.style={nodes={text width=4cm}},
+    column 2/.style={nodes={text width=3cm}},
+    column 3/.style={nodes={text width=2cm}},
+] {
+addresses \& next hop \& device \\
+10.2.0.0/25 \& (direct) \& out \\
+default \& 10.2.0.102 \& out \\
+};
+\end{tikzpicture}

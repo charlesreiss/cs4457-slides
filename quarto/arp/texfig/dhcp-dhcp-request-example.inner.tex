@@ -1,0 +1,32 @@
+\begin{tikzpicture}
+\tikzset{
+    explain box/.style={draw=red,ultra thick,fill=white,align=left},
+    hi box/.style={draw=red,line width=1mm},
+}
+\node[inner sep=0mm,anchor=north west] at (0, 0) {%
+    \includegraphics[width=\mypaperwidth]{../arp/dhcp-request-wireshark.png}%
+};
+%\path[overlay,draw,help lines] (0, 0) grid (15, -8);
+\begin{visibleenv}<2>
+    \path[hi box] (0.4, -0.2) rectangle (13.2, -1.25);
+    \node[anchor=north,explain box] at (7, -1.5) {
+        built on IP+UDP rather than special protocol like ARP \\
+        ~ \\
+        sending to broadcast ethernet/IP address (all 1 bits)\\
+        placeholder source IP of 0.0.0.0
+    };
+\end{visibleenv}
+\begin{visibleenv}<3>
+    \path[hi box] (0.5, -1.3) rectangle (5.2, -1.7);
+    \node[anchor=north,explain box] at (8, -1.8) {
+       `boot' probably because derived \\ from bootstrap protocol (BOOTP)
+    };
+\end{visibleenv}
+\begin{visibleenv}<4>
+    \path[hi box] (0.5, -3.2) rectangle (8.8, -4.6);
+    \node[anchor=north,explain box] at (7, -5) {
+        message format same in both directions, so \\
+        fields here intended for use in response
+    };
+\end{visibleenv}
+\end{tikzpicture}

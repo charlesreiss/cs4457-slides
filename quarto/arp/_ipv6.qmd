@@ -1,0 +1,27 @@
+
+### IPv6 addresses  {.smaller}
+
+
+* IPv6 like IPv4, but with 128-bit numbers
+* written in hex, 16-bit parts, seperated by colons (<code>:</code>)
+* strings of 0s represented by double-colons (<code>::</code>)
+* typically given to users in blocks of $2^{80}$ or $2^{64}$ addresses 
+<hr class="vspace" />
+* <code>2607:f8b0:400d:c00::6a</code> = <br> <code>2607:f8b0:400d:0c00:0000:0000:0000:006a</code>  
+
+   * <code>2607f8b0400d0c0000000000000006a</code>$_\text{SIXTEEN}$
+
+
+
+### IPv6 CIDR notation examples 
+
+
+* 2607:fb80:400d:0c00::/64 =  
+
+   * <code>2607:fb80:400d:0c00:0000:0000:0000:0000</code>---<br> <code>2607:fb80:400d:0c00:ffff:ffff:ffff:ffff</code>
+
+* 2607:fb80::/30 =  
+
+   * <code>2607:fb80:0000:0000:0000:0000:0000:0000</code>---<br> <code>2607:fb83:ffff:ffff:ffff:ffff:ffff:ffff</code>
+
+

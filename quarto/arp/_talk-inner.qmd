@@ -1,0 +1,74 @@
+
+# IP on Ethernet {visibility="hidden"}
+
+{{< include /arp/_ip-on-ethernet.qmd >}}
+
+# IP packet format {visibility="hidden"}
+
+{{< include /arp/_ip-format.qmd >}}
+
+# IP addresses {visibility="hidden"}
+
+## IPv4 {visibility="hidden"}
+
+## address format{visibility="hidden"}
+
+{{< include /arp/_ipv4-format.qmd >}}
+
+## CIDR notation{visibility="hidden"}
+
+{{< include /arp/_ipv4-cidr.qmd >}}
+
+## IPv6 {visibility="hidden"}
+
+{{< include /arp/_ipv6.qmd >}}
+
+## address space allocation {visibility="hidden"}
+
+{{< include /arp/_ip-iana.qmd >}}
+
+## which link-local addresses {visibility="hidden"}
+
+{{< include /arp/_disamb-link-local.qmd >}}
+
+# routing versus switching {visibility="hidden"}
+
+{{< include /arp/_route-v-switch-table.qmd >}}
+
+{{< include /arp/_routing-v-switching.qmd >}}
+
+# ARP {visibility="hidden"}
+
+## neighbor table, filling by hand {visibility="hidden"}
+
+{{< include /arp/_make-ntable.qmd >}}
+
+## ARP, ND {visibility="hidden"}
+
+{{< include /arp/_protocols.qmd >}}
+
+## what if there are two {visibility="hidden"}
+
+{{< include /arp/_dup-address.qmd >}}
+
+## ARP hijacking {visibility="hidden"}
+
+{{< include /arp/_arp-hijack.qmd >}}
+
+# exercise {visibility="hidden"}
+
+{{< include /arp/_ip-mac-exer.qmd >}}
+
+# DHCP {visibility="hidden"}
+
+{{< include /arp/_dhcp.qmd >}}
+
+## DHCP relays {visibility="hidden"}
+
+{{< include /arp/_dhcp-relay.qmd >}}
+
+## DHCPv6 {visibility="hidden"}
+
+# IPv6 autoconfiguration {visibility="hidden"}
+
+{{< include /arp/_ipv6-autoconf.qmd >}}

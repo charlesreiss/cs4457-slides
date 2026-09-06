@@ -1,0 +1,76 @@
+
+###  
+
+
+![](/arp/iana-registry-screenshot){}
+
+
+###  
+
+
+![](/arp/iana-ipv4-allocs){}
+ (and 241 more)
+
+###  
+
+![](/arp/texfig/ip-iana.figure.svg)
+
+
+### regional internet registries (RIRs)  {.smaller}
+
+![](/arp/texfig/ip-iana-regional-internet-registries-rirs.figure.svg)
+ 
+
+* most useful addresses managed by RIRs 
+
+   * African Network Information Centre (AFRINIC)
+   * American Registry for Internet Numbers (ARIN)
+   * Asia Pacific Network Information Centre (APNIC)
+   * Latin American and Carribean Network Information Centre (LACNIC)
+   * Réseaux IP Européens Network Coordination Centre (RIPE NCC)
+
+
+
+### RIR suballocations 
+
+
+![](/arp/arin-whois-virginia){}
+
+
+### special IPv4 addresses 
+
+
+![](/arp/iana-special-ipv4-header){}
+
+
+### special IPv4 addresses 
+
+
+![](/arp/iana-special-ipv4-detail){}
+
+
+### selected special IP addresses  {.smaller}
+
+
+* loopback (current machine) --- <code>127/8</code> (v4), <code>::1/128</code> (v6)
+* link-local (current network only) --- 
+
+   * <code>169.254/16</code> (v4), <code>ff80::/10</code> (v6)
+
+* private use (non-public networks only) --- <br> 
+
+   * <code>192.168/16</code>, <code>172.16/12</code>, <code>10/8</code> (v4), (kinda) <code>fc00::/7</code> (v6)
+
+* multicast groups and related --- <code>224/4</code> (v4), <code>ff00::/8</code> (v6) 
+
+   * multiple nodes can be part of a single ‘‘multicast group’’
+
+* broadcast (all on current network) ---  
+
+   * <code>255.255.255.255</code>, <code>ff01::1</code>
+
+* ‘‘future use’’ ---  
+
+   * rest of <code>240/4</code> (v4), <code>4000::</code>---<code>efff::</code> (v6)
+
+

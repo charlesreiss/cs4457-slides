@@ -1,0 +1,21 @@
+
+### DHCPv6  {.smaller}
+
+
+* IPv6 version of DHCP is DHCPv6 
+
+   * not actual that common (we'll talk in a bit)
+
+* kinda looks like DHCP done with hindsight: 
+<hr class="vspace" />
+* new protocol (not BOOTP extension)
+* uses multicast instead of broadcast address 
+
+   * so switches, hosts can filter DHCP traffic more easily
+
+* more explicit relay support
+* improved separation of message types 
+
+   * separate RENEW and REQUEST messages
+
+

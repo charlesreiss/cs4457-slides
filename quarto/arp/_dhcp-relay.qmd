@@ -1,0 +1,19 @@
+
+### how many DHCP servers?  {.smaller}
+
+
+* DHCP assumption: broadcast to local network and there's the server 
+<hr class="vspace" />
+* conflicting goals: 
+
+   * want broadcasts not to go too many machines
+   * want to have few DHCP servers
+
+* solution: DHCP <i>relays</i>
+
+
+### DHCP relays 
+
+![](/arp/sysapproach-fig80.svg){}
+
+[Computer Networks: A Systems Approach figure 80]{.mycredit}

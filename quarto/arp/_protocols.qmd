@@ -1,0 +1,75 @@
+
+### ARP/ND protocols  {.smaller}
+
+
+* filling in tables dynamically?
+* key idea: ask <i>everyone</i> on network
+* entity with that IP address responds 
+<hr class="vspace" />
+* IPv4: Address Resolution Protocol (ARP)
+* IPv6: ICMPv6 Neighbor Discovery (ND) 
+
+   * ICMP = Internet Control Message Protocol
+
+
+
+### ARP messages  {.smaller}
+
+
+* suppose router IP address 10.0.2.15 and MAC address 02:…:DE needs to find out that 10.0.2.2 uses 03:…:EE 
+<hr class="vspace" />
+* 02:…:DE→FF:FF:FF:FF:FF:FF: request 10.0.2.2 <br> tell 10.0.2.15 (=02:…:DE) 
+
+   * FF:FF:FF:FF:FF:FF = broadcast (send to all on network)
+
+* 03:…:EE→02:…:DE: reply 10.0.2.2=03:…:EE <br> tell 10.0.2.15=02:…:DE
+
+
+### ARP message format 
+
+<!-- FIXME: overlays separate -->
+
+::: {.r-stack .my-full}
+![](/arp/texfig/protocols-arp-message-format.figure-1.svg){.fragment .fade-out fragment-index=2}
+
+![](/arp/texfig/protocols-arp-message-format.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/arp/texfig/protocols-arp-message-format.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+
+:::
+
+
+### ARP messages (revisited)  {.smaller}
+
+
+* suppose router IP address 10.0.2.15 and MAC address 02:…:DE needs to find out that 10.0.2.2 uses 03:…:EE 
+<hr class="vspace" />
+* 02:…:DE$\rightarrow$FF:FF:FF:FF:FF:FF: request 10.0.2.2 <br> tell 10.0.2.15 (=02:…:DE) 
+
+   * <em>everyone who receives this can add 10.0.2.15=02:…:DE to neighbor table</em>
+
+* 03:…:EE$\rightarrow$02:…:DE: reply 10.0.2.2=03:…:EE <br> tell 10.0.2.15=02:…:DE 
+
+   * <em>everyone who receives this can add 10.0.2.2=03:…:EE to neighbor table</em>
+
+
+
+### ICMPv6 ND  {.smaller}
+
+
+* IPv6 uses different protocol for this
+* … but mostly works the same 
+<hr class="vspace" />
+* differences:
+* sent as IPv6 packets
+* requests sent to special multicast address 
+
+   * goal: allow nodes to easily ignore irrelevant requests
+
+* different names: 
+
+   * request = solicitiation
+   * reply = advertisement
+
+

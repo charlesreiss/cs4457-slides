@@ -1,0 +1,12 @@
+
+### IP on Ethernet 
+
+
+* talked about how Ethernet works
+* but most Ethernet frames going to contain IP packets 
+<hr class="vspace" />
+* IP has its own idea of addresses 
+
+   * used alongside MAC addresses
+
+

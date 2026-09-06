@@ -1,0 +1,16 @@
+
+### which link local?  {.smaller}
+
+
+* ‘‘link local’’: <code>169.254/16</code>, <code>fe80::/10</code>
+* specific to each local network 
+<hr class="vspace" />
+* <code>fe80::17</code> on network A != <code>fe80::17</code> on network B 
+<hr class="vspace" />
+* problem: machine can be connected to two networks
+* solution: <code>fe80::17%A</code> versus <code>fe80::17%B</code>
+* what about IPv4? uh... too bad? 
+
+   * ‘‘There is no standard or obvious solution to this problem… must be done explicitly through other means. The specification does not stipulate those means.’’ --- RFC 3927, section 3.2
+
+

@@ -1,0 +1,61 @@
+
+### switch v router: on the wires 
+
+
+
+::: {.r-stack .my-full}
+![](/arp/texfig/routing-v-switching-switch-v-router-on-the-wires.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/arp/texfig/routing-v-switching-switch-v-router-on-the-wires.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/arp/texfig/routing-v-switching-switch-v-router-on-the-wires.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/arp/texfig/routing-v-switching-switch-v-router-on-the-wires.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+![](/arp/texfig/routing-v-switching-switch-v-router-on-the-wires.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+
+![](/arp/texfig/routing-v-switching-switch-v-router-on-the-wires.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
+
+![](/arp/texfig/routing-v-switching-switch-v-router-on-the-wires.figure-7.svg){.fragment .fade-in-then-out fragment-index=7}
+
+
+:::
+
+
+### steps at the sender 
+
+
+
+::: {.r-stack .my-full}
+![](/arp/texfig/routing-v-switching-steps-at-the-sender.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/arp/texfig/routing-v-switching-steps-at-the-sender.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/arp/texfig/routing-v-switching-steps-at-the-sender.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/arp/texfig/routing-v-switching-steps-at-the-sender.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+![](/arp/texfig/routing-v-switching-steps-at-the-sender.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+
+
+:::
+
+
+### steps at the router 
+
+
+
+::: {.r-stack .my-full}
+![](/arp/texfig/routing-v-switching-steps-at-the-router.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/arp/texfig/routing-v-switching-steps-at-the-router.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/arp/texfig/routing-v-switching-steps-at-the-router.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/arp/texfig/routing-v-switching-steps-at-the-router.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+![](/arp/texfig/routing-v-switching-steps-at-the-router.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+
+
+:::
+

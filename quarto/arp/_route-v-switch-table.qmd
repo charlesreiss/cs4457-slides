@@ -1,0 +1,38 @@
+
+<!-- FIXME: convert to native HTML -->
+
+### switch v router: tables 
+
+
+
+::: {.r-stack .my-full}
+![](/arp/texfig/route-v-switch-table-switch-v-router-tables.figure-1.svg){.fragment .fade-out fragment-index=2}
+
+![](/arp/texfig/route-v-switch-table-switch-v-router-tables.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/arp/texfig/route-v-switch-table-switch-v-router-tables.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/arp/texfig/route-v-switch-table-switch-v-router-tables.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+
+:::
+
+
+### trivial tables 
+
+
+
+* let's say we're connected to ONE interface with ONE port
+* tables are really trivial:
+ 
+
+::: {.r-stack}
+![](/arp/texfig/route-v-switch-table-trivial-tables.figure-1.svg){.fragment .fade-out fragment-index=2 width=900px}
+
+![](/arp/texfig/route-v-switch-table-trivial-tables.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 width=900px]
+
+![](/arp/texfig/route-v-switch-table-trivial-tables.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 width=900px}
+
+![](/arp/texfig/route-v-switch-table-trivial-tables.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 width=900px}
+
+:::

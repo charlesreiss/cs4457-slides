@@ -1,0 +1,51 @@
+\begin{tikzpicture}
+\tikzset{
+    computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
+    computer alt/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computerAlt}},
+    switch/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\switch}},
+    router/.style={inner sep=-1mm,outer sep=0mm,execute at begin node={\router},circle},
+    connect/.style={draw,very thick,Latex-Latex},
+    connect big/.style={draw,ultra thick,Latex-Latex},
+    addr label/.style={align=left,font=\fontsize{9}{10}\selectfont\tt},
+    arp table/.style={
+        tight matrix,
+        nodes={minimum height=.6cm},
+        column 1/.style={nodes={text width=2.05cm,font=\small\tt}},
+        column 2/.style={nodes={text width=1.75cm,font=\small\tt}},
+        %row 1/.style={nodes={font=\small}},
+    },
+}
+\begin{scope}[name prefix=first-]
+    \node[computer,label={[addr label]north:MAC 77:\ldots:BB\\IP 10.0.2.2}] (n1-from) at (0, 0) {};
+    \node[computer alt,label={[addr label]south:MAC 99:\ldots:BA\\IP 10.0.2.9}] (n1-to) at (0, -4) {};
+    \node[switch] (sw) at (0, -2) {};
+    \draw[connect] (n1-from) -- (sw);
+    \draw[connect] (n1-to) -- (sw);
+    \matrix[arp table,label={[label distance=0mm]north:.2's ARP table},inner sep=0mm,fill=white] 
+        (arp table) at (2.75, -0.5) {
+        10.0.2.9 \& 99:\ldots:BA \\
+    };
+\end{scope}
+\begin{visibleenv}<2->
+\draw[line width=2mm,black!50,dashed] (5.3, 2) -- ++(0, -8);
+\begin{scope}[name prefix=second-,xshift=7cm]
+    \node[computer,label={[addr label]north:MAC 77:\ldots:BB\\IP 10.0.2.2}] (n1-from) at (0, 0) {};
+    \node[computer,label={[addr label]south:MAC \myemph<2>{CC:\ldots:01}\\IP 10.0.2.9}] (n1-to) at (2, -4) {};
+    \node[switch] (sw) at (0, -2) {};
+    \draw[connect] (n1-from) -- (sw);
+    \draw[connect] (n1-to) -- (sw);
+    \matrix[arp table,label={[label distance=0mm]north:.2's ARP table},inner sep=0mm,fill=white] 
+        (arp table) at (2.75, -0.5) {
+        10.0.2.9 \& |[alias=wrong mac box,alt=<2>{fill=red!10}]| 99:\ldots:BA \\
+    };
+    \begin{visibleenv}<2>
+        \node[anchor=north,draw=red,very thick,align=left] at ([yshift=-.1cm]wrong mac box.south) {
+            old entry prevents 10.0.2.2 \\
+            from contacting new machine
+        };
+    \end{visibleenv}
+\end{scope}
+\node[anchor=south] at (2, 2) {Monday};
+\node[anchor=south] at (8, 2) {Tuesday};
+\end{visibleenv}
+\end{tikzpicture}
