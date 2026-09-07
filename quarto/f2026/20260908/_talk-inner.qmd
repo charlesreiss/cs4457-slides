@@ -13,6 +13,11 @@
 
 ### quiz
 
+*  reverse bandwidth and ACKs [not explicitly specified on quiz]
+
+### assignment Q+A
+
+
 ###
 
 ## TCP segment format {visibility="hidden"}
@@ -22,6 +27,8 @@
 ## TCP connection example {visibility="hidden"}
 
 {{< include /reliable-tcp/_tcp-example-2.qmd >}}
+
+{{< include /switches/_talk-inner.qmd >}}
 
 ### backup slides
 
