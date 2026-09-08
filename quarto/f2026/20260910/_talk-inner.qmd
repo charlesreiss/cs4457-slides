@@ -45,3 +45,5 @@
 # preview: internetworks {visibility="hidden"}
 
 {{< include /switches/_preview-routing.qmd >}}
+
+{{< include /arp/_talk-inner.qmd >}}
