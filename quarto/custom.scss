@@ -248,6 +248,15 @@ div.myoverbox.midright {
     transform: translate(0%, -50%);
 }
 
+div.myoverbox.midlow {
+    bottom: auto;
+    top: 60%;
+    left: auto;
+    right: 5%;
+    transform: translate(0%, -50%);
+}
+
+
 code span { color: inherit; }
 
 .reveal .slide .tight p { line-height: 1; margin: 0.1em; }

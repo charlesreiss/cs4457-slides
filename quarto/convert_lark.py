@@ -41,6 +41,7 @@ generic_command: SIMPLE_COMMAND when optional_argument? (_BRACE any_text _END_BR
 
 ?inline_command: generic_command
     | _BRACE any_text_raw any_text _END_BRACE -> bare_block
+    | _BRACE SIMPLE_COMMAND+ when _BRACE any_text _END_BRACE any_text _END_BRACE -> block_with_command_arg
     | _BRACE SIMPLE_COMMAND+ any_text _END_BRACE -> block_with_command
 
 item: _ITEM when any_text
@@ -114,6 +115,7 @@ whitespace: whitespace_item+
     | DISPLAYMATH
     | INLINEMATH
     | UMLAT
+    | ACCENT
 
 any_empty_item: whitespace
     | SIMPLE_COMMAND when (_BRACE any_text _END_BRACE | _SQUARE_BRACKET any_text _END_SQUARE_BRACKET)* -> outside_command
@@ -168,6 +170,7 @@ _MYALTTEXTC.10: /\\myalttextC/
 _MYALTTEXTD.10: /\\myalttextD/
 _PDFTOOLTIP.10: /\\pdftooltip/
 UMLAT.10: /\\\"./
+ACCENT.10: /\\'./
 DISPLAYMATH: /\\\[(?s:[^\]])*\\\]/
 LINEBREAK: /\\\\(?:\[[^]]+\])?/
 NBSP: /~/
@@ -799,11 +802,29 @@ class _InlineCommand(_MyAstItem):
                     before += '[['
                     after += ']{.fragment fragment-index=' + str(start) + ' .fade-in}'
                     after += ']{.fragment fragment-index=' + str(end+1) + ' .fade-out}'
+            elif command in (r'\color',):
+                color_map = {
+                    'violet!80!black': 'darkviolet',
+                    'blue!80!black': 'darkblue',
+                    'green!80!black': 'darkgreen',
+                    'violet!70!black': 'darkviolet',
+                    'blue!70!black': 'darkblue',
+                    'green!70!black': 'darkgreen',
+                }
+                color = color_map.get(arguments[0].inner_text, arguments[0].inner_text)
+                if when.is_after_fragment:
+                    before, after = f'<span class="fragment custom highlight-{color}" fragment-index="{str(when.after_index)}">', '</span>'
+                elif len(when.middle_indices):
+                    before, after = f'<span class="fragment custom highlight-current-{color}" fragment-index="{str(when.middle_indices[0])}">', '</span>'
+                else:
+                    before, after = f'<span style="color: {color}">', '</span>'
+                start_arg = -1
             else:
                 when_str = ''
                 if when.raw_when is not None:
-                    when_str = str(when_raw_when)
+                    when_str = str(when.raw_when)
                 before, after = self.command + when_str + '{', '}'
+                start_arg = 0
         else:
             assert '<' not in command, command
             assert '&' not in command, command
@@ -879,6 +900,7 @@ class _InlineCommand(_MyAstItem):
                 }
                 color = color_map.get(arguments[0].inner_text, arguments[0].inner_text)
                 before, after = f'<span style="color: {color}">', '</span>'
+                start_arg = -1
             else:
                 start_arg = 0
                 before, after = command.replace('\\', '\\\\') + '{', '}'
@@ -1595,6 +1617,22 @@ class BlockWithCommand(_InlineCommand):
             self.command = args[0]
             self.arguments = [args[1]]
 
+
+@dataclass
+class BlockWithCommandArg(_InlineCommand):
+    def __init__(self, *args):
+        end_text = args[-1]
+        last_arg = args[-2]
+        when = args[-3]
+        commands = args[:-3]
+        self.command = commands[0]
+        if len(commands) > 1:
+            self.arguments = [AnyText(BlockWithCommandArg(*args[1:]))]
+        else:
+            self.arguments = [last_arg, end_text]
+            self.when = when
+
+
 BareBlock = AnyText
 
 @dataclass
@@ -1974,6 +2012,14 @@ class ToAST(lark.Transformer):
 
     def UMLAT(self, args):
         base_str = args[-1] + "\N{COMBINING DIAERESIS}"
+        base_str = unicodedata.normalize('NFC', base_str)
+        return _RawString(base_str, base_str)
+
+    def ACCENT(self, args):
+        if args[1] == "'":
+            base_str = args[-1] + "\N{COMBINING ACUTE ACCENT}"
+        else:
+            base_str = args[-1] + "\N{COMBINING GRAVE ACCENT}"
         base_str = unicodedata.normalize('NFC', base_str)
         return _RawString(base_str, base_str)
 
