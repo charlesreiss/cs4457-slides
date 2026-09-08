@@ -1,0 +1,47 @@
+
+### last time
+
+*  TCP 3-way handshake
+   *  SYN, SYN+ACK, ACK
+   *  random sequence numbers
+*  Ethernet format
+   *  MAC addresses (hardware-specific ID)
+*  control v data plane
+*  P4 as data plane language
+   *  parser/ingress/deparser; parser/egress/deparser
+
+### assignment Q+A
+
+###
+
+## exercise{visibility="hidden"}
+
+{{< include /switches/_p4-header-exer.qmd >}}
+
+## ingress processing{visibility="hidden"}
+
+{{< include /switches/_p4-ingress.qmd >}}
+
+## exercise{visibility="hidden"}
+
+{{< include /switches/_p4-table-exer.qmd >}}
+
+## egress processing{visibility="hidden"}
+
+{{< include /switches/_p4-egress.qmd >}}
+
+## P4 controlplane {visibility="hidden"}
+
+{{< include /switches/_p4-controlplane.qmd >}}
+
+# basic Ethernet switching / MAC learning {visibility="hidden"}
+
+{{< include /switches/_in-ethernet.qmd >}}
+
+## aside: no loops please {visibility="hidden"}
+
+{{< include /switches/_no-loops-please.qmd >}}
+
+# preview: internetworks {visibility="hidden"}
+
+{{< include /switches/_preview-routing.qmd >}}

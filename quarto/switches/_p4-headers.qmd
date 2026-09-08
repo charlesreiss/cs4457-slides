@@ -3,7 +3,7 @@
 
     
 <pre><code>typedef bit&lt;48&gt; macAddr_t;
-<span data-fragment-index="0" class="fragment custom myem-only">@header</span> ethernet_t {
+<span data-fragment-index="0" class="fragment custom myem-only">header</span> ethernet_t {
     macAddr_t srcAddr;
     macAddr_T dstAddr;
     bit&lt;16&gt;   etherType;
