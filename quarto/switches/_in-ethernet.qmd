@@ -37,28 +37,60 @@
 * just broadcast to everyone!
 
 
-### MAC learning 
+### MAC learning {.maclearning}
 
-<!-- FIXME: convert to new -->
+<style>
+.maclearning.maclearning.maclearning table {font-size: 70%;}
+.maclearning.maclearning.maclearning table td {border: 2px solid black;}
+.maclearning .fragment.bg-red.current-fragment {
+  background-color: rgb(100%, 80%, 80%);
+}
+</style>
 
+::::: {.columns}
 
-::: {.r-stack .my-full}
-![](/switches/texfig/in-ethernet-mac-learning.figure-1.svg){.fragment .fade-out fragment-index=2}
+:::: {.column width=40%}
 
-![](/switches/texfig/in-ethernet-mac-learning.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+<table>
+<caption style="caption-side: top">forwarding table</caption>
+<thead>
+<tr><th>dest MAC address</th><th>port</th></tr>
+</thead>
+<tbody>
+<tr class="bg-red fragment custom" data-fragment-index="2">
+    <td>[<small>00:11:22:33:44:</small>AA]{.fragment fragment-index=2 .fade-in}</td>
+    <td class="bg-red fragment custom" data-fragment-index="4">[2]{.fragment fragment-index=2 .fade-in}</td></tr>
+<tr class="bg-red fragment custom" data-fragment-index="5">
+    <td>[<small>00:11:22:33:44:</small>FF]{.fragment fragment-index=5 .fade-in}</td>
+    <td>[3]{.fragment fragment-index=5 .fade-in}</td></tr>
+<tr><td>&nbsp;</td><td></td></tr>
+<tr><td>&nbsp;</td><td></td></tr>
+<tr><td>&nbsp;</td><td></td></tr>
+<tr><td>&nbsp;</td><td></td></tr>
+<tr><td>[(default)]{.fragment fragment-index=1 .custom .myem-only}</td><td>[ALL\*]{.fragment fragment-index=1 .custom .myem-only}</td></tr>
+</tbody>
+</table>
 
-![](/switches/texfig/in-ethernet-mac-learning.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+::::
 
-![](/switches/texfig/in-ethernet-mac-learning.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+:::: {.column width=60%}
 
-![](/switches/texfig/in-ethernet-mac-learning.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+<table style="width:90%"><caption style="caption side: top">incoming frame 1</caption>
+<tr><td colspan="2">input port=2, output port = [[all but two]{.fragment .custom fragment-index=1 .myem-only}]{.fragment fragment-index=1 .fade-in}</td></tr>
+<tr><td rowspan="4">data =</td><td>src=<tt>[<small>00:11:22:33:44:</small>AA]{.myem-only .custom .fragment fragment-index=2}</tt></td></tr>
+<tr><td>dst=<tt><small>00:11:22:33:44:</small>FF</tt></td></tr>
+<tr><td>type=IPV4</td></td></tr>
+<tr><td>data=<tt>33 45 43 42 &hellip;</tt></td></tr>
+</table>
 
-![](/switches/texfig/in-ethernet-mac-learning.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
+<table style="width:90%" class="fragment fade-in" data-fragment-index=3><caption style="caption side: top">incoming frame 2</caption>
+<tr><td colspan="2">input port=[3]{.fragment .custom fragment-index=5 .myem-only} output port = [[2]{.fragment .custom fragment-index=4 .myem-only}]{.fragment fragment-index=4 .fade-in}</td></tr>
+<tr><td rowspan="4">data =</td><td>src=<tt>[<small>00:11:22:33:44:</small>FF]{.myem-only .custom .fragment fragment-index=5}</tt></td></tr>
+<tr><td>dst=<tt>[<small>00:11:22:33:44:</small>AA</tt>]{.fragment .custom fragment-index=4 .myem-only}</td></tr>
+<tr><td>type=IPV4</td></td></tr>
+<tr><td>data=<tt>34 46 42 42 &hellip;</tt></td></tr>
+</table>
 
-![](/switches/texfig/in-ethernet-mac-learning.figure-7.svg){.fragment .fade-in-then-out fragment-index=7}
+::::
 
-![](/switches/texfig/in-ethernet-mac-learning.figure-8.svg){.fragment .fade-in-then-out fragment-index=8}
-
-
-:::
-
+:::::

@@ -18,7 +18,7 @@
 
 
 * broadcast <i>sent to all but incoming port</i>
-* question: what would happen if we didn't do this? 
+* question: what would happen if we sent to _all_ ports instead?
 
    * multiple may apply
 
