@@ -35,19 +35,19 @@
         alt=<#1>{preaction={fill=red!20},pattern=none},
     },
 }
-\node[overlay,anchor=north east] at ([xshift=-1cm]current page.north east) {
-    time step \myemph{\large\insertoverlaynumber}
-};
 \foreach \x/\d/\mc/\dir in {15/8cm/AA/north,45/3cm/BB/north,90/2cm/CC/north,135/3cm/DD/north,180/4cm/EE/north,300/4cm/FF/south} {
     \node[computer,label={[mac label,]\dir:00:11:22:33:44:\small\mc},alias=c-\mc] (c-\x) at (\x:\d) {};
 }
 \node[switch] (s1) at (4,-0.5) {};
 \node[switch] (s2) at (-1,-2.5) {};
-\draw[connect,one packet forward=1,one packet backward={2}{hilite=2}] (c-15) -- (s1) node[port] {1};
+\draw[connect,one packet forward=1,one packet backward={2}{hilite=2},one packet backward=4] (c-15) -- (s1) node[port] {1};
 \draw[connect,one packet backward=2,one packet backward=4] (c-45) -- (s1) node[port] {2};
 \draw[connect,one packet backward=2,one packet backward=4] (c-300) -- (s1) node[port] {3};
-\draw[connect,one packet backward=3] (c-90) -- (s2) node[port] {2};
-\draw[connect,one packet backward=3] (c-135) -- (s2) node[port] {3};
-\draw[connect,one packet backward=3] (c-180) -- (s2) node[port] {4};
-\draw[connect big,one packet forward=2,one packet backward={3}{hilite=3},one packet forward={4}{hilite=4}] (s1) -- (s2) node[port beginning] {4} node [port] {1};
+\draw[connect,one packet backward=3,one packet backward=5] (c-90) -- (s2) node[port] {2};
+\draw[connect,one packet backward=3,one packet backward=5] (c-135) -- (s2) node[port] {3};
+\draw[connect,one packet backward=3,one packet backward=5] (c-180) -- (s2) node[port] {4};
+    \draw[connect big,one packet forward=2,one packet backward={3}{hilite=3},one packet forward={4}{hilite=4},one packet backward={5}{hilite=5}] (s1) -- (s2) node[port beginning] {4} node [port] {1};
+\node[anchor=north east] at ([yshift=3cm]c-180) {
+    time step \myemph{\large\insertoverlaynumber}
+};
 \end{tikzpicture}

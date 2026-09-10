@@ -66,9 +66,6 @@
         alt=<#1>{pattern=north west lines,pattern color=black!50},
     },
 }
-\node[overlay,anchor=north east] at ([xshift=-1cm]current page.north east) {
-    time step \myemph{\large\insertoverlaynumber}
-};
 \foreach \x/\d/\mc/\dir in {15/8cm/AA/north,30/4cm/BB/north,90/2cm/CC/north,135/3cm/DD/north,180/4cm/EE/north,46/2cm/FF/north} {
     \node[computer,label={[mac label,]\dir:00:11:22:33:44:\small\mc},alias=c-\mc] (c-\x) at (\x:\d) {};
 }
@@ -78,21 +75,24 @@
 \draw[connect,one packet forward=1,two packet={5}{}{<<<}] (c-15) -- (s3);
 \draw[connect,one packet backward=2,two packet={5}{}{<<<}] (c-BB) -- (s3);
 \draw[connect,one packet backward=3,
-      one packet backward={4}{hilite alt=4},
+      one packet backward={4}{},
       ] (c-FF) -- (s1);
 \draw[connect,one packet backward=3,
-      one packet backward={4}{hilite alt=4},
+      one packet backward={4}{},
       ] (c-90) -- (s2);
 \draw[connect,one packet backward=3,
-      one packet backward={4}{hilite alt=4},
+      one packet backward={4}{},
      ] (c-135) -- (s2);
 \draw[connect,one packet backward=3,
-      one packet backward={4}{hilite alt=4},
+      one packet backward={4}{},
       ] (c-180) -- (s2);
 \draw[connect big,one packet both={3}{hilite=3},] (s1) -- (s2);
 \draw[connect big,one packet backward=2,one packet forward={4}{hilite b=4},
     one packet backward={5}{hilite=5}] (s1) -- (s3);
-\draw[connect big,one packet backward={2}{hilite=2},
+\draw[connect big,one packet backward={2}{},
     one packet forward={4}{hilite=4},
     one packet backward={5}{hilite b=5}] (s2) -- (s3);
+\node[anchor=north east] at ([yshift=3cm]c-180) {
+    time step \myemph{\large\insertoverlaynumber}
+};
 \end{tikzpicture}

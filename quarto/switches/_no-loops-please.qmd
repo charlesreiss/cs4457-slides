@@ -37,15 +37,15 @@
 <!-- FIXME: alt text -->
 
 ::: {.r-stack .my-full}
-![](/switches/texfig/loopBackwardBroadcast.figure-1.svg){.fragment .fade-out fragment-index=2}
+![](/switches/texfig/loopBackwardBroadcast.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="A network has 2 switches. Each switch is directly connected to three hosts and to each other. In time step 1, a frame is sent by a host directly connected to the rightmost switch."}
 
-![](/switches/texfig/loopBackwardBroadcast.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/switches/texfig/loopBackwardBroadcast.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="That frame is copied to all 4 ports of the rightmost switch. In time step 2, this results in an erroneous frame being sent back to the original sending host."}
 
-![](/switches/texfig/loopBackwardBroadcast.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/switches/texfig/loopBackwardBroadcast.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="Since the left switch just received a copy of the frame from the right one, it sends copies on all 4 of its ports in time step 3. This includes the erroneous copy sent back to the right switch."}
 
-![](/switches/texfig/loopBackwardBroadcast.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+![](/switches/texfig/loopBackwardBroadcast.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="In time step 4, the right switch sends copies of its newly received frame to all its 4 ports, including back to the left switch."}
 
-![](/switches/texfig/loopBackwardBroadcast.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+![](/switches/texfig/loopBackwardBroadcast.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 fig-alt="In time step 5, the left switch repeats what it did in time step 3 and send a copy of the frame back to the right switch. This will repeat indefinitely."}
 
 
 :::
@@ -66,16 +66,15 @@
 <!-- FIXME: alt text -->
 
 ::: {.r-stack .my-full}
-![](/switches/texfig/loopToOther.figure-1.svg){.fragment .fade-out fragment-index=2}
+![](/switches/texfig/loopToOther.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="A network with three switches (left, center, right). All switches are connected to each other; and each switch is connected to one or more hosts. In time step 1, a frame is sent from to the right switch."}
 
-![](/switches/texfig/loopToOther.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/switches/texfig/loopToOther.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="In time step 2, the frame is forwarded by the right switch to the other host it is connected to and to the other two switches. The frame is _not_ forwarded back to the host that sent it."}
 
-![](/switches/texfig/loopToOther.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/switches/texfig/loopToOther.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="In time step 3, both the left and center switches forward the packet to all the hosts they are directly connected to and to each other. They do not forward it back to the right switch, since they just received it from the right switch."}
 
-![](/switches/texfig/loopToOther.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+![](/switches/texfig/loopToOther.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="In time step 4, the left and center switches again forward the frame. Since the left switch received the frame from the center switch, the left switch forwards it to its directly connected hosts and the right switch, but not back to the center switch from which it was received. Similarly, the center switch forwards it to its directly conneted hosts and the right switch, but not back to the left switch from which it received the frame."}
 
-![](/switches/texfig/loopToOther.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
-
+![](/switches/texfig/loopToOther.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 fig-alt="In time step 5, since the right switch receives two copies of the frame, it forwards both of them. Each of its directly connected hosts get two copies of the frame, one for each of the two the right switch received. The left switch gets one copy, for the one received from the center switch; similarly, the center swithc gets one copy (indireclty from the left switch)."}
 
 :::
 
@@ -86,7 +85,7 @@
 * avoiding sending back is not enough
 * will get catastrophic failure of network! 
 <hr class="vspace" />
-* simple fix: only have one path from A to B 
+* simple (and most common) fix: only have one path from A to B 
 
    * BUT means network is more fragile
 
