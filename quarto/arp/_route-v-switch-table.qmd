@@ -17,6 +17,67 @@
 
 :::
 
+### switch v router: tables {.svr-tables}
+
+<style>
+.svr-tables.svr-tables.svr-tables table {font-size: 70%;}
+.svr-tables.svr-tables.svr-tables table td {border: 2px solid black;}
+.svr-tables .fragment.bg-red.current-fragment {
+  background-color: rgb(100%, 80%, 80%);
+}
+</style>
+
+::::: {.columns}
+
+:::: {.column width=40%}
+
+<table class="fragment custom mybox-one" fragment-index="1">
+<caption style="caption-side: top">switch ("bridge") table (`int`)</caption>
+<thead>
+<tr><th>MAC address</th><th>port</th>
+</thead>
+<tbody>
+<tr><td>`00:11:22:33:44:55`</td><td>1</td></tr>
+<tr><td>`00:33:00:01:02:aa`</td><td>2</td></tr>
+<tr><td>`00:44:00:01:02:bb`</td><td>3</td></tr>
+<tr><td>&hellip;</td><td>&hellip;</td></tr>
+<tr><td>default</td><td>(all)</td></tr>
+</tbody>
+</table>
+
+::: {.fragment fragment-index=1 .fade-in}
+
+*  one logical "interface" with multiple ports
+*  not in table: always broadcast
+
+:::
+
+::::
+
+:::: {.column widht=60%}
+<table>
+<caption style="caption-side: top">routing table</caption>
+<thead>
+<tr><th>IP address</th><th>gateway</th><th class="fragment custom bg-red" fragment-index="2">i'face</th>
+</thead>
+<tbody>
+<tr><td>`2001:0db8:40::/48`</td><td>---</td><td>int</td></tr>
+<tr><td>`3fff:1000:19::/48`</td><td>---</td><td>ext</td></tr>
+<tr><td>&hellip;</td><td>&hellip;</td><td>&hellip;/td></tr>
+<tr><td>default</td><td>fe80::17</td><td>ext</td></tr>
+</tbody>
+</table>
+
+::: {.fragment fragment-index=2 .fade-in}
+
+
+:::
+
+::::
+
+
+:::::
+
 
 ### trivial tables 
 
