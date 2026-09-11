@@ -1,22 +1,4 @@
 
-<!-- FIXME: convert to native HTML -->
-
-### switch v router: tables 
-
-
-
-::: {.r-stack .my-full}
-![](/arp/texfig/route-v-switch-table-switch-v-router-tables.figure-1.svg){.fragment .fade-out fragment-index=2}
-
-![](/arp/texfig/route-v-switch-table-switch-v-router-tables.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
-
-![](/arp/texfig/route-v-switch-table-switch-v-router-tables.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
-
-![](/arp/texfig/route-v-switch-table-switch-v-router-tables.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
-
-
-:::
-
 ### switch v router: tables {.svr-tables}
 
 <style>
@@ -25,16 +7,19 @@
 .svr-tables .fragment.bg-red.current-fragment {
   background-color: rgb(100%, 80%, 80%);
 }
+.svr-tables { font-size: 75% };
+.svr-tables table td {font-size: 90%; }
+.svr-tables div > ul {margin-left: 0; margin-top: 0; margin-bottom: 0;}
 </style>
 
 ::::: {.columns}
 
-:::: {.column width=40%}
+:::: {.column width=50%}
 
-<table class="fragment custom mybox-one" fragment-index="1">
-<caption style="caption-side: top">switch ("bridge") table (`int`)</caption>
+<table class="fragment custom bg-red" fragment-index="1">
+<caption style="caption-side: top">switch ("bridge") table (interface `int`)</caption>
 <thead>
-<tr><th>MAC address</th><th>port</th>
+<tr><th scope="col">MAC address</th><th scope="col">port</th></tr>
 </thead>
 <tbody>
 <tr><td>`00:11:22:33:44:55`</td><td>1</td></tr>
@@ -47,53 +32,128 @@
 
 ::: {.fragment fragment-index=1 .fade-in}
 
-*  one logical "interface" with multiple ports
-*  not in table: always broadcast
+*  switch forms "interface" to network
+*  interface may "bridge" multiple ports
 
 :::
 
 ::::
 
-:::: {.column widht=60%}
+:::: {.column width=50%}
+
 <table>
 <caption style="caption-side: top">routing table</caption>
+<colgroup>
+  <col/>
+  <col class="fragment custom bg-red" data-fragment-index="3" />
+  <col class="fragment custom bg-red" data-fragment-index="2" />
+</colgroup>
 <thead>
-<tr><th>IP address</th><th>gateway</th><th class="fragment custom bg-red" fragment-index="2">i'face</th>
+<tr><th scope="col">IP address</th><th scope="col">gateway</th><th scope="col">i'face</th></tr>
 </thead>
 <tbody>
 <tr><td>`2001:0db8:40::/48`</td><td>---</td><td>int</td></tr>
 <tr><td>`3fff:1000:19::/48`</td><td>---</td><td>ext</td></tr>
-<tr><td>&hellip;</td><td>&hellip;</td><td>&hellip;/td></tr>
+<tr><td>&hellip;</td><td>&hellip;</td><td>&hellip;</td></tr>
 <tr><td>default</td><td>fe80::17</td><td>ext</td></tr>
 </tbody>
 </table>
 
-::: {.fragment fragment-index=2 .fade-in}
+::: {.fragment fragment-index=2 .fade-in .myem-only}
 
+*  'interface' = which network
+    *  one interface might have multiple ports
+
+:::
+
+::: {.fragment fragment-index=3 .fade-in .myem-only}
+
+* gateway = who to send to next
+  * gateway likely to forward again
+  * no gateway = 'direct' to destination
 
 :::
 
 ::::
 
-
 :::::
 
 
-### trivial tables 
+### trivial tables {.smaller .trivial-tables}
 
+<style>
+.trivial-tables table {font-size: 90%;}
+.trivial-tables table + table {margin-top: 1.5em;}
+.trivial-tables.trivial-tables.trivial-tables table td { border: 1px solid black; }
+.trivial-tables .fragment.bg-red.current-fragment {
+  background-color: rgb(100%, 80%, 80%);
+}
+</style>
 
 
 * let's say we're connected to ONE interface with ONE port
-* tables are really trivial:
- 
+  *  and local network has one router connected to the outside
+* tables are simpler:
 
-::: {.r-stack}
-![](/arp/texfig/route-v-switch-table-trivial-tables.figure-1.svg){.fragment .fade-out fragment-index=2 width=900px}
+<hr style="border:0px; margin-top:1px;margin-bottom:1px;"/>
 
-![](/arp/texfig/route-v-switch-table-trivial-tables.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 width=900px]
+::::: {.columns}
 
-![](/arp/texfig/route-v-switch-table-trivial-tables.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 width=900px}
+:::: {.column width=40%}
 
-![](/arp/texfig/route-v-switch-table-trivial-tables.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 width=900px}
+<table>
+<caption style="caption-side: top">switch ("bridge") table</caption>
+<thead>
+<tr><th scope="col">MAC address</th><th scope="col">port</th></tr>
+</thead>
+<tbody>
+<tr><td>default</td><td>the only port</td></tr>
+</tbody>
+</table>
+
+::::
+
+:::: {.column width=60%}
+
+<table>
+<caption style="caption-side: top">routing table (IPv6)</caption>
+<colgroup>
+  <col/>
+  <col class="fragment custom bg-red" data-fragment-index="2" />
+  <col/>
+</colgroup>
+<thead>
+<tr><th scope="col">IP address</th><th scope="col">gateway</th><th scope="col">i'face</th></tr>
+</thead>
+<tbody>
+<tr><td>`2001:0db8:40::/48`</td><td>---</td><td>the interface</td></tr>
+<tr><td>default</td><td>fe80::17</td><td>the interface</td></tr>
+</tbody>
+</table>
+
+<table>
+<caption style="caption-side: top">routing table (IPv4)</caption>
+<colgroup>
+  <col/>
+  <col class="fragment custom bg-red" data-fragment-index="2" />
+  <col/>
+</colgroup>
+<thead>
+<tr><th scope="col">IP address</th><th scope="col">gateway</th><th scope="col">i'face</th></tr>
+</thead>
+<tbody>
+<tr><td>`192.0.2.0/24`</td><td>---</td><td>the interface</td></tr>
+<tr><td>default</td><td>192.0.2.1</td><td>the interface</td></tr>
+</tbody>
+</table>
+
+::::
+
+:::::
+
+::: {.myoverbox .fragment fragment-index=2 .fade-in-then-out .high}
+
+*  no gateway for things on local network
+*  go through single router for all remote networks
 
 :::
