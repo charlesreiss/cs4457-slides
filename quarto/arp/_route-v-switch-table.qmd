@@ -157,3 +157,20 @@
 *  go through single router for all remote networks
 
 :::
+
+### IP routing tables tables on portal
+
+```
+cr4bd@portal07>/u/cr4bd
+$ ip -6 route
+::1 dev lo proto kernel metric 256 pref medium
+fe80::/64 dev ens1 proto kernel metric 256 pref medium
+
+cr4bd@portal07>/u/cr4bd
+$ ip -4 route
+default via 128.143.63.1 dev ens1 proto dhcp src 128.143.63.237 metric 100 
+128.143.63.0/24 dev ens1 proto kernel scope link src 128.143.63.237 metric 100 
+128.143.63.1 dev ens1 proto dhcp scope link src 128.143.63.237 metric 100 
+128.143.67.64 via 128.143.63.1 dev ens1 proto dhcp src 128.143.63.237 metric 100 
+```
+
