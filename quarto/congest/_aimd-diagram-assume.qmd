@@ -1,0 +1,18 @@
+
+### some assumptions we made  {.smaller}
+
+
+* … that are probably not true 
+<hr class="vspace" />
+* both flows experience drops equally when network overloaded 
+
+   * higher-bandwidth flow more likely to see drops?
+   * depends on how switches manage queues?
+   * depends on how ‘bursty’ hosts are?
+
+* same additive increase factor (for 45 degree angle) 
+
+   * TCP so far: +1 segment/round-trip-time
+   * round trip time, segment size may vary between flows
+
+

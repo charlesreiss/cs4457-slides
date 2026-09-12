@@ -1,0 +1,42 @@
+
+### normal backoff  {.smaller}
+
+
+* problem: what if we have multiple timeouts 
+<hr class="vspace" />
+* let's say timeout is 1 time unit
+* transmit at 1 time unit, 2 time units, 3 time units, 4 time units, etc. 
+<hr class="vspace" />
+* problem: if the network is overloaded <i>from retransmissions</i> won't stop it 
+
+   * … but window size reduction should make number of packets retransmitted <i>per connection</i> low
+   * (so probably not so important with corrected window size management?)
+
+
+
+### exponential backoff  {.smaller}
+
+
+* instead of: <br>
+* transmit at 1 time unit, 2 time units, 3 time units, 4 time units, etc. 
+<hr class="vspace" />
+* do something like: <br> transmit at 1 time unit, 3 time units, 7 time units, 15 time units, etc.
+
+
+### exponential backoff theory  {.smaller}
+
+
+* for binary exponential backoff  
+
+   * timeout for $i$th retransmission is $2^i \times \text{base timeout}$
+
+* intuition: avoids overloading network by being a lot less aggressive 
+
+   * what you ‘should’ do for repeated timeouts due to congestion
+
+* not aware of good theoretical results in TCP context 
+
+   * famous result that this type of backoff is good for things like deciding when to retransmit on shared wired/wireless medium
+   * (Goodman et al, ‘‘On Stability of Ethernet’’)
+
+

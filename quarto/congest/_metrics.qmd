@@ -1,0 +1,14 @@
+
+### congestion control metrics 
+
+
+* efficiency 
+
+   * making ‘‘full’’ use of available resources
+
+* min-max fairness 
+
+   * everyone gets ‘equal’ resources
+   * often conflict with Pareto-efficiency
+
+

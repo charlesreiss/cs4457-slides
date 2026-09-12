@@ -1,0 +1,57 @@
+
+### diversion: some queuing theory 
+
+
+* queuing theory: applied probability
+* talks about how queues work 
+<hr class="vspace" />
+* applies to networks and anything else with ‘‘waiting in line’’
+
+
+### queue measurements  {.smaller}
+
+
+* arrival rate
+* service time (amount of time after waiting in line)
+* utilization = arrival rate / service time 
+<hr class="vspace" />
+* if single thing can be processed at a time, then max utilization = 100% 
+
+   * higher implies ‘‘infinitely’’ long queues
+
+
+
+### M/M/1/$\infty$ queue  {.smaller}
+
+
+* next slides: results for M/M/1/$\infty$ queue 
+<hr class="vspace" />
+* M (memoryless) --- random arrival (exponential dist.)
+* M --- random service time (exponential dist.)
+* 1 --- one ‘‘server’’ (thing that can process packets)
+* $\infty$ --- unlimited queue length
+
+
+### M/M/1/$\infty$ queue length  {.smaller}
+
+
+
+* mean queue length \[\frac{\text{arrival rate}}{\text{service rate} - \text{arrival rate}}\]
+ ![](/congest/texfig/diversion-queuing-theory-mm1infty-queue-length.figure.svg)
+ 
+
+* practical implication: <em>need to run networks at much less than full utilization</em>
+
+
+### M/M/1/$\infty$ queue length std. deviation 
+
+
+
+* \[\sqrt{\frac{\text{utilization}}{\left(1 - \text{utilization}\right)^2}}\]
+ ![](/congest/texfig/diversion-queuing-theory-mm1infty-queue-length-std-deviation.figure.svg)
+
+
+### approx 95th pctile v mean queue length 
+
+![](/congest/texfig/diversion-queuing-theory-approx-95th-pctile-v-mean-queue-length.figure.svg)
+

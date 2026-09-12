@@ -1,0 +1,82 @@
+
+# recall: window size versus bandwidth {visibility="hidden"}
+
+{{< include /reliable-window/_window-size-empirical-graph.qmd >}}
+
+{{< include /reliable-window/_window-size-empirical.qmd >}}
+
+# why optimal / counting packets in flight {visibility="hidden"}
+
+{{< include /congest/_window-optimum.qmd >}}
+
+# searching for performance {visibility="hidden"}
+
+{{< include /congest/_find-window.qmd >}}
+
+# a little history {visibility="hidden"}
+
+{{< include /congest/_collapse-history.qmd >}}
+
+# performance collapse {visibility="hidden"}
+
+{{< include /congest/_overload.qmd >}}
+
+# changing cross-traffic {visibility="hidden"}
+
+{{< include /congest/_cross-traffic.qmd >}}
+
+# up/down pattern (rough) {visibility="hidden"}
+
+{{< include /congest/_window-change-rough.qmd >}}
+
+# heuristic: slow increase {visibility="hidden"}
+
+{{< include /congest/_heuristic-increase.qmd >}}
+
+## exercise: convergence times {visibility="hidden"}
+
+{{< include /congest/_convergence-time.qmd >}}
+
+# heuristic: fast decrease (v1) {visibility="hidden"}
+
+{{< include /congest/_heuristic-decrease-to-1.qmd >}}
+
+# original TCP congestion control {visibility="hidden"}
+
+{{< include /congest/_tcp-tahoe-intro.qmd >}}
+
+# sawtooth pattern {visibility="hidden"}
+
+{{< include /congest/_sawtooth.qmd >}}
+
+# aside: examining congestion control on Linux {visibility="hidden"}
+
+{{< include /congest/_linux-ss.qmd >}}
+
+# part 1: window sizing {visibility="hidden"}
+
+### againframe(jacobsonFixes)
+
+# focus on steady state {visibility="hidden"}
+
+{{< include /congest/_focus-steady-state.qmd >}}
+
+# revised TCP congestion control {visibility="hidden"}
+
+{{< include /congest/_tcp-reno-intro.qmd >}}
+
+# heuristic: fast decrease (v2) {visibility="hidden"}
+
+{{< include /congest/_heuristic-decrease.qmd >}}
+
+# AIMD {visibility="hidden"}
+
+{{< include /congest/_aimd.qmd >}}
+
+# some graphs {visibility="hidden"}
+
+{{< include /congest/_tcp-normal-graphs.qmd >}}
+
+## exercise: non-congestion losses {visibility="hidden"}
+
+{{< include /congest/_non-congest-losses.qmd >}}

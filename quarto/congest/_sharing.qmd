@@ -1,0 +1,13 @@
+
+### congestion: sharing  {.smaller}
+
+
+* want to consider multiple flows 
+<hr class="vspace" />
+* key questions: 
+
+   * is it stable if both flows changing window sizes?
+   * is there one winner/loser?
+   * is the winner/loser who we want it to be?
+
+

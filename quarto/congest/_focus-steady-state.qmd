@@ -1,0 +1,9 @@
+
+### handling steady state 
+
+
+* most of the time we should be at approx. correct window size 
+<hr class="vspace" />
+* want to focus on how we react to changes
+* still going to use ‘‘experimentation’’ idea
+

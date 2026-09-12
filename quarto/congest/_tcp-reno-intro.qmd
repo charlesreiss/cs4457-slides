@@ -1,0 +1,21 @@
+
+### TCP (New)Reno  {.smaller}
+
+
+* base for ‘modern’ TCP (changes from Tahoe highlighted)
+* <i>congestion avoidance</i> (cwnd $\ge$ ssthresh; no known loss) 
+
+   * no loss: cwnd += 1 segment per round-trip-time
+   * <em>on loss (dup ACK): cwnd = cwnd/2; ssthresh = new cwnd</em>
+   * on loss (timeout): cwnd = 2 segments
+
+* <i>recovery</i> (known loss) 
+
+   * resend immediately on third dup ACK
+   * <em>send new data based on self-clocking idea (‘‘fast recovery’’)</em>
+
+* <i>‘‘slow start’’</i> (cwnd \< ssthresh) 
+
+   * (details later)
+
+

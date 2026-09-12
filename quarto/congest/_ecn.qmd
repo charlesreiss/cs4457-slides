@@ -1,0 +1,95 @@
+
+### ECN  {.smaller}
+
+
+* explicit congestion notification 
+<hr class="vspace" />
+* when buffer ‘close’ to full
+* switches set ‘congestion experienced’ (CE) signal in some packets
+* goal: congestion signal <i>instead of</i> packet drops 
+
+   * avoid all the retransmission, hopefully
+ 
+<hr class="vspace" />
+* still have fallback to dropping packets
+
+
+### ECN and TCP/IP  {.smaller}
+
+
+* congestion experience (CE) signal in IP heaer
+* when ACKing, ‘‘return’’ CE signal with ACK 
+
+   * ECN echo (ECE) TCP flag on ACK packets
+ 
+<hr class="vspace" />
+* when sender sees ECE flag, confirm reciept by setting ‘‘congestion window reduced’’ (CWR) flag until ECE flag stops being set
+
+
+### ECN opt-in  {.smaller}
+
+
+* two bits in IP header
+* RFC 3168 says: 
+<hr class="vspace" />
+* <code>00</code> = not-ECN capable (default)
+* <code>01</code>, <code>10</code> = ECN-capable (set by TCP/etc. implementation)
+* <code>11</code> = congestion experienced
+
+
+### ECN timeline  {.smaller}
+
+![](/congest/texfig/ecn-ecn-timeline.figure.svg)
+ 
+
+* data sent has place for ECN bit to be placed
+* switch modifies ECN bit <em>if buffer close to full</em>
+* ACK indicates if ECN bit was set
+
+
+### reacting to ECN marks 
+
+
+* multiple options for using ECN marks
+* simplest idea: 
+<hr class="vspace" />
+* adjust window as if packet was dropped
+* … but don't need to resend data
+
+
+### ECN deployment  {.smaller}
+
+
+* ECN proposed in 2001
+* 13 years later: around 56% support on websites\\footnote{Trammel et al, ‘‘Enabling Internet-Wide Deployment of Explicit Congestion Notification’’}
+* 16 years later:  
+
+   * around 80% support on websites\\footnote{Kühlewind et al, ‘‘Tracing Internet Path Transparency’’}
+   * around 0.2% of servers disallow connection when ECN requested
+
+* 20 years later: 
+
+   * around 86% support on websites\\footnote{Lim et al, ‘‘A Fresh Look at ECN Traversal in the Wild’’}
+   * around 4% of paths strip ECN signals, including notable ISPs/cloud providers/etc.
+   * around 7.5% of connections (from sampled Universities) enable ECN
+
+
+
+### example: DCTCP  {.smaller}
+
+
+* DataCenter TCP (2010)
+* intended for datacenters 
+
+   * high bandwidth, low latency networks
+
+* based on explicit congestion notification
+* … but uses different multiplicative decrease strategy 
+<hr class="vspace" />
+* measure portion of packets marked recently $\alpha$
+* decrease by factor of $1-\alpha/2$ 
+
+   * respond gradually to congestion
+   * start responding early (packets marked when queues far from full)
+
+

@@ -1,0 +1,15 @@
+
+### other congestion signals  {.smaller}
+
+
+* so far: detecting congestion via drops 
+
+   * need data to go missing
+   * transmitting redundant data
+   * filling up buffers causing high latency
+ 
+<hr class="vspace" />
+* some alternate ideas:
+* [have switches/routers ‘mark’ packets]{.fragment fragment-index=2 .custom .myem-only}
+* [latency from longer queues]{.fragment fragment-index=3 .custom .myem-only}
+

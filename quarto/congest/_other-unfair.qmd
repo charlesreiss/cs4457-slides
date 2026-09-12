@@ -1,0 +1,31 @@
+
+### other unfairness 
+
+
+* lower round-trip gets more bandwidth
+* can also get more bandwidth by… 
+<hr class="vspace" />
+* using more connections (‘independent’ windows)
+* adding more than + 1 packet to window size/RTT
+
+
+### alternate congestion control  {.smaller}
+
+
+* usually <i>more aggressive</i> than ‘‘normal’’ TCP 
+
+   * examples we'll talk about later: CUBIC, Compound TCP <br> (common defaults on recentish OSes)
+   * needed to fully utilize bandwidth on fast network
+ 
+<hr class="vspace" />
+* concern: are these ‘‘stealing’’ all the bandwidth from normal TCP?
+* ‘‘TCP-friendly’’ 
+
+   * should not make TCP used alongside them behave poorly
+
+
+
+### examples: TCP-unfriendliness  {.smaller}
+
+![](/congest/texfig/other-unfair-examples-tcp-unfriendliness.figure.svg)
+ [ from Ha, et al, ‘‘CUBIC: A New TCP-Friendly High-Speed TCP Variant’’ <br> and Tan, et al, ‘‘A Compound TCP Approach for High-speed and Long Distance Networks’’ ]{.mycredit}

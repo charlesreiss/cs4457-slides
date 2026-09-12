@@ -1,0 +1,55 @@
+
+### timeout setting 
+
+
+* goal in setting timeouts: 
+
+   * timeout triggering almost always means dropped packet
+
+* to do this want <i>highest likely round trip time</i> 
+<hr class="vspace" />
+* original TCP heuristic: twice RTT estimate
+
+
+### RTT variation exercise (1)  {.smaller}
+
+
+* let's say 1 ms tranmission delay + 20 ms propogation delay
+* and queue depth ranges ‘randomly’ from 1 to 10
+* exercise: round-trip-time? 
+
+   * 42 ms with no queue
+   * +1 ms per queue depth
+   * 43 to 52 ms
+
+
+
+### RTT variation exercise (2)  {.smaller}
+
+
+* let's say 1 ms tranmission delay + 10 ms propogation delay
+* and queue depth ranges ‘randomly’ from 10 to 40
+* exercise: round-trip-time? 
+
+   * 12 ms with no queue
+   * +1 ms per queue depth
+   * 22 to 52 ms
+
+
+
+### how does original timeout do? 
+
+
+* works well when queuing delay small relative to other delays
+* works poorly when queuing delay high
+* … because queuing delay won't be consistent!
+
+
+### new timeout formula 
+
+
+* estimate mean deviation of RTT (= difference from average)
+* similar exponentially weighted moving average 
+<hr class="vspace" />
+* timeout = RTT estimate + 2 $\times$ RTT deviation estimate
+

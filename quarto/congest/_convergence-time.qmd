@@ -1,0 +1,36 @@
+
+### exercise: convergence time (1)  {.smaller}
+
+
+* suppose: 50 ms round trip time
+* initially sending at 600 packets/second 
+
+   * $\approx 0.9$Mbyte/sec with 1500 byte packets
+
+* optimal rate is 10000 packets/second 
+
+   * $\approx 15$Mbyte/sec with 1500 byte packets
+
+* ‘standard’ TCP increase of 1 packet/RTT
+* how long to get there?
+* current: 30 packets/RTT (= window size 30)
+* need to get to: 500 packets/RTT
+* will take $500-30=470$ round trips $\approx$ 23500 ms $\approx$ 24 s
+
+
+### fixing bad convergence time  {.smaller}
+
+
+* TCP's additive increase is very slow for ‘‘high bandwidth-delay’’ networks
+* two things make this better: 
+<hr class="vspace" />
+* not in additive increase mode at start of connection 
+
+   * ‘‘slow start'’ we’ll talk about later
+
+* more adaptive increase for modern TCP variants 
+
+   * e.g. FAST TCP, CUBIC TCP, …
+   * heuristics to increase faster when appropriate
+
+

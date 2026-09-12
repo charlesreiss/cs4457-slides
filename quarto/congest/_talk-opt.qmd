@@ -1,0 +1,104 @@
+
+# ‘slow start’ {visibility="hidden"}
+
+### againframe(jacobsonFixes)
+
+{{< include /congest/_slow-start.qmd >}}
+
+## exercise {visibility="hidden"}
+
+{{< include /congest/_slow-start-ex.qmd >}}
+
+# original TCP congestion control (restated) {visibility="hidden"}
+
+{{< include /congest/_tcp-tahoe.qmd >}}
+
+# original TCP congestion control (restated) {visibility="hidden"}
+
+{{< include /congest/_tcp-reno.qmd >}}
+
+## some more graphs {visibility="hidden"}
+
+## repeated graph{visibility="hidden"}
+
+{{< include /congest/_tcp-normal-graphs.qmd >}}
+
+## non-repeated graph{visibility="hidden"}
+
+{{< include /congest/_graphs-with-slow-start.qmd >}}
+
+# ‘fast retransmit’ and ‘fast recovery’ {visibility="hidden"}
+
+### againframe(jacobsonFixes)
+
+## recall: duplicate ACKs {visibility="hidden"}
+
+{{< include /reliable-window/_dup-ack-opt.qmd >}}
+
+## duplicate ACKs {visibility="hidden"}
+
+{{< include /congest/_dup-ack-window.qmd >}}
+
+## SACK {visibility="hidden"}
+
+{{< include /congest/_sack.qmd >}}
+
+## self-clocking and fast retransmit {visibility="hidden"}
+
+{{< include /congest/_self-clock-idea.qmd >}}
+
+# ‘fast retransmit’ and ‘fast recovery’ {visibility="hidden"}
+
+# missing piece: reverse path {visibility="hidden"}
+
+{{< include /congest/_reverse-path.qmd >}}
+
+# aside: some queuing theory {visibility="hidden"}
+
+{{< include /congest/_diversion-queuing-theory.qmd >}}
+
+# deep queues? {visibility="hidden"}
+
+{{< include /congest/_buffer-bloat.qmd >}}
+
+# missing Jacobson pieces {visibility="hidden"}
+
+## variance estimation {visibility="hidden"}
+
+### againframe(jacobsonFixes)
+
+{{< include /congest/_variance-estimate.qmd >}}
+
+## exponential backoff {visibility="hidden"}
+
+### againframe(jacobsonFixes)
+
+{{< include /congest/_exp-backoff.qmd >}}
+
+# TCP variants {visibility="hidden"}
+
+{{< include /congest/_tcp-variant-names.qmd >}}
+
+## CUBIC {visibility="hidden"}
+
+{{< include /congest/_cubic.qmd >}}
+
+# other congestion signals {visibility="hidden"}
+
+{{< include /congest/_other-signals.qmd >}}
+
+## explicit congestion notification {visibility="hidden"}
+
+### againframe(otherSig)
+
+{{< include /congest/_ecn.qmd >}}
+
+## watching latency, etc. {visibility="hidden"}
+
+### againframe(otherSig)
+
+{{< include /congest/_watch-latency.qmd >}}
+
+# overall congestion control data {visibility="hidden"}
+
+{{< include /congest/_overall-data.qmd >}}

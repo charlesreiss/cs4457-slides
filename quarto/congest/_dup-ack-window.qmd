@@ -1,0 +1,36 @@
+
+### fast retransmission 
+
+
+* TCP calls this idea of retransmission from duplicate ACKs  <br> ‘‘fast retransmission’’
+* means we typically don't wait for timeouts 
+
+   * … assuming just one loss
+
+
+
+### fast retransmit delays  {.smaller}
+
+<table>
+<tr><td>recv'd</td><td>sent</td></tr>
+<tr><td>---</td><td>data 0-7</td></tr>
+<tr><td>ACK 0</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>data 8</td></tr>
+<tr><td>ACK 1</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>data 9</td></tr>
+<tr><td>ACK 1</td><td>&nbsp;</td></tr>
+<tr><td>ACK 1</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>data 2</td></tr>
+<tr><td>ACK 1</td><td>&nbsp;</td></tr>
+<tr><td>ACK 1</td><td>&nbsp;</td></tr>
+<tr><td>ACK 1</td><td>&nbsp;</td></tr>
+<tr><td>ACK 1</td><td>&nbsp;</td></tr>
+<tr><td>ACK 9</td><td>&nbsp;</td></tr>
+<tr><td>data 10-…</td></tr>
+<tr><td></td></tr>
+</table>
+ 
+
+* delayed sending new packets until ACK 9
+* … but probably could've done that earlier?
+

@@ -1,0 +1,104 @@
+
+### some intuition (based on BBR)  {.smaller}
+
+[]{.my-small} (based on Google's BBR presentation to the IETF) <br> ![](/congest/texfig/watch-latency-some-intuition-based-on-bbr.figure.svg)
+ 
+ ![](/congest/texfig/watch-latency-some-intuition-based-on-bbr_2.figure.svg)
+
+
+### very different congestion control  {.smaller}
+
+
+* fuller queues $\rightarrow$ higher latency
+* fuller queues $\rightarrow$ throughput same as window increases 
+<hr class="vspace" />
+* strategy: monitor throughput/latency to detect full queues 
+
+   * goal: fill link without making queue grow (much) in size
+
+
+
+### ‘Vegas’-style congestion control (1)  {.smaller}
+
+
+* record ‘‘base’’ round-trip time 
+
+   * connection start or lowest observed
+
+* ‘‘ideal’’ throughput should be one window / base round trip time 
+
+   * (Vegas paper calls this ‘‘expected’’ throughput)
+   * what would happen with no queuing delay
+
+* ‘‘actual’’ throughput $\approx$ one window / actual round trip time
+
+
+### ‘Vegas’-style congestion control (2)  {.smaller}
+
+
+* measured ideal+actual throughput (prev. slide) 
+
+   * mainly using idea of ‘base’ round trip time
+ 
+<hr class="vspace" />
+* goal: control what ‘‘ideal’’ - actual throughput is
+* if 0, queues are probably empty, can increase window
+* if large, queues are too big, decrease window
+
+
+### Compound TCP  {.smaller}
+
+
+* combines Vegas and ‘normal’ TCP congestion control
+* track seperate ‘delay’ and ‘congestion’ window 
+
+   * congestion window uses standard TCP algorithm
+   * delay window based on Vegas-like increase in RTT detection
+
+* effective window size based delay+congestion window 
+<hr class="vspace" />
+* was default on Windows for many years
+
+
+### Westwood TCP  {.smaller}
+
+
+* Vegas = watch latency versus window size 
+
+   * intuition: if window size $\uparrow$ $\implies$ latency $\uparrow$, window size too high
+
+* alternate idea: bandwidth versus window size 
+
+   * intuition: if window size $\uparrow$ $\implies$ bandwidth unchanged, window size too high
+ 
+<hr class="vspace" />
+* Westwood TCP:
+* estimate actual bandwidth based on ACK rate
+* set ssthresh based on bandwidth + min RTT
+
+
+### BBR-style congestion control  {.smaller}
+
+
+* [if queues are empty]{.fragment fragment-index=2 .custom .myem-only}, larger window:
+* latency stays the same and throughput increases 
+<hr class="vspace" />
+* [if queues are filling]{.fragment fragment-index=3 .custom .myem-only}, larger window:
+* throughput stays the same and latency increases 
+<hr class="vspace" />
+* observe effect of sending more/fewer packets periodically
+* estimate ‘boundary’ based on observed latency/throughput
+* keep window size near boundary most of the time
+
+
+### BBR  {.smaller}
+
+
+* congestion control algoirithm out of Google published c. 2016
+* apparently deployed (at least at some point) on their servers 
+<hr class="vspace" />
+* not great fairness results with traditional TCP 
+
+   * Philip (IMC'21)\\footnote{Philip, Ware, Athapathu, Sherry, Sekar, ‘‘Revisting TCP Congestion Control Throughput Models &amp; Fairness Properties AT Scale'’ (IMC’21)} claims one BBR flow takes 40% of throughput when competing with thousands of CUBIC or NewReno flows
+
+

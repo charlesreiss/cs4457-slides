@@ -1,0 +1,13 @@
+
+### ‘‘slow start’’ later  {.smaller}
+
+
+* heuristic: slow start if window size is ‘small’ compared to last packet loss 
+
+   * compromise: find correct size v. overload network
+ 
+<hr class="vspace" />
+* method:
+* set <code>ssthresh</code> = bytes in flight / 2 on packet loss
+* use slow start when window size \< <code>ssthresh</code>
+

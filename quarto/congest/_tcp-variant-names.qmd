@@ -1,0 +1,22 @@
+
+### ‘‘traditional’’ TCP variant names  {.smaller}
+
+
+* everything we've talked about as standard = NewReno 
+<hr class="vspace" />
+* Tahoe --- slow start + redo slow start on any loss + fast retransmit
+* Reno --- Tahoe + halve window size on dup ACKs
+* NewReno --- Reno + fast recovery (send extra during fast retransmit)
+* SACK --- NewReno + use selective acknowledgments
+
+
+### more recent TCP variants  {.smaller}
+
+
+* BIC, CUBIC --- loss-based schemes that vary increase/decrease algorithm
+* Vegas, BBR, FAST, Compound, Westwood --- schemes that use latency/bandwidth to detect congestion 
+
+   * (later topic)
+
+* (and there are many, many more)
+

@@ -1,0 +1,125 @@
+
+### the overloaded switch  {.smaller}
+
+
+* let's say switch can handle 50 packets/second
+* but has: 
+
+   * 100 packets/second from test flow sending as fast as it can
+   * 10 packets/second from other session
+
+* expected <i>loss rate</i> (% packets lost)?
+* expected % test flow packets lost?
+* expected other session packets lost?
+
+
+### modeling who gets dropped  {.smaller}
+
+
+* it kinda does matter…
+* sending in big bursts or spread out (‘‘pacing’’)? 
+
+   * bursts can overload queues even though average rate is low
+
+* how switch's queue works? 
+
+   * queue size (handling bursts), way to choose what to drop
+
+* random or fixed intervals between sending? 
+<hr class="vspace" />
+* but we'll [simplify]{.fragment fragment-index=2 .custom .myem-only}, assuming--- 
+
+   * a flow's arrivals are randomly spaced
+   * drops hit packets at random
+   * queue is ‘‘pretty big’’
+
+
+
+### the overloaded switch  {.smaller}
+
+
+* let's say switch can handle 50 packets/second
+* but has: 
+
+   * 100 packets/second from test flow (checking window size)
+   * 10 packets/second from other session
+
+* expected <i>loss rate</i> (% packets lost)? $\frac{100+10-50}{100+10}=54\%$
+* expected % test flow packets lost? $54\%$
+* expected % other session packets lost? $54\%$
+* <em>… but I missed something</em>
+
+
+### a virtuous cycle  {.smaller}
+
+
+* what is other session going to when 54% of its packets are lost? 
+
+   * probably resend them
+
+* what about when resent packets are lost? 
+
+   * probably resent again
+ 
+<hr class="vspace" />
+* if other session doesn't slow down, then…
+* $10$ pkt/s $\rightarrow10+54\%\cdot10+54\%^2\cdot10 \ldots\approx 22$ pkt/s
+
+
+### the overloaded switch (revised)  {.smaller}
+
+
+* let's say switch can handle 50 packets/second
+* but has: 
+
+   * 100 packets/second from test flow (checking window size)
+   * 10 packets/second from other session $\rightarrow 22$ with resends
+
+* expected <i>loss rate</i> (% packets lost)? $\frac{100+22-50}{100+22}=59\%$
+* expected % test flow packets lost? $59\%$
+* expected % other session packets lost? $59\%$ 
+
+   * means that 22 pkt/sec is slight underestimate
+   * though realistically other session should slow down
+
+
+
+### aside: latency (1)  {.smaller}
+
+
+* 589
+* need one round-trip time (RTT) to detect loss 
+
+   * probably from duplicate ACK
+   * if detecting via timeout, probably longer
+
+* so need 1.4 RTTs (detecting loss 1.4 times) extra time
+* mean latency $= \frac{1.4 \text{RTTs}}{0.5 \text{RTTs}}$ times normal $= 2.8$ times normal
+
+
+### aside: high-percentile latency 
+
+
+* 59% packet loss
+* about 10% of time need more than 4 retransmissions
+* about 5% of the time need more than 5 retransmissions
+* about 1% of the time need more than 8 retransmissions
+
+
+### sliding windows and retransmissions 
+
+
+* assuming that other session doesn't slow down 
+<hr class="vspace" />
+* sliding window approach slows down on losses
+
+
+### sliding window throughput collapse  {.smaller}
+
+
+* let's say doing sliding window with 100 packet window
+* if 1% of the time, we need to resend a packet 8 times, then
+* probably need around 8 RTTs to send all 100 packets in window 
+<hr class="vspace" />
+* $\approx$ 8 times slower with same window size
+

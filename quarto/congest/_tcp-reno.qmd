@@ -1,0 +1,21 @@
+
+### TCP (New)Reno [with slow start]  {.smaller}
+
+
+* <i>congestion avoidance</i> (cwnd $\ge$ ssthresh; no known loss) 
+
+   * no loss: cwnd += 1 segment per round-trip-time
+   * on loss (dup ACK): cwnd = cwnd/2; ssthresh = new cwnd
+   * on loss (timeout): cwnd = 2 segments
+
+* <i>recovery</i> (known loss) 
+
+   * resend immediately on third dup ACK
+   * send new data based on self-clocking idea (‘‘fast recovery’’)
+
+* <i>‘‘slow start’’</i> (cwnd \< ssthresh) 
+
+   * no loss: cwnd += 1 segment per newly ack'd segment
+   * on loss: ssthresh = cwnd/2; cwnd = cwnd/2;
+
+

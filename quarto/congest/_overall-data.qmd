@@ -1,0 +1,26 @@
+
+### 2019ish measurement data 
+
+
+![](/congest/mishra-et-al-table5){}
+ [Mishra et al, ‘‘The Great Internet TCP Congestion Control Census’’]{.mycredit}
+
+### 2023ish measurement data 
+
+
+![](/congest/ware-et-al-table3){}
+ [Ware et al, ‘`CCAnalyzer: An Efficient and Nearly Passive Congestion Control Classifier’]{.mycredit}
+
+### obtaining these measurements  {.smaller}
+
+
+
+* Ware et al (2024) technique: estimate queue occupancy 
+
+   * add artificial slow link on measurement path
+   * measure number of packets queued over time
+   * shape of graph indicates which congestion control algorithm
+
+ 
+![](/congest/ware-et-al-fig23){}
+

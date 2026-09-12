@@ -1,0 +1,7 @@
+
+### heurstic: fast decrease (v1) 
+
+
+* want to decrease quickly to get out of overload
+* original TCP heuristic: reset window to (minimum) 2 segments
+

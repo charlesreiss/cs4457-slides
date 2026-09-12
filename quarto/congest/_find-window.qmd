@@ -1,0 +1,38 @@
+
+### finding window size empirically (1) 
+
+![](/congest/texfig/find-window-finding-window-size-empirically-1.figure.svg)
+
+
+### key insight  {.smaller}
+
+
+* latency/loss rate increases when window size too big
+* latency/loss rate stable when window size not too big 
+<hr class="vspace" />
+* for now, we'll focus on loss rate 
+
+   * but you can do something similar with latency
+
+
+
+### try a bunch of things 
+
+
+
+::: {.r-stack .my-full}
+![](/congest/texfig/find-window-try-a-bunch-of-things.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/congest/texfig/find-window-try-a-bunch-of-things.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/congest/texfig/find-window-try-a-bunch-of-things.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/congest/texfig/find-window-try-a-bunch-of-things.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+![](/congest/texfig/find-window-try-a-bunch-of-things.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+
+![](/congest/texfig/find-window-try-a-bunch-of-things.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
+
+
+:::
+

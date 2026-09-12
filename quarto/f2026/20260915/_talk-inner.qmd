@@ -1,4 +1,4 @@
-### last time
+### last time {.smaller}
 
 *  P4 tables
    *  keys from parsed header items
@@ -70,6 +70,8 @@
 # IPv6 autoconfiguration {visibility="hidden"}
 
 {{< include /arp/_ipv6-autoconf.qmd >}}
+
+{{< include /congest/_talk-inner.qmd >}}
 
 ###
 

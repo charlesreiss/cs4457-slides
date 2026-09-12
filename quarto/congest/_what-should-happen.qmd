@@ -1,0 +1,10 @@
+
+### exericse: what should happen?  {.smaller}
+
+![](/congest/texfig/what-should-happen.figure.svg)
+ 
+
+* two connections on shared link
+* intuition: each should get half of link bandwidth
+* question: will this happen if they don't start equal?
+

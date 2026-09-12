@@ -1,0 +1,12 @@
+
+### AIMD  {.smaller}
+
+
+* result: additive increase + multiplicative decrease 
+<hr class="vspace" />
+* preview: good theoretical properties for <i>sharing connections</i> 
+
+   * doesn't matter much what additive/multiplicative factor is!
+
+* but: not quite what current Internet does
+

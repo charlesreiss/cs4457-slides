@@ -1,0 +1,6 @@
+
+{{< include /congest/_talk-intro.qmd >}}
+
+{{< include /congest/_talk-sharing.qmd >}}
+
+{{< include /congest/_talk-opt.qmd >}}

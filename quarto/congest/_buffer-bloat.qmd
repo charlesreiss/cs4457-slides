@@ -1,0 +1,52 @@
+
+### filling buffers 
+
+
+
+::: {.r-stack .my-full}
+![](/congest/texfig/buffer-bloat-filling-buffers.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/congest/texfig/buffer-bloat-filling-buffers.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/congest/texfig/buffer-bloat-filling-buffers.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/congest/texfig/buffer-bloat-filling-buffers.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+![](/congest/texfig/buffer-bloat-filling-buffers.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+
+
+:::
+
+
+### big buffers? (in 2011 or so) 
+
+
+![](/congest/cacm-bufferbloat-fig5){}
+ [ Jim Gettys and Kathleen Nichols, <br> ‘‘Bufferbloat: Dark Buffers in the Internet’’ (CACM, Jan 2012)]{.my-small}
+
+### problems with big buffers 
+
+
+* high latency --- bad for some applications
+* slower response to congestion 
+
+   * 1 second round trip time = 1 second to detect congestion
+   * more likely to have ‘congestion collapse’
+
+
+
+### avoiding big buffers  {.smaller}
+
+
+* multiple fixes (that can be combined): 
+<hr class="vspace" />
+* use smaller buffers? 
+
+   * simpliest solution
+
+* detect congestion without full buffer…  
+
+   * [by choosing when/which packets to drop better?]{.fragment fragment-index=3 .custom .myem-only}
+   * [by using something other than drops?]{.fragment fragment-index=4 .custom .myem-only}
+
+

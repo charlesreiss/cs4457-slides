@@ -1,0 +1,7 @@
+
+###   {.smaller}
+
+
+![](/congest/vegas-fig1){}
+ <br> 
+ \\tiny{} from Brakmo, O'Malley, and Peterson, ‘‘TCP Vegas: New techniques for congestion detection and avoidance’’ <br> []{.my-small} top thick, light-grey line = congestion window; dotted = slow start threshold

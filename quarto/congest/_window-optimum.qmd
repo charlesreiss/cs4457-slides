@@ -1,0 +1,43 @@
+
+### why optimal  {.smaller}
+
+
+* in normal operation with window size $W$ 
+
+   * receive ACK for $x$ (now $W-1$ in flight)
+   * send packet $x+W$
+   * receive ACK for $x+1$
+   * send packet $x+W+1$
+   * …
+
+* window size keeps $W$ packets in flight
+* if links + queues can hold $W$ packets --- perfect!
+
+
+### number in flight on losses  {.smaller}
+
+
+
+* window size $W$
+* let's say we lose packet $x$ [only], sender might 
+
+   * receive ACK for $x-1$
+   * send packet $x+W-1$
+   * receive ACK for $x$, $x$, $x$, …
+   * resend packet $x$ (guess it is lost)
+   * [receive ACK for $x$, $x$, $x$, …]{.fragment fragment-index=2 .custom .myem-only}
+   * receive ACK for packet $x+W-1$
+   * send packets $x+W$ through $x+W+W-1$
+
+ ![](/congest/texfig/window-optimum-number-in-flight-on-losses.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
+![](/congest/texfig/window-optimum-number-in-flight-on-losses.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
+
+
+### window size tweaking 
+
+
+* window size imperfect proxy for # packets in flight
+* we'll ignore the difference for now 
+<hr class="vspace" />
+* our goal for now: window size = number of packets to have in flight
+

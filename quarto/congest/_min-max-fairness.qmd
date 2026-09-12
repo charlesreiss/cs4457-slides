@@ -1,0 +1,20 @@
+
+### fairness metrics  {.smaller}
+
+
+* would like to say both allocations are ‘fair’
+* easy when ideal allocation is equal, but that's not always the case 
+<hr class="vspace" />
+* perhaps not equal, but most equal we can give on network
+* would like some way of formalizing this
+
+
+### fairness intuition  {.smaller}
+
+
+* unfair allocation = someone gets much less than others 
+<hr class="vspace" />
+* consequence: let's look for ‘‘starved’’ flow
+* if we can add to one flow… <br> and only hurt flows that are slower than it… <br> then that's ‘‘unfair’’
+* idea called <i>min-max fairness</i>
+

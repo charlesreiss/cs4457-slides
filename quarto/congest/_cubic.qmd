@@ -1,0 +1,61 @@
+
+### CUBIC: default congestion control today  {.smaller}
+
+
+* default in Linux (since 2006), OS X (since 2014), Windows (since 2019) 
+
+   * sysadmin has other options they can configure
+   * can be changed on connection-by-connection basis
+
+* includes improvements to recovery we'll talk about later
+* but mostn notably has non-additive increase
+
+
+### increase intuition  {.smaller}
+
+
+* ‘standard’ TCP basically has two increase algorithms:
+* slow start --- quickly explore window sizes
+* congestion avoidance --- slowly probe for maximum 
+<hr class="vspace" />
+* abrupt transition between these is suspect 
+
+   * should have gradual exploration $\rightarrow$ fine-tuning switch
+
+* heuristic for when to use slow start-style is suspect 
+
+   * half way from last loss $\approx$ guess?
+
+
+
+### CUBIC increase algorithm  {.smaller}
+
+
+* big idea: faster increase when further away from window size of last loss 
+
+   * cubic function with saddle point at that window size
+   * function parameterized by time since loss
+
+* intuition for ‘steady state’: 
+
+   * guess correct window size is close to last loss
+   * quickly get to around that window size
+   * search slowly/precisely around that size to fine tune size
+
+* intuition for non-steady state: 
+
+   * try to quickly probe for roughly how small/big it is
+   * worry about getting more precise size on later ‘pass’
+
+
+
+###  
+
+![](/congest/texfig/cubic.figure.svg)
+
+
+### other CUBIC changes 
+
+
+* different multiplicative decrease factor (divide by 1.4)
+

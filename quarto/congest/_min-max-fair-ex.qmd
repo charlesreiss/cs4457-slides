@@ -1,0 +1,21 @@
+
+### exercise  {.smaller}
+
+
+
+::: {.r-stack}
+![](/congest/texfig/min-max-fair-ex.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/congest/texfig/min-max-fair-ex.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+
+:::
+ 
+
+* let's say slow link has 5 MByte/s capacity, other links 20MByte/s
+* why are these fair/unfair? (by min-max fairness) 
+
+   * solid = 10MByte, dotted = 2MByte/s, dashed = 3MByte/s
+   * solid = 16MByte, dashed = 2MByte/s, dashed = 2MByte/s
+
+

@@ -1,0 +1,22 @@
+\begin{tikzpicture}
+\begin{axis}[width=15cm,height=4.5cm,
+    ylabel=round trip time,
+    xlabel=in-flight data,
+    label style={font=\small},
+    tick label style={font=\small},
+    ticks=none,
+    xmin=0,xmax=35,ymin=0]
+\addplot[violet,line width=1mm] coordinates {
+(0, 1) (10, 1) (30, 5)
+};
+\addplot[red,dotted,line width=1mm] coordinates {
+    (30, 5) (40, 5)
+};
+\addplot[blue,dotted,ultra thick] coordinates {
+    (10, 0) (10, 6)
+};
+\addplot[blue,dotted,ultra thick] coordinates {
+    (30, 0) (30, 6)
+};
+\end{axis}
+\end{tikzpicture}

@@ -1,0 +1,14 @@
+
+### slow increase  {.smaller}
+
+
+* want to increase <i>slowly</i> to avoid overload
+* original TCP: +1 packet/round trip time 
+<hr class="vspace" />
+* +1 certainly not optimal choice, but okay heuristic
+* important theoretically: approx. <em>additive</em> increase 
+
+   * helps ensure good behavior with multiple connections
+   * (we'll talk later about why)
+
+

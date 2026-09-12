@@ -1,0 +1,46 @@
+
+### TCP Tahoe (1)  {.smaller}
+
+
+* first version of TCP congestion control
+* track two variables 
+
+   * <code>cwnd</code> = congestion window
+   * <code>ssthresh</code> = ‘slow start threshold’
+
+* three modes of operation:
+* <i>congestion avoidance</i> (cwnd $\ge$ ssthresh; no known loss)
+* <i>recovery</i> (known loss)
+* <i>‘‘slow start’’</i> (cwnd \< ssthresh)
+
+
+### TCP Tahoe (2)  {.smaller}
+
+
+* <i>congestion avoidance</i> (cwnd $\ge$ ssthresh; no known loss) 
+
+   * represents ‘‘steady state’’ --- our focus for now
+   * no loss: cwnd += 1 segment per round-trip-time
+   * on loss: cwnd = $\sim$2 segments; ssthresh = cwnd/2
+
+* <i>recovery</i> (known loss) 
+
+   * retransmit packet after third duplicate ACK of previous packet <br> (or timeout)
+
+* <i>‘‘slow start’’</i> (cwnd \< ssthresh) 
+
+   * intuition: not in ‘‘steady state’’ yet
+   * want to get there  quickly, but with overloading network
+   * we'll give details later
+
+
+
+### plan 
+
+
+* really don't want to reset to beginning on loss 
+
+   * even if we have a way to get to good size quickly
+
+* would like to less extreme decrease: cwnd = cwnd/2
+

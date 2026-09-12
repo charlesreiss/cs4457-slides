@@ -1,0 +1,24 @@
+
+### non-congestion losses  {.smaller}
+
+
+* we were ignoring non-congestion losses
+* suppose <em>1%</em> loss rate from transmission errors
+* if huge bandwidth, 50 ms RTT
+* with TCP heuristics (+1 packet/RTT, half on loss)…
+* normal window size? achieved bandwidth (pkts/sec)? 
+
+   * window size increases for about 100 packets, then halves
+   * starting at window size 8:
+   * 8, 9 (17 total), 10 (27), 11 (38), 12 (50), 13 (63), 14 (77), 15 (92), 16 (>100)
+   * $\rightarrow$ window size fluctuates from around 8 to 16
+   * 12 pkts/50 ms = 240 pkts/sec
+
+
+
+### non-congestion losses and congestion control 
+
+
+* significant non-congestion losses $\rightarrow$ very bad performance with most congestion control
+* reason why wireless, etc. often does its own acknowledgements and resending
+

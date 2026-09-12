@@ -1,0 +1,17 @@
+
+### fast decrease (v2)  {.smaller}
+
+
+* resetting window size to 1 is too slow
+* compromise: 
+
+   * loss detected without timeout: divide window size by two
+   * loss detected with timeout: decrease to 1
+ 
+<hr class="vspace" />
+* exactly by two probably not important
+* important theoretically: <em>multiplicative</em> decrease 
+
+   * will help show okay behavior with multiple flows
+
+
