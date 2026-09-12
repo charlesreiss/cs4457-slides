@@ -17,15 +17,15 @@
             {32 bits};
         \path[shading=axis,top color=white,bottom color=black!20] (0, 1) rectangle (32, 0)
             node[box label] {(lower layer header)};
-        \path[box,hi on=0] (0, 0) rectangle (16, -1) node[box label] {HW address type};
+        \path[box,hi on=0] (0, 0) rectangle (16, -1) node[box label] {hardware address type};
         \path[box,hi on=2] (16, 0) rectangle (32, -1) node[box label] {`protocol' address type};
-        \path[box,hi on=0] (0, -1) rectangle ++(8, -1) node[box label] {HW address length};
+        \path[box,hi on=0] (0, -1) rectangle ++(8, -1) node[box label] {hardware address length};
        \path[box,hi on=2] (8, -1) rectangle ++(8, -1) node[box label] {`protocol' address len};
         \path[box,hi on=0] (16, -1) rectangle ++(16, -1) node[box label] {opcode (request or reply)};
-        \path[box,hi on=0] (0, -2) rectangle ++(32, -1.5) node[box label] {sender HW addr};
+        \path[box,hi on=0] (0, -2) rectangle ++(32, -1.5) node[box label] {sender hardware addr};
         \path[box,hi on=0] (0, -3.5) rectangle ++(32, -1.5) node[box label] {sender protocol addr};
-        \path[box,hi on=3] (0, -5) rectangle ++(32, -1.5) node[box label] {dest HW addr};
-        \path[box,hi on=0] (0, -6.5) rectangle ++(32, -1.5) node[box label] {dest protocol addr};
+        \path[box,hi on=3] (0, -5) rectangle ++(32, -1.5) node[box label] {destination hardware addr};
+        \path[box,hi on=0] (0, -6.5) rectangle ++(32, -1.5) node[box label] {destination protocol addr};
         \foreach \offset in {-2.75,-4.25,-5.75, -7.25} {
             \draw[line width=1mm,white] (-.2, \offset - .05) -- ++(.4, .1);
             \draw[line width=1mm,white] (32 -.2, \offset - .05) -- ++(.4, .1);
@@ -35,21 +35,4 @@
             \draw[very thick,black] (32 -.2, \offset-.1) -- ++(.4, .1);
         }
     \end{scope}
-    \begin{visibleenv}<2>
-    \node[explain box 2] {%
-        protocol typically = IPv4 \\
-        so address len = 4 \\
-        ~ \\
-        seems like you could change this for IPv6 \\
-        but instead IPv6 uses its own protocol
-    };
-    \end{visibleenv}
-    \begin{visibleenv}<3>
-    \node[explain box 3] {%
-        to keep format consistent \\
-        between request/replies \\
-        \myemph{always have destination HW address} \\
-        kept at FF:\ldots:FF if unknown
-    };
-    \end{visibleenv}
 \end{tikzpicture}

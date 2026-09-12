@@ -6,7 +6,7 @@
 * how do hosts get address + default routing table?
 * one answer: set manually
  
-![](/arp/ip-config-dialog){}
+![](/arp/ip-config-dialog){fig-alt="NetworkManager (GNOME utility) dialog for confguring a network connection. The dialog shows a Connection name of 'Wi-Fi connection 1' and several tabs: General, Wi-Fi, Wi-Fi Security, Proxy, IPv4 Settings, IPv6 Settings. The IPv4 settings tab is selected and there is a 'method' drop-down for which 'Manual' is selected. Below that there is a table to type in one or more addresses. For each address, the table asks for the Address, a Netmask, and a Gateway. 10.1.4.3 is being entered as the address, 24 has been entered as netmask and 10.1.4.1 has been entered as the gateway. There are also unused options to enter DNS servers, search domains, to require IPv4 addressing for the connection to complete and to enter routes."}
 
 
 ### simple network config  {.smaller}
@@ -21,8 +21,21 @@
 * (default) gateway: 10.0.2.102
  
 <div class="fragment fade-in" data-fragment-index=2 >
- ![](/arp/texfig/dhcp-simple-network-config.figure.svg)
- 
+<table>
+<caption style="caption-side: top">routing table (IPv4)</caption>
+<colgroup>
+  <col/>
+  <col class="fragment custom bg-red" data-fragment-index="2" />
+  <col/>
+</colgroup>
+<thead>
+<tr><th scope="col">IP address</th><th scope="col">gateway</th><th scope="col">i'face</th></tr>
+</thead>
+<tbody>
+<tr><td>`10.0.2.0/25`</td><td>---</td><td>out</td></tr>
+<tr><td>default</td><td>10.0.2.102</td><td>out</td></tr>
+</tbody>
+</table>
 </div>
 
 
@@ -56,16 +69,40 @@
 
 
 ::: {.r-stack .my-full}
-![](/arp/texfig/dhcp-dhcp-request-example.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/arp/texfig/dhcp-dhcp-request-example.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="Screenshot of wireshark capture of DHCP request message. The message has several IP address fields which are all set to 0.0.0.0. It also contains the Client MAC address and several 'options': a DHCP message type, client identifier, parameter request list, maximum DHCP message, a requested IP address, and a host name."}
 
-![](/arp/texfig/dhcp-dhcp-request-example.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/arp/texfig/dhcp-dhcp-request-example.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="The protocol list in Wirehsark is highlighted: Ethernet IIi with dst=ff:ff:ff:ff:ff:ff, IPv4 with src=0.0.0.0 and dst=255.255.255.255, UDP src port=68 and dst port=67."}
 
-![](/arp/texfig/dhcp-dhcp-request-example.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/arp/texfig/dhcp-dhcp-request-example.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="The 'message type' of 'Boot Request (1)' is highlighted."}
 
-![](/arp/texfig/dhcp-dhcp-request-example.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
-
+![](/arp/texfig/dhcp-dhcp-request-example.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="The 'Client IP address', 'Your (client) IP address', 'Next server IP address' and 'Relay agent IP address' fields are highlgihted. The corresponding values are all 0.0.0.0"}
 
 :::
+
+::: {.myoverbox .fragment .fade-in-then-out fragment-index=2 .low}
+
+*  built on IP+UDP rather than special protocol like ARP
+*  sending to broadcast ethernet/IP address (all 1 bits)
+*  placeholder source IP address of 0.0.0.0
+
+:::
+
+
+::: {.myoverbox .fragment .fade-in-then-out fragment-index=3 .low}
+
+*  `boot' because derived from bootstrap protocol (BOOTP)
+
+:::
+
+
+
+::: {.myoverbox .fragment .fade-in-then-out fragment-index=4 .low}
+
+*  message format here is the same in both directions, so fields here are intended for use in response
+
+:::
+
+
 
 
 ### DHCP ACK example 
@@ -73,12 +110,28 @@
 
 
 ::: {.r-stack .my-full}
-![](/arp/texfig/dhcp-dhcp-ack-example.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
 
-![](/arp/texfig/dhcp-dhcp-ack-example.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/arp/texfig/dhcp-dhcp-ack-example.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="Wireshark screenshot of DHCP ACK (response) message. This has as a message type of 'Boot Reply' and similar fields to the request."}
 
-![](/arp/texfig/dhcp-dhcp-ack-example.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/arp/texfig/dhcp-dhcp-ack-example.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="Highglited are the 'Your (client) IP address' and 'Relay agent IP address' fields are filled in with real IP addresses. Also highlighted are the DHCP options including the 'DHCP message type (ACK)', 'DHCP server identifier' with the DHCP server's IP, 'IP Address length time' which is set to 30 minutes, 'Subnet Mask', 'Domain Name Server', 'Router'"}
 
+![](/arp/texfig/dhcp-dhcp-ack-example.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="Highlighted is the client IP address 172.25.143.52 and the DHCP options including the which include 'Subnet Mask' which is set to 255.255.254.0 and 'Router' set to '172.25.142.1'."}
+
+:::
+
+<!-- FIXME: routing table should be in figure -->
+
+::: {.myoverbox .midright .fragment .fade-in-then-out fragment-index=2}
+
+response (ACK) has address fields filled in
+
+:::
+
+::: {.myoverbox .midright .fragment .fade-in-then-out fragment-index=3}
+
+*  /23 = 255.255.254.0 mask
+
+*  172.25.142.0 = <br/> 172.25.143.52 bitwise-AND 255.255.254.0
 
 :::
 

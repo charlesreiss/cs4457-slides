@@ -2,11 +2,10 @@
 ###  
 
 
-
 ::: {.r-stack .my-full}
-![](/arp/texfig/dup-address.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/arp/texfig/dup-address.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="Initially on Monday, hosts 77:...:BB (IP 10.0.2.2) and 99:...:BA (IP 10.0.2.9) are connected to a network via a switch. 77:...:BB's neighbor table indicates that 10.0.2.9 corresponds to MAC adddress 99:...:BA."}
 
-![](/arp/texfig/dup-address.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/arp/texfig/dup-address.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="On Tuesday, host CC:...:01 is connected to the same network with IP 10.0.2.9 instead of 99:...:BA. But 77:...:BB's neighbor table's old entry for 10.0.2.9 keeps it it from contacting the new host."}
 
 
 :::
@@ -28,14 +27,9 @@
 ###  
 
 
-
-::: {.r-stack .my-full}
-![](/arp/texfig/dup-address_2.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
-
-![](/arp/texfig/dup-address_2.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/arp/texfig/dup-address_2.figure.svg){.fragment .fade-out fragment-index=2 fig-alt="Two hosts are simulatenously connected with IP address 10.0.2.9 to a network."}
 
 
-:::
 
 
 ### duplicate addresses  {.smaller}

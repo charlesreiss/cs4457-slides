@@ -4,11 +4,11 @@
 
 
 ::: {.r-stack .my-full}
-![](/arp/texfig/arp-hijack.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/arp/texfig/arp-hijack.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="hosts 77:...:BB (IP 10.0.2.2) and A5:...:BA (IP 10.0.2.9) and a malicious host (MAC 09:...:FE) are all connected to a single switch."}
 
-![](/arp/texfig/arp-hijack.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/arp/texfig/arp-hijack.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="The malicious host sends an ARP message to 77:...:BB (IP 10.0.2.2) indicating that 10.0.2.9's MAC address is 09:...:FE, the malicious host's MAC address. It also sends an ARP message to A5:...:BA (IP 10.0.2.9) indicating that 10.0.2.2's MAC address is 09:...:FE, the malicious host's MAC address."}
 
-![](/arp/texfig/arp-hijack.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/arp/texfig/arp-hijack.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="As a result 10.0.2.2 and 10.0.2.9 have 'poisoned' ARP tables, so they send everything they would send to each other to the attacker instead."}
 
 
 :::

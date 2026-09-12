@@ -36,6 +36,21 @@
 
 ![](/arp/texfig/protocols-arp-message-format.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
 
+:::
+
+::: {.myoverbox .low .fragment fragment-index=2 .fade-in-then-out}
+
+*  protocol typical = IPv4 $\rightarrow$ address length = 4
+*  seems like you could change this for IPv6<br/>
+   but instead IPv6 uses its own protocol
+
+:::
+
+::: {.myoverbox .high .fragment fragment-index=3 .fade-in-then-out}
+
+*  to keep format consistent between requests/replies:<br/>
+   always include a destination hardware address
+   *  kept at `FF:...:FF` if unknown
 
 :::
 
@@ -45,11 +60,11 @@
 
 * suppose router IP address 10.0.2.15 and MAC address 02:…:DE needs to find out that 10.0.2.2 uses 03:…:EE 
 <hr class="vspace" />
-* 02:…:DE$\rightarrow$FF:FF:FF:FF:FF:FF: request 10.0.2.2 <br> tell 10.0.2.15 (=02:…:DE) 
+* 02:…:DE→FF:FF:FF:FF:FF:FF: request 10.0.2.2 <br> tell 10.0.2.15 (=02:…:DE) 
 
    * <em>everyone who receives this can add 10.0.2.15=02:…:DE to neighbor table</em>
 
-* 03:…:EE$\rightarrow$02:…:DE: reply 10.0.2.2=03:…:EE <br> tell 10.0.2.15=02:…:DE 
+* 03:…:EE→02:…:DE: reply 10.0.2.2=03:…:EE <br> tell 10.0.2.15=02:…:DE 
 
    * <em>everyone who receives this can add 10.0.2.2=03:…:EE to neighbor table</em>
 

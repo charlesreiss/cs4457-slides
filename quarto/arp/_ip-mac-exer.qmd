@@ -1,7 +1,7 @@
 
 ### exercise (1) 
 
-![](/arp/texfig/ip-mac-exer-exercise-1.figure.svg)
+![](/arp/texfig/ip-mac-exer-exercise-1.figure.svg){fig-alt="A network with three hosts, two switches, and a router. 192.0.2.5 (MAC 04:...:BB) and 192.0.2.4 (MAC 00:...:AA) are connected to the left switch, which is connected to the router. 195.51.100.4 (MAC 03:...:EE) is connected to the right switch whcih is connected to the router. In addition to the two switches, the router is connected to the Internet. The router has three MAC and IP addresses; 192.0.2.1 and 02:...:DD for the left subnetwork; 23.0.113.199 and 02:...:DE for the internet connection; 195.51.100.1 and 02:...:DF for the right subnetwork."}
  
 
 * if no one's neighbor tables are setup yet, how many frames get sent when 192.0.2.5 sends one IP packet to 195.51.100.4?
@@ -12,7 +12,7 @@
 
 
 ::: {.r-stack}
-![](/arp/texfig/ip-mac-exer-exercise-2.figure-1.svg){.fragment width=900px .fade-out fragment-index=2}
+![](/arp/texfig/ip-mac-exer-exercise-2.figure-1.svg){.fragment width=900px .fade-out fragment-index=2 fig-alt="The same network as on the previous slide: A network with three hosts, two switches, and a router. 192.0.2.5 (MAC 04:...:BB) and 192.0.2.4 (MAC 00:...:AA) are connected to the left switch, which is connected to the router. 195.51.100.4 (MAC 03:...:EE) is connected to the right switch whcih is connected to the router. In addition to the two switches, the router is connected to the Internet. The router has three MAC and IP addresses; 192.0.2.1 and 02:...:DD for the left subnetwork; 23.0.113.199 and 02:...:DE for the internet connection; 195.51.100.1 and 02:...:DF for the right subnetwork."}
 
 ![](/arp/texfig/ip-mac-exer-exercise-2.figure-2.svg){.fragment width=900px .fade-in-then-out fragment-index=2}
 

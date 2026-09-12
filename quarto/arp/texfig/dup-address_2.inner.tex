@@ -17,8 +17,8 @@
 }
 \begin{scope}
     \node[computer,label={[addr label]north:MAC 77:\ldots:BB\\IP 10.0.2.2}] (n1-from) at (0, 0) {};
-    \node[computer alt,label={[addr label]south:MAC 99:\ldots:BA\\IP \myemph<2>{10.0.2.9}}] (n1-toA) at (-2, -4) {};
-    \node[computer alt,label={[addr label]south:MAC 09:\ldots:FE\\IP \myemph<2>{10.0.2.9}}] (n1-toB) at (2, -4) {};
+    \node[computer alt,label={[addr label]south:MAC 99:\ldots:BA\\IP \myemph{10.0.2.9}}] (n1-toA) at (-2, -4) {};
+    \node[computer alt,label={[addr label]south:MAC 09:\ldots:FE\\IP \myemph{10.0.2.9}}] (n1-toB) at (2, -4) {};
     \node[switch] (sw) at (0, -2) {};
     \draw[connect] (n1-from) -- (sw);
     \draw[connect] (n1-toA) -- (sw);
