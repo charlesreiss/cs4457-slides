@@ -4,19 +4,19 @@
 
 
 ::: {.r-stack .my-full}
-![](/arp/texfig/routing-v-switching-switch-v-router-on-the-wires.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/arp/texfig/routing-v-switching-switch-v-router-on-the-wires.figure-1.svg){.fragment .fade-out fragment-index=1 fig-alt="A network diagram with 4 host, 3 switches, and 1 router. The hosts 10.0.1.3 (MAC address 04:...:BB) and 10.0.1.2 (00:...:AA) are connected to the leftmost switch. The leftmost switch and the host 10.0.1.4 (05:...:CC) and the router are connected to the center switch. The router is also connected to the rightmost switch, to which host 10.0.2.2 (03:...:EE) is also connected. The router has two MAC and IP addresses: 10.0.1.1/02:...:DD (on the left side) and 10.0.2.15/02:...:DE (on the right side)."}
 
-![](/arp/texfig/routing-v-switching-switch-v-router-on-the-wires.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/arp/texfig/routing-v-switching-switch-v-router-on-the-wires.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="We can divide the network diagram into two subnetworks connected via the router. The left network, 10.0.1.0/24, includes the hosts 10.0.1.2, 10.0.1.3, 10.0.1.4, the left switch, the center switch, and the left side of the router. The right network, 10.0.2.0/24, includes the host 10.0.2.2 and the right side of the router."}
 
-![](/arp/texfig/routing-v-switching-switch-v-router-on-the-wires.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/arp/texfig/routing-v-switching-switch-v-router-on-the-wires.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="A message from 10.0.1.2 to 10.0.2.2 will need to be traverse the left switch, the center switch, the router, and the right switch."}
 
-![](/arp/texfig/routing-v-switching-switch-v-router-on-the-wires.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+![](/arp/texfig/routing-v-switching-switch-v-router-on-the-wires.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="From 10.0.1.2 through the left side of the router, the message will be contained in an frame from 00:...:AA (host 10.0.1.2) to 02:...:DD (the router's left MAC address); from the router to 10.0.2.2, it will be represented by a frame from 02:...:DE (the router's right MAC address) to 03:...:EE (10.0.2.2). These frames will both contain an identical IP packet from 10.0.1.3 to 10.0.2.2."}
 
-![](/arp/texfig/routing-v-switching-switch-v-router-on-the-wires.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+![](/arp/texfig/routing-v-switching-switch-v-router-on-the-wires.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 fig-alt="In the process, the layer-2 frames use MAC addresses to identify a node on the local network, and the layer-3 frames always identify the source or destination node on all networks. For example, the frame sent from 10.0.1.2 contains a destination of the router's left MAC address at layer 2 and a destination IP address of 10.0.2.2 at layer 3, representing the final destination."}
 
 ![](/arp/texfig/routing-v-switching-switch-v-router-on-the-wires.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
 
-![](/arp/texfig/routing-v-switching-switch-v-router-on-the-wires.figure-7.svg){.fragment .fade-in-then-out fragment-index=7}
+![](/arp/texfig/routing-v-switching-switch-v-router-on-the-wires.figure-7.svg){.fragment .fade-in-then-out fragment-index=7 fig-alt="When the router receives the frame on its left network, it makes a new frame, copying the IP packet from the old frame's data, and sends that frame on the right network."}
 
 
 :::
@@ -27,16 +27,16 @@
 
 
 ::: {.r-stack .my-full}
-![](/arp/texfig/routing-v-switching-steps-at-the-sender.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
 
-![](/arp/texfig/routing-v-switching-steps-at-the-sender.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/arp/texfig/routing-v-switching-steps-at-the-sender.figure-1.svg){.fragment .fade-out fragment-index=2}
 
-![](/arp/texfig/routing-v-switching-steps-at-the-sender.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/arp/texfig/routing-v-switching-steps-at-the-sender.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="At the sender (10.0.1.2), software requests to send a packet from 10.0.1.2 to 10.0.2.2."}
 
-![](/arp/texfig/routing-v-switching-steps-at-the-sender.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+![](/arp/texfig/routing-v-switching-steps-at-the-sender.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="The IP implementation at the sender needs to figure out how to send this at the link layer. Filling in the source MAC address with the local MAC address is simple, but finding the destination MAC address is less straightforward."}
 
-![](/arp/texfig/routing-v-switching-steps-at-the-sender.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+![](/arp/texfig/routing-v-switching-steps-at-the-sender.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="The first step of finding the destination address is looking at the routing table. In this case, this will tell us that we want to use a 'gateway' of 10.0.1.1 (the router). So we know that we want to fill in the destination MAC address with 10.0.1.1's MAC address."}
 
+![](/arp/texfig/routing-v-switching-steps-at-the-sender.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 fig-alt="To know 10.0.1.1's MAC address, we'll need another table, called the 'neighbor table' or 'ARP table'. (We'll talk about how this table is constructed later.)"}
 
 :::
 
@@ -46,16 +46,14 @@
 
 
 ::: {.r-stack .my-full}
-![](/arp/texfig/routing-v-switching-steps-at-the-router.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
 
-![](/arp/texfig/routing-v-switching-steps-at-the-router.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/arp/texfig/routing-v-switching-steps-at-the-router.figure-1.svg){.fragment .fade-out fragment-index=2  fig-alt="The router will receive the frame and process the IP packet contained within."}
 
-![](/arp/texfig/routing-v-switching-steps-at-the-router.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/arp/texfig/routing-v-switching-steps-at-the-router.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="The router inspects the destination IP address (10.0.2.2) and looks it up in its routing table. The routing table contains an entry with 10.0.1.0/24 (and no gateway) for the left interface and 10.0.2.0/24 for the right interface. In this case, the destination matches the 10.0.2.0/24 entry."}
+
+![](/arp/texfig/routing-v-switching-steps-at-the-router.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="Like our original sending host, the router will need to lookup the destination MAC address to construct a frame to hold the IP packet. It will use its neighbor table for this. Since its routing table does not specify a gateway, the router will lookup the final destination's IP address 10.0.2.2 in the neighbor table."}
 
 ![](/arp/texfig/routing-v-switching-steps-at-the-router.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
-
-![](/arp/texfig/routing-v-switching-steps-at-the-router.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
-
 
 :::
 

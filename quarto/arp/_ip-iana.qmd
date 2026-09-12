@@ -2,24 +2,40 @@
 ###  
 
 
-![](/arp/iana-registry-screenshot){}
-
-
-###  
-
-
-![](/arp/iana-ipv4-allocs){}
- (and 241 more)
+[![](/arp/iana-registry-screenshot){fig-alt="Screenshot of https://www.iana.org/assignments/ipv4-address-space, the registry of IPv4 address space assignments, mostly in /8-sized units."}](https://www.iana.org/assignments/ipv4-address-space)
 
 ###  
 
-![](/arp/texfig/ip-iana.figure.svg)
 
+[![](/arp/iana-ipv4-allocs){fig-alt="First several assignments for IPv4 address space from that webpage for 000/8, 001/8, etc. up to 013/8. For each assignment, there is a stauts of 'legacy', 'allocated' or 'reserved', a designation, and (for non-reserved assignments) references to RDAP and WHOIS servers. 000/8 is reserved for local identification; and 010/8 is reserved for private use. The 'legacy' allocation are either administrered by ARIN or assigned to organzations that use IP addresses: the Army Information Systems Center, DoD Intel Information Systems, AT&T Bell Laboratories. The 'allocated' alocations are asigned to APNIC or the RIPE NCC"}](https://www.iana.org/assignments/ipv4-address-space)
+(and 241 more)
+
+###  
+
+::::: {.columns}
+
+:::: {.column}
+
+[![](/arp/iana-v6-addr-top){width=70% fig-alt="Screenshot of top of https://www.iana.org/assignments/ipv6-address-space ; the Internet Assigned Numbers Authority page on  the Internet Protocol Version 6 Address Space"}](https://www.iana.org/assignments/ipv6-address-space)
+
+&hellip;
+
+![](/arp/iana-v6-addr-bottom3){fig-alt="Table showing allocations of the first several IPv6 prefixes from that IANA page: ::/8 and 100::/8 and 200::/7 are reserved (with caveats); 400::/6, 800::/5, 1000::/4 are reserved; 2000::/3 is assigned to 'Global Unicast', whose IANA assignments are documented elsewhere."}
+
+::::
+
+:::: {.column}
+
+[![](/arp/iana-v6-unicast){fig-alt="Screenshot of https://www.iana.org/assignments/ipv6-unicast-address-assignments showing the first several assignments: 2001::/23 is allcoated to the IANA, 2001:200::/23, 2001:400::/23, 2001:600::/23, 2001:800::/22 are assigned to APNIC, ARIN, RIPE NNC, and RIPE NCC repsectively."}](https://www.iana.org/assignments/ipv6-unicast-address-assignments)
+
+::::
+
+:::::
 
 ### regional internet registries (RIRs)  {.smaller}
 
-![](/arp/texfig/ip-iana-regional-internet-registries-rirs.figure.svg)
- 
+![map from Wikimedia Commons, users Dork, Canuckguy et al, Sénhur, CC-BY-SA 3.0](/arp/Regional_Internet_Registries_world_map.svg){fig-alt="Map of RIR areas of responsibilit; AFRNIC covers Africa; APNIC covers South and East Asia (excluding Russia) and Oceania; ARIN covers the United States and Canada; LACNIC covers Central and South America; RIPE NCC covers Greenland, Europe, the Middle East, and former USSR countries."}
+
 
 * most useful addresses managed by RIRs 
 
@@ -34,19 +50,19 @@
 ### RIR suballocations 
 
 
-![](/arp/arin-whois-virginia){}
+![](/arp/arin-whois-virginia){fig-alt="Screenshot of ARIN WHOIS-RWS search for 128.143.67.88. The returned record is for 128.143.0.0/16, named 'UNIVERSITY-OF-VIRGINIA', listed as a direct allocation to the University of Virginia registered 1987-12-14 and last updated 2021-12-14."}
 
 
 ### special IPv4 addresses 
 
 
-![](/arp/iana-special-ipv4-header){}
+[![](/arp/iana-special-ipv4-header){fig-alt="Screenshot of the top of the IANA IPv4 Special-Purpose Address Space page"}](https://www.iana.org/assignments/iana-ipv4-special-registry)
 
 
 ### special IPv4 addresses 
 
 
-![](/arp/iana-special-ipv4-detail){}
+[![](/arp/iana-special-ipv4-detail){fig-alt="Partial screenshot of special addresses on that pagei, each of which has a citation to an RFC. The address spaces include: 0/8 for 'this network', 0/32 for 'this host on this network', 10/8 for private use, 100.64/10 for shared address space, 127/8 for loopback, 192/24 for IETF protocol assignments, and more."}](https://www.iana.org/assignments/iana-ipv4-special-registry)
 
 
 ### selected special IP addresses  {.smaller}

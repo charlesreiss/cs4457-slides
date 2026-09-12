@@ -69,21 +69,21 @@
             route table,anchor=north west,
             label={[label distance=0mm,font=\small,alias=route table label]north:rtr's routing table},
             inner sep=0mm,
-            row 3/.style={alt=<2>{fill=red!10}},
+            row 3/.style={alt=<2>{nodes={fill=red!10}}},
         ] (route table) at (12, -2){
         address \& gateway \& iface \\
         10.0.1.0/24 \& --- \& left \\
         10.0.2.0/24 \& --- \& right \\
         };
         \end{visibleenv}
-        \begin{visibleenv}<4->
+        \begin{visibleenv}<3->
         \matrix[
             route table,anchor=north,
             label={[label distance=0mm,font=\small,alias=arp table label]north:rtr's neighbor table for right},
             column 1/.style={nodes={draw,thin,text width=2cm,font=\fontsize{8}{9}\tt,minimum height=0.4cm,inner sep=.1mm}},
             column 2/.style={nodes={draw,thin,text width=2cm,font=\fontsize{8}{9}\tt,minimum height=0.4cm,inner sep=.1mm}},
             column 3/.style={nodes={draw,thin,text width=1cm,font=\fontsize{8}{9}\tt,minimum height=0.4cm,inner sep=.1mm}},
-            row 3/.style={alt=<4>{nodes={draw=red,fill=red!10}}},
+            row 2/.style={alt=<3>{nodes={draw=red,fill=red!10}}},
             fill=white,
             inner sep=0mm,
         ] (arp table) at ([yshift=-1cm]route table.south){
@@ -94,9 +94,9 @@
     \end{pgfonlayer}
 
     % out going packet
-    \begin{visibleenv}<5->
+    \begin{visibleenv}<3->
     \node[font=\fontsize{9}{10}\tt,anchor=north west] (n2 outer) at (n2 frame base) {
-        02:\ldots:DE\hspace{1mm}$\rightarrow$\hspace{1mm}03:\ldots:EE
+        02:\ldots:DE\hspace{1mm}$\rightarrow$\only<3>{\hspace{1mm}\myemph{???}}\only<4->{\hspace{1mm}03:\ldots:EE}
     };
     \node[align=left,font=\fontsize{9}{10}\tt,anchor=north west,draw=black!50,very thick,
     ] (n2 inner) at ([xshift=1mm]n2 outer.south west) {
@@ -110,7 +110,7 @@
     ] (n1 box) {};
     %\path[draw,blue,thick] ($(n1-s1)!0.5!(n1-s2)$) -- (n1 box);
     \path[draw,blue,thick] ($(n1-s2)!0.5!(n1n2)$) -- (n1 box);
-    \begin{visibleenv}<5->
+    \begin{visibleenv}<3->
     \node[inner sep=0mm,fill=white,draw=blue,very thick,
           fit={(n2 outer) (n2 inner) ([yshift=-1mm]n2 inner.south) ([xshift=1mm]n2 inner.east)}
     ] (n2 box) {};
