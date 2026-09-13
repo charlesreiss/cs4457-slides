@@ -4,11 +4,11 @@
 
 
 ::: {.r-stack .my-full}
-![](/congest/texfig/window-change-rough-window-size-experimenting.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/congest-intro/texfig/window-change-rough.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
 
-![](/congest/texfig/window-change-rough-window-size-experimenting.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/congest-intro/texfig/window-change-rough.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
 
-![](/congest/texfig/window-change-rough-window-size-experimenting.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/congest-intro/texfig/window-change-rough.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
 
 
 :::

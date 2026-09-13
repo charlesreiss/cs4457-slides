@@ -29,8 +29,8 @@
    * receive ACK for packet $x+W-1$
    * send packets $x+W$ through $x+W+W-1$
 
- ![](/congest/texfig/window-optimum-number-in-flight-on-losses.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
-![](/congest/texfig/window-optimum-number-in-flight-on-losses.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
+ ![](/congest-intro/texfig/window-optimum.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
+![](/congest-intro/texfig/window-optimum.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
 
 
 ### window size tweaking 

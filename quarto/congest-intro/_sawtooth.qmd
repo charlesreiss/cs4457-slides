@@ -1,0 +1,5 @@
+
+### sawtooth pattern 
+
+![](/congest-intro/texfig/sawtooth.figure.svg)
+
