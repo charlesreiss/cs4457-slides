@@ -4,9 +4,9 @@
 
 
 ::: {.r-stack .my-full}
-![](/congest-sharing/texfig/aimd-diagram-limit-1.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/congest-sharing/texfig/aimd-diagram-limit-1.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="Network diagram with four hosts, two on the left connected to one router, and two on the right connectedd to another. The two routers are connected to each other. The link from the bottom right host to the left router is labeled as 'slow'."}
 
-![](/congest-sharing/texfig/aimd-diagram-limit-1.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/congest-sharing/texfig/aimd-diagram-limit-1.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="Two flows traverse this network: one from the upper-left host to upper-right host through no slow links; and one from the lower-left host to the lower-right host through a slow link."}
 
 
 :::
@@ -17,17 +17,17 @@
 
 
 ::: {.r-stack .my-full}
-![](/congest-sharing/texfig/aimd-diagram-limit-slow-link.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/congest-sharing/texfig/aimd-diagram-limit-slow-link.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="A graph with flow 1 bandwidth on the x-axis and flow 2 bandwidth on the y axis. A line from the upper-right of the lower-left of the graph marks a region (in the upper-right) labeled 'both flows get drops'. The remainder of the graph forms a right triangle (where the right angle is at the origin), which is divided into two pieces by a horizontal line. The upper triangle formed by this is labeled "flow 2 gets drops". The lower trapezoidal part is unlabeled."}
 
-![](/congest-sharing/texfig/aimd-diagram-limit-slow-link.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/congest-sharing/texfig/aimd-diagram-limit-slow-link.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="The line bordering the 'both flows get drops' region is the limit of the fast link's bandwidth. The line bordering the bottom of the 'flow 2 gets drops' region is the limit of the slow link's bandwidth."}
 
-![](/congest-sharing/texfig/aimd-diagram-limit-slow-link.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/congest-sharing/texfig/aimd-diagram-limit-slow-link.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="In the 'both flows get drops' region, multiplicative decrease will go toward the origin, exiting this region."}
 
-![](/congest-sharing/texfig/aimd-diagram-limit-slow-link.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+![](/congest-sharing/texfig/aimd-diagram-limit-slow-link.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="In the 'flow 2 gets drops' region, the combination of flow 2's multiplicative decrease and flow 1's additive increase will move toward the bottom-right (higher flow 1 bandwidth, lower flow 2 bandwidth)."}
 
-![](/congest-sharing/texfig/aimd-diagram-limit-slow-link.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+![](/congest-sharing/texfig/aimd-diagram-limit-slow-link.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 fig-alt="In the unlabeled region, the combination of additive increases will move at a 45-degree angle, parallel to the equal-bandwidth line."}
 
-![](/congest-sharing/texfig/aimd-diagram-limit-slow-link.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
+![](/congest-sharing/texfig/aimd-diagram-limit-slow-link.figure-6.svg){.fragment .fade-in-then-out fragment-index=6 fig-alt="The resulting bandwidth will trend toward flow 2 reaching the limit of its slow link and flow 1 getting the rest of the bandwidth."}
 
 
 :::

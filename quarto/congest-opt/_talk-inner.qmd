@@ -22,7 +22,7 @@
 
 ## repeated graph{visibility="hidden"}
 
-{{< include /congest-opt/_tcp-normal-graphs.qmd >}}
+{{< include /congest-intro/_tcp-normal-graphs.qmd >}}
 
 ## non-repeated graph{visibility="hidden"}
 

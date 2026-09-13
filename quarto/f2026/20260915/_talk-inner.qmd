@@ -71,7 +71,7 @@
 
 {{< include /arp/_ipv6-autoconf.qmd >}}
 
-{{< include /congest/_talk-inner.qmd >}}
+{{< include /congest-intro/_talk-inner.qmd >}}
 
 ###
 

@@ -12,10 +12,10 @@
 \node[router] (r2) at (10, 0){};
 \node[computer] (C) at (0, -2){};
 \node[computer] (D) at (13, -2){};
-\foreach \x/\y in {A/r1,r1/r2,r2/B,r2/D} {
+\foreach \x/\y in {A/r1,C/r1,r1/r2,r2/B} {
     \draw[connect big] (\x) -- (\y);
 }
-\draw[connect] (C) -- (r1)
+\draw[connect] (D) -- (r2)
     node[midway,pin={slow link}] {};
 \begin{visibleenv}<2>
 \foreach \x/\y in {A.east/r1.west,r1.east/r2.west,r2.east/B.west} {

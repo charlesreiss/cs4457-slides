@@ -4,18 +4,17 @@
 
 
 ::: {.r-stack .my-full}
-![](/congest-sharing/texfig/aimd-diagram.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/congest-sharing/texfig/aimd-diagram.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="graph showing flow-1 bandwidth on the x-axis and flow-2 bandwidth on the y-axis. A line from top-left to bottom-right of the graph at a 45-degree angle separates the 'underloaded' region (near the origin) and the 'overloaded region'."}
 
-![](/congest-sharing/texfig/aimd-diagram.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/congest-sharing/texfig/aimd-diagram.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="We can picture what multiplicative decrease does on this graph as movement toward the origin. For example, if bandwidth is initially (90%, 40%) (for flow 1 and flow 2 respectively), then multiplicative decrease by a factor of two (for both flows simultaneously) moves that to (45%, 20%). If we continue the line between these points it will reach the origin."}
 
-![](/congest-sharing/texfig/aimd-diagram.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/congest-sharing/texfig/aimd-diagram.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="We can picture what additive increase does as movement at a 45-degree angle to the upper-right (assuming the same increase rate for the two flows). For example (45%, 20%) increases to 55%, 30%) if the additive increase is by 10%."}
 
-![](/congest-sharing/texfig/aimd-diagram.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+![](/congest-sharing/texfig/aimd-diagram.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="repeated additive increase followed by multiplicative decrease forms a pattern where points converge to a line."}
 
-![](/congest-sharing/texfig/aimd-diagram.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+![](/congest-sharing/texfig/aimd-diagram.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 fig-alt="The line the points converge to is the equal bandwidth line, a 45-degree angle from the origin to the upper-right."}
 
-![](/congest-sharing/texfig/aimd-diagram.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
+![](/congest-sharing/texfig/aimd-diagram.figure-6.svg){.fragment .fade-in-then-out fragment-index=6 fig-alt="This happens as multiplicative decrease moves closer to this line and additive increase moves parallel to the line (keeping the same distance.)"}
 
 
 :::
-
