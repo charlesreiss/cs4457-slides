@@ -39,7 +39,7 @@
 
 ### ECN timeline  {.smaller}
 
-![](/congest/texfig/ecn-ecn-timeline.figure.svg)
+![](/congest-opt/texfig/ecn-timeline.figure.svg)
  
 
 * data sent has place for ECN bit to be placed

@@ -1,7 +1,7 @@
 
 ### exericse: what should happen?  {.smaller}
 
-![](/congest/texfig/what-should-happen.figure.svg)
+![](/congest-sharing/texfig/what-should-happen.figure.svg)
  
 
 * two connections on shared link

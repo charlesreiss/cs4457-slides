@@ -1,0 +1,46 @@
+\begin{tikzpicture}
+\tikzset{
+    axis/.style={
+        draw,ultra thick,-Latex
+    },
+    normal mark/.style={
+        fill=black,
+    },
+    normal adjust/.style={
+        line width=.5mm,draw=black!50!red,-Latex,
+    },
+}
+\begin{scope}[x=.8cm,y=.8cm] 
+    \path[fill=red!10] (5.5, 0) -- (5.0, 0) -- (0, 5) -- (0, 5.5) -- (5.5, 5.5) -- cycle;
+    \path[axis] (0, 0) -- (5.5, 0)
+        node[midway,below] {flow 1 bandwidth};
+    \path[axis] (0, 0) -- (0, 5.5)
+        node[midway,left,align=right] {flow 2\\bandwidth};
+    \path[draw,dashed,very thick] (5, 0) -- (0, 5);
+
+    \begin{visibleenv}<2>
+        \path[draw,dotted,very thick] (0, 0) -- (3.333 * 1.5, 1.667 * 1.5);
+        \path[draw,dotted,very thick] (2, 2) -- ++(3.333 * 1, 1.667 * 1);
+        \path[draw,dotted,very thick] (2, 2) -- ++(-3.333 * 0.7, -1.667 * 0.7);
+    \end{visibleenv}
+
+    \path[normal adjust] (2, 2) -- ++(1, .5);
+    \path[normal mark] (2, 2) circle (1mm);
+    \path[dotted,-Latex,line width=.5mm,draw=black!50] (2,2) -- ++ (1, 1);
+    \begin{visibleenv}<1>
+    \node[align=left,anchor=west] at (6, 2.5) {
+        flow 1 increases faster \\
+        than flow 2 increases \\
+        not 45-degree angle anymore
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<2>
+        \path[fill=red] (3.333, 1.667) circle (2mm);
+        \path[fill=black] (3.333, 1.667) circle (1mm);
+        \node[align=left,anchor=west] at (6, 2.5) {
+            in equilibrium \\
+            flow 1 gets more bandwidth
+        };
+        \end{visibleenv}
+\end{scope}
+\end{tikzpicture}

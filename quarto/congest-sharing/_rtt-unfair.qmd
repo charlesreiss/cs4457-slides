@@ -4,9 +4,9 @@
 
 
 ::: {.r-stack .my-full}
-![](/congest/texfig/rtt-unfair-long-links.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/congest-sharing/texfig/rtt-unfair-long-links.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
 
-![](/congest/texfig/rtt-unfair-long-links.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/congest-sharing/texfig/rtt-unfair-long-links.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
 
 
 :::
@@ -34,9 +34,9 @@
  
 
 ::: {.r-stack}
-![](/congest/texfig/rtt-unfair-revisiting-additive-increase.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/congest-sharing/texfig/rtt-unfair-revisiting-additive-increase.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
 
-![](/congest/texfig/rtt-unfair-revisiting-additive-increase.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/congest-sharing/texfig/rtt-unfair-revisiting-additive-increase.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
 
 
 :::

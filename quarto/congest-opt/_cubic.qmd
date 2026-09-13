@@ -51,7 +51,7 @@
 
 ###  
 
-![](/congest/texfig/cubic.figure.svg)
+![](/congest-opt/texfig/cubic.figure.svg)
 
 
 ### other CUBIC changes 

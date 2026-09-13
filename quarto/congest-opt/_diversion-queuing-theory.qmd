@@ -37,7 +37,7 @@
 
 
 * mean queue length \[\frac{\text{arrival rate}}{\text{service rate} - \text{arrival rate}}\]
- ![](/congest/texfig/diversion-queuing-theory-mm1infty-queue-length.figure.svg)
+ ![](/congest-opt/texfig/queuing-mm1-queue-length-mean.figure.svg)
  
 
 * practical implication: <em>need to run networks at much less than full utilization</em>
@@ -48,10 +48,10 @@
 
 
 * \[\sqrt{\frac{\text{utilization}}{\left(1 - \text{utilization}\right)^2}}\]
- ![](/congest/texfig/diversion-queuing-theory-mm1infty-queue-length-std-deviation.figure.svg)
+ ![](/congest-opt/texfig/queuing-mm1-queue-length-sd.figure.svg)
 
 
 ### approx 95th pctile v mean queue length 
 
-![](/congest/texfig/diversion-queuing-theory-approx-95th-pctile-v-mean-queue-length.figure.svg)
+![](/congest-opt/texfig/queuing-95-v-mean.figure.svg)
 

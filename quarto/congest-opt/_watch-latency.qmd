@@ -1,9 +1,9 @@
 
 ### some intuition (based on BBR)  {.smaller}
 
-[]{.my-small} (based on Google's BBR presentation to the IETF) <br> ![](/congest/texfig/watch-latency-some-intuition-based-on-bbr.figure.svg)
+[]{.my-small} (based on Google's BBR presentation to the IETF) <br> ![](/congest-opt/texfig/latency-intuition-bbr1.figure.svg)
  
- ![](/congest/texfig/watch-latency-some-intuition-based-on-bbr_2.figure.svg)
+ ![](/congest-opt/texfig/latency-intuition-bbr2.figure.svg)
 
 
 ### very different congestion control  {.smaller}

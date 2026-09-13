@@ -1,0 +1,5 @@
+\begin{tikzpicture}
+\begin{axis}[width=12cm,height=6cm,xlabel=arrival rate (portion of service rate),ylabel=queue length,xmin=0,xmax=1,ymin=0,ymax=10]
+\addplot[blue,ultra thick,domain=0:1,samples=128]{sqrt(x/(1-x)^2)};
+\end{axis}
+\end{tikzpicture}

@@ -27,5 +27,5 @@
 
 ### examples: TCP-unfriendliness  {.smaller}
 
-![](/congest/texfig/other-unfair-examples-tcp-unfriendliness.figure.svg)
+![](/congest-sharing/texfig/other-unfair-examples-tcp-unfriendliness.figure.svg)
  [ from Ha, et al, ‘‘CUBIC: A New TCP-Friendly High-Speed TCP Variant’’ <br> and Tan, et al, ‘‘A Compound TCP Approach for High-speed and Long Distance Networks’’ ]{.mycredit}

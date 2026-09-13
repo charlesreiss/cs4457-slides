@@ -1,12 +1,12 @@
 
 ### TCP ‘Tahoe’ w/ one loss  {.smaller}
 
-\\tiny{} from Kevin Fall and Sally Floyd, ‘‘Simulation-based Comparisons of Tahoe, Reno, and SACK TCP’’ <br> 
-![](/congest/fall-floyd-fig2-tahoe){}
+[from Kevin Fall and Sally Floyd, ‘‘Simulation-based Comparisons of Tahoe, Reno, and SACK TCP’’]{.my-small} 
+![](/congest-opt/fall-floyd-fig2-tahoe){}
  <br> TCP Tahoe = slow start, fast retransmit, no fast recovery
 
 ### TCP ‘Reno’ w/ one loss  {.smaller}
 
-\\tiny{} from Kevin Fall and Sally Floyd, ‘‘Simulation-based Comparisons of Tahoe, Reno, and SACK TCP’’ <br> 
-![](/congest/fall-floyd-fig2-reno){}
+[from Kevin Fall and Sally Floyd, ‘‘Simulation-based Comparisons of Tahoe, Reno, and SACK TCP’’]{.my-small}
+![](/congest-opt/fall-floyd-fig2-reno){}
  TCP Reno = slow start, fast retransmit/recovery
