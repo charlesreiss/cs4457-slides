@@ -1,0 +1,43 @@
+# what about sharing? {visibility="hidden"}
+
+{{< include /congest-sharing/_sharing.qmd >}}
+
+## intuition in simple case {visibility="hidden"}
+
+{{< include /congest-sharing/_what-should-happen.qmd >}}
+
+## AIMD convergence {visibility="hidden"}
+
+{{< include /congest-sharing/_aimd-diagram-intro.qmd >}}
+
+{{< include /congest-sharing/_aimd-diagram.qmd >}}
+
+{{< include /congest-sharing/_aimd-diagram-assume.qmd >}}
+
+## when one host can't saturate link {visibility="hidden"}
+
+{{< include /congest-sharing/_aimd-diagram-limit.qmd >}}
+
+## min/max fairness {visibility="hidden"}
+
+{{< include /congest-sharing/_min-max-fairness.qmd >}}
+
+## exercise{visibility="hidden"}
+
+{{< include /congest-sharing/_min-max-fair-ex.qmd >}}
+
+## Jain's fairness index {visibility="hidden"}
+
+{{< include /congest-sharing/_jain-fairness.qmd >}}
+
+## RTT-unfairness {visibility="hidden"}
+
+{{< include /congest-sharing/_rtt-unfair.qmd >}}
+
+## other unfairness {visibility="hidden"}
+
+{{< include /congest-sharing/_other-unfair.qmd >}}
+
+## unfairness in practice{visibility="hidden"}
+
+{{< include /congest-sharing/_unfair-practice.qmd >}}

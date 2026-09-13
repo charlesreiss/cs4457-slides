@@ -4,11 +4,11 @@
 
 
 ::: {.r-stack .my-full}
-![](/congest-intro/texfig/window-change-rough.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/congest-intro/texfig/window-change-rough.figure-1.svg){.fragment .fade-out fragment-index=1 fig-alt="Graph of window size over time for a scenario like the previous cross-traffic example. A region is marked where at a high-enough window size packets would be dropped because the window size exceeds the available bandwidth. This region forms a step pattern, starting at a high value, decreaing in the middle to a middle value, then increasing back to a high value. The window size is plotted as a line that increases slowly until a packet drop happens, at which time it goes straight down and then resumes increasing slowly. Each packet drop is marked by an X. When the available bandwidth is steady, there are a small number of drops after the window size creeps slightly above the available bandwidth. When the available bandwidth decreases, there are a large number of drops until the window size goes well below the new available bandwidth."}
 
-![](/congest-intro/texfig/window-change-rough.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/congest-intro/texfig/window-change-rough.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="We also try increasing window size when there are not drops."}
 
-![](/congest-intro/texfig/window-change-rough.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/congest-intro/texfig/window-change-rough.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="We react to drpos by decreasing the window size."}
 
 
 :::
@@ -28,5 +28,4 @@
 
    * what happens if we increase too fast? too slow?
    * what happens if we decrease too fast? too slow?
-
 

@@ -4,14 +4,13 @@
 
 
 ::: {.r-stack .my-full}
-![](/congest-intro/texfig/cross-traffic-changing-cross-traffic.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/congest-intro/texfig/cross-traffic-changing-cross-traffic.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="Four hosts are connected to a network with two routers. Two hosts on the left are connected to the left router; and two on the right to the right router. The two routers are connected via a single link that must be used for any communication betwene the hosts on the left and on the right."}
 
-![](/congest-intro/texfig/cross-traffic-changing-cross-traffic.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/congest-intro/texfig/cross-traffic-changing-cross-traffic.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="The left-most host uses 10Mbit/s to talk to the right-most host. This occupies 10Mbit/s on three links: from left-most host to left router, the shared link between the two routers, and from right router to right-most host."}
 
-![](/congest-intro/texfig/cross-traffic-changing-cross-traffic.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/congest-intro/texfig/cross-traffic-changing-cross-traffic.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="In addition to the previous flow, the center-left host sends 3Mbit/s to the center-right host. This occupies 3Mbit/s on three links, one of which is the shared link between the routers. Because of this 3Mbit/s of 'cross-traffic' on the shared link, the 10Mbit/s flow must be reduced to 7Mbit/s on all three of its links."}
 
-![](/congest-intro/texfig/cross-traffic-changing-cross-traffic.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
-
+![](/congest-intro/texfig/cross-traffic-changing-cross-traffic.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="The cross-traffic flow is removed and the leftmost-to-rightmost flow can increase back to 10Mbit/s"}
 
 :::
 

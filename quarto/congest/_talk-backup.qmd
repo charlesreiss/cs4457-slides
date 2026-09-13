@@ -1,4 +1,0 @@
-
-# slow start later {visibility="hidden"}
-
-{{< include /congest/_slow-start-later.qmd >}}

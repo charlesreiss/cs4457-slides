@@ -17,6 +17,17 @@
 
 {{< include /congest-intro/_collapse-history.qmd >}}
 
+### fixes from Jacobson's 1987 paper 
+
+1.  round-trip-time variance estimation
+2.  exponential retransmit timer backoff
+3.  slow-start
+4.  more aggressive receiver ack policy
+5.  dynamic window sizing on congestion
+6.  Karn's clamped retransmit backoff
+7.  fast retransmit
+
+
 # performance collapse {visibility="hidden"}
 
 {{< include /congest-intro/_overload.qmd >}}
@@ -55,11 +66,19 @@
 
 # part 1: window sizing {visibility="hidden"}
 
-### againframe(jacobsonFixes)
-
 # focus on steady state {visibility="hidden"}
 
 {{< include /congest-intro/_focus-steady-state.qmd >}}
+
+### fixes from Jacobson's 1987 paper 
+
+1.  round-trip-time variance estimation
+2.  exponential retransmit timer backoff
+3.  slow-start
+4.  more aggressive receiver ack policy
+5.  _dynamic window sizing on congestion_
+6.  Karn's clamped retransmit backoff
+7.  _fast retransmit_
 
 # revised TCP congestion control {visibility="hidden"}
 

@@ -17,7 +17,6 @@
 }
 \draw[connect] (C) -- (r1)
     node[midway,every pin/.style={arrows=-},pin={slow link}] {};
-\begin{visibleenv}<2>
 \foreach \x/\y in {A.east/r1.west,r1.east/r2.west,r2.east/B.west} {
     \draw[-Latex,blue,line width=.7mm] ([yshift=-3mm]\x) -- ([yshift=-3mm]\y);
 }
@@ -25,5 +24,4 @@
     \draw[-Latex,red,dotted,line width=.5mm] ([yshift=3mm]\x) -- ([yshift=3mm]\y);
     \draw[-Latex,violet,dashed,line width=.5mm] ([yshift=5mm]\x) -- ([yshift=5mm]\y);
 }
-\end{visibleenv}
 \end{tikzpicture}

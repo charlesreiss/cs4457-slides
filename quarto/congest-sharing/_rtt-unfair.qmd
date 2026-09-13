@@ -4,10 +4,9 @@
 
 
 ::: {.r-stack .my-full}
-![](/congest-sharing/texfig/rtt-unfair-long-links.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/congest-sharing/texfig/rtt-unfair-long-links.figure-1.svg){.fragment .fade-out fragment-index=1 fig-alt="Four hosts (two on the left, tow on the right) are connected via two routers(one for the left, one for the right), similar to the exercise from earlier. The lower-left host has a much longer link to its router than the upper-left host."}
 
-![](/congest-sharing/texfig/rtt-unfair-long-links.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
-
+![](/congest-sharing/texfig/rtt-unfair-long-links.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="Two flows flow through this network; one from the upper-left host to the lower-right host, the other from the lower-left host to the upper-ight host. These flows share the link between the routers. The flow from the lower-left host must traverse a much longer distance than the one from the upper-left host."}
 
 :::
 
@@ -20,24 +19,24 @@
 <hr class="vspace" />
 * exercise: what window size achieves this for each flow? 
 
-   * 1: window size 25; 2: window size 50
+::: {.fragment}
+* 1: window size 25; 2: window size 50
+:::
 
 
 
 ### revisiting additive increase  {.smaller}
 
-
-
 * TCP: add +1 to window size each round trip time
 * flow 1: window 25+1 $\rightarrow$ 26 pkt/50 ms = 520 pkt/sec
 * flow 2: window 50+1 $\rightarrow$ 51 pkt/100 ms = 510 pkt/sec
- 
+* using rough model from before:
 
 ::: {.r-stack}
-![](/congest-sharing/texfig/rtt-unfair-revisiting-additive-increase.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
 
-![](/congest-sharing/texfig/rtt-unfair-revisiting-additive-increase.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/congest-sharing/texfig/rtt-unfair-revisiting-additive-increase.figure-1.svg){.fragment .fade-out fragment-index=2 width=500px}
 
+![](/congest-sharing/texfig/rtt-unfair-revisiting-additive-increase.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 width=500px}
 
 :::
 

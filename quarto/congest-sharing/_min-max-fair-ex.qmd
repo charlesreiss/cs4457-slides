@@ -1,16 +1,8 @@
 
 ### exercise  {.smaller}
 
+![](/congest-sharing/texfig/min-max-fair-ex.figure.svg){fig-alt="Four hosts (upper-left, lower-left, upper-right, lower-right) are connected to a network implemented with two routers. One router is connected to the left hosts and the other to the right hosts. The two routers are connected to each other via shared link. All the links are the same except the link between the lower-left host and its router is slow. Three flows are sent over the network: a solid one from the upper-left to the upper-right host via both routers; a dotted one from the lower-left to lower-right via both routers; and a dashed one also from lower-left to lower-right." width=1000px}
 
-
-::: {.r-stack}
-![](/congest-sharing/texfig/min-max-fair-ex.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
-
-![](/congest-sharing/texfig/min-max-fair-ex.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
-
-
-:::
- 
 
 * let's say slow link has 5 MByte/s capacity, other links 20MByte/s
 * why are these fair/unfair? (by min-max fairness) 

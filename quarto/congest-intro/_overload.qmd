@@ -86,13 +86,9 @@
 
 ### aside: latency (1)  {.smaller}
 
-
-* 589
 * need one round-trip time (RTT) to detect loss 
-
    * probably from duplicate ACK
    * if detecting via timeout, probably longer
-
 * so need 1.4 RTTs (detecting loss 1.4 times) extra time
 * mean latency $= \frac{1.4 \text{RTTs}}{0.5 \text{RTTs}}$ times normal $= 2.8$ times normal
 
@@ -109,9 +105,9 @@
 ### sliding windows and retransmissions 
 
 
-* assuming that other session doesn't slow down 
+* we were assuming that other session doesn't slow down 
 <hr class="vspace" />
-* sliding window approach slows down on losses
+* sliding window approach slows down on losses given same window size
 
 
 ### sliding window throughput collapse  {.smaller}

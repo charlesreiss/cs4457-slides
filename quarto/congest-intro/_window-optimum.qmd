@@ -1,22 +1,19 @@
 
 ### why optimal  {.smaller}
 
-
+* window size $\sim$ number of packets in flight
 * in normal operation with window size $W$ 
-
    * receive ACK for $x$ (now $W-1$ in flight)
    * send packet $x+W$
    * receive ACK for $x+1$
    * send packet $x+W+1$
    * …
-
 * window size keeps $W$ packets in flight
-* if links + queues can hold $W$ packets --- perfect!
-
+   * increase window = more packets in flight
+   * decrease window = reduce packets in flight
+* ideal choice $\sim$ amount network can handle
 
 ### number in flight on losses  {.smaller}
-
-
 
 * window size $W$
 * let's say we lose packet $x$ [only], sender might 
@@ -29,9 +26,12 @@
    * receive ACK for packet $x+W-1$
    * send packets $x+W$ through $x+W+W-1$
 
- ![](/congest-intro/texfig/window-optimum.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
-![](/congest-intro/texfig/window-optimum.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
+::: {.myoverbox .low .fragment}
 
+*  lots of time when we are not sending packets
+*  means links are underutilized
+
+:::
 
 ### window size tweaking 
 

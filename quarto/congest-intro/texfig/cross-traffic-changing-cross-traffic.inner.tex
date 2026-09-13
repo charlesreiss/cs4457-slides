@@ -19,7 +19,7 @@
 \foreach \x/\y in {A/r1,r1/r2,r2/B} {
     \draw[blue,line width=1mm] ([yshift=-1mm]\x) -- ([yshift=-1mm]\y);
 }
-\node[text=blue,anchor=north] at ([yshift=-3mm]$(A)!0.5!(r1)$) {10Mbit};
+\node[text=blue,anchor=north] at ([yshift=-3mm]$(A)!0.5!(r1)$) {10Mbit/s};
 \end{visibleenv}
 \begin{visibleenv}<3>
 \foreach \x/\y in {A.east/r1.west,r1.east/r2.west,r2.east/B.west} {
@@ -28,13 +28,13 @@
 \foreach \x/\y in {C/r1,r1.east/r2.west,r2/D} {
     \draw[-Latex,red,dotted,line width=1mm] ([yshift=3mm]\x) -- ([yshift=3mm]\y);
 }
-\node[text=blue,anchor=north] at ([yshift=-3mm]$(A)!0.5!(r1)$) {\sout{10Mbit} 7Mbit};
-\node[text=red,anchor=west] at ($(C)!0.5!(r1)$) {3Mbit};
+\node[text=blue,anchor=north] at ([yshift=-3mm]$(A)!0.5!(r1)$) {\sout{10Mbit/s} 7Mbit/s};
+\node[text=red,anchor=west] at ($(C)!0.5!(r1)$) {3Mbit/s};
 \end{visibleenv}
 \begin{visibleenv}<4>
 \foreach \x/\y in {A/r1,r1/r2,r2/B} {
     \draw[blue,line width=1mm] ([yshift=-1mm]\x) -- ([yshift=-1mm]\y);
 }
-\node[text=blue,anchor=north] at ([yshift=-3mm]$(A)!0.5!(r1)$) {\sout{10Mbit} \sout{7Mbit} 10Mbit};
+\node[text=blue,anchor=north] at ([yshift=-3mm]$(A)!0.5!(r1)$) {\sout{10Mbit/s} \sout{7Mbit/s} 10Mbit/s};
 \end{visibleenv}
 \end{tikzpicture}

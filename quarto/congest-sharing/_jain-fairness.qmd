@@ -4,7 +4,7 @@
 
 * more common metric, but for scenarios where equal allocation makes sense 
 <hr class="vspace" />
-* if $x_i$ is i'th flow's share: <br> \[\frac{\left(\sum x_i\right)^2}{n\cdot\sum x_i^2}\] 
+* if $x_i$ is i'th flow's share: <br> $\frac{\left(\sum x_i\right)^2}{n\cdot\sum x_i^2}$
 <hr class="vspace" />
 * approaches 1 when allocations equal, $\frac{1}{n}$ if one flow gets everything
 
