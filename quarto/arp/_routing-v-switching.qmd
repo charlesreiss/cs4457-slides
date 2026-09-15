@@ -4,7 +4,7 @@
 
 
 ::: {.r-stack .my-full}
-![](/arp/texfig/routing-v-switching-switch-v-router-on-the-wires.figure-1.svg){.fragment .fade-out fragment-index=1 fig-alt="A network diagram with 4 host, 3 switches, and 1 router. The hosts 10.0.1.3 (MAC address 04:...:BB) and 10.0.1.2 (00:...:AA) are connected to the leftmost switch. The leftmost switch and the host 10.0.1.4 (05:...:CC) and the router are connected to the center switch. The router is also connected to the rightmost switch, to which host 10.0.2.2 (03:...:EE) is also connected. The router has two MAC and IP addresses: 10.0.1.1/02:...:DD (on the left side) and 10.0.2.15/02:...:DE (on the right side)."}
+![](/arp/texfig/routing-v-switching-switch-v-router-on-the-wires.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="A network diagram with 4 host, 3 switches, and 1 router. The hosts 10.0.1.3 (MAC address 04:...:BB) and 10.0.1.2 (00:...:AA) are connected to the leftmost switch. The leftmost switch and the host 10.0.1.4 (05:...:CC) and the router are connected to the center switch. The router is also connected to the rightmost switch, to which host 10.0.2.2 (03:...:EE) is also connected. The router has two MAC and IP addresses: 10.0.1.1/02:...:DD (on the left side) and 10.0.2.15/02:...:DE (on the right side)."}
 
 ![](/arp/texfig/routing-v-switching-switch-v-router-on-the-wires.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="We can divide the network diagram into two subnetworks connected via the router. The left network, 10.0.1.0/24, includes the hosts 10.0.1.2, 10.0.1.3, 10.0.1.4, the left switch, the center switch, and the left side of the router. The right network, 10.0.2.0/24, includes the host 10.0.2.2 and the right side of the router."}
 
