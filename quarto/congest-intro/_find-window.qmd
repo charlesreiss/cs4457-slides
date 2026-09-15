@@ -21,17 +21,17 @@
 
 
 ::: {.r-stack .my-full}
-![](/congest/texfig/find-window-try-a-bunch-of-things.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/congest-intro/texfig/find-window-try-a-bunch-of-things.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
 
-![](/congest/texfig/find-window-try-a-bunch-of-things.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/congest-intro/texfig/find-window-try-a-bunch-of-things.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
 
-![](/congest/texfig/find-window-try-a-bunch-of-things.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/congest-intro/texfig/find-window-try-a-bunch-of-things.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
 
-![](/congest/texfig/find-window-try-a-bunch-of-things.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+![](/congest-intro/texfig/find-window-try-a-bunch-of-things.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
 
-![](/congest/texfig/find-window-try-a-bunch-of-things.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+![](/congest-intro/texfig/find-window-try-a-bunch-of-things.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
 
-![](/congest/texfig/find-window-try-a-bunch-of-things.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
+![](/congest-intro/texfig/find-window-try-a-bunch-of-things.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
 
 
 :::
