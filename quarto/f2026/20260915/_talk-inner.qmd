@@ -11,6 +11,16 @@
 
 ### quiz
 
+### on loops in P4 parsers
+
+*  P4 basically says loops could create compile-time/runtime errors
+   *  especially if not bounded by consuming part of packet
+*  "header stack" feature that is better at bounding
+   *  fixed-size array of subheaders
+*  my guesses as to reasons for this
+   *  want to bound packet processing times
+   *  support switch architectures which do packet processing with long (hardware) pipelines where loops need to be unrolled into similar-looking pipeline stages
+
 ### assignment Q+A
 
 ## CIDR notation{visibility="hidden"}
