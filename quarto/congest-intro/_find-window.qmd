@@ -1,7 +1,7 @@
 
 ### finding window size empirically (1) 
 
-![](/congest/texfig/find-window-finding-window-size-empirically-1.figure.svg)
+![](/congest-intro/texfig/finding-window-size-empirical.figure.svg)
 
 
 ### key insight  {.smaller}
