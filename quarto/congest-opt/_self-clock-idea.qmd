@@ -14,7 +14,6 @@
 <tr><td>&nbsp;</td><td>data 11</td><td>8</td></tr>
 <tr><td>ACK 4</td><td>&nbsp;</td><td>7</td></tr>
 <tr><td>&nbsp;</td><td>data 12</td><td>8</td></tr>
-<tr><td></td></tr>
 </table>
   
 
@@ -27,7 +26,7 @@
 
 * window size $\sim$ packets in flight normally
 * but duplicate ACKs are exception (say window size 8)
-  <table>
+  <table style="font-size: 80%">
 <tr><td>recv'd</td><td>sent</td><td>count of packets in flight</td></tr>
 <tr><td><!-- \hline --> ---</td><td>data 0-7</td><td>8</td></tr>
 <tr><td>ACK 0</td><td>&nbsp;</td><td>7</td></tr>
@@ -40,7 +39,6 @@
 <tr><td>ACK 1</td><td>&nbsp;</td><td>4</td></tr>
 <tr><td>ACK 1</td><td>&nbsp;</td><td>3</td></tr>
 <tr><td>ACK 1</td><td>&nbsp;</td><td>2</td></tr>
-<tr><td></td></tr>
 </table>
   
 
@@ -78,7 +76,7 @@
 
 ### fast recovery example  {.smaller}
 
- <table>
+ <table style="font-size: 70%">
 <tr><td>recv'd</td><td>sent</td><td>est. packets in flight</td><td>send window size (range)</td><td>cwnd = target packets in flight</td></tr>
 <tr><td><!-- \hline --> ---</td><td>data 0-7</td><td>8</td><td>8 (0-7)</td><td>8</td></tr>
 <tr><td>ACK 0</td><td>&nbsp;</td><td>7</td><td>8 (0-7)</td><td>8</td></tr>

@@ -5,12 +5,12 @@
 * <i>congestion avoidance</i> (cwnd $\ge$ ssthresh) 
 
    * no loss: cwnd += 1 segment per round-trip-time
-   * on loss: ssthresh = cwnd/2; cwnd = $\sim$2 segments
+   * on loss: ssthresh = cwnd/2; cwnd = $\sim2$ segments
 
 * <i>‘‘slow start’’</i> (cwnd \< ssthresh) 
 
-   * no loss: cwnd += 1 segment per newly ack'd segment
-   * on loss: ssthresh = cwnd/2; cwnd = cwnd/2;
+   * _no loss: cwnd += 1 segment per newly ack'd segment_
+   * _on loss: ssthresh = cwnd/2; cwnd = cwnd/2;_
 
 * <i>recovery</i> (known loss) 
 

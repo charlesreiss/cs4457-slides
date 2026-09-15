@@ -8,14 +8,15 @@
    * on loss (dup ACK): cwnd = cwnd/2; ssthresh = new cwnd
    * on loss (timeout): cwnd = 2 segments
 
+* <i>‘‘slow start’’</i> (cwnd \< ssthresh) 
+
+   * _no loss: cwnd += 1 segment per newly ack'd segment_
+   * _on loss: ssthresh = cwnd/2; cwnd = cwnd/2;_
+
+
 * <i>recovery</i> (known loss) 
 
    * resend immediately on third dup ACK
    * send new data based on self-clocking idea (‘‘fast recovery’’)
-
-* <i>‘‘slow start’’</i> (cwnd \< ssthresh) 
-
-   * no loss: cwnd += 1 segment per newly ack'd segment
-   * on loss: ssthresh = cwnd/2; cwnd = cwnd/2;
 
 
