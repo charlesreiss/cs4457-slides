@@ -23,7 +23,7 @@
    * retransmit packet after third duplicate ACK of previous packet <br> (or timeout)
 * <i>‘‘slow start’’</i> (cwnd \< ssthresh) 
    * intuition: not in ‘‘steady state’’ yet
-   * want to get there  quickly, but with overloading network
+   * want to get there  quickly, but without overloading network
    * we'll give details later
 
 
