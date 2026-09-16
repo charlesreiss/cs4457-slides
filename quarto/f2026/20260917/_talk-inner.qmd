@@ -1,0 +1,34 @@
+### last time {.smaller}
+
+*  CIDR notation
+*  switching versus routing
+   *  recall: in this class, switch = layer 2 (real world: sloppier about this)
+   *  on local network "switches" use MAC addresses to forward
+   *  destination/source MAC address just for local network
+   *  between networks "routers" use IP addresses
+   *  IP packet contains global source/destination
+*  routing tables using just IP addresses
+   *  need IP:MAC address mapping --- "neighbor table" (or "ARP table")
+   *  discover IP:MAC mapping by broadcasting requests on local network
+   *  "gratuitous" broadcasts of MACs
+*  ARP hijacking
+
+# broadcast domains {visibility="hidden"}
+
+{{< include /arp/_broadcast-domains.qmd >}}
+
+# DHCP {visibility="hidden"}
+
+{{< include /arp/_dhcp.qmd >}}
+
+## DHCP relays {visibility="hidden"}
+
+{{< include /arp/_dhcp-relay.qmd >}}
+
+## DHCPv6 {visibility="hidden"}
+
+# IPv6 autoconfiguration {visibility="hidden"}
+
+{{< include /arp/_ipv6-autoconf.qmd >}}
+
+{{< include /congest-intro/_talk-inner.qmd >}}
