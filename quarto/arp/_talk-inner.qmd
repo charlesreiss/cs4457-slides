@@ -59,6 +59,10 @@
 
 {{< include /arp/_ip-mac-exer.qmd >}}
 
+# broadcast domains {visibility="hidden"}
+
+{{< include /arp/_broadcast-domains.qmd >}}
+
 # DHCP {visibility="hidden"}
 
 {{< include /arp/_dhcp.qmd >}}
