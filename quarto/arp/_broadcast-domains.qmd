@@ -1,0 +1,15 @@
+### aside: broadcast domains {.smaller}
+
+*  broadcast domain = who you can reach with a broadcast
+   *  if too large = hurts performance (extra frames, larger neighbor tables)
+*  can also look at as within broadcast domain versus between
+<hr class="vspace"/>
+*  Ethernet-style forwarding + neighbor discovery
+   *  within-broadcast domain design
+   *  takes advantage of broadcast "backup"
+*  can split layer-2 network into multiple broadcast domains
+   *  more work for switches and/or different protocols
+      *  example: switch has special logic for handling ARP requests/replies
+   *  possibly easier than splitting into multiple layer-2 networks connected at layer 3
+   *  note: might allow A to broadcast to B and C, but B to only broadcast to A
+
