@@ -72,8 +72,8 @@ Abstract
 
 ### temporary address
 
-*  RFC 8981 is modern version of privacy extensions
-*  generate random value for bottom bits of address
+*  RFC 8981 is current version of privacy extensions
+*  generates random value for bottom bits of address
 *  check for duplicates on local network (or reserved values)
 *  if connected for days:
    *  generate new addresses periodically
