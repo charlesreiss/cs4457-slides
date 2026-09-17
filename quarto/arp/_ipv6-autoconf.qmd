@@ -70,9 +70,9 @@ Abstract
    * Ubuntu 12.04 (2012)
 
 
-### temporary address
+### temporary addresses
 
-*  RFC 8981 is current version of privacy extensions
+*  RFC 8981 is latest version of privacy extensions specification
 *  generates random value for bottom bits of address
 *  check for duplicates on local network (or reserved values)
 *  if connected for days:
