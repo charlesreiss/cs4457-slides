@@ -72,13 +72,14 @@ Abstract
 
 ### temporary addresses
 
-*  RFC 8981 is latest version of privacy extensions specification
-*  generates random value for bottom bits of address
+*  (RFC 8981 is current specification, described here)
+<hr class="vspace"/>
+*  generate random value for bottom bits of address
 *  check for duplicates on local network (or reserved values)
 *  if connected for days:
-   *  generate new addresses periodically
+   *  generate new addresses periodically (default: approx every day, randomized)
    *  keep using old addresses as long as they have active connections
-   *  have previous + new address valid for a time after new address generated
+   *  have previous + new address valid for a time after new address generated (default: 
 
 
 ### SLAAC 
