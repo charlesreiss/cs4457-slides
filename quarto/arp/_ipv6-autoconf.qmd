@@ -70,6 +70,16 @@ Abstract
    * Ubuntu 12.04 (2012)
 
 
+### temporary address
+
+*  RFC 8981 is modern version of privacy extensions
+*  generate random value for bottom bits of address
+*  check for duplicates on local network (or reserved values)
+*  if connected for days:
+   *  generate new addresses periodically
+   *  keep using old addresses as long as they have active connections
+   *  have previous + new address valid for a time after new address generated
+
 
 ### SLAAC 
 

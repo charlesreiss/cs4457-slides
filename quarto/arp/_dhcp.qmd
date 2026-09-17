@@ -9,8 +9,13 @@
 ![](/arp/ip-config-dialog){fig-alt="NetworkManager (GNOME utility) dialog for confguring a network connection. The dialog shows a Connection name of 'Wi-Fi connection 1' and several tabs: General, Wi-Fi, Wi-Fi Security, Proxy, IPv4 Settings, IPv6 Settings. The IPv4 settings tab is selected and there is a 'method' drop-down for which 'Manual' is selected. Below that there is a table to type in one or more addresses. For each address, the table asks for the Address, a Netmask, and a Gateway. 10.1.4.3 is being entered as the address, 24 has been entered as netmask and 10.1.4.1 has been entered as the gateway. There are also unused options to enter DNS servers, search domains, to require IPv4 addressing for the connection to complete and to enter routes."}
 
 
-### simple network config  {.smaller}
+### simple network config  {.simple-net-config .smaller}
 
+<style>
+.simple-net-config .fragment.bg-red.current-fragment {
+  background-color: rgb(100%, 80%, 80%);
+}
+</style>
 
 
 * IP address: 10.0.2.45
@@ -20,7 +25,7 @@
 
 * (default) gateway: 10.0.2.102
  
-<div class="fragment fade-in" data-fragment-index=2 >
+<div class="fragment fade-in" data-fragment-index="2">
 <table>
 <caption style="caption-side: top">routing table (IPv4)</caption>
 <colgroup>
@@ -33,7 +38,7 @@
 </thead>
 <tbody>
 <tr><td>`10.0.2.0/25`</td><td>---</td><td>out</td></tr>
-<tr><td>default</td><td>10.0.2.102</td><td>out</td></tr>
+<tr><td>default</td><td>`10.0.2.102`</td><td>out</td></tr>
 </tbody>
 </table>
 </div>
