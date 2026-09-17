@@ -70,16 +70,22 @@ Abstract
    * Ubuntu 12.04 (2012)
 
 
-### temporary addresses
+### random address {.smaller}
 
-*  (RFC 8981 is current specification, described here)
-<hr class="vspace"/>
 *  generate random value for bottom bits of address
 *  check for duplicates on local network (or reserved values)
+*  question: how often to do this?
+   *  just when connecting --- "stable" addresses
+   *  more often --- better for privacy?
+
+### temporary addresses {.smaller}
+
+*  (RFC 8981 is current specification, whose defaults are described here)
+<hr class="vspace"/>
 *  if connected for days:
-   *  generate new addresses periodically (default: approx every day, randomized)
-   *  keep using old addresses as long as they have active connections
-   *  have previous + new address valid for a time after new address generated (default: 
+   *  generate new "preferred" addresses periodically (default: approx every day, randomized)
+   *  keep using old "deprecated" addresses as long as they have active connections
+   *  have previous + new address valid for a time after new address generated (default: every address valid for at least 2 days)
 
 
 ### SLAAC 
