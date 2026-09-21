@@ -1,0 +1,91 @@
+### last time {.smaller}
+
+*  broadcast domains
+*  DHCP
+   *  UDP broadcast on local network with 0.0.0.0 placeholder address
+   *  server gives address leases
+   *  relays
+*  IPv6 SLAAC
+   *  automatic address selection within router-given prefixes
+   *  MAC-derived versus (temporary?) random addreesses
+*  window size $\sim$ packets in flight
+   *  high? losses/latency; low? no losses/latency
+   *  continuously try increasing until losses
+   *  importance of avoiding overloaded network
+
+# heuristic: slow increase {visibility="hidden"}
+
+{{< include /congest-intro/_heuristic-increase.qmd >}}
+
+# heuristic: fast decrease (v1) {visibility="hidden"}
+
+{{< include /congest-intro/_heuristic-decrease-to-1.qmd >}}
+
+# original TCP congestion control {visibility="hidden"}
+
+{{< include /congest-intro/_tcp-tahoe-intro.qmd >}}
+
+# sawtooth pattern {visibility="hidden"}
+
+{{< include /congest-intro/_sawtooth.qmd >}}
+
+# aside: examining congestion control on Linux {visibility="hidden"}
+
+{{< include /congest-intro/_linux-ss.qmd >}}
+
+# part 1: window sizing {visibility="hidden"}
+
+# focus on steady state {visibility="hidden"}
+
+{{< include /congest-intro/_focus-steady-state.qmd >}}
+
+### fixes from Jacobson's 1987 paper 
+
+1.  round-trip-time variance estimation
+2.  exponential retransmit timer backoff
+3.  slow-start
+4.  more aggressive receiver ack policy
+5.  _dynamic window sizing on congestion_
+6.  Karn's clamped retransmit backoff
+7.  _fast retransmit_
+
+# revised TCP congestion control {visibility="hidden"}
+
+{{< include /congest-intro/_tcp-reno-intro.qmd >}}
+
+# heuristic: fast decrease (v2) {visibility="hidden"}
+
+{{< include /congest-intro/_heuristic-decrease.qmd >}}
+
+# AIMD {visibility="hidden"}
+
+{{< include /congest-intro/_aimd.qmd >}}
+
+# some graphs {visibility="hidden"}
+
+{{< include /congest-intro/_tcp-normal-graphs.qmd >}}
+
+## exercise: non-congestion losses {visibility="hidden"}
+
+{{< include /congest-intro/_non-congest-losses.qmd >}}
+
+{{< include /congest-sharing/_talk-inner.qmd >}}
+
+{{< include /congest-opt/_talk-inner.qmd >}}
+
+
+# backup slides {visibility="hidden"}
+
+###
+
+### backup slides
+
+# up/down pattern (rough) {visibility="hidden"}
+
+{{< include /congest-intro/_window-change-rough.qmd >}}
+
+
+## exercise: convergence times {visibility="hidden"}
+
+{{< include /congest-intro/_convergence-time.qmd >}}
+
