@@ -7,8 +7,7 @@
    * sysadmin has other options they can configure
    * can be changed on connection-by-connection basis
 
-* includes improvements to recovery we'll talk about later
-* but mostn notably has non-additive increase
+* has non-additive increase
 
 
 ### increase intuition  {.smaller}

@@ -11,7 +11,6 @@
 6.  Karn's clamped retransmit backoff
 7.  fast retransmit
 
-
 {{< include /congest-opt/_slow-start.qmd >}}
 
 ## exercise {visibility="hidden"}
@@ -120,13 +119,29 @@
 
 ## variance estimation {visibility="hidden"}
 
-### againframe(jacobsonFixes)
+### fixes from Jacobson's 1987 paper 
+
+1.  _round-trip-time variance estimation_
+2.  exponential retransmit timer backoff
+3.  slow-start
+4.  more aggressive receiver ack policy
+5.  dynamic window sizing on congestion
+6.  Karn's clamped retransmit backoff
+7.  fast retransmit
 
 {{< include /congest-opt/_variance-estimate.qmd >}}
 
 ## exponential backoff {visibility="hidden"}
 
-### againframe(jacobsonFixes)
+### fixes from Jacobson's 1987 paper 
+
+1.  round-trip-time variance estimation
+2.  _exponential retransmit timer backoff_
+3.  slow-start
+4.  more aggressive receiver ack policy
+5.  dynamic window sizing on congestion
+6.  Karn's clamped retransmit backoff
+7.  fast retransmit
 
 {{< include /congest-opt/_exp-backoff.qmd >}}
 
@@ -140,17 +155,49 @@
 
 # other congestion signals {visibility="hidden"}
 
-{{< include /congest-opt/_other-signals.qmd >}}
+### other congestion signals  {.smaller}
+
+
+* so far: detecting congestion via drops 
+   * need data to go missing
+   * transmitting redundant data
+   * filling up buffers causing high latency
+* some alternate ideas ways to detect congestion:
+<hr class="vspace" />
+* have switches/routers ‘mark’ packets
+* latency from longer queues
+
 
 ## explicit congestion notification {visibility="hidden"}
 
-### againframe(otherSig)
+### other congestion signals  {.smaller}
+
+
+* so far: detecting congestion via drops 
+   * need data to go missing
+   * transmitting redundant data
+   * filling up buffers causing high latency
+* some alternate ideas ways to detect congestion:
+<hr class="vspace" />
+* _have switches/routers ‘mark’ packets_
+* latency from longer queues
+
 
 {{< include /congest-opt/_ecn.qmd >}}
 
 ## watching latency, etc. {visibility="hidden"}
 
-### againframe(otherSig)
+### other congestion signals  {.smaller}
+
+
+* so far: detecting congestion via drops 
+   * need data to go missing
+   * transmitting redundant data
+   * filling up buffers causing high latency
+* some alternate ideas ways to detect congestion:
+<hr class="vspace" />
+* have switches/routers ‘mark’ packets
+* _latency from longer queues_
 
 {{< include /congest-opt/_watch-latency.qmd >}}
 

@@ -1,1 +1,19 @@
 {{< include /congest/_slow-start-later.qmd >}}
+
+### 2019ish measurement data 
+
+
+![](/congest-opt/mishra-et-al-table5){}
+ [Mishra et al, ‘‘The Great Internet TCP Congestion Control Census’’]{.mycredit}
+
+### 2023ish measurement data 
+
+
+![](/congest-opt/ware-et-al-table3){}
+ [Ware et al, ‘`CCAnalyzer: An Efficient and Nearly Passive Congestion Control Classifier’]{.mycredit}
+
+### 2023ish measurement data
+
+![](/congest-opt/mishra2024-et-al-table4){}
+
+[Mishra et al, "Keeping an Eye on Congestion Control in the Wild with Nebby"]{.mycredit}

@@ -1,9 +1,11 @@
 
 ### some intuition (based on BBR)  {.smaller}
 
-[]{.my-small} (based on Google's BBR presentation to the IETF) <br> ![](/congest-opt/texfig/latency-intuition-bbr1.figure.svg)
+[(based on Google's BBR presentation to the IETF)]{.my-small}
+
+![](/congest-opt/texfig/latency-intuition-bbr1.figure.svg){width=800px}
  
- ![](/congest-opt/texfig/latency-intuition-bbr2.figure.svg)
+![](/congest-opt/texfig/latency-intuition-bbr2.figure.svg){width=800px}
 
 
 ### very different congestion control  {.smaller}
@@ -51,11 +53,10 @@
 
 * combines Vegas and ‘normal’ TCP congestion control
 * track seperate ‘delay’ and ‘congestion’ window 
-
    * congestion window uses standard TCP algorithm
    * delay window based on Vegas-like increase in RTT detection
-
 * effective window size based delay+congestion window 
+* delay-based increase can be multiplicative
 <hr class="vspace" />
 * was default on Windows for many years
 
@@ -64,11 +65,9 @@
 
 
 * Vegas = watch latency versus window size 
-
    * intuition: if window size $\uparrow$ $\implies$ latency $\uparrow$, window size too high
 
 * alternate idea: bandwidth versus window size 
-
    * intuition: if window size $\uparrow$ $\implies$ bandwidth unchanged, window size too high
  
 <hr class="vspace" />
@@ -86,7 +85,7 @@
 * [if queues are filling]{.fragment fragment-index=3 .custom .myem-only}, larger window:
 * throughput stays the same and latency increases 
 <hr class="vspace" />
-* observe effect of sending more/fewer packets periodically
+* observe effect of sending [more/fewer packets periodically]{.fragment fragment-index=4 .custom .myem-only}
 * estimate ‘boundary’ based on observed latency/throughput
 * keep window size near boundary most of the time
 
@@ -99,6 +98,6 @@
 <hr class="vspace" />
 * not great fairness results with traditional TCP 
 
-   * Philip (IMC'21)\\footnote{Philip, Ware, Athapathu, Sherry, Sekar, ‘‘Revisting TCP Congestion Control Throughput Models &amp; Fairness Properties AT Scale'’ (IMC’21)} claims one BBR flow takes 40% of throughput when competing with thousands of CUBIC or NewReno flows
+   * Philip (IMC'21)[^philip] claims one BBR flow takes 40% of throughput when competing with thousands of CUBIC or NewReno flows
 
-
+[^philip]: Philip, Ware, Athapathu, Sherry, Sekar, ‘‘Revisting TCP Congestion Control Throughput Models &amp; Fairness Properties At Scale'’ (IMC’21)

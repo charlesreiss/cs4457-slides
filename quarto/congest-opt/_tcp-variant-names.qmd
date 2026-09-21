@@ -10,13 +10,13 @@
 * SACK --- NewReno + use selective acknowledgments
 
 
-### more recent TCP variants  {.smaller}
+### more recent TCP variants
 
 
-* BIC, CUBIC --- loss-based schemes that vary increase/decrease algorithm
-* Vegas, BBR, FAST, Compound, Westwood --- schemes that use latency/bandwidth to detect congestion 
-
-   * (later topic)
+* BIC, CUBIC 
+  *  loss-based schemes that vary increase/decrease formulas
+* Vegas, BBR, FAST, Compound, Westwood
+  *  use latency/bandwidth to detect congestion 
 
 * (and there are many, many more)
 

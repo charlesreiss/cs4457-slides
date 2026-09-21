@@ -36,8 +36,9 @@
 
 
 
-* mean queue length \[\frac{\text{arrival rate}}{\text{service rate} - \text{arrival rate}}\]
- ![](/congest-opt/texfig/queuing-mm1-queue-length-mean.figure.svg)
+![](/congest-opt/texfig/queuing-mm1-queue-length-mean.figure.svg){width=800px}
+
+* mean queue length $$\frac{\text{arrival rate}}{\text{service rate} - \text{arrival rate}}$$
  
 
 * practical implication: <em>need to run networks at much less than full utilization</em>
@@ -45,10 +46,21 @@
 
 ### M/M/1/$\infty$ queue length std. deviation 
 
+::::: {.columns}
 
+:::: {.column width=70%}
 
-* \[\sqrt{\frac{\text{utilization}}{\left(1 - \text{utilization}\right)^2}}\]
- ![](/congest-opt/texfig/queuing-mm1-queue-length-sd.figure.svg)
+![](/congest-opt/texfig/queuing-mm1-queue-length-sd.figure.svg){width=700px}
+
+::::
+
+:::: {.column style="width: 29%"}
+
+$\sqrt{\frac{\text{utilization}}{\left(1 - \text{utilization}\right)^2}}$
+
+::::
+
+:::::
 
 
 ### approx 95th pctile v mean queue length 

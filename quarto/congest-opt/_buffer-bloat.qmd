@@ -2,27 +2,16 @@
 ### filling buffers 
 
 
-
-::: {.r-stack .my-full}
-![](/congest-opt/texfig/buffer-bloat-filling-buffers.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
-
-![](/congest-opt/texfig/buffer-bloat-filling-buffers.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
-
-![](/congest-opt/texfig/buffer-bloat-filling-buffers.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
-
-![](/congest-opt/texfig/buffer-bloat-filling-buffers.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
-
-![](/congest-opt/texfig/buffer-bloat-filling-buffers.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
-
-
-:::
+![](/congest-opt/texfig/buffer-bloat-filling-buffers.figure.svg)
 
 
 ### big buffers? (in 2011 or so) 
 
 
-![](/congest-opt/cacm-bufferbloat-fig5){}
- [ Jim Gettys and Kathleen Nichols, <br> ‘‘Bufferbloat: Dark Buffers in the Internet’’ (CACM, Jan 2012)]{.my-small}
+![](/congest-opt/cacm-bufferbloat-fig5){.my-full}
+
+
+[Jim Gettys and Kathleen Nichols, ‘‘Bufferbloat: Dark Buffers in the Internet’’ (CACM, Jan 2012)]{.mycredit}
 
 ### problems with big buffers 
 
@@ -41,12 +30,8 @@
 * multiple fixes (that can be combined): 
 <hr class="vspace" />
 * use smaller buffers? 
-
    * simpliest solution
-
+   * but will lower performance if done too aggressively
 * detect congestion without full buffer…  
-
-   * [by choosing when/which packets to drop better?]{.fragment fragment-index=3 .custom .myem-only}
-   * [by using something other than drops?]{.fragment fragment-index=4 .custom .myem-only}
-
-
+   * by choosing when/which packets to drop better?
+   * by using something other than drops?

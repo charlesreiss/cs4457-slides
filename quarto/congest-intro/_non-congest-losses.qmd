@@ -8,11 +8,13 @@
 * with TCP heuristics (+1 packet/RTT, half on loss)…
 * normal window size? achieved bandwidth (pkts/sec)? 
 
-   * window size increases for about 100 packets, then halves
-   * starting at window size 8:
-   * 8, 9 (17 total), 10 (27), 11 (38), 12 (50), 13 (63), 14 (77), 15 (92), 16 (>100)
-   * $\rightarrow$ window size fluctuates from around 8 to 16
-   * 12 pkts/50 ms = 240 pkts/sec
+::: {.fragment .fade-in}
+* window size increases for about 100 packets, then halves
+* starting at window size 8:
+* 8, 9 (17 total), 10 (27), 11 (38), 12 (50), 13 (63), 14 (77), 15 (92), 16 (>100)
+* $\rightarrow$ window size fluctuates from around 8 to 16
+* 12 pkts/50 ms = 240 pkts/sec
+:::
 
 
 
