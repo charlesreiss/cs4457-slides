@@ -17,7 +17,7 @@
 
 
 ::: {.r-stack .my-full}
-![](/congest-sharing/texfig/aimd-diagram-limit-slow-link.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="A graph with flow 1 bandwidth on the x-axis and flow 2 bandwidth on the y axis. A line from the upper-right of the lower-left of the graph marks a region (in the upper-right) labeled 'both flows get drops'. The remainder of the graph forms a right triangle (where the right angle is at the origin), which is divided into two pieces by a horizontal line. The upper triangle formed by this is labeled "flow 2 gets drops". The lower trapezoidal part is unlabeled."}
+![](/congest-sharing/texfig/aimd-diagram-limit-slow-link.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="A graph with flow 1 bandwidth on the x-axis and flow 2 bandwidth on the y axis. A line from the upper-right of the lower-left of the graph marks a region (in the upper-right) labeled 'both flows get drops'. The remainder of the graph forms a right triangle (where the right angle is at the origin), which is divided into two pieces by a horizontal line. The upper triangle formed by this is labeled 'flow 2 gets drops'. The lower trapezoidal part is unlabeled."}
 
 ![](/congest-sharing/texfig/aimd-diagram-limit-slow-link.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="The line bordering the 'both flows get drops' region is the limit of the fast link's bandwidth. The line bordering the bottom of the 'flow 2 gets drops' region is the limit of the slow link's bandwidth."}
 

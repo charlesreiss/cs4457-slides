@@ -14,7 +14,7 @@ $\text{throughput} \approx \text{constant} \times \frac{\text{packet size}}{\tex
 * some results from Philip (IMC'21)*
 * with same congestion control algorithm + RTT, Jain's fairness index > 0.99
 * CUBIC takes 70-80% of throughput when competing with equal number of traditional TCP flows 
+  *  cubic notably uses non-additive increase
 
-   * recall: major change is cubic increase curve instead of additive (linear) increase
 [*Philip, Ware, Athapathu, Sherry, Sekar, ‘‘Revisting TCP Congestion Control Throughput Models &amp; Fairness Properties At Scale'’ (IMC’21)]{.mycredit}
 

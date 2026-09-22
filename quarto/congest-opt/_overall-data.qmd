@@ -7,7 +7,7 @@
 
 ###
 
-### obtaining these measurements  {.smaller}
+### a way to obtain these measurements  {.smaller}
 
 * Ware et al (2024) technique: estimate queue occupancy 
 
