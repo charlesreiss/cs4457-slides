@@ -27,7 +27,7 @@
 ###  
 
 
-![](/arp/texfig/dup-address_2.figure.svg){.fragment .fade-out fragment-index=2 fig-alt="Two hosts are simulatenously connected with IP address 10.0.2.9 to a network."}
+![](/arp/texfig/dup-address_2.figure.svg){fig-alt="Two hosts are simulatenously connected with IP address 10.0.2.9 to a network."}
 
 
 
