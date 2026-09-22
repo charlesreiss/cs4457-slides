@@ -13,6 +13,10 @@
    *  continuously try increasing until losses
    *  importance of avoiding overloaded network
 
+### assignment Q+A
+
+###
+
 # heuristic: slow increase {visibility="hidden"}
 
 {{< include /congest-intro/_heuristic-increase.qmd >}}

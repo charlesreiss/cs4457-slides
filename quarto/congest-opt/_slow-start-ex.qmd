@@ -2,7 +2,8 @@
 ### slow start effect  {.smaller}
 
 
-* suppose we never leave slow start in connection between A and B and: 
+* suppose we never leave slow start in connection between A and B,
+  with initial window size of 1 packet, and:
 <hr class="vspace" />
 * A sends 4 packets to B
 * after receiving 4 packets, B sends 8 packets to A

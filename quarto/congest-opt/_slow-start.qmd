@@ -5,9 +5,7 @@
 * not very well named 
 <hr class="vspace" />
 * exponential(ish) increase to find window size  
-
    * used on connection setup or some losses
- 
 <hr class="vspace" />
 * history: original TCP set high window size
 * slow start is ‘‘slow’’ because it starts at a small size always
@@ -17,8 +15,8 @@
 ### ‘‘slow start’’ 
 
 
-* set window size = 1 packet
+* set window size = $\sim$ 2 packet
 * increase by one packet for each ACK
 * … until first packet loss
-* use window size before first window size
+* use window size before first loss
 

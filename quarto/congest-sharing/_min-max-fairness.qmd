@@ -15,6 +15,7 @@
 * unfair allocation = someone gets much less than others 
 <hr class="vspace" />
 * consequence: let's look for ‘‘starved’’ flow
-* if we can add to one flow… <br> and only hurt flows that are slower than it… <br> then that's ‘‘unfair’’
+* if we can add to one flow… <br> and only hurt flows that are faster than it… <br> then that's ‘‘unfair’’
+   * that flow "deserves" more (possibly at expense of "richer" flows)
 * idea called <i>min-max fairness</i>
 
