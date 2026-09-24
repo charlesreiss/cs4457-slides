@@ -114,7 +114,7 @@ pointToPoint.EnableAsciiAll(ascii.CreateFileStream("tcp-bulk-send.tr"));
 // produces PCAP files you can open in Wireshark
 pointToPoint.EnablePcapAll("tcp-bulk-send", false);
 
-`
+```
 
 
 ### running example: --help  {.smaller}
