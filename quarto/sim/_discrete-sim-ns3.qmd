@@ -22,7 +22,7 @@
   // ...
   uint32_t wire = src == <span data-fragment-index="3" class="fragment custom myem-only">m_</span>link[0].<span data-fragment-index="3" class="fragment custom myem-only">m_</span>src ? 0 : 1;
 
-  <span data-fragment-index="4" class="fragment custom myem-only">Simulator::ScheduleWithContext</span>X(
+  <span data-fragment-index="4" class="fragment custom myem-only">Simulator::ScheduleWithContext</span>(
     <span data-fragment-index="3" class="fragment custom myem-only">m_</span>link[wire].m_dst-&gt;GetNode()-&gt;GetId(),
     txTime + <span data-fragment-index="3" class="fragment custom myem-only">m_</span>delay,
     &amp;<span data-fragment-index="2" class="fragment custom myem-only">PointToPointNetDevice::Receive</span>, <span data-fragment-index="3" class="fragment custom myem-only">m_</span>link[wire].m_dst, p-&gt;Copy());
@@ -114,7 +114,7 @@ pointToPoint.EnableAsciiAll(ascii.CreateFileStream("tcp-bulk-send.tr"));
 // produces PCAP files you can open in Wireshark
 pointToPoint.EnablePcapAll("tcp-bulk-send", false);
 
-```
+`
 
 
 ### running example: --help  {.smaller}
