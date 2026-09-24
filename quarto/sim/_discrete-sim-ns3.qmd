@@ -20,22 +20,41 @@
     Time txTime
 ) {
   // ...
-  uint32_t wire = src == <span data-fragment-index="3" class="fragment custom myem-only">m_</span>link\[0].<span data-fragment-index="3" class="fragment custom myem-only">m_</span>src ? 0 : 1;
+  uint32_t wire = src == <span data-fragment-index="3" class="fragment custom myem-only">m_</span>link[0].<span data-fragment-index="3" class="fragment custom myem-only">m_</span>src ? 0 : 1;
 
-  <span data-fragment-index="4" class="fragment custom myem-only">\myemphAQSimulator::ScheduleWithContext</span>X(
-    <span data-fragment-index="3" class="fragment custom myem-only">m_</span>link\[wire].m_dst-&gt;GetNode()-&gt;GetId(),
+  <span data-fragment-index="4" class="fragment custom myem-only">Simulator::ScheduleWithContext</span>X(
+    <span data-fragment-index="3" class="fragment custom myem-only">m_</span>link[wire].m_dst-&gt;GetNode()-&gt;GetId(),
     txTime + <span data-fragment-index="3" class="fragment custom myem-only">m_</span>delay,
-    &amp;<span data-fragment-index="2" class="fragment custom myem-only">PointToPointNetDevice::Receive</span>, <span data-fragment-index="3" class="fragment custom myem-only">m_</span>link\[wire].m_dst, p-&gt;Copy());
+    &amp;<span data-fragment-index="2" class="fragment custom myem-only">PointToPointNetDevice::Receive</span>, <span data-fragment-index="3" class="fragment custom myem-only">m_</span>link[wire].m_dst, p-&gt;Copy());
 
   // Call the tx anim callback on the net device
   <span data-fragment-index="3" class="fragment custom myem-only">m_</span>txrxPointToPoint(p, src, ...)
   return true;
 }
 </code></pre>
- ![](/sim/texfig/discrete-sim-ns3-an-ns-3-event-handler.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
-![](/sim/texfig/discrete-sim-ns3-an-ns-3-event-handler.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
-![](/sim/texfig/discrete-sim-ns3-an-ns-3-event-handler.figure-3.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=3}
-![](/sim/texfig/discrete-sim-ns3-an-ns-3-event-handler.figure-4.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=4}
+
+::: {.myoverbox .highright .fragment .fade-in-then-out fragment-index=2}
+
+`X::Y` = `Y` method/variable of `X` class
+
+:::
+
+::: {.myoverbox .highright .fragment .fade-in-then-out fragment-index=3}
+
+*  convention: member variables with `m_`
+*  (C++ member variable $\sim$ Java instance variable)
+
+:::
+
+::: {.myoverbox .highright .fragment .fade-in-then-out fragment-index=4}
+
+*  setup future event; args: 
+   *  context (for logging mostly) 
+   *  time event will trigger 
+   *  method to run + arguments to pass
+
+:::
+
 
 
 ### sample NS-3 simulation --- setup (1)  {.smaller}
@@ -102,20 +121,20 @@ pointToPoint.EnablePcapAll("tcp-bulk-send", false);
 
 
 <pre><code>$ <em>./ns3 run examples/tcp/tcp-bulk-send -- --help</em>
-\[0/2] Re-checking globbed directories...
+[0/2] Re-checking globbed directories...
 ninja: no work to do.
-tcp-bulk-send \[Program Options] \[General Arguments]
+tcp-bulk-send [Program Options] [General Arguments]
 
 Program Options:
-    --tracing:   Flag to enable/disable tracing \[false]
-    --maxBytes:  Total number of bytes for application to send \[0]
+    --tracing:   Flag to enable/disable tracing [false]
+    --maxBytes:  Total number of bytes for application to send [0]
 
 General Arguments:
     --PrintGlobals:              Print the list of globals.
     --PrintGroups:               Print the list of groups.
-    --PrintGroup=\[group]:        Print all TypeIds of group.
+    --PrintGroup=[group]:        Print all TypeIds of group.
     --PrintTypeIds:              Print all TypeIds.
-    --PrintAttributes=\[typeid]:  Print all attributes of typeid.
+    --PrintAttributes=[typeid]:  Print all attributes of typeid.
     --PrintVersion:              Print the ns-3 version.
     --PrintHelp:                 Print this help message.
 </code></pre>
@@ -125,7 +144,7 @@ General Arguments:
 
 
 <pre><code>$ <em>./ns3 run examples/tcp/tcp-bulk-send -- --maxBytes=1000000 --tracing=true</em>
-\[0/2] Re-checking globbed directories...
+[0/2] Re-checking globbed directories...
 ninja: no work to do.
 Total Bytes Received: 566016
 

@@ -17,10 +17,9 @@
 
 ::: {.r-stack .my-full}
 
-![](/sim/texfig/num-models-models-that-give-numbers-1.figure-1.svg){.fragment .fade-in-then-out fragment-index=1 fig-alt="Graph of window size (in packets) in terms of round trip time, showing a sawtooth pattern, where the window size increases from W/2 to W over W round-trips, then decreases to W/2 and repeats the cycle indefinitely. The area under the first cycle of the curve is highlighted and calculated to be  W/2 times 0.5 times (W/2 + W) [using the area of a trapazoid formula], and is labeled as equal to the number of packets transmitted during the first cycle."}
+![](/sim/texfig/num-models-models-that-give-numbers-1.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="Graph of window size (in packets) in terms of round trip time, showing a sawtooth pattern, where the window size increases from W/2 to W over W round-trips, then decreases to W/2 and repeats the cycle indefinitely. The area under the first cycle of the curve is highlighted and calculated to be  W/2 times 0.5 times (W/2 + W) [using the area of a trapazoid formula], and is labeled as equal to the number of packets transmitted during the first cycle."}
 
 ![](/sim/texfig/num-models-models-that-give-numbers-1.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="Graph of window size (in packets) in terms of round trip time, showing a sawtooth pattern, where the window size increases from W/2 to W over W round-trips, then decreases to W/2 and repeats the cycle indefinitely. The area under the first cycle of the curve is highlighted and calculated to be  W/2 times 0.5 times (W/2 + W) [using the area of a trapazoid formula], and is labeled as equal to the number of packets transmitted during the first cycle."}
-
 
 :::
 
