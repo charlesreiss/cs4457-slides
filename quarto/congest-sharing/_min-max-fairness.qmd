@@ -17,5 +17,5 @@
 * consequence: let's look for ‘‘starved’’ flow
 * if we can add to one flow… <br> and only hurt flows that are faster than it… <br> then that's ‘‘unfair’’
    * that flow "deserves" more (possibly at expense of "richer" flows)
-* idea called <i>min-max fairness</i>
+* idea called <i>max-min fairness</i>
 
