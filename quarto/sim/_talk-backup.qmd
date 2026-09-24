@@ -1,0 +1,14 @@
+
+
+### interlude: loss rate → transfer rate  {.smaller}
+
+
+* [adapted from Mathis et al, ‘‘The Macroscopic Behavior of the TCP Congestion Avoidance Algorithm’’]{.my-small}
+* packet loss rate $p$ = 1 per (number of packets sent in W/2 round trips)
+* $3/4 \times W \times W/2$ packets sent in W/2 round trips 
+
+   * $p=\frac{3}{8}W^2$
+
+* solving for $W = \sqrt{\frac{8}{3p}}$
+* average transfer rate = $\frac{3}{4}W=C \cdot \sqrt{1/p}$ (for some $C$)
+

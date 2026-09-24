@@ -1,0 +1,37 @@
+
+### emulation  {.smaller}
+
+
+* P4 assignment virtual machine
+* based on <i>mininet</i>
+* creates ‘‘virtual’’ network devices on Linux system 
+
+   * no actual hardware for network device
+   * connected to program (implementing P4 switch) and/or other virtual network devices
+
+* emulation runs ‘as fast as it can’: 
+
+   * performance based on speed of programs talking to simulated devices
+
+* could add artificial delays/bandwidht constraints to emulate more realistic networks 
+
+   * make things more realistic by making things slower?
+
+
+
+### emulation constraints  {.smaller}
+
+
+* does not reflect real network deployment in important ways 
+
+   * especially for evaluating congestion control…
+ 
+<hr class="vspace" />
+* performance of one simulated hosts affects others because shared machine
+* performance will be unrealistically low for large networks
+* round-trip timing affected a lot by packet processing speeds
+* speed of packets being sent limited by how fast CPU is 
+
+   * never going to get to ‘real’ speed of hardware-accelerated switches
+
+

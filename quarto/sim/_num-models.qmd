@@ -1,0 +1,71 @@
+
+### models that give numbers?  {.smaller}
+
+
+* deciding on congestion control
+* would like to do math to say how well they'll do 
+<hr class="vspace" />
+* common approach: but gets complicated
+* simple example: estimating average rate of TCP-like AIMD with no congestion
+
+
+### models that give numbers? (1) 
+
+
+
+[figure adapted from Mathis et al, ‘‘The Macroscopic Behavior of the TCP Congestion Avoidance Algorithm’’]{.mycredit}
+
+::: {.r-stack .my-full}
+
+![](/sim/texfig/num-models-models-that-give-numbers-1.figure-1.svg){.fragment .fade-in-then-out fragment-index=1 fig-alt="Graph of window size (in packets) in terms of round trip time, showing a sawtooth pattern, where the window size increases from W/2 to W over W round-trips, then decreases to W/2 and repeats the cycle indefinitely. The area under the first cycle of the curve is highlighted and calculated to be  W/2 times 0.5 times (W/2 + W) [using the area of a trapazoid formula], and is labeled as equal to the number of packets transmitted during the first cycle."}
+
+![](/sim/texfig/num-models-models-that-give-numbers-1.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="Graph of window size (in packets) in terms of round trip time, showing a sawtooth pattern, where the window size increases from W/2 to W over W round-trips, then decreases to W/2 and repeats the cycle indefinitely. The area under the first cycle of the curve is highlighted and calculated to be  W/2 times 0.5 times (W/2 + W) [using the area of a trapazoid formula], and is labeled as equal to the number of packets transmitted during the first cycle."}
+
+
+:::
+
+
+### models that give numbers? (2)  {.smaller}
+
+
+* $\frac{W}{2}\cdot \frac{1}{2}\left(\frac{W}{2} + W\right)$ per $W/2$ round trips 
+
+   * $\frac{3W}{4}$ packets per round trip time
+
+* packet loss should occur when window size = bandwidth-delay product 
+
+   * at the capacity of the link(s)
+
+* so $W=\text{link BW} \cdot \text{RTT}$
+* $\implies$ 3/4 link BW achieved total
+
+
+### exercise: what things did this model miss? 
+
+
+
+### some answers  {.smaller}
+
+
+* RTT/delay depends on how many packets queued
+* packet loss could occur for other reasons 
+
+   * competing connections
+   * network errors
+
+* ‘bursty’ connection could trigger packet loss earlier
+* extra packets being sent for retransmissions
+* packet loss could trigger timeout/multiple decreases
+* behavior of other connections sharing links
+* delays in sending ACKs depending how fast receiver's CPU is
+* …
+
+
+### more sophisticated models? 
+
+
+* we can add to formulas to account for other things
+* this is something people do, but… 
+<hr class="vspace" />
+* most common technique is <i>discrete event simulation</i>
+

@@ -1,0 +1,27 @@
+\begin{tikzpicture}
+\node[minimum width=15cm,minimum height=9cm] (current page) {};
+\begin{scope}[overlay]
+
+    \coordinate (place) at ([yshift=-1cm,xshift=-1cm]current page.north east);
+    \tikzset{%
+        box/.style={at=(place),anchor=north east,draw=orange!70!black,very thick,align=left,fill=white,font=\small}
+    }
+    \begin{visibleenv}<2>
+        \node[box] {X::Y = Y method/variable of X class};
+    \end{visibleenv}
+    \begin{visibleenv}<3>
+        \node[box] {%
+            convention: member variables with \texttt{m\textunderscore} \\
+            (C++ member variable $\sim$ Java instance variable)
+        };
+    \end{visibleenv}
+    \begin{visibleenv}<4>
+        \node[box] {%
+            setup future event; args: \\
+            context (for logging mostly) \\
+            time event will trigger \\
+            method to run + arguments to pass
+        };
+    \end{visibleenv}
+\end{scope}
+\end{tikzpicture}

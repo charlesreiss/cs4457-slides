@@ -1,0 +1,10 @@
+---
+title: "sim"
+
+---
+
+{{< include ../sim/_talk-inner.qmd >}}
+
+### backup slides
+
+{{< include ../sim/_talk-backup.qmd >}}

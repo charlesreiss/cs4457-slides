@@ -1,0 +1,25 @@
+
+### NS-3 logging  {.smaller}
+
+
+* NS3 logging tools 
+
+   * [https://www.nsnam.org/docs/manual/html/logging-asserts.html](https://www.nsnam.org/docs/manual/html/logging-asserts.html)
+
+* doing logging: 
+```
+// at top of file
+NS_LOG_COMPONENT_DEFINE("SomeLabel");
+...
+// when you want to log
+NS_LOG_INFO("value of x=" << x);
+    // INFO could be DEBUG, ERROR, ... too
+
+```
+
+* enabling logging: 
+
+   * in C++: <code>LogComponentEnable("SomeLabel", LOG_LEVEL_DEBUG)</code>
+   * command-line: <code>NS_LOG="SomeLabel=debug" ./ns3 ...</code>
+
+

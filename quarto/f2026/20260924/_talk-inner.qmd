@@ -1,0 +1,162 @@
+### last time {.smaller}
+
+*  AIMD --- sawtooth pattern
+*  TCP variables
+   *  cwnd (congestion window size)
+   *  ssthresh (slow start threshold)
+*  "slow start": +1 size per ACK, half on loss
+*   congestion avoidance:
+    *  +1 per window, half on "normal" loss (dup ACK)
+*  min-max fair sharing
+   *  most for every flow without hurting "poorer" flwos
+*  unfairness with varying RTT, "aggressiveness"
+
+### assignment Q+A
+
+### plan
+
+*  "fast recovery"
+*  interlude: how do model congestion control stuff
+   *  including talking about NS-3, upcoming assignment
+   *  want to make sure we get to this before next week
+*  misc NewReno-type TCP features:
+   *  selective acks, delayed acks
+   *  RTT variance, backoff
+*  interlude: buffer bloat
+*  (possibly next time) newer TCP variants
+
+### TCP (New)Reno [with slow start]  {.smaller}
+
+
+* <i>congestion avoidance</i> (cwnd $\ge$ ssthresh; no known loss) 
+
+   * no loss: cwnd += 1 segment per round-trip-time
+   * on loss (dup ACK): cwnd = cwnd/2; ssthresh = new cwnd
+   * on loss (timeout): cwnd = 2 segments
+
+* <i>‘‘slow start’’</i> (cwnd \< ssthresh) 
+
+   * no loss: cwnd += 1 segment per newly ack'd segment
+   * on loss: ssthresh = cwnd/2; cwnd = cwnd/2;
+
+* <i>recovery</i> (known loss) 
+
+   * resend immediately on third dup ACK
+   * _send new data based on self-clocking idea (‘‘fast recovery’’)_
+
+
+## self-clocking and fast retransmit {visibility="hidden"}
+
+{{< include /congest-opt/_self-clock-idea.qmd >}}
+
+### simulation stuff
+
+{{< include /sim/_talk-inner.qmd >}}
+
+
+## SACK {visibility="hidden"}
+
+{{< include /congest-opt/_sack.qmd >}}
+
+# missing piece: reverse path {visibility="hidden"}
+
+{{< include /congest-opt/_reverse-path.qmd >}}
+
+# missing Jacobson pieces {visibility="hidden"}
+
+## variance estimation {visibility="hidden"}
+
+### fixes from Jacobson's 1987 paper 
+
+1.  _round-trip-time variance estimation_
+2.  exponential retransmit timer backoff
+3.  slow-start
+4.  more aggressive receiver ack policy
+5.  dynamic window sizing on congestion
+6.  Karn's clamped retransmit backoff
+7.  fast retransmit
+
+{{< include /congest-opt/_variance-estimate.qmd >}}
+
+## exponential backoff {visibility="hidden"}
+
+### fixes from Jacobson's 1987 paper 
+
+1.  round-trip-time variance estimation
+2.  _exponential retransmit timer backoff_
+3.  slow-start
+4.  more aggressive receiver ack policy
+5.  dynamic window sizing on congestion
+6.  Karn's clamped retransmit backoff
+7.  fast retransmit
+
+{{< include /congest-opt/_exp-backoff.qmd >}}
+
+# aside: some queuing theory {visibility="hidden"}
+
+{{< include /congest-opt/_diversion-queuing-theory.qmd >}}
+
+# deep queues? {visibility="hidden"}
+
+{{< include /congest-opt/_buffer-bloat.qmd >}}
+
+
+# TCP variants {visibility="hidden"}
+
+{{< include /congest-opt/_tcp-variant-names.qmd >}}
+
+## CUBIC {visibility="hidden"}
+
+{{< include /congest-opt/_cubic.qmd >}}
+
+# other congestion signals {visibility="hidden"}
+
+### other congestion signals  {.smaller}
+
+
+* so far: detecting congestion via drops 
+   * need data to go missing
+   * transmitting redundant data
+   * filling up buffers causing high latency
+* some alternate ideas ways to detect congestion:
+<hr class="vspace" />
+* have switches/routers ‘mark’ packets
+* latency from longer queues
+
+
+## explicit congestion notification {visibility="hidden"}
+
+### other congestion signals  {.smaller}
+
+
+* so far: detecting congestion via drops 
+   * need data to go missing
+   * transmitting redundant data
+   * filling up buffers causing high latency
+* some alternate ideas ways to detect congestion:
+<hr class="vspace" />
+* _have switches/routers ‘mark’ packets_
+* latency from longer queues
+
+
+{{< include /congest-opt/_ecn.qmd >}}
+
+## watching latency, etc. {visibility="hidden"}
+
+### other congestion signals  {.smaller}
+
+
+* so far: detecting congestion via drops 
+   * need data to go missing
+   * transmitting redundant data
+   * filling up buffers causing high latency
+* some alternate ideas ways to detect congestion:
+<hr class="vspace" />
+* have switches/routers ‘mark’ packets
+* _latency from longer queues_
+
+{{< include /congest-opt/_watch-latency.qmd >}}
+
+# overall congestion control data {visibility="hidden"}
+
+{{< include /congest-opt/_overall-data.qmd >}}

@@ -1,0 +1,16 @@
+\begin{tikzpicture}
+    \draw[very thick,-Latex] (0, 0) -- (0, 4) node[align=center,font=\small,midway,left=0.5cm]{window size\\(packets)}
+        node[pos=1.0,left]{W} node[pos=0,left]{0};
+    \draw[very thick,-Latex] (0, 0) -- (6, 0) node[font=\small,midway,below=0.5cm] {time (round-trips)};
+    \draw[blue, dotted] (0, 2) -- (2, 4);
+    \draw[blue] (2, 2) -- (4, 4) -- (4, 2) -- (6, 4);
+    \node[anchor=north] at (2, 0) {W/2};
+    \node[anchor=north] at (4, 0) {2W/2};
+    \node[anchor=north] at (6, 0) {3W/2};
+    \begin{visibleenv}<2->
+    \path[fill=violet] (0, 0) -- (0, 2) -- (2, 4) -- (2, 0);
+    \node[violet,anchor=west,align=left] at (2, 1) {%
+        $\frac{W}{2}\cdot \frac{1}{2}\left(\frac{W}{2} + W\right)$ packets sent \\ in one cycle
+    };
+    \end{visibleenv}
+\end{tikzpicture}

@@ -1,0 +1,173 @@
+
+### TCPSocketState  {.smaller}
+
+
+* class to track socket state 
+
+   * regarldess of congestion control algorithm
+
+* includes (notably for us) 
+
+   * ‘congesiton state’
+   * congestion window (cwnd)
+   * slow start threshold (ssthresh)
+
+
+
+### TCP congestion states  {.smaller}
+
+
+* OPEN --- normal
+* DISORDER --- dupacks/SACKs below threshold for recovery
+* RECOVERY --- retransmitting due to dup-ACK/simple SACK 
+
+   * temporarily inflated window to account for dropped packets
+
+* LOSS --- retransmitting due to timeout/etc.
+
+
+### configurable TCP behavior  {.smaller}
+
+
+* TCPRecoveryOps: handle recovery 
+
+   * EnterRecovery (called on start of retransmitting)
+   * default: cwnd $\leftarrow$ ssthresh
+   * DoRecovery (called for ACK when retransmitting)
+   * default: cwnd $\leftarrow$ cwnd + 1 packet
+   * ExitRecovery (called when ‘back to normal’)
+   * default: cwnd $\leftarrow$ ssthresh
+
+* <em>TCPCongestionOps</em>: 
+
+   * IncreaseWindow (called when new segments ACKed)
+   * GetSsThresh (called after loss)
+
+
+
+### assingment TCP changes 
+
+
+* will customize a <code>MyTcpCongestionOps</code>
+* … which inherits from TCPNewReno 
+<hr class="vspace" />
+* you can customize increase (IncreaseWindow) and decrease (GetSsThresh)
+
+
+### IncreaseWindow  {.smaller}
+
+
+```
+void
+TcpNewReno::IncreaseWindow(Ptr<TcpSocketState> tcb, uint32_t segmentsAcked)
+{
+    NS_LOG_FUNCTION(this << tcb << segmentsAcked);
+ 
+    if (tcb->m_cWnd < tcb->m_ssThresh)
+    {
+        segmentsAcked = SlowStart(tcb, segmentsAcked);
+    }
+ 
+    if (tcb->m_cWnd >= tcb->m_ssThresh)
+    {
+        CongestionAvoidance(tcb, segmentsAcked);
+    }
+}
+
+```
+
+
+### CongestionAvoidance  {.smaller}
+
+
+```
+void
+TcpNewReno::CongestionAvoidance(Ptr<TcpSocketState> tcb, uint32_t segmentsAcked)
+{
+    NS_LOG_FUNCTION(this << tcb << segmentsAcked);
+ 
+    if (segmentsAcked > 0)
+    {
+        double adder =
+            static_cast<double>(tcb->m_segmentSize * tcb->m_segmentSize) / tcb->m_cWnd.Get();
+        adder = std::max(1.0, adder);
+        tcb->m_cWnd += static_cast<uint32_t>(adder);
+        ...
+    }
+}
+
+```
+ 
+
+* additive increase (plus 1 segment per cwnd)
+
+
+### SlowStart  {.smaller}
+
+
+```
+uint32_t
+TcpNewReno::SlowStart(Ptr<TcpSocketState> tcb, uint32_t segmentsAcked)
+{
+    NS_LOG_FUNCTION(this << tcb << segmentsAcked);
+ 
+    if (segmentsAcked >= 1)
+    {
+        tcb->m_cWnd += tcb->m_segmentSize;
+        ...
+        return segmentsAcked - 1;
+    }
+ 
+    return 0;
+}
+
+```
+ 
+
+* multiplicative increase --- doubling
+
+
+### GetSsThresh  {.smaller}
+
+
+```
+uint32_t
+TcpNewReno::GetSsThresh(Ptr<const TcpSocketState> state, uint32_t bytesInFlight)
+{
+    NS_LOG_FUNCTION(this << state << bytesInFlight);
+ 
+    return std::max(2 * state->m_segmentSize, bytesInFlight / 2);
+}
+
+```
+ 
+
+* multiplicative decrease (bytesInFlight / 2)
+
+
+### aside: more advanced congestion hooks  {.smaller}
+
+
+* TcpCongestionOps also has access to 
+
+   * ECN (explicit congestion notification) info
+   * timestamps
+   * exactly when duplicate ACKs below threshold/ recovery/etc. occurs
+
+* used by more advanced TCP implementatoins
+
+
+### assignment preview  {.smaller}
+
+
+* start with <code>MyTcpCongestionOps</code> 
+
+   * basically copy of NewRenoTcp
+
+* setup to take ‘mode’ parameter 
+
+   * mode 0: default behavior
+   * mode 1 (added by you): take more bandwidth
+   * mode 2 (added by you): take less bandwidth
+
+

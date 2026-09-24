@@ -1,0 +1,146 @@
+
+### NS-3 
+
+
+* discrete event simulator planned for AIMD assignment
+* written in C++ 
+
+   * (yes, I know it's not the most familiar language)
+   * (obvious alternative simulators aren't in better languages…)
+
+* create simulations by writing C++ programs
+
+
+### an NS-3 event handler  {.smaller}
+
+   
+<pre><code>bool <span data-fragment-index="2" class="fragment custom myem-only">PointToPointChannel::TransmitStart</span>(
+    Ptr&lt;const Packet&gt; p,
+    Ptr&lt;PointToPointNetDevice&gt; src,
+    Time txTime
+) {
+  // ...
+  uint32_t wire = src == <span data-fragment-index="3" class="fragment custom myem-only">m_</span>link\[0].<span data-fragment-index="3" class="fragment custom myem-only">m_</span>src ? 0 : 1;
+
+  <span data-fragment-index="4" class="fragment custom myem-only">\myemphAQSimulator::ScheduleWithContext</span>X(
+    <span data-fragment-index="3" class="fragment custom myem-only">m_</span>link\[wire].m_dst-&gt;GetNode()-&gt;GetId(),
+    txTime + <span data-fragment-index="3" class="fragment custom myem-only">m_</span>delay,
+    &amp;<span data-fragment-index="2" class="fragment custom myem-only">PointToPointNetDevice::Receive</span>, <span data-fragment-index="3" class="fragment custom myem-only">m_</span>link\[wire].m_dst, p-&gt;Copy());
+
+  // Call the tx anim callback on the net device
+  <span data-fragment-index="3" class="fragment custom myem-only">m_</span>txrxPointToPoint(p, src, ...)
+  return true;
+}
+</code></pre>
+ ![](/sim/texfig/discrete-sim-ns3-an-ns-3-event-handler.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
+![](/sim/texfig/discrete-sim-ns3-an-ns-3-event-handler.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
+![](/sim/texfig/discrete-sim-ns3-an-ns-3-event-handler.figure-3.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=3}
+![](/sim/texfig/discrete-sim-ns3-an-ns-3-event-handler.figure-4.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=4}
+
+
+### sample NS-3 simulation --- setup (1)  {.smaller}
+
+[ <code>ns3/examples/tcp/tcp-bulk-send.cc</code>]{.my-small} 
+```
+// nodes = routers or endpoints
+NodeContainer nodes;
+nodes.Create(2);
+
+// create simulated point-to-point link
+    // also supported: multi-access links
+PointToPointHelper pointToPoint;
+pointToPoint.SetDeviceAttribute("DataRate", StringValue("500Kbps"));
+pointToPoint.SetChannelAttribute("Delay", StringValue("5ms"));
+
+// setup emulated NICs (which have queues, etc.)
+NetDeviceContainer devices;
+devices = pointToPoint.Install(nodes);
+
+// setup emulated TCP/IP implementation
+InternetStackHelper internet;
+internet.Install(nodes);
+
+...
+
+```
+
+
+### sample  NS-3 simulation --- setup (2)  {.smaller}
+
+[ <code>ns3/examples/tcp/tcp-bulk-send.cc</code>]{.my-small} 
+```
+// Simulated "applications" that send/receive data
+BulkSendHelper source("ns3::TcpSocketFactory", InetSocketAddress(i.GetAddress(1), port));
+source.SetAttribute("MaxBytes", UintegerValue(10000000));
+ApplicationContainer sourceApps = source.Install(nodes.Get(0));
+sourceApps.Start(Seconds(0));
+sourceApps.Stop(Seconds(10));
+PacketSinkHelper sink("ns3::TcpSocketFactory", InetSocketAddress(Ipv4Address::GetAny(), port));
+ApplicationContainer sinkApps = sink.Install(nodes.Get(1));
+sinkApps.Start(Seconds(0));
+sinkApps.Stop(Seconds(10));
+
+```
+
+
+### sample NS-3 simulation --- setup (3)  {.smaller}
+
+[ <code>ns3/examples/tcp/tcp-bulk-send.cc</code>]{.my-small} 
+```
+AsciiTraceHelper ascii;
+
+// produces text trace file of simulator events
+pointToPoint.EnableAsciiAll(ascii.CreateFileStream("tcp-bulk-send.tr"));
+
+// produces PCAP files you can open in Wireshark
+pointToPoint.EnablePcapAll("tcp-bulk-send", false);
+
+```
+
+
+### running example: --help  {.smaller}
+
+
+<pre><code>$ <em>./ns3 run examples/tcp/tcp-bulk-send -- --help</em>
+\[0/2] Re-checking globbed directories...
+ninja: no work to do.
+tcp-bulk-send \[Program Options] \[General Arguments]
+
+Program Options:
+    --tracing:   Flag to enable/disable tracing \[false]
+    --maxBytes:  Total number of bytes for application to send \[0]
+
+General Arguments:
+    --PrintGlobals:              Print the list of globals.
+    --PrintGroups:               Print the list of groups.
+    --PrintGroup=\[group]:        Print all TypeIds of group.
+    --PrintTypeIds:              Print all TypeIds.
+    --PrintAttributes=\[typeid]:  Print all attributes of typeid.
+    --PrintVersion:              Print the ns-3 version.
+    --PrintHelp:                 Print this help message.
+</code></pre>
+
+
+### running example  {.smaller}
+
+
+<pre><code>$ <em>./ns3 run examples/tcp/tcp-bulk-send -- --maxBytes=1000000 --tracing=true</em>
+\[0/2] Re-checking globbed directories...
+ninja: no work to do.
+Total Bytes Received: 566016
+
+$ <em>wireshark tcp-bulk-send-0-0.pcap</em>
+$ <em>wireshark tcp-bulk-send-1-0.pcap</em>
+$ <em>wireshark tcp-bulk-send-2-0.pcap</em>
+$ <em>wireshark tcp-bulk-send-2-1.pcap</em>
+</code></pre>
+ <hr />
+ 
+
+* packet traces for each simulated interface: (host)-(interface).pcap
+* also .tr file with all events
+* only 566016 bytes received because 10 second simulation only 
+
+   * 500Kbit/s = 62KByte/s @ 10 s = about 620KByte
+
+

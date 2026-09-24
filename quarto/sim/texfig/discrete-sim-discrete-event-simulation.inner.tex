@@ -1,0 +1,20 @@
+\begin{tikzpicture}
+    % FIXME: queue --> event processing --> more things in queue
+    % FIXME: show simulated clock
+    % FIXME: show output list of events
+    \node[draw,very thick] (queue) {event queue (sorted by time)};
+    \node[draw,very thick,anchor=west,dotted] (next ev) at ([xshift=1cm]queue.east) {%
+        (time, action)
+    };
+    \draw[very thick,-Latex] (queue) -- (next ev);
+    \node[anchor=north] (run) at ([yshift=-1cm]next ev.south) {run action}; 
+    \draw[very thick,-Latex] (next ev) -- (run);
+    \node[anchor=west,draw, ultra thick] (network state) at ([xshift=1cm]run.east) {network state};
+    \draw[very thick,Latex-Latex] (run) -- (network state);
+    \node[draw,dotted] (new events) at (run.west -| queue.south) {new events};
+    \draw[very thick,-Latex] (run.west) -- (new events);
+    \draw[very thick,-Latex](new events) -- (queue.south);
+    \draw[very thick,-Latex] (run.south) -- ++(0cm, -1cm) node[below] (outputs) {outputs};
+    \node[anchor=north,font=\small] at (outputs.south) {(example: packet trace, counters)};
+    % FIXME: second frame showing example event
+\end{tikzpicture}

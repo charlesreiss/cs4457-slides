@@ -1,0 +1,23 @@
+# numerical models {visibility="hidden"}
+
+{{< include /sim/_num-models.qmd >}}
+
+# P4's emulation {visibility="hidden"}
+
+{{< include /sim/_p4-emulation.qmd >}}
+
+# discrete event simulation {visibility="hidden"}
+
+{{< include /sim/_discrete-sim.qmd >}}
+
+# example of NS-3 {visibility="hidden"}
+
+{{< include /sim/_discrete-sim-ns3.qmd >}}
+
+# NS-3's TCP modeling and the assignment {visibility="hidden"}
+
+{{< include /sim/_ns3-tcp-model.qmd >}}
+
+# aside: NS-3 logging {visibility="hidden"}
+
+{{< include /sim/_ns3-logging.qmd >}}

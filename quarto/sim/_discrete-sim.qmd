@@ -1,0 +1,32 @@
+
+### discrete-event simulation 
+
+![](/sim/texfig/discrete-sim-discrete-event-simulation.figure.svg){fig-alt="Queue of events sorted by time and the latest event being pulled from the queue. The event pulled out of the queue is represented by a tuple of a time and an action. Running the action uses and updates a network state. Running the action yields new events, which are added back to the event queue, and outputs like packet traces and counters."}
+
+
+### action example 1  {.smaller}
+
+
+* take next packet from send queue for link X
+* compute whether packet is lost due to error
+* compute when packet is done transmitting 
+
+   * schedule new event to handle next packet in queue at that time
+
+* compute reception time of packet on other end of link 
+
+   * schedule new event to handle packet being received at that time
+
+
+
+### action example 2 
+
+
+* take next packet on link 0 of switch
+* compute next link for packet
+* add packet to queue for next link
+* schedule new events: 
+
+   * to dequeue from next link (if not scheduled already)
+
+
