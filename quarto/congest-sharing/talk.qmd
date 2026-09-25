@@ -2,6 +2,10 @@
 name: congest-sharing
 ---
 
+### changelog
+
+*  24 Sep 2026: correct "min-max" to "max-min"
+
 {{< include /congest-sharing/_talk-inner.qmd >}}
 # backup slides
 
