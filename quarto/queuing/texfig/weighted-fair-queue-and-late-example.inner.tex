@@ -1,0 +1,15 @@
+\begin{tikzpicture}
+\begin{scope}[x=.7cm]
+\draw (0, 0) -- (20.5, 0);
+\foreach \x/\lbl in {0/0,1/100,2/200,3/300,4/400,5/500,6/600,7/700,8/800,9/900,10/1000,11/1100,12/1200,13/1300,14/1400,15/1500,16/1600,17/1700,18/1800,19/1900,20/2000} {
+    \draw (\x, 0) -- ++(0,1.5mm) node[font=\scriptsize,above]{\lbl};
+}
+\foreach \x/\lbl in {0/0,1/100,2/200,3/300,4/400,5/500,7/600,9/700,11.34/800,13.34/900,15.34/1000,17.34/1100,19.17/1200,20.34/1300} {
+    \draw (\x, 0) -- ++(0,-1.5mm) node[font=\scriptsize,below]{\lbl};
+}
+\draw[line width=1mm,blue] (5, 0) -- (9, 0);
+\draw[line width=2mm,violet] (9, 0) -- (10, 0);
+\draw[line width=1mm,blue] (10, 0) -- (19, 0);
+\draw[line width=1mm,blue] (20, 0) -- (20.5, 0);
+\end{scope}
+\end{tikzpicture}

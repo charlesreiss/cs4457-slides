@@ -1,0 +1,10 @@
+
+### drop tail --- unfair discard 
+
+
+
+* drop tail is ‘‘unfair’’
+* flow not responsible for most usage can be dropped
+
+![](/queuing/texfig/drop-tail-unfair-discard.figure.svg){width=1000px}
+

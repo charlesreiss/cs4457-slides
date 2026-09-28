@@ -1,0 +1,32 @@
+
+### active queue management 
+
+
+* algorithms that go beyond drop-tail, FIFO called <br> ‘‘active queue management’’ 
+<hr class="vspace" />
+* many variations besides RED, fair queuing
+
+
+### changing random early detection?  {.smaller}
+
+
+* some things seem suspicious in RED: 
+
+   * moving average of queue length limits response time
+   * how moving average computed can matter
+   * doesn't choose specific target queue length
+   * choice of drops doesn't take fairness into account
+
+* various proposals to tweak and address these issues
+
+
+### selected other possible goals 
+
+
+* weighted fair policy for random early detection
+* specific bandwidth limits 
+
+   * if strict priority/weights not good enough
+   * common algorithm: ‘‘token bucket’’
+
+

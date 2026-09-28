@@ -1,0 +1,10 @@
+
+### queue scheduling
+
+
+* ‘‘what goes out on network first?’’
+* simple policy: first-in, first-out (FIFO) 
+<hr class="vspace" />
+* FIFO minimizes per-packet average latency, but…
+* doesn't distinguish between different flows
+

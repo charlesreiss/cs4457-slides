@@ -1,0 +1,36 @@
+
+### controlled fairness  {.smaller}
+
+
+* fair queuing says with 2 flows, each gets half bandwidth
+* maybe we have other goals:
+* flow A gets 80% of bandwidth
+* flow B gets 20% of bandwidth 
+<hr class="vspace" />
+* instead of 1-bit at a time, imagine:
+* A sends 4 bits per round, B sends 1 bit per round
+
+
+### weighted fair queuing  {.smaller}
+
+
+* change fair queuing to add ‘weights’
+* say N bits takes N/weight rounds to send 
+<hr class="vspace" />
+* virtual finish time = virtual start time + size/weight 
+
+   * instead of just + size
+
+
+
+### upcoming assignment  {.smaller}
+
+
+* fixed size packets, but…
+* part 1: priority queue
+* part 2: weighted fair queue 
+
+   * one flow gets twice weight of other
+   * current version has fixed size packets (undecided if I'll change before out)
+
+

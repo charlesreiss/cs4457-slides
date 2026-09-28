@@ -1,0 +1,72 @@
+
+### late arriving packets (1)  {.smaller}
+
+
+* suppose we transmit 1 bit per wallclock time unit:
+* wallclock time 0: A1 (1000 bit), A2 (500 bit)
+* wallclock time 800: B1 (250 bit), B2 (250 bit) 
+<hr class="vspace" />
+* want finish virtual times: 
+
+   * A1 (1000), A2 (500)
+   * B1 (800 + 250), B2 (800 + 250)
+
+* … because we're on round 800 when B1, B2 received
+
+
+### late arriving packets (2)  {.smaller}
+
+
+* suppose we transmit 1 bit per wallclock time unit:
+* wallclock time 0: A1 (1000 bit), B1 (1100 bit)
+* wallclock time 800: C1 (500 bit) 
+<hr class="vspace" />
+* if we were going bit-by-bit we'd have transmitted 400 bits of A1 and 400 bits of B1
+* so we want finish virtual times: 
+
+   * A1 (1000), B1 (1100), C1(<em>400</em>+500=900)
+
+* problem: we can't stop transmitting A1 to transmit C1!
+
+
+### tracking round numbers  {.smaller}
+
+
+* suppose packets for A, B queued at time 0--100 
+
+   * virtual time 0--100 (full speed)
+
+* then packets for A, B, C queued at time 100-200 
+
+   * virtual time 100--133 (one-third speed)
+   * … and last packet for A finish at time 200…
+
+* then packets for B, C queued at time 200-400 
+
+   * virtual time 133--183 (one-half speed)
+   * … and last packet for B finishes at time 400
+
+* then packets for C queued at time 400-500 
+
+   * virtual time 183-283 (full speed)
+
+
+
+### example  {.smaller}
+
+
+
+* example: A1(1000 bit) @ 0, B1(900 bit) @ 500, C1(600 bit) @ 900, C2(100 bit) @ 2000, B2(200 bit) @ 2000<br> <table>
+   <tr><td>wallclock time</td><td>virtual time</td><td>active packets (virt time, * = sending)</td></tr>
+<tr><td>0</td><td>0</td><td>A1 (1000*)</td></tr>
+<tr><td>500</td><td>500</td><td>A1 (1000*), B1 (1400)</td></tr>
+<tr><td>900</td><td>700</td><td>A1 (1000*), B1 (1400), C1 (1300)</td></tr>
+<tr><td>1000</td><td>733</td><td>B1 (1400*), C1 (1300)</td></tr>
+<tr><td>1900</td><td>1183</td><td>C1 (1300*)</td></tr>
+<tr><td>2000</td><td>1283</td><td>C1 (1300*), C2 (1400), B2 (1483)</td></tr>
+<tr><td>…</td><td>…</td><td>…</td></tr>
+<tr><td></td></tr>
+</table>
+   
+ ![](/queuing/texfig/weighted-fair-queue-and-late-example.figure.svg)
+

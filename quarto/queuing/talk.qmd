@@ -1,0 +1,10 @@
+---
+title: "queuing"
+
+---
+
+{{< include ../queuing/_talk-inner.qmd >}}
+
+# Backup slides
+
+{{< include ../queuing/_talk-backup.qmd >}}

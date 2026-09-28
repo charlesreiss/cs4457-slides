@@ -1,0 +1,13 @@
+
+### practical weighted-fair-queuing  {.smaller}
+
+
+* gets complex to calculate with lots of different flows
+* so common to use various approximations 
+<hr class="vspace" />
+* example: deficit round robin 
+
+   * take turns betwen flows
+   * keep count of ‘extra turns’ based on size/etc.
+
+

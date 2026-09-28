@@ -1,0 +1,42 @@
+
+### fair (de)queuing 
+
+
+
+::: {.r-stack .my-full}
+![](/queuing/texfig/fair-queue-setup-fair-dequeuing.figure-1.svg){.fragment .fade-out fragment-index=2}
+
+![](/queuing/texfig/fair-queue-setup-fair-dequeuing.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+
+:::
+
+
+### problem 1: variable packet size  {.smaller}
+
+![](/queuing/texfig/fair-queue-setup-problem-1-variable-packet-size.figure.svg)
+ 
+
+* just alternating packets doesn't work with variable sizes
+* need to send more packets from flows with faster packets
+
+
+### problem 2: packets arriving late  {.smaller}
+
+<table>
+<tr><td>time =</td><td>queue</td><td></td></tr>
+<tr><td></td><td>A1, B1, B2, B3</td><td></td></tr>
+<tr><td>0.0</td><td>B1, B2, B3</td><td>start sending A1</td></tr>
+<tr><td>1.0</td><td>B1, B2, B3</td><td>finish sending A1</td></tr>
+<tr><td>1.0</td><td>B2, B3</td><td>start sending B1</td></tr>
+<tr><td>2.0</td><td>B2, B3</td><td>finish sending B1</td></tr>
+<tr><td>2.0</td><td>B3</td><td>start sending B2</td></tr>
+<tr><td>2.1</td><td>B3, A2</td><td>receive A2</td></tr>
+<tr><td>2.9</td><td>B3, A2, A3</td><td>receive A3</td></tr>
+<tr><td>3.0</td><td>B3, A2, A3</td><td>finish sending B2</td></tr>
+</table>
+ 
+
+* flow A missed a turn because packet was just a little late
+* intuition: should get extra turn to make up for this?
+

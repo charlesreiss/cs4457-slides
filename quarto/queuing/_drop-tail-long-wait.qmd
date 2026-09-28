@@ -1,0 +1,11 @@
+
+### drop tail --- long waits  {.smaller}
+
+
+
+* switch now ‘knows’ flow is going to lose packet
+* but receiver won't know until packets in queue are sent first
+* might've been better to drop first packet
+
+![](/queuing/texfig/drop-tail-long-wait.figure.svg){width=1000px}
+

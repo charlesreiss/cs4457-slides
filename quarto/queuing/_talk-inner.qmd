@@ -1,0 +1,58 @@
+
+# normal policy: FIFO + drop-tail {visibility="hidden"}
+
+{{< include /queuing/_drop-tail.qmd >}}
+
+# queue scheduling {visibility="hidden"}
+
+{{< include /queuing/_scheduling.qmd >}}
+
+## FIFO: unfair dequeue {visibility="hidden"}
+
+{{< include /queuing/_fifo-unfair-dequeue.qmd >}}
+
+## fair dequeue: simple fair queuing {visibility="hidden"}
+
+{{< include /queuing/_fair-queue-setup.qmd >}}
+
+{{< include /queuing/_fair-queue-alt-bit.qmd >}}
+
+## fair dequeue: weighted fair queuing {visibility="hidden"}
+
+{{< include /queuing/_weighted-fair-queue.qmd >}}
+
+## exercise{visibility="hidden"}
+
+{{< include /queuing/_weighted-fair-queue-ex.qmd >}}
+
+## weighted fair queuing and late packets {visibility="hidden"}
+
+{{< include /queuing/_weighted-fair-queue-and-late.qmd >}}
+
+## weighted fair queuing practice {visibility="hidden"}
+
+{{< include /queuing/_weighted-fair-queue-practice.qmd >}}
+
+# priority queuing {visibility="hidden"}
+
+{{< include /queuing/_priority-queue.qmd >}}
+
+# drop-tail: unfair discard {visibility="hidden"}
+
+{{< include /queuing/_drop-tail-unfair-discard.qmd >}}
+
+# drop-tail: long wait {visibility="hidden"}
+
+{{< include /queuing/_drop-tail-long-wait.qmd >}}
+
+# early detection {visibility="hidden"}
+
+{{< include /queuing/_early-detect.qmd >}}
+
+## some results {visibility="hidden"}
+
+{{< include /queuing/_early-detect-res.qmd >}}
+
+# active queue management generally {visibility="hidden"}
+
+{{< include /queuing/_other-queue-management.qmd >}}

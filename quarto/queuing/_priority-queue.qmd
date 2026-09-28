@@ -1,0 +1,33 @@
+
+### priority queue 
+
+
+* assign priorities to flows
+* drop packet from lowest priority flow possible
+* on ties, choose other drop strategy
+
+
+### priority-based dequeue 
+
+![](/queuing/texfig/priority-queue-priority-based-dequeue.figure.svg)
+
+
+### priority-based dropping 
+
+![](/queuing/texfig/priority-queue-priority-based-dropping.figure.svg)
+
+
+### priority-based dropping (alt) 
+
+![](/queuing/texfig/priority-queue-priority-based-dropping-alt.figure.svg)
+
+
+### priority: all or nothing 
+
+
+* if flow A has greater priority than flow B
+* and both can use full available bandwidth 
+<hr class="vspace" />
+* flow A gets full available bandwidth
+* flow B gets no bandwidth (everything dropped)
+

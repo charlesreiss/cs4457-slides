@@ -1,0 +1,35 @@
+
+### early detection  {.smaller}
+
+
+* really want to drop earlier packets 
+
+   * trigger congestion control to reduce send rate faster
+   * should reduce total number of dropped packets
+
+* but don't want to waste queue capacity 
+
+   * (otherwise, just use smaller queue)
+ 
+<hr class="vspace" />
+* so drop ‘some’ packets early
+
+
+### random early detection (RED)  {.smaller}
+
+
+
+* [compute queue length]{.fragment fragment-index=2 .custom .myem-only}
+* drop with probability based on queue length:
+ 
+![](/queuing/sysapproach-6-4-fig169.svg){}
+ [Peterson and Davie, <i>Computer Networks: A Systems Approach</i>, Fig 169 (sec 6.4)]{.mycredit}
+
+### measuring queue length 
+
+
+* use moving average instead of actual value 
+<hr class="vspace" />
+* reduce sensitivity to short ‘bursts’ of packets
+* spread packet-dropping ‘signal’ among all active connections
+

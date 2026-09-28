@@ -1,0 +1,364 @@
+
+### theoretical model: alternating bit  {.smaller}
+
+
+* let's say we can split up packets into individual bits
+* fair sharing: <br> one bit from A, one bit from B, one bit from A, one bit from B, one bit from A, etc. 
+<hr class="vspace" />
+* preview:
+* figure out what timing would look like if we could do this
+* use this timing to decide what packets to send  
+
+   * (the way we can actually send packets)
+
+
+
+### alternating bit ordering {.smaller}
+
+sending A1 (2 bit), A2 (1 bit), A3 (2 bit), B1 (4 bit), B2 (1 bit)<br/>
+
+
+::::: {.columns}
+
+:::: {.column width=30%}
+
+<table class="collines">
+<thead>
+<tr><th>step</th><th>action</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>send A1 bit 1</td></tr>
+<tr><td>2</td><td>send B1 bit 1</td></tr>
+<tr><td>3</td><td>send A1 bit 2</td></tr>
+<tr><td>4</td><td>send B1 bit 2</td></tr>
+<tr><td>5</td><td>send A2 bit 1</td></tr>
+<tr><td>6</td><td>send B1 bit 3</td></tr>
+<tr><td>7</td><td>send A3 bit 1</td></tr>
+<tr><td>8</td><td>send B1 bit 4</td></tr>
+<tr><td>9</td><td>send A3 bit 2</td></tr>
+<tr><td>10</td><td>send B2 bit 1</td></tr>
+</tbody>
+</table>
+
+::::
+
+:::: {.column width=30%}
+
+<div style="anchor-name: --fq-packet-finish-unsorted; margin-left: 0; width: fit-content;">
+<table class="collines fragment fade-in" data-fragment-index="2">
+<thead>
+<tr><th>packet</th><th>finish step</th></tr>
+</thead>
+<tbody>
+<tr><td>A1</td><td>3</td></tr>
+<tr><td>A2</td><td>5</td></tr>
+<tr><td>A3</td><td>9</td></tr>
+<tr><td>B1</td><td>8</td></tr>
+<tr><td>B2</td><td>10</td></tr>
+</tbody>
+</table>
+</div>
+
+::::
+
+:::: {.column width=10% .fragment fragment-index=3 .fade-in}
+
+::: {.r-stack style="position: fixed; position-anchor: --fq-packet-finish-unsorted; left: anchor(right); align-self: anchor-center"}
+
+![](/queuing/texfig/sorted-line.figure-1.svg){fig-alt="sort into" width=150px .fade-out .fragment fragment-index=4}
+
+![](/queuing/texfig/sorted-line.figure-2.svg){fig-alt="sort into" width=150px .fade-in .fragment fragment-index=4}
+
+:::
+
+::::
+
+:::: {.column width=30%}
+
+<div style="anchor-name: --fq-packet-finish-sorted; margin-left: 0; width: fit-content;">
+<table class="collines fragment fade-in" data-fragment-index="3">
+<thead>
+<tr><th>packet</th><th>finish step</th></tr>
+</thead>
+<tbody>
+<tr><td>A1</td><td>3</td></tr>
+<tr><td>A2</td><td>5</td></tr>
+<tr class="fragment custom myem-only" data-fragment-index="3"><td>B1</td><td>8</td></tr>
+<tr class="fragment custom myem-only" data-fragment-index="3"><td>A3</td><td>9</td></tr>
+<tr><td>B2</td><td>10</td></tr>
+</tbody>
+</table>
+</div>
+
+::::
+
+:::::
+
+::: {.myoverbox style="position: fixed; position-anchor: --fq-packet-finish-sorted; top: anchor(bottom); right: anchor(right); left: auto; bottom: auto; transform: none;" .fragment fragment-index="4"}
+
+expected received order:<br/>
+<em>A1, A2, B1, A3, B2</em>
+
+:::
+
+
+
+### using this order 
+
+
+* computed the order packets ‘‘should’’ be received in
+* goal: achieve same order but without bit-by-bit
+* … by sending packets in desired receive order
+
+
+### full packet and ordering  {.smaller}
+
+sending A1 (2 bit), A2 (1 bit), A3 (2 bit), B1 (4 bit), B2 (1 bit) <br> 
+
+::::: {.columns}
+
+:::: {.column width=28%}
+
+<table class="collines">
+<caption>bit-by-bit time</caption>
+<thead>
+<tr><th>packet</th><th>finish at</th></tr>
+</thead>
+<tbody>
+<tr><td>A1</td><td>3</td></tr>
+<tr><td>A2</td><td>5</td></tr>
+<tr><td>B1</td><td>8</td></tr>
+<tr><td>A3</td><td>9</td></tr>
+<tr><td>B2</td><td>10</td></tr>
+</tbody>
+</table>
+
+::::
+
+:::: {.column .fragment .fade-in width=36% fragment-index=1}
+
+<table class="collines">
+<caption>whole packet schedule</caption>
+<thead>
+<tr><th>step=</th><th>action</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>start sending A1</td></tr>
+<tr><td>2</td><td>A1's last bit</td></tr>
+<tr><td>3</td><td>start sending A2</td></tr>
+<tr><td>3</td><td>A2's last bit</td></tr>
+<tr><td>4</td><td>start sending B1</td></tr>
+<tr><td>7</td><td>B1's last bit</td></tr>
+<tr><td>8</td><td>start sending A3</td></tr>
+<tr><td>9</td><td>A3's last bit</td></tr>
+<tr><td>10</td><td>start sending B2</td></tr>
+<tr><td>10</td><td>B2's last bit</td></tr>
+</tbody>
+</table>
+
+::::
+
+:::: {.column .fragment .fade-in width=28% fragment-index=2}
+
+<table class="collines">
+<caption>actual time</caption>
+<thead>
+<tr><th>packet</th><th>finish at</th></tr>
+</thead>
+<tbody>
+<tr><td>A1</td><td>2</td></tr>
+<tr><td>A2</td><td>3</td></tr>
+<tr><td>B1</td><td>7</td></tr>
+<tr><td>A3</td><td>9</td></tr>
+<tr><td>B2</td><td>10</td></tr>
+</tbody>
+</table>
+
+::::
+
+:::::
+
+::: {.myoverbox .fragment fragment-index=3 .fade-in-then-out .vlow}
+
+*  same order as bit-by-bit model
+*  only improved finishing times
+
+:::
+
+
+### uneven "rounds" {.smaller}
+
+sending A1 (2 bit), A2 (1 bit), B1 (4 bit), B2 (1 bit), C1 (2 bit) <br> 
+
+
+::::: {.columns}
+
+:::: {.column}
+
+<table class="collines">
+<colgroup>
+    <col class="fragment custom mybox-one" data-fragment-index="2"/>
+    <col/>
+    <col/>
+</colgroup>
+<thead>
+<tr><th data-fragment-index="2" class="fragment fade-in">round</th><th>step</th><th>action</th></tr>
+</thead>
+<tbody>
+<tr><td data-fragment-index="2" class="fragment fade-in">1</td><td>1</td><td>send A1 bit 1</td></tr>
+<tr><td data-fragment-index="2" class="fragment fade-in">1</td><td>2</td><td>send B1 bit 1</td></tr>
+<tr><td data-fragment-index="2" class="fragment fade-in">1</td><td>3</td><td>send C1 bit 1</td></tr>
+<tr><td data-fragment-index="2" class="fragment fade-in">2</td><td>4</td><td>send A1 bit 2</td></tr>
+<tr><td data-fragment-index="2" class="fragment fade-in">2</td><td>5</td><td>send B1 bit 2</td></tr>
+<tr><td data-fragment-index="2" class="fragment fade-in">2</td><td>6</td><td>send C1 bit 2</td></tr>
+<tr><td data-fragment-index="2" class="fragment fade-in">3</td><td>7</td><td>send A2 bit 1</td></tr>
+<tr><td data-fragment-index="2" class="fragment fade-in">3</td><td>8</td><td>send B1 bit 3</td></tr>
+<tr><td data-fragment-index="2" class="fragment fade-in">4</td><td>9</td><td>send B1 bit 4</td></tr>
+<tr><td data-fragment-index="2" class="fragment fade-in">5</td><td>10</td><td>send B2 bit 1</td></tr>
+</tbody>
+</table>
+
+::::
+
+:::: {.column}
+
+<table class="collines">
+<colgroup>
+    <col/>
+    <col/>
+    <col class="fragment custom mybox-one" data-fragment-index="2"/>
+</colgroup>
+<thead>
+<tr><th>packet</th><th>finish step</th><th data-fragment-index="2" class="fragment fade-in">finish round</th></tr>
+</thead>
+<tbody>
+<tr><td>A1</td><td>4</td><td class="fragment fade-in" data-fragment-index="2">2</td></tr>
+<tr><td>C1</td><td>6</td><td class="fragment fade-in" data-fragment-index="2">2</td></tr>
+<tr><td>A2</td><td>7</td><td class="fragment fade-in" data-fragment-index="2">3</td></tr>
+<tr><td>B1</td><td>9</td><td class="fragment fade-in" data-fragment-index="2">4</td></tr>
+<tr><td>B2</td><td>10</td><td class="fragment fade-in" data-fragment-index="2">5</td></tr>
+</tbody>
+</table>
+
+::::
+
+:::::
+
+
+
+### rounds versus steps {.smaller}
+
+
+* alternating bit: 
+   * several rounds where we transmit 1 bit from each pending flow
+   * number of steps per round varies depending on number of active flows
+* can think of round number as a weird notion of time 
+   * time "slows down" when there are more pending flows
+   * less precise than number of steps, but...
+   * arbitrarily chose which flow went first/last in round
+* easier to compute _number of rounds_ than _number of steps_
+
+### virtual time
+
+* easier to compute _number of rounds_ than _number of steps_
+* so we'll compute a "_virtual time_" = round number
+  * "virtual clock" that advanced at variable speed
+* use virtual times to sort packets
+
+### computing virtual time  {.smaller}
+
+
+
+* sending [A1 (2 bit)]{.fragment fragment-index=2 .custom .myem-only}, [A2 (1 bit)]{.fragment fragment-index=3 .custom .myem-only}, [B1 (4 bit)]{.fragment fragment-index=4 .custom .myem-only}, [B2 (1 bit)]{.fragment fragment-index=5 .custom .myem-only}, [C1 (2 bit)]{.fragment fragment-index=6 .custom .myem-only}
+* ‘current’ virtual time = 0
+  * current time = round # a packet sent now would start transmitting
+ 
+
+<table class="collines">
+<thead>
+<tr><th>packet</th><th>virtual finish time</th>
+</thead>
+<tbody>
+<tr class="fragment fade-in" data-fragment-index="2"><td>A1</td><td>2 (= current + size)</td>
+<tr class="fragment fade-in" data-fragment-index="3"><td>A2</td><td>3 (= A1's time + size)</td>
+<tr class="fragment fade-in" data-fragment-index="4"><td>B1</td><td>4 (= current + size)</td>
+<tr class="fragment fade-in" data-fragment-index="5"><td>B2</td><td>5 (= B1's time + size)</td>
+<tr class="fragment fade-in" data-fragment-index="6"><td>C1</td><td>2 (= current + size)</td>
+</tbody>
+</table>
+
+* virtual time = time for packet alone + max {last finish time from flow, current time}
+
+
+### late packets {.smaller}
+
+sending A1 (2 bit), B1 (2 bit), B2 (2 bit) <br> and A2 (2 bit) but that arrives between steps 5+6: 
+
+
+::::: {.columns}
+
+
+:::: {.column}
+
+<table class="collines">
+<thead>
+<tr><th>vtime</th><th>step</th><th>action</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>1</td><td>send A1 bit 1</td></tr>
+<tr><td>1</td><td>2</td><td>send B1 bit 1</td></tr>
+<tr><td>2</td><td>3</td><td>send A1 bit 2</td></tr>
+<tr><td>2</td><td>4</td><td>send B1 bit 2</td></tr>
+<tr><td>3</td><td>5</td><td>send B2 bit 1</td></tr>
+<tr><td>4</td><td>&mdash;</td><td>(get A2)</td></tr>
+<tr><td>4</td><td>6</td><td>send A2 bit 1</td></tr>
+<tr><td>4</td><td>7</td><td>send B2 bit 1</td></tr>
+<tr><td>5</td><td>8</td><td>send A2 bit 1</td></tr>
+<tr><td>6</td><td>9</td><td>send A2 bit 1</td></tr>
+</tbody>
+</table>
+
+
+::::
+
+
+:::: {.column}
+
+<table class="collines">
+<thead>
+<tr><th>packet</th><th>virtual finish time</th></tr>
+</thead>
+<tbody>
+<tr class="fragment fade-in" data-fragment-index="2"><td>A1</td><td>2 (= current + size)</td></tr>
+<tr class="fragment fade-in" data-fragment-index="3"><td>B1</td><td>2 (= current + size)</td></tr>
+<tr class="fragment fade-in" data-fragment-index="4"><td>B2</td><td>4 (= B1's time + size)</td></tr>
+<tr class="fragment fade-in" data-fragment-index="5"><td>A2 [late]</td><td>5 (= current AKA 3 + size)</td></tr>
+</tbody>
+</table>
+
+::::
+
+:::::
+
+### virtual time algorithm  {.smaller}
+
+
+* track: 
+
+   * virtual start time of last sent packet
+   * virtual finish time of last packet for each flow
+ 
+<hr class="vspace" />
+* on receive packet:
+* compute virtual start time of packet =  max of 
+
+   * virtual finish time from last packet in same flow
+   * virtual start time of last sent packet + adjustment for how much sent
+
+* compute virtual finish time of packet =  
+
+   * virtual start time + packet size
+ 
+<hr class="vspace" />
+* when sending, send with lowest virtual finish time
+

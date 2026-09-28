@@ -1,0 +1,61 @@
+
+### unfair dequeue/drop 
+
+
+::: {.r-stack}
+![](/queuing/texfig/fifo-unfair-dequeue.figure-1.svg){.fragment .fade-out fragment-index=2 width=800px}
+
+![](/queuing/texfig/fifo-unfair-dequeue.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 width=800px}
+
+![](/queuing/texfig/fifo-unfair-dequeue.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 width=800px}
+
+![](/queuing/texfig/fifo-unfair-dequeue.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 width=800px}
+
+:::
+
+::: {.myoverbox .vlow .fragment .fade-in-then-out fragment-index=2}
+
+*  intuitive notion of `fair' would mean:
+   *  top flow gets 2.5 pkts/sec out
+   *  bottom flow gets 2.5 pkts/sec out
+
+:::
+
+::: {.myoverbox .vlow .fragment .fade-in-then-out fragment-index=3}
+
+*  FIFO + drop tail does not distinguish flows
+*  both flows will have same drop rate
+   *  (assuming "random" arrivals)
+
+:::
+
+::: {.myoverbox .vlow .fragment .fade-in-then-out fragment-index=4}
+
+*  same drop rate = preserve ratio of input demand
+   *  far from even ("intuitive fair") spit
+
+:::
+
+<!--
+
+        \begin{visibleenv}<2>
+            \node[explain box] {
+                intuitive notion of `fair' would mean: \\
+                top flow gets 2.5 pkts/sec out  \\
+                bottom flow gets 2.5 pkts/sec out
+            };
+        \end{visibleenv}
+        \begin{visibleenv}<3>
+            \node[explain box] {
+                FIFO + drop-tail does not distinguish flows \\
+                so both flows have same drop rate  
+            };
+        \end{visibleenv}
+        \begin{visibleenv}<4>
+            \node[explain box] {
+                preserve ratio of input demand \\
+                far from even (`intuitive fair') split
+            };
+        \end{visibleenv}
+
+-->

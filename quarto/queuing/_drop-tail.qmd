@@ -1,0 +1,23 @@
+
+### FIFO + drop-tail 
+
+
+
+* [[[scheduling policy: first-in first-out (FIFO)]{.fragment fragment-index=2 .custom .myem-only}]{.fragment fragment-index=3 .custom .myem-only}]{.fragment fragment-index=4 .custom .myem-only}
+* [drop policy: drop tail]{.fragment fragment-index=5 .custom .myem-only}
+ 
+
+::: {.r-stack}
+![](/queuing/texfig/drop-tail.figure-1.svg){.fragment .fade-out fragment-index=2 width=1000px}
+
+![](/queuing/texfig/drop-tail.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 width=1000px}
+
+![](/queuing/texfig/drop-tail.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 width=1000px}
+
+![](/queuing/texfig/drop-tail.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 width=1000px}
+
+![](/queuing/texfig/drop-tail.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 width=1000px}
+
+
+:::
+
