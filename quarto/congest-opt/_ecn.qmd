@@ -63,19 +63,22 @@
 * ECN proposed in 2001
 * 13 years later: around 56% support on websites[^trammel]
 * 16 years later:  
-
    * around 80% support on websites[^kuhlewind]
    * around 0.2% of servers disallow connection when ECN requested
 
-* 20 years later: 
-
+*  20 years later: 
    * around 86% support on websites[^lim]
    * around 4% of paths strip ECN signals, including notable ISPs/cloud providers/etc.
    * around 7.5% of connections (from sampled Universities) enable ECN
 
-[^trammel]: Trammel et al, ‘‘Enabling Internet-Wide Deployment of Explicit Congestion Notification’’
-[^kuhlewind]: Kühlewind et al, ‘‘Tracing Internet Path Transparency’’
-[^lim]: Lim et al, ‘‘A Fresh Look at ECN Traversal in the Wild’’
+*  24 years layer:
+   * around 94% of reachable IPv4/v6 addresses support consistently[^zeynali]
+   * around 4% support depends on path taken to host
+
+[^trammel]: Trammel et al, "Enabling Internet-Wide Deployment of Explicit Congestion Notification"
+[^kuhlewind]: Kühlewind et al, "Tracing Internet Path Transparency"
+[^lim]: Lim et al, "A Fresh Look at ECN Traversal in the Wild"
+[^zeynali]: Zeynali et al, "The State of ECN adoption in the Internet"
 
 ### example: DCTCP  {.smaller}
 
