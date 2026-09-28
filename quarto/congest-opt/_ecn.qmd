@@ -17,7 +17,7 @@
 ### ECN and TCP/IP  {.smaller}
 
 
-* congestion experience (CE) signal in IP heaer
+* congestion experience (CE) signal in IP header
 * when ACKing, ‘‘return’’ CE signal with ACK 
 
    * ECN echo (ECE) TCP flag on ACK packets
