@@ -131,6 +131,10 @@ $font-family-monospace: "Source Code Pro","Courier New",monospace;
     border: 3px red solid;
 }
 
+.reveal col.fragment.mybox-one.current-fragment {
+    background-color: rgb(100%, 90%, 90%)
+}
+
 .reveal .fragment.mybox-two.current-fragment {
     border: 3px blue solid;
 }
@@ -334,6 +338,14 @@ code span { color: inherit; }
 
 .reveal .slide table.codetable td { font-family: $font-family-monospace; font-size: 80%; }
 .reveal .slide table.codetable td:not(:last-child) { padding-right: 5em; }
+
+.reveal .slide  .aside-footnotes p {
+    line-height: 1; margin: 0;
+}
+
+.reveal .slide  .aside-footnotes > li {
+    margin: 0;
+}
 
 tt.box {
    font-family: $font-family-monospace;
