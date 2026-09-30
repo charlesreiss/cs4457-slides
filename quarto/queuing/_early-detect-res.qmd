@@ -1,7 +1,7 @@
 
 ### early detection results 
 
-[From Floyd and Jacobson, "Random Early Detection Gateways for Congestion Avoidance"]{.my-credit}
+[From Floyd and Jacobson, "Random Early Detection Gateways for Congestion Avoidance"]{.mycredit}
 
 ![](/queuing/red-results.png){}
 

@@ -1,0 +1,58 @@
+### virtual time algorithm  {.smaller}
+
+
+* track: 
+   * virtual finish time of last packet for each flow
+   * "current" virtual time
+* on receive packet:
+   * compute virtual start time of packet =  max of 
+      * virtual finish time from last packet in same flow
+      * "current" virtual time
+   * compute virtual finish time of packet =  
+      * virtual start time + packet size
+* when sending, send with lowest virtual finish time
+
+### virtual time scaling {.smaller}
+
+* suppose we can send 1 bit/wallclock time unit
+* 0 active flow: 0 units virtual time (no matter wallclock time)
+* 1 active flow: 1 unit virtual time per 1 unit wallclock time
+* 2 active flow: 1 unit virtual time per 2 unit wallclock time
+* ...
+<hr class="vspace"/>
+* can track correct virtual time by updating:
+  * when queue becomes empty, or
+  * packet arrives
+* new virtual time = old virtual time + elapsed wallclock time $\div$ active queues
+
+### virtual times example 2{.smaller}
+
+<table style="font-size: 70%" class="collines">
+<caption>packet arrivals and finish vtime computations</caption>
+<thead>
+<tr><th>wallclock time</th><th>virtual time</th><th>flow</th><th>packet size</th><th>finish vtime</th></tr>
+</thead>
+<tbody>
+<tr><td>0</td><td>0</td><td>A</td><td>1000</td><td>1000</td></tr>
+<tr><td>100</td><td>100</td><td>B</td><td>1200</td><td>1300</td></tr>
+<tr><td>500</td><td>300</td><td>C</td><td>500</td><td>800</td></tr>
+<tr><td>800</td><td>400</td><td>A</td><td>200</td><td>1200</td></tr>
+<tr><td>1600</td><td>683</td><td>C</td><td>500</td><td>1183</td></tr>
+</tbody>
+</table>
+
+<table style="font-size: 70%" class="collines">
+<caption>packet schedule</caption>
+<thead>
+<tr class="metaheader"><th colspan="2">start time</th><th colspan="2">end time</th></tr>
+<tr><th>wallclock</th><th>virtual</th><th>wallclock</th><th>virtual</th><th>ID</th></tr>
+</thead>
+<tbody>
+<tr><td>0</td><td>0</td><td>1000</td><td>1000</td><td>A1</td></tr>
+<tr><td>1000</td><td>466</td><td>1500</td><td>633</td><td>C1</td></tr>
+<tr><td>1500</td><td>633</td><td>1600</td><td>683</td><td>A2 (1st half)</td></tr>
+<tr><td>1600</td><td>683</td><td>1700</td><td>716</td><td>A2 (2nd half)</td></tr>
+<tr><td>1700</td><td>716</td><td>2200</td><td>966</td><td>C2</td></tr>
+<tr><td>2200</td><td>966</td><td>3400</td><td>2166</td><td>B1</td></tr>
+</tbody>
+</table>

@@ -332,6 +332,8 @@ code span { color: inherit; }
 .reveal .slide .rowlines > table td {border-top: 2px solid black; border-bottom: 2px solid black;}
 .reveal .slide table.rowlines td {border-top: 2px solid black; border-bottom: 2px solid black;}
 
+.reveal .slide table.collines tr.metaheader th {border-bottom: none; text-align: center; }
+
 .reveal .slide table.spaced td {padding-bottom: 1ex; }
 
 .reveal .slide.much-smaller { font-size: 50%; }

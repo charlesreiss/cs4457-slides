@@ -17,17 +17,23 @@
 
 {{< include /queuing/_fair-queue-alt-bit.qmd >}}
 
+## fair dequeue: virtual time {visibility="hidden"}
+
+{{< include /queuing/_virtual-time-intro.qmd >}}
+
+{{< include /queuing/_virtual-time.qmd >}}
+
+## fair queuing and late packets {visibility="hidden"}
+
+{{< include /queuing/_fq-and-late.qmd >}}
+
 ## fair dequeue: weighted fair queuing {visibility="hidden"}
 
 {{< include /queuing/_weighted-fair-queue.qmd >}}
 
-## exercise{visibility="hidden"}
+## exercise {visibility="hidden"}
 
 {{< include /queuing/_weighted-fair-queue-ex.qmd >}}
-
-## weighted fair queuing and late packets {visibility="hidden"}
-
-{{< include /queuing/_weighted-fair-queue-and-late.qmd >}}
 
 ## weighted fair queuing practice {visibility="hidden"}
 

@@ -22,8 +22,9 @@
 * [compute queue length]{.fragment fragment-index=2 .custom .myem-only}
 * drop with probability based on queue length:
  
-![](/queuing/sysapproach-6-4-fig169.svg){}
- [Peterson and Davie, <i>Computer Networks: A Systems Approach</i>, Fig 169 (sec 6.4)]{.mycredit}
+![](/queuing/sysapproach-6-4-fig169.svg){width=500px}
+
+[Peterson and Davie, <i>Computer Networks: A Systems Approach</i>, Fig 169 (sec 6.4)]{.mycredit}
 
 ### measuring queue length 
 

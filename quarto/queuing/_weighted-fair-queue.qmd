@@ -1,4 +1,3 @@
-
 ### controlled fairness  {.smaller}
 
 
@@ -18,9 +17,7 @@
 * say N bits takes N/weight rounds to send 
 <hr class="vspace" />
 * virtual finish time = virtual start time + size/weight 
-
    * instead of just + size
-
 
 
 ### upcoming assignment  {.smaller}
