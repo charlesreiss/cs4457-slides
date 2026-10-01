@@ -1,0 +1,54 @@
+### last time
+
+### assignment Q+A
+
+###
+
+
+{{< include /queuing/_fair-queue-alt-bit.qmd >}}
+
+## fair dequeue: virtual time {visibility="hidden"}
+
+{{< include /queuing/_virtual-time-intro.qmd >}}
+
+{{< include /queuing/_virtual-time.qmd >}}
+
+## fair queuing and late packets {visibility="hidden"}
+
+{{< include /queuing/_fq-and-late.qmd >}}
+
+## fair dequeue: weighted fair queuing {visibility="hidden"}
+
+{{< include /queuing/_weighted-fair-queue.qmd >}}
+
+## exercise {visibility="hidden"}
+
+{{< include /queuing/_weighted-fair-queue-ex.qmd >}}
+
+## weighted fair queuing practice {visibility="hidden"}
+
+{{< include /queuing/_weighted-fair-queue-practice.qmd >}}
+
+# priority queuing {visibility="hidden"}
+
+{{< include /queuing/_priority-queue.qmd >}}
+
+# drop-tail: unfair discard {visibility="hidden"}
+
+{{< include /queuing/_drop-tail-unfair-discard.qmd >}}
+
+# drop-tail: long wait {visibility="hidden"}
+
+{{< include /queuing/_drop-tail-long-wait.qmd >}}
+
+# early detection {visibility="hidden"}
+
+{{< include /queuing/_early-detect.qmd >}}
+
+## some results {visibility="hidden"}
+
+{{< include /queuing/_early-detect-res.qmd >}}
+
+# active queue management generally {visibility="hidden"}
+
+{{< include /queuing/_other-queue-management.qmd >}}
