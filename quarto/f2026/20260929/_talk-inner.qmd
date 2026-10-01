@@ -1,0 +1,92 @@
+### last time {.smaller}
+
+*  "fast recovery" and self-clocking
+   *  add packet per ACK = number of packets in flight constants
+   *  applied to fast retransmit: "inflate" window size
+*  discrete event simulators
+   *  versus emulation
+*  delayed ACKs to reduce network load
+*  RTT variance estimation
+   *  fast links, big queues = high variance
+   *  setting timeout to 2x RTT estimate not always good
+*  queuing theory diversion; with random arrivals, infinite queues:
+   *  $(\text{utilization} \rightarrow 100\%) \implies (\text{queue length} \rightarrow \infty)$
+
+# deep queues? {visibility="hidden"}
+
+{{< include /congest-opt/_buffer-bloat.qmd >}}
+
+
+# TCP variants {visibility="hidden"}
+
+{{< include /congest-opt/_tcp-variant-names.qmd >}}
+
+## CUBIC {visibility="hidden"}
+
+{{< include /congest-opt/_cubic.qmd >}}
+
+# other congestion signals {visibility="hidden"}
+
+### other congestion signals  {.smaller}
+
+* so far: detecting congestion via drops 
+   * need data to go missing
+   * transmitting redundant data
+   * filling up buffers causing high latency
+* some alternate ideas ways to detect congestion:
+<hr class="vspace" />
+* have switches/routers ‘mark’ packets
+* latency from longer queues
+
+
+## explicit congestion notification {visibility="hidden"}
+
+### other congestion signals  {.smaller}
+
+
+* so far: detecting congestion via drops 
+   * need data to go missing
+   * transmitting redundant data
+   * filling up buffers causing high latency
+* some alternate ideas ways to detect congestion:
+<hr class="vspace" />
+* _have switches/routers ‘mark’ packets_
+* latency from longer queues
+
+
+{{< include /congest-opt/_ecn.qmd >}}
+
+## watching latency, etc. {visibility="hidden"}
+
+### other congestion signals  {.smaller}
+
+
+* so far: detecting congestion via drops 
+   * need data to go missing
+   * transmitting redundant data
+   * filling up buffers causing high latency
+* some alternate ideas ways to detect congestion:
+<hr class="vspace" />
+* have switches/routers ‘mark’ packets
+* _latency from longer queues_
+
+### assignment Q+A
+
+###
+
+{{< include /congest-opt/_watch-latency.qmd >}}
+
+# overall congestion control data {visibility="hidden"}
+
+{{< include /congest-opt/_overall-data.qmd >}}
+
+{{< include /queuing/_talk-inner.qmd >}}
+
+###
+
+### backup slides
+
+
+# aside: some queuing theory {visibility="hidden"}
+
+{{< include /congest-opt/_diversion-queuing-theory.qmd >}}
