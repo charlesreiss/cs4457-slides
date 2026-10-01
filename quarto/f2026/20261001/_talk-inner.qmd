@@ -1,4 +1,16 @@
-### last time
+### last time {.smaller}
+
+*  buffer bloat
+*  CUBIC --- better fast exploration/slow adjustment compromise
+*  rate-/latency-based congestion control
+   *  latency increases if queuing increases
+   *  Vegas: compare latency to "optimal" latency, adjust window accordingly
+   *  bandwidth stays same if queuing increases
+   *  BBR: measure ACK rate to infer bandwidth
+*  unfairness of FIFO+drop-tail
+*  fair queuing
+   *  round-robin baseline
+   *  estimating bit-by-bit round-robin
 
 ### assignment Q+A
 
@@ -52,3 +64,5 @@
 # active queue management generally {visibility="hidden"}
 
 {{< include /queuing/_other-queue-management.qmd >}}
+
+{{< include /routing-intro/_talk-inner.qmd >}}
