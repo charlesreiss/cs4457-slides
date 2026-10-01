@@ -25,23 +25,27 @@
 :::
 
 
-### ‘flooding’ 
+### flooding IP routes
 
 
 
-::: {.r-stack .my-full}
-![](/routing-intro/texfig/flooding.figure-1.svg){.fragment .fade-out fragment-index=2}
+::: {.r-stack style="margin-top: -2.5em"}
+ 
+![](/routing-intro/texfig/flooding.figure-1.svg){.fragment .fade-out fragment-index=2 width=950px fig-alt="A network diagram with four routers (upper-left, lower-left, upper-right, lower-right), their routing tables, and their IP address (one for each network they are connected to). There are five networks in total, with IP ranges like 2001:db8:1::/40, 2001:db8:2::/40, etc.. Three of them only one router is connected to. The other two networks connect the routers: the right and lower-left routers are connected together, and the two left routers are connected together. Initially, the routers only have routing table entries for directly connected networks."}
 
-![](/routing-intro/texfig/flooding.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/routing-intro/texfig/flooding.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 width=950px fig-alt="The lower-right router was initially missing a routing table entry for a network it is conencted to. It adds one (2001:db8:4::/40 via port 1, no gateway)."}
 
-![](/routing-intro/texfig/flooding.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/routing-intro/texfig/flooding.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 width=950px fig-alt="After adding a routing table entry for its port 1, the lower-right router tells the routers that are the other network it is connected to about it. The message indicates that there is a route via 2001:db:2::3 (the lower right router's IP address on the shared network) to 2001:db8:4::/40 (the new route the lower-right router discovered)."}
 
-![](/routing-intro/texfig/flooding.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+![](/routing-intro/texfig/flooding.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 width=950px fig-alt="Receiving this message, the upper-right and lower-left routers add the route to their routing table: 2001:db8:4::/40 via 2001:db:2::3 (lower-right router). Each routing table entry also includes the port the routers use to access the network to which the lower-right router is connected."}
 
-![](/routing-intro/texfig/flooding.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+![](/routing-intro/texfig/flooding.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 width=950px}
 
-![](/routing-intro/texfig/flooding.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
+![](/routing-intro/texfig/flooding.figure-6.svg){.fragment .fade-in-then-out fragment-index=6 width=950px}
 
+![](/routing-intro/texfig/flooding.figure-7.svg){.fragment .fade-in-then-out fragment-index=7 width=950px} 
+
+![](/routing-intro/texfig/flooding.figure-8.svg){.fragment .fade-in-then-out fragment-index=8 width=950px} 
 
 :::
 
