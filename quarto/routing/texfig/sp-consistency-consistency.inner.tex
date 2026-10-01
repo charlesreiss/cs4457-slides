@@ -1,0 +1,18 @@
+\begin{tikzpicture}
+\tikzset{mynode/.style={draw,circle,very thick}}
+\node[mynode] (A) at (0,0) {A};
+\node[mynode] (B) at (4,0) {B};
+\node[mynode] (low1) at (3,-2) {~};
+\node[mynode] (low2) at (6,-2) {~};
+\node[mynode] (C) at (8,0) {C};
+\node[mynode] (high1) at (6,1) {~};
+\tikzset{myedge/.style={draw,ultra thick}}
+\path[myedge] (A) -- (B);
+\path[myedge] (A) -- (low1);
+\path[myedge] (low1) -- (low2);
+\path[myedge] (low2) -- (C);
+\path[myedge] (B) -- (high1);
+\path[myedge] (high1) -- (C);
+\path[very thick,dotted,red,-Latex] (A) .. controls (4, -3) .. (C);
+\path[very thick,violet,-Latex] (A) -- (B);
+\end{tikzpicture}

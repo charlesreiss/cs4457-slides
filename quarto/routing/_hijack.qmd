@@ -1,0 +1,47 @@
+
+### AS7007  {.smaller}
+
+[https://seclists.org/nanog/1997/Apr/444](https://seclists.org/nanog/1997/Apr/444) 
+![](/routing/as7007-1.png){}
+ 
+![](/routing/as7007-2.png){}
+
+
+### 2008 Pakistan Youtube  {.smaller}
+
+
+* Pakistan Telecom recieved gov't order to block youtube
+* implemented by inserting route for YouTube's IP in internal network 
+<hr class="vspace" />
+* misconfiguration meant route was advertised on BGP
+* was more specific than YouTube's route, so made YouTube unreachablej
+
+
+### timeline from RIPE NCC  {.smaller}
+
+
+* \\tiny{[https://www.ripe.net/about-us/news/youtube-hijacking-a-ripe-ncc-ris-case-study/](https://www.ripe.net/about-us/news/youtube-hijacking-a-ripe-ncc-ris-case-study/)}
+* Youtube is announcing 208.65.152.0/22
+* 18:47Z: Pakistan Telecom starts announcing 208.65.153.0/24
+* 20:07Z: Youtube starts announcing 208.65.153.0/24
+* 20:18Z: Youtube starts announcing 208.65.153.0/25 and 208.65.153.128/25
+* 20:51Z: Pakistan Telecom's ISP forwards their announcements with additional copy of Pakistan Telecom's AS number
+* 21:01Z: Pakistan Telecom's ISP withdraws routes initiated by Pakistan Telecom (but not Pakistan Telecom's customers)
+
+
+### BGP Hijacking targeted cryptocurrency stuff  {.smaller}
+
+
+* KLAYswap (Feb 2022), Celer Bridge (Sep 2022)
+* attackers intentionally redirected traffic to malicious version of services
+* … and stole money 
+<hr class="vspace" />
+* both probably spoofed the final AS number in AS path
+* sometimes involved adding attacked IP range to routing registry
+
+
+### nation-states? 
+
+
+![](/routing/china-tele-ars-tech){}
+

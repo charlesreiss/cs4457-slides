@@ -1,0 +1,6 @@
+---
+title: "routing"
+
+---
+
+{{< include ../routing/_talk-inner.qmd >}}

@@ -1,0 +1,48 @@
+
+## in practice? {visibility="hidden"}
+
+###   {.smaller}
+
+
+* [https://bgp.he.net/super-lg/](https://bgp.he.net/super-lg/)
+* [https://bgp.he.net/super-lg/#128.143.0.0/16?tob=none&mt=include&ma=6939&els=exact](https://bgp.he.net/super-lg/#128.143.0.0/16?tob=none&mt=include&ma=6939&els=exact)
+* [https://lg.ring.nlnog.net/prefix?q=128.143.0.0/16&match=exact&peer=all](https://lg.ring.nlnog.net/prefix?q=128.143.0.0/16&match=exact&peer=all)
+* future slides mostly from 2024
+* UVa has changed their network configuration since then
+
+
+###  
+
+[https://bgp.he.net/AS225](https://bgp.he.net/AS225) (University of Virginia) <br> 
+![](/routing/as225-graph){}
+
+
+### AS40220 
+
+
+![](/routing/MARIA-Network-BW-768x441.jpg){}
+
+
+###  
+
+
+![](/routing/as40220-peeringdb){}
+
+
+### AS3356 
+
+
+![](/routing/lumen-webpage.png){}
+
+
+### 2024: AS3356 is a backup (8x prepend) 
+
+
+![](/routing/as3356-he-superlg.png){}
+
+
+### 2025: AS3356 and AS 40220 equal? 
+
+
+![](/routing/as3356-he-superlg-b.png){}
+

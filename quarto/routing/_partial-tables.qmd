@@ -1,0 +1,22 @@
+
+### partial tables  {.smaller}
+
+
+* dealing with full Internet routing table is expensive 
+<hr class="vspace" />
+* common shortcut if you have a couple ISPs:
+* keep ‘short’ routes (example: short AS path) 
+
+   * to one of your ‘‘primary’’ ISPs
+   * maybe using ECMP
+
+* have default route for other cases 
+
+   * special route for 0.0.0.0/0, ::/0
+   * to one of your ISPs
+
+* take advantage of more specific routes beating less specific 
+
+   * typically also true in OSPF, RIP, etc.
+
+

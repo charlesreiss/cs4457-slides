@@ -1,0 +1,16 @@
+
+### routing metrics  {.smaller}
+
+
+* want some way of saying how ‘good’ link is
+* typically ‘‘cost’’/‘‘distance’’ value (so lower is better)
+* in practice, most commonly \[\frac{\text{constant}}{\text{bandwidth}}\] 
+<hr class="vspace" />
+* could also try to: 
+
+   * take financial costs into account
+   * take lantency into account
+   * take reliability into account
+   * spread flows out among more links
+
+

@@ -1,0 +1,13 @@
+\documentclass[tikz]{standalone}
+\input{common/tikzBase}
+\input{common/netshapes}
+\usetikzlibrary{matrix,arrows.meta}
+\providecommand{\noroute}{$\infty$/---}
+\providecommand{\mymark}[2]{\alt<#1->{\myemph<#1>{#2}}{}}
+\begin{document}
+
+\setSlide{1}
+\input{routing/texfig/removalp-removal.inner.tex}
+\setSlide{2}
+\input{routing/texfig/removalp-removal.inner.tex}
+\end{document}

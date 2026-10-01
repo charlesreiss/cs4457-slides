@@ -1,0 +1,105 @@
+
+### split horizon with poison reverse  {.smaller}
+
+
+* when sending distance vectors, ‘posion’ routes to same node 
+
+   * make sure other node won't go back to us…
+   * only to have us go back to them
+
+* example, if I'm A and routes are: 
+
+   * A: 0 via A; B: 2 via B; C: 4 via C; D: 6 via B
+
+* when sending to B send: 
+
+   * A: 0; B: 2; C: 4; D: $\infty$
+
+
+
+### without split horizon?  {.smaller}
+
+
+* can create routing loop
+* example: if D unreachable from B, then B goes to A and A goes to B 
+<hr class="vspace" />
+* called ‘‘count-to-infinity’’ problem 
+
+   * because A, B will keep updating distance higher and higher
+
+
+
+### avoided count-to-infinity 
+
+
+
+::: {.r-stack .my-full}
+![](/routing/texfig/count-to-infty-avoided-count-to-infinity.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/routing/texfig/count-to-infty-avoided-count-to-infinity.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/routing/texfig/count-to-infty-avoided-count-to-infinity.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+
+:::
+
+
+### trivial loop 
+
+
+* oops: A to B to A to B to A to B to … 
+<hr class="vspace" />
+* this case: relatively easy to avoid
+
+
+### split horizon incomplete solution 
+
+
+* split horizon prevents trivial loops, but…
+* doesn't actually solve the count-to-infinty problem 
+<hr class="vspace" />
+* in well-connected network, there will be longer loops
+
+
+### count-to-infinity (v2) 
+
+
+
+::: {.r-stack .my-full}
+![](/routing/texfig/count-to-infty-count-to-infinity-v2.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/routing/texfig/count-to-infty-count-to-infinity-v2.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/routing/texfig/count-to-infty-count-to-infinity-v2.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/routing/texfig/count-to-infty-count-to-infinity-v2.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+
+:::
+
+
+### count-to-infinity 
+
+
+* when node becomes unreachable, can have ‘phantom’ routes
+* keep propogating in loop, incrementing metric forever 
+<hr class="vspace" />
+* RIP solution: maximum metric is 15 (hops)
+
+
+### better count-to-infinity solutions?  {.smaller}
+
+
+* can share information about more than just neighbors 
+<hr class="vspace" />
+* we'll see two examples:
+* link-state routing protocols (example: OSPF) 
+
+   * every router learns full map of network
+
+* border gateway protocol (BGP) 
+
+   * (basically) track <i>list of hops</i> alongside distances
+   * eliminate potential routes that would create duplicate hops (loops)
+
+

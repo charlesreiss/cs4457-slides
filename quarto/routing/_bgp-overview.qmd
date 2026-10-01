@@ -1,0 +1,38 @@
+
+### Border Gateway Protocol  {.smaller}
+
+
+* protocol for sending routes between networks
+* used whereever routers from different ASes connect 
+
+   * ‘‘EBGP’’
+
+* used within AS to share routes out of AS internally 
+
+   * ‘‘IBGP’’
+ 
+<hr class="vspace" />
+* each router constructs list of routes to offer
+* each router receives list of routes, exports to OSPF/etc.
+
+
+### BGP connections  {.smaller}
+
+
+* BGP (TCP) connections made between routers 
+<hr class="vspace" />
+* each router keeps track of set routes advertised by other
+* command sent to add or withdraw specific routes 
+<hr class="vspace" />
+* not like distance vector where we kept resending everything
+
+
+### BGP prefixes  {.smaller}
+
+
+* routes sent via BGP called ‘prefixes’
+* said to be ‘‘announced’’ from one router to another 
+<hr class="vspace" />
+* because the network (e.g. 10.0.1.0/24) is the important part
+* (and the next hop is implied by where prefix comes from)
+

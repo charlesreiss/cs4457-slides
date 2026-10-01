@@ -1,0 +1,43 @@
+\documentclass[tikz]{standalone}
+\input{common/tikzBase}
+\input{common/netshapes}
+\usetikzlibrary{arrows.meta,shapes,calc,fit,matrix}
+\providecommand{\computer}{%
+    \includegraphics[width=0.7cm]{../common/Noun_project_216.pdf}
+}
+\providecommand{\computerAlt}{%
+    \includegraphics[width=0.8cm]{../common/Noun_project_alt_cpu.pdf}
+}
+\providecommand{\switch}{%
+    \includegraphics[width=0.8cm]{../common/fig-switch.pdf}
+}
+\providecommand{\router}{%
+    \includegraphics[width=0.8cm]{../common/fig-router.pdf}
+}
+\tikzset{
+    mynode/.style={draw,circle,very thick,font=\small},
+    myedge/.style={draw,ultra thick},
+    computer/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\computer}},
+    switch/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\switch}},
+    router/.style={inner sep=0mm,outer sep=0mm,execute at begin node={\router}},
+    port/.style={pos=0.95,fill=white,circle,draw,inner sep=0mm},
+    port beginning/.style={pos=0.05,fill=white,circle,draw,inner sep=0mm},
+    connect/.style={draw,thick,Latex-Latex},
+    msg link/.style={draw,violet,line width=1.2mm,-Latex},
+    msg data/.style={draw=violet,line width=0.8mm,fill=white,align=left,font=\fontsize{9}{10}\selectfont,align=left},
+}
+\begin{document}
+
+\setSlide{1}
+\input{routing/texfig/network-v-router-dv-networks-v-routers-dv.inner.tex}
+\setSlide{2}
+\input{routing/texfig/network-v-router-dv-networks-v-routers-dv.inner.tex}
+\setSlide{3}
+\input{routing/texfig/network-v-router-dv-networks-v-routers-dv.inner.tex}
+\setSlide{4}
+\input{routing/texfig/network-v-router-dv-networks-v-routers-dv.inner.tex}
+\setSlide{5}
+\input{routing/texfig/network-v-router-dv-networks-v-routers-dv.inner.tex}
+\setSlide{6}
+\input{routing/texfig/network-v-router-dv-networks-v-routers-dv.inner.tex}
+\end{document}

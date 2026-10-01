@@ -1,0 +1,14 @@
+
+### time-to-live (v4) / hop limit (v6)  {.smaller}
+
+
+* stored in IP header  
+<hr class="vspace" />
+* when forwarding packet, router will:
+* subtract one from TTL / hop limit 
+
+   * and recompute checksum accordingly
+
+* if TTL/hop limit = 0, drop packet
+* usually send back ICMP ‘‘Time Exceeded’’ error
+

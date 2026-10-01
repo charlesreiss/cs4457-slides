@@ -1,0 +1,40 @@
+
+### Routing Information Protocol  {.smaller}
+
+
+* router broadcast on networks it's connected to packet containing list of: 
+
+   * networks it can reach (example: 1.2.3.0/24)
+   * its next hop to that network
+   * its metric (distance) to reach that network
+
+* each router on that network processes that packet
+* on receiving distances, routers see if they can update their routes 
+
+   * routes will be to networks (1.2.3.0/24, etc.), not routers
+
+
+
+### local information  {.smaller}
+
+
+* routers need to track themselves: 
+<hr class="vspace" />
+* which networks they can reach directly 
+
+   * (which networks is it connected to)
+
+* the ‘distance’ it needs to reach those networks 
+
+   * (probably based on its bandwidth to that network?)
+
+
+
+### RIP --- when to update 
+
+
+* policy: every approx. 30 seconds always AND
+* immediately on changes (‘‘triggered’’) 
+<hr class="vspace" />
+* means that connecting new router should better routes quickly
+

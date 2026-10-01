@@ -1,0 +1,16 @@
+
+### constructing routing/neighbor tables  {.smaller}
+
+
+* interesting task: how to fill tables
+* two general strategies: 
+<hr class="vspace" />
+* routers/switches learn from neighbors 
+
+   * ‘‘distributed’’
+
+* information gathered on single controller machine <br> which configures routers/switches 
+
+   * ‘‘centralized’’
+
+

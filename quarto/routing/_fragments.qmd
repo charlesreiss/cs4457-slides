@@ -1,0 +1,100 @@
+
+### fragmentation  {.smaller}
+
+
+
+* max frame data size on my local network = 1500 bytes, but…
+ 
+```
+$ ping6 fe80::da07:b6ff:fed9:ae50 -s 4000
+PING fe80::da07:b6ff:fed9:ae50 (fe80::da07:b6ff:fed9:ae50) 4000 data bytes
+4008 bytes from fe80::da07:b6ff:fed9:ae50%eno1: icmp_seq=1 ttl=64 time=1.17 ms
+4008 bytes from fe80::da07:b6ff:fed9:ae50%eno1: icmp_seq=2 ttl=64 time=0.779 ms
+4008 bytes from fe80::da07:b6ff:fed9:ae50%eno1: icmp_seq=3 ttl=64 time=0.742 ms
+...
+$ ping -s 4000 192.168.1.1                 
+PING 192.168.1.1 (192.168.1.1) 4000(4028) bytes of data.     
+4008 bytes from 192.168.1.1: icmp_seq=1 ttl=64 time=0.891 ms 
+4008 bytes from 192.168.1.1: icmp_seq=2 ttl=64 time=0.806 ms 
+4008 bytes from 192.168.1.1: icmp_seq=3 ttl=64 time=0.748 ms 
+
+```
+
+
+### fragmentation  {.smaller}
+
+
+* original sender or router splits packet into multiple
+* each part called a <i>fragment</i> 
+<hr class="vspace" />
+* stored temporarily and ‘‘reassembled’’ at receiver 
+
+   * Linux defaults: <br> max 64 packet gap between fragments per source IP <br> 30 second time limit before discaded <br> 3-4MB buffer of packets
+
+
+
+### IPv6 fragments 
+
+
+![](/routing/ipv6-fragment-ex){}
+
+
+### IPv4 fragments 
+
+
+![](/routing/ipv4-fragment-ex){}
+
+
+### varying frame size support  {.smaller}
+
+
+* also called <i>maximum transmission unit</i> (MTU) 
+<hr class="vspace" />
+* typical Ethernet, Wifi --- 1500 bytes
+* Ethernet with ‘‘jumbo frames’’ -- 65535 bytes
+* IPsec ESP VPN over 1500-byte MTU network -- $\sim$1400--1440 bytes 
+
+   * VPN --- simulated network link over other network links
+
+
+
+### routers making fragments  {.smaller}
+
+
+* option in IPv4 to handle frame size mismatch, but not great: 
+<hr class="vspace" />
+* extra data sent over network (especially if just over max size) 
+
+   * extra copies of main headers on each fragment
+
+* extra work at receiver to reconstruct fragments
+* lose whole packet if one fragment is lost 
+
+   * but other routers likely to still waste time forwarding all other fragments
+
+
+
+### avoiding fragmentation  {.smaller}
+
+
+* IPv4 --- DF (don't fragment) flag in packets 
+
+   * if set, routers not allowed to fragment packet
+
+* IPv6 --- routers never fragment packets 
+
+   * any fragments made at source machine only
+ 
+<hr class="vspace" />
+* when set --- ICMP error 
+
+   * ICMPv6: Packet Too Big
+   * ICMPv4: destination unreachable + reason code of fragmentation needed
+   * (hopefully, bad networks might drop packet instead)
+
+* ICMPv6 error tells you maximum supported size 
+
+   * (by first link that got packet rejected --- might be more constraining link later)
+   * info not available in IPv4
+
+

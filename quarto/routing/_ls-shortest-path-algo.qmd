@@ -1,0 +1,18 @@
+
+### Dijkstra's algorithm  {.smaller}
+
+
+* (AKA best-first search) 
+<hr class="vspace" />
+* track: 
+
+   * list of visited nodes (initially just source)
+   * distance to each node (init. $0$ for source; $\infty$ otherwise)
+
+* repeatedly: 
+
+   * find lowest cost link $A\rightarrow B$ from visited node A
+   * update distance to B = min{old distance, distance to A + link cost}
+   * mark B as visited (if not already)
+
+

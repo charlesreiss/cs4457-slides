@@ -1,0 +1,14 @@
+
+### link-state routing  {.smaller}
+
+
+* will keep idea of sharing state with neighbors…
+* but weren't sharing enough state! 
+<hr class="vspace" />
+* other routing idea:
+* routers collect <i>complete map</i> of network
+* example protocol for this: OSPF 
+
+   * Open Shortest Path First
+
+

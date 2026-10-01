@@ -1,0 +1,16 @@
+
+### distance vector routing  {.smaller}
+
+
+* each node keeps <i>distance vector</i> 
+
+   * distance to each other node (network)
+   * also which neighbor to go through to get that distance
+
+* periodically send distance vector to all neighbors
+* when receiving distance vector from X, check
+* ‘‘would going through X give me a better distance?’’ 
+
+   * if so, update distance + which neighbor
+
+

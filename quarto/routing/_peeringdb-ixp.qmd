@@ -1,0 +1,25 @@
+
+### peeringdb 
+
+
+* [https://peeringdb.com](https://peeringdb.com) --- commonly used database of ASes and how to peer with them
+* there is also -- ‘‘whois’’ records (from RIRs) for ASes, IP blocks with contact info
+
+
+### internet exchanges and route servers  {.smaller}
+
+
+* internet exchange 
+
+   * local network (typically within metro area) for connecting networks
+   * often run at and/or by ‘carrier-neutral’ datacenter
+   * typically high bandwidth (10-100Gbps ports to network)
+ 
+<hr class="vspace" />
+* route servers 
+
+   * BGP servers run by internet exchange
+   * consolidates routes from participants
+   * goal: only need O($n$) BGP connections, not O($n^2$)
+
+

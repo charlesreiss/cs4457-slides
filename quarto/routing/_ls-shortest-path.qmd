@@ -1,0 +1,13 @@
+
+### finding shortest paths  {.smaller}
+
+
+* given full picture of network
+* want to find all shortest paths from self  
+
+   * shortest ‘distance’ = lowest sum of metric
+
+* only need next hop, but will compute whole path to find that
+* assumption: everyone using shortest path
+* usual solution: Dijkstra's algorithm
+

@@ -1,0 +1,19 @@
+
+### relationship types  {.smaller}
+
+
+* provider/customer 
+
+   * typically: customer pays provider
+   * provider connects customers everywhere it can (customer paid for it)
+   * customer does <em>not</em> provide paths through its network
+
+* peer/peer 
+
+   * often: no payment (‘settlement-free’)
+   * if A peers with B…
+   * A gets connected to B's customers (customers paid B for this)
+   * A does not get connected to B's other peers (no one paid B for this)
+   * A does not get connected to B's providers (no one paid B for this)
+
+

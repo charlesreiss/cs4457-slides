@@ -1,0 +1,61 @@
+
+### all-pairs Bellman-Ford (1)  {.smaller}
+
+
+* one algorithm to find all shortest paths in graph (network) 
+<hr class="vspace" />
+* $d(A,B) = \text{best distance from A to B}$
+* $p(A,B) = \text{next node on path from A to B}$
+* initially $d(X,Y) = \infty$ for all nodes $X$, $Y$
+* repeatedly* do the following: 
+<hr class="vspace" />
+* for each link: (A to B, distance $c$): 
+
+   * for each node X:
+   * if $c + d(B, X) < d(A, X)$, <br>
+   * then $d(A,X) \leftarrow c+d(B,X)$, $p(A,X) = B$
+
+
+
+### all-pairs Bellman-Ford (2)  {.smaller}
+
+
+* for each link (A to B, distance $c$): 
+
+   * for each node X:
+   * [if $c + d(B, X) < d(A, X)$]{.fragment fragment-index=2 .custom .myem-only}, <br>
+   * then [$d(A,X) \leftarrow c+d(B,X)$, $p(A,X) = B$]{.fragment fragment-index=3 .custom .myem-only}
+ 
+<hr class="vspace" />
+* [if A$\rightarrow$B$\rightarrow$X faster than current A$\rightarrow$X route]{.fragment fragment-index=2 .custom .myem-only} <br> [then choose it over current route]{.fragment fragment-index=2 .custom .myem-only}
+* [when choosing: update distance A$\rightarrow$X + next link for A$\rightarrow$X]{.fragment fragment-index=3 .custom .myem-only}
+
+
+### running Bellman-Ford 
+
+
+
+::: {.r-stack .my-full}
+![](/routing/texfig/bellman-ford-running-bellman-ford.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/routing/texfig/bellman-ford-running-bellman-ford.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/routing/texfig/bellman-ford-running-bellman-ford.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/routing/texfig/bellman-ford-running-bellman-ford.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+![](/routing/texfig/bellman-ford-running-bellman-ford.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+
+![](/routing/texfig/bellman-ford-running-bellman-ford.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
+
+![](/routing/texfig/bellman-ford-running-bellman-ford.figure-7.svg){.fragment .fade-in-then-out fragment-index=7}
+
+![](/routing/texfig/bellman-ford-running-bellman-ford.figure-8.svg){.fragment .fade-in-then-out fragment-index=8}
+
+![](/routing/texfig/bellman-ford-running-bellman-ford.figure-9.svg){.fragment .fade-in-then-out fragment-index=9}
+
+![](/routing/texfig/bellman-ford-running-bellman-ford.figure-10.svg){.fragment .fade-in-then-out fragment-index=10}
+
+
+:::
+

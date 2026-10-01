@@ -1,0 +1,22 @@
+
+### routing tables 
+
+![](/routing/texfig/route-tables-routing-tables.figure.svg)
+
+
+### filling routing tables  {.smaller}
+
+
+* easy part: what networks are you directly connected to 
+
+   * that range of IP addresses, that interface
+ 
+<hr class="vspace" />
+* harder part: other routers on connected router
+* need to learn: 
+
+   * addresses of other router
+   * which networks can be reached through them directly or indirectly
+
+* need to choose between multiple ways of reaching networks
+

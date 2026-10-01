@@ -1,0 +1,24 @@
+
+### BGP route  {.smaller}
+
+
+* adjacent routers share list of <i>routes</i> with: 
+<hr class="vspace" />
+* IP prefix (CIDR-style, basically)
+* AS path --- list of autonomous system the route goes through
+* next hop router (IP address)
+* <i>multi-exit discriminator</i> 
+
+   * low value = this entrance to AS is better than others for these IPs
+
+* <i>local preference</i> (internal-only)
+
+
+### AS path 
+
+
+* used to detect routing loops 
+<hr class="vspace" />
+* append your AS when sending route externally
+* always ignore external routes with your AS in their AS path already
+

@@ -1,0 +1,161 @@
+
+### spanning tree  {.smaller}
+
+
+* given a general network, only activate subset of links
+* … such that network is tree 
+
+   * that is only one path between each node
+ 
+<hr class="vspace" />
+* allows us to do flooding strategy
+* makes simple MAC learning/broadcast just work
+
+
+### centralized spanning tree?  {.smaller}
+
+
+* one algorithm you might learn in DSA2: 
+<hr class="vspace" />
+* mark one node called <i>the root</i> as ‘in the tree’
+* repeatedly:  
+
+   * add the ‘[first]{.fragment fragment-index=2 .custom .myem-only}’ link that goes to a node not in the tree
+   * mark newly connected node as ‘in the tree’
+ 
+<hr class="vspace" />
+* result = spanning tree
+
+
+### a careful ordering  {.smaller}
+
+
+* algorithm works with any idea of which link/node is first 
+<hr class="vspace" />
+* we'll choose a particular ordering (for reasons you'll see later) 
+<hr class="vspace" />
+* root (first node) is one with earliest ‘name’
+* links closer to the root before further links
+* links from nodes with earlier names before later ones
+
+
+### spanning tree example 
+
+
+
+::: {.r-stack .my-full}
+![](/routing/texfig/spanning-tree-spanning-tree-example.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/routing/texfig/spanning-tree-spanning-tree-example.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/routing/texfig/spanning-tree-spanning-tree-example.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/routing/texfig/spanning-tree-spanning-tree-example.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+![](/routing/texfig/spanning-tree-spanning-tree-example.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+
+
+:::
+
+
+### detecting ‘mistakes’  {.smaller}
+
+
+* this method: consistent results every time 
+<hr class="vspace" />
+* but assumes we start from scratch
+* we're going to want a way of doing this dynamically 
+<hr class="vspace" />
+* let's say we find a wrong configuration ---
+* can we fix it?
+
+
+### fixing wrong links 
+
+
+
+::: {.r-stack .my-full}
+![](/routing/texfig/spanning-tree-fixing-wrong-links.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/routing/texfig/spanning-tree-fixing-wrong-links.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/routing/texfig/spanning-tree-fixing-wrong-links.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/routing/texfig/spanning-tree-fixing-wrong-links.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+![](/routing/texfig/spanning-tree-fixing-wrong-links.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+
+
+:::
+
+
+### spanning tree protocol  {.smaller}
+
+
+* each node tracks: 
+
+   * what it believes is root of tree
+   * its link toward root of tree
+   * its distance to root of tree
+   * which other nodes think it's closer to root of tree
+
+* periodically sends information to neighbors
+* when receiving information, update: 
+
+   * root to lower ID number (if possible)
+   * link to lower-distance link  (if possible)
+   * link to lower-ID, same-distance link (if possible)
+   * which other nodes think it is closer
+
+
+
+### some example updates 
+
+
+
+::: {.r-stack .my-full}
+![](/routing/texfig/spanning-tree-some-example-updates.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/routing/texfig/spanning-tree-some-example-updates.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/routing/texfig/spanning-tree-some-example-updates.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/routing/texfig/spanning-tree-some-example-updates.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+![](/routing/texfig/spanning-tree-some-example-updates.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+
+
+:::
+
+
+### spanning trees in practice (1)  {.smaller}
+
+
+* commonly used on Ethernet for switches
+* links not in spanning tree are ‘blocked’ 
+
+   * not used for normal traffic
+   * assumption: would cause loop $\rightarrow$ infinite packets
+
+* delay before activating port 
+
+   * avoid temporary routing loops while figuring out tree
+
+* periodically send updates to all neighbors 
+
+   * order of seconds
+
+
+
+### spanning tree in practice (2) 
+
+
+* real protocol supports variable ‘cost’ for links 
+
+   * so ‘distance to root’ might be lower for faster links
+
+* modern variant (Rapid Spanning Tree Protocol) selects ‘‘backup’’ port to root  
+
+   * goal: faster switchover on failure
+
+

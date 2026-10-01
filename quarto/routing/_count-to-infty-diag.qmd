@@ -1,0 +1,21 @@
+
+### count to infinity (no split horizon) 
+
+
+
+::: {.r-stack .my-full}
+![](/routing/texfig/count-to-infty-diag.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/routing/texfig/count-to-infty-diag.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/routing/texfig/count-to-infty-diag.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/routing/texfig/count-to-infty-diag.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+![](/routing/texfig/count-to-infty-diag.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+
+![](/routing/texfig/count-to-infty-diag.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
+
+
+:::
+

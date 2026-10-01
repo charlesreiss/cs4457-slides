@@ -1,0 +1,31 @@
+
+### networks v routers (DV)  {.smaller}
+
+
+* imprecision on graphs --- acting as if we want distance to routers
+* but really want distance to networks 
+<hr class="vspace" />
+* distance vectors will track distance to <i>networks</i>
+* but next hops will be routers
+
+
+### networks v routers (DV) 
+
+ 
+
+::: {.r-stack}
+![](/routing/texfig/network-v-router-dv-networks-v-routers-dv.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/routing/texfig/network-v-router-dv-networks-v-routers-dv.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/routing/texfig/network-v-router-dv-networks-v-routers-dv.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/routing/texfig/network-v-router-dv-networks-v-routers-dv.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+![](/routing/texfig/network-v-router-dv-networks-v-routers-dv.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+
+![](/routing/texfig/network-v-router-dv-networks-v-routers-dv.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
+
+
+:::
+

@@ -1,0 +1,26 @@
+
+### autonomous system  {.smaller}
+
+
+* autonomous system (AS) --- one ‘‘routing domain’’ 
+
+   * typically = set of networks administrated by one organization
+   * decides what routing to use internally
+   * should be fully connected internally
+
+* scope of OSPF instance = one AS
+* each AS can connect to other ASes 
+
+   * well-defined protocol for sending routes to other ASes
+
+
+
+### AS numbers  {.smaller}
+
+
+* for Internet routing, ASes are assigned numbers 
+<hr class="vspace" />
+* assigned by IANA and RIRs (similar to IP addresses)
+* originally 16-bit, now extended to 32-bit
+* some private use / special AS numbers
+

@@ -1,0 +1,9 @@
+
+### link-state database 
+
+
+* whole collection of advertisements 
+<hr class="vspace" />
+* every router, network, link between router+network
+* all the metrics for those
+

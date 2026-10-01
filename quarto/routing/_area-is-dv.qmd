@@ -1,0 +1,21 @@
+
+### distance vector in link state? 
+
+
+* summaries are distance vectors! 
+
+   * area border routers just saying which networks + metric
+
+* idea: mix simpler distance vectors with more flexible link-state
+
+
+### but distance vector problems?  {.smaller}
+
+
+* recall: count-to-infinity
+* let's say areas A, B, C, D all connected to each other…
+* … and area D goes offline:
+* could packet for D loop area A to B to C to A to B to C to … 
+<hr class="vspace" />
+* OSPF solution: disallow this network configuration
+
