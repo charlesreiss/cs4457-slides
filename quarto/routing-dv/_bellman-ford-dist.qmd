@@ -17,28 +17,29 @@
 
 ### distributing Bellman-Ford 
 
+<!-- FIXME: overbox stuff -->
 
 
 ::: {.r-stack .my-full}
-![](/routing-dv/texfig/distributing-bellman-ford.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/routing-dv/texfig/distributing-bellman-ford.figure-1.svg){.fragment .fade-in-then-out fragment-index=1 }
 
-![](/routing-dv/texfig/distributing-bellman-ford.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/routing-dv/texfig/distributing-bellman-ford.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 }
 
-![](/routing-dv/texfig/distributing-bellman-ford.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/routing-dv/texfig/distributing-bellman-ford.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 }
 
-![](/routing-dv/texfig/distributing-bellman-ford.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+![](/routing-dv/texfig/distributing-bellman-ford.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 }
 
-![](/routing-dv/texfig/distributing-bellman-ford.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+![](/routing-dv/texfig/distributing-bellman-ford.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 }
 
-![](/routing-dv/texfig/distributing-bellman-ford.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
+![](/routing-dv/texfig/distributing-bellman-ford.figure-6.svg){.fragment .fade-in-then-out fragment-index=6 }
 
-![](/routing-dv/texfig/distributing-bellman-ford.figure-7.svg){.fragment .fade-in-then-out fragment-index=7}
+![](/routing-dv/texfig/distributing-bellman-ford.figure-7.svg){.fragment .fade-in-then-out fragment-index=7 }
 
-![](/routing-dv/texfig/distributing-bellman-ford.figure-8.svg){.fragment .fade-in-then-out fragment-index=8}
+![](/routing-dv/texfig/distributing-bellman-ford.figure-8.svg){.fragment .fade-in-then-out fragment-index=8 }
 
-![](/routing-dv/texfig/distributing-bellman-ford.figure-9.svg){.fragment .fade-in-then-out fragment-index=9}
+![](/routing-dv/texfig/distributing-bellman-ford.figure-9.svg){.fragment .fade-in-then-out fragment-index=9 }
 
-![](/routing-dv/texfig/distributing-bellman-ford.figure-10.svg){.fragment .fade-in-then-out fragment-index=10}
+![](/routing-dv/texfig/distributing-bellman-ford.figure-10.svg){.fragment .fade-in-then-out fragment-index=10 }
 
 
 :::
@@ -49,7 +50,7 @@
 
 
 ::: {.r-stack .my-full}
-![](/routing-dv/texfig/distributing-bellman-ford2.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/routing-dv/texfig/distributing-bellman-ford2.figure-1.svg){.fragment .fade-out fragment-index=2}
 
 ![](/routing-dv/texfig/distributing-bellman-ford2.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
 

@@ -82,7 +82,8 @@
 
 
 ::: {.r-stack .my-full}
-![](/routing-dv/texfig/removal-example.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/routing-dv/texfig/removal-example.figure-1.svg){.fragment .fade-out fragment-index=2}
 
 ![](/routing-dv/texfig/removal-example.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
 

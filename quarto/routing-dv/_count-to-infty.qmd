@@ -34,7 +34,7 @@
 
 
 ::: {.r-stack .my-full}
-![](/routing-dv/texfig/avoided-count-to-infinity.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/routing-dv/texfig/avoided-count-to-infinity.figure-1.svg){.fragment .fade-out fragment-index=2}
 
 ![](/routing-dv/texfig/avoided-count-to-infinity.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
 
@@ -66,7 +66,7 @@
 
 
 ::: {.r-stack .my-full}
-![](/routing-dv/texfig/count-to-infinity-example2.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/routing-dv/texfig/count-to-infinity-example2.figure-1.svg){.fragment .fade-out fragment-index=2}
 
 ![](/routing-dv/texfig/count-to-infinity-example2.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
 

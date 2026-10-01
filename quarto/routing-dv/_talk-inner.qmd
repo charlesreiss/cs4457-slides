@@ -28,3 +28,5 @@
 ## count-to-infinity {visibility="hidden"}
 
 {{< include /routing-dv/_count-to-infty.qmd >}}
+
+<!-- FIXME: count-to-infty diagram from backup slides -->
