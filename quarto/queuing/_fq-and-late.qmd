@@ -56,7 +56,7 @@
 
 
 
-* A1(1000 bit) @ 0, B1(900 bit) @ 500, C1(600 bit) @ 900, C2(100 bit) @ 2000, B2(200 bit) @ 2000<br>
+* [A1(1000 bit) @ 0, B1(900 bit) @ 500, C1(600 bit) @ 900, \{C2(100 bit), B2(200 bit)\} @ 2000]{.my-small}<br>
 <table class="collines">
 <thead>
 <tr><th>wallclock time</th><th>virtual time</th><th>active packets [(finish vtime, * = sending)]{.my-small}</th></tr>
@@ -65,9 +65,9 @@
 <tr><td>0</td><td>0</td><td>A1 (1000*)</td></tr>
 <tr><td>500</td><td>500</td><td>A1 (1000*), B1 (1400)</td></tr>
 <tr><td>900</td><td>700</td><td>A1 (1000*), B1 (1400), C1 (1300)</td></tr>
-<tr><td>1000</td><td>733</td><td>B1 (1400*), C1 (1300)</td></tr>
-<tr><td>1900</td><td>1183</td><td>C1 (1300*)</td></tr>
-<tr><td>2000</td><td>1283</td><td>C1 (1300*), C2 (1400), B2 (1483)</td></tr>
+<tr><td>1000</td><td>733</td><td>C1 (1300*), B1 (1400)</td></tr>
+<tr><td>1600</td><td>1033</td><td>B1 (1400*)</td></tr>
+<tr><td>2000</td><td>1433</td><td>B1 (1400*), C2 (1533), B2 (1633)</td></tr>
 <tr><td>…</td><td>…</td><td>…</td></tr>
 </tbody>
 </table>

@@ -20,14 +20,3 @@
    * instead of just + size
 
 
-### upcoming assignment  {.smaller}
-
-
-* fixed size packets, but…
-* part 1: priority queue
-* part 2: weighted fair queue 
-
-   * one flow gets twice weight of other
-   * current version has fixed size packets (undecided if I'll change before out)
-
-

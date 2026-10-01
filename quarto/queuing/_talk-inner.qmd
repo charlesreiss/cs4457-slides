@@ -30,6 +30,7 @@
 ## fair dequeue: weighted fair queuing {visibility="hidden"}
 
 {{< include /queuing/_weighted-fair-queue.qmd >}}
+{{< include /queuing/_weighted-fair-queue-assign.qmd >}}
 
 ## exercise {visibility="hidden"}
 

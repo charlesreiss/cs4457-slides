@@ -34,7 +34,7 @@
 
 ### late packets {.smaller}
 
-sending A1 (2 bit), B1 (2 bit), B2 (2 bit) <br> and A2 (2 bit) but that arrives between steps 5+6: 
+sending A1 (2 bit), B1 (2 bit), B2 (2 bit) <br> and A2 (3 bit) but that arrives between steps 5+6: 
 
 
 ::::: {.columns}
@@ -55,8 +55,8 @@ sending A1 (2 bit), B1 (2 bit), B2 (2 bit) <br> and A2 (2 bit) but that arrives 
 <tr><td>4</td><td>&mdash;</td><td>(get A2)</td></tr>
 <tr><td>4</td><td>6</td><td>send A2 bit 1</td></tr>
 <tr><td>4</td><td>7</td><td>send B2 bit 1</td></tr>
-<tr><td>5</td><td>8</td><td>send A2 bit 1</td></tr>
-<tr><td>6</td><td>9</td><td>send A2 bit 1</td></tr>
+<tr><td>5</td><td>8</td><td>send A2 bit 2</td></tr>
+<tr><td>6</td><td>9</td><td>send A2 bit 3</td></tr>
 </tbody>
 </table>
 
@@ -74,7 +74,7 @@ sending A1 (2 bit), B1 (2 bit), B2 (2 bit) <br> and A2 (2 bit) but that arrives 
 <tr class="fragment fade-in" data-fragment-index="2"><td>A1</td><td>2 (= current + size)</td></tr>
 <tr class="fragment fade-in" data-fragment-index="3"><td>B1</td><td>2 (= current + size)</td></tr>
 <tr class="fragment fade-in" data-fragment-index="4"><td>B2</td><td>4 (= B1's time + size)</td></tr>
-<tr class="fragment fade-in" data-fragment-index="5"><td>A2 [late]</td><td>5 (= current AKA 3 + size)</td></tr>
+<tr class="fragment fade-in" data-fragment-index="5"><td>A2 [late]</td><td>6 (= current AKA 3 + size)</td></tr>
 </tbody>
 </table>
 
