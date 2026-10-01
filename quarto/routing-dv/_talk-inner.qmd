@@ -1,0 +1,30 @@
+
+# Bellman-Ford {visibility="hidden"}
+
+{{< include /routing-dv/_bellman-ford.qmd >}}
+
+# distance vector routing {visibility="hidden"}
+
+## distributing Bellman-Ford {visibility="hidden"}
+
+{{< include /routing-dv/_bellman-ford-dist.qmd >}}
+
+## aside: networks and routers {visibility="hidden"}
+
+{{< include /routing-dv/_network-v-router-dv.qmd >}}
+
+## algorithm {visibility="hidden"}
+
+{{< include /routing-dv/_dv-algo.qmd >}}
+
+## RIP {visibility="hidden"}
+
+{{< include /routing-dv/_rip-protocol.qmd >}}
+
+## handling removal {visibility="hidden"}
+
+{{< include /routing-dv/_removalp.qmd >}}
+
+## count-to-infinity {visibility="hidden"}
+
+{{< include /routing-dv/_count-to-infty.qmd >}}

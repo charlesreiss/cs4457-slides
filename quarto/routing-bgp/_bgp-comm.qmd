@@ -1,0 +1,57 @@
+
+### BGP communities  {.smaller}
+
+
+* routes sent via BGP can have ‘communities’
+* extra information tagged on routes sent via BGP 
+<hr class="vspace" />
+* large ISPs have lists of communities their customers/peers can use
+* … and these affect how those routes are used
+
+
+### aside: Internet2  {.smaller}
+
+
+* non-profit networking consortium
+* operations major US University-focused network
+* also makes eduroam work across different Universities
+* one of MARIA's major sources of connectivity (and indirectly one of UVA's major sources of connectivity)
+* has lots of peering relationships (incl. with big Internet companies) 
+
+   * (but not general Internet provider)
+
+
+
+### selected Internet2 BGP communities 
+
+![](/routing-bgp/texfig/selected-internet2-communities.figure.svg)
+ [https://noc.net.internet2.edu/knowledge/policy-statements/internet2-bgp-communities.html](https://noc.net.internet2.edu/knowledge/policy-statements/internet2-bgp-communities.html)
+
+### community options from prev slide  {.smaller}
+
+
+* setting local-pref: 
+
+   * you can decide how preferred your route is by Internet2
+   * maybe to make one primary, another secondary?
+
+* blocking route from being sent to specific place
+* prepending Internet2's AS before forwarding prefix 
+
+   * hopefully make that route less preferred by others
+
+* prepending Internet2's AS before forwarding prefix to specific place 
+
+   * hopefully make that route less preferred by that place
+
+
+
+### other things with communities  {.smaller}
+
+
+* Internet2 also uses communities to mark…
+* what location routes were learned from
+* what type of organization routes were learned from
+* whether Internet2 is only allowed to use the route non-commerically or not
+* …
+

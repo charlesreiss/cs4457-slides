@@ -1,0 +1,17 @@
+
+### multiple BGP sessions 
+
+
+
+::: {.r-stack .my-full}
+![](/routing-bgp/texfig/bgp-simple-multi.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/routing-bgp/texfig/bgp-simple-multi.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/routing-bgp/texfig/bgp-simple-multi.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/routing-bgp/texfig/bgp-simple-multi.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+
+:::
+

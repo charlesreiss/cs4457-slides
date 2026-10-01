@@ -1,0 +1,91 @@
+
+### links going down 
+
+
+* problem with our update rule:
+* assumes routes only get better 
+<hr class="vspace" />
+* reality: sometimes links go down
+* need to find different route
+
+
+### updating for removal (1)  {.smaller}
+
+
+* let's say I'm A and my distance vector is: 
+
+   * A=0 via A, B=4 via B, C=5 via D, D=4 via D
+
+* if my link to D goes down, new distance vector should be? 
+
+   * A=0 via A, B=4 via B, C=$\infty$ via no one, D=$\infty$ via no one
+ 
+<hr class="vspace" />
+* later updates might fix $\infty$s
+
+
+### updating for removal (2)  {.smaller}
+
+
+* let's say I'm A and my distance vector is: 
+
+   * B=4 via B, C=5 via D, D=4 via D
+
+* and D tells me its distance vector is 
+
+   * B=8 via A, C=$\infty$ via no one, D=0 via D
+
+* then my (A)'s new distance vector should be? 
+
+   * B=4 via B, C=$\infty$ via no one, D=4 via D
+
+
+
+### updating for removal (3)  {.smaller}
+
+
+* let's say I'm A and my distance vector is: 
+
+   * B=4 via B, C=5 via D, D=4 via D
+
+* and D tells me its distance vector is 
+
+   * B=8 via A, C=5 via A, D=0 via D
+
+* then my (A)'s new distance vector should be? 
+
+   * B=4 via B, C=$\infty$ via no one, D=4 via D
+
+
+
+### updating for removal (4)  {.smaller}
+
+
+* let's say I'm A and my distance vector is: 
+
+   * B=4 via B, C=5 via D, D=4 via D
+
+* and D tells me its distance vector is 
+
+   * B=3 via B, C=8 via B, D=0 via D
+
+* then my (A)'s new distance vector should be? 
+
+   * B=4 via B, C=12 via D, D=4 via D
+ 
+<hr class="vspace" />
+* probably later update from B will overwrite route to C
+
+
+### removal? 
+
+
+
+::: {.r-stack .my-full}
+![](/routing-dv/texfig/removal-example.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/routing-dv/texfig/removal-example.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+
+:::
+

@@ -1,0 +1,31 @@
+
+### going the distance 
+
+
+
+::: {.r-stack .my-full}
+![](/routing-bgp/texfig/distance-prefs.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/routing-bgp/texfig/distance-prefs.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+
+:::
+
+
+### distance preferences  {.smaller}
+
+
+* ISP B$\rightarrow$ISP A across the Pacific: 
+<hr class="vspace" />
+* for ISP B: 
+
+   * cheaper to hand-off packet to ISP A as soon as possible
+   * more control over performance if handing off as late as possible
+
+* for ISP A: 
+
+   * cheaper to require ISP B to hand-off packet as late as possible
+   * more control over performance if B sends as soon as possible
+
+* maybe part of ISP A and ISP B peering agreement
+

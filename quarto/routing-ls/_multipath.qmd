@@ -1,0 +1,37 @@
+
+### two good choices? 
+
+![](/routing-ls/texfig/multipath.figure.svg)
+
+
+### splitting packets  {.smaller}
+
+
+* naïve idea: send every other packet on bottom link 
+<hr class="vspace" />
+* problem: bottom and top link will have different latencies 
+
+   * (even if only temporarily from queuing)
+
+* $\implies$ packets will be reordered a lot 
+
+   * this is pretty bad for TCP
+   * (and many other things)
+
+
+
+### equal cost multipath (ECMP)  {.smaller}
+
+
+* split packets by flow
+* goal: 
+
+   * each TCP connection chooses one of the $N$ links
+   * … but don't want to track list of TCP connections
+
+* solution: 
+
+   * take a hash of the connection info in header
+   * use link index $\left\lfloor\frac{\text{hash value} \times N}{\text{max hash value}}\right\rfloor$
+
+

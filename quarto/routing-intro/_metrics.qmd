@@ -4,7 +4,7 @@
 
 * want some way of saying how ‘good’ link is
 * typically ‘‘cost’’/‘‘distance’’ value (so lower is better)
-* in practice, most commonly \[\frac{\text{constant}}{\text{bandwidth}}\] 
+* in practice, most commonly $\frac{\text{constant}}{\text{bandwidth}}$
 <hr class="vspace" />
 * could also try to: 
 

@@ -1,0 +1,8 @@
+---
+name: routing-bgp
+---
+
+{{< include /routing-bgp/_talk-inner.qmd >}}
+# backup slides
+
+{{< include /routing-bgp/_talk-backup.qmd >}}

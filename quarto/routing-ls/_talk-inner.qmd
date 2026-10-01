@@ -1,0 +1,56 @@
+
+# link state {visibility="hidden"}
+
+## idea {visibility="hidden"}
+
+{{< include /routing-ls/_link-state-idea.qmd >}}
+
+## link state advertisements {visibility="hidden"}
+
+{{< include /routing-ls/_link-state-adv.qmd >}}
+
+## link state database {visibility="hidden"}
+
+{{< include /routing-ls/_link-state-db.qmd >}}
+
+## reliable flooding {visibility="hidden"}
+
+{{< include /routing-ls/_ls-reliable-flood.qmd >}}
+
+## shortest path first {visibility="hidden"}
+
+{{< include /routing-ls/_ls-shortest-path.qmd >}}
+
+## shortest path algorithm {visibility="hidden"}
+
+{{< include /routing-ls/_bestFirstExample.qmd >}}
+
+## shortest path consistency {visibility="hidden"}
+
+{{< include /routing-ls/_sp-consistency.qmd >}}
+
+## convergence {visibility="hidden"}
+
+{{< include /routing-ls/_ls-v-dv-converge.qmd >}}
+
+## networks versus routers {visibility="hidden"}
+
+{{< include /routing-ls/_network-v-router-ls.qmd >}}
+
+# multipath/load balancing {visibility="hidden"}
+
+{{< include /routing-ls/_multipath.qmd >}}
+
+# scalability: OSPF areas {visibility="hidden"}
+
+## motivation / basic idea {visibility="hidden"}
+
+{{< include /routing-ls/_area-big-net.qmd >}}
+
+## areas are DV {visibility="hidden"}
+
+{{< include /routing-ls/_area-is-dv.qmd >}}
+
+## always route through backbone {visibility="hidden"}
+
+{{< include /routing-ls/_ospf-backbone.qmd >}}

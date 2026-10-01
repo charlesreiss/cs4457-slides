@@ -1,0 +1,36 @@
+
+### interdomain routing  {.smaller}
+
+
+* so far: routing within one organization
+* lots of trust/sharing: 
+<hr class="vspace" />
+* okay to send packets through (essentially) every router
+* okay for any router to ‘announce’ any address
+* okay to share (almost) full map of network 
+<hr class="vspace" />
+* not what we want for interdomain routing
+
+
+### some business considerations 
+
+
+
+::: {.r-stack .my-full}
+![](/routing-bgp/texfig/some-business-considerations.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/routing-bgp/texfig/some-business-considerations.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/routing-bgp/texfig/some-business-considerations.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/routing-bgp/texfig/some-business-considerations.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+![](/routing-bgp/texfig/some-business-considerations.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+
+![](/routing-bgp/texfig/some-business-considerations.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
+
+![](/routing-bgp/texfig/some-business-considerations.figure-7.svg){.fragment .fade-in-then-out fragment-index=7}
+
+
+:::
+

@@ -1,0 +1,63 @@
+# interdomain routing {visibility="hidden"}
+
+{{< include /routing-bgp/_interdomain-problems.qmd >}}
+
+## terminology: autonomous system {visibility="hidden"}
+
+{{< include /routing-bgp/_define-as.qmd >}}
+
+## relationship types {visibility="hidden"}
+
+{{< include /routing-bgp/_relate-types.qmd >}}
+
+## aside: connecting big networks {visibility="hidden"}
+
+{{< include /routing-bgp/_aside-connect-big.qmd >}}
+
+## local/remote preferences {visibility="hidden"}
+
+{{< include /routing-bgp/_distant-prefs.qmd >}}
+
+## sharing routes: BGP {visibility="hidden"}
+
+{{< include /routing-bgp/_bgp-overview.qmd >}}
+
+## BGP route format {visibility="hidden"}
+
+{{< include /routing-bgp/_bgp-route-format.qmd >}}
+
+## sharing routes: picture {visibility="hidden"}
+
+{{< include /routing-bgp/_bgp-basic-picture.qmd >}}
+
+## sharing routes: multiple connections {visibility="hidden"}
+
+{{< include /routing-bgp/_bgp-simple-multi.qmd >}}
+
+## BGP route preference order {visibility="hidden"}
+
+{{< include /routing-bgp/_bgp-route-pref.qmd >}}
+
+# UVa, in practice {visibility="hidden"}
+
+{{< include /routing-bgp/_in-practice-uva.qmd >}}
+
+## internet exchanges, peeringdb {visibility="hidden"}
+
+{{< include /routing-bgp/_peeringdb-ixp.qmd >}}
+
+## BGP communities {visibility="hidden"}
+
+{{< include /routing-bgp/_bgp-comm.qmd >}}
+
+## BGP hijacking/fat fingers {visibility="hidden"}
+
+{{< include /routing-bgp/_hijack.qmd >}}
+
+## validating routes / sBGP {visibility="hidden"}
+
+{{< include /routing-bgp/_aside-verification.qmd >}}
+
+## aside: partial tables {visibility="hidden"}
+
+{{< include /routing-bgp/_partial-tables.qmd >}}

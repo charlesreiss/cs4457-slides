@@ -1,0 +1,44 @@
+
+### preference between routes  {.smaller}
+
+
+* if multiple choices, most common strategy:…
+* should use most specific route 
+
+   * use 2001:db8:1234::/40 over 2001:db8:1234::/39 if both apply
+   * (but usually reject very small address ranges (e.g. /31 for IPv4, /60 for IPv6))
+
+* then (if tie) local policy applies
+* then shortest AS path
+* then lower AS number
+* then (sometimes) lower MED (multiple exit discriminator)
+* then best route within current AS
+
+
+### multi-exit discriminator 
+
+![](/routing-bgp/texfig/multi-exit-discriminator.figure.svg)
+
+
+### getting your preference  {.smaller}
+
+
+* to affect how people route you, can… 
+<hr class="vspace" />
+* prepend to AS path sent to make it longer 
+
+   * typically add serveral copies of your AS number
+
+* only announce network from certain of your routers 
+
+   * problem: won't have all ‘backup’ paths available
+
+* announce a large network in more specific pieces 
+
+   * 3fff:1234::/32 as 3fff:1234::/33 and 3fff:1234:8000::/33
+
+* get other networks to change how they forward your routes 
+
+   * often enabled through ‘BGP communities’
+
+

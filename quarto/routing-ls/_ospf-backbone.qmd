@@ -1,0 +1,45 @@
+
+### backbone  {.smaller}
+
+
+* OSPF area 0 is called ‘‘backbone’’
+* border routers only summarize routes sent to backbone <i>or</i> not obtained from other area border routers 
+<hr class="vspace" />
+* means routing between areas must either: 
+
+   * go through the backbone, or
+   * only go through one border router
+
+* makes loops not possible
+
+
+### backbone limits 
+
+
+
+::: {.r-stack .my-full}
+![](/routing-ls/texfig/ospf-backbone-limits.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/routing-ls/texfig/ospf-backbone-limits.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/routing-ls/texfig/ospf-backbone-limits.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/routing-ls/texfig/ospf-backbone-limits.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+
+:::
+
+
+### OSPF virtual links  {.smaller}
+
+
+* ‘‘tunnel’’ backbone through another area 
+
+   * route as if ‘direct’ connection between two border routers
+   * but connection implemented by going through area
+   * both ends considered part of backbone
+
+* metric for virtaul link = metric of route through area 
+<hr class="vspace" />
+* configured explicitly by administrator
+
