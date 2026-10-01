@@ -3,6 +3,7 @@ import argparse
 import logging
 import shutil
 import subprocess
+import re
 
 from pathlib import Path
 from typing import List
@@ -36,6 +37,12 @@ def convert_tex(base_file: Path, output_directory: Path, output_name: str = None
             '--output', output_directory / output_name
         ])
 
+def _ignored(args, stem: str):
+    if args.ignore is not None:
+        if re.search(args.ignore, stem) is not None:
+            return True
+    return False
+
 def convert_directory(base_directory: Path, output_directory: Path):
     if not output_directory.exists():
         output_directory.mkdir()
@@ -45,9 +52,9 @@ def convert_directory(base_directory: Path, output_directory: Path):
             shutil.copyfile(item, output_directory / item.name)
         elif item.is_dir() and item.name == 'figures':
             shutil.copytree(item, output_directory / item.name)
-        elif item.suffix == '.tex' and \
-           item.stem not in EXCLUDED:
-           convert_tex(item, output_directory)
+        elif item.suffix == '.tex' and item.stem not in EXCLUDED and \
+             not _ignored(args, item.stem):
+            convert_tex(item, output_directory)
 
     if not (base_directory / 'talk-inner.tex').exists():
         convert_tex(base_directory / 'talk.tex', output_directory, '_talk-inner.qmd')
@@ -62,6 +69,7 @@ if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG)
     parser = argparse.ArgumentParser()
     parser.add_argument('--new', action='store_true', default=False)
+    parser.add_argument('--ignore', default=None)
     parser.add_argument('directory', type=Path, nargs='+', default=[])
     args = parser.parse_args()
     for directory in args.directory:
