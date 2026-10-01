@@ -1,7 +1,7 @@
 
 ### exercise: best routes? 
 
-![](/routing/texfig/preview-better.figure.svg)
+![](/routing-intro/texfig/preview-better.figure.svg)
  
 
 * A to B? B to E? F to G?

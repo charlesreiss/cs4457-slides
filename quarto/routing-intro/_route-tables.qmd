@@ -1,7 +1,7 @@
 
 ### routing tables 
 
-![](/routing/texfig/route-tables-routing-tables.figure.svg)
+![](/routing-intro/texfig/routing-tables.figure.svg)
 
 
 ### filling routing tables  {.smaller}

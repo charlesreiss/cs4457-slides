@@ -15,7 +15,7 @@ def write_qmds(base: Path, directory: Path, with_backup: bool = False):
     talk += '\n{{< include /' + base_path + '/_talk-inner.qmd >}}'
     if with_backup:
         talk += '\n# backup slides\n'
-        talk += '\n{{< include /' + base_path + '/_talk-inner.qmd >}}'
+        talk += '\n{{< include /' + base_path + '/_talk-backup.qmd >}}'
     (directory / 'talk.qmd').write_text(talk)
 
 def main():

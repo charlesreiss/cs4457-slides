@@ -1,0 +1,53 @@
+# routing problem {visibility="hidden"}
+
+{{< include /routing-intro/_route-tables.qmd >}}
+
+# actions on forwarding {visibility="hidden"}
+
+{{< include /routing-intro/_forward-act.qmd >}}
+
+## unreachable {visibility="hidden"}
+
+### againframe(forwardProbs)
+
+{{< include /routing-intro/_unreachable.qmd >}}
+
+## fragmentation, MTUs {visibility="hidden"}
+
+### againframe(forwardProbs)
+
+{{< include /routing-intro/_fragments.qmd >}}
+
+## exercise{visibility="hidden"}
+
+{{< include /routing-intro/_frag-perf-ex.qmd >}}
+
+## time-to-live {visibility="hidden"}
+
+### againframe(forwardProbs)
+
+{{< include /routing-intro/_ttl.qmd >}}
+
+# traceroute {visibility="hidden"}
+
+{{< include /routing-intro/_traceroute.qmd >}}
+
+# centralized versus distributed {visibility="hidden"}
+
+{{< include /routing-intro/_central-v-dist.qmd >}}
+
+# basic flooding / MAC learning {visibility="hidden"}
+
+{{< include /routing-intro/_basic-flooding.qmd >}}
+
+# spanning trees {visibility="hidden"}
+
+{{< include /routing-intro/_spanning-tree.qmd >}}
+
+# preview: better routing {visibility="hidden"}
+
+{{< include /routing-intro/_preview-better.qmd >}}
+
+# aside: metrics {visibility="hidden"}
+
+{{< include /routing-intro/_metrics.qmd >}}

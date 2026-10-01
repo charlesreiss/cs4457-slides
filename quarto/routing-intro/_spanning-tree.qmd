@@ -44,15 +44,15 @@
 
 
 ::: {.r-stack .my-full}
-![](/routing/texfig/spanning-tree-spanning-tree-example.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/routing-intro/texfig/spanning-tree-example.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
 
-![](/routing/texfig/spanning-tree-spanning-tree-example.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/routing-intro/texfig/spanning-tree-example.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
 
-![](/routing/texfig/spanning-tree-spanning-tree-example.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/routing-intro/texfig/spanning-tree-example.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
 
-![](/routing/texfig/spanning-tree-spanning-tree-example.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+![](/routing-intro/texfig/spanning-tree-example.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
 
-![](/routing/texfig/spanning-tree-spanning-tree-example.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+![](/routing-intro/texfig/spanning-tree-example.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
 
 
 :::
@@ -75,15 +75,15 @@
 
 
 ::: {.r-stack .my-full}
-![](/routing/texfig/spanning-tree-fixing-wrong-links.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/routing-intro/texfig/spanning-tree-fixing-wrong-links.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
 
-![](/routing/texfig/spanning-tree-fixing-wrong-links.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/routing-intro/texfig/spanning-tree-fixing-wrong-links.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
 
-![](/routing/texfig/spanning-tree-fixing-wrong-links.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/routing-intro/texfig/spanning-tree-fixing-wrong-links.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
 
-![](/routing/texfig/spanning-tree-fixing-wrong-links.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+![](/routing-intro/texfig/spanning-tree-fixing-wrong-links.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
 
-![](/routing/texfig/spanning-tree-fixing-wrong-links.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+![](/routing-intro/texfig/spanning-tree-fixing-wrong-links.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
 
 
 :::
@@ -114,15 +114,15 @@
 
 
 ::: {.r-stack .my-full}
-![](/routing/texfig/spanning-tree-some-example-updates.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/routing-intro/texfig/spanning-tree-some-example-updates.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
 
-![](/routing/texfig/spanning-tree-some-example-updates.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/routing-intro/texfig/spanning-tree-some-example-updates.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
 
-![](/routing/texfig/spanning-tree-some-example-updates.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/routing-intro/texfig/spanning-tree-some-example-updates.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
 
-![](/routing/texfig/spanning-tree-some-example-updates.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+![](/routing-intro/texfig/spanning-tree-some-example-updates.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
 
-![](/routing/texfig/spanning-tree-some-example-updates.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+![](/routing-intro/texfig/spanning-tree-some-example-updates.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
 
 
 :::

@@ -1,57 +1,6 @@
 
-# routing problem {visibility="hidden"}
+{{< include /routing-intro/_talk-inner.qmd >}}
 
-{{< include /routing/_route-tables.qmd >}}
-
-# actions on forwarding {visibility="hidden"}
-
-{{< include /routing/_forward-act.qmd >}}
-
-## unreachable {visibility="hidden"}
-
-### againframe(forwardProbs)
-
-{{< include /routing/_unreachable.qmd >}}
-
-## fragmentation, MTUs {visibility="hidden"}
-
-### againframe(forwardProbs)
-
-{{< include /routing/_fragments.qmd >}}
-
-## exercise{visibility="hidden"}
-
-{{< include /routing/_frag-perf-ex.qmd >}}
-
-## time-to-live {visibility="hidden"}
-
-### againframe(forwardProbs)
-
-{{< include /routing/_ttl.qmd >}}
-
-# traceroute {visibility="hidden"}
-
-{{< include /routing/_traceroute.qmd >}}
-
-# centralized versus distributed {visibility="hidden"}
-
-{{< include /routing/_central-v-dist.qmd >}}
-
-# basic flooding / MAC learning {visibility="hidden"}
-
-{{< include /routing/_basic-flooding.qmd >}}
-
-# spanning trees {visibility="hidden"}
-
-{{< include /routing/_spanning-tree.qmd >}}
-
-# preview: better routing {visibility="hidden"}
-
-{{< include /routing/_preview-better.qmd >}}
-
-# aside: metrics {visibility="hidden"}
-
-{{< include /routing/_metrics.qmd >}}
 
 # Bellman-Ford {visibility="hidden"}
 
