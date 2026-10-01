@@ -46,13 +46,13 @@ traceroute to ripe.net (193.0.11.51), 30 hops max, 60 byte packets
 ### traceroute sent 
 
 
-![](/routing/traceroute-v4-send){}
+![](/routing-intro/traceroute-v4-send){fig-alt="Wireshark screenshot showing series of UDP packets from 128.143.71.27 to 193.0.11.51, most of which are colored red to indicate an error was detected later. A column shows the TTLs of the UDP packets as 1, 1, 1, 2, 2, 2, 3, 3, 3, etc."}
 
 
 ### traceroute received 
 
 
-![](/routing/traceroute-v4-recv){}
+![](/routing-intro/traceroute-v4-recv){fig-alt="Wireshark screenshot showing ICMP time-to-live exceeded messages sent from various routers to 128.143.71.27. A TTL column shows two numbers for each message, the first is high giving the TTL for the ICMP message itself. The second is 1 or 2, showing the TTL of the original UDP message contained in the ICMP message."}
 
 
 ### aside: multiple paths 

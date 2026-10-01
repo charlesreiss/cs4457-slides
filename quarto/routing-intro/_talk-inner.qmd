@@ -4,17 +4,36 @@
 
 # actions on forwarding {visibility="hidden"}
 
-{{< include /routing-intro/_forward-act.qmd >}}
+### problems when forwarding 
+
+* no entry in routing table
+* no entry in neighbor table
+   * (after attempting ARP, or neighbor discovery)
+* packet too big for next network
+* there's an infinite loop in the route
 
 ## unreachable {visibility="hidden"}
 
-### againframe(forwardProbs)
+### problems when forwarding 
+
+* _no entry in routing table_
+* _no entry in neighbor table_
+   * (after attempting ARP, or neighbor discovery)
+* packet too big for next network
+* there's an infinite loop in the route
+
 
 {{< include /routing-intro/_unreachable.qmd >}}
 
 ## fragmentation, MTUs {visibility="hidden"}
 
-### againframe(forwardProbs)
+### problems when forwarding 
+
+* no entry in routing table
+* no entry in neighbor table
+   * (after attempting ARP, or neighbor discovery)
+* _packet too big for next network_
+* there's an infinite loop in the route
 
 {{< include /routing-intro/_fragments.qmd >}}
 
@@ -24,7 +43,13 @@
 
 ## time-to-live {visibility="hidden"}
 
-### againframe(forwardProbs)
+### problems when forwarding 
+
+* no entry in routing table
+* no entry in neighbor table
+   * (after attempting ARP, or neighbor discovery)
+* packet too big for next network
+* _there's an infinite loop in the route_
 
 {{< include /routing-intro/_ttl.qmd >}}
 
@@ -37,6 +62,8 @@
 {{< include /routing-intro/_central-v-dist.qmd >}}
 
 # basic flooding / MAC learning {visibility="hidden"}
+
+<!-- FIXME: cleanup diagrams -->
 
 {{< include /routing-intro/_basic-flooding.qmd >}}
 

@@ -13,7 +13,7 @@ From 128.143.63.1 icmp_seq=6 Destination Host Unreachable
 pipe 4
 
 ```
- --- 
+<hr/>
 ```
 $ ping6 2606:8e80:7007:ef1a::1
 PING 2606:8e80:7007:ef1a::1(2606:8e80:7007:ef1a::1) 56 data bytes
