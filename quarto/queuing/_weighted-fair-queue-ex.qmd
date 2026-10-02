@@ -1,9 +1,9 @@
 
-### exercise  {.smaller}
+### WFQ exercise  {.smaller}
 
 
 * suppose A gets 3 shares, B 1 share
-* get packets: 
+* get packets (all arrive at time 0): 
 <hr class="vspace" />
 * A1, A2, A3, A4, A5 (each 2000 bits)
 * B1 (500 bits), B2 (600 bits), B3 (500 bits), B4 (400 bits) 
