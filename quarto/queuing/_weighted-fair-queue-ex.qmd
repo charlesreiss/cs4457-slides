@@ -10,3 +10,16 @@
 <hr class="vspace" />
 * best order?
 
+### solution {.smaller}
+
+*  weights: A=1, B=3
+*  A finish time calcuations
+    *  A1 at time $0 \text{(current vtime)} + 2000 \text{(size)} \times 1 \text{(weight)} = 2000$
+    *  A2 at time $2000 \text{(prev finish)} + 2000 \text{(size)} \times 1 \text{(weight)} = 4000$
+    *  A3 at 6000, A4 at 8000, A5 at 10000
+*  B finish time calculations
+    *  B1 at time $0 + 500 \text{(size)} \times 3 = 1500$
+    *  B2 at time $1500 \text{(prev finish)} + 600 \times 3 = 3300$
+    *  B3 at 4800, B4 at 6000
+*  overall order:
+    *  B1, A1, B2, A2, B3, {A3 and B4 in any order}, A4, A5
