@@ -1,0 +1,9 @@
+### upcoming assignment  {.smaller}
+
+
+* fixed size packets, but…
+* part 1: priority queue (next topic)
+* part 2: weighted fair queue 
+   * one flow gets twice weight of other
+   * relaxed computation on virtual time for mid-arriving packets
+
