@@ -52,7 +52,7 @@
 
 
 
-### example  (1) {.smaller}
+### fair queuing timeline example (1) {.smaller}
 
 * [A1(1000 bit) @ 0, B1(900 bit) @ 500, C1(600 bit) @ 900, \{C2(100 bit), B2(200 bit)\} @ 2000]{.my-small}<br>
 <table class="collines">
@@ -72,7 +72,7 @@
 
  ![](/queuing/texfig/fq-virt-v-wall-timeline.figure.svg)
 
-### exmaple (extended) {.smaller}
+### example extended {.smaller}
 
 <table class="collines" style="font-size: 60%">
 <thead>
