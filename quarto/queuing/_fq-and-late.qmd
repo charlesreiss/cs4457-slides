@@ -81,15 +81,15 @@
 <tbody>
 <tr><td>0</td><td>0</td><td>A1 (1000*)</td></tr>
 <tr><td colspan="3">1 active flow, +500 wallclock = +500 virtual</td></tr>
-<tr><td>500</td><td>500</td><td>A1 (1000*), B1 (1400)</td></tr>
+<tr><td>500</td><td>500</td><td>A1 (1000*), B1 (1400 = vtime + 900 bit)</td></tr>
 <tr><td colspan="3">2 active flow, +400 wallclock = +200 virtual</td></tr>
-<tr><td>900</td><td>700</td><td>A1 (1000*), B1 (1400), C1 (1300)</td></tr>
+<tr><td>900</td><td>700</td><td>A1 (1000*), B1 (1400), C1 (1300 = vtime + 600 bit)</td></tr>
 <tr><td colspan="3">3 active flow, +100 wallclock = +33 virtual</td></tr>
 <tr><td>1000</td><td>733</td><td>C1 (1300*), B1 (1400)</td></tr>
 <tr><td colspan="3">2 active flow, +600 wallclock = +300 virtual</td></tr>
 <tr><td>1600</td><td>1033</td><td>B1 (1400*)</td></tr>
 <tr><td colspan="3">1 active flow, +400 wallclock = +400 virtual</td></tr>
-<tr><td>2000</td><td>1433</td><td>B1 (1400*), C2 (1533), B2 (1633)</td></tr>
+<tr><td>2000</td><td>1433</td><td>B1 (1400*), C2 (1533 = vtime + 100 bit), B2 (1633 = vtime + 200 bit)</td></tr>
 <tr><td colspan="3">2 active flow, +500 wallclock = +250 virtual</td></tr>
 <tr><td>2500</td><td>1683</td><td>C2 (1533*), B2 (1633)</td></tr>
 <tr><td colspan="3">2 active flow, +100 wallclock = +50 virtual</td></tr>
