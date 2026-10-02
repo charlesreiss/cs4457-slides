@@ -5,7 +5,7 @@ title: "queuing"
 
 ### changelog
 
-*  2026-10-01 (after lecture): adjust fair queuing example slide with wallclock/virtual time comparison to match packet order arrival; label graph
+*  2026-10-01 (after lecture): adjust fair queuing example slide with wallclock/virtual time comparison to match packet order arrival; label graph; add full virtual time calculation slide
 *  2026-10-01 (after lecture): late packets: correct A2 to 3 bits, adjust numbers
 *  2026-10-01 (after lecture): update assignment slide
 
