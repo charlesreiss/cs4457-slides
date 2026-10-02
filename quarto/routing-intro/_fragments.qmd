@@ -52,7 +52,7 @@ PING 192.168.1.1 (192.168.1.1) 4000(4028) bytes of data.
 <hr class="vspace" />
 * typical Ethernet, Wifi --- 1500 bytes
 * Ethernet with ‘‘jumbo frames’’ -- 65535 bytes
-* IPsec ESP VPN over 1500-byte MTU network -- $\sim$1400--1440 bytes 
+* IPsec ESP VPN over 1500-byte MTU network -- $\sim$ 1400--1440 bytes 
 
    * VPN --- simulated network link over other network links
 
