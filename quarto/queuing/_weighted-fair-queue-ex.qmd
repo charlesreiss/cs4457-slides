@@ -13,6 +13,7 @@
 ### solution {.smaller}
 
 * weights: A=1 (1 bit per round), B=1/3 (of bit per round)
+   *  (using 1,1/3 instead of 3,1 to avoid fractions)
 *  A finish time calcuations
     *  A1 at time $0 \text{(current vtime)} + 2000 \text{(size)} \div 1 \text{(weight)} = 2000$
     *  A2 at time $2000 \text{(prev finish)} + 2000 \text{(size)} \div 1 \text{(weight)} = 4000$
