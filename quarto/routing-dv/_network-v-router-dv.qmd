@@ -14,19 +14,35 @@
 
 <!-- FIXME: split into two diagrams -->
 
-::: {.r-stack .my-full}
-![](/routing-dv/texfig/network-v-router-in-dv.figure-1.svg){.fragment .fade-out fragment-index=2}
+::::: {.columns}
 
-![](/routing-dv/texfig/network-v-router-in-dv.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+:::: {.column}
 
-![](/routing-dv/texfig/network-v-router-in-dv.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+::: {.r-stack}
 
-![](/routing-dv/texfig/network-v-router-in-dv.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+![](/routing-dv/texfig/network-v-router-netdiag.figure-1.svg){.fragment .fade-out fragment-index=2 width=400px}
 
-![](/routing-dv/texfig/network-v-router-in-dv.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
-
-![](/routing-dv/texfig/network-v-router-in-dv.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
-
+![](/routing-dv/texfig/network-v-router-netdiag.figure-2.svg){.fragment .fade-in fragment-index=2 width=400px}
 
 :::
+
+::::
+
+:::: {.column}
+
+::: {.r-stack}
+
+![](/routing-dv/texfig/network-v-router-netgraph.figure-1.svg){.fragment .fade-in-then-out fragment-index=3 width=400px}
+
+![](/routing-dv/texfig/network-v-router-netgraph.figure-2.svg){.fragment .fade-in-then-out fragment-index=4 width=400px}
+
+![](/routing-dv/texfig/network-v-router-netgraph.figure-3.svg){.fragment .fade-in-then-out fragment-index=5 width=400px}
+
+![](/routing-dv/texfig/network-v-router-netgraph.figure-4.svg){.fragment .fade-in-then-out fragment-index=6 width=400px}
+
+:::
+
+::::
+
+:::::
 

@@ -114,7 +114,7 @@
 
 
 ::: {.r-stack .my-full}
-![](/routing-intro/texfig/spanning-tree-some-example-updates.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/routing-intro/texfig/spanning-tree-some-example-updates.figure-1.svg){.fragment .fade-out fragment-index=2}
 
 ![](/routing-intro/texfig/spanning-tree-some-example-updates.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
 
