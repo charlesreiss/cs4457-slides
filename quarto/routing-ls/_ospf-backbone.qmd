@@ -15,10 +15,10 @@
 
 ### backbone limits 
 
-
+<!-- FIXME: overbox stuff --t>
 
 ::: {.r-stack .my-full}
-![](/routing-ls/texfig/ospf-backbone-limits.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/routing-ls/texfig/ospf-backbone-limits.figure-1.svg){.fragment .fade-out fragment-index=2}
 
 ![](/routing-ls/texfig/ospf-backbone-limits.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
 

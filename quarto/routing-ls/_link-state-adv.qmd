@@ -1,24 +1,7 @@
 
 ### OSPF link-state advertisements (router) 
 
-
-
-::: {.r-stack .my-full}
-![](/routing-ls/texfig/link-state-adv-router.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
-
-![](/routing-ls/texfig/link-state-adv-router.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
-
-![](/routing-ls/texfig/link-state-adv-router.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
-
-![](/routing-ls/texfig/link-state-adv-router.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
-
-![](/routing-ls/texfig/link-state-adv-router.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
-
-![](/routing-ls/texfig/link-state-adv-router.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
-
-
-:::
-
+![](/routing-ls/texfig/link-state-adv-router.figure.svg)
 
 ### OSPF LSA sequences/ages  {.smaller}
 

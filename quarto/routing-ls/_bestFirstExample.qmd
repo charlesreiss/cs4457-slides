@@ -4,7 +4,7 @@
 
 
 ::: {.r-stack .my-full}
-![](/routing-ls/texfig/bestFirstExample1.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/routing-ls/texfig/bestFirstExample1.figure-1.svg){.fragment .fade-out fragment-index=2}
 
 ![](/routing-ls/texfig/bestFirstExample1.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
 
@@ -12,11 +12,33 @@
 
 ![](/routing-ls/texfig/bestFirstExample1.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
 
+![](/routing-ls/texfig/bestFirstExample1.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+
+![](/routing-ls/texfig/bestFirstExample1.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
+
+![](/routing-ls/texfig/bestFirstExample1.figure-7.svg){.fragment .fade-in-then-out fragment-index=7}
+
+![](/routing-ls/texfig/bestFirstExample1.figure-8.svg){.fragment .fade-in-then-out fragment-index=8}
 
 :::
 
 
 ### Dijkstra's algorithm example 2 
 
-![](/routing-ls/texfig/bestFirstExample2.figure.svg)
+::: {.r-stack .my-full}
+![](/routing-ls/texfig/bestFirstExample2.figure-1.svg){.fragment .fade-out fragment-index=2}
 
+![](/routing-ls/texfig/bestFirstExample2.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/routing-ls/texfig/bestFirstExample2.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/routing-ls/texfig/bestFirstExample2.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+![](/routing-ls/texfig/bestFirstExample2.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+
+![](/routing-ls/texfig/bestFirstExample2.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
+
+![](/routing-ls/texfig/bestFirstExample2.figure-7.svg){.fragment .fade-in-then-out fragment-index=7}
+
+
+:::

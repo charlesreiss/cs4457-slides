@@ -1,0 +1,30 @@
+\begin{tikzpicture}
+\node[mynode] (R1r) at (0, 0) {R1};
+\node[mynode] (N1r) at (2, 1) {N1};
+\node[mynode] (R2r) at (4, 0) {R2};
+\node[mynode] (N2r) at (4, -2) {N2};
+\node[mynode] (R3r) at (0, -4) {R3};
+\node[mynode] (N3r) at (0, -2) {N3};
+\node[mynode] (N4r) at (2, -2) {N4};
+\node[mynode] (R4r) at (4, -4) {R4};
+\draw[connect,alt=<3>{red}] (R1r) -- (R2r);
+\draw[connect] (R1r) -- (N1r);
+\draw[connect] (R2r) -- (N1r);
+\draw[connect] (R1r) -- (N3r);
+\draw[connect] (R3r) -- (N3r);
+\draw[connect] (R3r) -- (N4r);
+\draw[connect] (R4r) -- (N4r);
+\draw[connect] (R2r) -- (N4r);
+\draw[connect] (R2r) -- (N2r);
+\draw[connect] (R4r) -- (N2r);
+    \begin{visibleenv}<2>
+    \node[anchor=north,draw=red, ultra thick] at (2, -5) {
+        graph has nodes for routers+networks
+    };
+    \end{visibleenv}
+    \begin{visibleenv}<3>
+    \node[anchor=north,draw=red, ultra thick] at (2, -5) {
+        can have direct router-router link
+    };
+    \end{visibleenv}
+\end{tikzpicture}

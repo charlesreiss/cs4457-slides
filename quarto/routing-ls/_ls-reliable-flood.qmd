@@ -1,8 +1,9 @@
 
 ### reliable flooding (picture) 
 
-[ Peterson and Davie, <i>Computer Networks: A Systems Approach</i>, Figure 88]{.my-small} 
-![](/routing/sysapproach-fig88){}
+[Peterson and Davie, <i>Computer Networks: A Systems Approach</i>, Figure 88]{.mycredit}
+
+![](/routing-ls/sysapproach-fig88.svg){}
 
 
 ### missing from the picture 

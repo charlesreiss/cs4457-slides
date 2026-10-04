@@ -29,7 +29,6 @@
 \foreach \x/\y in {r1/s1,r2/s1,r2/s2,r3/s3,r2/s4,r1/s3,r3/s4,s3/r3,s2/r4,r4/s4} {
     \draw[connect] (\x) -- (\y);
 }
-\draw[connect,alt=<4>{red}] (r1) -- (r2);
 \begin{visibleenv}<2->
 \draw[dotted, very thick,fill=green,fill opacity=0.1,text opacity=1.] ([xshift=-.2cm]c1-a.north west) -- ([xshift=.2cm]c1-b.north east)
     node[midway,above] {N1}
@@ -42,38 +41,5 @@
 \draw[dotted, very thick,fill=red,fill opacity=0.1,text opacity=1.] (r2.south east) -- (r4.south west) node[midway]{N4}
     -- (s4.south east) -- (s4.south west) -- (r3.south east) -- cycle;
     -- (s3-b.north east) -- (r3.west) -- (r1.east) node[midway,yshift=-.5cm] {N3} -- cycle;
-\end{visibleenv}
-
-\begin{visibleenv}<3->
-\begin{scope}[xshift=8cm]
-\node[mynode] (R1r) at (0, 0) {R1};
-\node[mynode,overlay] (N1r) at (2, 1) {N1};
-\node[mynode] (R2r) at (4, 0) {R2};
-\node[mynode] (N2r) at (4, -2) {N2};
-\node[mynode] (R3r) at (0, -4) {R3};
-\node[mynode] (N3r) at (0, -2) {N3};
-\node[mynode] (N4r) at (2, -2) {N4};
-\node[mynode] (R4r) at (4, -4) {R4};
-\draw[connect,alt=<4>{red}] (R1r) -- (R2r);
-\draw[connect] (R1r) -- (N1r);
-\draw[connect] (R2r) -- (N1r);
-\draw[connect] (R1r) -- (N3r);
-\draw[connect] (R3r) -- (N3r);
-\draw[connect] (R3r) -- (N4r);
-\draw[connect] (R4r) -- (N4r);
-\draw[connect] (R2r) -- (N4r);
-\draw[connect] (R2r) -- (N2r);
-\draw[connect] (R4r) -- (N2r);
-    \begin{visibleenv}<3>
-    \node[anchor=north,draw=red, ultra thick] at (2, -5) {
-        graph has nodes for routers+networks
-    };
-    \end{visibleenv}
-    \begin{visibleenv}<4>
-    \node[anchor=north,draw=red, ultra thick] at (2, -5) {
-        can have direct router-router link
-    };
-    \end{visibleenv}
-\end{scope}
 \end{visibleenv}
 \end{tikzpicture}
