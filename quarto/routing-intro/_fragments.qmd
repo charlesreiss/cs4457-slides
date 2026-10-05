@@ -36,13 +36,13 @@ PING 192.168.1.1 (192.168.1.1) 4000(4028) bytes of data.
 ### IPv6 fragments 
 
 
-![](/routing/ipv6-fragment-ex){}
+![](/routing-intro/ipv6-fragment-ex){}
 
 
 ### IPv4 fragments 
 
 
-![](/routing/ipv4-fragment-ex){}
+![](/routing-intro/ipv4-fragment-ex){}
 
 
 ### varying frame size support  {.smaller}

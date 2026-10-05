@@ -2,10 +2,41 @@
 ### AS7007  {.smaller}
 
 [https://seclists.org/nanog/1997/Apr/444](https://seclists.org/nanog/1997/Apr/444) 
-![](/routing/as7007-1.png){}
- 
-![](/routing/as7007-2.png){}
 
+::: {style="font-size: 70%"}
+
+<h5>7007 Explanation and Apology</h5>
+<b>From</b>: "Vincent J. Bono" &lt;vbono () MAI NET&gt;<br>
+<b>Date</b>: Sat, 26 Apr 1997 19:41:35 EST<br>
+
+<pre>
+Dear All,
+
+    I would like to sincerely apologize to everyone everwhere who 
+experienced problems yesterday due to the 7007 AS announcements.
+
+    If anyone cares to know, here is what happened:
+
+    At 11:30AM, EST, on 25 Apr 1997, our border router, stamped with 
+AS 7007, recieved a full routing view from a downstream ISP (well, a 
+view contacing 23,000 routes anyway).
+
+    There was no distibute list imposed on the downstream since they 
+also advertise their customer AS's to us (they were also 
+experimenting with sending some routes out through us and some out 
+through the MAE).  We did filter out routes from them containing any 
+of our AS numbers but since they got the view from someone at 
+MAE-East none of our internal AS numbers showed up at all.  Not 
+having a filter imposed on the inbound side was our error.
+
+    In an as yet unexplained twist of bits, the 7007 router then 
+began to de-aggregate the 23K route view *and* strip the AS path out 
+of it.  I will emphasize that we were running no IGP at the time.  
+Not one.  Not OSPF, not RIP, nothing.
+</pre>
+...
+
+:::
 
 ### 2008 Pakistan Youtube  {.smaller}
 
@@ -20,7 +51,7 @@
 ### timeline from RIPE NCC  {.smaller}
 
 
-* \\tiny{[https://www.ripe.net/about-us/news/youtube-hijacking-a-ripe-ncc-ris-case-study/](https://www.ripe.net/about-us/news/youtube-hijacking-a-ripe-ncc-ris-case-study/)}
+* [[https://www.ripe.net/about-us/news/youtube-hijacking-a-ripe-ncc-ris-case-study/](https://www.ripe.net/about-us/news/youtube-hijacking-a-ripe-ncc-ris-case-study/)]{.my-small}
 * Youtube is announcing 208.65.152.0/22
 * 18:47Z: Pakistan Telecom starts announcing 208.65.153.0/24
 * 20:07Z: Youtube starts announcing 208.65.153.0/24
@@ -43,5 +74,5 @@
 ### nation-states? 
 
 
-![](/routing/china-tele-ars-tech){}
+![](/routing-bgp/china-tele-ars-tech){}
 

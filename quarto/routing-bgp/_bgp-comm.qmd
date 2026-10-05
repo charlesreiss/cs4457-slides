@@ -22,10 +22,85 @@
 
 
 
-### selected Internet2 BGP communities 
+### selected Internet2 BGP communities  
 
-![](/routing-bgp/texfig/selected-internet2-communities.figure.svg)
- [https://noc.net.internet2.edu/knowledge/policy-statements/internet2-bgp-communities.html](https://noc.net.internet2.edu/knowledge/policy-statements/internet2-bgp-communities.html)
+[From [Internet2 Documentation](https://noc.net.internet2.edu/knowledge/921573c43b930b5067a53f50c5e45aa2/766aee8e3be9f61467a53f50c5e45a10):]{style="font-size:50%"}
+
+::::: {.columns style="font-size: 30%"}
+
+:::: {.column width=33%}
+
+<h5>Internet2 External Traffic Influencing Communities</h5>
+International, Non-International, or FEDNET peers may send the below community and we will set their localpref to 460 or 560 respectively:
+
+*   Default - local-pref 500
+*   11537:40 - Low (local-pref 460)
+*   11537:160 - High (local-pref 560)
+
+Connectors may send the below community and we will set their localpref to 540 or 620 respectively:
+
+*   Default - local-pref 600
+*   11537:140 - Low (local-pref 540)
+*   11537:260 - High (local-pref 620)
+
+Internet2 Peers may send the following communities:
+
+*   11537:2002 - Block prefix to commercial R&E peers.
+
+Internet2 International (ITN) peers may send the below communities for path prepending:
+
+*   65001:65000 - prepend x1
+*   65002:65000 - prepend x2
+*   65003:65000 - prepend x3
+
+...
+
+::::
+
+:::: {.column width=33%}
+
+<h5>Internet2 Internal Traffic Influencing Communities</h5>
+
+Internet2-connected Gigapops and connectors with heterogeneous participants (i.e. not all are universities) may need to use these communities to help them pass prefixes appropriately to their participants. For example, connectors can pass all prefixes on to their university participants, but should not pass commercial or US Fednet prefixes to their commercial or Fednet participants.
+
+*    11537:888 - Block to external (Internet2 uses this community to mark prefixes that will not be reannounced to external peers).
+*    11537:902 - non-I2 R&E sites sponsored for connection by members.
+*    11537:910 - sponsored educational groups (Primary state networks).
+*    11537:950 - Internet2 Participants.
+*    11537:2000 - Commercial research - Lab participant.
+*    11537:2001 - Special Commercial prefix used for V6 or multicast.
+*    11537:2500 - Block advertisement to international.
+*    11537:2501 - International.
+*   ....
+
+::::
+
+:::: {.column width=33%}
+
+<h5>NET+ BGP Communities</h5>
+
+Internet2 has implemented a set of BGP communities that, along with your own local BGP import policy, will allow you to control your traffic path to/from the Internet2 NET+ peer networks. All of these communities are specific to individual peer networks and do not affect routing to/from the other peer networks.
+
+*   11537:5000 - Internet2 NET+ Services.
+*   11537:5002 - Cloud.
+*   ....
+
+The following community combination of \<CODE>:\<ASN> allows you to block or prepend prefixes sent to individual NET+ peers.
+
+*   Codes:
+    *    65000 - prefixes will not be sent to NET+ peer’s ASN
+    *    65001 - prefixes will be prepended 1 time to NET+ peer’s ASN
+    *    65002 - prefixes will be prepended 2 times to NET+ peer’s ASN
+    *    65003 - prefixes will be prepended 3 time2 to NET+ peer’s ASN
+
+*   NET+ peer ASN’s
+    *   16509 - Amazon
+    *   62715 - Code42
+    *   ...
+
+::::
+
+:::::
 
 ### community options from prev slide  {.smaller}
 

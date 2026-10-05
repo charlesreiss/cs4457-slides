@@ -17,7 +17,7 @@
 
 
 ::: {.r-stack .my-full}
-![](/routing-bgp/texfig/some-business-considerations.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/routing-bgp/texfig/some-business-considerations.figure-1.svg){.fragment .fade-out fragment-index=2}
 
 ![](/routing-bgp/texfig/some-business-considerations.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
 

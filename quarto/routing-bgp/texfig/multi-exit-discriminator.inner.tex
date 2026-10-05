@@ -1,13 +1,13 @@
 \begin{tikzpicture}
 \tikzset{
-    network/.style={draw,cloud,very thick,aspect=2},
+    network/.style={draw,cloud,very thick,aspect=3},
     router/.style={draw,circle,fill=white},
     connect/.style={draw,ultra thick,Latex-Latex,black!50},
     send money/.style={bend right,draw,line width=1mm,green!70!black,dotted,"\huge\$",-Latex},
     every label/.style={font=\small},
 }
-\node[network,overlay] (jp-net-B) at (-1.5, 1) {2001:db8:1::/40};
-\node[network,overlay] (va-net-A) at (13, -.5) {3fff:3:4::/40};
+\node[network] (jp-net-B) at (-3, 1) {2001:db8:1::/40};
+\node[network] (va-net-A) at (13, -.5) {3fff:3:4::/40};
 \node[router,label={north:ISP A/Tokyo}] (A-japan) at (0, 1) {};
 \node[router,label={south:ISP B/Tokyo}] (B-japan) at (0.5, -1) {};
 \node[router] (A-japan-other) at (1.75, 0.75) {};
@@ -18,9 +18,11 @@
 \node[router,label={south:ISP B/NoVA}] (B-va) at (10.5, -.5) {};
 \foreach \x/\y/\med in {A-japan/B-japan/1,A-la/B-la/2,A-va/B-va/3} {
     \draw[connect] (\x) -- (\y);
-    \draw[red] (\y) -- (\x) node[midway,fill=white,draw=red,align=left,font=\small] {
+    \begin{pgfonlayer}{fg}
+    \path (\y) -- (\x) node[midway,fill=white,draw=red,align=left,font=\small] {
             to 2001:db8:1::/40, MED=\med
     };
+    \end{pgfonlayer}
 }
 \foreach \x/\y in {A-japan/B-japan,A-la/B-la,A-va/B-va,A-japan/A-japan-other,A-japan-other/A-la,A-la/A-va,
                    B-japan/B-la,B-la/B-us-other,B-us-other/B-va,

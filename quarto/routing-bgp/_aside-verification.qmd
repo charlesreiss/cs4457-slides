@@ -5,23 +5,18 @@
 * historically, no verification routes announced by ‘‘owner’’ of IP addresses 
 <hr class="vspace" />
 * Internet Routing Registries --- database of AS to IP address 
-
    * used automatically to filter out mistakes
    * (not really designed to resist malicious attacks)
 
 * some verify which IPs they should have with RIRs 
-
    * ‘‘letter of agency/authority’’ to delegate
 
 * effort to deploy RPKI --- public-key based scheme to verify routes 
-
    * checks that routes originated at correct AS
    * doesn't verify intermediate ASes will forward correctly
-
-
 
 ###  
 
 
-![](/routing/rpki-rfc){}
+![](/routing-bgp/rpki-rfc){}
 
