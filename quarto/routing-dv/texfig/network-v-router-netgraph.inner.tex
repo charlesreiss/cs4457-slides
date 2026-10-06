@@ -26,11 +26,11 @@
 };
 \node[one dv,anchor=north] at (R3r.south) {
     N1 \& N2 \& N3 \& N4 \\
-    \only<4>{$\infty$/---}\only<5->{\myemph<5>{2/R1}} \& $\infty$/--- \& 1/R3 \& 1/R3 \\
+    \only<1-2>{$\infty$/---}\only<3->{\myemph<3>{2/R1}} \& $\infty$/--- \& 1/R3 \& 1/R3 \\
 };
 \node[one dv,anchor=north] at (R4r.south) {
     N1 \& N2 \& N3 \& N4 \\
-    $\infty$/--- \& 1/R4 \& $\infty$/--- \& 1/R4 \\
+    \only<1-3>{$\infty$/---}\only<4>{\myemph{3/R3}} \& 1/R4 \& \only<1-3>{$\infty$/---}\only<4>{\myemph{2/R3}} \& 1/R4 \\
 };
 \end{visibleenv}
 \begin{visibleenv}<3>

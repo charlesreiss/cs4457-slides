@@ -21,26 +21,38 @@
 
 
 ::: {.r-stack .my-full}
-![](/routing-dv/texfig/distributing-bellman-ford.figure-1.svg){.fragment .fade-in-then-out fragment-index=1 }
+![](/routing-dv/texfig/distributing-bellman-ford.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="The same graph (with A, B, C, D connected via weighte directed edges) as before, and an uninitialized table of distances and next hops for every ordered pair of nodes."}
 
-![](/routing-dv/texfig/distributing-bellman-ford.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 }
+![](/routing-dv/texfig/distributing-bellman-ford.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="Each node A, B, C, D has its distances and next hops for each node (a row of the original Bellman-Ford table of routes)."}
 
-![](/routing-dv/texfig/distributing-bellman-ford.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 }
+![](/routing-dv/texfig/distributing-bellman-ford.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="Node C sends an update to node D: 'I'm C, costs: C=0' (copying its distance vector)"}
 
-![](/routing-dv/texfig/distributing-bellman-ford.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 }
+![](/routing-dv/texfig/distributing-bellman-ford.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="Node D uses this update to set its route to C to have cost 5 (0+the cost of its edge to C) and next hop of C."}
 
-![](/routing-dv/texfig/distributing-bellman-ford.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 }
+![](/routing-dv/texfig/distributing-bellman-ford.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 fig-alt="Node D sends an update to node B: 'I'm D, costs: D=0, C=5' (copying its distance vector)."}
 
-![](/routing-dv/texfig/distributing-bellman-ford.figure-6.svg){.fragment .fade-in-then-out fragment-index=6 }
+![](/routing-dv/texfig/distributing-bellman-ford.figure-6.svg){.fragment .fade-in-then-out fragment-index=6 fig-alt="Node B uses the update from D to set routes: to C via D at cost 6 (5 +the cost of the B to D edge), to D via D at cost 1 (0+the cost of the B to D edge)."}
 
-![](/routing-dv/texfig/distributing-bellman-ford.figure-7.svg){.fragment .fade-in-then-out fragment-index=7 }
+![](/routing-dv/texfig/distributing-bellman-ford.figure-7.svg){.fragment .fade-in-then-out fragment-index=7 fig-alt="Node C also sends updates to nodes A and B: 'I'm C, costs: C=0'."}
 
-![](/routing-dv/texfig/distributing-bellman-ford.figure-8.svg){.fragment .fade-in-then-out fragment-index=8 }
+![](/routing-dv/texfig/distributing-bellman-ford.figure-8.svg){.fragment .fade-in-then-out fragment-index=8 fig-alt="As a result, A updates its route to C (cost 1=0+1 via C, 1 is the A to C edge cost), and B updates its route to C (cost 2=0+2 via C)."}
 
-![](/routing-dv/texfig/distributing-bellman-ford.figure-9.svg){.fragment .fade-in-then-out fragment-index=9 }
+![](/routing-dv/texfig/distributing-bellman-ford.figure-9.svg){.fragment .fade-in-then-out fragment-index=9 fig-alt="Node D sends another update to node C: 'I'm D, costs: D=0,C=infinity'. C's cost is passed as infinity despite D's route to C being cost 5 via C."}
 
-![](/routing-dv/texfig/distributing-bellman-ford.figure-10.svg){.fragment .fade-in-then-out fragment-index=10 }
+![](/routing-dv/texfig/distributing-bellman-ford.figure-10.svg){.fragment .fade-in-then-out fragment-index=10 fig-alt="As a result of D's update from C, C sets its cost to D to be 4=0+4 (link cost) via D."}
 
+:::
+
+::: {.myoverbox .fragment .fade-in-then-out fragment=index=2}
+
+store table row = ``distance vector'' on each node
+
+:::
+
+::: {.myoverbox .fragment .fade-in-then-out fragment=index=9}
+
+*  "split horizon" optimization 
+*  don't echo back routes where they come from
 
 :::
 
@@ -50,16 +62,21 @@
 
 
 ::: {.r-stack .my-full}
-![](/routing-dv/texfig/distributing-bellman-ford2.figure-1.svg){.fragment .fade-out fragment-index=2}
+![](/routing-dv/texfig/distributing-bellman-ford2.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="The same graph (network with costs with A, B, C, D)."}
 
-![](/routing-dv/texfig/distributing-bellman-ford2.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/routing-dv/texfig/distributing-bellman-ford2.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="Distance vectors stored at A, B, C, D. All the distane vectors are filled in completely, except D's distance vector has entries of 'infinity via nothing' for its route to A, B, and C."}
 
-![](/routing-dv/texfig/distributing-bellman-ford2.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/routing-dv/texfig/distributing-bellman-ford2.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="Node C, with current distance vector: 1 via A to A, 2 via B to B, 0 vi C to C, 4 via D to D, sends an update to D: 'I'm C, costs: A=1, B=2, C=0, D=5.'"}
 
-![](/routing-dv/texfig/distributing-bellman-ford2.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+![](/routing-dv/texfig/distributing-bellman-ford2.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="As a result of C's update it fills in entries in its distance vector that were infinity: 6 via C to A, 7 via C to B, 5 via C to C. Each of these add 5 (the edge cost from D to C) to the distance vector sent by C."}
 
-![](/routing-dv/texfig/distributing-bellman-ford2.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+![](/routing-dv/texfig/distributing-bellman-ford2.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 fig-alt="Node B sends an update 'I'm B, costs: A=4,B=0,C=2,D=5' to D. D has a current distance vector: 6 via C to C, 7 via C to B, 5 via C to C, 0 via D to D. The link from D to B has a weight of 2."}
 
+:::
+
+::: {.myoverbox .fragment .high .fade-in-then-out fragment-index=5}
+
+exercise: what should change from this update?
 
 :::
 

@@ -20,9 +20,9 @@
 
 ::: {.r-stack}
 
-![](/routing-dv/texfig/network-v-router-netdiag.figure-1.svg){.fragment .fade-out fragment-index=2 width=400px}
+![](/routing-dv/texfig/network-v-router-netdiag.figure-1.svg){.fragment .fade-out fragment-index=2 width=400px fig-alt="Network with four routers (R1 through R4); and four subnetworks with various numbers of switches and hosts. Each of the routers are connected to multiple subnetworks via one of their switches,"}
 
-![](/routing-dv/texfig/network-v-router-netdiag.figure-2.svg){.fragment .fade-in fragment-index=2 width=400px}
+![](/routing-dv/texfig/network-v-router-netdiag.figure-2.svg){.fragment .fade-in fragment-index=2 width=400px fig-alt="The subnetworks are lableed N1 thorugh N4."}
 
 :::
 
@@ -32,13 +32,13 @@
 
 ::: {.r-stack}
 
-![](/routing-dv/texfig/network-v-router-netgraph.figure-1.svg){.fragment .fade-in-then-out fragment-index=3 width=400px}
+![](/routing-dv/texfig/network-v-router-netgraph.figure-1.svg){.fragment .fade-in-then-out fragment-index=3 width=400px fig-alt="We have a graph of the connections between routers R1 through R4: R1-R2, R1-R3, R2-R3, R2-R4, R3-R4."}
 
-![](/routing-dv/texfig/network-v-router-netgraph.figure-2.svg){.fragment .fade-in-then-out fragment-index=4 width=400px}
+![](/routing-dv/texfig/network-v-router-netgraph.figure-2.svg){.fragment .fade-in-then-out fragment-index=4 width=400px fig-alt="Each router has a distance vector with entries (costs and next hops) for each network N1 through N4. Initially, the distance vector entries for router R-X are '1 via R-X' (if R-X is connected to a network) or 'infinity via nothing' (if R-X is not connected to a network)."}
 
-![](/routing-dv/texfig/network-v-router-netgraph.figure-3.svg){.fragment .fade-in-then-out fragment-index=5 width=400px}
+![](/routing-dv/texfig/network-v-router-netgraph.figure-3.svg){.fragment .fade-in-then-out fragment-index=5 width=400px fig-alt="R1 sends its distance vector (N1=1,N2=infinity,N3=1,N4=1) to R3. R3 updates its distance vector for N1 from 'infinity via nothing' to '2 (1+1) via R1'. It doesn't update its routes to N3 or N4 since distance 2 via R1 would be inferior to its current distance 1 via R3 route."}
 
-![](/routing-dv/texfig/network-v-router-netgraph.figure-4.svg){.fragment .fade-in-then-out fragment-index=6 width=400px}
+![](/routing-dv/texfig/network-v-router-netgraph.figure-4.svg){.fragment .fade-in-then-out fragment-index=6 width=400px fig-alt="R3 sends its distance vector (N1=2,N2=infinity,N3=1,N4=1) to R4. R4 updates its route to N1 to cost 3 via R3 (from 'infinity via nothing') and to N3 to cost 2 via R2 (from 'infinity via nothing'). R4's other routes (to N2, N4) are cost 1 via R4, so they do not get updated."}
 
 :::
 
