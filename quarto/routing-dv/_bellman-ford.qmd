@@ -31,32 +31,57 @@
 * [when choosing: update distance A$\rightarrow$X + next link for A$\rightarrow$X]{.fragment fragment-index=3 .custom .myem-only}
 
 
+
 ### running Bellman-Ford 
 
 <!-- FIXME: make table be HTML -->
 
 
 ::: {.r-stack .my-full}
-![](/routing-dv/texfig/running-bellman-ford.figure-1.svg){.fragment .fade-out fragment-index=2}
+![](/routing-dv/texfig/running-bellman-ford.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="Network with A, B, C, D; all nodes are conected to each other except A and D. There is also a table of computed distances and next-hops for each ordered pair of nodes, which is initially all infinity/no-next-hop except that nodes have a distance of 0 to themselves with a next hop of themselves. On the graph, each connection has weights in each direction (from A: 2 to B, 1 to C; from B: 4 to A, 2 to C, 1 to D; from C: 2 to A, 2 to B, 4 to D; from D: 5 to C, 2 to B."}
 
-![](/routing-dv/texfig/running-bellman-ford.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/routing-dv/texfig/running-bellman-ford.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="We consider the edge from A to B with weight 2. We update the distance/next hop from A to B to 2/B"}
 
-![](/routing-dv/texfig/running-bellman-ford.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/routing-dv/texfig/running-bellman-ford.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="We consider the edge from B to A with weight 4 and similarly compute a distance/next hop from B to A of 4/A."}
 
-![](/routing-dv/texfig/running-bellman-ford.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+![](/routing-dv/texfig/running-bellman-ford.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="We compute 2/C for B to C using the weight-2 edge from B to C."}
 
-![](/routing-dv/texfig/running-bellman-ford.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+![](/routing-dv/texfig/running-bellman-ford.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 fig-alt="We now consider the edge from C to B with weight 2. To update C's distance/next hop entries, we look over _all_ the routes B has, and consider adding a route from C through B for each of them. From B's 4 (distance)/A (next hop) route to A, we add a 6/C route from C to A; and from B's 0/B route to B we add a 2/B route from C to B."}
 
-![](/routing-dv/texfig/running-bellman-ford.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
+![](/routing-dv/texfig/running-bellman-ford.figure-6.svg){.fragment .fade-in-then-out fragment-index=6 fig-alt="We compute 4/D from C to D using the weight-4 edge from C to D."}
 
-![](/routing-dv/texfig/running-bellman-ford.figure-7.svg){.fragment .fade-in-then-out fragment-index=7}
+![](/routing-dv/texfig/running-bellman-ford.figure-7.svg){.fragment .fade-in-then-out fragment-index=7 fig-alt="Now we consider the weight-1 edge from A to C. We update A's route to C to 1/C (from no route to C), and A's route to D to 5/C (from no route to D)."}
 
-![](/routing-dv/texfig/running-bellman-ford.figure-8.svg){.fragment .fade-in-then-out fragment-index=8}
+![](/routing-dv/texfig/running-bellman-ford.figure-8.svg){.fragment .fade-in-then-out fragment-index=8 fig-alt="Now we consider the weight-4 edge from B to A _again_. We update B's route to D (from no route) to 9/A."}
 
 ![](/routing-dv/texfig/running-bellman-ford.figure-9.svg){.fragment .fade-in-then-out fragment-index=9}
 
-![](/routing-dv/texfig/running-bellman-ford.figure-10.svg){.fragment .fade-in-then-out fragment-index=10}
-
+![](/routing-dv/texfig/running-bellman-ford.figure-10.svg){.fragment .fade-in-then-out fragment-index=10 fig-alt="After more updates, we end up with a final distance/next hop table: from A: 0/A to A, 2/B to B, 1/C to C, 3/B to D; from B: 4/A to A, 0/B to B, 2/C to C, 1/D to D; from C: 2/A to A, 2/B to B, 0/C to C, 4/D to D; from D: 6/B to A, 2/B to B, 4/B to B, 0/D to D."}
 
 :::
 
+::: {.myoverbox .vlow .fade-in-then-out fragment-index=2 .fragment}
+
+*  (route B to B, distance 0) + (link A to B, distance 2) = <br/>route B to A, distance 2+0=2 via B
+
+:::
+
+::: {.myoverbox .vlow .fade-in-then-out fragment-index=3 .fragment}
+
+*  (route A to A, distance 0) + (link B to A, distance 4) = <br/>route A to B, distance 4+0=4 via A
+
+:::
+
+::: {.myoverbox .vlow .fade-in-then-out fragment-index=5 .fragment}
+
+*  (route B to A, distance 4) + (link C to B, distance 2) = <br/>route C to A, distance 2+4=6 via B
+*  (route B to B, distance 0) + (link C to B, distance 2) = <br/>route C to B, distance 2+0=2 via B
+
+:::
+
+::: {.myoverbox .vlow .fade-in-then-out fragment-index=5 .fragment}
+
+*  (route C to D, distance 4) + (link A to C, distance 1) = <br/>route A to D, distance 4+1=5 via C
+*  (route C to C, distance 0) + (link A to C, distance 1) = <br/>route A to C, distance 0+1=1 via C
+
+:::
