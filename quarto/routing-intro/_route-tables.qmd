@@ -1,7 +1,27 @@
 
-### routing tables 
+### routing tables  {.smaller}
+
+<table class="collines">
+<tr><th>IP addresses</th><th>gateway</th><th>iface</th></tr>
+<tr><td>2001:0db8:40:f000::/44</td><td>---</td><td>int1</td></tr>
+<tr><td>2001:0db8:40:e000::/44</td><td>2001:0db8:40:f000::2</td><td>int1</td></tr>
+<tr><td>2001:0db8:40:d000::/44</td><td>---</td><td>int3</td></tr>
+<tr><td>3fff:1000:19::/48</td><td>---</td><td>ext1</td></tr>
+<tr><td>\ldots</td><td>\ldots</td><td>\ldots</td></tr>
+<tr><td>\normalfont default</td><td>fe80::17</td><td>ext2</td></tr>
+<tr></tr>
+<tr><th>IP addresses</th><th>gateway</th><th>iface</th></tr>
+<tr><td>192.0.2.0/25</td><td>---</td><td>int1</td></tr>
+<tr><td>192.0.2.128/26</td><td>192.0.2.1</td><td>int1</td></tr>
+<tr><td>192.0.2.192/26</td><td>192.0.2.2</td><td>int1</td></tr>
+<tr><td>198.51.100.0/25</td><td>192.0.2.1</td><td>int1</td></tr>
+<tr><td>198.51.100.128/25</td><td>---</td><td>int2</td></tr>
+<tr><td>\ldots</td><td>\ldots</td><td>\ldots</td></tr>
+<tr><td>\normalfont default</td><td>203.0.113.1</td><td>ext</td></tr>
+</table>
 
 ![](/routing-intro/texfig/routing-tables.figure.svg)
+
 
 
 ### filling routing tables  {.smaller}

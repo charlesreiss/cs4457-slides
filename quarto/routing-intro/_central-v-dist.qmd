@@ -8,9 +8,12 @@
 * routers/switches learn from neighbors 
 
    * ‘‘distributed’’
+   * what we'll mainly cover
+   * historically most common design
 
 * information gathered on single controller machine <br> which configures routers/switches 
 
    * ‘‘centralized’’
+   * more common/easier with software defined network approaches
 
 

@@ -1,8 +1,7 @@
 
 ### exercise: best routes? 
 
-![](/routing-intro/texfig/preview-better.figure.svg)
- 
+![](/routing-intro/texfig/preview-better.figure.svg){fig-alt="Network with links: A-B (1Mbit, 10ms); A-G (10Mbit, 20ms), B-D (5Mbit, 100ms), D-E (2Mbit, 20ms), E-F (100Mbit, 10ms), E-G (8Mbit, 10ms), F-G (6Mbit, 5ms)"}
 
 * A to B? B to E? F to G?
 

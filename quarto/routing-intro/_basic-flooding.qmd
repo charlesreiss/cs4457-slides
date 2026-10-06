@@ -13,13 +13,13 @@
 
 
 ::: {.r-stack .my-full}
-![](/routing-intro/texfig/flooding-one-entry.figure-1.svg){.fragment .fade-out fragment-index=2}
+![](/routing-intro/texfig/flooding-one-entry.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="A network with three switches connecting 6 hosts. Each switch has a neighbor table with destination MAC address and port columns."}
 
-![](/routing-intro/texfig/flooding-one-entry.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/routing-intro/texfig/flooding-one-entry.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="Host with MAC ending :AA sends a frame through the rightmost switch's port 1, which causes the rightmost switch to add an ':AA', port 1 entry to its neighbor table."}
 
-![](/routing-intro/texfig/flooding-one-entry.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/routing-intro/texfig/flooding-one-entry.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="The frame sent by :AA is forwarded from the rightmost switch's port 4 to the top-left switch's port 1, causing the top-left switch to add an entry for :AA, port 1 to its own neighbor table."}
 
-![](/routing-intro/texfig/flooding-one-entry.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+![](/routing-intro/texfig/flooding-one-entry.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="The frame sent by :AA is further forwarded from the top-left switch's port 5 to the bottom-left switch's port 2, causing the bottom-left switch to add its own entry for :AA, port 2 to its neighbor table."}
 
 
 :::
@@ -39,13 +39,13 @@
 
 ![](/routing-intro/texfig/flooding.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 width=950px fig-alt="Receiving this message, the upper-right and lower-left routers add the route to their routing table: 2001:db8:4::/40 via 2001:db:2::3 (lower-right router). Each routing table entry also includes the port the routers use to access the network to which the lower-right router is connected."}
 
-![](/routing-intro/texfig/flooding.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 width=950px}
+![](/routing-intro/texfig/flooding.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 width=950px fig-alt="The lower-left router further forwards its new information to the upper-left router. As a result, the upper-left router adds a new route for 2001:db8:4::/40 (the network from the lower-right router) via 2001:db8:f::2 (the lower-left router's IP address on the network connecting the two left rotuers)."}
 
-![](/routing-intro/texfig/flooding.figure-6.svg){.fragment .fade-in-then-out fragment-index=6 width=950px}
+![](/routing-intro/texfig/flooding.figure-6.svg){.fragment .fade-in-then-out fragment-index=6 width=950px fig-alt="The upper-left router similarly floods its information about the 2001:db8:1::/40 network it is connected to. First it sends a message to the lower-left router, causing the lower-left router to add entry for 2001:db8:1::/40 with a gateway of 2001:db8:f::1 (the upper-left router's IP on the network it shares with the lower-left router)."}
 
-![](/routing-intro/texfig/flooding.figure-7.svg){.fragment .fade-in-then-out fragment-index=7 width=950px} 
+![](/routing-intro/texfig/flooding.figure-7.svg){.fragment .fade-in-then-out fragment-index=7 width=950px fig-alt="The lower-left router forwards its routing information to the right routers. As a result the two right routers add routes for both the 2001:db8:f::/40 network that connects the left routers and the 2001:db8:1:: that only the upper-left router is connected to. Both of these routes specify a gateway of the lower-left router's IP address on the network it shares with the right routers."} 
 
-![](/routing-intro/texfig/flooding.figure-8.svg){.fragment .fade-in-then-out fragment-index=8 width=950px} 
+![](/routing-intro/texfig/flooding.figure-8.svg){.fragment .fade-in-then-out fragment-index=8 width=950px fig-alt="More sharing of routing inforemation between neighbors fills in additiona routing table entries, resulting in every router have routers for all five of the networks the routers are connected to."} 
 
 :::
 

@@ -36,13 +36,13 @@ PING 192.168.1.1 (192.168.1.1) 4000(4028) bytes of data.
 ### IPv6 fragments 
 
 
-![](/routing-intro/ipv6-fragment-ex){}
+![](/routing-intro/ipv6-fragment-ex){fig-alt="Wireshark screenshot of the ping6 command from an earlier slide. There are groups of three packets, which wireshark identifies as two IPv6 fragments followed by an ping request or reply. The packet that wireshark identifies as the ping request/reply is actually the third fragment of the original IPv6 packet, which wireshark hsa rconstructed. Details for one middle fragment is shown. The IPv6 next header type is 'fragment header for IPv6', and the fragment header has an offset, a more fragments field, and a packet idenitfier."}
 
 
 ### IPv4 fragments 
 
 
-![](/routing-intro/ipv4-fragment-ex){}
+![](/routing-intro/ipv4-fragment-ex){fig-akt="Wireshark screenshot of the ping command from an earlier slide. There are groups of three packets, identified as a fragments followed by a ping request/reply like before. Unlike IPv6, the fragment information is part of fields of the IP header itself, which includes a more fragments field, a fragment offset, and a packet identification."}
 
 
 ### varying frame size support  {.smaller}

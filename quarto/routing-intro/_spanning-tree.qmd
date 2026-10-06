@@ -44,15 +44,15 @@
 
 
 ::: {.r-stack .my-full}
-![](/routing-intro/texfig/spanning-tree-example.figure-1.svg){.fragment .fade-out fragment-index=2}
+![](/routing-intro/texfig/spanning-tree-example.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="Graph with bidirectional connections: A to B, G; G to F, E; B to D, E; F t E, G; E to F, G, D."}
 
-![](/routing-intro/texfig/spanning-tree-example.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/routing-intro/texfig/spanning-tree-example.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="The connection from A to B has higher priority than that from A to G."}
 
-![](/routing-intro/texfig/spanning-tree-example.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/routing-intro/texfig/spanning-tree-example.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="The spanning tree is started with root A and child B."}
 
-![](/routing-intro/texfig/spanning-tree-example.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+![](/routing-intro/texfig/spanning-tree-example.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="Then the connection from A to G is added, so the spanning tree is: G-A, A-B"}
 
-![](/routing-intro/texfig/spanning-tree-example.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+![](/routing-intro/texfig/spanning-tree-example.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 fig-alt="Then we examine the possible links to add. G-B is rejected because it introduces no new nodes. B-D is first priority because of the node lettering. G-F is second priority."}
 
 
 :::
@@ -75,18 +75,42 @@
 
 
 ::: {.r-stack .my-full}
-![](/routing-intro/texfig/spanning-tree-fixing-wrong-links.figure-1.svg){.fragment .fade-out fragment-index=2}
+![](/routing-intro/texfig/spanning-tree-fixing-wrong-links.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="Initially the spanning tree selected is A-B, B-G, G-F, F-E, B-D."}
 
-![](/routing-intro/texfig/spanning-tree-fixing-wrong-links.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/routing-intro/texfig/spanning-tree-fixing-wrong-links.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="We consider replacing B-G with A-G."}
 
-![](/routing-intro/texfig/spanning-tree-fixing-wrong-links.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/routing-intro/texfig/spanning-tree-fixing-wrong-links.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="We consider having E connected via F versus via D."}
 
-![](/routing-intro/texfig/spanning-tree-fixing-wrong-links.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+![](/routing-intro/texfig/spanning-tree-fixing-wrong-links.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="Now the spanning tree is: F-G, G-A, A-B, B-D, D-E."}
 
-![](/routing-intro/texfig/spanning-tree-fixing-wrong-links.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+![](/routing-intro/texfig/spanning-tree-fixing-wrong-links.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 fig-alt="We consider replacing D-E with G-E."}
 
 
 :::
+
+::: {.myoverbox .fragment .fade-in-then-out fragment-index=2 .low }
+
+A-G should replace B-G because it moves G closer to the root A.
+
+:::
+
+::: {.myoverbox .fragment .fade-in-then-out fragment-index=3}
+
+*  D-E and F-E:<br/>
+   *  same distance from root, but...
+   *  D before F, so D-E wins
+
+:::
+
+::: {.myoverbox .fragment .fade-in-then-out fragment-index=5}
+
+*  G--E and D--E:
+   *  G--E closer to root, so wins
+   *  (even though D before G)
+
+:::
+
+
 
 
 ### spanning tree protocol  {.smaller}
@@ -114,15 +138,17 @@
 
 
 ::: {.r-stack .my-full}
-![](/routing-intro/texfig/spanning-tree-some-example-updates.figure-1.svg){.fragment .fade-out fragment-index=2}
+![](/routing-intro/texfig/spanning-tree-some-example-updates.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="Same network as before: A-B, A-G, B-G, G-F, G-E, F-E, B-D, D-E"}
 
-![](/routing-intro/texfig/spanning-tree-some-example-updates.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/routing-intro/texfig/spanning-tree-some-example-updates.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="Each node tracks three variables: the tree root, the distance to the root, and the link up toward the root. Initially all nodes have a root of themselves, a distance of 0, and no link to the root."}
 
-![](/routing-intro/texfig/spanning-tree-some-example-updates.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/routing-intro/texfig/spanning-tree-some-example-updates.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="Node E sends an update to its neighbors D, F and G."}
 
-![](/routing-intro/texfig/spanning-tree-some-example-updates.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+![](/routing-intro/texfig/spanning-tree-some-example-updates.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="As a result of node E's message F and G update their status: F has root=E, distance 1, link F-E; G has root=E, distance 1, link G-E. Node D does not update since D comes before E, so its old status of D being the root is better than node E's proposal."}
 
-![](/routing-intro/texfig/spanning-tree-some-example-updates.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+![](/routing-intro/texfig/spanning-tree-some-example-updates.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 fig-alt="Node D sends an update to its neighbors E and B."}
+
+![](/routing-intro/texfig/spanning-tree-some-example-updates.figure-6.svg){.fragment .fade-in-then-out fragment-index=6 fig-alt="As a result of node D's updates, node E changes its status to root=D, distance 1, link E-D. Since node E has not updated its neighbors F and G again yet, they still have node E as a root (even though this temporarily disagrees with node E's information). B does not update its state as a result of node D's update since B comes before D, so D's proposal of D being a root is inferior to B's current state."}
 
 
 :::

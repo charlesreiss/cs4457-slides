@@ -40,23 +40,4 @@
 \draw[connect maybe,e hide up to=4,e real at=5] (G) -- (E);
 \draw[connect maybe,e hide up to=2,alt=<3-4>{solid},alt=<3>{red},alt=<5>{red}] (D) -- (E);
 \draw[connect maybe,e real until=3] (E) -- (F);
-\begin{visibleenv}<2>
-\node[explain box] {
-    A--G beats B--G: closer to root
-};
-\end{visibleenv}
-\begin{visibleenv}<3>
-\node[explain box up] {
-    D--F and F--E: \\
-    same distance from root, but \\
-    D before F, so D--E beats F--E
-};
-\end{visibleenv}
-\begin{visibleenv}<5>
-\node[explain box up] {
-    G--E and D--E: \\
-    G--E closer to root \\
-    so G--E beats D--E
-};
-\end{visibleenv}
 \end{tikzpicture}
