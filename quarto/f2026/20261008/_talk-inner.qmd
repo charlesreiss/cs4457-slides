@@ -1,0 +1,65 @@
+### last time
+
+*  (weighted) fair queuing
+   *  virtual time (approx. round number if bit-by-bit rounds)
+   *  use virtual finish time
+   *  versus priority queuing
+*  random early detection
+   *  deliberately dropping packets when queue _not_ full
+*  problems in packet forwarding
+
+## fragmentation, MTUs {visibility="hidden"}
+
+### problems when forwarding 
+
+* no entry in routing table
+* no entry in neighbor table
+   * (after attempting ARP, or neighbor discovery)
+* _packet too big for next network_
+* there's an infinite loop in the route
+
+{{< include /routing-intro/_fragments.qmd >}}
+
+## exercise{visibility="hidden"}
+
+{{< include /routing-intro/_frag-perf-ex.qmd >}}
+
+## time-to-live {visibility="hidden"}
+
+### problems when forwarding 
+
+* no entry in routing table
+* no entry in neighbor table
+   * (after attempting ARP, or neighbor discovery)
+* packet too big for next network
+* _there's an infinite loop in the route_
+
+{{< include /routing-intro/_ttl.qmd >}}
+
+# traceroute {visibility="hidden"}
+
+{{< include /routing-intro/_traceroute.qmd >}}
+
+# centralized versus distributed {visibility="hidden"}
+
+{{< include /routing-intro/_central-v-dist.qmd >}}
+
+# basic flooding / MAC learning {visibility="hidden"}
+
+<!-- FIXME: cleanup diagrams -->
+
+{{< include /routing-intro/_basic-flooding.qmd >}}
+
+# spanning trees {visibility="hidden"}
+
+{{< include /routing-intro/_spanning-tree.qmd >}}
+
+# preview: better routing {visibility="hidden"}
+
+{{< include /routing-intro/_preview-better.qmd >}}
+
+# aside: metrics {visibility="hidden"}
+
+{{< include /routing-intro/_metrics.qmd >}}
+
+{{< include /routing-dv/_talk-inner.qmd >}}
