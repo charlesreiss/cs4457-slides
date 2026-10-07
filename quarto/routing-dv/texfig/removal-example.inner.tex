@@ -68,7 +68,7 @@
     row 2/.style={nodes={fill=green!10}},
 ] (B dv) at ([yshift=.25cm,xshift=4cm]B.south west) {
     A \& B \& C \& D \\
-    4/A \& 0/B \& 2/C \& \only<1>{1/D}\mark{2}{\noroute} \\
+    4/A \& 0/B \& 2/C \& \only<1>{1/D}\only<2>{\mark{2}{\noroute}} \\
 };
 \end{scope}
 \end{tikzpicture}

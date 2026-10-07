@@ -34,11 +34,14 @@
 
 
 ::: {.r-stack .my-full}
-![](/routing-dv/texfig/avoided-count-to-infinity.figure-1.svg){.fragment .fade-out fragment-index=2}
+![](/routing-dv/texfig/avoided-count-to-infinity.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="Same network as before with nodes A, B, C, D, but node D's links are inoperable. Node D has distance vector entries of infinity for A, B, C. Nodes B and C have distance vector entries of infinity for D, but node A has a 'stray' distance vector entry for D with a cost of 3 via B."}
 
-![](/routing-dv/texfig/avoided-count-to-infinity.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/routing-dv/texfig/avoided-count-to-infinity.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="Node A sends an update to node C before it learns from node B that node B cannot reach node D. Based on this update, node C adds a route to D via node A with cost 4."}
 
-![](/routing-dv/texfig/avoided-count-to-infinity.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/routing-dv/texfig/avoided-count-to-infinity.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="Now, node C sends an update to node B. Based on this update, node B adds a route to node D via node B with cost 6."}
+
+![](/routing-dv/texfig/avoided-count-to-infinity.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="Now, node B sends an update to node A. This informs node A that its distance to node D has increased, so node A updates its cost to node D to 8."}
+w
 
 
 :::

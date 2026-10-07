@@ -36,21 +36,22 @@
 \draw[connect big] ([xshift=1mm]C.north) -- ([yshift=-1mm]A.west) node[midway,below] {2};
 \draw[connect big] ([yshift=1mm]C.east) -- ([yshift=1mm]B.west) node[midway,above] {2};
 \draw[connect big] ([yshift=-1mm]B.west) -- ([yshift=-1mm]C.east) node[midway,below] {2};
-\draw[connect,alt=<2->{dotted,black!20}] ([xshift=1mm]C.south) -- ([yshift=1mm]D.west) node[midway,above] {4};
-\draw[connect,alt=<2->{dotted,black!20}] ([yshift=-1mm]D.west) -- ([xshift=-1mm]C.south) node[midway,below] {5};
-\draw[connect big,alt=<1>{red},alt=<2->{dotted,black!20}] ([xshift=-1mm]B.south) -- ([yshift=1mm]D.east) node[midway,above] {1};
-\draw[connect big,alt=<1>{red},alt=<2->{dotted,black!20}] ([yshift=-1mm]D.east) -- ([xshift=1mm]B.south) node[midway,below] {2};
+\draw[connect,alt=<1->{dotted,black!20}] ([xshift=1mm]C.south) -- ([yshift=1mm]D.west) node[midway,above] {4};
+\draw[connect,alt=<1->{dotted,black!20}] ([yshift=-1mm]D.west) -- ([xshift=-1mm]C.south) node[midway,below] {5};
+\draw[connect big,alt=<1->{dotted,black!20}] ([xshift=-1mm]B.south) -- ([yshift=1mm]D.east) node[midway,above] {1};
+\draw[connect big,alt=<1->{dotted,black!20}] ([yshift=-1mm]D.east) -- ([xshift=1mm]B.south) node[midway,below] {2};
 \tikzset{
     one dv/.style={
         tight matrix,
         nodes={fill=white,font=\fontsize{10}{11}\selectfont,text width=1cm,minimum height=0.5cm}
     }
 }
+\begin{pgfonlayer}{fg}
 \matrix[anchor=south,one dv,
     row 2/.style={nodes={fill=violet!10}},
 ] (A dv) at (A.north) {
     A \& B \& C \& D \\
-    0/A \& 2/B \& 4/C \& \only<1-2>{3/B}\only<3->{\infty/---} \\
+    0/A \& 2/B \& 4/C \& \only<1-2>{\myemph<1>{3/B}}\only<3->{\infty/---} \\
 };
 \matrix[anchor=north,one dv,
     row 2/.style={nodes={fill=yellow!10}},
@@ -70,6 +71,7 @@
     A \& B \& C \& D \\
     4/A \& 0/B \& 2/C \& \noroute \\
 };
+\end{pgfonlayer}
 \begin{visibleenv}<2>
 \draw[msg link] (A) -- (B)
     node[midway,above left,msg data] { I'm A: A=0,B=2,C=4,D=\sout{3}{\large \infty} (poison reverse)};

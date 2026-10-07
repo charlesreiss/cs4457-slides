@@ -83,10 +83,15 @@
 
 ::: {.r-stack .my-full}
 
-![](/routing-dv/texfig/removal-example.figure-1.svg){.fragment .fade-out fragment-index=2}
+![](/routing-dv/texfig/removal-example.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="Network seen before A, B, C, D and their distance vectors. Distance vectors are computed so that further updates sent between nodes will not change them."}
 
-![](/routing-dv/texfig/removal-example.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/routing-dv/texfig/removal-example.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="The links between B and D are removed. As a result, B's routes involving D and D's routes involving B are removed. As a result, B has a distance vector entry of infinity for D; and D has distance vector entries of infinity of A, B, and C."}
 
+:::
+
+::: {.myoverbox .vlow .fragment .fade-in-then-out fragment-index=2}
+
+will need additional update messages to find new routes
 
 :::
 
