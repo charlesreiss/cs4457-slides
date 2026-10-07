@@ -3,7 +3,7 @@
 
 [Peterson and Davie, <i>Computer Networks: A Systems Approach</i>, Figure 88]{.mycredit}
 
-![](/routing-ls/sysapproach-fig88.svg){}
+![](/routing-ls/sysapproach-fig88.svg){fig-alt="Network with links: X-A, X-B, A-B, C-B, B-D. A message comes to X. X forwards it to A and B. A and B both forward it to C. Then C forwards to D. Finally, all nodes have the message."}
 
 
 ### missing from the picture 

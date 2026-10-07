@@ -1,7 +1,7 @@
 
 ### consistency  {.smaller}
 
-![](/routing-ls/texfig/sp-consistency.figure.svg)
+![](/routing-ls/texfig/sp-consistency.figure.svg){fig-alt="network where A has two paths to C. One via B and one other node, and one via two other nodes."}
  
 
 * if A sends packet for C to B, how does A know B won't send it back? 
@@ -15,10 +15,17 @@
 
 
 ::: {.r-stack .my-full}
-![](/routing-ls/texfig/sp-inconsistency.figure-1.svg){.fragment .fade-out fragment-index=2}
+![](/routing-ls/texfig/sp-inconsistency.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="Same network, but the link from C toward B has just gone down,"}
 
-![](/routing-ls/texfig/sp-inconsistency.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/routing-ls/texfig/sp-inconsistency.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="The information about the down link propogates to B and from C to the next node on the other path, but has not reached A yet."}
 
+:::
+
+
+::: {.myoverbox .fragment .fade-in fragment-index=2}
+
+*  B thinks best route to C: through A 
+*  A thinks best route to C: through B
 
 :::
 

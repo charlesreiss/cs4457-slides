@@ -1,7 +1,7 @@
 
 ### OSPF link-state advertisements (router) 
 
-![](/routing-ls/texfig/link-state-adv-router.figure.svg)
+![](/routing-ls/texfig/link-state-adv-router.figure.svg){fig-alt="OSPF link state advertisement contents: age, options, type, ID, advertising router, sequence number, checksum, length, and more depend on the LSA type"}
 
 ### OSPF LSA sequences/ages  {.smaller}
 

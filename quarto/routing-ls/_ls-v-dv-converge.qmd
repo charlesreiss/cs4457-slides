@@ -3,14 +3,8 @@
 
 
 
-::: {.r-stack}
-![](/routing-ls/texfig/ls-v-dv-converge.figure-1.svg){.fragment .fade-out fragment-index=2}
+![](/routing-ls/texfig/ls-v-dv-converge.figure-2.svg){width=800px fig-alt="Network forming a cycle: A-B-C-D-E-F-A. The link from A-B has just gone down."}
 
-![](/routing-ls/texfig/ls-v-dv-converge.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
-
-
-:::
- 
 
 * exercise: how many steps to fix A's next hop for B, C, D, etc.…  
 

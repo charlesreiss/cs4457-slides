@@ -15,8 +15,6 @@
 
 ### backbone limits 
 
-<!-- FIXME: overbox stuff --t>
-
 ::: {.r-stack .my-full}
 ![](/routing-ls/texfig/ospf-backbone-limits.figure-1.svg){.fragment .fade-out fragment-index=2}
 
