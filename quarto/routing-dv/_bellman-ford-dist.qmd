@@ -37,19 +37,19 @@
 
 ![](/routing-dv/texfig/distributing-bellman-ford.figure-8.svg){.fragment .fade-in-then-out fragment-index=8 fig-alt="As a result, A updates its route to C (cost 1=0+1 via C, 1 is the A to C edge cost), and B updates its route to C (cost 2=0+2 via C)."}
 
-![](/routing-dv/texfig/distributing-bellman-ford.figure-9.svg){.fragment .fade-in-then-out fragment-index=9 fig-alt="Node D sends another update to node C: 'I'm D, costs: D=0,C=infinity'. C's cost is passed as infinity despite D's route to C being cost 5 via C."}
+![](/routing-dv/texfig/distributing-bellman-ford.figure-9.svg){.fragment .fade-in-then-out fragment-index=9 fig-alt="Node D sends another update to node C: 'I'm D, costs: D=0,C=infinity'. C's cost is passed as infinity despite D's route to C being cost 5, because we want to avoid a circular route."}
 
 ![](/routing-dv/texfig/distributing-bellman-ford.figure-10.svg){.fragment .fade-in-then-out fragment-index=10 fig-alt="As a result of D's update from C, C sets its cost to D to be 4=0+4 (link cost) via D."}
 
 :::
 
-::: {.myoverbox .fragment .fade-in-then-out fragment=index=2}
+::: {.myoverbox .fragment .fade-in-then-out fragment-index=2}
 
 store table row = ``distance vector'' on each node
 
 :::
 
-::: {.myoverbox .fragment .fade-in-then-out fragment=index=9}
+::: {.myoverbox .fragment .fade-in-then-out fragment-index=9}
 
 *  "split horizon" optimization 
 *  don't echo back routes where they come from
