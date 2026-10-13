@@ -1,0 +1,32 @@
+### last time {.smaller}
+
+*  fragmentation
+   *  split IP packets into multiple pieces
+   *  IPv4: done by routers unless Don't Fragment (DF) flag set
+   *  usually undesirable: cost to reconstruct; 
+*  flooding idea
+   *  every router shares with neighbors; repeat
+*  spanning tree protocol
+   *  choose specific spanning tree by ordering tree roots, links
+   *  each node chooses correct uplink, shares with neighbors
+   *  use neighbor's uplink option if earlier in ordering
+
+###
+
+### assignment Q+A
+
+# spanning trees {visibility="hidden"}
+
+{{< include /routing-intro/_spanning-tree.qmd >}}
+
+# preview: better routing {visibility="hidden"}
+
+{{< include /routing-intro/_preview-better.qmd >}}
+
+# aside: metrics {visibility="hidden"}
+
+{{< include /routing-intro/_metrics.qmd >}}
+
+{{< include /routing-dv/_talk-inner.qmd >}}
+
+{{< include /routing-bgp/_talk-inner.qmd >}}
