@@ -43,9 +43,9 @@
 
 :::
 
-::: {.myoverbox .fragment .fade-in-then-out fragment-index=2}
+::: {.myoverbox .fragment .fade-in-then-out fragment-index=2 .low}
 
-store table row = ``distance vector'' on each node
+store table row = "distance vector" on each node
 
 :::
 

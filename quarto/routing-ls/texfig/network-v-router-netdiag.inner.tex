@@ -26,7 +26,7 @@
 \node[router,label={south:R2}] (r2) at (2, -2) {};
 \node[router,label={south:R3}] (r3) at (2, -3.4) {};
 \node[router,label={south:R4}] (r4) at (5, -3.25) {};
-\foreach \x/\y in {r1/s1,r2/s1,r2/s2,r3/s3,r2/s4,r1/s3,r3/s4,s3/r3,s2/r4,r4/s4} {
+\foreach \x/\y in {r1/r2,r1/s1,r2/s1,r2/s2,r3/s3,r2/s4,r1/s3,r3/s4,s3/r3,s2/r4,r4/s4} {
     \draw[connect] (\x) -- (\y);
 }
 \begin{visibleenv}<2->

@@ -15,4 +15,5 @@ format:
     self-contained-math: true
     slide-number: "c"
     syntax-definitions: [gnuassembler.xml]
+    pdf-separate-fragments: true
 mermaid-format: svg

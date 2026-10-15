@@ -1,0 +1,17 @@
+### last time {.smaller}
+
+*  distance vector routing
+   *  nodes track distances + next hop to each destination
+   *  periodically send to neighbors
+*  receiving neighbor's distance vector
+   *  maybe find better next hop
+   *  maybe update distance of current next hop
+*  handling link deletion/failure
+   *  need to increase distances sometimes
+*  "count to infinity" problem
+*  (started) link-state routing
+   *  everyone learns whole network
+
+{{< include /routing-ls/_talk-inner.qmd >}}
+
+{{< include /routing-bgp/_talk-inner.qmd >}}

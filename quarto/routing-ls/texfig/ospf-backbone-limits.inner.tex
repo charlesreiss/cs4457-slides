@@ -19,33 +19,4 @@
 \draw[dotted,very thick,Latex-Latex,red] (Ar) -- (AB);
 \draw[dotted,very thick,Latex-Latex,red] (Br) -- (AB);
 \end{visibleenv}
-\begin{visibleenv}<2>
-    \node[align=left,draw=red,ultra thick] at ([xshift=3cm,yshift=3cm]backbone.east) {
-        org with two sites --- \\
-        can configure as areas  \\
-        three border routers
-    };
-\end{visibleenv}
-\begin{visibleenv}<3>
-    \node[align=left,draw=red,ultra thick] at ([xshift=3cm,yshift=3cm]backbone.east) {
-        if B's link to \\
-        backbone fails, \\
-        B should \\
-        use building A's \\
-        ~ \\
-        but disallowed by \\
-        anti-loop rule
-    };
-\end{visibleenv}
-\begin{visibleenv}<4>
-    \node[align=left,draw=red,ultra thick] at ([xshift=3cm,yshift=3cm]backbone.east) {
-        could fix this \\
-        by connecting A/B \\
-        border router \\
-        to backbone\ldots
-        ~ \\
-        solution: \\
-        ``virtual links''
-    };
-\end{visibleenv}
 \end{tikzpicture}

@@ -16,14 +16,35 @@
 ### backbone limits 
 
 ::: {.r-stack .my-full}
-![](/routing-ls/texfig/ospf-backbone-limits.figure-1.svg){.fragment .fade-out fragment-index=2}
+![](/routing-ls/texfig/ospf-backbone-limits.figure-1.svg){.fragment .fade-out fragment-index=3 fig-alt="network with backbone, site A, and site B. site A and site B are connected to each other via a router; site A is connected to the backbone via another router; site B is also connecte to the backbone via a third router."}
 
-![](/routing-ls/texfig/ospf-backbone-limits.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/routing-ls/texfig/ospf-backbone-limits.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="the link from site B to its backbone-connected router goes down"}
 
-![](/routing-ls/texfig/ospf-backbone-limits.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/routing-ls/texfig/ospf-backbone-limits.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="the router between site A and B has two 'virtual' connections: one to the router attaching site A to the backbone, the other to the router attaching site B to the backbone."}
 
-![](/routing-ls/texfig/ospf-backbone-limits.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+:::
 
+::: {.myoverbox .fragment .fade-in-then-out fragment-index=2 .midright}
+
+*  organization with two sites
+*  can configure as areas
+*  three border routers
+
+:::
+
+::: {.myoverbox .fragment .fade-in-then-out fragment-index=3 .midright}
+
+*  if B's link to backbone fails</br>
+   B should use site A's
+*  _disallowed_ by anti-loop rule!
+
+:::
+
+::: {.myoverbox .fragment .fade-in-then-out fragment-index=4 .midright}
+
+*  could fix this by connecting<br/>
+   A/B border router to backbone
+*  solution: "virtual links"
 
 :::
 

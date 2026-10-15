@@ -8,6 +8,10 @@
    *  deliberately dropping packets when queue _not_ full
 *  problems in packet forwarding
 
+### assignment Q+A
+
+###
+
 ## fragmentation, MTUs {visibility="hidden"}
 
 ### problems when forwarding 
