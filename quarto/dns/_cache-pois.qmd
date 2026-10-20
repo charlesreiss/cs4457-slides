@@ -1,0 +1,49 @@
+
+### DNS cache poisoning 
+
+
+
+::: {.r-stack .my-full}
+![](/dns/texfig/cache-pois-dns-cache-poisoning.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="A network with a victim machine, dns.isp.com (an ISP's DNS server), ns.foo.com (an authoritiative DNS server) and two malicious machines."}
+
+![](/dns/texfig/cache-pois-dns-cache-poisoning.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="One malicious machine makes a query to dns.isp.com asking to resolve foo.com."}
+
+![](/dns/texfig/cache-pois-dns-cache-poisoning.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="dns.isp.com asks ns.foo.com to resolve foo.com's IP address. The other malicious machine sends a response that appaers to come from ns.foo.com saying that foo.com is the attacker's IP address with a very long time-to-live."}
+
+![](/dns/texfig/cache-pois-dns-cache-poisoning.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="when an innocent user asks dns.isp.com for foo.com's IP address, it returns the cached response with the attacker's IP address."}
+
+
+:::
+
+
+### mitigating cache poisoning attacks  {.smaller}
+
+
+* filter out packets with source address for where they come from? 
+
+   * not feasible if real/spoofed packets forwarde through many other ISPs
+
+* use random port number for queries 
+
+   * attacker can spoof many port numbers at once
+   * attacker can keep trying until they guess right
+
+* use random ID number in DNS query 
+
+   * not good enough alone --- attacker can guess often enough
+   * probably enough with random port?
+
+* add additional randomness to DNS query 
+
+   * randomize capitalization (assuming it's returned the same in response)
+   * ‘DNS cookie’ extension (RFC 7873; assuming remote server supports it)
+
+* use TCP with random sequence number (slow)
+
+
+### exercise: effectiveness? 
+
+
+* suppose we just use random port (10000-65535) + random ID number (0--65535)
+* to have 1% success rate, how many spoofed packets for attacker?
+

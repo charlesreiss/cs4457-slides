@@ -1,0 +1,15 @@
+
+### DNS time-to-live  {.smaller}
+
+
+* need some way to remove out-of-date DNS records 
+<hr class="vspace" />
+* DNS solution: time-to-live
+* number of seconds record is valid for 
+<hr class="vspace" />
+* typically set to fixed value by authoritative server 
+
+   * configured by system administrator
+
+* decremented when returned from cache by recursive resolvers
+

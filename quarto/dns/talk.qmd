@@ -1,0 +1,10 @@
+---
+title: "dns"
+
+---
+
+{{< include ../dns/_talk-inner.qmd >}}
+
+# Backup slides
+
+{{< include ../dns/_talk-backup.qmd >}}

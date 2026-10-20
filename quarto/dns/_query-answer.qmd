@@ -1,0 +1,164 @@
+
+### DNS messages (1) 
+
+
+* client sends query to server
+* server responds with response 
+<hr class="vspace" />
+* response and query have same format 
+
+   * but different fields set/used
+
+
+
+### DNS message 
+
+![](/dns/texfig/query-answer-dns-message.figure-1.svg){fig-alt="DNS message consisting of: 16-bit ID, 1-bit QR, 4-bit opcode, 1-bit fields AA, TC, RD, RA, constant 0, AD, CD; 4-bit RCODE; 16-bit QDCOUNT (1 or 0); ANCOUNT; NSCOUNT; ARCOUNT; then QDCOUNT questions, and ANCOUNT+NSCOUNT+ARCOUNT RRs"}
+
+### DNS message (flags)
+
+![](/dns/texfig/query-answer-dns-message.figure-2.svg){fig-alt="same figure as previous slide, but 1-bit fields near beginning are highlighted."}
+
+::: {.myoverbox .vlow}
+
+*  'flags'
+    *  QR = 0 if query, 1 if response 
+    *  AA = 1 if authoritative 
+    *  TC = 1 if truncated (packet size limit) 
+    *  RD = 1 if query wants recursion (contact other servers) 
+    *  RA = 1 if server supports recursion
+*  DNSSEC (PKI for DNS) additions: 
+    *  AD = 1 if verified cryptographically (`authentic data') 
+    *  CD = 1 if no cryptographic check requested (`checking disabled') 
+
+:::
+
+### DNS message (opcode)
+
+![](/dns/texfig/query-answer-dns-message.figure-3.svg){fig-alt="same figure as previous slide, but 4-bit opcode field is highlighted."}
+
+::: {.myoverbox .vlow}
+
+*  opcode
+*  0 for query
+*  also some other operations (less common)
+
+:::
+
+### DNS message (rcode)
+
+![](/dns/texfig/query-answer-dns-message.figure-3.svg){fig-alt="same figure as previous slide, but 4-bit RCODE field is highlighted."}
+
+::: {.myoverbox .vlow}
+
+response code, 0 for no error
+
+:::
+
+
+### response with no answer+authority+additional  {.smaller}
+
+
+```
+$ dig @nom.virginia.edu cs.virginia.edu ns +noedns
+...
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 33036
+;; flags: qr rd; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+;; WARNING: recursion requested but not available
+
+;; QUESTION SECTION:
+;cs.virginia.edu.               IN      NS
+
+;; AUTHORITY SECTION:
+cs.virginia.edu.        3600    IN      NS      coresrv01a.cs.virginia.edu.
+
+;; ADDITIONAL SECTION:
+coresrv01a.cs.virginia.edu. 3600 IN     A       128.143.67.64
+
+```
+
+
+### response with 2 answers  {.smaller}
+
+
+```
+$ dig @coresrv01a.cs.virginia.edu cs.virginia.edu a +noedns
+...
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 5084
+;; flags: qr aa rd; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
+;; WARNING: recursion requested but not available
+
+;; QUESTION SECTION:
+;cs.virginia.edu.               IN      A
+
+;; ANSWER SECTION:
+cs.Virginia.EDU.        172800  IN      A       128.143.67.8
+cs.Virginia.EDU.        172800  IN      A       128.143.67.64
+
+```
+
+
+### response with CNAME answer to A query  {.smaller}
+
+
+```
+$ dig @nom.virginia.edu canvas.its.virginia.edu +noedns
+...
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 32583
+;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
+;; WARNING: recursion requested but not available
+
+;; QUESTION SECTION:
+;canvas.its.virginia.edu.       IN      A
+
+;; ANSWER SECTION:
+canvas.its.virginia.edu. 3600   IN      CNAME   universityofvirginia-vanity.instructure.com.
+
+```
+
+
+### response  with CNAME chain in answers + authority  {.smaller}
+
+
+```
+$ dig @ns-1354.awsdns-41.org. universityofvirignia-vanity.instructure.com. +noedns
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 60997
+;; flags: qr aa rd; QUERY: 1, ANSWER: 2, AUTHORITY: 4, ADDITIONAL: 0
+;; WARNING: recursion requested but not available
+
+;; QUESTION SECTION:
+;universityofvirignia-vanity.instructure.com. IN        A
+
+;; ANSWER SECTION:
+universityofvirignia-vanity.instructure.com. 300 IN CNAME cluster1.instructure.com.
+cluster1.instructure.com. 900   IN      CNAME   canvas-iad-prod-c1-1262762608.us-east-1.elb.amazonaws.com.
+
+;; AUTHORITY SECTION:
+instructure.com.        172800  IN      NS      ns-1354.awsdns-41.org.
+instructure.com.        172800  IN      NS      ns-1799.awsdns-32.co.uk.
+instructure.com.        172800  IN      NS      ns-2.awsdns-00.com.
+instructure.com.        172800  IN      NS      ns-996.awsdns-60.net.
+
+```
+
+
+### DNS message  {.smaller}
+
+
+* header
+* 0 or 1 question 
+
+   * domain name + class + type
+   * (RR without TTL or value)
+   * special type values for ANY, some other things
+
+* ANCOUNT RRs in ‘answer section’: 
+
+   * matches for question domain name + class + type
+   * special case: CNAMEs always match; can include CNAMEs of name
+
+* NSCOUNT+ADCOUNT RRs in ‘authority section’ and ‘additional’ section 
+
+   * NS or SOA records (authority); associated A/AAAA records (additional)
+
+

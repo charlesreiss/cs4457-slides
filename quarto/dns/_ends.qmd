@@ -1,0 +1,18 @@
+
+### eDNS(0) (RFC 6891)  {.smaller}
+
+
+* extend DNS protocol by sending psuedo-RR 
+
+   * added in additoinal section of requests
+   * name <code>.</code> (empty)
+   * type OPT/44
+   * CLASS, TTL fields reused for other stuff
+
+* specifies: 
+
+   * <em>max size over UDP</em>
+   * extra bits for RCODE
+   * additoinal, variable length data
+
+

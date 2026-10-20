@@ -1,0 +1,9 @@
+
+### DNS hierarchy 
+
+![hierarchy with single root](/dns/texfig/dns-hier.figure-1.svg){fig-alt="tree structure with '.' and the top. '.' has children 'com', 'edu', ...; 'com' has children but they are not shown (represented with '...'); 'edu' has children virginia, vt, vcu, ...; virginia has children cs, engineering, its, ....; cs hsa children kytos02, www, ...; its has children canvas, shipidp, ..."}
+
+### DNS zones
+
+![divided into zones, each with own authoritative servers](/dns/texfig/dns-hier.figure-2.svg){fig-alt="in the same tree structure, groups known as zones as highlighted. All the something.cs.virginia.edu names are a zone. engineering.virginia.edu, everything.its.virginia.edu are a different zone (of which the cs.virginia.edu zone is a 'child'). vt.edu is a zone, vcu.edu is a zone. edu is its own zone as is com. The root '.' is another zone."}
+

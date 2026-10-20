@@ -1,0 +1,15 @@
+
+### DNSSEC root key  {.smaller}
+
+
+* root key-signing key 
+
+   * key material split between air-gapped safe and…
+   * designated ‘crpytographic officers’ (3 of 7 needed to do signing)
+   * cryptographic officers have smart card with some key material 
+<hr class="vspace" />
+   * designated ‘recovery key share holders’ (5 of 7 can reconstruct keys if disaster)
+   * semi-public ‘key signing ceremonies’
+
+* periodically (approx 4x/year) new root zone-signing keys
+

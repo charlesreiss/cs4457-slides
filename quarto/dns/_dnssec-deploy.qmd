@@ -1,0 +1,19 @@
+
+### DNSSEC deployment: validation 
+
+
+* queries supporting validation: approx. 36% 
+
+   * from [https://stats.labs.apnic.net/dnssec/](https://stats.labs.apnic.net/dnssec/)
+
+* approx. 46% recursive resolvers support  
+
+   * from [https://ithi.research.icann.org/](https://ithi.research.icann.org/)
+
+
+
+### DNSSEC deployment: signing 
+
+via [https://ithi.research.icann.org/graph-m11.html]{.my-small}: <br> 
+![](/dns/ithi-dnssec-deploy-oct-domains){fig-alt="Bar charts of signing algorithms in use for various sets of DNS zones, including 'No DNSSEC' as an option. gTLDs are almost all signed. ccTLDs are about 70% signed. The top-100 domains are about 5% signed, the top-1000 around 18%, top-10K around 10%, top 100k, 1 million and all .com names all less than 6%."}
+

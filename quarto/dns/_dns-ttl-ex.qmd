@@ -1,0 +1,41 @@
+
+### DNS exercise (1)  {.smaller}
+
+
+* ‘‘www.cs.virginia.edu is 128.148.67.11 <em>for next 86400 seconds</em>’’
+* (given record above) if sysadmin changes IP address DNS server returns for www.cs.virginia.edu, then what will happen to machines accessing website? 
+
+   * A. they'll start using the new address after 86400 seconds, and use the old one before then.
+   * B. different machines will use the new address at different times, but no longer than 86400 seconds from when it changes
+   * C. machines will start using the new address almost immediately, but after some small delay after it is changed
+   * D. machines may keep using the old address until they are rebooted
+   * E. something else?
+
+
+
+### DNS exercise (2)  {.smaller}
+
+
+* if sysadmin wants to change the IP address of www.cs.virginia.edu, how do they do this without downtime? 
+<hr class="vspace" />
+* they can change the IP address the server returns and/or the time-to-live?
+* what should they change and when to smoothly transition to a new address?
+
+
+### DNS exercise (3)  {.smaller}
+
+
+* suppose initially 
+
+   * *.foo.com DNS server (‘nameserver’) = 10.2.3.4, valid 200 s
+   * www.foo.com = 10.1.2.3, valid 100 s
+
+* if at time 0 seconds, changed to: 
+
+   * *.foo.com DNS server = 10.3.4.5, valid 100 s
+   * www.foo.com DNS server = 10.3.5.1, valid 400 s
+
+* ex 0: when will new DNS server/www.foo.com start being used?
+* ex 1: when can we shut down old DNS server?
+* ex 2: when can we shut down old www.foo.com?
+

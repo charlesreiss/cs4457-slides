@@ -1,0 +1,34 @@
+
+### DNSSEC  {.smaller}
+
+
+* public key infrastructure for DNS
+* single set of root keys from ICANN/IANA 
+
+   * not multiple certificate authorities like web PKI
+
+* each DNS zone has its own public key
+* all records within zone have a digital signature
+* delegation records have keys for subzones 
+
+   * similar to TLS certificates
+
+
+
+### DNSSEC offline signing  {.smaller}
+
+
+* design goal: generate + sign zone
+* have digital signatures that can verify all records 
+<hr class="vspace" />
+* means: DNS servers don't need to actually sign anything!
+* can have signing keys offline 
+
+   * much lower security risk
+ 
+<hr class="vspace" />
+* challenges: 
+
+   * representing missing domain names (solution sketch: ‘‘no domain names between A and C’’ record)
+
+

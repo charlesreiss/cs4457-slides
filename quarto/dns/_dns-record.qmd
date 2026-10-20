@@ -1,0 +1,36 @@
+
+### DNS resource records 
+
+
+* resource record (RR) = single DNS database ‘entry’
+* has standard text and binary representation 
+
+   * text used for server config files and display
+   * binary representation used for network protocol
+
+
+
+### DNS record example (text) 
+
+![](/dns/texfig/dns-record-dns-record-example-text.figure.svg){fig-alt="DNS record 'www.cs.virginia.edu. 172800 IN A 128.143.67.8'. 'www.cs.virginia.edu.' is a domain name, composed of a sequence of labels (separated by dots) with an empty label at the end. 172800 is the time-to-live in second. 'IN' represents the class internet. 'A' represents the type IPv4 address. '128.143.67.8' is the value of the address. This is represented in binary. The name as a series of labels prefixed by their length: byte 3, ASCII 'www', byte 2, ASCII 'cs', byte 8, 'virginia', byte 0. Then the rest of the record is represented: integer 1 representing type A, then integer 1 representing class IN, then the integer 172800 (the time-to-live), then 4 representing the data length, then the bytes 128, 143, 67, 8."}
+
+
+### DNS name format  {.smaller}
+
+![](/dns/texfig/dns-record-dns-name-format.figure.svg){"The DNS name www.cs.virginia.edu is represented as 3, www, 2, cs, 8, virginia, 0 has before. Then coresrv01a.cs.virginia.edu. is represented by a 10 (length of 'coresrv01a') followed by a pointer to the '2' before the 'cs' in 'www.cs.virginia.edu.'"}
+ 
+
+* zero or more: length of $K>0$ followed by $K$ character case-insensitive <i>label</i> 
+
+   * labels limited to 64 bytes
+
+* then either: 
+
+   * length of $0$ to indicate end-of-name <i>or</i>
+   * ‘‘pointer’’ to earlier name in message 
+
+      * pointer encoded as <code>0xc000</code> + byte number in message (big endian)
+      * upper two bits being set prevents confusion with length
+
+
+

@@ -1,0 +1,36 @@
+\begin{tikzpicture}
+\tikzset{
+    blabel/.style={font=\small},
+    blabel alt/.style={font=\fontsize{9}{10}\selectfont},
+    flag/.style={alt=<2>{fill=red!10}},
+    opcode/.style={alt=<3>{fill=red!10}},
+    rcode/.style={alt=<4>{fill=red!10}},
+}
+\begin{scope}[yshift=0cm,x=0.45cm]
+    \draw (0, 0) rectangle ++(16, -1) node[midway,blabel] {ID};
+    \draw[flag] (16, 0) rectangle ++(1, -1) node[midway,blabel alt] {QR};
+    \draw[opcode] (17, 0) rectangle ++(4, -1) node[midway,blabel] {opcode};
+    \draw[flag] (21, 0) rectangle ++(1, -1) node[midway,blabel alt] {AA};
+    \draw[flag] (22, 0) rectangle ++(1, -1) node[midway,blabel alt] {TC};
+    \draw[flag] (23, 0) rectangle ++(1, -1) node[midway,blabel alt] {RD};
+    \draw[flag] (24, 0) rectangle ++(1, -1) node[midway,blabel alt] {RA};
+    \draw (25, 0) rectangle ++(1, -1) node[midway,blabel] {\tt 0};
+    \draw[flag] (26, 0) rectangle ++(1, -1) node[midway,blabel alt] {AD};
+    \draw[flag] (27, 0) rectangle ++(1, -1) node[midway,blabel alt] {CD};
+    \draw[rcode] (28, 0) rectangle ++(4, -1) node[midway,blabel] {RCODE};
+    \draw (0, -1) rectangle ++(16, -1) node[midway,blabel] {QDCOUNT (0 or 1)};
+    \draw (16, -1) rectangle ++(16, -1) node[midway,blabel] {ANCOUNT};
+    \draw (0, -2) rectangle ++(16, -1) node[midway,blabel] {NSCOUNT};
+    \draw (16, -2) rectangle ++(16, -1) node[midway,blabel] {ARCOUNT};
+    \draw (0, -3) rectangle ++(32, -1.5) node[midway,blabel] {QDCOUNT questions};
+    \draw (0, -4.5) rectangle ++(32, -1.5) node[midway,blabel] {
+            ANCOUNT+NSCOUNT+ARCOUNT RRs
+    };
+    \coordinate (mark low) at (16, -2.1);
+\end{scope}
+\tikzset{
+    explain box low/.style={at={(mark low)},draw=red,very thick,align=left,anchor=north,fill=white},
+    explain box low2/.style={at={([yshift=1cm]mark low)},
+        font=\small,draw=red,very thick,align=left,anchor=north,fill=white},
+}
+\end{tikzpicture}

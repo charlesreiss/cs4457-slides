@@ -1,0 +1,23 @@
+\begin{tikzpicture}
+\begin{scope}[x=0.45cm]
+    \draw (0, 0) rectangle ++(1, -1) node[midway] {3};
+    \draw (1, 0) rectangle ++(3, -1) node[midway] {\texttt{www}};
+    \coordinate (ptr end) at (4.5, -1);
+    \draw (4, 0) rectangle ++(1, -1) node[midway] {2};
+    \draw (5, 0) rectangle ++(2, -1) node[midway] {\texttt{cs}};
+    \draw (7, 0) rectangle ++(1, -1) node[midway] {8};
+    \draw (8, 0) rectangle ++(8, -1) node[midway] {\texttt{virginia}};
+    \draw (16, 0) rectangle ++(1, -1) node[midway] {3};
+    \draw (17, 0) rectangle ++(3, -1) node[midway] {\texttt{edu}};
+    \draw (20, 0) rectangle ++(1, -1) node[midway] {0};
+    \node[anchor=north] at (16, -1) {\ldots};
+\end{scope}
+\begin{scope}[x=0.45cm,yshift=-1.5cm,xshift=1.5cm]
+    \draw (0, 0) rectangle ++(1, -1) node[midway,font=\small\tt] {10};
+    \draw (1, 0) rectangle ++(10, -1) node[midway] {\texttt{coresrv01a}};
+    \draw (11, 0) rectangle ++(2, -1);
+    \draw[fill=black!30] (11, 0) rectangle ++ (0.25, -1);
+    \coordinate (ptr base) at (12, -.5);
+\end{scope}
+\draw[very thick,-Latex] (ptr base) |- ([yshift=-.4cm]ptr end) -- (ptr end);
+\end{tikzpicture}

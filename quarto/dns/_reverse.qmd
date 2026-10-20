@@ -1,0 +1,45 @@
+
+### reverse DNS (IPv4)  {.smaller}
+
+
+
+* what's a domain name for IP 128.143.107.101?
+* special domain name: <code>101.107.143.128.in-addr.arpa</code>
+* … and <code>PTR</code> record type for this:
+ 
+```
+$ dig -x 128.143.107.101
+...
+101.107.143.128.in-addr.arpa. 3516 IN   PTR     eip-04-udc.net.virginia.edu.
+...
+$ dig eip-04-udc.net.virginia.edu a
+...
+eip-04-udc.net.virginia.edu. 3600 IN    A       128.143.107.101
+...
+
+```
+ 
+
+* might not be only name:
+ 
+```
+$ dig nom.virginia.edu a
+...
+nom.virginia.edu.       86400   IN      A       128.143.107.101
+...
+
+```
+
+
+### reverse DNS (IPv6) 
+
+
+```
+$ dig -x 2607:f8b0:4004:c1d::65
+...
+5.6.0.0.0.0.0.0.0.0.0.0.0.0.0.0.d.1.c.0.4.0.0.4.0.b.8.f.7.0.6.2.ip6.arpa.
+    3345 IN PTR ww-in-f101.1e100.net.
+...
+
+```
+

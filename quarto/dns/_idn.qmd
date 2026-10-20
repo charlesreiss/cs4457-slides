@@ -1,0 +1,35 @@
+
+### internationalized domain names  {.smaller}
+
+
+* [https://日本レジストリサービス.jp](https://日本レジストリサービス.jp)
+* how does this work? 
+<hr class="vspace" />
+* becomes: [https://xn--vckfdb7e3c7hma3m9657c16c.jp/](https://xn--vckfdb7e3c7hma3m9657c16c.jp/)  
+
+   * encoding scheme called <i>punycode</i>
+
+
+
+### IDN homograph attacks 
+
+
+* <code>bаnkofamerica.com</code>
+* <code>xn--bnkofamerica-x9j.com</code>
+* <code>а</code> = U+0430 = CYRLLIC SMALL LETTER A
+
+
+### defenses against homograph attacks  {.smaller}
+
+
+* at registries, restrict domain registration 
+
+   * disallow mixed scripts (e.g. latin and cyllric)
+   * test if looks identical to registered domains
+
+* at browsers, restrict display in non-<code>xn-…</code> form 
+
+   * allow-list for ‘good’ top-level domains (e.g. <code>.gr</code>, <code>.jp</code>, etc.)
+   * otherwise, only allow known non-confusing combinations
+
+

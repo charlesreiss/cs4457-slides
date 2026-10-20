@@ -1,0 +1,33 @@
+
+### root servers (1) 
+
+(from IANA's website) 
+![](/dns/iana-root-server-list){}
+
+
+### root servers (2) 
+
+(from root-servers.org) 
+![](/dns/root-servers-map){}
+
+
+### anycast root servers  {.smaller}
+
+
+* many root servers have multiple separate sites
+* … but one IPv4/IPv6 address 
+<hr class="vspace" />
+* which one you get = which one routed to
+* multiple sites with BGP announcements for IP 
+
+   * often with care taken to limit how far route goes
+
+* idea called ‘anycast’ 
+
+   * get to ‘any’ of several servers
+
+* also used for some public recursive DNS servers 
+
+   * 1.1.1.1 (CloudFlare), 8.8.8.8 (Google), 208.67.222.222 (Cisco), …
+
+

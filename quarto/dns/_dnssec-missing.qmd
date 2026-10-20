@@ -1,0 +1,65 @@
+
+### DNSSEC and missing records  {.smaller}
+
+
+* ‘easy’ idea: sign ‘‘<code>randomjunk.cs.virginia.edu. IN DOESNOTEXIST</code>’’ 
+<hr class="vspace" />
+* problems:
+* violates model of signing everything ‘offline’
+* potential way to overload server with lots of requests
+* do we really want to cache <code>randomjunk.cs.virginia.edu</code> does not exist?
+* … for each value of <code>randomjunk</code>?
+
+
+### DNSSEC and missing records  {.smaller}
+
+
+* multiple options: 
+
+   * signed ‘no result between W.Y.Z, type Q and Z.Y.Z, type A’ message (NSEC)
+   * signed ‘no result with hash(?) = A \< hash(X) \< B = hash(?)’ message (NSEC3)
+
+* can be generated in advance  (with signing keys kept ‘offline’) 
+
+   * can also generate dynamically to reveal less informationx
+
+
+
+### NSEC (‘next secure’) 
+
+
+```
+$ dig +trace +dnssec weird.invalid
+...
+intuit. 86400   IN NSEC  investments. NS DS RRSIG NSEC
+intuit. 86400   IN RRSIG NSEC ...
+
+```
+ 
+
+* there are no NS, DS, RRSIG, NSEC recods between ‘intuit.’ and ‘investments.’
+
+
+### NSEC3  {.smaller}
+
+
+```
+$ dig +trace +dnssec foo.example.com a
+...
+0qn0igs6chbcq47kevankt96i9obe5he.example.com. 3600 IN NSEC3 \
+    1 0 5 A4196F45E2097176 DCKKHGFRAJB05JCM258PTCEHOVGMIPAN \
+    A NS SOA MX TXT AAAA RRSIG DNSKEY NSEC3PARAM
+0qn0igs6chbcq47kevankt96i9obe5he.example.com. 3600 IN RRSIG NSEC3 ...
+
+```
+ 
+
+* A4196… is a ‘salt’ to make hash unique 
+
+   * defense against ‘rainbow tables’
+
+* 0qn0… and DCKK… hashes of names on either side of ‘foo’ 
+
+   * record proves: no names in between exist
+
+

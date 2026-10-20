@@ -1,0 +1,17 @@
+
+### names and addresses  {.smaller}
+
+<table>
+<thead>
+<tr><th><em>name</em></td><th><em>address</em></th></tr>
+<tr><th>logical identifier</em></th><th>em>location/how to locate</em></th></tr>
+</thead>
+<tbody>
+<tr><td>DNS name <code>www.virginia.edu</code></td><td>IPv4 address <code>128.143.22.36</code></td></tr>
+<tr><td>DNS name <code>mail.google.com</code></td><td>IPv4 address <code>216.58.217.69</code></td></tr>
+<tr><td>DNS name <code>mail.google.com</code></td><td>IPv6 address <code>2607:f8b0:4004:80b::2005</code></td></tr>
+<tr><td>DNS name <code>reiss-t3620.cs.virginia.edu</code></td><td>IPv4 address <code>128.143.67.91</code></td></tr>
+<tr><td>...</td><td>...</td></tr>
+</tbody>
+</table>
+

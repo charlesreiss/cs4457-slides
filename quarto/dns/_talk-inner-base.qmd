@@ -1,0 +1,60 @@
+
+# names versus addresses {visibility="hidden"}
+
+{{< include /dns/_names-and-addresses.qmd >}}
+
+# DNS hierarchy, caching {visibility="hidden"}
+
+{{< include /dns/_dns-intro.qmd >}}
+
+{{< include /dns/_dns-hier.qmd >}}
+
+## authoritative/recursive v not {visibility="hidden"}
+
+{{< include /dns/_authority-recurse.qmd >}}
+
+# example {visibility="hidden"}
+
+{{< include /dns/_dig-trace.qmd >}}
+
+## aside: presentation format {visibility="hidden"}
+
+{{< include /dns/_pres-format.qmd >}}
+
+## TTLs and changing things {visibility="hidden"}
+
+{{< include /dns/_dns-ttl.qmd >}}
+
+{{< include /dns/_dns-ttl-ex.qmd >}}
+
+# root servers {visibility="hidden"}
+
+{{< include /dns/_root-servers.qmd >}}
+
+# registrars versus registries {visibility="hidden"}
+
+{{< include /dns/_registries.qmd >}}
+
+# DNS record format {visibility="hidden"}
+
+{{< include /dns/_dns-record.qmd >}}
+
+# common record types {visibility="hidden"}
+
+{{< include /dns/_common-record.qmd >}}
+
+# primary, secondary, zone xfers {visibility="hidden"}
+
+{{< include /dns/_primary-second-zone.qmd >}}
+
+# DNS query+answer format {visibility="hidden"}
+
+{{< include /dns/_query-answer.qmd >}}
+
+# DNS over UDP, TCP {visibility="hidden"}
+
+{{< include /dns/_send-over.qmd >}}
+
+# DNS extensions, briefly {visibility="hidden"}
+
+{{< include /dns/_ends.qmd >}}

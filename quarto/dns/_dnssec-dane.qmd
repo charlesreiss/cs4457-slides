@@ -1,0 +1,9 @@
+
+### DANE/TLSA (RFC 7671) 
+
+
+* DANE --- mechanism for authenticating websites/email servers/etc. with DNSSEC
+* not supported by any browser I know of 
+<hr class="vspace" />
+* instead, authenticate websites [mostly] separate from DNS
+

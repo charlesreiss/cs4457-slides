@@ -1,0 +1,30 @@
+
+### DNS: distributed database 
+
+
+
+::: {.r-stack .my-full}
+
+![](/dns/texfig/dns-intro.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="my machine is put in touch with my ISP's DNS server. It receives the addres of my ISP's DNS server when it connects to the network."}
+
+![](/dns/texfig/dns-intro.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="My machine asks my ISP's DNS server 'address of www.cs.virginia.edu'?"}
+
+![](/dns/texfig/dns-intro.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="My ISP's DNS server contacts the 'root' DNS server and asks 'www.cs.virginia.edu?'. It receives the reply 'try .edu server at ...'."}
+
+![](/dns/texfig/dns-intro.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="My ISP's DNS server then contacts a series of servers: the .edu server, the virginia.edu server, the cs.virginia.edu server."}
+
+![](/dns/texfig/dns-intro.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 fig-alt="Eventually, my ISP's DNS server returns the response: www.cs.virginia.edu = 128.143.67.11."}
+
+![](/dns/texfig/dns-intro.figure-5.svg){.fragment .fade-in-then-out fragment-index=6 fig-alt="My ISP's DNS server's communication with the root DNS server, retrieving the .edu server ot contact is highlighted."}
+
+:::
+
+::: {.myoverbox .fragment .fade-in-then-out fragment-index=6 .vlow}
+
+*  .edu server address does not change much
+   *  optimization: _cache_ its address
+   *  chec for updated version once in a while
+*  same applies to most other steps of lookup
+
+:::
+

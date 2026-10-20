@@ -1,0 +1,21 @@
+
+### primary and secondary servers  {.smaller}
+
+
+* usually have multiple DNS servers for each zone 
+
+   * needed to handle outages
+
+* DNS protocol supports <i>zone transfers</i> to synchronize them 
+
+   * DNS query for type <code>AXFR</code> returns all RRs as special case
+   * (most public DNS servers block this from ‘normal’users)
+
+* one server designed as ‘primary’; others are ‘secondary’
+* special SOA (start of authority) record provides metadata about zone 
+
+   * name of primary server to contact
+   * serial number for current version (to quickly check if update)
+   * how long to wait between updates, etc.
+
+

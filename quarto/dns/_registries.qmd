@@ -1,0 +1,18 @@
+
+### DNS registries  {.smaller}
+
+
+* IANA and affiliates publish root zone file 
+
+   * same organization as for IP address, AS numbers
+   * (but domain names are lot more politically active)
+
+* For usable top-level domains, there are <i>registries</i>: 
+
+   * VeriSign (VA company) for <code>COM</code>, <code>NET</code>
+   * Educause (non-profit) for <code>EDU</code>
+   * Registry Services, LLC (under contract with the US Dept of Commerce) for <code>US</code>
+   * …
+
+* many registries allow for many <i>registrars</i> who can sell new domains
+

@@ -1,0 +1,9 @@
+
+### DNS presentation format 
+
+
+* DNS uses compact binary format we'll talk about later 
+<hr class="vspace" />
+* also has standardized ‘presentation format’ that <code>dig</code> uses (roughly)
+* format is used for DNS server configuration files
+

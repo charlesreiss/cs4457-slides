@@ -1,0 +1,20 @@
+
+# cache poisoning {visibility="hidden"}
+
+{{< include /dns/_cache-pois.qmd >}}
+
+## DNSSEC {visibility="hidden"}
+
+{{< include /dns/_dnssec.qmd >}}
+
+## DNSSEC (lack of) deployment{visibility="hidden"}
+
+{{< include /dns/_dnssec-deploy.qmd >}}
+
+# reverse lookups, PTR {visibility="hidden"}
+
+{{< include /dns/_reverse.qmd >}}
+
+# IDNs {visibility="hidden"}
+
+{{< include /dns/_idn.qmd >}}

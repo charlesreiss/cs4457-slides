@@ -1,0 +1,41 @@
+
+### domain name system blocklists  {.smaller}
+
+
+* historically common non-domain-name use of DNS 
+
+   * I'm including to illustrate idea of ‘other’ DNS usage
+ 
+<hr class="vspace" />
+* database identifying (typically) IP addresses for filtering
+* used for spam/bot detection/prevention 
+
+   * these days tend to expect payment for serious use
+
+* typical idea similar to reverse IP lookups 
+
+   * use specific IP address to mark ‘in’ or ‘not in’ list
+
+
+
+### domain name system blocklists  {.smaller}
+
+
+
+* example: Team Cymru's Bogon list identifies invalid addresses
+ 
+```
+# 248.1.1.1 is on blocklist
+$ dig 1.1.1.248.v4.fullbogons.cymru.com a
+...
+1.1.1.248.bogons.cymru.com. 21600 IN    A       127.0.0.2
+...
+
+# 128.143.67.31 is not on blocklist
+$ dig 31.67.143.128.v4.fullbogons.cymru.com a
+...
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 6153
+...
+
+```
+

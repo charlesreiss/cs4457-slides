@@ -1,0 +1,56 @@
+\begin{tikzpicture}
+\matrix[ampersand replacement=\&,every node/.style={font=\small\tt\strut},column sep=0.5cm,anchor=north west] at (0,0) {
+    \node (www) {www.cs.virginia.edu.}; \& \node (www ttl) {172800}; \&[.75cm]
+    \node (www in) {IN}; \&[.75cm] \node (www a) {A}; \&[-.25cm]
+    \node (www value) {128.143.67.8}; \\
+};
+\tikzset{
+    mymark/.style={decorate,decoration={brace,amplitude=2mm},draw=red,very thick},
+    mymark label/.style={draw=none,align=center,inner sep=5mm,font=\small},
+}
+\draw[mymark] (www.south east) -- (www.south west)
+    node[below,midway,mymark label] {
+        domain \textit{name} \\
+        sequence of \textit{labels} \\
+        empty label at end 
+    };
+\draw[mymark] (www ttl.south east) -- (www ttl.south west)
+    node[below,midway,mymark label] {
+        time-to-live \\
+        in seconds
+    };
+
+\draw[mymark] (www in.south east) -- (www in.south west)
+    node[below,midway,mymark label] {
+        \textit{class} \\
+        \textbf{IN}ternet
+    };
+\draw[mymark] (www a.south east) -- (www a.south west)
+    node[below,midway,mymark label] {
+        \textit{type} \\
+        v4 \textbf{A}ddr
+    };
+\draw[mymark] (www value.south east) -- (www value.south west)
+    node[below,midway,mymark label] {
+        \textit{value}
+    };
+\begin{scope}[yshift=-3cm,x=0.45cm]
+    \draw (0, 0) rectangle ++(1, -1) node[midway] {3};
+    \draw (1, 0) rectangle ++(3, -1) node[midway] {\texttt{www}};
+    \draw (4, 0) rectangle ++(1, -1) node[midway] {2};
+    \draw (5, 0) rectangle ++(2, -1) node[midway] {\texttt{cs}};
+    \draw (7, 0) rectangle ++(1, -1) node[midway] {8};
+    \draw (8, 0) rectangle ++(8, -1) node[midway] {\texttt{virginia}};
+    \draw (16, 0) rectangle ++(1, -1) node[midway] {3};
+    \draw (17, 0) rectangle ++(3, -1) node[midway] {\texttt{edu}};
+    \draw (20, 0) rectangle ++(1, -1) node[midway] {0};
+    \draw (0, -1) rectangle ++(16, -1) node[midway] { 1 (type \texttt{A}) };
+    \draw (16, -1) rectangle ++(16, -1) node[midway] { 1 (class \texttt{IN}) };
+    \draw (0, -2) rectangle ++(32, -1) node[midway] {172800 };
+    \draw (0, -3) rectangle ++(16, -1) node[midway] { length=4 };
+    \draw (16, -3) rectangle ++(8, -1) node[midway] { 128 };
+    \draw (24, -3) rectangle ++(8, -1) node[midway] { 143 };
+    \draw (0, -4) rectangle ++(8, -1) node[midway] { 67 };
+    \draw (8, -4) rectangle ++(8, -1) node[midway] { 8 };
+\end{scope}
+\end{tikzpicture}

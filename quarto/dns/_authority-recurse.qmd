@@ -1,0 +1,19 @@
+
+### terms: authority, recursive  {.smaller}
+
+
+* DNS server is <i>authoritative</i> for X.Y.Z? 
+
+   * (claims to be) official source of information for X.Y.Z
+   * not giving a cached version obtained from elsewhere
+
+* DNS server is a <i>recursive resolver</i>? 
+
+   * will contact other DNS servers to get answer
+   * typically caches everything time-to-live allows
+   * type of DNS server one gets from DHCP, etc.
+ 
+<hr class="vspace" />
+* choice of whoever configures DNS server
+* usually (but not always) mutually exclusive
+
