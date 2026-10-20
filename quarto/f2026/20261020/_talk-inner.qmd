@@ -1,0 +1,22 @@
+### last time
+
+*  link-state routing
+   *  the link state database
+   *  need to agree on metrics
+   *  
+
+# scalability: OSPF areas {visibility="hidden"}
+
+## motivation / basic idea {visibility="hidden"}
+
+{{< include /routing-ls/_area-big-net.qmd >}}
+
+## areas are DV {visibility="hidden"}
+
+{{< include /routing-ls/_area-is-dv.qmd >}}
+
+## always route through backbone {visibility="hidden"}
+
+{{< include /routing-ls/_ospf-backbone.qmd >}}
+
+{{< include /routing-bgp/_talk-inner.qmd >}}
