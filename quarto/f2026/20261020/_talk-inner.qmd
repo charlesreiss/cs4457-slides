@@ -3,7 +3,52 @@
 *  link-state routing
    *  the link state database
    *  need to agree on metrics
-   *  
+*  reliable flooding
+   *  designating router + backup on each network
+   *  waiting for ACks, avoiding duplicates
+*  OSPF "areas"
+   *  problem: routers tracking lot of irrelevant parts of network
+   *  solution: distance vector and link-state
+   *  backbone restriction
+
+### quiz Q3
+
+![](/f2026/20261020/week08-net1.svg)
+
+*  R1's connection to N2 goes down
+*  alternate route via R6, but...
+*  R6 currently goes through R1 (info on previous question)
+
+### quiz Q4B {.smaller}
+
+![](/f2026/20261020/week08-net1.svg)
+
+*  R3→N4 goes down + R3 update R1+R5, so distances to N4:
+   *  R1: ∞; R2: 3 via R1; R3: ∞; R4: 4 via R2; R5: ∞; R6: 3 via R1*
+   *  told in Q2 that R6 goes via R1 (otherwise tie between via R1 v. via R5)
+*  after R6→R5 update:
+   *  R1: ∞; R2: 3 via R1; R3: ∞; R4: 4 via R2; R5: 4 via R6; R6: 3 via R1
+*  after R1→R5 update:
+   *  R1: ∞; R2: 3 via R1; R3: ∞; R4: 4 via R2; R5: 4 via R6; R6: 3 via R1
+*  after R5→R1 update:
+   *  R1: 5 via R6; R2: 3 via R1; R3: ∞; R4: 4 via R2; R5: 4 via R6; R6: 3 via R1
+*  after R5→R6 update:
+   *  R1: 5 via R6; R2: 3 via R1; R3: ∞; R4: 4 via R2; R5: 4 via R6; R6: 6 via R1
+
+### quiz Q4C {.smaller}
+
+![](/f2026/20261020/week08-net1.svg)
+
+*  R3→N4 goes down + R3 update R1+R5, so distances to N4:
+   *  R1: ∞; R2: 3 via R1; R3: ∞; R4: 4 via R2; R5: ∞; R6: 3 via R1*
+   *  told in Q2 that R6 goes via R1 (otherwise tie between via R1 v. via R5)
+*  after R6→R5 update:
+   *  R1: ∞; R2: 3 via R1; R3: ∞; R4: 4 via R2; R5: 4 via R6; R6: 3 via R1
+*  after R1→R5 update:
+   *  R1: ∞; R2: 3 via R1; R3: ∞; R4: 4 via R2; R5: 4 via R6; R6: 3 via R1
+
+
+### assignment Q+A
 
 # scalability: OSPF areas {visibility="hidden"}
 
