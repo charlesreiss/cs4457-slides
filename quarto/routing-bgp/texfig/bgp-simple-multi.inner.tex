@@ -49,40 +49,24 @@
         \hspace{.5cm} \ldots
     };
 \end{visibleenv}
-\begin{visibleenv}<3>
-\node[draw=red,ultra thick,font=\small,align=left,fill=white] at ([xshift=.5cm,yshift=-1cm]B-r2.north east) {
-    exchange possible routes \\
-    over each pair of routers \\
-    ~ \\
-    typically same routes for \\
-    each connection to AS \\
-    but maybe different attributes 
-};
-\end{visibleenv}
+
 \begin{visibleenv}<4->
 \draw[connect] (A-r1) -- (B-r1);
 \draw[connect] (A-r2) -- (B-r2);
 \draw[dotted,red,very thick,Latex-Latex] (A-r1) -- (A-r2)
     node[midway,below=1cm,bgp msg] {
         left router$\rightarrow$all: \\
-        \hspace{.5cm}via 3ff:3230:10::3, 3fff:3230:10::/40, MED=10 (AS64992) \\
-        \hspace{.5cm}via 3ff:3230:10::3, 3fff:3230:20::/40, MED=20 (AS64992) \\
+        \hspace{.5cm}via 3fff:3230:10::3, 3fff:3230:10::/40, MED=10 (AS64992) \\
+        \hspace{.5cm}via 3fff:3230:10::3, 3fff:3230:20::/40, MED=20 (AS64992) \\
         \hspace{.5cm}\ldots \\
         right router$\rightarrow$all: \\
-        \hspace{.5cm}via 3ff:3230:20::5, 3fff:3230:10::/40, MED=10 (AS64992) \\
-        \hspace{.5cm}via 3ff:3230:20::5, 3fff:3230:20::/40, MED=20 (AS64992) \\
+        \hspace{.5cm}via 3fff:3230:20::5, 3fff:3230:10::/40, MED=10 (AS64992) \\
+        \hspace{.5cm}via 3fff:3230:20::5, 3fff:3230:20::/40, MED=20 (AS64992) \\
         \hspace{.5cm}\ldots \\
     };
 \draw[dotted,red,very thick,Latex-] (A-r1) -- (2, 1.5) node[above]{\ldots};
 \draw[dotted,red,very thick,Latex-] (A-r1) -- (-2, 1.75) node[above]{\ldots};
 \draw[dotted,red,very thick,Latex-] (A-r2) -- (2, 1.5) node[above]{\ldots};
 \draw[dotted,red,very thick,Latex-] (A-r2) -- (-2, 1.9) node[above]{\ldots};
-\end{visibleenv}
-\begin{visibleenv}<4>
-\node[draw=red,ultra thick,font=\small,align=left,fill=white,anchor=north] at (8,-1) {
-    within ISP, use internal BGP (IBGP) \\
-    share everything learned via BGP \\
-    with all BGP routers
-};
 \end{visibleenv}
 \end{tikzpicture}

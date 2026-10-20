@@ -1,4 +1,4 @@
-### last time
+### last time {.smaller}
 
 *  link-state routing
    *  the link state database
@@ -13,15 +13,15 @@
 
 ### quiz Q3
 
-![](/f2026/20261020/week08-net1.svg)
+![](/f2026/20261020/week08-net1-alt.svg)
 
 *  R1's connection to N2 goes down
 *  alternate route via R6, but...
 *  R6 currently goes through R1 (info on previous question)
 
-### quiz Q4B {.smaller}
+### quiz Q4C {.smaller}
 
-![](/f2026/20261020/week08-net1.svg)
+![](/f2026/20261020/week08-net1-alt.svg)
 
 *  R3→N4 goes down + R3 update R1+R5, so distances to N4:
    *  R1: ∞; R2: 3 via R1; R3: ∞; R4: 4 via R2; R5: ∞; R6: 3 via R1*
@@ -29,23 +29,26 @@
 *  after R6→R5 update:
    *  R1: ∞; R2: 3 via R1; R3: ∞; R4: 4 via R2; R5: 4 via R6; R6: 3 via R1
 *  after R1→R5 update:
+   *  R1: ∞; R2: 3 via R1; R3: ∞; R4: 4 via R2; R5: 4 via R6; R6: 3 via R1
+
+### quiz Q4B {.smaller}
+
+![](/f2026/20261020/week08-net1-alt.svg)
+
+::: {style="font-size: 90%; margin: 0"}
+
+*  same start as before
+*  after R6→R5 update:
+   *  R1: ∞; R2: 3 via R1; R3: ∞; R4: 4 via R2; R5: 4 via R6; R6: 3 via R1
+*  after R1→R5 update (doesn't change anything):
    *  R1: ∞; R2: 3 via R1; R3: ∞; R4: 4 via R2; R5: 4 via R6; R6: 3 via R1
 *  after R5→R1 update:
    *  R1: 5 via R6; R2: 3 via R1; R3: ∞; R4: 4 via R2; R5: 4 via R6; R6: 3 via R1
 *  after R5→R6 update:
    *  R1: 5 via R6; R2: 3 via R1; R3: ∞; R4: 4 via R2; R5: 4 via R6; R6: 6 via R1
 
-### quiz Q4C {.smaller}
+:::
 
-![](/f2026/20261020/week08-net1.svg)
-
-*  R3→N4 goes down + R3 update R1+R5, so distances to N4:
-   *  R1: ∞; R2: 3 via R1; R3: ∞; R4: 4 via R2; R5: ∞; R6: 3 via R1*
-   *  told in Q2 that R6 goes via R1 (otherwise tie between via R1 v. via R5)
-*  after R6→R5 update:
-   *  R1: ∞; R2: 3 via R1; R3: ∞; R4: 4 via R2; R5: 4 via R6; R6: 3 via R1
-*  after R1→R5 update:
-   *  R1: ∞; R2: 3 via R1; R3: ∞; R4: 4 via R2; R5: 4 via R6; R6: 3 via R1
 
 
 ### assignment Q+A
@@ -65,3 +68,32 @@
 {{< include /routing-ls/_ospf-backbone.qmd >}}
 
 {{< include /routing-bgp/_talk-inner.qmd >}}
+
+# names versus addresses {visibility="hidden"}
+
+{{< include /dns/_names-and-addresses.qmd >}}
+
+# DNS hierarchy, caching {visibility="hidden"}
+
+{{< include /dns/_dns-intro.qmd >}}
+
+{{< include /dns/_dns-hier.qmd >}}
+
+## authoritative/recursive v not {visibility="hidden"}
+
+{{< include /dns/_authority-recurse.qmd >}}
+
+# example {visibility="hidden"}
+
+{{< include /dns/_dig-trace.qmd >}}
+
+## aside: presentation format {visibility="hidden"}
+
+{{< include /dns/_pres-format.qmd >}}
+
+## TTLs and changing things {visibility="hidden"}
+
+{{< include /dns/_dns-ttl.qmd >}}
+
+{{< include /dns/_dns-ttl-ex.qmd >}}
+

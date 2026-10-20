@@ -74,5 +74,9 @@ Not one.  Not OSPF, not RIP, nothing.
 ### nation-states? 
 
 
-![](/routing-bgp/china-tele-ars-tech){}
+![](/routing-bgp/china-tele-ars-tech){fig-alt="ArsTechnica headline from April 2020: China BGP hijacks and hack attacks, feds want China Telecom out of the US"}
+
+### a more recent example
+
+![](/routing-bgp/ars-2026-hijack.png){fig-alt="ArsTechnica headline for September 2026: BGP hijack infecting networks caused by a comedy of errors that's not funny at all."}
 

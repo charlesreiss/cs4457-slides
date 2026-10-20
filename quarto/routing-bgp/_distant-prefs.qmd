@@ -4,10 +4,15 @@
 
 
 ::: {.r-stack .my-full}
-![](/routing-bgp/texfig/distance-prefs.figure-1.svg){.fragment .fade-out fragment-index=2}
+![](/routing-bgp/texfig/distance-prefs.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="Options to route between a network in Japan and in Virginia. The network in Virginia has a direct connection to ISP B in NoVA and the network in Japan to ISP A in Tokyo. Both ISP A and ISP B have sites in Tokyo, Los Angeles, and NoVA."}
 
-![](/routing-bgp/texfig/distance-prefs.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/routing-bgp/texfig/distance-prefs.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="Two routes from Virginia to Tokyo: In one, ISP B hands off traffic to ISP A in NoVA and ISP A sends it across the Pacific; in the other, ISP B sends the traffic across the Pacific and hands it off toISP A in Tokyo."}
 
+:::
+
+::: {.myoverbox .vlow}
+
+does ISP A or ISP B help packets cross the Pacific?
 
 :::
 

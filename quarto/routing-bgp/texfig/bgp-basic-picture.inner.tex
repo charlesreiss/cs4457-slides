@@ -12,7 +12,7 @@
 \node[network] (D) at (12,0) {ISP D\\\ldots\\AS64600};
 \node[network] (webhost) at (4,-5) {webhost \\3fff:1::/32\\AS64501};
 \node[network] (office) at (8,-5) {office \\3fff:2::/32\\AS64502};
-\node[network] (school) at (12, -5) {school \\3ff:7:ab::/40};
+\node[network] (school) at (12, -5) {school \\3fff:7:ab::/40};
 \draw[connect,alt=<2>{draw=red}] (A) -- (webhost);
 \draw[connect,alt=<3>{draw=red}] (B) -- (webhost);
 \draw[connect,alt=<4>{draw=red}] (C) -- (webhost);
@@ -49,12 +49,12 @@
 };
 \end{visibleenv}
 \begin{visibleenv}<5>
-\path (office) -- (webhost) node[midway,bgp msg] {
+\path (C) -- (D) node[midway,below,bgp msg] {
     C$\rightarrow$D: \\
     \hspace{.5cm} 3fff:1::/32 (AS64501) \\
     \hspace{.5cm} \ldots \\
     D$\rightarrow$C: \\
-    \hspace{.5cm} 3fff:2::/32 (AS64501) \\
+    \hspace{.5cm} 3fff:2::/32 (AS64502) \\
     \hspace{.5cm} 3fff:7:ab::/32 () \\
     \hspace{.5cm} \ldots \\
 };

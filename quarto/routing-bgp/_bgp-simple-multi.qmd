@@ -4,14 +4,26 @@
 
 
 ::: {.r-stack .my-full}
-![](/routing-bgp/texfig/bgp-simple-multi.figure-1.svg){.fragment .fade-out fragment-index=2}
+![](/routing-bgp/texfig/bgp-simple-multi.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="ISP A and company B each have networks that reach external routers."}
 
-![](/routing-bgp/texfig/bgp-simple-multi.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/routing-bgp/texfig/bgp-simple-multi.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="Two different pairs of external routers exchange routes between ISP A and company B. The routes exchanged include IP ranges and AS paths and MEDs. The IP ranges and AS paths are the same between the two connections, but the MEDs are different."}
 
-![](/routing-bgp/texfig/bgp-simple-multi.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
-
-![](/routing-bgp/texfig/bgp-simple-multi.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+![](/routing-bgp/texfig/bgp-simple-multi.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="connections are shown within ISP A between the two routers that connect to company B and to many other routers. The left-router and right-router are both advertising to 'all' the BGP advertisements they got and which router IP address they tot them from."}
 
 
 :::
 
+::: {.myoverbox .lowright .fragment .fade-in-then-out fragment-index=2}
+
+*  exchange possible routes on each connection
+
+*  typically same routes for each connection to AS
+   *  but often different attributes 
+
+:::
+
+::: {.myoverbox .highright .fragment .fade-in-then-out fragment-index=4}
+
+*  within ISP, use internal BGP (IBGP) <br>to share everytig learned via BGP<br> with all BGP routers
+
+:::

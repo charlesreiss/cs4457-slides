@@ -1,10 +1,10 @@
 
 ### names and addresses  {.smaller}
 
-<table>
+<table style="font-size: 90%">
 <thead>
-<tr><th><em>name</em></td><th><em>address</em></th></tr>
-<tr><th>logical identifier</em></th><th>em>location/how to locate</em></th></tr>
+<tr><th>name</td><th>address</th></tr>
+<tr><td><em>logical identifier</em></td><td><em>location/how to locate</em></td></tr>
 </thead>
 <tbody>
 <tr><td>DNS name <code>www.virginia.edu</code></td><td>IPv4 address <code>128.143.22.36</code></td></tr>

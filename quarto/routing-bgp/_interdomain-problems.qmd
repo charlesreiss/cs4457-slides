@@ -11,26 +11,70 @@
 <hr class="vspace" />
 * not what we want for interdomain routing
 
-
 ### some business considerations 
 
+![](/routing-bgp/texfig/some-business-considerations.figure-1.svg){fig-alt="network connection diagramannotated with who is paying: webhost pays to connect to ISP B and connects to ISPs A and C without payment; office pays to connect to ISPs B and C; school pays to connect to ISP D. ISP A connects to ISP C without payment; ISP B conects to ISP C without payment; ISP D pays to connect to ISP C."}
+
+### some business considerations (exercise 1)
+
+![](/routing-bgp/texfig/some-business-considerations.figure-2.svg){fig-alt="Route from webhost to ISP C to ISP D to office. The webhost does not pay for its connection to ISP C (but does for ISP B, which has an unpaid connection to ISP C). The office does pay for its connections to ISP B and D (and has no other connections)."}
+
+::: {.myoverbox .vlow}
+
+exercise: does this route make sense?
+
+:::
 
 
-::: {.r-stack .my-full}
-![](/routing-bgp/texfig/some-business-considerations.figure-1.svg){.fragment .fade-out fragment-index=2}
+### some business considerations (exercise 2)
 
-![](/routing-bgp/texfig/some-business-considerations.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/routing-bgp/texfig/some-business-considerations.figure-3.svg){fig-alt="Route from webhost to ISP B to office. The webhost pays for its connection to ISP B (but also as an unpaid connection to ISP C , which has connections to ISPs B and D). The office pays for its connections to ISP B and D (and has no other connections)."}
 
-![](/routing-bgp/texfig/some-business-considerations.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+::: {.myoverbox .vlow}
 
-![](/routing-bgp/texfig/some-business-considerations.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+exercise: does this route make sense?
 
-![](/routing-bgp/texfig/some-business-considerations.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+:::
 
-![](/routing-bgp/texfig/some-business-considerations.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
 
-![](/routing-bgp/texfig/some-business-considerations.figure-7.svg){.fragment .fade-in-then-out fragment-index=7}
 
+### some business considerations (exercise 3)
+
+![](/routing-bgp/texfig/some-business-considerations.figure-4.svg){fig-alt="Route from office to ISP D to school. The office pays for its connections to ISP B and D (and has no other connections). The school pays for its connection to ISP D"}
+
+::: {.myoverbox .vlow}
+
+exercise: does this route make sense?
+
+:::
+
+### some business considerations (exercise 4)
+
+![](/routing-bgp/texfig/some-business-considerations.figure-5.svg){fig-alt="Route from webhost to ISP B to office to ISP D to school (combination of last two routes). The webhost pays for its connection to ISP B; the office pays for its connections to ISPs B and D; the school pays for its connection to ISP D."}
+
+::: {.myoverbox .vlow}
+
+exercise: does this route make sense?
+
+:::
+
+### some business considerations (exercise 5)
+
+![](/routing-bgp/texfig/some-business-considerations.figure-6.svg){fig-alt="Route from webhost to ISP B to ISP C to ISP D to office. The webhost pays for its connection to ISP B, but also has an unpaid connection to ISPs A and C. ISP D pays for its connection to ISP C, and the office pays for its connections to ISPs B and D."}
+
+::: {.myoverbox .vlow}
+
+exercise: does this route make sense?
+
+:::
+
+### some business considerations (exercise 6)
+
+![](/routing-bgp/texfig/some-business-considerations.figure-7.svg){fig-alt="Route from webhost to ISP A to ISP C to ISP D to office. The webhost pays for its connection to ISP B, but also has an unpaid connection to ISPs A and C. ISP D pays for its connection to ISP C, and the office pays for its connections to ISPs B and D."}
+
+::: {.myoverbox .vlow}
+
+exercise: does this route make sense?
 
 :::
 

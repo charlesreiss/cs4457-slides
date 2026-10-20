@@ -1,20 +1,18 @@
 
 ### external BGP 
 
-<!-- FIXME: overbox -->
-
 ::: {.r-stack .my-full}
-![](/routing-bgp/texfig/bgp-basic-picture.figure-1.svg){.fragment .fade-out fragment-index=2}
+![](/routing-bgp/texfig/bgp-basic-picture.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="Network or netowork with ISPs A through D, and non-ISP networks webhost, office and school. All networks but the school have a unique AS number. Each of the non-ISP networks has a single IP address range listed."}
 
-![](/routing-bgp/texfig/bgp-basic-picture.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/routing-bgp/texfig/bgp-basic-picture.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="On the connection between ISP A and the webhost, the webhost advertises the webhost's IP address range (3fff:1::/32) with an empty AS path. ISP A also sends a bunch of (not shown) routes to the webhost."}
 
-![](/routing-bgp/texfig/bgp-basic-picture.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/routing-bgp/texfig/bgp-basic-picture.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 fig-alt="On the connection between ISP B and the webhost, the webhost advertises its adress range and an empty AS path (again). ISP B advertises a bunch of routes, including the office's IP address range (3fff:2::/32) with an AS path of the office's AS (AS64502)."}
 
-![](/routing-bgp/texfig/bgp-basic-picture.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+![](/routing-bgp/texfig/bgp-basic-picture.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 fig-alt="On the connection between ISP C and the webhost, the webhost again advertises its address range with an empty AS path. Webhost C advertises several routes, including an alternate route to the office's IP range and the school's IP range. The route for the office's IP range (3fff:2::/32) has an AS path of (AS64502 (office's AS) AS64600 (ISP D's AS)), reflecting that ISP C got the route via ISP D and ISP D got it from the office. The route for the school's IP range (3fff:7:ab::/40) only has an AS path of ISP D's AS since the school does not run its own AS."}
 
-![](/routing-bgp/texfig/bgp-basic-picture.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+![](/routing-bgp/texfig/bgp-basic-picture.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 fig-alt="On the connection from ISP C to D, ISP C and D exchange routes. This includes ISP C sending routes to the webhost's IP (with its AS number in the AS path), and ISP D sending routes to the office's IP (with its AS number in the AS path) and to the school (with an empty AS path)."}
 
-![](/routing-bgp/texfig/bgp-basic-picture.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
+![](/routing-bgp/texfig/bgp-basic-picture.figure-6.svg){.fragment .fade-in-then-out fragment-index=6 fig-alt="The link from the school to ISP D is hilighted. There are no routes being exchanged."}
 
 
 :::
