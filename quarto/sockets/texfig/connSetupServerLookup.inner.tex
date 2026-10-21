@@ -1,0 +1,29 @@
+\begin{tikzpicture}
+\node[minimum width=15cm,minimum height=9cm] (current page) {};
+\begin{scope}[overlay]
+
+\tikzset{
+    box/.style={draw=red, ultra thick,fill=white,at={([yshift=-2cm]current page.north)},anchor=north,align=left},
+    box low/.style={draw=red, ultra thick,fill=white,at={([yshift=-6cm]current page.north)},anchor=north,align=left},
+}
+\begin{visibleenv}<2>
+\node[box low] {
+    \texttt{hostname} could also be NULL \\
+    means ``use all possible addresses'' \\
+    only makes sense for servers
+};
+\end{visibleenv}
+\begin{visibleenv}<3>
+\node[box low] {
+    \texttt{portname} could also be NULL \\
+    means ``choose a port number for me'' \\
+    only makes sense for servers
+};
+\end{visibleenv}
+\begin{visibleenv}<4>
+\node[box] {
+    AI\_PASSIVE: ``I'm going to use bind''
+};
+\end{visibleenv}
+\end{scope}
+\end{tikzpicture}

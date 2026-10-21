@@ -1,0 +1,29 @@
+\begin{tikzpicture}
+\node[minimum width=15cm,minimum height=9cm] (current page) {};
+\begin{scope}[overlay]
+
+\tikzset{
+    box/.style={draw=red, ultra thick,fill=white,at={([yshift=-2cm]current page.north)},anchor=north,align=left},
+    box low/.style={draw=red, ultra thick,fill=white,at={([yshift=-5cm]current page.north)},anchor=north,align=left},
+}
+\begin{visibleenv}<2>
+\node[box low] {
+    specify IPv4 instead of IPv6 or local-only sockets \\
+    specify TCP (byte-oriented) instead of UDP (`datagram' oriented)
+};
+\end{visibleenv}
+\begin{visibleenv}<3>
+\node[box] {
+    htonl/s = host-to-network long/short \\
+    network byte order = big endian
+};
+\end{visibleenv}
+\begin{visibleenv}<4>
+\node[box] {
+    struct representing IPv4 address + port number \\
+    declared in \lstinline|<netinet/in.h>| \\
+    see \texttt{man 7 ip} on Linux for docs
+};
+\end{visibleenv}
+\end{scope}
+\end{tikzpicture}

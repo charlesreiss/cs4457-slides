@@ -1,0 +1,53 @@
+
+### connection setup: client, using addrinfo  {.smaller}
+
+
+<pre><code>int sock_fd; 
+<span data-fragment-index="2" class="fragment custom myem-only">struct addrinfo</span> *server = /* code on next slide */;
+
+sock_fd = socket(
+    <span data-fragment-index="3" class="fragment custom myem-only">server-&gt;ai_family</span>,  
+     // ai_family = AF_INET (IPv4) or AF_INET6 (IPv6) or ...
+    <span data-fragment-index="3" class="fragment custom myem-only">server-&gt;ai_socktype</span>,
+     // ai_socktype = SOCK_STREAM (bytes) or ...
+    <span data-fragment-index="3" class="fragment custom myem-only">server-&gt;ai_prototcol</span>
+     // ai_protocol = IPPROTO_TCP or ...
+);
+if (sock_fd &lt; 0) { /* handle error */ }
+if (connect(sock_fd, server-&gt;<span data-fragment-index="4" class="fragment custom myem-only">ai_addr</span>, server-&gt;<span data-fragment-index="4" class="fragment custom myem-only">ai_addrlen</span>) &lt; 0) {
+    /* handle error */
+}
+<span data-fragment-index="5" class="fragment custom myem-only">freeaddrinfo(server);</span>
+DoClientStuff(sock_fd); /* read and write from sock_fd */
+close(sock_fd);
+</code></pre>
+ ![](/sockets/texfig/connSetupClientAddrInfo.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
+![](/sockets/texfig/connSetupClientAddrInfo.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
+![](/sockets/texfig/connSetupClientAddrInfo.figure-3.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=3}
+![](/sockets/texfig/connSetupClientAddrInfo.figure-4.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=4}
+![](/sockets/texfig/connSetupClientAddrInfo.figure-5.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=5}
+
+
+### connection setup: lookup address  {.smaller}
+
+
+<pre><code>/* example hostname, portname = "www.cs.virginia.edu", "443" */
+const char *hostname; const char *portname;
+...
+struct addrinfo *server;
+struct addrinfo hints;
+int rv;
+memset(&amp;hints, 0, sizeof(hints));
+<span data-fragment-index="3" class="fragment custom myem-only">hints.ai_family = AF_UNSPEC</span>; /* for IPv4 OR IPv6 */
+// hints.ai_family = AF_INET4; /* for IPv4 only */
+
+hints.ai_socktype = SOCK_STREAM; /* byte-oriented --- TCP */
+rv = getaddrinfo(hostname, portname, &amp;hints, <span data-fragment-index="2" class="fragment custom myem-only">&amp;server</span>);
+if (rv != 0) { /* handle error */ }
+
+/* eventually freeaddrinfo(result) */
+</code></pre>
+ ![](/sockets/texfig/serverLookupClient.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
+![](/sockets/texfig/serverLookupClient.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
+![](/sockets/texfig/serverLookupClient.figure-3.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=3}
+

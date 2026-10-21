@@ -1,0 +1,10 @@
+
+### aside: on server port numbers 
+
+
+* Unix convention: must be <code>root</code> to use ports 0--1023 
+
+   * root = superuser = ‘adminstrator user’ = what sudo does
+
+* so, for testing: probably ports $>$ 1023
+

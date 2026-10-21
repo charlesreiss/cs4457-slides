@@ -1,0 +1,29 @@
+
+### connection setup: client --- manual addresses  {.smaller}
+
+
+<pre><code>int sock_fd;
+
+server = /* code on later slide */;
+sock_fd = <span data-fragment-index="1" class="fragment custom myem-only">socket</span>(
+    <span data-fragment-index="2" class="fragment custom myem-only">AF_INET</span>, /* IPv4 */
+    <span data-fragment-index="2" class="fragment custom myem-only">SOCK_STREAM</span>, /* byte-oriented */
+    <span data-fragment-index="2" class="fragment custom myem-only">IPPROTO_TCP</span>
+);
+if (sock_fd &lt; 0) { /* handle error */ }
+
+<span data-fragment-index="4" class="fragment custom myem-only">struct sockaddr_in addr</span>;
+addr.sin_family = AF_INET;
+addr.sin_addr.s_addr = <span data-fragment-index="3" class="fragment custom myem-only">htonl</span>(2156872459); /* 128.143.67.11 */
+addr.sin_port = <span data-fragment-index="3" class="fragment custom myem-only">htons</span>(80); /* port 80 */
+if (<span data-fragment-index="1" class="fragment custom myem-only">connect</span>(sock_fd, (struct sockaddr*) &amp;addr, sizeof(addr)) {
+    /* handle error */
+}
+DoClientStuff(sock_fd); /* read and write from sock_fd */
+close(sock_fd);
+</code></pre>
+ ![](/sockets/texfig/conn-setup-client-manual.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
+![](/sockets/texfig/conn-setup-client-manual.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
+![](/sockets/texfig/conn-setup-client-manual.figure-3.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=3}
+![](/sockets/texfig/conn-setup-client-manual.figure-4.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=4}
+

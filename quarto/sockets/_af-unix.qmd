@@ -1,0 +1,23 @@
+
+### other address families  {.smaller}
+
+
+* AF_UNIX [ (= AF_LOCAL in C, but not Python)]{.my-small} 
+
+   * sockets can be represented in files on disk
+   * support sending file descriptors usually
+
+* (not sure how portable?) AF_RAW 
+
+   * usually how wireshark captures packets on Linux
+   * also supports writing packets
+
+* (Linux only) AF_NETLINK  
+
+   * communicate with kernel networking code
+
+* AF_AX25, AF_APPLETALK, AF_DECNET, …  
+
+   * other interesting protocols
+
+

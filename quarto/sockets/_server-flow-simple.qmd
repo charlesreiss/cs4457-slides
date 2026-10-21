@@ -1,0 +1,23 @@
+
+### client/server flow (one connection at a time) 
+
+
+
+::: {.r-stack .my-full}
+![](/sockets/texfig/server-flow-simple.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/sockets/texfig/server-flow-simple.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/sockets/texfig/server-flow-simple.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/sockets/texfig/server-flow-simple.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+![](/sockets/texfig/server-flow-simple.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+
+![](/sockets/texfig/server-flow-simple.figure-6.svg){.fragment .fade-in-then-out fragment-index=6}
+
+![](/sockets/texfig/server-flow-simple.figure-7.svg){.fragment .fade-in-then-out fragment-index=7}
+
+
+:::
+

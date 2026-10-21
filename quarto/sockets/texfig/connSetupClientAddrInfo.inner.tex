@@ -1,0 +1,30 @@
+\begin{tikzpicture}
+\node[minimum width=15cm,minimum height=9cm] (current page) {};
+\begin{scope}[overlay]
+
+\tikzset{
+    box/.style={draw=red, ultra thick,fill=white,at={([yshift=-2cm]current page.north)},anchor=north,align=left},
+    box low/.style={draw=red, ultra thick,fill=white,at={([yshift=-5cm]current page.north)},anchor=north,align=left},
+}
+\begin{visibleenv}<2>
+\node[box low] {
+    addrinfo contains all information needed to setup socket \\
+    set by \texttt{getaddrinfo} function (next slide) \\
+    handles IPv4 and IPv6 \\
+    handles DNS names, service names
+};
+\end{visibleenv}
+\begin{visibleenv}<4>
+\node[box] {
+    ai\_addr points to struct representing address \\
+    type of struct depends whether IPv6 or IPv4
+};
+\end{visibleenv}
+\begin{visibleenv}<5>
+\node[box] {
+    since addrinfo contains pointers to dynamically allocated memory, \\
+    call this function to free everything
+};
+\end{visibleenv}
+\end{scope}
+\end{tikzpicture}

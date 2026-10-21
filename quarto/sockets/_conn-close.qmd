@@ -1,0 +1,20 @@
+
+### detecting connection close  {.smaller}
+
+
+* other end stops sending 
+
+   * called close or (less common) shutdown or went down
+
+* (clean close) recv()/recvfrom() returns empty buffer
+* (unclean close) recv()/recvfrom() throw exception 
+
+   * example: ‘Connection reset by peer’
+   * (C: return -1 + set errno)
+
+* send()/sendall() 
+
+   * usually BrokenPipeError, possibly other error
+   * (C: SIGPIPE, unless ignored/MSG_NOSIGNAL; then EPIPE)
+
+

@@ -1,0 +1,21 @@
+
+### BSD sockets  {.smaller}
+
+
+* BSD = Berkely Standard Distribution (of Unix)
+* interface designed for stream connections
+* current C version standardized by POSIX
+* pretty much default interface programming with TCP connections 
+
+   * … across all platforms
+
+
+
+### sockets as generic interface 
+
+
+* sockets designed to be protocol-agnostic 
+<hr class="vspace" />
+* support all sorts of protocols with addresses
+* support streams and datagrams
+

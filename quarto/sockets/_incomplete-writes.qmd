@@ -1,0 +1,15 @@
+
+### incomplete writes  {.smaller}
+
+
+* <code>send</code> might write less than requested 
+
+   * error after writing some data
+   * if blocking disabled
+
+* <code>recv</code> might read less than requested 
+
+   * error after reading some data
+   * not enough data got there in time
+
+

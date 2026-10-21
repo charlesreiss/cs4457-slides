@@ -1,0 +1,36 @@
+
+### socket options  {.smaller}
+
+
+* ‘socket options’ for extra settings
+* Python: <code>sock.setsockopt(level, key, value)</code> 
+
+   * e.g. <code>sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)</code>
+
+* C: <code>setsockopt(sock, level, key, value)</code> 
+
+   * e.g. <code>setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, 1)</code>
+ 
+<hr class="vspace" />
+* common level values 
+
+   * <code>SOL_SOCKET</code> --- OS-level
+   * <code>IPPROTO_IP</code>
+   * <code>IPPROTO_IPV6</code>
+   * <code>IPPROTO_TCP</code>
+
+
+
+### common SOL_SOCKET options  {.smaller}
+
+
+* <code>SO_REUSEADDR</code> --- allow bind()ing even if another socket for this port active 
+
+   * common problem: server can't bind() because old session in TIME_WAIT
+
+* <code>SO_RCVBUF</code> --- buffer size used by OS for receiving bytes
+* <code>SO_SNDBUF</code> --- buffer size used by OS for sending bytes
+* <code>SO_LINGER</code> --- make close() wait until messages acknowleged or timeout 
+<hr class="vspace" />
+* (full list on Linux: <code>man 7 socket</code>)
+

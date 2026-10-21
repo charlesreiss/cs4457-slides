@@ -1,0 +1,21 @@
+\begin{tikzpicture}
+\node[minimum width=15cm,minimum height=9cm] (current page) {};
+\begin{scope}[overlay]
+
+\tikzset{
+    box/.style={draw=red, ultra thick,fill=white,at={([yshift=-2cm]current page.north)},anchor=north,align=left},
+    box low/.style={draw=red, ultra thick,fill=white,at={([yshift=-5cm]current page.north)},anchor=north,align=left},
+}
+\begin{visibleenv}<2>
+\node[box low] {
+    NB: pass pointer \textit{to pointer} to addrinfo to fill in
+};
+\end{visibleenv}
+\begin{visibleenv}<3>
+\node[box] {
+    AF\_UNSPEC: choose between IPv4 and IPv6 for me \\
+    AF\_INET, AF\_INET6: choose IPv4 or IPV6 respectively
+};
+\end{visibleenv}
+\end{scope}
+\end{tikzpicture}

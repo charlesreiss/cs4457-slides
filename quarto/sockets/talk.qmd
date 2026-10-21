@@ -1,0 +1,10 @@
+---
+title: "sockets"
+
+---
+
+{{< include ../sockets/_talk-inner.qmd >}}
+
+# Backup slides
+
+{{< include ../sockets/_talk-backup.qmd >}}

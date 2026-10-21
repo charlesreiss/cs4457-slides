@@ -1,0 +1,13 @@
+\begin{tikzpicture}
+\node[minimum width=15cm,minimum height=9cm] (current page) {};
+\begin{scope}[overlay]
+
+\begin{visibleenv}<3>
+\node[draw=red,very thick,align=center,anchor=south] at ([yshift=1cm]current page.south) {
+    trick: multiple versions of address struct \\
+    each have ``type'' information in same spot \\
+    OS/library checks before using
+};
+\end{visibleenv}
+\end{scope}
+\end{tikzpicture}

@@ -1,0 +1,34 @@
+
+## connection setup code: client (C) {visibility="hidden"}
+
+{{< include /sockets/_conn-setup-client-c.qmd >}}
+
+## connection setup code: server (C) {visibility="hidden"}
+
+{{< include /sockets/_conn-setup-server-c.qmd >}}
+
+## more manual setup in C {visibility="hidden"}
+
+## client{visibility="hidden"}
+
+{{< include /sockets/_conn-setup-client-manual.qmd >}}
+
+## server{visibility="hidden"}
+
+{{< include /sockets/_conn-setup-server-manual.qmd >}}
+
+## gethostbyname {visibility="hidden"}
+
+{{< include /sockets/_conn-setup-gethostbyname.qmd >}}
+
+## send/recv {visibility="hidden"}
+
+{{< include /sockets/_send-recv.qmd >}}
+
+## getting addresses from sockets {visibility="hidden"}
+
+{{< include /sockets/_getting-addresses.qmd >}}
+
+## basic flow {visibility="hidden"}
+
+{{< include /sockets/_socket-flow.qmd >}}

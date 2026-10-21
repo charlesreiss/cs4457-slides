@@ -1,0 +1,46 @@
+
+### connection setup: server, address setup  {.smaller}
+
+
+<pre><code>/* example (hostname, portname) = ("127.0.0.1", "443") */
+const char *<span data-fragment-index="2" class="fragment custom myem-only">hostname</span>; const char *<span data-fragment-index="3" class="fragment custom myem-only">portname</span>;
+...
+struct addrinfo *server;
+struct addrinfo hints;
+int rv;
+
+memset(&amp;hints, 0, sizeof(hints));
+hints.ai_family = AF_INET; /* for IPv4 */
+/* or: */ hints.ai_family = AF_INET6; /* for IPv6 */
+/* or: */ hints.ai_family = AF_UNSPEC; /* I don't care */
+<span data-fragment-index="4" class="fragment custom myem-only">hints.ai_flags = AI_PASSIVE</span>;
+
+rv = getaddrinfo(hostname, portname, &amp;hints, &amp;server);
+if (rv != 0) { /* handle error */ }
+</code></pre>
+ ![](/sockets/texfig/connSetupServerLookup.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
+![](/sockets/texfig/connSetupServerLookup.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
+![](/sockets/texfig/connSetupServerLookup.figure-3.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=3}
+![](/sockets/texfig/connSetupServerLookup.figure-4.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=4}
+
+
+### connection setup: server, addrinfo  {.smaller}
+
+
+<pre><code>struct addrinfo *server;
+... getaddrinfo(...) ...
+
+int server_socket_fd = socket(
+    server-&gt;ai_family,
+    server-&gt;ai_sockttype,
+    server-&gt;ai_protocol
+);
+
+if (bind(server_socket_fd, ai-&gt;ai_addr, ai-&gt;ai_addr_len)) &lt; 0) {
+    /* handle error */
+}
+listen(server_socket_fd, MAX_NUM_WAITING);
+...
+int socket_fd = accept(server_socket_fd, NULL);
+</code></pre>
+

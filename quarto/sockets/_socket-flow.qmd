@@ -1,0 +1,8 @@
+
+### connected sockets 
+
+
+
+* ‘‘connected’’ sockets can represent a connection
+ ![](/sockets/texfig/socket-flow.figure.svg)
+

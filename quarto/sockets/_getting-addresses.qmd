@@ -1,0 +1,7 @@
+
+### aside: getting addresses 
+
+
+* Python: <code>sock.getsockname() == (addr, port)</code> of local side
+* Python: <code>sock.getpeername() == (addr, port)</code> of remote side
+

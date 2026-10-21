@@ -1,0 +1,48 @@
+
+### port numbers  {.smaller}
+
+
+* we run multiple programs on a machine 
+
+   * IP addresses identifying machine --- not enough
+
+* so, add 16-bit <i>port numbers</i> 
+
+   * think: multiple PO boxes at address
+ 
+<hr class="vspace" />
+* 0--49151: typically assigned for particular services 
+
+   * 80 = http, 443 = https, 22 = ssh, …
+   * usually \<1024 reserved for sysadmin-only-use
+
+* 49152--65535: allocated on demand 
+
+   * default ‘‘return address’’ for client connecting to server
+
+
+
+### sockets 
+
+
+* port number helps identify <i>sockets</i>
+* sockets = file applications use to access networks
+
+
+### port number independence  {.smaller}
+
+
+* typically ‘‘5-tuple’’ identifies ‘‘socket’’: <br> (protocol=TCP or UDP, source IP, dest IP, source port, dest port)
+* means can have: 
+
+   * two sockets with same source IP+source port, but different destinations
+   * two sockets with same dest IP+des port, but different sources
+   * two sockets with different protocols, but everything else same
+
+* special cases: 
+
+   * dest IP/port can be ‘wildcard’ (all zeroes usually)
+   * used for server that can be connected to
+   * used for unconnected UDP sockets
+
+

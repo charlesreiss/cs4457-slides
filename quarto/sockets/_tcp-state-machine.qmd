@@ -1,0 +1,24 @@
+
+### TCP state machine 
+
+![](/sockets/texfig/tcp-state-machine-tcp-state-machine.figure.svg)
+
+
+### connection close 
+
+
+* FIN (I want to close) + ACK (confirm close) 
+<hr class="vspace" />
+* ACK side needs to wait just in case FIN resent 
+
+   * keep port number from being reused
+   * TIME_WAIT state
+
+
+
+### RST 
+
+
+* RST (reset) flag often used to respond to unexpected packets
+* example: data packet for never-established connection
+

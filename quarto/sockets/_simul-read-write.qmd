@@ -1,0 +1,11 @@
+
+### reading and writing at once 
+
+
+* threads: one reading thread, one writing thread <i>OR</i>
+* event-loop: use <i>non-blocking I/O</i> and select()/poll()/etc. functions 
+
+   * select/poll/etc. tell you when one of many operations possible
+   * … including across many sockets
+
+

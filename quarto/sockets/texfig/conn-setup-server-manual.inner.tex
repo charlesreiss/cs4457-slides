@@ -1,0 +1,27 @@
+\begin{tikzpicture}
+\node[minimum width=15cm,minimum height=9cm] (current page) {};
+\begin{scope}[overlay]
+
+\tikzset{
+    box/.style={draw=red, ultra thick,fill=white,at={([yshift=-2cm]current page.north)},anchor=north,align=left},
+    box low/.style={draw=red, ultra thick,fill=white,at={([yshift=-6cm]current page.north)},anchor=north,align=left},
+}
+\begin{visibleenv}<2>
+\node[box low] {
+    INADDR\_ANY: accept connections for any address I can! \\
+    alternative: specify specific address
+};
+\end{visibleenv}
+\begin{visibleenv}<3>
+\node[box low] {
+    bind to 127.0.0.1? only accept connections \myemph{from same machine} \\
+    what we recommend for FTP server assignment
+};
+\end{visibleenv}
+\begin{visibleenv}<4>
+\node[box low] {
+    choose the number of unaccepted connections
+};
+\end{visibleenv}
+\end{scope}
+\end{tikzpicture}

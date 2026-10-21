@@ -1,0 +1,5 @@
+
+### client/server flow (one connection at a time) 
+
+![](/sockets/texfig/server-flow-mutli.figure.svg)
+

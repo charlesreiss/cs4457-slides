@@ -1,0 +1,80 @@
+
+# port numbers {visibility="hidden"}
+
+{{< include /sockets/_port-numbers.qmd >}}
+
+# UDP {visibility="hidden"}
+
+{{< include /sockets/_udp-format.qmd >}}
+
+# BSD socket history {visibility="hidden"}
+
+{{< include /sockets/_socket-iface.qmd >}}
+
+# UDP sockets {visibility="hidden"}
+
+{{< include /sockets/_udp-sock.qmd >}}
+
+## netstat (UDP) {visibility="hidden"}
+
+{{< include /sockets/_netstat-udp.qmd >}}
+
+# TCP client sockets {visibility="hidden"}
+
+{{< include /sockets/_conn-setup-client.qmd >}}
+
+## partial/split read/writes {visibility="hidden"}
+
+{{< include /sockets/_socket-flow-part-read-write.qmd >}}
+
+{{< include /sockets/_incomplete-writes.qmd >}}
+
+## simultaneous read/write {visibility="hidden"}
+
+{{< include /sockets/_simul-read-write.qmd >}}
+
+## on connection close {visibility="hidden"}
+
+{{< include /sockets/_conn-close.qmd >}}
+
+# TCP server sockets {visibility="hidden"}
+
+## server socket idea {visibility="hidden"}
+
+{{< include /sockets/_connection-setup.qmd >}}
+
+## TCP server setup {visibility="hidden"}
+
+{{< include /sockets/_conn-setup-server.qmd >}}
+
+# connection internals/socket tracking {visibility="hidden"}
+
+## TCP handshake {visibility="hidden"}
+
+{{< include /sockets/_tcp-handshake.qmd >}}
+
+## TCP state machine {visibility="hidden"}
+
+{{< include /sockets/_tcp-state-machine.qmd >}}
+
+## netstat (TCP) {visibility="hidden"}
+
+{{< include /sockets/_netstat-tcp.qmd >}}
+
+# more socket customization {visibility="hidden"}
+
+## setsockopt {visibility="hidden"}
+
+{{< include /sockets/_setsockopt.qmd >}}
+
+## Nagle, etc. {visibility="hidden"}
+
+{{< include /sockets/_nagle-algo.qmd >}}
+
+# broadcast {visibility="hidden"}
+
+{{< include /sockets/_udp-broadcast.qmd >}}
+
+# aside: other address families {visibility="hidden"}
+
+{{< include /sockets/_af-unix.qmd >}}

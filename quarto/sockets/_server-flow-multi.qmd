@@ -1,0 +1,15 @@
+
+### client/server flow (multiple threads) 
+
+![](/sockets/texfig/server-flow-multi-clientserver-flow-multiple-threads.figure.svg)
+
+
+### aside: I/O multiplexing 
+
+
+* APIs for asking ‘‘tell me when any connection ready to read/write’’ 
+
+   * select, poll, epoll, IO completions, etc.
+
+* combine with ‘non-blocking’ writes to serve many connections from one thread
+

@@ -1,0 +1,34 @@
+
+### efficiency problem  {.smaller}
+
+
+```
+sock = ...
+sock.send(b'About to send file with 16Kbytes')
+sock.send(b'File is HTML; updated 16 November')
+sock.send(file_data)
+
+```
+ 
+
+* Naive approach: 
+
+   * one packet for ‘about to send file with…’
+   * one packet for ‘file is HTML; …’
+   * some number of packets for <code>file_data</code>
+
+* sending small TCP packets, so lots of overhead
+
+
+### Nagle's algorithm  {.smaller}
+
+
+* (RFC 896)
+* delay sending data when smaller than full TCP segment
+* hope: by waiting we'll get a full TCP segment 
+
+   * typical wait: 200 ms?
+ 
+<hr class="vspace" />
+* TCP_NODELAY socket option can disable (at least on Linux)
+

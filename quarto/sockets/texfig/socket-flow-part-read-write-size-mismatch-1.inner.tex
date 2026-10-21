@@ -1,0 +1,19 @@
+\begin{tikzpicture}
+\tikzset{>=Latex}
+\node[anchor=south] at (1.5, 0) {one end};
+\draw[ultra thick] (0, 0) -- ++(3, 0);
+\draw[ultra thick] (10, 0) -- ++(3, 0);
+\node[anchor=south] at (11.5, 0) {other end};
+\node[font=\small] at (7, -.25) {(get \texttt{fd}s/\texttt{sock}s:)};
+\tikzset{
+    function/.style={font=\fontsize{9}{10}\tt\selectfont,align=left},
+}
+\node[function,anchor=east] (write 1) at (4, -1) {
+sock.send(b"12345")
+};
+\node[function,anchor=west] (read 1) at (7, -2) {
+b"123" == sock.recv(3) \\
+b"45" == sock.recv(2) 
+};
+\draw[thick,->] (write 1) -- (read 1);
+\end{tikzpicture}

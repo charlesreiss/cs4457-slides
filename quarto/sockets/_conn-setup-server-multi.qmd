@@ -1,0 +1,25 @@
+
+### connection setup: multiple server addresses  {.smaller}
+
+
+<pre><code>struct addrinfo *server;
+...
+rv = getaddrinfo(hostname, portname, &amp;hints, &amp;server);
+if (rv != 0) { /* handle error */ }
+
+for (struct addrinfo *current = server; current != NULL;
+      <span data-fragment-index="2" class="fragment custom myem-only">current = current-&gt;ai_next</span>) {
+    sock_fd = socket(current-&gt;ai_family, current-&gt;ai_socktype, current-&gt;ai_protocol);
+    if (sock_fd &lt; 0) continue;
+    if (connect(sock_fd, current-&gt;ai_addr, current-&gt;ai_addrlen) == 0) {
+        break;
+    }
+    close(sock_fd); // connect failed
+}
+freeaddrinfo(server);
+DoClientStuff(sock_fd);
+close(sock_fd);
+</code></pre>
+ ![](/sockets/texfig/conn-setup-server-multi.figure-1.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=1}
+![](/sockets/texfig/conn-setup-server-multi.figure-2.svg){.absolute top="0%" left="0%" width=1050 height=600 .my-center  .fragment .fade-in-then-out fragment-index=2}
+

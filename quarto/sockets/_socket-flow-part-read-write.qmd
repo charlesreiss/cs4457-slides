@@ -1,0 +1,30 @@
+
+### size mismatch? (1) 
+
+![](/sockets/texfig/socket-flow-part-read-write-size-mismatch-1.figure.svg)
+
+
+### size mismatch? (2) 
+
+![](/sockets/texfig/socket-flow-part-read-write-size-mismatch-2.figure.svg)
+
+
+### partial reads? 
+
+![](/sockets/texfig/socket-flow-part-read-write-partial-reads.figure.svg)
+
+
+### partial writes 
+
+![](/sockets/texfig/socket-flow-part-read-write-partial-writes.figure.svg)
+
+
+### partial reads/writes 
+
+
+* read/recv can have read less than requested 
+
+   * read of zero bytes = end of file
+
+* send/write can write less than requested… <br> but only on error or if non-blocking mode requested
+

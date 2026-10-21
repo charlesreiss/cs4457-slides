@@ -1,0 +1,11 @@
+
+### aside: send/recv 
+
+
+* sockets have some alternate read/write-like functions: 
+
+   * recv, recvfrom, recvmsg
+   * send, sendmsg
+
+* have some additional options we won't need in this class
+

@@ -1,0 +1,50 @@
+
+### broadcast/multicast  {.smaller}
+
+
+* UDP IPv4: can broadcast to every machine on local network 
+
+   * set the SO_BROADCAST socket option to 1
+   * send to special address 255.255.255.255
+   * received at that port number on all machines
+
+* UDP multicast: (send-to-many) groups 
+
+   * IP_ADD_MEMBERSHIP (v4), IPV6_ADD_MEMBERSHIP (v6) 
+
+      * register to receive via setsockopt
+
+   * each ‘multicast group’ has IP address
+   * 224.0.0.0/24 and ff02::/16 = local network only
+   * local network: can implement by broadcasting + filtering
+   * (non-local-network multicast is more complex…)
+
+
+
+### service discovery  {.smaller}
+
+
+* example: find printers on local network automatically 
+<hr class="vspace" />
+* typical protocol mDNS (‘multicast DNS’)
+* uses IP addressses 224.0.0.251 / ff02::fb + port 5353
+* all machines on local network receive from all other machines on local network
+
+
+### multicast DNS request 
+
+
+![](/sockets/mdns-request){}
+
+
+### multicast DNS response 
+
+
+![](/sockets/mdns-response){}
+
+
+### .local domain 
+
+
+![](/sockets/unsolict-local-mdns){}
+
