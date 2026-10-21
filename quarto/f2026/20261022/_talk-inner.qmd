@@ -1,0 +1,45 @@
+### last time
+
+*  business concerns in interdomain routing
+*  autonomous systems (ASes)
+*  IBGP and EBGP
+   *  EBGP --- between ASes, every router-to-router connection
+   *  IBGP --- within AS, share external routes (for, for example, OSPF)
+*  BGP announcement components
+   *  address range, next hop, AS path (prevent loops), local pref, communities
+*  multiple BGP connections between ASes
+
+### assignment Q+A
+
+### DNS assignment?
+
+*  original plan was DNS assignment would be next week
+   *  might move up a week, depending on how far we get today
+
+# UVa, in practice {visibility="hidden"}
+
+{{< include /routing-bgp/_in-practice-uva.qmd >}}
+
+## internet exchanges, peeringdb {visibility="hidden"}
+
+{{< include /routing-bgp/_peeringdb-ixp.qmd >}}
+
+## BGP communities {visibility="hidden"}
+
+{{< include /routing-bgp/_bgp-comm.qmd >}}
+
+## BGP hijacking/fat fingers {visibility="hidden"}
+
+{{< include /routing-bgp/_hijack.qmd >}}
+
+## validating routes / sBGP {visibility="hidden"}
+
+{{< include /routing-bgp/_aside-verification.qmd >}}
+
+## aside: partial tables {visibility="hidden"}
+
+{{< include /routing-bgp/_partial-tables.qmd >}}
+
+{{< include /dns/_talk-inner.qmd >}}
+
+{{< include /sockets/_talk-inner.qmd >}}
