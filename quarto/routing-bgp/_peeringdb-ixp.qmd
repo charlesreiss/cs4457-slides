@@ -18,6 +18,7 @@
 
    * BGP servers run by internet exchange
    * consolidates routes from participants
+   * takes advantage of "next hop" not needing to be router advertisement (even for EBGP)
    * goal: only need O($n$) BGP connections, not O($n^2$)
 
 

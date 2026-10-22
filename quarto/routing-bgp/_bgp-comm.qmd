@@ -13,7 +13,7 @@
 
 
 * non-profit networking consortium
-* operations major US University-focused network
+* operates major US University-focused network
 * also makes eduroam work across different Universities
 * one of MARIA's major sources of connectivity (and indirectly one of UVA's major sources of connectivity)
 * has lots of peering relationships (incl. with big Internet companies) 

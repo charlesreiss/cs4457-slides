@@ -1,4 +1,4 @@
-### last time
+### last time {.smaller}
 
 *  business concerns in interdomain routing
 *  autonomous systems (ASes)
@@ -41,5 +41,3 @@
 {{< include /routing-bgp/_partial-tables.qmd >}}
 
 {{< include /dns/_talk-inner.qmd >}}
-
-{{< include /sockets/_talk-inner.qmd >}}
