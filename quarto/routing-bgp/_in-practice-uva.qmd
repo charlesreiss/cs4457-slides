@@ -15,35 +15,36 @@
 
 [https://bgp.he.net/AS225](https://bgp.he.net/AS225) (University of Virginia) <br> 
 
-![](/routing-bgp/as225-graph){width=700px}
+![](/routing-bgp/as225-graph){width=700px fig-alt="graph showing AS225 connectivity to other ASes as observed by Hurricane Electric. It shows that AS 40220 and AS 3356 are AS225's upstreams"}
 
 
 ### AS40220 
 
 
-![](/routing-bgp/MARIA-Network-BW-768x441.jpg){}
+![](/routing-bgp/MARIA-Network-BW-768x441.jpg){fig-alt="Diagram of the Mid-Atlantic Research Infrastructure Alliance network, showing major connectivity locations in Ashburn and Atlanta, and networks connecting major Universities in Virginia (including Virginia Tech, University of Virginia, VCU, William and Mary, James Madison). Most schools and the Ashburn site are connected via 100Gbps channels, but some only via 1-10Gbps leased service. In the Hampton Roads and Blacksburg areas, MARIA runs a 'Member Metro Network'. For the Altanta site, the MARIA is only connected via 1-10Gbps leased service (albeit redundantly from Charlottesville, Hampton Roads and Blacksburg)."}
 
 
 ###  
 
 
-![](/routing-bgp/as40220-peeringdb){}
+![](/routing-bgp/as40220-peeringdb){fig-alt="peeringdb.net entry for MARIA, giving information about how to connect to them at public peering exchange points at datacenters Digital Realty Atlanta and Equinix Ashburn."}
 
 
 ### AS3356 
 
 
-![](/routing-bgp/lumen-webpage.png){}
+![](/routing-bgp/lumen-webpage.png){fig-alt="Webpage of ISP Lumen, advertising 'dedicated internet access: go full speed; give your enterprise a direct fast lane to 6,300+ interconnects with speeds up to 100 Gbps'"}
 
 
 ### 2024: AS3356 is a backup (8x prepend) 
 
 
-![](/routing-bgp/as3356-he-superlg.png){}
+![](/routing-bgp/as3356-he-superlg.png){fig-alt="screenshot of Hurricane Electric's 'super looking glass' showing paths observed to 128.143.0.0/16 including AS 3356. Only the first path of 42 is visible and has an AS path of 7018 3356 225 225 225 225 225 225 225 225. (That is, 225 repeated 8 times.)"}
 
 
 ### 2025: AS3356 and AS 40220 equal? 
 
 
-![](/routing-bgp/as3356-he-superlg-b.png){}
+![](/routing-bgp/as3356-he-superlg-b.png){fig-alt="screenshot showing two paths to 128.143.0.0/16; one with AS path 6939 3356 225; the other with AS path 6939 40220 225."}
+
 

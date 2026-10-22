@@ -81,7 +81,7 @@ _ldap._tcp.virginia.edu. 600    IN      SRV     0 100 389 vadc5.virginia.edu.
 
 
 
-### SRV records were late\ldots  {.smaller}
+### SRV records were late...  {.smaller}
 
 
 * SRV records seem like something we'd use all the time…
@@ -94,7 +94,7 @@ _ldap._tcp.virginia.edu. 600    IN      SRV     0 100 389 vadc5.virginia.edu.
 * hard to get access to add them in many organizations
 
 
-### dig virginia.edu txt  {.smaller}
+### dig virginia.edu txt  {.smaller .longcode}
 
 
 ```

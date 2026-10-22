@@ -1,14 +1,89 @@
 
-### root servers (1) 
+### root servers (1) {.smaller}
 
-(from IANA's website) 
-![](/dns/iana-root-server-list){}
+[https://www.iana.org/domains/root/servers](https://www.iana.org/domains/root/servers)
 
+<table style="font-size:80%">
+        <thead>
+        <tr>
+                <th>Hostname</th>
+                <th>IP Addresses</th>
+                <th>Operator</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+                <td>a.root-servers.net</td>
+                <td>198.41.0.4, 2001:503:ba3e::2:30</td>
+                <td>Verisign, Inc.</td>
+        </tr>
+        <tr>
+                <td>b.root-servers.net</td>
+                <td>170.247.170.2, 2801:1b8:10::b</td>
+                <td>University of Southern California,<br>Information Sciences Institute</td>
+        </tr>
+        <tr>
+                <td>c.root-servers.net</td>
+                <td>192.33.4.12, 2001:500:2::c</td>
+                <td>Cogent Communications</td>
+        </tr>
+        <tr>
+                <td>d.root-servers.net</td>
+                <td>199.7.91.13, 2001:500:2d::d</td>
+                <td>University of Maryland</td>
+        </tr>
+        <tr>
+                <td>e.root-servers.net</td>
+                <td>192.203.230.10, 2001:500:a8::e</td>
+                <td>NASA (Ames Research Center)</td>
+        </tr>
+        <tr>
+                <td>f.root-servers.net</td>
+                <td>192.5.5.241, 2001:500:2f::f</td>
+                <td>Internet Systems Consortium, Inc.</td>
+        </tr>
+        <tr>
+                <td>g.root-servers.net</td>
+                <td>192.112.36.4, 2001:500:12::d0d</td>
+                <td>US Department of Defense (NIC)</td>
+        </tr>
+        <tr>
+                <td>h.root-servers.net</td>
+    <td>198.97.190.53, 2001:500:1::53</td> 
+                <td>US Army (Research Lab)</td>
+        </tr>
+        <tr>
+                <td>i.root-servers.net</td>
+                <td>192.36.148.17, 2001:7fe::53</td>
+                <td>Netnod</td>
+        </tr>
+        <tr>
+                <td>j.root-servers.net</td>
+                <td>192.58.128.30, 2001:503:c27::2:30</td>
+                <td>Verisign, Inc.</td>
+        </tr>
+        <tr>
+                <td>k.root-servers.net</td>
+                <td>193.0.14.129, 2001:7fd::1</td>
+                <td>RIPE NCC</td>
+        </tr>
+        <tr>
+                <td>l.root-servers.net</td>
+                <td>199.7.83.42, 2001:500:9f::42</td>
+                <td>ICANN</td>
+        </tr>
+        <tr>
+                <td>m.root-servers.net</td>
+                <td>202.12.27.33, 2001:dc3::35</td>
+                <td>WIDE Project</td>
+        </tr>
+        </tbody>
+</table>
 
 ### root servers (2) 
 
 (from root-servers.org) 
-![](/dns/root-servers-map){}
+![](/dns/root-servers-map){fig-alt="map of DNS root servers, indicating that there are hundreds in eastern North America, tens in the pacific northwest, hundreds in Europe, hundreds in the middle east, tens in east asia, hundreds in southeast asia, hundreds in Africa, tens in oceania, and even one K in Greenland, a couple in Hawaii and Alaska, etc."}
 
 
 ### anycast root servers  {.smaller}
@@ -19,15 +94,13 @@
 <hr class="vspace" />
 * which one you get = which one routed to
 * multiple sites with BGP announcements for IP 
-
    * often with care taken to limit how far route goes
-
 * idea called ‘anycast’ 
-
    * get to ‘any’ of several servers
-
 * also used for some public recursive DNS servers 
-
    * 1.1.1.1 (CloudFlare), 8.8.8.8 (Google), 208.67.222.222 (Cisco), …
 
+### L root server locations
+
+![map of L (ICANN-operated) root server locations (as of 22 Oct 2026)](/dns/l-root-server-locations.png)
 
