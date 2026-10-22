@@ -17,7 +17,7 @@
 
 ### DNS name format  {.smaller}
 
-![](/dns/texfig/dns-record-dns-name-format.figure.svg){"The DNS name www.cs.virginia.edu is represented as 3, www, 2, cs, 8, virginia, 0 has before. Then coresrv01a.cs.virginia.edu. is represented by a 10 (length of 'coresrv01a') followed by a pointer to the '2' before the 'cs' in 'www.cs.virginia.edu.'"}
+![](/dns/texfig/dns-record-dns-name-format.figure.svg){fig-alt="The DNS name www.cs.virginia.edu is represented as 3, www, 2, cs, 8, virginia, 0 has before. Then coresrv01a.cs.virginia.edu. is represented by a 10 (length of 'coresrv01a') followed by a pointer to the '2' before the 'cs' in 'www.cs.virginia.edu.'"}
  
 
 * zero or more: length of $K>0$ followed by $K$ character case-insensitive <i>label</i> 
