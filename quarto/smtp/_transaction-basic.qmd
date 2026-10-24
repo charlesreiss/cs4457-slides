@@ -1,0 +1,22 @@
+### mail transactions
+
+*  steps:
+   *  set sender ("reverse path")
+   *  set recepients
+   *  send data
+
+
+### mail transactions
+
+*  steps:
+   *  _set sender ("reverse path")_
+   *  set recepients
+   *  send data
+
+### MAIL FROM:
+
+### RCPT TO:
+
+### multiple RCPT TO:
+
+### DATA

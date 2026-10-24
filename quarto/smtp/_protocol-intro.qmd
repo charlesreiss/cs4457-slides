@@ -1,0 +1,60 @@
+
+### SMTP protocol basics
+
+*  text-based, stateful protocol
+   *  stateful = not series of independent operations like HTTP
+*  build up "mail transactions" (sending one message)
+*  client sends sequence of commands:
+   *  4-character command name followed by arguments
+*  server replies with status code + message
+   *  similar 3-digit status codes to HTTP
+
+### example SMTP session {.smaller}
+
+*  S=server, C=client
+
+```
+S: 220 foo.com Simple Mail Transfer Service Ready
+C: EHLO bar.com
+S: 250-foo.com greets bar.com
+S: 250-8BITMIME
+S: 250-SIZE
+S: 250-DSN
+S: 250 HELP
+C: MAIL FROM:<Smith@bar.com>
+S: 250 OK
+C: RCPT TO:<Jones@foo.com>
+S: 250 OK
+C: RCPT TO:<Green@foo.com>
+S: 550 No such user here
+C: RCPT TO:<Brown@foo.com>
+S: 250 OK
+C: DATA
+S: 354 Start mail input; end with <CRLF>.<CRLF>
+C: Blah blah blah...
+C: ...etc. etc. etc.
+C: .
+S: 250 OK
+C: QUIT
+```
+
+### general command format {.smaller}
+
+*  $\text{client}\rightarrow\text{server}$: `XCMD arg1 arg2 arg3`
+   *  `XCMD` is 4 character command name
+   *  arguments are space-separated
+   *  terminated by CRLF
+*  $\text{server}\rightarrow\text{client}$: `999-line1`<br/>
+   $\text{server}\rightarrow\text{client}$: `999-line2`<br/>
+   $\text{server}\rightarrow\text{client}$: `999 line3`<br/>
+   *  three-line reply, each line terminated with CRLF
+   *  starts with three-digit status code
+   *  `-` = not complete reply
+
+### status codes
+
+*  details: RFC 5321, sec 4.2
+*  2xx = okay, complete
+*  3xx = okay, still more to do
+*  4xx = error, you should retry
+*  5xx = error, you should not retry

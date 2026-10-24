@@ -1,0 +1,50 @@
+
+### address format {.smaller}
+
+*  RFC 5322
+<hr/>
+*  `Name For Humans <username@dns.name.example>`
+*  `username@dns.name.example`
+   *  this part called "addr-spec"
+*  destination is from _MX record_ for dns.name.example
+<hr/>
+*  `username@[machine.dns.name.example]`
+*  `username@[203.0.113.5]`
+*  destination is machine.dns.name.exmaple/203.0.113.5
+
+### MX records {.smaller}
+
+```
+gmail.com.              639     IN      MX      5 gmail-smtp-in.l.google.com.
+gmail.com.              639     IN      MX      10 alt1.gmail-smtp-in.l.google.com.
+gmail.com.              639     IN      MX      20 alt2.gmail-smtp-in.l.google.com.
+gmail.com.              639     IN      MX      30 alt3.gmail-smtp-in.l.google.com.
+gmail.com.              639     IN      MX      40 alt4.gmail-smtp-in.l.google.com.
+```
+<hr/>
+*  5/10/20/... is preference (lower = more preferred) 
+*  client should try servers in order
+   *  lookup A or AAAA record for each
+   *  use first that works
+*  if no MX record, fallback to looking up address for name
+
+### layers of forwarding
+
+*  emails to <i>xyz</i>@virginia.edu would go to mailbox on...
+   *  Microsoft-hosted email servers
+   *  Google-hosted email servers (during transition)
+   *  ticketing systems (cshelpdesk@virginia.edu, ...)
+   *  mailing list systems (csugrads@virginia.edu, ...)
+   *  ...
+*  likely all hosted on different servers
+*  MX record will only have one of those...
+
+### email relays
+
+*  many mail servers are relays
+   *  collect message, send on to actual destination
+*  "submission servers" --- special case of relays
+   *  mail user agent sends message to one submission server, then forgets about it
+   *  simplifies logic of mail user agents
+   *  submission server can handle retrying, etc.
+

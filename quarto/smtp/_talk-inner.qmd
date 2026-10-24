@@ -1,78 +1,6 @@
-# old-school: email on a single shared machine
+# old-school: email on a single shared machine {visibility="hidden"}
 
-### scenario:
-
-*  multiple users logging into shared machine
-*  "mail" service for them...
-
-### sending `mail` locally?
-
-<pre><code>
-testuser@ourserver:~$ <b>mail charles</b>
-Cc: 
-Subject: <b>another demo email</b>
-
-<b>This is another demo email.</b>
-<b><i>&lt;control-D&gt;</i></b>
-testuser@ourserver:~$ 
-</code></pre>
-
-### reading `mail` locally? {.smaller}
-
-<pre><code>
-charles@ourserver:~$ <b>mail</b>
-"/var/mail/charles": 2 messages 2 new
->N   1 Test user          Sat Oct 24 09:49  14/444   another demo email
- N   2 Test user          Sat Oct 24 09:50  31/1045  demonstrating email
-? <b>1</b>
-Return-Path: <testuser@ourserver>
-X-Original-To: charles@ourserver
-Delivered-To: charles@ourserver
-Received: by ourserver (Postfix, from userid 1003)
-        id 21DAC4002AB; Sat, 24 Oct 2026 09:49:45 -0400 (EDT)
-To: <charles@ourserver>
-Subject: another demo email
-User-Agent: mail (GNU Mailutils 3.17)
-Date: Sat, 24 Oct 2026 09:49:45 -0400
-Message-Id: <20261024134945.21DAC4002AB@ourserver>
-From: Test user <testuser@ourserver>
-
-This is another demo email.
-</code></pre>
-
-### `/var/mail/charles` {.smaller}
-
-`-rw------- 1 charles mail 1589 Oct 24 09:50 /var/mail/charles`
-<hr/>
-```
-From testuser@ourserver  Sat Oct 24 09:49:45 2026
-Return-Path: <testuser@ourserver>
-X-Original-To: charles@ourserver
-Delivered-To: charles@ourserver
-Received: by ourserver (Postfix, from userid 1003)
-        id 21DAC4002AB; Sat, 24 Oct 2026 09:49:45 -0400 (EDT)
-To: <charles@ourserver>
-Subject: another demo email
-User-Agent: mail (GNU Mailutils 3.17)
-Date: Sat, 24 Oct 2026 09:49:45 -0400
-Message-Id: <20261024134945.21DAC4002AB@ourserver>
-From: Test user <testuser@ourserver>
-
-
-This is another demo email.
-
-From testuser@ourserver  Sat Oct 24 09:50:18 2026
-Return-Path: <testuser@ourserver>
-X-Original-To: charles@ourserver
-...
-```
-
-### simple local mail implementation
-
-*  mail "spool" file with appropriate permissions for each user
-*  mail sending program marked set-group-ID
-   *  modify other user's spool files
-*  locking scheme to avoid concurrent modification
+{{< include /smtp/_old-school.qmd >}}
 
 ### terminology
 
@@ -107,54 +35,7 @@ X-Original-To: charles@ourserver
 *  sending to multiple people
 *  reading emails not from a local file
 
-### address format {.smaller}
-
-*  RFC 5322
-<hr/>
-*  `Name For Humans <username@dns.name.example>`
-*  `username@dns.name.example`
-   *  this part called "addr-spec"
-*  destination is from _MX record_ for dns.name.example
-<hr/>
-*  `username@[machine.dns.name.example]`
-*  `username@[203.0.113.5]`
-*  destination is machine.dns.name.exmaple/203.0.113.5
-
-### MX records {.smaller}
-
-```
-gmail.com.              639     IN      MX      5 gmail-smtp-in.l.google.com.
-gmail.com.              639     IN      MX      10 alt1.gmail-smtp-in.l.google.com.
-gmail.com.              639     IN      MX      20 alt2.gmail-smtp-in.l.google.com.
-gmail.com.              639     IN      MX      30 alt3.gmail-smtp-in.l.google.com.
-gmail.com.              639     IN      MX      40 alt4.gmail-smtp-in.l.google.com.
-```
-<hr/>
-*  5/10/20/... is preference (lower = more preferred) 
-*  client should try servers in order
-   *  lookup A or AAAA record for each
-   *  use first that works
-*  if no MX record, fallback to looking up address for name
-
-### layers of forwarding
-
-*  emails to <i>xyz</i>@virginia.edu would go to mailbox on...
-   *  Microsoft-hosted email servers
-   *  Google-hosted email servers (during transition)
-   *  ticketing systems (cshelpdesk@virginia.edu, ...)
-   *  mailing list systems (csugrads@virginia.edu, ...)
-   *  ...
-*  likely all hosted on different servers
-*  MX record will only have one of those...
-
-### email relays
-
-*  many mail servers are relays
-   *  collect message, send on to actual destination
-*  "submission servers" --- special case of relays
-   *  mail user agent sends message to one submission server, then forgets about it
-   *  simplifies logic of mail user agents
-   *  submission server can handle retrying, etc.
+{{< include /smtp/_address-relay.qmd >}}
 
 ### things we'll need for "real" email
 
@@ -167,84 +48,103 @@ gmail.com.              639     IN      MX      40 alt4.gmail-smtp-in.l.google.c
 *  _sending to multiple people_
 *  reading emails not from a local file
 
-### SMTP protocol basics
+# SMTP protocol {visibility="hidden"}
 
-*  text-based, stateful protocol
-   *  stateful = not series of independent operations like HTTP
-*  build up "mail transactions" (sending one message)
-*  client sends sequence of commands:
-   *  4-character command name followed by arguments
-*  server replies with status code + message
-   *  similar 3-digit status codes to HTTP
+{{< include /smtp/_protocol-intro.qmd >}}
 
-### example SMTP session {.smaller}
+## connection setup {visibility="hidden"}
 
-*  S=server, C=client
+{{< include /smtp/_connection-setup.qmd >}}
 
-```
-S: 220 foo.com Simple Mail Transfer Service Ready
-C: EHLO bar.com
-S: 250-foo.com greets bar.com
-S: 250-8BITMIME
-S: 250-SIZE
-S: 250-DSN
-S: 250 HELP
-C: MAIL FROM:<Smith@bar.com>
-S: 250 OK
-C: RCPT TO:<Jones@foo.com>
-S: 250 OK
-C: RCPT TO:<Green@foo.com>
-S: 550 No such user here
-C: RCPT TO:<Brown@foo.com>
-S: 250 OK
-C: DATA
-S: 354 Start mail input; end with <CRLF>.<CRLF>
-C: Blah blah blah...
-C: ...etc. etc. etc.
-C: .
-S: 250 OK
-C: QUIT
-```
+## mail transactions, normal case {visibility="hidden"}
 
-### general command format {.smaller}
+{{< include /smtp/_transaction-basic.qmd >}}
 
-*  $\text{client}\rightarrow\text{server}$: `XCMD arg1 arg2 arg3`
-   *  `XCMD` is 4 character command name
-   *  arguments are space-separated
-   *  terminated by CRLF
-*  $\text{server}\rightarrow\text{client}$: `999-line1`<br/>
-   $\text{server}\rightarrow\text{client}$: `999-line2`<br/>
-   $\text{server}\rightarrow\text{client}$: `999 line3`<br/>
-   *  three-line reply, each line terminated with CRLF
-   *  starts with three-digit status code
-   *  `-` = not complete reply
+# mail message format, simple case
 
-### status codes
+## RFC 5322
 
-*  details: RFC 5321, sec 4.2
-*  2xx = okay, complete
-*  3xx = okay, still more to do
-*  4xx = error, you should retry
-*  5xx = error, you should not retry
+## headers and body
 
-### connection setup
+### multi-line headers, repeated headers
 
-*  `EHLO` (extended hello)
-    *  also deprecated HELO
-*  server replies with greeting line, list of non-required commands it implements
+### body is ASCII, ...
 
-```
-C: EHLO bar.com
-S: 250-foo.com greets bar.com
-S: 250-8BITMIME
-S: 250-SIZE
-S: 250-DSN
-S: 250 HELP
-```
+### From != MAIL FROM
 
-### mail transactions
+### To/Cc/Bcc != RCPT TO
 
-*  steps:
-   *  set sender ("reverse path")
-   *  set recepients
-   *  send data
+### Received
+
+### Resent-*
+
+### threads (message-id, references, in-reply-to)
+
+# mail transactions, errors
+
+## temporary errors and retrying
+
+### things we'll need for "real" email
+
+*  find out right machine to get email to
+   *  issue: domain name in address != right machine
+*  handling errors
+   *  _retry sending later_
+   *  telling user if sending later failed
+   *  issue: needs to be done by program running after mail "sent"
+*  sending to multiple people
+*  reading emails not from a local file
+
+## undeliverable messages
+
+### things we'll need for "real" email
+
+*  find out right machine to get email to
+   *  issue: domain name in address != right machine
+*  handling errors
+   *  retry sending later
+   *  _telling user if sending later failed_
+   *  issue: needs to be done by program running after mail "sent"
+*  sending to multiple people
+*  reading emails not from a local file
+
+# MIME (attachments, HTML, ...)
+
+# POP3/IMAP
+
+### things we'll need for "real" email
+
+*  find out right machine to get email to
+   *  issue: domain name in address != right machine
+*  handling errors
+   *  retry sending later
+   *  telling user if sending later failed
+   *  issue: needs to be done by program running after mail "sent"
+*  sending to multiple people
+*  _reading emails not from a local file_
+
+## POP3
+
+### format / connection setup
+
+### commands - LIST/RETR/DELE
+
+### update on QUIT, preserve on error
+
+## IMAP
+
+### multiple mailboxes
+
+### SUBSCRIBE
+
+### IDLE
+
+# anti-spam
+
+## blacklists
+
+## SPF, DKIM, ...
+
+## worse error reporting
+
+## deliberate temporary errors

@@ -1,0 +1,74 @@
+
+### scenario:
+
+*  multiple users logging into shared machine
+*  "mail" service for them...
+
+### sending `mail` locally?
+
+<pre><code>
+testuser@ourserver:~$ <b>mail charles</b>
+Cc: 
+Subject: <b>another demo email</b>
+
+<b>This is another demo email.</b>
+<b><i>&lt;control-D&gt;</i></b>
+testuser@ourserver:~$ 
+</code></pre>
+
+### reading `mail` locally? {.smaller}
+
+<pre><code>
+charles@ourserver:~$ <b>mail</b>
+"/var/mail/charles": 2 messages 2 new
+>N   1 Test user          Sat Oct 24 09:49  14/444   another demo email
+ N   2 Test user          Sat Oct 24 09:50  31/1045  demonstrating email
+? <b>1</b>
+Return-Path: <testuser@ourserver>
+X-Original-To: charles@ourserver
+Delivered-To: charles@ourserver
+Received: by ourserver (Postfix, from userid 1003)
+        id 21DAC4002AB; Sat, 24 Oct 2026 09:49:45 -0400 (EDT)
+To: <charles@ourserver>
+Subject: another demo email
+User-Agent: mail (GNU Mailutils 3.17)
+Date: Sat, 24 Oct 2026 09:49:45 -0400
+Message-Id: <20261024134945.21DAC4002AB@ourserver>
+From: Test user <testuser@ourserver>
+
+This is another demo email.
+</code></pre>
+
+### `/var/mail/charles` {.smaller}
+
+`-rw------- 1 charles mail 1589 Oct 24 09:50 /var/mail/charles`
+<hr/>
+```
+From testuser@ourserver  Sat Oct 24 09:49:45 2026
+Return-Path: <testuser@ourserver>
+X-Original-To: charles@ourserver
+Delivered-To: charles@ourserver
+Received: by ourserver (Postfix, from userid 1003)
+        id 21DAC4002AB; Sat, 24 Oct 2026 09:49:45 -0400 (EDT)
+To: <charles@ourserver>
+Subject: another demo email
+User-Agent: mail (GNU Mailutils 3.17)
+Date: Sat, 24 Oct 2026 09:49:45 -0400
+Message-Id: <20261024134945.21DAC4002AB@ourserver>
+From: Test user <testuser@ourserver>
+
+
+This is another demo email.
+
+From testuser@ourserver  Sat Oct 24 09:50:18 2026
+Return-Path: <testuser@ourserver>
+X-Original-To: charles@ourserver
+...
+```
+
+### simple local mail implementation
+
+*  mail "spool" file with appropriate permissions for each user
+*  mail sending program marked set-group-ID
+   *  modify other user's spool files
+*  locking scheme to avoid concurrent modification

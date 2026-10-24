@@ -1,0 +1,15 @@
+
+### connection setup
+
+*  `EHLO` (extended hello)
+    *  also deprecated HELO
+*  server replies with greeting line, list of non-required commands it implements
+
+```
+C: EHLO bar.com
+S: 250-foo.com greets bar.com
+S: 250-8BITMIME
+S: 250-SIZE
+S: 250-DSN
+S: 250 HELP
+```
