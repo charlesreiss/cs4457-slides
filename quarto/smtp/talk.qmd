@@ -1,0 +1,8 @@
+---
+name: smtp
+---
+
+{{< include /smtp/_talk-inner.qmd >}}
+# backup slides
+
+{{< include /smtp/_talk-backup.qmd >}}
