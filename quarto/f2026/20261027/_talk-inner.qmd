@@ -1,0 +1,46 @@
+### last time
+
+*  BGP communities --- tags on routes
+   *  extra information for route filtering
+   *  interface for ISPs to allow customers to control route distribution
+*  BGP oopsies and hijacking
+*  DNS hierarchy of names
+*  authoritative versus recursive DNS servers
+*  root servers, DNS zones
+*  presentation and binary format of resource records (RR)
+
+# common record types {visibility="hidden"}
+
+{{< include /dns/_common-record.qmd >}}
+
+# primary, secondary, zone xfers {visibility="hidden"}
+
+{{< include /dns/_primary-second-zone.qmd >}}
+
+# DNS query+answer format {visibility="hidden"}
+
+{{< include /dns/_query-answer.qmd >}}
+
+# DNS over UDP, TCP {visibility="hidden"}
+
+{{< include /dns/_send-over.qmd >}}
+
+# DNS extensions, briefly {visibility="hidden"}
+
+{{< include /dns/_ends.qmd >}}
+
+{{< include /dns/_talk-inner-extra.qmd >}}
+
+###
+
+{{< include /sockets/_talk-inner.qmd >}}
+
+###
+
+# backup slides
+
+###
+
+# DNS record format {visibility="hidden"}
+
+{{< include /dns/_dns-record.qmd >}}
