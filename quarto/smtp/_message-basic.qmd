@@ -1,0 +1,26 @@
+### e-mail message format
+
+*  RFC 5322
+*  ASCII characters, CRLF terminated lines
+   *  at most 998 characters/line, but "SHOULD be no more than 78"
+*  header fields
+   *  `key: value`
+*  empty line
+*  message "body"
+
+### header format
+
+*  short headers: `key: value`
+*  to support longer header values "header folding":
+```
+Key: some value that might be long
+```
+<hr/>
+```
+Key: some
+ value that
+ might be
+ long
+```
+*  should be same header value
+   *  processing should remove CRLF+space

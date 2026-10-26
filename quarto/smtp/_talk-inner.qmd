@@ -62,27 +62,27 @@
 
 # mail message format, simple case
 
-## RFC 5322
+## basic format {visibility="hidden"}
 
-## headers and body
+{{< include /smtp/_message-basic.qmd >}}
 
-### multi-line headers, repeated headers
+## originator/destination {visibility="hidden"}
 
-### body is ASCII, ...
+{{< include /smtp/_message-tofrom.qmd >}}
 
-### From != MAIL FROM
+## Received/Return-Path
 
-### To/Cc/Bcc != RCPT TO
+{{< include /smtp/_message-received.qmd >}}
 
-### Received
+## Message IDs
 
-### Resent-*
-
-### threads (message-id, references, in-reply-to)
+{{< include /smtp/_message-id.qmd >}}
 
 # mail transactions, errors
 
 ## temporary errors and retrying
+
+{{< include /smtp/_errors.qmd >}}
 
 ### things we'll need for "real" email
 
@@ -138,6 +138,12 @@
 ### SUBSCRIBE
 
 ### IDLE
+
+## misc email format
+
+### threads (references, in-reply-to)
+
+### MIME
 
 # anti-spam
 

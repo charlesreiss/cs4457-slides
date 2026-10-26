@@ -1,0 +1,32 @@
+### common headers: from/sender
+
+*  `From: name1 <user1@host1>, name2 <user2@host2>`
+*  `Sender: name <user@host>`
+<hr/>
+*  identify sender of message, but...
+   *  not required to match `MAIL FROM:` command
+
+### common headers: to/cc
+
+*  `To: name1 <user1@host1>, user2 <user2@host2>`
+*  `To: GroupA: user1 <user1@host1>, user2 <user2@host2>; GroupB: user3 <user3@host3>, user4 <user4@host4>`
+*  Similar for `Cc` ("carbon copy")
+<hr/>
+*  identify receipients of message, but...
+   *  not required to match `RCPT TO:` command
+
+### common headers: Bcc
+
+*  `Bcc: name3 <user3@host3>, name4 <user4@host4>`
+<hr/>
+*  "blind carbon copy"
+   *  extra recipients not seen
+*  _removed_ before actually sending via SMTP
+
+### Bcc implementation options
+
+*  simpliest: remove Bcc header, RCPT TO everyone
+   *  issue: Bcc recepients don't know why they got message
+*  alt 1: replace header with `Bcc: Undisclosed recipients: ;` or similar
+*  alt 2: separate mail transactions for each Bcc recepient <br/>
+   replace header with <pre>Bcc: <i>that receipient</i></pre>

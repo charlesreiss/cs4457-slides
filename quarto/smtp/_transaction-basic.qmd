@@ -1,22 +1,41 @@
 ### mail transactions
 
 *  steps:
-   *  set sender ("reverse path")
-   *  set recepients
-   *  send data
+<hr/>
+*  set sender ("reverse path")
+*  set recepients
+*  send data
 
 
 ### mail transactions
 
 *  steps:
-   *  _set sender ("reverse path")_
-   *  set recepients
-   *  send data
+<hr/>
+*  _set sender ("reverse path")_
+*  set recepients
+*  send data
 
 ### MAIL FROM:
 
+*  `MAIL FROM:<username@host.example>`
+*  starts a "mail transaction"
+*  "envelope" address saved for later
+   *  RFC calls it the "reverse-path"
+*  usual reply: `250 OK`
+
 ### RCPT TO:
 
-### multiple RCPT TO:
+*  `RCPT TO:<username1@host.example>`
+*  add recepient to mail transaction
+*  can be sent _multiple times_ for multiple recepients
+*  usual reply: `250 OK`
+*  can reject messages here
+   *  `550 Recipient address rejected...`
 
 ### DATA
+
+*  `DATA`
+*  then send mail message
+   *  message "headers" and "body" (more later)
+*  followed by line containing only "."
+*  usualy reply: `250 OK`

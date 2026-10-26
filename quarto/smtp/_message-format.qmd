@@ -1,0 +1,69 @@
+### common headers: from/sender
+
+*  `From: name1 <user1@host1>, name2 <user2@host2>`
+*  `Sender: name <user@host>`
+<hr/>
+*  identify sender of message, but...
+   *  not required to match `MAIL FROM:` command
+
+### common headers: to/cc
+
+*  `To: name1 <user1@host1>, user2 <user2@host2>`
+*  `To: GroupA: user1 <user1@host1>, user2 <user2@host2>; GroupB: user3 <user3@host3>, user4 <user4@host4>`
+*  Similar for `Cc` ("carbon copy")
+<hr/>
+*  identify receipients of message, but...
+   *  not required to match `RCPT TO:` command
+
+### common headers: Bcc
+
+*  `Bcc: name3 <user3@host3>, name4 <user4@host4>`
+<hr/>
+*  "blind carbon copy"
+   *  extra recipients not seen
+*  _removed_ before actually sending via SMTP
+
+### Bcc implementation options
+
+*  simpliest: remove Bcc header, RCPT TO everyone
+   *  issue: Bcc recepients don't know why they got message
+*  alt 1: replace header with `Bcc: Undisclosed recipients: ;` or similar
+*  alt 2: separate mail transactions for each Bcc recepient <br/>
+   replace header with <pre>Bcc: <i>that receipient</i></pre>
+
+### Received headers (1) {.smaller}
+
+<pre><code>
+Received: <span class="myem-only custom fragment" data-fragment-index="1">from mta.mc.virginia.edu (mta.mc.virginia.edu [13.111.103.41])</span>
+ <span class="myem-only custom fragment" data-fragment-index="2">by EIFMAILUW2P1.az.virginia.edu</span>
+ with ESMTPS id 69Q9BOLW014478-69Q9BOLZ014478
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO)
+ for &lt;cr4bd@virginia.edu&gt;; Mon, 26 Oct 2026 05:11:25 -0400
+Received: <span class="myem-only custom fragment" data-fragment-index="2">by mta.mc.virginia.edu id hrscjq39mjcg</span> for &lt;cr4bd@virginia.edu&gt;; Mon,
+ 26 Oct 2026 09:11:16 +0000 (envelope-from
+ &lt;bounce-VNYPYSC245AU7NEYFSG6Y5YUKY.100224@bounce.mc.virginia.edu&gt;)
+</code></pre>
+*  typically added each time message is received by SMTP server
+*  [from XXX]{.myem-only .custom .fragment fragment-index=1}
+   *  client connected from XXX
+   *  (not always included)
+*  [by YYY]{.myem-only .custom .fragment fragment-index=2}
+   *  server was named YYY
+
+### Received headers (2) {.smaller}
+
+<pre><code>
+Received: from mta.mc.virginia.edu (mta.mc.virginia.edu [13.111.103.41]) by EIFMAILUW2P1.az.virginia.edu
+ with ESMTPS id 69Q9BOLW014478-69Q9BOLZ014478
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO)
+ <span class="myem-only custom fragment" data-fragment-index="1">for &lt;cr4bd@virginia.edu&gt;</span>; <span class="myem-only custom fragment" data-fragment-index="3">Mon, 26 Oct 2026 05:11:25 -0400</span>
+Received: by mta.mc.virginia.edu id hrscjq39mjcg <span class="myem-only custom fragment" data-fragment-index="1">for &lt;cr4bd@virginia.edu&gt;</span>;
+ <span class="myem-only custom fragment" data-fragment-index="3">Mon, 26 Oct 2026 09:11:16 +0000</span> (<span class="myem-only custom fragment" data-fragment-index="2">envelope-from
+ &lt;bounce-VNYPYSC245AU7NEYFSG6Y5YUKY.100224@bounce.mc.virginia.edu&gt;</span>)
+</code></pre>
+*  [for `<to-user@host>`]{.myem-only .custom .fragment fragment-index=1}
+   *  RCPT TO:...
+*  [envelope-from `<from-user@host>`]{.myem-only .custom .fragment fragment-index=2}
+   *  MAIL FROM:...
+   *  (not always included)
+*  also includes [timestamp]{.myem-only .custom .fragment fragment-index=3}, possible additional info
