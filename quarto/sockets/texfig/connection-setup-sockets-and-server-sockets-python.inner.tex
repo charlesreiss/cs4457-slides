@@ -6,25 +6,19 @@
         msg/.style={font=\small},
         cmd/.style={font=\small},
     }
-    \node[draw,circle,label={south:client}] (client) {socket};
+    \node[draw,circle] (client) {socket};
     \node[draw,circle,align=center] (ssocket) at ([xshift=7.75cm,yshift=4cm]client.west) {server\\socket};
-    \node[draw,circle,align=center,label={south:server},visible on=<4->] (server) at ([xshift=8.75cm]client.west) {socket};
+    \node[draw,circle,align=center] (server) at ([xshift=8.75cm]client.west) {socket};
     \draw[very thick,dotted,<-] (ssocket.east) -- ++(.5cm,0cm) node[right,font=\small\tt,align=left] {
-        server: \\
-        \myemph<2>{ssock = \textbackslash} \\
-        \myemph<2>{\hspace{.25cm}socket.socket(\ldots)} \\
+        {\normalfont server:} \\
+        \myemph<2>{ssock = socket.socket(\ldots)} \\
         \myemph<3>{ssock.bind(\ldots)} \\
         \myemph<3>{ssock.listen()}
     };
     \draw[very thick,dotted,<-] (client.north) -- ++(0cm,2cm) node[above,xshift=1cm,font=\small\tt,align=left] {
-        client: \\
+        {\normalfont client:} \\
         \myemph<2>{sock = socket.socket(\ldots)}
     };
-    \begin{visibleenv}<2>
-        \node[explain box,anchor=north] at ([yshift=-.5cm]ssocket.south) {
-            socket() function --- create socket fd
-        };
-    \end{visibleenv}
     \begin{visibleenv}<3>
         \node[explain box,anchor=north] at ([yshift=-.5cm]ssocket.south) {
             listen() --- turn socket into server socket \\
@@ -42,4 +36,5 @@
     \begin{visibleenv}<5->
     \draw[<->,double,ultra thick] (client) -- (server) node[midway,fill=white,inner sep=0.1mm] {connection};
     \end{visibleenv}
+    \draw[dotted,line width=1mm,black!50] ([yshift=.5cm,xshift=-1cm]ssocket.north west) coordinate (sep start) -- ([yshift=-.5cm]sep start |- server.south);
 \end{tikzpicture}

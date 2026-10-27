@@ -1,8 +1,8 @@
 
-### connection setup: server, IPv4  {.smaller}
+### connection setup: server, IPv4  {.longcode}
 
 
-```
+```python
 import socket
 ssock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # 0.0.0.0 == "any IP address"
@@ -14,10 +14,9 @@ Use(sock)
 ```
 
 
-### connection setup: server, IPv4  {.smaller}
+### connection setup: server, IPv4  {.longcode}
 
-
-```
+```python
 import socket
 ssock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # 0.0.0.0 == "any IP address"
@@ -29,10 +28,10 @@ Use(sock)
 ```
 
 
-### connection setup: server, generic  {.smaller}
+### connection setup: server, generic  {longcode}
 
 
-```
+```python
 import select
 import socket
 all_addrs = socket.getaddrinfo(

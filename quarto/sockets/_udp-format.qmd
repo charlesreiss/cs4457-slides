@@ -1,5 +1,5 @@
 
 ### UDP format 
 
-![](/sockets/texfig/udp-format.figure.svg)
+![](/sockets/texfig/udp-format.figure.svg){fig-alt="UDP packet format: IPv4/v6 header; source port; destination port; length; checksum; application data"}
 

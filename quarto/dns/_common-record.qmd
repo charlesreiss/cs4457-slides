@@ -2,8 +2,8 @@
 ### selected RR types  {.smaller}
 
 <table>
-<thread>
-<tr><tw>text</th><th>id</th><th>purpose</th><th>data format</th></tr>
+<thead>
+<tr><th>text</th><th>id</th><th>purpose</th><th>data format</th></tr>
 </thead>
 <tbody>
 <tr><td><code>A</code></td><td>1</td><td>IPv4 address</td><td>32-bit integer (big-endian)</td></tr>

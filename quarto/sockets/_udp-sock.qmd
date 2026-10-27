@@ -1,8 +1,8 @@
 
-### unconnected UDP sockets (Python)  {.smaller}
+### unconnected UDP sockets (Python)  {.longcode}
 
 
-```
+```python
 import socket
 # ipv4
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -22,10 +22,10 @@ sock.sendto(data, (host2, port2))
 ```
 
 
-### unconnected UDP sockets (Python, generic)  {.smaller}
+### unconnected UDP sockets (Python, generic) {.longcode}
 
 
-```
+```python
 import socket
 possible_local_addrs = socket.getaddrinfo(
         local_host, local_port,
@@ -41,16 +41,13 @@ for af, socktype, proto, canonname, sockaddr in possible_local_addrs:
 ```
 
 
-### unconnected UDP sockets (Python, generic)  {.smaller}
+### unconnected UDP sockets (Python, generic) {.longcode}
 
 
-```
+```python
 import socket
-possible_remote_addrs = socket.getaddrinfo(
-        remote_host, remote_port,
-        family=socket.AF_UNSPEC,
-        type=socket.SOCK_DGRAM,
-        flags=0)
+possible_remote_addrs = socket.getaddrinfo(remote_host, remote_port,
+        family=socket.AF_UNSPEC, type=socket.SOCK_DGRAM, flags=0)
 
 for af, socktype, proto, canonname, sockaddr in possible_remote_addrs:
     sock = socket.socket(af, socktype, proto)
@@ -81,33 +78,10 @@ for af, socktype, proto, canonname, sockaddr in possible_remote_addrs:
 
 
 
-### unconnected UDP sockets (C, IPv4)  {.smaller}
+### connected UDP sockets (Python)  {.longcode}
 
 
-```
-int fd = socket(AF_INET, SOCK_DGRAM, 0 /* or IPPROTO_UDP */);
-/* for 10.1.2.3 port 12345 
-   there are utility functions to help with this, so you 
-   shouldn't actually construct local_addr manually like this */
-struct sockaddr_in local_addr;
-memset(&local_addr, 0, sizeof(local_addr);
-local_addr.sin_family = AF_INET;
-local_addr.sin_port = htons(12345);
-local_addr.sin_addr.s_addr = htonl((10<<24)|(1<<16)|(2<<8)|3),
-bind(fd, &local_addr, sizeof(local_addr));
-struct sockaddr_in remote1, remote2;
-recvfrom(fd, buffer1, buffer1_size, 0, &remote1, sizeof(remote1));
-recvfrom(fd, buffer2, buffer2_size, 0, &remote2, sizeof(remote2));
-struct sockaddr_in remote3 = ...;
-sendto(fd, buffer3, buffer3_size, 0, &remote3, sizeof(remote3));
-
-```
-
-
-### connected UDP sockets (Python)  {.smaller}
-
-
-```
+```python
 import socket
 # ipv4
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)

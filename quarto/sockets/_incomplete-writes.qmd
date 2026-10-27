@@ -1,11 +1,11 @@
 
-### incomplete writes  {.smaller}
+### incomplete writes 
 
 
 * <code>send</code> might write less than requested 
 
    * error after writing some data
-   * if blocking disabled
+   * if blocking disabled and cannot write immediately
 
 * <code>recv</code> might read less than requested 
 

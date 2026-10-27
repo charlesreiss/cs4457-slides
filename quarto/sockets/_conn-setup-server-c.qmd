@@ -1,4 +1,22 @@
 
+### sockets and server sockets (C) 
+
+
+
+::: {.r-stack .my-full}
+![](/sockets/texfig/connection-setup-sockets-and-server-sockets-c.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/sockets/texfig/connection-setup-sockets-and-server-sockets-c.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/sockets/texfig/connection-setup-sockets-and-server-sockets-c.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/sockets/texfig/connection-setup-sockets-and-server-sockets-c.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+![](/sockets/texfig/connection-setup-sockets-and-server-sockets-c.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+
+
+:::
+
 ### connection setup: server, address setup  {.smaller}
 
 

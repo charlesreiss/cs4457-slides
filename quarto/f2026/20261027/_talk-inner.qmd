@@ -1,4 +1,4 @@
-### last time
+### last time {.smaller}
 
 *  BGP communities --- tags on routes
    *  extra information for route filtering

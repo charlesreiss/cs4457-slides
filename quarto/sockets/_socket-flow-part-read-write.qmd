@@ -1,22 +1,22 @@
 
 ### size mismatch? (1) 
 
-![](/sockets/texfig/socket-flow-part-read-write-size-mismatch-1.figure.svg)
+![](/sockets/texfig/socket-flow-part-read-write-size-mismatch-1.figure.svg){fig-alt="on one end: sock.send(b'12345'); the other end: b'123' == sock.recv(3); b'45' == sock.recv(2)"}
 
 
 ### size mismatch? (2) 
 
-![](/sockets/texfig/socket-flow-part-read-write-size-mismatch-2.figure.svg)
+![](/sockets/texfig/socket-flow-part-read-write-size-mismatch-2.figure.svg){fig-alt="on one end: sock.send(b'12'); sock.send(b"345"); the other end: b'12345' == sock.recv(5)"}
 
 
 ### partial reads? 
 
-![](/sockets/texfig/socket-flow-part-read-write-partial-reads.figure.svg)
+![](/sockets/texfig/socket-flow-part-read-write-partial-reads.figure.svg){fig-alt="on one end: sock.send(b'X' * 6000); the other end: sometimes b'X' * 6000 == sock.recv(6000); or sometimes b'X' * 1490 == sock.recv(6000), b'X' * 2980 == sock.recv(4510); b'X' * 1530 == sock.recv(1530)"}
 
 
 ### partial writes 
 
-![](/sockets/texfig/socket-flow-part-read-write-partial-writes.figure.svg)
+![](/sockets/texfig/socket-flow-part-read-write-partial-writes.figure.svg){fig-alt="on on ened: sock.setblocking(False); sock.send(b'X' * 6000) == 1480; on the other end: b"X" * 1480 == sock.recv(6000) + no more data"}
 
 
 ### partial reads/writes 

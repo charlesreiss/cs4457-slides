@@ -1,3 +1,7 @@
+## UDP sockets C
+
+{{< include /sockets/_udp-sock-c.qmd >}}
+
 
 ## connection setup code: client (C) {visibility="hidden"}
 
