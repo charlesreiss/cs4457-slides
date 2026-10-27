@@ -28,12 +28,10 @@ Use(sock)
 ```
 
 
-### connection setup: server, generic  {longcode}
+### connection setup: server, generic  {.longcode}
 
 
 ```python
-import select
-import socket
 all_addrs = socket.getaddrinfo(
         None, '12345',
         socket.AF_UNSPEC, socket.SOCK_STREAM)

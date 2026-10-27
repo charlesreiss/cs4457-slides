@@ -1,8 +1,8 @@
 
-### efficiency problem  {.smaller}
+### efficiency problem
 
 
-```
+```python
 sock = ...
 sock.send(b'About to send file with 16Kbytes')
 sock.send(b'File is HTML; updated 16 November')
@@ -20,7 +20,7 @@ sock.send(file_data)
 * sending small TCP packets, so lots of overhead
 
 
-### Nagle's algorithm  {.smaller}
+### Nagle's algorithm 
 
 
 * (RFC 896)

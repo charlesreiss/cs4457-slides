@@ -1,22 +1,3 @@
-
-### sockets and server sockets (Python) 
-
-
-
-::: {.r-stack .my-full}
-![](/sockets/texfig/connection-setup-sockets-and-server-sockets-python.figure-1.svg){.fragment .fade-out fragment-index=2}
-
-![](/sockets/texfig/connection-setup-sockets-and-server-sockets-python.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
-
-![](/sockets/texfig/connection-setup-sockets-and-server-sockets-python.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
-
-![](/sockets/texfig/connection-setup-sockets-and-server-sockets-python.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
-
-![](/sockets/texfig/connection-setup-sockets-and-server-sockets-python.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
-
-
-:::
-
 ### sockets and server sockets (Python)  (1)
 
 
@@ -27,14 +8,13 @@
 
 ![](/sockets/texfig/connection-setup-sockets-and-server-sockets-python.figure-2.svg){fig-alt="the socket.socket(...) function is used on both client and server to create the initial normal or server socket."}
 
-::: {.myoverbox}
+::: {.myoverbox .low}
 
 *  `socket()` function --- creates socket file descriptor
    *  arguments indicate address type, protocol
    *  initially not configured for server or client
 
 :::
-"}
 
 ### sockets and server sockets (Python)  (3)
 
@@ -60,4 +40,4 @@
 ### sockets and server sockets (Python)  (5)
 
 
-![](/sockets/texfig/connection-setup-sockets-and-server-sockets-python.figure-4.svg){fig-alt="the client's socket sock, on which connect() was called, now has a connection to the socket sock on the server that was just returned from accept()."}
+![](/sockets/texfig/connection-setup-sockets-and-server-sockets-python.figure-5.svg){fig-alt="the client's socket sock, on which connect() was called, now has a connection to the socket sock on the server that was just returned from accept()."}

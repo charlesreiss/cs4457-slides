@@ -1,4 +1,14 @@
 
+### connection close
+
+*  `sock.close()`, process going away, etc.
+   *  socket no longer works either direction
+*  (less common) sock.shutdown(socket.SHUT_WR)`
+   *  request to disable just sending...
+   *  "half-close"
+   *  suppport possibly spotty
+
+
 ### detecting connection close  {.smaller}
 
 
@@ -16,5 +26,4 @@
 
    * usually BrokenPipeError, possibly other error
    * (C: SIGPIPE, unless ignored/MSG_NOSIGNAL; then EPIPE)
-
 

@@ -7,10 +7,6 @@
 
    * e.g. <code>sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)</code>
 
-* C: <code>setsockopt(sock, level, key, value)</code> 
-
-   * e.g. <code>setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, 1)</code>
- 
 <hr class="vspace" />
 * common level values 
 

@@ -19,13 +19,6 @@
         {\normalfont client:} \\
         \myemph<2>{sock = socket.socket(\ldots)}
     };
-    \begin{visibleenv}<3>
-        \node[explain box,anchor=north] at ([yshift=-.5cm]ssocket.south) {
-            listen() --- turn socket into server socket \\
-            still has a file descriptor, but \ldots \\
-            can only \texttt{accept()} --- create normal socket
-        };
-    \end{visibleenv}
     \begin{visibleenv}<4->
     \draw[very thick,dotted,->] (client) -- (ssocket)
         node[font=\small,midway,sloped,above,align=left] {request connection \\
