@@ -1,0 +1,20 @@
+
+### exercise  {.smaller}
+
+ <table>
+<tr><td>time</td><td>IP</td><td>path</td><td>cookie header</td><td>set-cookie header</td></tr>
+<tr><td>1pm</td><td>1.2.3.4</td><td>/foo</td><td>SID=1234</td><td>---</td></tr>
+<tr><td>1pm</td><td>1.2.3.4</td><td>/bar</td><td>---</td><td>SID=9999</td></tr>
+<tr><td>2pm</td><td>1.2.3.4</td><td>/foo</td><td>---</td><td>SID=2345</td></tr>
+<tr><td>3pm</td><td>2.3.4.5</td><td>/quux</td><td>SID=2345</td><td>---</td></tr>
+<tr><td>4pm</td><td>1.2.3.4</td><td>/</td><td>SID=1234</td><td>---</td></tr>
+<tr><td>4pm</td><td>3.4.5.6</td><td>/foo</td><td>SID=2345</td><td>---</td></tr>
+<tr><td>5pm</td><td>1.2.3.4</td><td>/quux</td><td>SID=1234</td><td>---</td></tr>
+<tr><td>6pm</td><td>1.2.3.4</td><td>/quux</td><td>---</td><td>SID=3456</td></tr>
+<tr><td></td></tr>
+</table>
+ 
+
+* exercise: how many unique users?
+* exercise: how many IPs per user?
+

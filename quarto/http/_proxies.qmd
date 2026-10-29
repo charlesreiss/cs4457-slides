@@ -1,0 +1,87 @@
+
+### HTTP proxies (1) 
+
+
+![](/http/moz-proxy-config){fig-alt="Firefox's proxy configuration dialog; options: No proxy, Auto-detect settings, Use system settings; Manual proxy configuraiton (specify HTTP proxy and port, HTTPS proxy and port and/or SOCKS proxy and port; Automatic proxy conifguration URL. Also can specify No proxy for a list of hosts."}
+
+
+###  
+
+![](/http/texfig/proxies.figure.svg){fig-alt="user-agent (example: web browser) as client sends a request that specifies which web server to contact to a proxy server acting as a server. The proxy server acting as a client sendsa  request that looks like a normal user-agent request to the web server."}
+
+
+### HTTP proxies (2) 
+
+browser$\rightarrow$HTTP(S) proxy sever: <br> 
+```
+GET http://example.com/somesite HTTP/1.1
+Host: example.com
+...
+
+```
+<hr/>
+
+* instead of path, can put full URL
+* doesn't have to be <code>http</code> URL
+
+
+### proxy functionality  {.smaller}
+
+
+* caching for multiple users 
+
+   * reason for <code>Cache-Control: private</code>
+
+* filtering content 
+
+   * antimalware, adblocking, etc.
+
+* logging content (example: debugging webapp)
+* …
+
+
+###  
+
+![](/http/texfig/proxies_2.figure.svg){fig-alt="user-agent sends request specifying which web server to contact to forward proxy server, which sends normal request to web server. user-agent sends _normal_ request to a reverse proxy server, which sends a request to a backend server, chosen based on the user-agent request path."}
+
+
+### reverse proxy  {.smaller}
+
+
+* why not just go directly to actual web server? 
+<hr class="vspace" />
+* make multiple web severs appear as one? example: 
+
+   * https://example.com/foo/XXX goes to https://foo-backend.example.com/XXX
+   * https://example.com/bar/XXX goes to https://bar-backend.example.com/XXX
+   * https://example.com/ goes to https://frontpage.example.com/
+
+* do caching, filtering, or similar on behalf of webservers
+* split requests between multiple identical servers for performance
+
+
+### non-HTTP in HTTP proxy  {.smaller}
+
+[]{.my-small} client $\rightarrow$ server: 
+```
+CONNECT ns.foo.com:53 HTTP/1.1
+Host: ns.foo.com:50
+
+```
+<hr/>
+server $\rightarrow$ client: 
+```
+HTTP/1.1 200 OK
+Some-header: some-value
+
+
+```
+<hr>
+client $\rightarrow$ server: (dns request) <br> server $\rightarrow$ client: (dns response from ns.foo.com) <br> client $\rightarrow$ server: (dns request) <br> server $\rightarrow$ client: (dns response from ns.foo.com) <br> …
+
+### CONNECT 
+
+
+* allows ‘‘tunnelling’’ arbitrary TCP connections through HTTP
+* often not implemented by HTTP proxies and/or very restricted
+

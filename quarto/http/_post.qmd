@@ -1,0 +1,127 @@
+
+### HTTP POST  {.smaller}
+
+
+```
+POST /cs4457-fall2024-quiz-listener.php HTTP/1.1
+Host: kytos02-noauth.cs.virginia.edu
+Content-Type: application/json
+Content-Length: 184
+...
+
+{"user":"cr4bd","realuser":"cr4bd","session_id":"abcdefabcdef0123456789aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","quiz":"week09","slug":"71d45222","answer":["d2f4e81b"],"sequence":0}
+
+```
+
+
+### HTML forms (GET)  
+
+::::: {.columns}
+
+:::: {.column width=30%}
+
+![](/http/html-form-get.png){fig-alt="Name: [Some Name] Query: [the thing to find!] [button: Submit]"}
+
+::::
+
+:::: {.column width=70%}
+```
+<form action="https://example.com/foo" method="get">
+Name: <input type="text" name="name"><br>
+Query: <input type="text" name="query"><br>
+<input type="submit" value="Submit">
+</form>
+```
+::::
+
+:::::
+
+ 
+```
+GET /foo?name=Some+Name&query=the+thing+to+find%21 HTTP/1.1
+Host: example.com
+...
+
+```
+
+
+### HTML forms (POST)  
+::::: {.columns}
+
+:::: {.column width=30%}
+
+![](/http/html-form-post){fig-alt="Name: [Some Name] Comment: [A comment(newline)in(newline)several lines.] [button: Submit]"}
+
+::::
+
+:::: {.column width=70%}
+```
+<form action="https://example.com/foo" method="post">
+Name: <input type="text" name="name"><br>
+Comment:
+<textarea name="comment">
+</textarea>
+<br>
+<input type="submit" value="Submit">
+</form>
+```
+::::
+
+:::::
+ 
+```
+POST /foo HTTP/1.1
+Host: example.com
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 60
+...
+
+name=Some+Name&comment=A+comment%0D%0Ain%0D%0Aseveral+lines.
+
+```
+
+
+### HTML forms (multipart/form-data)  {.smaller}
+
+
+```
+<form action="https://example.com/foo" method="post"
+    enctype="multipart/form-data">
+    ...
+
+```
+<hr/>
+```
+POST /foo HTTP/1.1
+Host: example.com
+Content-Type: multipart/form-data; boundary=---------------------------81545828010202052201987031310
+Content-Length: 321
+...
+
+-----------------------------30871118663472832060210928793
+Content-Disposition: form-data; name="name"
+
+Some Name
+-----------------------------30871118663472832060210928793
+Content-Disposition: form-data; name="comment"
+
+A comment
+in
+several lines.
+-----------------------------30871118663472832060210928793--
+
+```
+
+
+### GET v POST
+
+<table class="rowlines collines">
+<thead><tr><th>GET</th><th>POST</th></tr></thead>
+<tbody>
+<tr><td>works with back button, caches</td><td>not resent automatically</td></tr>
+<tr><td>limited by URL size</td><td>huge possible size</td></tr>
+<tr><td>saving URL accesses page again</td><td>form info never ‘leaked’<br/> in browser history, referer, etc.</td></tr>
+<tr><td>only simple text fields</td><td>supports file uploads<br/>(via multipart/form-data)</td></tr>
+</tbody>
+</table>
+

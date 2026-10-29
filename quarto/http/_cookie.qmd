@@ -1,0 +1,114 @@
+
+### HTTP non-state  {.smaller}
+
+
+* HTTP is a ‘stateless’
+* each request stands on its own 
+
+   * processed independently of all other requests
+   * even if multiple in a connection
+ 
+<hr class="vspace" />
+* this is disappointing for websites: <br> supporting ‘login’ functionality <br> supporting user preferences
+
+
+### HTTP cookies (RFC 6265) 
+
+example.com $\rightarrow$ client 
+```
+HTTP/1.1 200 OK
+Set-Cookie: SessionID=31d4d96; Path=/; Domain=example.com
+
+```
+ client $\rightarrow$ example.com on later requests: 
+```
+GET /some-path HTTP/1.1
+Host: example.com
+Cookie: SessionID=31d4d96
+
+```
+
+
+### session ID concept  {.smaller}
+
+
+* assign random ID number to each ‘session’ if no cookie set 
+<hr class="vspace" />
+* in some database:
+* if they add to shopping cart, associate ID number with shopping cart items
+* if user logs in, associate ID number with user
+* …
+
+
+### selected cookie attributes  {.smaller}
+
+
+* domain --- limit to subset of domains 
+
+   * domain=example.com matches example.com, foo.example.com, but not other.com
+
+* secure --- only send back on encrypted connections
+* httponly --- do not expose to in-webpage scripts
+* expires, max-age --- limit how long cookie kept around 
+
+   * default = until browser closed
+
+
+
+### cookies and tracking  {.smaller}
+
+
+* cookies often used for tracking users <i>across websites</i>
+* and not by setting cookies valid for tons of domains 
+<hr class="vspace" />
+* how: websites load data from other websites 
+
+   * separate HTTP requests with separate cookies
+
+
+
+### cookie tracking example  {.smaller}
+
+
+* foo.com, bar.com, quux.com all include an image 
+
+   * https://tracker.com/track-XXX.png where XXX is foo, bar or quux
+
+* tracker.com can read cookie every time image is accessed 
+
+   * and set a cookie to unique number if not set
+
+* now tracker.com knows: 
+
+   * when/if every visitor of foo.com visited bar.com and/or quux.com
+
+
+
+### more detailed tracking?  {.smaller}
+
+
+* ‘‘just’’ learned about how many visitors visited combinations of websites
+* with some cooperation can get more info: 
+
+   * which subpages on those websites
+   * username or email entered into those websites
+   * …
+
+* one way to pass info: add extra data to image filename
+
+
+### third party cookie rules  {.smaller}
+
+
+* some browsers might restrict ‘third-party cookies’ 
+
+   * cookies sent to Y because of visit to X
+
+* various options, with variable deployment: 
+
+   * only make third-party cookies work if marked SameSite=None
+   * separate cookie storage for each ‘root’ website
+   * ignore cookies from unvisited sites
+   * disable only cookies that heuristically look like tracking
+
+

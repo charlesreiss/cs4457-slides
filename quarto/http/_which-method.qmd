@@ -1,0 +1,11 @@
+
+### exercise: which method  {.smaller}
+
+
+* GET or POST or something else for 
+<hr class="vspace" />
+* image that shows a clock with current time
+* rating a product and displaying the resulting summary of all ratings
+* search query for a Twitter-like website
+* getting the 2nd page of search results
+

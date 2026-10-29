@@ -1,0 +1,27 @@
+\begin{tikzpicture}
+\tikzset{
+    nodeline/.style={draw,ultra thick},
+    msgline/.style={draw,very thick,-Latex},
+    msgbox/.style={draw,fill=white,font=\small\tt,align=left},
+}
+\draw[nodeline] (0, -.5) -- ++(0, -7) node[pos=0,above] {client};
+\draw[nodeline] (12, -.5) -- ++(0, -7) node[pos=0,above] {server};
+\draw[msgline] (0, -1) -- (12, -2) node[midway,msgbox] {
+    GET /\textasciitilde cr4bd/4457/F2024/ HTTP/1.1 \\
+    Host: www.cs.virginia.edu \\
+    \ldots
+};
+\draw[msgline] (12, -4) -- (0, -5) node[midway,above=-1cm,msgbox] {
+    HTTP/1.1 200 OK \\
+    Content-Type: text/html \\
+    Content-Length: 5432 \\
+    \ldots \\
+    ~ \\
+    <!DOCTYPE html\ldots
+};
+\draw[msgline] (0, -6) -- (12, -7) node[midway,msgbox] {
+    GET /\textasciitilde cr4bd/4457/F2024/main.css HTTP/1.1 \\
+    Host: www.cs.virginia.edu \\
+    \ldots
+};
+\end{tikzpicture}

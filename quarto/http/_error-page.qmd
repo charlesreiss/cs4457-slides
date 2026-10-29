@@ -1,0 +1,17 @@
+
+### HTTP error pages  {.smaller}
+
+
+```
+HTTP/1.1 403 Forbidden
+Content-Type: text/html
+Content-Length: ..
+
+[This can be a full web page that is displayed....]
+
+```
+ 
+
+* error status codes can still have full responses
+* web browsers will usualy render response normally
+

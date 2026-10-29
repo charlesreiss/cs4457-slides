@@ -1,0 +1,9 @@
+
+### exercise 
+
+
+* assuming TCP with 1500 byte MTU:
+* how many packets GETing 1k HTML page + two 1k images on that page
+* … with separate connections?
+* … with one connection + pipelining? HTTP/2 streams?
+

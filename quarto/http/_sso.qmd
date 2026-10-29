@@ -1,0 +1,25 @@
+
+### single-sign on  {.smaller}
+
+
+* client $\rightarrow$ foo.com: GET /foo
+* foo.com $\rightarrow$ client: redirect to https://sso.com/login?from=foo.com&amp;…
+* client $\rightarrow$ sso.com: GET /login?from=foo.com&amp;… 
+
+   * sent with cookies set by sso.com
+
+* sso.com $\rightarrow$ client: web page with form action=http://foo.com/... and method=post 
+
+   * data in form tells foo.com about username, etc.
+   * cryptographically signed or similar
+   * remember login: possibly script to submit automatically
+
+* client $\rightarrow$ foo.com: POST /... with data from sso.com
+
+
+### single-sign on and third-party cookie awkwardness 
+
+
+* single-sign on flow also gives a way to do tracking…
+* not ‘third-party’ cookies since the ‘root’ web page becomes the single-sign on site
+

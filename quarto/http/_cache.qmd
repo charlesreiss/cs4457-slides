@@ -1,0 +1,117 @@
+
+### HTTP caching (RFC 9111)  {.smaller}
+
+
+* making webpages fast --- let clients cache values for later
+* some problems: 
+<hr class="vspace" />
+* how to tell if something's out of date
+* how to tell if changes to cookies/accept-language/etc. change item
+
+
+### is it out of date? options 
+
+
+* expire date; max-age in seconds
+* check with server if it has changed
+
+### is it out of date? options 
+
+
+* _expire date; max-age in seconds_
+* check with server if it has changed
+
+
+### expires  
+
+
+```
+HTTP/1.1 200 OK
+Date: Mon, 28 Oct 2024 00:29:02 GMT
+Expires: Mon, 28 Oct 2024 04:29:02 GMT
+...
+
+```
+<hr/>
+```
+HTTP/1.1 200 OK
+Cache-Control: max-age=14400
+...
+
+```
+
+
+### aside: why date + expire 
+
+
+* server time and client time might differ
+* makes Expires idea not great…
+
+
+
+### is it out of date? options 
+
+
+* expire date; max-age in seconds
+* _check with server if it has changed_
+
+
+### conditional GETs 
+
+
+```
+GET /3/library/struct.html HTTP/1.1
+...
+
+HTTP/1.1 200 OK
+Date: Sun, 27 Oct 2024 20:01:15 GMT
+Last-Modified: Sun, 27 Oct 2024 18:50:46 GMT
+ETag: 671e8b86-13e32
+
+```
+<hr/>
+```
+GET /3/library/struct.html HTTP/1.1
+If-Modified-Since: Sun, 27 Oct 2024 18:50:46 GMT
+If-None-Match: 671e8b86-13e32
+...
+HTTP/1.1 304 Not Modified
+...
+
+```
+
+
+### variable responses
+
+
+```
+HTTP/1.1 200 OK
+...
+Vary: Accept, Accept-Language, Cookie
+...
+
+```
+ 
+
+* page contents may vary even though URL doesn't change
+* Vary header says what things need to be the same
+* typically used to discard cached responses
+
+
+### other cache-control settings 
+
+
+* seen max-age=X, also…
+* no-store 
+
+   * do not store a copy of this response
+
+* no-cache 
+
+   * do not use without checking for new version first (conditional GET or similar)
+
+* private, public 
+
+   * indicate if acceptable for cache shared between users
+
+

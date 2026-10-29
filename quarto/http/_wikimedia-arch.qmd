@@ -1,0 +1,6 @@
+
+### Wikimedia architecture 
+
+
+![](/http/Wikipedia_webrequest_2022.png){}
+

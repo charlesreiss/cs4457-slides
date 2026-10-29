@@ -1,0 +1,23 @@
+
+### cache exercise (1)  {.smaller}
+
+
+```
+HTTP/1.1 200 OK
+Cache-Control: max-age=300
+ETag: 1234-5678
+
+```
+ \\rule{0.98\\textwidth{}0.2mm} 
+```
+HTTP/1.1 200 OK
+Cache-Control: no-cache
+Last-Modified: Tue, 11 Nov 2025 03:33:13 GMT
+Date: Tue, 11 Nov 2025 04:53:13 GMT
+
+```
+ \\rule{0.98\\textwidth{}0.2mm} For which of the above: 
+
+* reuse cached response in 1 minute? 10 minutes?
+* reuse cached response after checking server in 1 minute? 10 minutes?
+

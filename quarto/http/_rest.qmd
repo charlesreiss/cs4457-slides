@@ -1,0 +1,99 @@
+
+### REST  {.smaller}
+
+
+* REpresentational State Transfer
+* idea for application interface on top of HTTP 
+<hr class="vspace" />
+* entities in system represented with URLs
+* GET requests to get state of that entity
+* PUT and/or POST requests to update entity state
+* DELETE requests to remove entity
+
+
+### example: Canvas API for announcements (1)  {.smaller}
+
+client $\rightarrow$ canvas HTTP server: 
+```
+GET /api/v1/courses/123456/discussion_topics?only_announcements=true
+Authorization: Bearer [secret code]
+
+```
+<hr/>
+```
+HTTP/1.1 200 OK
+...
+
+[{
+    "id":1,
+    "title":"Welcome to the Course!",
+    "message":"...",
+    ...
+},
+{
+    "id":2,
+    ...
+
+```
+
+
+### example: Canvas API for announcements (2)  {.smaller}
+
+client $\rightarrow$ canvas HTTP server: 
+```
+POST /api/v1/courses/123456/discussion_topics
+Authorization: Bearer [secret code]
+Content-Type: application/json
+...
+
+{
+    "is_announcement":true,
+    "title":"Class Cancelled",
+    "message":"....."
+}
+
+```
+<hr/>
+```
+HTTP/1.1 200 OK
+...
+
+{
+    "id": 41,
+    "title":"Class Cancelled",
+    ....
+}
+
+```
+
+
+### example: Canvas API for announcements (3)  {.smaller}
+
+client $\rightarrow$ canvas HTTP server: 
+```
+PUT /api/v1/courses/123456/discussion_topics/41
+Authorization: Bearer [secret code]
+Content-Type: application/json
+...
+
+{
+    "is_announcement":true,
+    "title":"Class Cancelled [updated!]",
+    "message":"UPDATE: prevoiusly,.."
+    ...
+}
+
+```
+<hr/>
+```
+HTTP/1.1 200 OK
+...
+
+{
+    "id": 41,
+    "title":"Class Cancelled [updated!]",
+    ....
+}
+
+```
+

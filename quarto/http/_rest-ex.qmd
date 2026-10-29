@@ -1,0 +1,12 @@
+
+### REST exercise 
+
+
+* suppose I want a REST-like interface to book train tickets
+* what should that look like? 
+
+   * type of request to book new tickets?
+   * to modify? to cancel?
+   * to lookup all tickets booked on train? by one user?
+
+

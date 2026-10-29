@@ -1,0 +1,17 @@
+
+### proxy exercise  {.smaller}
+
+
+* suppose we have webapp at running on existing server https://foo.com/
+* … and it serves images at https://foo.com/images/IMAGENAME 
+
+   * but it slow at doing so
+ 
+<hr class="vspace" />
+* we want to use faster, caching webserver to server images
+* if we add a new server to do this, options to configure <br> both the new and existing server? 
+
+   * do we need changes to webapp code?
+   * which should be proxies/reverse proxies?
+
+

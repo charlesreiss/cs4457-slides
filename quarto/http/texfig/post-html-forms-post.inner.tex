@@ -1,0 +1,19 @@
+\begin{tikzpicture}
+\node[align=left,font=\fontsize{8}{9}\selectfont] (html) {
+\begin{minipage}{0.6\mypaperwidth}
+\begin{Verbatim}
+<form action="https://example.com/foo" method="post">
+Name: <input type="text" name="name"><br>
+Comment:
+<textarea name="comment">
+</textarea>
+<br>
+<input type="submit" value="Submit">
+</form>
+\end{Verbatim}
+\end{minipage}
+};
+\node[anchor=north east] (pic) at (html.north west) {
+\includegraphics[width=0.3\mypaperwidth]{../http/html-form-post.png}
+};
+\end{tikzpicture}

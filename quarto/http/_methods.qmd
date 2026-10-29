@@ -1,0 +1,35 @@
+
+### selected HTTP methods  {.smaller}
+
+[]{.my-small} <table>
+<tr><td>method</td><td>purpose</td><td>request body?</td><td>respones body?</td><td>‘safe’</td></tr>
+<tr><td>GET</td><td>retrieve resource</td><td>never</td><td>usually</td><td>yes</td></tr>
+<tr><td>HEAD</td><td>retrieve resource headers</td><td>never</td><td>never</td><td>yes</td></tr>
+<tr><td>POST</td><td>provide data</td><td>always</td><td>usually</td><td>no</td></tr>
+<tr><td>PUT</td><td>set contents of resource</td><td>always</td><td>maybe</td><td>no</td></tr>
+<tr><td>DELETE</td><td>delete resource</td><td>never</td><td>maybe</td><td>no</td></tr>
+<tr><td>OPTIONS</td><td>get info about server</td><td>maybe</td><td>maybe</td><td>no</td></tr>
+<tr><td></td></tr>
+</table>
+
+
+### safety 
+
+
+
+* GET, HEAD = ‘safe’ methods
+* okay for clients to repeat, send unprompted 
+
+   * ‘prefetch’ resources
+   * redo when user presses back button unprompted
+
+* other methods: that's not okay!
+ 
+```
+\begin{center}
+ 
+![](/http/ff-resend-warning){}
+ 
+\end{center}
+```
+

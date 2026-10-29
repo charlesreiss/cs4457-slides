@@ -1,0 +1,33 @@
+\begin{tikzpicture}
+\tikzset{
+    nodeline/.style={draw,ultra thick},
+    msgline/.style={draw,very thick,-Latex},
+    msgbox/.style={draw,fill=white,font=\small\tt,align=left},
+}
+\draw[nodeline] (0, -.5) -- ++(0, -7) node[pos=0,above] {client};
+\draw[nodeline] (12, -.5) -- ++(0, -7) node[pos=0,above] {server};
+\draw[msgline] (0, -1) -- (12, -2) node[midway,msgbox] {
+    GET /image1.png HTTP/1.1
+    \ldots
+};
+\draw[msgline] (0, -1.5) -- (12, -2.5) node[midway,msgbox] {
+    GET /image2.png HTTP/1.1
+    \ldots
+};
+\draw[msgline] (0, -2) -- (12, -3) node[midway,msgbox] {
+    GET /script.js HTTP/1.1
+    \ldots
+};
+\draw[msgline] (12, -2.5) -- (0, -3) node[midway,below,msgbox] {
+    HTTP/1.1 200 OK
+    \ldots
+};
+\draw[msgline] (12, -4) -- (0, -5) node[midway,msgbox] {
+    HTTP/1.1 200 OK
+    \ldots
+};
+\draw[msgline] (12, -5) -- (0, -6) node[midway,msgbox] {
+    HTTP/1.1 200 OK
+    \ldots
+};
+\end{tikzpicture}

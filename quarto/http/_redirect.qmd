@@ -1,0 +1,35 @@
+
+### HTTP redirects
+
+
+```
+HTTP/1.1 301 Moved Permanently
+Location: https://foo.com/quux/bar
+Content-Type: text/plain
+
+(This text may be shown by clients that don't process the
+redirect automatically, or if there's a problem following
+it. It is up to the server what to put here, but typical
+might be something like:)
+
+Redirecting to https://foo.com/quux/bar
+
+```
+
+
+### HTTP redirect codes 
+
+
+* a bunch of different status codes: 
+
+   * 301 Moved Permanently
+   * 302 Found
+   * 303 See Other
+   * 307 Temporary Redirect
+   * 308 Permanent Redirect
+
+* mostly behave all the same, but…  
+
+   * POST request receiving 301/302 redirects into GET request
+
+

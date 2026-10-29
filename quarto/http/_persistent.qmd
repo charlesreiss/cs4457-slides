@@ -1,0 +1,63 @@
+
+### one connection, multiple requests  {.smaller}
+
+
+* HTTP/0.9, HTTP/1.0 --- one request+response per connection 
+
+   * big efficiency problem
+
+* solution 1: persistent connections
+* solution 2: pipelining
+* solution 3 (HTTP/2+): multiple ‘streams’ in one connection
+
+
+### end-of-request/response  {.smaller}
+
+
+* body of request/response can be variable length 
+<hr class="vspace" />
+* so when does request/response end if it has a body?
+* HTTP/1.0 original solution (RFC 1945) 
+
+   * ‘‘the length of that body may be determined in two ways. If a Content-Length field is present, the value in bytes represents the length of the Entity-Body. Otherwise, the body length is determined by the closing of the connection by the server.’’
+
+* advantage of latter idea: don't need to generate whole document before sending headers
+* disadvantage: no persistent connections!
+
+
+### chunked transfer coding 
+
+
+<pre><code>HTTP/1.1 200 OK
+Content-Type: text/plain
+<em>Transfer-Coding: chunked</em>
+...
+
+<span style="border: 2px solid red">1B</span>
+<em>This is 0x1B bytes of text.</em>
+<span style="border: 2px solid red">21</span>
+<em>And 0x21 bytes</em>
+<em>with more lines.</em>
+<span style="border: 2px solid red">0</span>
+</code></pre>
+
+
+### pipelining 
+
+![](/http/texfig/persistent-pipelining.figure.svg){fig-alt="client->server: GET /image1, GET /image2, GET /script (before getting replies). server-> client: HTTP/1.1 200 OK ..., HTTP/1.1 200 OK ..., HTTP/1.1 200 OK ..."}
+
+
+### HTTP/1.1 ‘pipelining’ 
+
+
+* send series of requests before receiving any response
+* potentailly server can potentially process requests in parallel 
+<hr class="vspace" />
+* need to handle resending requests if connection dropped early
+
+
+### HTTP/2.0 multiple streams 
+
+
+![](/http/http2-multi-reqres){fig-alt="wireshark screenshot of HTTP/2 session, where the client sends many sets of headers: GET /wiki/, GET /w/load.php?..., GET /static/images/icons/..., ... Each set of headers is sent in a separate stream ID identified like by text like [15] in 'HEADERS[15]: GET /wiki/...' in the wireshark display. The server sends response chunks marked similary HEADERS[15]: 301 Moved Permanatelty; HEADERS[17]: 200 OK; DATA[17], ... In this session the responses are mostly sent in the order they are requested."}
+

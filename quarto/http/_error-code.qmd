@@ -1,0 +1,21 @@
+
+### selected HTTP status codes
+
+
+* 1xx --- informational
+* 2xx --- successful 
+
+   * 200 OK, 204 No Content
+
+* 3xx --- redirection 
+
+   * 301 Moved Permanently, 302 Found, 303 See Other
+   * ‘Location’ header gives next URL to use
+   * 304 Not Modified (conditional GET --- later)
+
+* 4xx --- client error 
+
+   * 403 Forbidden, 404 Not Found
+
+* 5xx --- server error
+

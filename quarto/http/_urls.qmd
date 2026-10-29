@@ -1,0 +1,59 @@
+
+### URL / URIs 
+
+
+* Uniform Resource Locators (URL) 
+
+   * tells how to find ‘‘resource’’ on network
+   * uniform --- one syntax for multiple protocols (types of servers, etc.)
+
+* Unifrom Resources Identifiers 
+
+   * superset of URLs
+
+
+
+### URI examples  {.smaller}
+
+
+<pre><code>https://kytos02.cs.virginia.edu:443/cs3130-spring2023/
+                quizzes/quiz.php?qid=02#q2
+
+https://kytos02.cs.virginia.edu/cs3130-spring2023/
+                quizzes/quiz.php?qid=02
+
+https://www.cs.virginia.edu/
+
+sftp://cr4bd@portal.cs.virginia.edu/u/cr4bd/file.txt
+
+tel:+1-434-982-2200
+
+//www.cs.virginia.edu/~cr4bd/3130/S2023/
+/~cr4bd/3130/S2023
+    \\fbox{Xnormalfont scheme and/or host implied from context}
+</code></pre>
+
+
+### URI generally  {.smaller}
+
+
+```
+scheme://authority/path?query#fragment
+
+```
+ 
+
+* scheme: --- what protocol
+* //authority/ 
+
+   * authoirty = user@host:port OR host:port OR user@host OR host
+
+* path 
+
+   * which resource
+
+* ?query --- usually key/value pairs
+* #fragment --- place in resource 
+<hr class="vspace" />
+* most components (sometimes) optional
+

@@ -1,0 +1,100 @@
+
+# ‘‘narrow waist’’ {visibility="hidden"}
+
+{{< include /http/_narrow-waist.qmd >}}
+
+# URIs and URLs {visibility="hidden"}
+
+{{< include /http/_urls.qmd >}}
+
+# HTTP messages {visibility="hidden"}
+
+{{< include /http/_message.qmd >}}
+
+# HTTP methods, briefly {visibility="hidden"}
+
+{{< include /http/_methods.qmd >}}
+
+# HTTP POST {visibility="hidden"}
+
+{{< include /http/_post.qmd >}}
+
+# exercise: HTTP which {visibility="hidden"}
+
+{{< include /http/_which-method.qmd >}}
+
+# virtual hosting, Host header {visibility="hidden"}
+
+{{< include /http/_http-host.qmd >}}
+
+# error codes {visibility="hidden"}
+
+{{< include /http/_error-code.qmd >}}
+
+## redirects {visibility="hidden"}
+
+{{< include /http/_redirect.qmd >}}
+
+## error pages {visibility="hidden"}
+
+{{< include /http/_error-page.qmd >}}
+
+## 100 continue {visibility="hidden"}
+
+{{< include /http/_100-cont.qmd >}}
+
+# persistent, pipelining {visibility="hidden"}
+
+{{< include /http/_persistent.qmd >}}
+
+## exercise {visibility="hidden"}
+
+{{< include /http/_persistent-ex.qmd >}}
+
+## trailers {visibility="hidden"}
+
+{{< include /http/_trailers.qmd >}}
+
+# content negotiation {visibility="hidden"}
+
+{{< include /http/_content-neg.qmd >}}
+
+# HTTP authentication {visibility="hidden"}
+
+{{< include /http/_http-auth.qmd >}}
+
+# cookies {visibility="hidden"}
+
+{{< include /http/_cookie.qmd >}}
+
+## exercise {visibility="hidden"}
+
+{{< include /http/_cookie-ex.qmd >}}
+
+## tracking {visibility="hidden"}
+
+{{< include /http/_cookie-track.qmd >}}
+
+# caching {visibility="hidden"}
+
+{{< include /http/_cache.qmd >}}
+
+# supercookies {visibility="hidden"}
+
+{{< include /http/_cache-as-cookies.qmd >}}
+
+# proxies and reverse proxies {visibility="hidden"}
+
+{{< include /http/_proxies.qmd >}}
+
+## aside: wikimedia architecture {visibility="hidden"}
+
+{{< include /http/_wikimedia-arch.qmd >}}
+
+# SSO {visibility="hidden"}
+
+{{< include /http/_sso.qmd >}}
+
+# REST {visibility="hidden"}
+
+{{< include /http/_rest.qmd >}}
