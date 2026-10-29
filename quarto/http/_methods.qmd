@@ -25,11 +25,5 @@
 
 * other methods: that's not okay!
  
-```
-\begin{center}
- 
 ![](/http/ff-resend-warning){}
  
-\end{center}
-```
-
