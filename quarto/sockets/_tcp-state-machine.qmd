@@ -1,12 +1,29 @@
 
 ### TCP state machine 
 
-![](/sockets/texfig/tcp-state-machine-tcp-state-machine.figure.svg)
+::::: {.columns}
+
+:::: {.column width=60%}
+
+![](/sockets/tcp-state-diagram-wiki.svg)
+
+[figure: dnet/Nestea_Zen/Wikimedia Commons]{.mycredit}
+
+::::
+
+:::: {.column width=40%}
+
+*  notation:<br/>event/action
+
+*  not shown: timeouts+resending
+
+::::
+
+:::::
+
 
 
 ### TCP state machine: a normal flow (client)
-
-![](/sockets/texfig/tcp-state-machine-tcp-state-machine.figure.svg)
 
 *  CLOSED → SYN_SENT (via open, causing sending SYN)
 *  SYN_SENT → ESTABLISHED (via SYN+ACK, causing sending ACK)
@@ -14,19 +31,31 @@
 *  FIN_WAIT_1 → CLOSING (via FIN, causing sending ACK)
 *  CLOSING → TIME_WAIT (via ACK)
 
+### connection close {.smaller}
 
-### connection close 
+::::: {.columns}
 
+:::: {.column width=50%}
 
-![](/sockets/texfig/tcp-state-machine-tcp-state-machine.figure.svg)
+![](/sockets/tcp-state-diagram-wiki.svg)
+
+[figure: dnet/Nestea_Zen/Wikimedia Commons]{.mycredit}
+
+::::
+
+:::: {.column width=50%}
 
 * each side gets to close separately
 * FIN (I want to close) + ACK [of FIN] (confirm close) 
 <hr class="vspace" />
 * ACK side needs to wait just in case FIN resent 
    * keep port number from being reused
+   * (if reused, could "close" future connection)
    * TIME_WAIT state
 
+::::
+
+:::::
 
 ### RST 
 
