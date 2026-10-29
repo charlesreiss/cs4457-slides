@@ -13,7 +13,7 @@
 
 
 
-### URI examples  {.smaller}
+### URI examples
 
 
 <pre><code>https://kytos02.cs.virginia.edu:443/cs3130-spring2023/
@@ -30,7 +30,7 @@ tel:+1-434-982-2200
 
 //www.cs.virginia.edu/~cr4bd/3130/S2023/
 /~cr4bd/3130/S2023
-    \\fbox{Xnormalfont scheme and/or host implied from context}
+    (scheme and/or host implied from context)
 </code></pre>
 
 

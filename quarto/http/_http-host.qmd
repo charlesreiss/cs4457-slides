@@ -1,5 +1,5 @@
 
-### multiple names, one IP  {.smaller}
+### multiple names, one IP
 
 
 <pre><code>$ <em>dig +short es.wikipedia.org aaaa</em>
@@ -16,7 +16,7 @@ dyna.wikimedia.org.
 * how does this work?
 
 
-### Host/:authority header  {.smaller}
+### Host/:authority header
 
 
 * when getting http://somehostname/path, send header

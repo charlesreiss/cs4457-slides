@@ -1,5 +1,5 @@
 
-### selected HTTP status codes
+### selected HTTP status codes {.smaller}
 
 
 * 1xx --- informational
