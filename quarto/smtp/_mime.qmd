@@ -1,0 +1,74 @@
+### MIME (RFC 2045-2049)
+
+*  "Multipurpose Internet Mail Extensions"
+<hr/>
+*  non-ASCII, non-text message data
+*  non-ASCII message headers
+*  attachments
+
+### Content-Transfer-Encoding {.smaller}
+
+*  mail servers may not support sending non-ASCII data, very long lines
+   *  need encode data for transport; decode on receipt
+*  Content-Transfer-Encoding header:
+   *  "7bit"
+      *  ASCII data, sent unchanged
+   *  "8bit", "binary"
+      *  non-ASCII data, sent unchanged
+      *  should only be selected if we trust mail transport to handle this
+   *  "quoted-printable"
+      *  `\xAB`→`=AB`; `=`→`=3D`, `\r\n`→`=0D=0A`
+      *  newlines (not part of original data) inserted if lines more than 76 characters long
+   *  "base64"
+      *  convert to base-64 number, using A-Za-z0-9+/ to represent "digits",
+      *  `=` for padding
+
+### headers with non-ASCII
+
+*  headers may need non-ASCII data
+   *  can't rely on servers supporting this...
+   *  so need to hide non-ASCII data within ASCII data
+*  <pre>=?<i>charset</i>?Q?<i>quoted-printable data</i>?</pre>
+*  <pre>=?<i>charset</i>?B?<i>base 64data</i>?</pre>
+<hr/>
+*  example: `Subject: =?UTF-8?Q?=C2=BC?= is a fraction`
+    *  `Subject: ¼ is a fraction`
+
+### Content-Types
+
+*  similar to HTTP; examples:
+   *  `text/plain; charset="utf-8"`
+   *  `text/html; charset="utf-8"`
+   *  `text/rtf; charset="iso-8859-1"`
+*  `multipart/*` types:
+   *   multipart/mixed --- multiple independent things (e.g. body + attachments)
+   *   multipart/alternative --- two+ versions (e.g. text + HTML)
+
+### example {.smaller .longcode}
+
+```
+Content-Type: multipart/mixed; boundary="=-i7xTKF0wGtypzrrxHBJS"
+MIME-Version: 1.0
+
+--=-i7xTKF0wGtypzrrxHBJS
+Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
+
+This is a test message.
+
+--=-i7xTKF0wGtypzrrxHBJS
+Content-Disposition: attachment; filename="attachment.txt"
+Content-Type: text/plain; name="attachment.txt"; charset="UTF-8"
+Content-Transfer-Encoding: base64
+
+VGhpcyBpcyBhIHRlc3QgYXR0YWNobWVudC4K
+
+--=-i7xTKF0wGtypzrrxHBJS
+Content-Disposition: attachment; filename="attachment2.txt"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; name="attachment2.txt"; charset="ISO-8859-1"
+
+VGhpcyBpcyBhIHRlc3QgYXR0YWNobWVudCB3aXRoIG5vbi1BU0NJSSBsaWtlIMK8Lgo=
+
+--=-i7xTKF0wGtypzrrxHBJS--
+```

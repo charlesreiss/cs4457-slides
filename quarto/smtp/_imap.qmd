@@ -1,0 +1,20 @@
+### IMAP, briefly
+
+*  built for multiple "mailboxes" ($\approx$ folders), messages kept on server
+*  "idle" command
+   *  server tells you proactively if "subscribed" folders updated
+*  extra metadata for each message
+   *  flags: seen (read), answered, flagged, deleted, draft
+
+### IMAP states
+
+*  "not authenticated"
+*  "authenticated"
+   *  list, subscribe to, select mailboxes
+   *  IDLE command --- wait until server has updates for subscribed folders
+*  "selected" (a particular mailbox)
+   *  download, update (e.g flags), copy, move messages
+   *  can list headers (without download messages)
+   *  can have server search for messages
+
+

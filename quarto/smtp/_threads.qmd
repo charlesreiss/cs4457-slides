@@ -1,0 +1,14 @@
+### email threads
+
+*  `Message-ID: <X@Y>`
+   *  should be _globally unique_
+   *  commonly: `X` is random or timestamp; `Y` is based on hostname
+   *  set by initial sender or SMTP "submission" server
+*  `In-Reply-To: <A@B>`
+   *  message ID of message being directly replied to
+   *  supports multiple messages though rare
+*  `References: <A@B>, <C@D>, <D@E>`
+   *  message IDs of parent messages
+   *  typically message replied to, then the message that was replying to, etc.
+
+

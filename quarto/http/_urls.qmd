@@ -46,7 +46,7 @@ scheme://authority/path?query#fragment
 * scheme: --- what protocol
 * //authority/ 
 
-   * authoirty = user@host:port OR host:port OR user@host OR host
+   * authority = user@host:port OR host:port OR user@host OR host
 
 * path 
 

@@ -1,0 +1,22 @@
+### sender valilidation
+
+*  email does not verify sender is genuine
+   *  problem for spam
+   *  would like to reject "spoofed" messages
+*  some grafted-on solutions
+   *  Sender Policy Framework (RFC 7208)
+   *  DomainKeys Identified Mail (DKIM) signatures (RFC 6376)
+   *  Domain-Based Nessage Authentication, Reporting, and Conformance (RFC 9989)
+
+### sender validation and mailing lists
+
+<!-- FIXME -->
+
+### greylisting, blacklisting
+
+*  greylisting (RFC 6647)
+   *  give temporary errors (451) to new SMTP senders
+   *  many spammers won't retry later
+*  blacklisting
+   *  many (usually IP-based) blacklists example: spamhaus
+   *  probably means you can't run a mail server on a "home" ISP

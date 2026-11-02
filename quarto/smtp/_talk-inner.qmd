@@ -123,33 +123,31 @@
 *  sending to multiple people
 *  _reading emails not from a local file_
 
-## POP3
+## POP, briefly
 
-### format / connection setup
+{{< include /smtp/_pop3.qmd >}}
 
-### commands - LIST/RETR/DELE
+## IMAP, briefly
 
-### update on QUIT, preserve on error
-
-## IMAP
-
-### multiple mailboxes
-
-### SUBSCRIBE
-
-### IDLE
+{{< include /smtp/_imap.qmd >}}
 
 ## misc email format
 
 ### threads (references, in-reply-to)
 
+{{< include /smtp/_threads.qmd >}}
+
 ### MIME
+
+{{< include /smtp/_mime.qmd >}}
 
 # anti-spam
 
-## blacklists
-
 ## SPF, DKIM, ...
+
+{{< include /smtp/_spf_dkim.qmd >}}
+
+## blacklists
 
 ## worse error reporting
 
