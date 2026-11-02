@@ -34,7 +34,8 @@ Use(sock)
 ```python
 all_addrs = socket.getaddrinfo(
         None, '12345',
-        socket.AF_UNSPEC, socket.SOCK_STREAM)
+        socket.AF_UNSPEC, socket.SOCK_STREAM,
+        flags=socket.AI_PASSIVE)
 ssocks = []
 for af, socktype, proto, canonname, sockaddr in possible_addrs:
     ssock = socket.socket(af, socktype, proto)

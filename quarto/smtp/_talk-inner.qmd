@@ -152,3 +152,5 @@
 ## worse error reporting
 
 ## deliberate temporary errors
+
+# SMTP and TLS
