@@ -43,6 +43,11 @@
 
 {{< include /http/_100-cont.qmd >}}
 
+# caching {visibility="hidden"}
+
+{{< include /http/_cache.qmd >}}
+{{< include /http/_cache-ex.qmd >}}
+
 # persistent, pipelining {visibility="hidden"}
 
 {{< include /http/_persistent.qmd >}}
@@ -74,10 +79,6 @@
 ## tracking {visibility="hidden"}
 
 {{< include /http/_cookie-track.qmd >}}
-
-# caching {visibility="hidden"}
-
-{{< include /http/_cache.qmd >}}
 
 # supercookies {visibility="hidden"}
 
