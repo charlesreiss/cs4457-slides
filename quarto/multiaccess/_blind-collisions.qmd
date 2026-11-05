@@ -1,0 +1,104 @@
+
+### running example  {.smaller}
+
+
+* based on Abramson, ‘‘The Aloha System---Another alternative for computer comunications’’ (1970) 
+<hr class="vspace" />
+* suppose we have shared radio with nodes A1, A2, …, A$n$ and B 
+<hr class="vspace" />
+* A1, A2, … A$n$ are all trying to transmit to B
+* takes 1 ms to send message
+* and want to collectively send $k$ messages per second 
+
+   * randomly spaced (exponential distribution)
+
+
+
+### some probability  {.smaller}
+
+
+* exponential distribution with mean $\lambda$ 
+
+   * our model for when packets sent
+   * ‘‘memoryless’’ distribution
+   * knowing when last packet sent tells you nothing about next
+   * (yes, not realistic)
+ 
+<hr class="vspace" />
+* probability events occur $< K$ time units apart <br> $1-e^{-\lambda K}$
+
+
+### quiet time to avoid collisions  {.smaller}
+
+![](/multiaccess/texfig/blind-collisions-quiet-time-to-avoid-collisions.figure.svg)
+ 
+
+* to avoid collision with 1 ms packet…
+* can't start packet less than 1 ms before
+* can't start packet less than 1 ms after
+* $\rightarrow$ need 2 ms without other packet starting for no collision
+
+
+### chance of collisions?(1) 
+
+
+* to avoid collision when sending 1 ms packet
+* need no other packet to be sent in 2ms period around its start time 
+<hr class="vspace" />
+* with $k$ packets/sec, chance is approx $1-e^{-\frac{2}{1000}k}$
+
+
+### chance of collision 
+
+![](/multiaccess/texfig/blind-collisions-chance-of-collision.figure.svg)
+
+
+### retransmissions  {.smaller}
+
+
+* what's going to happen when node can't send message
+* probably it will retransmit it… 
+<hr class="vspace" />
+* which means real transmission rate will be some $R > k$ 
+
+   * where $k$ is rate messages are generated
+
+* about $[1-e^{-2R\frac{1}{1000}}]$ chance of each message generated
+* so $R = k + \left(1-e^{-2R\frac{1}{1000}}\right) \cdot R$
+* $R = k + R - Re^{-2R\frac{1}{1000}}$
+* $k = Re^{-2R\frac{1}{1000}}$
+
+
+### retransmissions (plot) 
+
+![](/multiaccess/texfig/blind-collisions-retransmissions-plot.figure.svg)
+
+
+### thinking about result  {.smaller}
+
+
+* sending 500 1ms packet or retransmission/second 
+
+   * using about half the capacity!
+
+* representing $\sim$ 186 1 ms non-retranmissions/second 
+
+   * $\frac{1}{2e} = 0.186\ldots$
+   * using about 1/6th the capacity
+ 
+<hr class="vspace" />
+* results hold generally
+* seems pretty bad for shared channel efficiency!
+
+
+### some assumptions we made  {.smaller}
+
+
+* exponential model assumes transmission time of message X doesn't affect transmission time of message Y 
+<hr class="vspace" />
+* if node A has messages A1, A2 to transmit, it won't start transmitting A2 until after A1 done 
+
+   * means this model is probably pessimistic with only a few transmitters
+
+* assumes nodes won't look at prior other transmissions to decide when to transmit
+

@@ -1,0 +1,25 @@
+\begin{tikzpicture}
+\begin{pgfonlayer}{fg}
+    \draw[fill=black] (0, 0) circle (.2cm);
+    \draw[fill=black] (12, -4) circle (.2cm);
+    \begin{scope}[ultra thick]
+        \draw (-2, 2) rectangle (13, -5);
+    \end{scope}
+\end{pgfonlayer}
+\tikzset{
+    signal/.style={draw,violet,line width=.8mm,-Latex},
+    signal fade/.style={draw,violet!60!white,line width=.8mm},
+    signal fade2/.style={draw,violet!30!white,line width=.8mm},
+    signal end/.style={-{Latex[sep=0.2cm]}},
+}
+\draw[signal] (0, 0) -- (12 / 3, 6 / 3);
+\draw[signal fade,signal end] (12 / 3, 6 / 3) -- (12, -4);
+\draw[signal] (0, 0) -- (-14 / 7, -4 / 7);
+\draw[signal fade,signal end] (-14 / 7, -4 / 7) -- (12, -4);
+\draw[signal] (0, 0) -- (14 * 13 / 14, -4 * 13 / 14);
+\draw[signal fade, signal end] (14 * 13 / 14, -4 * 13 / 14) -- (12, -4);
+\draw[signal] (0, 0) -- (14 * 5 / 6, -6 * 5 / 6);
+\draw[signal fade, signal end] (14 * 5 / 6, -6 * 5 / 6) -- (12, -4);
+
+\draw[signal,signal end] (0, 0) -- (12, -4);
+\end{tikzpicture}

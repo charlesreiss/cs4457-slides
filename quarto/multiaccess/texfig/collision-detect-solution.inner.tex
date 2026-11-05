@@ -1,0 +1,11 @@
+\begin{tikzpicture}[y=0.7cm]
+\tikzset{
+    wire/.style={draw,very thick,Circle-Circle},
+    signal1/.style={draw,line width=1mm,red,-Latex},
+    signal2/.style={draw,line width=2mm,dotted,violet,-Latex},
+}
+\draw[wire] (0, -6) node[left]{A} -- (12, -6) node[right] {B};
+\draw[signal1] (0, -6) -- (12, -6);
+\draw[signal2] (12, -6) -- (1, -6);
+\node[draw=red,line width=2mm,minimum width=.5cm,minimum height=.5cm,cross out] at (13, -6) {};
+\end{tikzpicture}

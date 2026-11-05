@@ -1,0 +1,82 @@
+
+### wifi polling mode  {.smaller}
+
+
+* wifi has rarely used ‘‘polling’’ mode 
+<hr class="vspace" />
+* access point tells everyone when to transmit/not transmit
+* periodically ‘poll’ stations for more traffic
+* can be mixed with periods allowing normal CSMA/CA 
+
+   * carrier sense multiple access with collision avoidance
+ 
+<hr class="vspace" />
+* exercise: pro/con
+
+
+### deliberate scheduling  {.smaller}
+
+
+* so far:  
+
+   * devices decide when to try to send or reply to requests
+   * one channel supporting one transmitter/receiver
+ 
+<hr class="vspace" />
+* alternate idea (cellular networks): divide
+* several available channels 
+
+   * typically different frequencies
+   * signal encoding chosen to avoid interference between close frequencies
+
+* slots within each time interval
+
+
+###  
+
+ Computer Networks: A Systems Approach, Figure 54 
+![](/multiaccess/CNSA-Fig54){}
+
+
+### central scheduler idea  {.smaller}
+
+
+* ‘base stations’ track active user devices
+* users have bandwidth reservations 
+<hr class="vspace" />
+* base stations send out schedule of slots every $\sim$ 0.1--1ms
+* protocol for handoff between base stations
+* devices send back quality feedback to aid scheduling
+
+
+### dealing with propagation delay 
+
+
+* schedule of slots will also have time delays
+* goal: compensate for propogation delay 
+<hr class="vspace" />
+* base station needs to track estimate of propogation delay
+
+
+### dealing with new nodes  {.smaller}
+
+
+* what about nodes without a reservation? 
+<hr class="vspace" />
+* mobile base stations advertise a ‘random access channel’
+* used for reserving extra resources primarily
+* use more wifi-like contention here
+
+
+### exercise  {.smaller}
+
+
+* central scheduling v carrier-sense 
+<hr class="vspace" />
+* exercise: which handles better…  
+
+   * utilizing the most of the available bandwidth
+   * independently controlled access points/base stations
+   * communications between two nearby nodes
+
+

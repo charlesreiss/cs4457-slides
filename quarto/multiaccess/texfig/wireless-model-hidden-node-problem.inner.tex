@@ -1,0 +1,27 @@
+\begin{tikzpicture}
+\begin{pgfonlayer}{fg}
+    \draw[fill=black] (4, 0) circle (.2cm)
+        node[above=1mm] {D};
+    \draw[fill=black] (2, 1) circle (.2cm)
+        node[below=1mm] {A};
+    \draw[fill=black] (6, 0.5) circle (.2cm)
+        node[below=1mm] {B};
+\end{pgfonlayer}
+\tikzset{
+    signal/.style={draw,violet,line width=1.4mm,-Latex},
+    signalB/.style={draw,blue,line width=1.4mm,-Latex},
+    signal fade/.style={draw,violet!60!white,line width=.8mm},
+    signal fade2/.style={draw,violet!30!white,line width=.4mm},
+    signal fade3/.style={draw,violet!15!white,line width=.2mm},
+    signal end/.style={-{Latex[sep=0.2cm]}},
+    range mark/.style={draw,violet!50!black,dotted,line width=1mm},
+    range markB/.style={draw,blue!50!black,dashed,line width=1mm},
+}
+\draw[signal,signal end] (2, 1) -- (4,0);
+\draw[signalB,signal end] (6, .5) -- (4,0);
+\begin{scope}
+    \clip (-1, -6) rectangle (15, 2);
+    \draw[overlay,range mark] (2, 1) circle (3.5 cm);
+    \draw[overlay,range markB] (6, 0.5) circle (3.5 cm);
+\end{scope}
+\end{tikzpicture}

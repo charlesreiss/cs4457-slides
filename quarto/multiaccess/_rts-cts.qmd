@@ -1,0 +1,46 @@
+
+### request-to-send/clear-to-send  {.smaller}
+
+
+
+* can't detect likely interference at sender 
+<hr class="vspace" />
+* idea: have receiver tell when it's okay to transmit
+* sender$\rightarrow$receiver: request-to-send
+* receiver$\rightarrow$sender: clear-to-send
+ ![](/multiaccess/texfig/rts-cts-request-to-sendclear-to-send.figure.svg)
+
+
+### overhearing clear-to-send  {.smaller}
+
+![](/multiaccess/texfig/rts-cts-overhearing-clear-to-send.figure.svg)
+ 
+
+* A can infer that B is transmitting to C
+* … and for how long! 
+<hr class="vspace" />
+* A can avoid interfering, even if out of range of carrier-sense
+
+
+### overhearing ready-to-send  {.smaller}
+
+![](/multiaccess/texfig/rts-cts-overhearing-ready-to-send.figure.svg)
+ 
+
+* if A can hear B's request-to-send…
+* A should avoid sending until after B should get clear-to-send
+
+
+### exercise: request-to-send advantage  {.smaller}
+
+
+* assume: 
+
+   * $1 \mu\text{s}$ request-to-send/clear-to-send messages
+   * $100 \mu\text{s}$ messages sent
+   * chance of collision proportional to message lengths
+
+* exercise: effect of using RTS/CTS (versus only carrier-sense) for…
+* 2 nodes transmitting to one with no hidden nodes?
+* 2 nodes hidden from each other transmitting to one?
+

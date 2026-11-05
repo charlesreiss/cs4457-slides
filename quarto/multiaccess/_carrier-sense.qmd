@@ -1,0 +1,136 @@
+
+### ‘slots’  {.smaller}
+
+
+
+* if packets take a fixed amount of time…
+* want to wait whole number of packet times 
+
+   * immediately after, one after, two after, three after
+
+* avoids requiring almost 2 packets worth of ‘quiet’ time
+* can synchronize by observing end of last transmission, or central clock
+ ![](/multiaccess/texfig/carrier-sense-slots.figure.svg)
+
+
+### carrier sense  {.smaller}
+
+
+* channel can be ‘busy’ or not
+* radio/light: 
+
+   * have some sort of signal detectable on frequency
+ 
+<hr class="vspace" />
+* ‘‘carrier sense’’
+* way to detect whether channel busy
+
+
+### using carrier sense  {.smaller}
+
+
+* simple idea: don't transmit if channel already busy 
+<hr class="vspace" />
+* problem: then when do you transmit?
+* some options: 
+
+   * never, lose the packet
+   * immediately when it stops being busy
+   * sometime after it stops being busy
+
+
+
+### fixed-size frames, slots  {.smaller}
+
+
+* ‘slotted’ Aloha
+* challenge: synchronize everyone's timing
+* then: everyone chooses slots to (re)transmit in
+* but: not using carrier-sense before sending 
+
+   * if everyone sync'd, not useful with fixed-size packets
+ 
+<hr class="vspace" />
+* requires 1-packet-unit empty periods
+* 36% utilization (twice for naive version)
+
+
+### exercise: slot timing  {.smaller}
+
+
+* assume radio propogation at $2.9 \times 10^8$ m/s
+* transmitting 1500-byte frames (including all headers, etc.) at 100 Mbit/sec
+* over 5 km x 5 km area 
+<hr class="vspace" />
+* if we want slots that hold whole packet…
+* how long should slots need to be?
+
+
+### exercise solution 
+
+
+* 1500-byte = 12000-bit @ 100Mbit/sec = 120 $\mu$s
+* 5 km x 5 km $\rightarrow$ $\sim$ 7 km max distance
+* 7000 m @ $2.9  \times 10^8$ m/s = 24 $\mu$s
+* probably would need slot time around 140-150 $\mu$s?
+
+
+### slots and variable-length packets  {.smaller}
+
+
+* with variable-length packets + carrier-sense, slots still useful
+* … but don't expect packets to occupy one slot 
+<hr class="vspace" />
+* idea: divide time up into slots
+* slot time $\sim$ amount of time needed to detect transmission 
+
+   * will depend on physical layer way to transmit packet bits
+
+* don't transmit if detected non-ending transmission in previous slot
+
+
+### exercise: variable length slot advantage  {.smaller}
+
+
+* suppose we transmitting a 1000 $\mu$s packets
+* use 10 $\mu$s slots 
+
+   * and can reliably detect if a slot was occupied
+
+* transmit algorithm: 
+
+   * wait for network to be quiet for 1 slot
+   * transmit in rand(0, $2^\text{attempts}$) slots
+
+* two transmitters after previous packet --- expected time for next packet?
+
+
+### 802.11b typical slots  {.smaller}
+
+
+* $20 \mu\text{s}$ slots
+* $50 \mu\text{s}$ interframe spacing (IFS) 
+
+   * includes time to receive ACK of packet, switch from receive to xmit
+ 
+<hr class="vspace" />
+* transmit first time after IFS (if idle)
+* transmit second time after IFS + rand($0$, $2^5$) slots 
+
+   * plus time spent by other seen transmissions
+
+* third time after rand($0$, $2^6$) slots, etc.
+
+
+### 802.11b packet lengths  {.smaller}
+
+
+* variable bit rate: max = 11Mbit
+* approx 300--12000 bit frames 
+
+   * = 27 to 1090 microseconds
+ 
+<hr class="vspace" />
+* do carrier sense before transmitting always
+* different purpose for slots than slotted Aloha
+

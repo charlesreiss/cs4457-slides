@@ -1,0 +1,5 @@
+\begin{tikzpicture}
+\begin{axis}[xlabel=1 ms messages per second,ylabel=chance of collision (per message),width=13cm,height=6cm]
+\addplot[domain=1:600,color=red,samples=1000]{1-exp(-(2 * x)/1000};
+\end{axis}
+\end{tikzpicture}

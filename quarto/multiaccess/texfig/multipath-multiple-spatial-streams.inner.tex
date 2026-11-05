@@ -1,0 +1,20 @@
+\begin{tikzpicture}
+\begin{scope}[every path/.style={fill=black!50,draw=black!50,text=black}]
+    \path (-.5, .5) rectangle ++(.5, -4) node[midway] {A};
+    \path (12, .5) -- (12.5, 0.3) -- (11.5, -3.5) -- (11, -3.3) -- cycle;
+    \node at (11.7, -1.5) {B};
+    \path (0, 0) circle (2mm) coordinate (A1) node[above right=1mm]{$A_1$};
+    \path (0, -3) circle (2mm) coordinate (A2) node[below right=1mm]{$A_2$};
+    \path (11.7, 0) circle (2mm) coordinate (B1) node[above left=1mm]{$B_1$};
+    \path (11, -3) circle (2mm) coordinate (B2) node[below left=1mm]{$B_2$};
+\end{scope}
+\tikzset{
+    strong/.style={line width=1.2mm,arrows={{Butt Cap[sep=5mm]}-{Latex[sep=5mm]}}},
+    stronger/.style={line width=1.3mm,arrows={{Butt Cap[sep=5mm]}-{Latex[sep=5mm]}}},
+    medium/.style={line width=1mm,arrows={{Butt Cap[sep=5mm]}-{Latex[sep=5mm]}}},
+    weak/.style={line width=0.8mm,arrows={{Butt Cap[sep=5mm]}-{Latex[sep=5mm]}}},
+}
+\foreach \x/\y/\lw in {A1/B1/strong,A2/B2/stronger,A1/B2/medium,A2/B1/weak} {
+    \draw[\lw] (\x) -- (\y);
+}
+\end{tikzpicture}

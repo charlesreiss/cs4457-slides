@@ -1,0 +1,39 @@
+\begin{tikzpicture}
+\begin{pgfonlayer}{fg}
+    \draw[fill=black] (7, 0) circle (.2cm)
+        node[above=1mm] {D};
+    \draw[fill=black] (2, 1) circle (.2cm)
+        node[below=1mm] {A};
+    \draw[fill=black] (12, 1) circle (.2cm)
+        node[below=1mm] {B};
+\end{pgfonlayer}
+\tikzset{
+    signal/.style={draw,violet,line width=1.4mm,-Latex},
+    signal fade/.style={draw,violet!60!white,line width=.8mm},
+    signal fade2/.style={draw,violet!30!white,line width=.4mm},
+    signal end/.style={-{Latex[sep=0.2cm]}},
+    signalB/.style={draw,blue,line width=1.4mm,-Latex},
+    signal fadeB/.style={draw,blue!60!white,line width=.8mm},
+    signal fade2B/.style={draw,blue!30!white,line width=.4mm},
+}
+\draw[signal,-] (2, 1) -- (4, 3/5);
+\draw[signal fade,signal end] (4, 3/5) -- (7, 0);
+\draw[signalB,-] (12, 1) -- (10, 3/5);
+\draw[signal fadeB,signal end] (10, 3/5) -- (7, 0);'
+\begin{visibleenv}<1>
+    \node[anchor=north,draw=red,align=left,very thick] at (7, -0.2) {
+        D receives junk
+    };
+\end{visibleenv}
+\begin{visibleenv}<2>
+\draw[signal,-] (2, 1) -- (4.5, 1);
+\draw[signal fade,-] (4.5, 1) -- (7, 1);
+\draw[signal fade2,signal end] (7, 1) -- (12, 1);
+\draw[red,very thick] (12, 1) circle (.3cm);
+    \node[anchor=north,draw=red,align=left,very thick] at (12, 0.2) {
+        B's own transmission\\
+        is much stronger than A's \\
+        cannot detect collision itself
+    };
+\end{visibleenv}
+\end{tikzpicture}

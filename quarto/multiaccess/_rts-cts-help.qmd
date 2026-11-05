@@ -1,0 +1,10 @@
+
+### exercise: RTS/CTS suitablity  {.smaller}
+
+
+* RTS/CTS is a better idea when…?
+* A. almost all messages are sent by one node instead of being split evenly
+* B. messages are shorter
+* D. more nodes can hear others who are transmitting to different base stations
+* C. more nodes cannot hear others who are transmitting to the same base station
+

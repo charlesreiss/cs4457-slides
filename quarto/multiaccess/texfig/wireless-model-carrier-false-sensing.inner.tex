@@ -1,0 +1,48 @@
+\begin{tikzpicture}
+\begin{pgfonlayer}{fg}
+    \draw[fill=black] (4, 1) circle (.2cm)
+        node[below=1mm] {A};
+    \draw[fill=black] (1, -1) circle (.2cm)
+        node[below=1mm] {C};
+    \draw[fill=black] (9, 1) circle (.2cm)
+        node[below=1mm] {B};
+    \draw[fill=black] (12, 1) circle (.2cm)
+        node[below=1mm] {D};
+\end{pgfonlayer}
+\tikzset{
+    signal/.style={draw,violet,line width=1.4mm,-Latex},
+    signal fade/.style={draw,violet!60!white,line width=.8mm},
+    signal fade2/.style={draw,violet!30!white,line width=.4mm},
+    signal fade3/.style={draw,violet!15!white,line width=.2mm},
+    signal end/.style={-{Latex[sep=0.2cm]}},
+    signalB/.style={draw,blue,line width=1.4mm,-Latex},
+    signal fadeB/.style={draw,blue!60!white,line width=.8mm},
+    signal fade2B/.style={draw,blue!30!white,line width=.4mm},
+    range mark/.style={draw,violet!50!black,dotted,line width=1mm},
+    range markB/.style={draw,blue!50!black,dashed,line width=1mm},
+}
+\draw[signal,signal end] (4, 1) -- (1, -1);
+\begin{visibleenv}<1>
+\draw[signalB,signal end] (9, 1) -- (12, 1);
+\end{visibleenv}
+\begin{visibleenv}<2>
+\draw[signal fade,signal end] (4, 1) -- (9, 1);
+\end{visibleenv}
+\begin{scope}
+    \clip (1, -6) rectangle (15, 2);
+    \draw[overlay,range mark] (4, 1) circle (6cm);
+    \draw[overlay,range markB] (9, 1) circle (6cm);
+\end{scope}
+\begin{visibleenv}<1>
+    \node[align=left,anchor=north,red,very thick] at (6, -.5) {
+        A$\rightarrow$C and B$\rightarrow$D won't collide! \\
+    };
+\end{visibleenv}
+\begin{visibleenv}<2>
+    \node[align=left,anchor=north,red,very thick,fill=white,draw=red] at (6, -.5) {
+        B will detect carrier \\
+        may avoid transmitting to D \\
+        even though there is no interference!
+    };
+\end{visibleenv}
+\end{tikzpicture}

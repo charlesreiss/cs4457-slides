@@ -1,0 +1,35 @@
+\begin{tikzpicture}
+\begin{pgfonlayer}{fg}
+    \draw[fill=black] (7, 0) circle (.2cm)
+        node[above=1mm] {D};
+    \draw[fill=black] (2, 1) circle (.2cm)
+        node[below=1mm] {A};
+    \draw[fill=black] (14, 1) circle (.2cm)
+        node[below=1mm] {B};
+\end{pgfonlayer}
+\tikzset{
+    signal/.style={draw,violet,line width=1.4mm,-Latex},
+    signal fade/.style={draw,violet!60!white,line width=.8mm},
+    signal fade2/.style={draw,violet!30!white,line width=.4mm},
+    signal fade3/.style={draw,violet!15!white,line width=.2mm},
+    signal end/.style={-{Latex[sep=0.2cm]}},
+    range mark/.style={draw,violet!50!black,dotted,line width=1mm},
+}
+\begin{scope}
+    \clip (1, -6) rectangle (15, 2);
+    \draw[overlay,range mark,fill=violet!10] (2, 1) circle (10.5 cm);
+        \node[font=\Huge] at (4, -2) {A's range};
+\end{scope}
+\draw[signal,-] (2, 1) -- (4, 3/5);
+\draw[signal fade,signal end] (4, 3/5) -- (7, 0);
+\draw[signal,-] (2, 1) -- (4.5, 1);
+\draw[signal fade,-] (4.5, 1) -- (7, 1);
+\draw[signal fade2,-] (7, 1) -- (9, 1);
+\draw[signal fade3,signal end] (9, 1) -- (12.5, 1);
+\draw[red,very thick] (14, 1) circle (.3cm);
+    \node[anchor=north,draw=red,align=left,very thick,fill=white] at (14, 0.2) {
+        B doesn't know \\ A is transmitting \\
+        because A's signal\\
+        is too weak
+    };
+\end{tikzpicture}

@@ -1,0 +1,75 @@
+
+### multiaccess media  {.smaller}
+
+
+* shared air for radio/light signals
+* shared wires for electrical/light signals
+* … 
+<hr class="vspace" />
+* needs: 
+
+   * way to tell what signals are for whom
+   * way to decide who ‘talks’ when/where
+
+
+
+### shared wires  {.smaller}
+
+
+* used to be how Ethernet worked 
+
+   * before Ethernet switches were ubiquitous
+
+* how cable Internet works 
+
+   * shared line to many customers in area
+   * need to share
+
+* usually how fiber-to-the-home works 
+
+   * ‘‘passive optical network’’
+   * connect multiple fibers optically
+
+
+
+### multiple channels  {.smaller}
+
+
+* can have multiple channels over single medium
+* typically: radio or electrical signal or light frequencies
+* sender/receiver separate channels electrically/optically 
+<hr class="vspace" />
+* to start: will worry about coordinating one chnanel
+
+
+### wireless spectrum  {.smaller}
+
+
+* most useful radio spectrum <i>licensed</i>
+* gov't gives exclusive rights (within some region) to specific organizations/poeple  
+
+   * example: cellular, TV, satellite, air traffic control, etc.
+
+* a lot of computer networking uses <i>unlicensed</i> bands 
+
+   * use without specific permission allowed
+   * still limits on power, procedures to avoid interference
+
+
+
+### selected unlicensed bands  {.smaller}
+
+
+* approx. frequencies unlicensed in US (not everywhere) []{.my-small}
+* 902--928 MHz (802.15.4 (IoT focused))
+* 2.4--2.5 GHz (802.15.4; 802.11b/g/n/ax/…; bluetooth; microwave ovens)
+* 5.15 GHz--5.25 GHz (802.11a/n/ac/ax/…)
+* 5.25 GHz--5.73 GHz (802.11a/n/ac/ax/…; also weather radar) 
+
+   * requires ‘dynamic frequency selection’
+
+* 5.73 GHz--5.85 GHz (802.11a/n/ac/ax/…)
+* 5.93 GHz--7.12 GHz (802.11ax/…)
+* 24.0-24.2 GHz
+* 57--64 GHz
+

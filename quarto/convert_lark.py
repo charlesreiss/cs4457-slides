@@ -113,6 +113,7 @@ whitespace: whitespace_item+
     | NBSP | SIMPLE_ESCAPED
     | TIKZPICTURE | VERBATIM
     | DISPLAYMATH
+    | MATHENV
     | INLINEMATH
     | UMLAT
     | ACCENT
@@ -172,6 +173,7 @@ _PDFTOOLTIP.10: /\\pdftooltip/
 UMLAT.10: /\\\"./
 ACCENT.10: /\\'./
 DISPLAYMATH: /\\\[(?s:[^\]])*\\\]/
+MATHENV: /\\begin\{align\*?\}(?s:.*?)\\end\{align\*?\}/
 LINEBREAK: /\\\\(?:\[[^]]+\])?/
 NBSP: /~/
 _START_DQUOTE: /``/
@@ -2004,6 +2006,9 @@ class ToAST(lark.Transformer):
         return _RawString(' ', '&nbsp;')
 
     def DISPLAYMATH(self, args):
+        return _RawString(args, args)
+
+    def MATHENV(self, args):
         return _RawString(args, args)
 
     def INLINEMATH(self, args):

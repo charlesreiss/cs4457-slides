@@ -1,0 +1,107 @@
+
+### multipath interference 
+
+![](/multiaccess/texfig/multipath-multipath-interference.figure.svg)
+
+
+### simple self-interference 
+
+
+
+::: {.r-stack .my-full}
+![](/multiaccess/texfig/multipath-simple-self-interference.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/multiaccess/texfig/multipath-simple-self-interference.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+
+:::
+
+
+### interference and wavelengths  {.smaller}
+
+
+* radio wave frequency determines wavelength 
+
+   * wifi: centimeters
+   * distance between ‘peaks’ in power
+   * half wavelength = distance between peak and trough
+
+* if distances make peaks align with troughs, lower power
+* if distances make peaks align with peaks, higher power
+
+
+### interference and symbols 
+
+
+* separate from wavelength: how long are ‘symbols’ 
+
+   * the things we turn into bits
+
+* for long paths/high symbol rate, might receive delayed signal overlaid on non-delayed
+
+
+### multipath interference  {.smaller}
+
+
+* quite complicated to predict in three dimensions, variable reflectivity, …
+* varies on frequency 
+
+   * switching to close different channel may change a lot
+
+* can help and hurt signal reception
+* especially bad when ‘inter-symbol interference’ 
+
+   * can be mitigated some by choice of message encoding
+ 
+<hr class="vspace" />
+* contributes to irregular ‘dead zones’, etc.
+
+
+### deliberate multipath / MIMO  {.smaller}
+
+
+* can have:
+* multiple sending antennas (inputs) (MI)
+* multiple receiving antennas (outputs) (MO)
+* some simple ideas: 
+<hr class="vspace" />
+* receive signal twice, hope one antenna not in dead zone
+* send signal twice, have receiver tell you which is better
+
+
+### multiple spatial streams  {.smaller}
+
+![](/multiaccess/texfig/multipath-multiple-spatial-streams.figure.svg)
+ 
+
+* signals might mix based on relative strengths, say: \begin{align*}
+   B_1 &\sim& 0.9A_1 &+& 0.7A_2 \\
+   B_2 &\sim& A_1 &+& 1.2A_2 
+   \end{align*}
+
+
+### simplified multipath model  {.smaller}
+
+\begin{align*}
+B_1 &\sim& 0.9A_1 &+& 0.7A_2 \\
+B_2 &\sim& A_1 &+& 1.2A_2 
+\end{align*} 
+
+* if we can estimate coefficients…
+* B can solve for $A_1$, $A_2$ 
+<hr class="vspace" />
+* A can send with pattern to help estimate coefficients: 
+
+   * example: send full power from $A_1$ ($(B_1,B_2)=(0.9, 1)$), then from $A_2$ ($(B_1,B_2)=(0.7, 1.2)$)
+
+
+
+### correlation problem  {.smaller}
+
+
+* when two ‘spatial streams’ correlated, harder to solve for them
+* example: suppose $(B_1,B_2)=(A_1+A_2,A_1+1.1A_2)$ 
+<hr class="vspace" />
+* $A_2=10B_1-10B_2$
+* need 10x precision in $B_1$, $B_2$ to get 1x precision in $A_2$
+

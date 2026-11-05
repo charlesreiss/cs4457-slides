@@ -1,0 +1,5 @@
+\begin{tikzpicture}
+\begin{axis}[xlabel={packet generation rate (1ms packets/sec/machine)}, ylabel={rate with retranmissions},width=13cm,height=6cm]
+\addplot[domain=1:500,color=red,samples=1000] (x * exp(-2*x/1000), x);
+\end{axis}
+\end{tikzpicture}

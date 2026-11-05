@@ -1,0 +1,72 @@
+\begin{tikzpicture}
+\begin{scope}[x=0.3cm,y=0.5cm]
+    \begin{pgfonlayer}{fg}
+        \draw[fill=black] (4, 1) circle (.2cm)
+            node[below=1mm] {A};
+        \draw[fill=black] (1, -1) circle (.2cm)
+            node[below=1mm] {C};
+        \draw[fill=black] (9, 1) circle (.2cm)
+            node[below=1mm] {B};
+        \draw[fill=black] (12, 1) circle (.2cm)
+            node[below=1mm] {D};
+    \end{pgfonlayer}
+    \tikzset{
+        signal/.style={draw,violet,line width=1.4mm,-Latex},
+        signal fade/.style={draw,violet!60!white,line width=.8mm},
+        signal fade2/.style={draw,violet!30!white,line width=.4mm},
+        signal fade3/.style={draw,violet!15!white,line width=.2mm},
+        signal end/.style={-{Latex[sep=0.2cm]}},
+        signalB/.style={draw,blue,line width=1.4mm,-Latex},
+        signal fadeB/.style={draw,blue!60!white,line width=.8mm},
+        signal fade2B/.style={draw,blue!30!white,line width=.4mm},
+        range mark/.style={draw,violet!50!black,dotted,line width=.4mm},
+        range markB/.style={draw,blue!50!black,dashed,line width=.4mm},
+    }
+    \draw[violet,dotted,very thick,signal end] (4, 1) -- (1, -1);
+    \draw[blue,dotted,very thick,signal end] (9, 1) -- (12, 1);
+    \begin{scope}
+        \clip (-5, -5) rectangle (20, 4);
+        \draw[overlay,range mark] (4, 1) circle (2cm);
+        \draw[overlay,range markB] (9, 1) circle (2cm);
+    \end{scope}
+    \node[anchor=west,align=left,font=\small] at (18, 0) {
+        \textit{exposed node problem}: A and B \\
+        detect each other's transmissions \\
+        but don't interfere 
+    };
+\end{scope}
+\begin{scope}[yshift=-4cm,x=0.3cm,y=0.5cm]
+    \begin{pgfonlayer}{fg}
+        \draw[fill=black] (1, 1) circle (.2cm)
+            node[below=1mm] {A};
+        \draw[fill=black] (4, -1) circle (.2cm)
+            node[below=1mm] {C};
+        \draw[fill=black] (8, -1) circle (.2cm)
+            node[below=1mm] {B};
+    \end{pgfonlayer}
+    \tikzset{
+        signal/.style={draw,violet,line width=1.4mm,-Latex},
+        signal fade/.style={draw,violet!60!white,line width=.8mm},
+        signal fade2/.style={draw,violet!30!white,line width=.4mm},
+        signal fade3/.style={draw,violet!15!white,line width=.2mm},
+        signal end/.style={-{Latex[sep=0.2cm]}},
+        signalB/.style={draw,blue,line width=1.4mm,-Latex},
+        signal fadeB/.style={draw,blue!60!white,line width=.8mm},
+        signal fade2B/.style={draw,blue!30!white,line width=.4mm},
+        range mark/.style={draw,violet!50!black,dotted,line width=.4mm},
+        range markB/.style={draw,blue!50!black,dashed,line width=.4mm},
+    }
+    \begin{scope}
+        \clip (-1, -5) rectangle (15, 4);
+        \draw[overlay,range mark] (0, 1) circle (2cm);
+        \draw[overlay,range markB] (8, -1) circle (2cm);
+    \end{scope}
+    \draw[violet,dotted,very thick,signal end] (1, 1) -- (4, -1);
+    \draw[blue,dotted,very thick,signal end] (8, -1) -- (4, -1);
+    \node[anchor=west,align=left,font=\small] at (18, 0) {
+        \textit{hidden node problem}: A and B interfere \\
+        when sending to C\\
+        but can't detect each other's transmissions
+    };
+\end{scope}
+\end{tikzpicture}

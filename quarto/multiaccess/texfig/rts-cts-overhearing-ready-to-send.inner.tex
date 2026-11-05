@@ -1,0 +1,32 @@
+\begin{tikzpicture}
+    \tikzset{
+        signal/.style={draw,violet,line width=1.4mm,-Latex},
+        signal fade/.style={draw,violet!60!white,line width=.8mm},
+        signal fade2/.style={draw,violet!30!white,line width=.4mm},
+        signal fade3/.style={draw,violet!15!white,line width=.2mm},
+        signal end/.style={-{Latex[sep=0.2cm]}},
+        signalB/.style={draw,blue,line width=1.4mm,-Latex},
+        signal fadeB/.style={draw,blue!60!white,line width=.8mm},
+        signal fade2B/.style={draw,blue!30!white,line width=.4mm},
+        range mark/.style={draw,violet!50!black,dotted,line width=.4mm},
+        range markB/.style={draw,blue!50!black,dashed,line width=.4mm},
+    }
+    \begin{scope}[xshift=5cm,name prefix=clr-,x=1.2cm,y=0.4cm]
+        \begin{pgfonlayer}{fg}
+            \draw[fill=black] (1, 1) circle (.2cm)
+                coordinate (A)
+                node[below=1mm] {A};
+            \draw[fill=black] (4, -4) circle (.2cm)
+                coordinate (C)
+                node[below=1mm] {C};
+            \draw[fill=black] (8, -1) circle (.2cm)
+                coordinate (B)
+                node[below=1mm] {B};
+        \end{pgfonlayer}
+        \draw[signal fade,signal end] (B) -- (C)
+            node[font=\small,pos=0.5,midway,draw, very thick,fill=white,sloped] {C: send 1000B?};
+        \draw[signal fade] (B) -- ($(B)!0.7!(A)$)
+            node[font=\small,pos=0.8,midway,draw, very thick,fill=white,sloped] {C: send 1000B?};
+        \draw[signal fade2,signal end] ($(B)!0.7!(A)$) -- (A);
+    \end{scope}
+\end{tikzpicture}

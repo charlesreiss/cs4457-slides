@@ -1,0 +1,62 @@
+
+# multiaccess media {visibility="hidden"}
+
+{{< include /multiaccess/_media.qmd >}}
+
+## collisions {visibility="hidden"}
+
+{{< include /multiaccess/_collision.qmd >}}
+
+# transmitting in the blind {visibility="hidden"}
+
+{{< include /multiaccess/_blind-collisions.qmd >}}
+
+# carrier-sense multiple access {visibility="hidden"}
+
+{{< include /multiaccess/_carrier-sense.qmd >}}
+
+## collision detection versus avoidance {visibility="hidden"}
+
+{{< include /multiaccess/_collision-detect.qmd >}}
+
+# dB {visibility="hidden"}
+
+{{< include /multiaccess/_db-expl.qmd >}}
+
+# wireless model, hidden and exposed nodes {visibility="hidden"}
+
+{{< include /multiaccess/_wireless-model.qmd >}}
+
+# RTS/CTS {visibility="hidden"}
+
+{{< include /multiaccess/_rts-cts.qmd >}}
+
+## RTS/CTS exercise {visibility="hidden"}
+
+{{< include /multiaccess/_rts-cts-help.qmd >}}
+
+# multipath {visibility="hidden"}
+
+{{< include /multiaccess/_multipath.qmd >}}
+
+# aside: assignment {visibility="hidden"}
+
+### assignment 
+
+
+
+# ad-hoc v base stations {visibility="hidden"}
+
+{{< include /multiaccess/_probe-base.qmd >}}
+
+## mobility {visibility="hidden"}
+
+{{< include /multiaccess/_mobility.qmd >}}
+
+## mesh networks {visibility="hidden"}
+
+{{< include /multiaccess/_mesh-network.qmd >}}
+
+# centralized planning {visibility="hidden"}
+
+{{< include /multiaccess/_ftdma.qmd >}}

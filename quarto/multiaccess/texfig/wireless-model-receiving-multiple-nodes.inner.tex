@@ -1,0 +1,23 @@
+\begin{tikzpicture}
+\begin{pgfonlayer}{fg}
+    \draw[fill=black] (0, 0) circle (.2cm)
+        node[above=1mm] {D};
+    \draw[fill=black] (2, -1) circle (.2cm)
+        node[below=1mm] {A};
+    \draw[fill=black] (12, 1) circle (.2cm)
+        node[below=1mm] {B};
+\end{pgfonlayer}
+\tikzset{
+    signal/.style={draw,violet,line width=1.4mm,-Latex},
+    signal fade/.style={draw,violet!60!white,line width=.8mm},
+    signal fade2/.style={draw,violet!30!white,line width=.4mm},
+    signal end/.style={-{Latex[sep=0.2cm]}},
+    signalB/.style={draw,blue,line width=1.4mm,-Latex},
+    signal fadeB/.style={draw,blue!60!white,line width=.8mm},
+    signal fade2B/.style={draw,blue!30!white,line width=.4mm},
+}
+\draw[signal,signal end] (2, -1) -- (0, 0);
+\draw[signalB,-] (12, 1) -- (10, 10/12);
+\draw[signal fadeB,-] (10, 10/12) -- (8, 8/12);
+\draw[signal fade2B,signal end] (8, 8/12) -- (0, 0);
+\end{tikzpicture}

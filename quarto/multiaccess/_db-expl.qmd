@@ -1,0 +1,19 @@
+
+### signal strength 
+
+
+* measure signal stength in dB (decibal)
+* this is <i>ratio</i> and a logarithmic scale
+* $(X+10)$dB means <i>ten times power</i> of $X$dB
+* $(X+20)$dB means <i>a hundred times power</i> of $X$dB
+
+
+### dB and dBm  {.smaller}
+
+
+* dB (decimal) is relative unit
+* this may be confusing because you often see sound, wireless quoted in decibels 
+<hr class="vspace" />
+* for audio: implicitly ratio of sound power to reference
+* for wireless: dBm = dB relative to 1milliwatt (mW) signal
+
