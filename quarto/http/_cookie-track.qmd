@@ -3,7 +3,7 @@
 
 <table>
 <thead>
-<tr><td>time</td><td>IP</td><td>path</td><td>cookie header</td><td>set-cookie header</td></tr>
+<tr><th>time</th><th>IP</th><th>path</th><th>cookie header</th><th>set-cookie header</th></tr>
 </thead>
 <tbody>
 <tr><td>1pm</td><td>1.2.3.4</td><td>/foo</td><td>SID=1234</td><td>---</td></tr>

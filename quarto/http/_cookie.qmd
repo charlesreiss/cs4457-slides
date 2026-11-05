@@ -64,7 +64,7 @@ Cookie: SessionID=31d4d96
 
 
 
-### cookie tracking example  {.smaller}
+### cookie tracking example 
 
 
 * foo.com, bar.com, quux.com all include an image 

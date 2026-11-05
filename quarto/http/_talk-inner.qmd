@@ -95,3 +95,7 @@
 # REST {visibility="hidden"}
 
 {{< include /http/_rest.qmd >}}
+
+# other protocols over HTTP {visibility="hidden"}
+
+{{< include /http/_other.qmd >}}

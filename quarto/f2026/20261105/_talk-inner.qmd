@@ -73,10 +73,6 @@
 
 {{< include /http/_cookie.qmd >}}
 
-## exercise {visibility="hidden"}
-
-{{< include /http/_cookie-ex.qmd >}}
-
 ## tracking {visibility="hidden"}
 
 {{< include /http/_cookie-track.qmd >}}
@@ -101,3 +97,7 @@
 # REST {visibility="hidden"}
 
 {{< include /http/_rest.qmd >}}
+
+# other protocols over HTTP {visibility="hidden"}
+
+{{< include /http/_other.qmd >}}

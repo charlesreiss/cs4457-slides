@@ -1,0 +1,12 @@
+### selected other protocols over HTTP
+ 
+*  Remote Procedure Calls (SOAP, gRPC, ...)
+   *  turn function/method call + return into HTTP request + response
+   *  another common way of exposing remote "API"
+*  MPEG-DASH, HTTP Live Streaming
+   *  divide stream into small segments, playlists of those
+   *  possibly multiple versions (quality, audio track, captions, ...)
+   *  client requests segments, reloads playlists to learn about new segments
+*  DNS over HTTPS
+
+
