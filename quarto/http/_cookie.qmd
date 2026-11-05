@@ -44,13 +44,10 @@ Cookie: SessionID=31d4d96
 
 
 * domain --- limit to subset of domains 
-
    * domain=example.com matches example.com, foo.example.com, but not other.com
-
 * secure --- only send back on encrypted connections
 * httponly --- do not expose to in-webpage scripts
 * expires, max-age --- limit how long cookie kept around 
-
    * default = until browser closed
 
 

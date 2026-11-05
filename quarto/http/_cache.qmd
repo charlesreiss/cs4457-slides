@@ -6,7 +6,7 @@
 * some problems: 
 <hr class="vspace" />
 * how to tell if something's out of date
-* how to tell if changes to cookies/accept-language/etc. change item
+* how to tell if changes to request change item
 
 
 ### is it out of date? options 
@@ -91,7 +91,6 @@ Vary: Accept, Accept-Language, Cookie
 ...
 
 ```
- 
 
 * page contents may vary even though URL doesn't change
 * Vary header says what things need to be the same

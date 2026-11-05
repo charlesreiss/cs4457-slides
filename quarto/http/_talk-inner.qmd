@@ -72,10 +72,6 @@
 
 {{< include /http/_cookie.qmd >}}
 
-## exercise {visibility="hidden"}
-
-{{< include /http/_cookie-ex.qmd >}}
-
 ## tracking {visibility="hidden"}
 
 {{< include /http/_cookie-track.qmd >}}
