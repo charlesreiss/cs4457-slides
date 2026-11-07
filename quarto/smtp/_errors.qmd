@@ -29,7 +29,7 @@ Message-Id: <199407072116.RAA14128@CS.UTK.EDU>
 Subject: Returned mail: Cannot send message for 5 days
 To: <owner-info-mime@cs.utk.edu>
 MIME-Version: 1.0
-Content-Type: multipart/report; report-type=delivery- status;
+Content-Type: multipart/report; report-type=delivery-status;
  boundary="RAA14128.773615765/CS.UTK.EDU"
 
 --RAA14128.773615765/CS.UTK.EDU
@@ -50,6 +50,7 @@ Message will be deleted from queue
 
 ### bounce messages (RFC 3464 example, pt 2) {.smaller .longcode}
 
+```
 --RAA14128.773615765/CS.UTK.EDU
 content-type: message/delivery-status
 

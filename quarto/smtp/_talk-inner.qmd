@@ -74,13 +74,11 @@
 
 {{< include /smtp/_message-received.qmd >}}
 
-## Message IDs
-
-{{< include /smtp/_message-id.qmd >}}
-
 # mail transactions, errors
 
 ## temporary errors and retrying
+
+{{< include /smtp/_error-exercise.qmd >}}
 
 {{< include /smtp/_errors.qmd >}}
 

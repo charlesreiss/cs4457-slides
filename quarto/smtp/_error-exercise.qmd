@@ -1,0 +1,22 @@
+### what should happen if... (1)
+
+*  email to `A@B`, `C@D`, and `E@F`
+*  MUA sends to first relay and:
+   *  relay errors on MAIL FROM command?
+   *  relay errors on  `RCPT TO:<C@D>` command?
+   *  relay errors on  DATA command?
+
+### what should happen if... (2)
+
+*  email to `A@B`, `C@D`, and `E@F`
+*  MUA sends to first relay, but after that relay gets message:
+   *  it can't connect (timeout) to F's mail server?
+   *  it gets an error from D's mail server?
+
+### what should happen if... (3)
+
+*  email to `A@B`, `C@D`, and `E@F`
+*  MUA sends to relay, which sends to (among other's) D's external server:
+   *  D's external server gets an timeout forwarding to internal server
+   *  D's external server gets an error forwarding to internal server
+
