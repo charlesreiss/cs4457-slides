@@ -1,0 +1,4 @@
+### MIME {visibility="hidden"}
+
+{{< include /smtp/_mime.qmd >}}
+

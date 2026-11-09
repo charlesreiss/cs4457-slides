@@ -1,6 +1,6 @@
 ### POP3 example session (RFC 1399) {.smaller .longcode}
 
-````
+```
 S:    +OK POP3 server ready <1896.697170952@dbc.mtview.ca.us>
 C:    APOP mrose c4c9334bac560ecc979e58001b3e22fb
 S:    +OK mrose's maildrop has 2 messages (320 octets)

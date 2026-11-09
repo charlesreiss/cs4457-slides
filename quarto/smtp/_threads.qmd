@@ -1,4 +1,4 @@
-### email threads
+### email threads {.smaller}
 
 *  `Message-ID: <X@Y>`
    *  should be _globally unique_

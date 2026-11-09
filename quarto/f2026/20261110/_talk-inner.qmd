@@ -1,0 +1,53 @@
+### last time {.smaller}
+
+*  HTTP methods
+   *  "safety", choosing GET v POST
+*  Host/:authority, virtual hosting
+*  100 continue
+*  error pages
+*  caching (max-age, no-store, no-cache)
+   *  conditional GETs
+*  persistent connnections, pipelining
+   *  detecting lengths of requests/responses
+   *  versus HTTP/2-style streams
+*  content negotiation
+
+
+# HTTP authentication {visibility="hidden"}
+
+{{< include /http/_http-auth.qmd >}}
+
+# cookies {visibility="hidden"}
+
+{{< include /http/_cookie.qmd >}}
+
+## tracking {visibility="hidden"}
+
+{{< include /http/_cookie-track.qmd >}}
+
+
+# supercookies {visibility="hidden"}
+
+{{< include /http/_cache-as-cookies.qmd >}}
+
+# proxies and reverse proxies {visibility="hidden"}
+
+{{< include /http/_proxies.qmd >}}
+
+## aside: wikimedia architecture {visibility="hidden"}
+
+{{< include /http/_wikimedia-arch.qmd >}}
+
+# SSO {visibility="hidden"}
+
+{{< include /http/_sso.qmd >}}
+
+# REST {visibility="hidden"}
+
+{{< include /http/_rest.qmd >}}
+
+# other protocols over HTTP {visibility="hidden"}
+
+{{< include /http/_other.qmd >}}
+
+{{< include /smtp/_talk-inner.qmd >}}

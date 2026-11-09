@@ -12,6 +12,18 @@
    *  HTTP messages (path, status code, headers, body)
    *  HTTP/1.1 versus HTTP/2+
 
+### quiz note
+
+*  no other program using source port xxxx
+   *  know that we only bound on one of several IPs
+*  multiple TCP packets sent
+   *  default algorithm: try to avoid small packets by delaying send
+   *  did not use socket option to turn that off
+
+###
+
+### assignment Q+A
+
 # HTTP methods, briefly {visibility="hidden"}
 
 {{< include /http/_methods.qmd >}}
