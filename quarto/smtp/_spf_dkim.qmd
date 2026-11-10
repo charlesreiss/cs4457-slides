@@ -43,12 +43,94 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; d=virginia.edu; s=azout-selector; 
 *  `bh=...`: hash of message body
 *  `b=...` signature itself
 
+### DMARC (RFC 9989)
 
-### greylisting, blacklisting
+```
+_dmarc.virginia.edu.    3600    IN      TXT     "v=DMARC1; p=reject; rua=mailto:nw0e7asu@ag.us.dmarcian.com; ruf=mailto:nw0e7asu@fr.us.dmarcian.com; fo=1;"
+```
+
+*  used with SPF or DKIM
+*  policy for requiring _From_ address to be authenticted
+   *  this case, `p=reject`: reject (5xx from SMTP ideally) if not
+*  method for reporting violations
+*  complications to handle `foo@cs.virginia.edu` sending as `bar@virginia.edu` and vice-versa
+
+### Mail from rewriting
+
+*  mailing lists will usually rewrite `From` headers; possible example:
+```
+From: Some user <user@company.example>
+To: mailing-list@organization.example
+```
+<hr/>
+```
+From: Some user via mailing-list <mailing-list-...@organization.example>
+To: mailing-list@organization.example
+Cc: Some User <user@company.example>
+```
+
+
+### greylisting, blocklists
 
 *  greylisting (RFC 6647)
    *  give temporary errors (451) to new SMTP senders
    *  many spammers won't retry later
-*  blacklisting
-   *  many (usually IP-based) blacklists example: spamhaus
+*  blocklisting
+   *  many (usually IP-based) blocklists example: spamhaus
    *  probably means you can't run a mail server on a "home" ISP
+
+### DNS blocklists
+
+*  looking up 127.0.0.2 (test address) on spamhaus.org (a blocklist provider):
+
+```
+dig 2.0.0.127.zen.spamhaus.org
+
+;; ANSWER SECTION:
+2.0.0.127.zen.spamhaus.org. 60  IN      A       127.0.0.10
+2.0.0.127.zen.spamhaus.org. 60  IN      A       127.0.0.2
+2.0.0.127.zen.spamhaus.org. 60  IN      A       127.0.0.4
+```
+
+<hr/>
+<table>
+<thead>
+<tr>
+<th><strong>Return Code</strong></th>
+<th><strong>Zone</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>127.0.0.2</td>
+<td>SBL</td>
+<td>Spamhaus SBL Data</td>
+</tr>
+<tr>
+<td>127.0.0.3</td>
+<td>SBL</td>
+<td>Spamhaus CSS Data</td>
+</tr>
+<tr>
+<td>127.0.0.4</td>
+<td>XBL</td>
+<td>CBL Data</td>
+</tr>
+<tr>
+<td>127.0.0.9</td>
+<td>SBL</td>
+<td>Spamhaus DROP Data (in addition to 127.0.0.2, since 01-Jun-2016)</td>
+</tr>
+<tr>
+<td>127.0.0.10</td>
+<td>PBL</td>
+<td>ISP Maintained</td>
+</tr>
+<tr>
+<td>127.0.0.11</td>
+<td>PBL</td>
+<td>Spamhaus Maintained</td>
+</tbody>
+</table>
+

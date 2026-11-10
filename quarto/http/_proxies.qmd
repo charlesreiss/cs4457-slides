@@ -12,7 +12,7 @@
 
 ### HTTP proxies (2) 
 
-browser$\rightarrow$HTTP(S) proxy sever: <br> 
+browser→HTTP(S) proxy sever: <br> 
 ```
 GET http://example.com/somesite HTTP/1.1
 Host: example.com
@@ -22,20 +22,17 @@ Host: example.com
 <hr/>
 
 * instead of path, can put full URL
-* doesn't have to be <code>http</code> URL
+* doesn't have to be <code>http</code>(s) URL
 
 
-### proxy functionality  {.smaller}
+### proxy functionality
 
 
 * caching for multiple users 
-
-   * reason for <code>Cache-Control: private</code>
-
+   * can have shared cache
+   * <code>Cache-Control: private</code> to disable this
 * filtering content 
-
    * antimalware, adblocking, etc.
-
 * logging content (example: debugging webapp)
 * …
 
@@ -60,9 +57,9 @@ Host: example.com
 * split requests between multiple identical servers for performance
 
 
-### non-HTTP in HTTP proxy  {.smaller}
+### non-HTTP in HTTP proxy {.smaller}
 
-[]{.my-small} client $\rightarrow$ server: 
+client $\rightarrow$ server: 
 ```
 CONNECT ns.foo.com:53 HTTP/1.1
 Host: ns.foo.com:50
@@ -77,7 +74,7 @@ Some-header: some-value
 
 ```
 <hr>
-client $\rightarrow$ server: (dns request) <br> server $\rightarrow$ client: (dns response from ns.foo.com) <br> client $\rightarrow$ server: (dns request) <br> server $\rightarrow$ client: (dns response from ns.foo.com) <br> …
+client $\rightarrow$ server: (dns request [with size]) <br> server $\rightarrow$ client: (dns response from ns.foo.com) <br> client $\rightarrow$ server: (dns request) <br> server $\rightarrow$ client: (dns response from ns.foo.com) <br> …
 
 ### CONNECT 
 

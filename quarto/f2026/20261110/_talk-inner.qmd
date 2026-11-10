@@ -11,6 +11,7 @@
    *  detecting lengths of requests/responses
    *  versus HTTP/2-style streams
 *  content negotiation
+   *  accept* headers; advice against
 
 
 # HTTP authentication {visibility="hidden"}
@@ -45,6 +46,8 @@
 # REST {visibility="hidden"}
 
 {{< include /http/_rest.qmd >}}
+
+{{< include /http/_rest-ex.qmd >}}
 
 # other protocols over HTTP {visibility="hidden"}
 

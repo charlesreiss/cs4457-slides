@@ -1,4 +1,4 @@
-### selected other protocols over HTTP
+### selected other protocols over HTTP {.smaller}
  
 *  Remote Procedure Calls (SOAP, gRPC, ...)
    *  turn function/method call + return into HTTP request + response
@@ -9,4 +9,4 @@
    *  client requests segments, reloads playlists to learn about new segments
 *  DNS over HTTPS
 
-
+ 

@@ -1,5 +1,5 @@
 
-### HTTP non-state  {.smaller}
+### HTTP non-state
 
 
 * HTTP is a ‘stateless’
@@ -29,7 +29,7 @@ Cookie: SessionID=31d4d96
 ```
 
 
-### session ID concept  {.smaller}
+### session ID concept  
 
 
 * assign random ID number to each ‘session’ if no cookie set 
@@ -40,7 +40,7 @@ Cookie: SessionID=31d4d96
 * …
 
 
-### selected cookie attributes  {.smaller}
+### selected cookie attributes
 
 
 * domain --- limit to subset of domains 
@@ -52,16 +52,14 @@ Cookie: SessionID=31d4d96
 
 
 
-### cookies and tracking  {.smaller}
+### cookies and tracking 
 
 
 * cookies often used for tracking users <i>across websites</i>
-* and not by setting cookies valid for tons of domains 
+* and not by setting cookies valid for tons of domains
 <hr class="vspace" />
-* how: websites load data from other websites 
-
+* how? websites load data from other websites 
    * separate HTTP requests with separate cookies
-
 
 
 ### cookie tracking example 
@@ -81,7 +79,7 @@ Cookie: SessionID=31d4d96
 
 
 
-### more detailed tracking?  {.smaller}
+### more detailed tracking? 
 
 
 * ‘‘just’’ learned about how many visitors visited combinations of websites
@@ -94,7 +92,7 @@ Cookie: SessionID=31d4d96
 * one way to pass info: add extra data to image filename
 
 
-### third party cookie rules  {.smaller}
+### third party cookie rules 
 
 
 * some browsers might restrict ‘third-party cookies’ 

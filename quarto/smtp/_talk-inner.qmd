@@ -70,19 +70,19 @@
 
 {{< include /smtp/_message-tofrom.qmd >}}
 
-## Received/Return-Path
+## Received/Return-Path {visibility="hidden"}
 
 {{< include /smtp/_message-received.qmd >}}
 
-# mail transactions, errors
+# mail transactions, errors {visibility="hidden"}
 
-## temporary errors and retrying
+## temporary errors and retrying {visibility="hidden"}
 
 {{< include /smtp/_error-exercise.qmd >}}
 
 {{< include /smtp/_errors.qmd >}}
 
-### things we'll need for "real" email
+### things we'll need for "real" email {visibility="hidden"}
 
 *  find out right machine to get email to
    *  issue: domain name in address != right machine
@@ -93,9 +93,9 @@
 *  sending to multiple people
 *  reading emails not from a local file
 
-## undeliverable messages
+## undeliverable messages {visibility="hidden"}
 
-### things we'll need for "real" email
+### things we'll need for "real" email {visiblity="hidden"}
 
 *  find out right machine to get email to
    *  issue: domain name in address != right machine
@@ -106,9 +106,7 @@
 *  sending to multiple people
 *  reading emails not from a local file
 
-# MIME (attachments, HTML, ...)
-
-# POP3/IMAP
+# POP3/IMAP {visibility="hidden"}
 
 ### things we'll need for "real" email
 
@@ -121,11 +119,11 @@
 *  sending to multiple people
 *  _reading emails not from a local file_
 
-## POP, briefly
+## POP, briefly {visibility="hidden"}
 
 {{< include /smtp/_pop3.qmd >}}
 
-## IMAP, briefly
+## IMAP, briefly {visibility="hidden"}
 
 {{< include /smtp/_imap.qmd >}}
 
@@ -135,13 +133,9 @@
 
 {{< include /smtp/_threads.qmd >}}
 
-### MIME
-
-{{< include /smtp/_mime.qmd >}}
-
 # anti-spam
 
-## SPF, DKIM, ...
+## SPF, DKIM, ... {visibility="hidden"}
 
 {{< include /smtp/_spf_dkim.qmd >}}
 
