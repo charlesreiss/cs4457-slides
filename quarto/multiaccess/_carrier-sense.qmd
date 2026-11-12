@@ -10,7 +10,8 @@
 
 * avoids requiring almost 2 packets worth of ‘quiet’ time
 * can synchronize by observing end of last transmission, or central clock
- ![](/multiaccess/texfig/carrier-sense-slots.figure.svg)
+
+![](/multiaccess/texfig/carrier-sense-slots.figure.svg){width=1000px}
 
 
 ### carrier sense  {.smaller}

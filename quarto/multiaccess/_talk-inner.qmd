@@ -43,8 +43,6 @@
 
 ### assignment 
 
-
-
 # ad-hoc v base stations {visibility="hidden"}
 
 {{< include /multiaccess/_probe-base.qmd >}}

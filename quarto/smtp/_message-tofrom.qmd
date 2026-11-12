@@ -2,14 +2,17 @@
 
 *  `From: name1 <user1@host1>, name2 <user2@host2>`
 *  `Sender: name <user@host>`
+   *  for single sender if multiple From addresses
 <hr/>
 *  identify sender of message, but...
    *  not required to match `MAIL FROM:` command
+   *  not required at all
 
 ### common headers: to/cc
 
-*  `To: name1 <user1@host1>, user2 <user2@host2>`
-*  `To: GroupA: user1 <user1@host1>, user2 <user2@host2>; GroupB: user3 <user3@host3>, user4 <user4@host4>`
+*  [`To: name1 <user1@host1>, user2 <user2@host2>`]{.my-small}
+*  [`To: GroupA: user1 <user1@host1>, user2 <user2@host2>;`]{.my-small}<br/>
+   [&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`GroupB: user3 <user3@host3>, user4 <user4@host4>`]{.my-small}
 *  Similar for `Cc` ("carbon copy")
 <hr/>
 *  identify receipients of message, but...
@@ -22,11 +25,5 @@
 *  "blind carbon copy"
    *  extra recipients not seen
 *  _removed_ before actually sending via SMTP
-
-### Bcc implementation options
-
-*  simpliest: remove Bcc header, RCPT TO everyone
-   *  issue: Bcc recepients don't know why they got message
-*  alt 1: replace header with `Bcc: Undisclosed recipients: ;` or similar
-*  alt 2: separate mail transactions for each Bcc recepient <br/>
-   replace header with <pre>Bcc: <i>that receipient</i></pre>
+   *  or replaced with `Bcc: undisclosed recipients:;` or similar
+   *  or set differently on Bcc'd copies than others

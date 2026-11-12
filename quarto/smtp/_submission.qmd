@@ -1,0 +1,10 @@
+### submission MTA
+
+*  "submission servers" --- special case of SMTP "relays"
+*  mail user agent sends message to one submission server, then forgets about it
+   *  uses same protocol as sending to "real" servers
+*  simplifies logic of mail user agents
+   *  no handling retrying, finding correct mail server etc.
+*  often uses different port numbers than "normal" SMTP
+   *  normal SMTP: port 25 (unencrypted/STARTTLS)
+   *  "submission" SMTP: port 587 (unencrypted/STARTTLS), port 465 (TLS)

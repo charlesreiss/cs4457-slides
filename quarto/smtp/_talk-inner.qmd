@@ -36,21 +36,33 @@
 *  reading emails not from a local file
 
 {{< include /smtp/_forwarding-layers-pic.qmd >}}
+{{< include /smtp/_forwarding-layers-anim.qmd >}}
 
 {{< include /smtp/_forwarding-layers.qmd >}}
 
-{{< include /smtp/_address-relay.qmd >}}
+
+### layers of forwarding (MSA) 
+
+![](/smtp/texfig/smtp-relay-msa.figure.svg){fig-alt="diagram of mail going from user@sender.com to user@receiver.com seen earlier, with mail submission agent hilighted. The mail submission agent is configured in the sending mail user agent and contacted via SMTP."}
+
+{{< include /smtp/_submission.qmd >}}
 
 ### things we'll need for "real" email
 
 *  _find out right machine to get email to_
    *  issue: domain name in address != right machine
-*  _handling errors_
+*  handling errors
    *  retry sending later
    *  telling user if sending later failed
    *  issue: needs to be done by program running after mail "sent"
-*  _sending to multiple people_
+*  sending to multiple people
 *  reading emails not from a local file
+
+### layers of forwarding (incoming MTA) 
+
+![](/smtp/texfig/smtp-relay-mtainput.figure.svg){fig-alt="diagram of mail going from user@sender.com to user@receiver.com seen earlier, with incoming MTA for sender.com highlighted. The mail submission agent that user@receiver.com used sends the message via SMTP to the incoming MTA. The incoming MTA forwards the message to one of several backend servers (a ticketing system, mailing list system, user mail system) based on its address. It also checks SPF and DKIM info and antispam databases."}
+
+{{< include /smtp/_address-relay.qmd >}}
 
 # SMTP protocol {visibility="hidden"}
 
@@ -80,37 +92,24 @@
 
 # mail transactions, errors {visibility="hidden"}
 
-{{< include /smtp/_forwarding-layers-pic.qmd >}}  <!-- FIXME: annotated with points of failure -->
+### things we'll need for "real" email
+
+*  find out right machine to get email to
+   *  issue: domain name in address != right machine
+*  _handling errors_
+   *  _retry sending later_
+   *  _telling user if sending later failed_
+   *  issue: needs to be done by program running after mail "sent"
+*  sending to multiple people
+*  reading emails not from a local file
+
+{{< include /smtp/_forwarding-layers-pic.qmd >}}
 
 ## temporary errors and retrying {visibility="hidden"}
 
 {{< include /smtp/_error-exercise.qmd >}}
 
 {{< include /smtp/_errors.qmd >}}
-
-### things we'll need for "real" email {visibility="hidden"}
-
-*  find out right machine to get email to
-   *  issue: domain name in address != right machine
-*  handling errors
-   *  _retry sending later_
-   *  telling user if sending later failed
-   *  issue: needs to be done by program running after mail "sent"
-*  sending to multiple people
-*  reading emails not from a local file
-
-## undeliverable messages {visibility="hidden"}
-
-### things we'll need for "real" email {visiblity="hidden"}
-
-*  find out right machine to get email to
-   *  issue: domain name in address != right machine
-*  handling errors
-   *  retry sending later
-   *  _telling user if sending later failed_
-   *  issue: needs to be done by program running after mail "sent"
-*  sending to multiple people
-*  reading emails not from a local file
 
 # POP3/IMAP {visibility="hidden"}
 
@@ -124,6 +123,10 @@
    *  issue: needs to be done by program running after mail "sent"
 *  sending to multiple people
 *  _reading emails not from a local file_
+
+### layers of forwarding (receiving MUA) 
+
+![](/smtp/texfig/smtp-relay-recvmua.figure.svg){fig-alt="diagram of mail going from user@sender.com to user@receiver.com seen earlier. The receiving MUA is highlighted. It retrieves from mailboxes on a server managed by reciever.com using POP3 or IMAP or similar."}
 
 ## POP, briefly {visibility="hidden"}
 
@@ -141,6 +144,10 @@
 
 # anti-spam
 
+### layers of forwarding
+
+![](/smtp/texfig/smtp-relay.figure.svg){fig-alt="mail from mail user agent for user@sender.com goes to mail submission agent via SMTP. The mail submission agent uses SMTP to send to an incoming MTA at receiver.com, looking up that incoming MTA via an MX record. That MTA looks SPF and DKIM information via DNS and consults antispam databases. It forwards using SMTP based on the RCPT address to either a ticketing system, mailing list system, and/or user mail system. The user mail system communicates messages to a mail user agent for user@receiver.com via POP3 or IMAP or similar."}
+
 ## SPF, DKIM, blacklists ... {visibility="hidden"}
 
 {{< include /smtp/_spf_dkim.qmd >}}
@@ -151,6 +158,7 @@
    *  typical idea: mail messages should be encrypted if needed
    *  (but hard to encrypt header information usefully....)
 *  "opportunistic"
-   *  after finding mail server, connect with TLS
+   *  look for "STARTTLS" command being supported
+      *  EHLO response will indicate if supported
    *  hope not interfered with by attacker
 *  MTA-STS: mechanism to indicate (via DNS + HTTPS) to use TLS with SMTP

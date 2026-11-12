@@ -35,7 +35,8 @@
 ### DATA
 
 *  `DATA`
+   *  usual reply: `354 Start mail input; end wwth <CRLF>.<CRLF>`
 *  then send mail message
    *  message "headers" and "body" (more later)
 *  followed by line containing only "."
-*  usualy reply: `250 OK`
+*  then usual reply: `250 OK`

@@ -10,7 +10,7 @@
 
 ### SPF
 
-*  `foo.com IN TXT "v=spf1 a:foo.com mx:bar.com ip:1.2.3.0/24 ~ip:1.2.0.0/16 -all`
+*  `foo.com IN TXT "v=spf1 a:foo.com mx:bar.com ip:1.2.3.0/24 ~ip:1.2.0.0/16 -all"`
    *  allow from `foo.com`, bar.com's MX servers, 1.2.3.0/24
    *  "softfail" from 1.2.0.0/16
    *  "fail" all others

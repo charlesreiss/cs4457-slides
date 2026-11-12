@@ -10,7 +10,7 @@
 <hr/>
 *  `username@[machine.dns.name.example]`
 *  `username@[203.0.113.5]`
-*  destination is machine.dns.name.exmaple/203.0.113.5
+*  destination is machine.dns.name.example/203.0.113.5
 
 ### MX records {.smaller}
 

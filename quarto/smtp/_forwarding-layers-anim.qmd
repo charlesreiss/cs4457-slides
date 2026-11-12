@@ -1,0 +1,23 @@
+### layers of forwarding
+
+![](/smtp/texfig/smtp-relay.figure.svg){fig-alt="mail from mail user agent for user@sender.com goes to mail submission agent via SMTP. The mail submission agent uses SMTP to send to an incoming MTA at receiver.com, looking up that incoming MTA via an MX record. That MTA looks SPF and DKIM information via DNS and consults antispam databases. It forwards using SMTP based on the RCPT address to either a ticketing system, mailing list system, and/or user mail system. The user mail system communicates messages to a mail user agent for user@receiver.com via POP3 or IMAP or similar."}
+
+### layers of forwarding (sending MUA) 
+
+![](/smtp/texfig/smtp-relay-sendmua.figure.svg){fig-alt="diagram of mail going from user@sender.com to user@receiver.com seen earlier, with sending mail user agent hilighted. The sending mail user agent uses SMTP to contact the mail submission agent."}
+
+### layers of forwarding (MSA) 
+
+![](/smtp/texfig/smtp-relay-msa.figure.svg){fig-alt="diagram of mail going from user@sender.com to user@receiver.com seen earlier, with mail submission agent hilighted. The mail submission agent is configured in the sending mail user agent and contacted via SMTP."}
+
+### layers of forwarding (incoming MTA) 
+
+![](/smtp/texfig/smtp-relay-mtainput.figure.svg){fig-alt="diagram of mail going from user@sender.com to user@receiver.com seen earlier, with incoming MTA for sender.com highlighted. The mail submission agent that user@receiver.com used sends the message via SMTP to the incoming MTA. The incoming MTA forwards the message to one of several backend servers (a ticketing system, mailing list system, user mail system) based on its address. It also checks SPF and DKIM info and antispam databases."}
+
+### layers of forwarding (receiving mail system) 
+
+![](/smtp/texfig/smtp-relay-mailsys.figure.svg){fig-alt="diagram of mail going from user@sender.com to user@receiver.com seen earlier. The receiving mail system is highlighted. It maintains mailboxes that the receiving MUA accesses via POP3 or IMAP or similar."}
+
+### layers of forwarding (receiving MUA) 
+
+![](/smtp/texfig/smtp-relay-recvmua.figure.svg){fig-alt="diagram of mail going from user@sender.com to user@receiver.com seen earlier. The receiving MUA is highlighted. It retrieves from mailboxes on a server managed by reciever.com using POP3 or IMAP or similar."}

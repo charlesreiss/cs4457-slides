@@ -2,8 +2,9 @@
 ### multiple APs, one network 
 
 
-![](/multiaccess/cnsp-fig48.svg){}
- [Computer Networks: A Systems Approach, figure 48]{.mycredit}
+![](/multiaccess/cnsp-fig48.svg){width=1000px}
+
+[Computer Networks: A Systems Approach, figure 48]{.mycredit}
 
 ### APs as switches  {.smaller}
 

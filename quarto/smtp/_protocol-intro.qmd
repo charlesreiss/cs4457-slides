@@ -9,7 +9,7 @@
 *  server replies with status code + message
    *  similar 3-digit status codes to HTTP
 
-### example SMTP session {.smaller}
+### example SMTP session {.smaller .longcode}
 
 *  S=server, C=client
 

@@ -8,7 +8,8 @@
 * idea: have receiver tell when it's okay to transmit
 * sender$\rightarrow$receiver: request-to-send
 * receiver$\rightarrow$sender: clear-to-send
- ![](/multiaccess/texfig/rts-cts-request-to-sendclear-to-send.figure.svg)
+
+![](/multiaccess/texfig/rts-cts-request-to-sendclear-to-send.figure.svg){width=1000px}
 
 
 ### overhearing clear-to-send  {.smaller}
