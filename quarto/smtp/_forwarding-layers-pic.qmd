@@ -1,0 +1,3 @@
+### layers of forwarding
+
+![](/smtp/texfig/smtp-relay.figure.svg){fig-alt="mail from mail user agent for user@sender.com goes to mail submission agent via SMTP. The mail submission agent uses SMTP to send to an incoming MTA at receiver.com, looking up that incoming MTA via an MX record. That MTA looks SPF and DKIM information via DNS and consults antispam databases. It forwards using SMTP based on the RCPT address to either a ticketing system, mailing list system, and/or user mail system. The user mail system communicates messages to a mail user agent for user@receiver.com via POP3 or IMAP or similar."}

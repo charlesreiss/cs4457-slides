@@ -1,0 +1,22 @@
+
+### email relays
+
+*  many mail servers are relays
+   *  collect message, send on to actual destination
+*  "submission servers" --- special case of relays
+   *  mail user agent sends message to one submission server, then forgets about it
+   *  simplifies logic of mail user agents
+   *  submission server can handle retrying, etc.
+
+### layers of forwarding
+
+*  emails to <i>xyz</i>@virginia.edu would go to mailbox on...
+   *  Microsoft-hosted email servers
+   *  Google-hosted email servers (during transition)
+   *  ticketing systems (cshelpdesk@virginia.edu, ...)
+   *  mailing list systems (csugrads@virginia.edu, ...)
+   *  ...
+*  likely all hosted on different servers
+*  MX record will only have one of those...
+
+

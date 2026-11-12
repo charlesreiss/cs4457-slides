@@ -35,6 +35,10 @@
 *  sending to multiple people
 *  reading emails not from a local file
 
+{{< include /smtp/_forwarding-layers-pic.qmd >}}
+
+{{< include /smtp/_forwarding-layers.qmd >}}
+
 {{< include /smtp/_address-relay.qmd >}}
 
 ### things we'll need for "real" email
@@ -75,6 +79,8 @@
 {{< include /smtp/_message-received.qmd >}}
 
 # mail transactions, errors {visibility="hidden"}
+
+{{< include /smtp/_forwarding-layers-pic.qmd >}}  <!-- FIXME: annotated with points of failure -->
 
 ## temporary errors and retrying {visibility="hidden"}
 

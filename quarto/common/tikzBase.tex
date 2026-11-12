@@ -47,9 +47,10 @@
     my callout/.style={draw,fill=blue!20!white,rectangle callout,alias=#1-callout},
     my callout2/.style={draw,fill=blue!20!white,rectangle callout,callout absolute pointer=(#1),below right=5pt of {#1}},
 }
+\pgfdeclarelayer{deepbg}
 \pgfdeclarelayer{bg}
 \pgfdeclarelayer{fg}
-\pgfsetlayers{bg,main,fg}
+\pgfsetlayers{deepbg,bg,main,fg}
 \renewcommand*\familydefault{\sfdefault}
 \ExplSyntaxOn
 \debug_on:n{all}

@@ -18,6 +18,26 @@ def write_qmds(base: Path, directory: Path, with_backup: bool = False):
         talk += '\n{{< include /' + base_path + '/_talk-backup.qmd >}}'
     (directory / 'talk.qmd').write_text(talk)
 
+def write_texfig(base: Path, path: Path):
+    inner_path = path.with_name(path.name + '.inner.tex')
+    figure_path = path.with_name(path.name + '.figure.tex')
+    figure_template = r"""
+\documentclass[tikz]{standalone}
+\input{common/tikzBase}
+\begin{document}
+\setSlide{1}
+\input{INNER_FILE}
+\end{document}
+"""
+    figure_template = figure_template.replace("INNER_FILE", str(inner_path.relative_to(base)))
+    inner_template = r"""
+\begin{tikzpicture}
+\end{tikzpicture}
+"""
+    figure_path.write_text(figure_template)
+    inner_path.write_text(inner_template)
+
+
 def main():
     parser = ArgumentParser()
     parser.add_argument('target', type=Path)
@@ -28,7 +48,10 @@ def main():
     args = parser.parse_args()
     if args.backup == None:
         args.backup = (re.match(r'^\d+$', args.target.name) is None)
-    write_qmds(base=args.base, directory=args.target, with_backup=args.backup)
+    if '/texfig' in str(args.target.relative_to(args.base)):
+        write_texfig(base=args.base, path=args.target)
+    else:
+        write_qmds(base=args.base, directory=args.target, with_backup=args.backup)
 
 if __name__ == '__main__':
     main()
