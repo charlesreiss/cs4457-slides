@@ -1,0 +1,148 @@
+### last time {.smaller}
+
+*  HTTP authentication
+*  HTTP is stateless
+*  cookies and tracking with cookies
+*  "supercookies"
+*  HTTP forward and reverse proxies
+   *  forward: URL as path
+   *  reverse: lookup "real" backend server + translate
+*  implementing single-sign-on
+*  REST
+
+### assignment Q+A
+
+###
+
+###
+
+### things we'll need for "real" email
+
+*  _find out right machine to get email to_
+   *  issue: domain name in address != right machine
+*  handling errors
+   *  retry sending later
+   *  telling user if sending later failed
+   *  issue: needs to be done by program running after mail "sent"
+*  sending to multiple people
+*  reading emails not from a local file
+
+{{< include /smtp/_forwarding-layers-pic.qmd >}}
+
+{{< include /smtp/_forwarding-layers.qmd >}}
+
+{{< include /smtp/_address-relay.qmd >}}
+
+### things we'll need for "real" email
+
+*  _find out right machine to get email to_
+   *  issue: domain name in address != right machine
+*  _handling errors_
+   *  retry sending later
+   *  telling user if sending later failed
+   *  issue: needs to be done by program running after mail "sent"
+*  _sending to multiple people_
+*  reading emails not from a local file
+
+# SMTP protocol {visibility="hidden"}
+
+{{< include /smtp/_protocol-intro.qmd >}}
+
+## connection setup {visibility="hidden"}
+
+{{< include /smtp/_connection-setup.qmd >}}
+
+## mail transactions, normal case {visibility="hidden"}
+
+{{< include /smtp/_transaction-basic.qmd >}}
+
+# mail message format, simple case
+
+## basic format {visibility="hidden"}
+
+{{< include /smtp/_message-basic.qmd >}}
+
+## originator/destination {visibility="hidden"}
+
+{{< include /smtp/_message-tofrom.qmd >}}
+
+## Received/Return-Path {visibility="hidden"}
+
+{{< include /smtp/_message-received.qmd >}}
+
+# mail transactions, errors {visibility="hidden"}
+
+{{< include /smtp/_forwarding-layers-pic.qmd >}}  <!-- FIXME: annotated with points of failure -->
+
+## temporary errors and retrying {visibility="hidden"}
+
+{{< include /smtp/_error-exercise.qmd >}}
+
+{{< include /smtp/_errors.qmd >}}
+
+### things we'll need for "real" email {visibility="hidden"}
+
+*  find out right machine to get email to
+   *  issue: domain name in address != right machine
+*  handling errors
+   *  _retry sending later_
+   *  telling user if sending later failed
+   *  issue: needs to be done by program running after mail "sent"
+*  sending to multiple people
+*  reading emails not from a local file
+
+## undeliverable messages {visibility="hidden"}
+
+### things we'll need for "real" email {visiblity="hidden"}
+
+*  find out right machine to get email to
+   *  issue: domain name in address != right machine
+*  handling errors
+   *  retry sending later
+   *  _telling user if sending later failed_
+   *  issue: needs to be done by program running after mail "sent"
+*  sending to multiple people
+*  reading emails not from a local file
+
+# POP3/IMAP {visibility="hidden"}
+
+### things we'll need for "real" email
+
+*  find out right machine to get email to
+   *  issue: domain name in address != right machine
+*  handling errors
+   *  retry sending later
+   *  telling user if sending later failed
+   *  issue: needs to be done by program running after mail "sent"
+*  sending to multiple people
+*  _reading emails not from a local file_
+
+## POP, briefly {visibility="hidden"}
+
+{{< include /smtp/_pop3.qmd >}}
+
+## IMAP, briefly {visibility="hidden"}
+
+{{< include /smtp/_imap.qmd >}}
+
+## misc email format
+
+### threads (references, in-reply-to)
+
+{{< include /smtp/_threads.qmd >}}
+
+# anti-spam
+
+## SPF, DKIM, blacklists ... {visibility="hidden"}
+
+{{< include /smtp/_spf_dkim.qmd >}}
+
+### SMTP and TLS
+
+*  SMTP historically not encrypted
+   *  typical idea: mail messages should be encrypted if needed
+   *  (but hard to encrypt header information usefully....)
+*  "opportunistic"
+   *  after finding mail server, connect with TLS
+   *  hope not interfered with by attacker
+*  MTA-STS: mechanism to indicate (via DNS + HTTPS) to use TLS with SMTP
