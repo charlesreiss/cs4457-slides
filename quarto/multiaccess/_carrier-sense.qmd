@@ -78,5 +78,4 @@
  
 <hr class="vspace" />
 * do carrier sense before transmitting always
-* different purpose for slots than slotted Aloha
 
