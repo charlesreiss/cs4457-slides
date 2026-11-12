@@ -79,7 +79,7 @@ Cc: Some User <user@company.example>
    *  many (usually IP-based) blocklists example: spamhaus
    *  probably means you can't run a mail server on a "home" ISP
 
-### DNS blocklists
+### DNS blocklists {.smaller}
 
 *  looking up 127.0.0.2 (test address) on spamhaus.org (a blocklist provider):
 
@@ -93,7 +93,8 @@ dig 2.0.0.127.zen.spamhaus.org
 ```
 
 <hr/>
-<table>
+from spamhaus.org:
+<table style="font-size: 80%">
 <thead>
 <tr>
 <th><strong>Return Code</strong></th>

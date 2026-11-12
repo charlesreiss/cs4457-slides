@@ -13,6 +13,11 @@
 *  content negotiation
    *  accept* headers; advice against
 
+###
+
+### homework Q+A
+
+###
 
 # HTTP authentication {visibility="hidden"}
 

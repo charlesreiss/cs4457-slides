@@ -141,14 +141,16 @@
 
 # anti-spam
 
-## SPF, DKIM, ... {visibility="hidden"}
+## SPF, DKIM, blacklists ... {visibility="hidden"}
 
 {{< include /smtp/_spf_dkim.qmd >}}
 
-## blacklists
+### SMTP and TLS
 
-## worse error reporting
-
-## deliberate temporary errors
-
-# SMTP and TLS
+*  SMTP historically not encrypted
+   *  typical idea: mail messages should be encrypted if needed
+   *  (but hard to encrypt header information usefully....)
+*  "opportunistic"
+   *  after finding mail server, connect with TLS
+   *  hope not interfered with by attacker
+*  MTA-STS: mechanism to indicate (via DNS + HTTPS) to use TLS with SMTP
