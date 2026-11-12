@@ -11,6 +11,10 @@
 
 {{< include /multiaccess/_blind-collisions.qmd >}}
 
+# slots to improve performance {visibility="hidden"}
+
+{{< include /multiaccess/_slots.qmd >}}
+
 # carrier-sense multiple access {visibility="hidden"}
 
 {{< include /multiaccess/_carrier-sense.qmd >}}

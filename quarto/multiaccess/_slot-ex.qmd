@@ -1,0 +1,19 @@
+
+
+### exercise: slot timing  {.smaller}
+
+
+* assume radio propogation at $2.9 \times 10^8$ m/s
+* transmitting 1500-byte frames (including all headers, etc.) at 100 Mbit/sec
+* over 5 km x 5 km area 
+<hr class="vspace" />
+* if we want slots that hold whole packet…
+* how long should slots need to be?
+
+### exercise solution 
+
+
+* 1500-byte = 12000-bit @ 100Mbit/sec = 120 $\mu$s
+* 5 km x 5 km $\rightarrow$ $\sim$ 7 km max distance
+* 7000 m @ $2.9  \times 10^8$ m/s = 24 $\mu$s
+* probably would need slot time around 140-150 $\mu$s?

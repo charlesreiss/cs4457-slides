@@ -1,2 +1,4 @@
 
 {{< include /multiaccess/_collision-detect-delay.qmd >}}
+
+{{< include /multiaccess/_slot-ex.qmd >}}

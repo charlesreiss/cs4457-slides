@@ -1,0 +1,17 @@
+
+### ‘slots’  {.smaller}
+
+
+
+* if packets take a fixed amount of time…
+* want to wait whole number of packet times 
+   * immediately after, one after, two after, three after
+* avoids requiring almost 2 packets worth of ‘quiet’ time
+   * collisions are always transmitting at "same" time
+   * no "I started transmitting while someone else was transmitting"
+* synchronize by observing end of last transmission, or central clock
+* slotted Aloha: 36% utilization (twice "naive" version)
+
+![](/multiaccess/texfig/carrier-sense-slots.figure.svg){width=1000px}
+
+
