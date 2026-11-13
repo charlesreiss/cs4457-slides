@@ -1,0 +1,10 @@
+### last time
+
+*  multiple layers of mail relays
+   *  submission servers
+*  SMTP transactions (MAIL FROM, RCPT TO)
+*  From != MAIL FROM, To != RCPT TO
+*  retrying, bounce messages
+*  SPF, DKIM -- verifying senders
+
+{{< include /multiaccess/_talk-inner.qmd >}}
