@@ -1,81 +1,69 @@
 
-### carrier sense  {.smaller}
-
+### carrier sense
 
 * channel can be ‘busy’ or not
 * radio/light: 
-
    * have some sort of signal detectable on frequency
  
 <hr class="vspace" />
 * ‘‘carrier sense’’
 * way to detect whether channel busy
 
-
-### using carrier sense  {.smaller}
-
+### using carrier sense 
 
 * simple idea: don't transmit if channel already busy 
 <hr class="vspace" />
 * problem: then when do you transmit?
 * some options: 
-
    * never, lose the packet
    * immediately when it stops being busy
    * sometime after it stops being busy
 
+### "sometime after"
 
-### slots and variable-length packets  {.smaller}
+*  suppose 2 nodes want to transmit, detect carrier
+*  both immediately after = gaurenteed to collide
+<hr class="vspace"/>
+*  want both to choose different times...
+   *  and second to detect first is already transmitting
+*  requires that they're spaced out far enough
+   *  second collision if closer than "time to detect transmission"
 
+### slots with carrier-sense
 
-* with variable-length packets + carrier-sense, slots still useful
-* … but don't expect packets to occupy one slot 
-<hr class="vspace" />
-* idea: divide time up into slots
-* slot time $\sim$ amount of time needed to detect transmission 
-* don't transmit if detected non-ending transmission in previous slot
+*  idea: divide time up into slots
+*  slot time $\sim$ amount of time needed to detect transmission 
+   *  collision only if choosing exact same slot
+   *  lower chance of collision than if choosing random time
+*  don't transmit if detected non-ending transmission in previous slot
 
-### exercise: variable length slot advantage  {.smaller}
-
+### exercise: slots with carrier-sense
 
 * suppose we transmitting a 1000 $\mu$s packets
 * use 10 $\mu$s slots 
-
    * and can reliably detect if a slot was occupied
-
 * transmit algorithm: 
-
    * wait for network to be quiet for 1 slot
    * transmit in rand(0, $2^\text{attempts}$) slots
-
 * two transmitters after previous packet --- expected time for next packet?
 
-
-### 802.11b typical slots  {.smaller}
-
+### 802.11b typical slots
 
 * $20 \mu\text{s}$ slots
 * $50 \mu\text{s}$ interframe spacing (IFS) 
-
    * includes time to receive ACK of packet, switch from receive to xmit
- 
 <hr class="vspace" />
 * transmit first time after IFS (if idle)
 * transmit second time after IFS + rand($0$, $2^5$) slots 
-
    * plus time spent by other seen transmissions
-
 * third time after rand($0$, $2^6$) slots, etc.
 
 
-### 802.11b packet lengths  {.smaller}
-
+### 802.11b packet lengths
 
 * variable bit rate: max = 11Mbit
 * approx 300--12000 bit frames 
-
    * = 27 to 1090 microseconds
- 
 <hr class="vspace" />
 * do carrier sense before transmitting always
 

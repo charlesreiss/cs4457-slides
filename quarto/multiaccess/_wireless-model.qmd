@@ -60,7 +60,7 @@
 * $B$ = bandwidth = 40MHz maximum for 802.11n in the 2.4Ghz band
 * $S$, $N$ = power per bandwidth of signal, noise (non-log scale)
 * previous computation $\frac{S}{N} = 10000$ for 10 metre distance
-* $\rightarrow 40MHz\log_2\left(1 + \frac{10000}{1}\right) = \log_2(10001)\text{Mbit/s} \approx 531 \text{Mbit/sec}$
+* $\rightarrow 40\text{MHz}\log_2\left(1 + \frac{10000}{1}\right) = \log_2(10001)\text{Mbit/s} \approx 531 \text{Mbit/sec}$
 
 
 ### signal to noise ratio and bitrate 
@@ -92,7 +92,7 @@
 
 ### receiving multiple nodes  {.smaller}
 
-![](/multiaccess/texfig/wireless-model-receiving-multiple-nodes.figure.svg)
+![](/multiaccess/texfig/wireless-model-receiving-multiple-nodes.figure.svg){fig-alt="A is close to D; B is far from D. Both A and B are transmitting to D. B's signal is much weaker at D because it degrades in strength from where it was transmitted."}
  
 
 * A's signal much much stronger at D
@@ -100,32 +100,30 @@
 * because B relatively too weak to interfere
 
 
-### collision (non-)detection 
+### collision (non-)detection  (1)
 
 
+![](/multiaccess/texfig/wireless-model-collision-non-detection.figure-1.svg){fig-alt="A and B are equidistant from D. Both are transmitting to B at the same time, resulting the in the same strength (including loss from distance). As a result D receives junk."}
 
-::: {.r-stack .my-full}
-![](/multiaccess/texfig/wireless-model-collision-non-detection.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+### collision (non-)detection  (2)
 
-![](/multiaccess/texfig/wireless-model-collision-non-detection.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/multiaccess/texfig/wireless-model-collision-non-detection.figure-2.svg){fig-alt="A and B are equidistant from D and far from each other. At B, B's transmission is much stronger than A's (which has faded a lot with distance), so it cannot detect A's collision itself."}
 
-
-:::
 
 
 ### carrier-sense 
 
-![](/multiaccess/texfig/wireless-model-carrier-sense.figure.svg)
+![](/multiaccess/texfig/wireless-model-carrier-sense.figure.svg){fig-alt="As before A and B are equidistance from D are far from each other. They are, however, close enough that if A starts transmitting first, B can (barely) detect A's distant transmission and avoid starting a competing transmission."}
 
 
 ### carrier-not-sensing 
 
-![](/multiaccess/texfig/wireless-model-carrier-not-sensing.figure.svg)
+![](/multiaccess/texfig/wireless-model-carrier-not-sensing.figure.svg){fig-alt="A and B are both within range of D, but A and B are out of range of each other. Now, when A transmits first, B cannot detect it because A's signal is too weak at B."}
 
 
 ### ‘hidden node’ problem 
 
-![](/multiaccess/texfig/wireless-model-hidden-node-problem.figure.svg)
+![](/multiaccess/texfig/wireless-model-hidden-node-problem.figure.svg){fig-alt="A and B are equidistant from and in range of D, but out of range of each other."}
  
 
 * B is a ‘hidden node’ for A and vice-versa

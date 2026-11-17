@@ -2,31 +2,25 @@
 ### running example  {.smaller}
 
 
-* based on Abramson, ‘‘The Aloha System---Another alternative for computer comunications’’ (1970) 
+* [based on Abramson, ‘‘The Aloha System---Another alternative for computer comunications’’ (1970)]{.my-small}
 <hr class="vspace" />
 * suppose we have shared radio with nodes A1, A2, …, A$n$ and B 
 <hr class="vspace" />
 * A1, A2, … A$n$ are all trying to transmit to B
 * takes 1 ms to send message
 * and want to collectively send $k$ messages per second 
-
    * randomly spaced (exponential distribution)
 
 
-
-### some probability  {.smaller}
-
+### some probability
 
 * exponential distribution with mean $\lambda$ 
-
    * our model for when packets sent
-   * ‘‘memoryless’’ distribution
+   * "memoryless" distribution
    * knowing when last packet sent tells you nothing about next
    * (yes, not realistic)
- 
 <hr class="vspace" />
 * probability events occur $< K$ time units apart <br> $1-e^{-\lambda K}$
-
 
 ### quiet time to avoid collisions  {.smaller}
 
@@ -71,21 +65,17 @@
 
 ### retransmissions (plot) 
 
-![](/multiaccess/texfig/blind-collisions-retransmissions-plot.figure.svg)
+![](/multiaccess/texfig/blind-collisions-retransmissions-plot.figure.svg){fig-alt="Plot of packet generation rate (k) versus rate with retransmissions (R) from formula on previous page. It forms a half-parabola from the origin to k≈186,R≈500."}
 
 
-### thinking about result  {.smaller}
+### thinking about result
 
 
-* sending 500 1ms packet or retransmission/second 
-
+* sending 500 one ms (packet or retransmission)/second 
    * using about half the capacity!
-
-* representing $\sim$ 186 1 ms non-retranmissions/second 
-
+* representing $\sim$ 186 one ms non-retranmissions/second 
    * $\frac{1}{2e} = 0.186\ldots$
-   * using about 1/6th the capacity
- 
+   * getting about 1/6th the capacity
 <hr class="vspace" />
 * results hold generally
 * seems pretty bad for shared channel efficiency!

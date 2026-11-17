@@ -1,5 +1,5 @@
 
-### multiaccess media  {.smaller}
+### multiaccess media
 
 
 * shared air for radio/light signals
@@ -13,27 +13,22 @@
 
 
 
-### shared wires  {.smaller}
-
+### shared wires
 
 * used to be how Ethernet worked 
-
    * before Ethernet switches were ubiquitous
 
 * how cable Internet works 
-
    * shared line to many customers in area
    * need to share
 
 * usually how fiber-to-the-home works 
-
    * ‘‘passive optical network’’
    * connect multiple fibers optically
 
 
 
-### multiple channels  {.smaller}
-
+### multiple channels
 
 * can have multiple channels over single medium
 * typically: radio or electrical signal or light frequencies
