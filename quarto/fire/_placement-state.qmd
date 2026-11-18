@@ -1,0 +1,30 @@
+
+### packet filters = firewalls 
+
+
+* typical name for packet filter: ‘‘firewall’’
+* especially filtering focused on security
+
+
+### firewall design decisions  {.smaller}
+
+
+* where to filter? 
+
+   * typically: [at ‘‘edges’’ of network]{.fragment fragment-index=2 .custom .myem-only}
+   * in router, or separate box
+   * can also do elsewhere
+
+* how much to track when filtering? 
+
+   * ‘‘stateless’’ or ‘‘stateful’’
+
+
+
+### againframe(ffDesign)
+
+### the corporate firewall 
+
+
+![](/fire/sysapp-fig214.svg){}
+

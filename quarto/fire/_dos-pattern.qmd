@@ -1,0 +1,19 @@
+
+### denial-of-service  {.smaller}
+
+
+* denial of service attack: 
+
+   * overload network with too much traffic
+
+* more effective when receiver does more work than sender 
+
+   * reason SYN floods a common technique
+ 
+<hr class="vspace" />
+* also subject to ‘‘amplification’’ 
+
+   * forging source address to make short (e.g. DNS) request
+   * … that gets long response send to victim
+
+

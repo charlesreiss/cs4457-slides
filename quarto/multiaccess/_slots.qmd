@@ -15,3 +15,10 @@
 ![](/multiaccess/texfig/carrier-sense-slots.figure.svg){width=1000px}
 
 
+### slot length?
+
+*  diagram as if slots exactly = packet length
+*  problem: not every receives packets at same time
+   *  radio signal takes time to propagate
+*  slots need to have "extra" time to account for this
+

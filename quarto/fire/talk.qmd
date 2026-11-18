@@ -1,0 +1,6 @@
+---
+title: "fire"
+
+---
+
+{{< include ../fire/_talk-inner.qmd >}}

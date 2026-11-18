@@ -1,0 +1,317 @@
+
+### NAT idea 
+
+![](/fire/texfig/nat-nat-idea.figure.svg)
+
+
+### network address translation (NAT) (1)  {.smaller}
+
+
+
+* internal network uses private IPv4 addresses
+* need to translate to (fewer) public IPv4 addresses
+* add ‘internal IP+port’ to connection tracking state
+* use that info to rewrite packets
+ <code></code> <table>
+<tr><td>proto</td><td>remote IP + port</td><td>public IP  + port</td><td>internal IP + port</td></tr>
+<tr><td>TCP</td><td>128.143.67.8:443</td><td>198.51.100.17:43232</td><td>192.168.1.54:59549</td></tr>
+<tr><td>TCP</td><td>128.143.67.8:443</td><td>198.51.100.17:59948</td><td>192.168.1.13:59549</td></tr>
+<tr><td>UDP</td><td>216.239.32.10:53</td><td>198.51.100.17:39554</td><td>192.168.1.2:31923</td></tr>
+<tr><td></td></tr>
+</table>
+
+
+### NAT illusion  {.smaller}
+
+
+* NAT illusion:
+* private IP address communicating directly with public IP 
+<hr class="vspace" />
+* inside network, talking to outside: 
+
+   * use private local address
+   * use public remote address
+   * never see router's address
+
+* outside network, talking to inside 
+
+   * use public local address
+   * use router's public address
+
+
+
+### network address translation (NAT) (2)  {.smaller}
+
+
+* distribute private IPv4 addresses from on internal network 
+
+   * most common use case: home routers for IPv4
+   * also used by many companies, ISPs, etc.
+
+* can support tons of connections with one IPv4 address 
+
+   * recall: different (remote IP+port, local port) = diff connnection
+
+* can use multiple public IPs if risk of running out of port numbers 
+
+   * likely common in big NAT installations
+
+
+
+### endpoint-independent mapping  {.smaller}
+
+
+
+* recall: UDP supports receiving from multiple places with on socket
+* so maybe our table entry should be:
+ <table>
+<tr><td>proto</td><td>remote IP + port</td><td>public IP  + port</td><td>internal IP + port</td></tr>
+<tr><td>UDP</td><td><em>(any)</em></td><td>198.51.100.17:39554</td><td>192.168.1.2:31923</td></tr>
+<tr><td></td></tr>
+</table>
+ 
+
+* also might make sense for TCP 
+
+   * some applications may deliberate reuse source port
+
+* most common NAT implementation, but limits number of hosts that can be supported 
+<hr class="vspace" />
+* (can also achieve this effect by choose public IP+port consistently) 
+
+   * example: hash of private IP + port
+
+
+
+### mapping versus filtering  {.smaller}
+
+
+
+* packet filtering can be separate from translation
+ NAT table: <br>
+<table>
+<thead>
+<tr><th>proto</th><th>remote IP + port</th><th>public IP  + port</th><th>internal IP + port</th></tr>
+</thead>
+<tbody>
+<tr><td>UDP</td><td><em>(any)</em></td><td>198.51.100.17:39554</td><td>192.168.1.2:31923</td></tr>
+</tbody>
+</table>
+ <br> connection table for filtering:<br>
+<table>
+<thead>
+<tr><th>proto</th><th>remote IP + port</th><th>public IP  + port</th><th>internal IP + port</th></tr>
+</thead>
+<tbody>
+<tr><td>UDP</td><td>203.0.113.34:4444</td><td>198.51.100.17:39554</td><td>192.168.1.2:31923</td></tr>
+<tr><td>UDP</td><td>192.0.2.99:8999</td><td>198.51.100.17:39554</td><td>192.168.1.2:31923</td></tr>
+</tbody>
+</table>
+
+
+### running servers inside NAT (1)  {.smaller}
+
+
+
+* so far: can't accept connections on the private network 
+<hr class="vspace" />
+* simple solution: sysadmin configures port forwarding
+* basically static connection table entries:
+<table>
+<thead>
+<tr><th>proto</th><th>remote IP + port</th><th>public IP  + port</th><th>internal IP + port</th></tr>
+</thead>
+<tbody>
+<tr><td>TCP</td><td>(any)</td><td>198.51.100.17:443</td><td>192.168.1.100:443</td></tr>
+<tr><td>TCP</td><td>(any)</td><td>198.51.100.17:22</td><td>192.168.1.100:22</td></tr>
+</tbody>
+</table>
+
+
+### running servers inside NAT (2)  {.smaller}
+
+
+* often want to accept connections not configured by sysadmin
+* example: direct video call between two users 
+
+   * would be better to send directly
+ 
+<hr class="vspace" />
+* some classes of solution: 
+
+   * ask router to add table entry
+   * coordinate with other end to setup connection
+   * go through relay
+
+* extra issues: 
+
+   * two hosts behind same NAT? nested NATs?
+
+### running servers inside NAT (2)  {.smaller}
+
+
+* often want to accept connections not configured by sysadmin
+* example: direct video call between two users 
+
+   * would be better to send directly
+ 
+<hr class="vspace" />
+* some classes of solution: 
+
+   * _ask router to add table entry_
+   * coordinate with other end to setup connection
+   * go through relay
+
+* extra issues: 
+
+   * two hosts behind same NAT? nested NATs?
+
+
+### router protocols  {.smaller}
+
+
+* several (related) protocols for router-helped NAT traversal 
+
+   * Port Control Protocol, NAT Port Mapping Protocol, UPnP Internet Gateway Protocol
+
+* discovered via UDP multicast and/or DHCP
+* all provide: 
+
+   * way of learning next external IP
+   * way to requesting externally accessible port
+
+* typical have lease times for external ports 
+
+   * host is expected to renew periodically
+
+
+
+### running servers inside NAT (2)  {.smaller}
+
+
+* often want to accept connections not configured by sysadmin
+* example: direct video call between two users 
+
+   * would be better to send directly
+ 
+<hr class="vspace" />
+* some classes of solution: 
+
+   * ask router to add table entry
+   * _coordinate with other end to setup connection_
+   * go through relay
+
+* extra issues: 
+
+   * two hosts behind same NAT? nested NATs?
+
+### using learned mappings  {.smaller}
+
+
+* <em>if endpoint-independent NAT</em>:
+* choose local (private) IP address + port
+* contact external server to learn corresponding public IP address + port 
+
+   * protocol for this: STUN (RFC 5389)
+
+* communicate that IP address + port to other end 
+
+   * example: via video call setup server
+
+* both connect to other IP address + port
+
+
+### complications (1)  {.smaller}
+
+
+* potential issue: firewall rule might block unsolicited packets 
+
+   * might need entry in connection table to get packet not dropped
+
+* for UDP: both ends send packet first to setup firewall rule
+* for TCP: simulatenous connection attempts may work 
+
+   * TCP state machine supports ‘simulatenous open’
+   * probably one SYN needs to be resent
+
+
+
+### complications (2)  {.smaller}
+
+
+* potential issue: ‘‘clever’’ NATs corrupt addresses 
+<hr class="vspace" />
+* one bad NAT idea: automatically change private IP + port to public IP + port in packet contents
+* … just look for matching bytes and substitute them! (don't worry about understanding the protocol)
+* shouldn't do this: probably corrupt downloads/break things 
+
+   * some NATs did/do it anyways
+ 
+<hr class="vspace" />
+* STUN workaround: ‘obfuscate’ address+port with XOR
+
+
+### running servers inside NAT (2)  {.smaller}
+
+
+* often want to accept connections not configured by sysadmin
+* example: direct video call between two users 
+
+   * would be better to send directly
+ 
+<hr class="vspace" />
+* some classes of solution: 
+
+   * ask router to add table entry
+   * coordinate with other end to setup connection
+   * _go through relay_
+
+* extra issues: 
+
+   * two hosts behind same NAT? nested NATs?
+
+### external relays  {.smaller}
+
+
+* RFC 8656: Traversal Using Relays around NAT (TURN)
+* support for setting up relays dynamically 
+<hr class="vspace" />
+* STUN + TURN often used with WebRTC
+* WebRTC = web browser video/audio-conference support
+* video conferencing provider might run STUN/TURN servers 
+
+   * info passed to WebRTC-based webapp
+
+
+
+### exercise: nested NATs  {.smaller}
+
+
+* how do these solutions deal with nested network address translation? 
+
+   * when, if ever, will these solutions break
+ 
+<hr class="vspace" />
+* 1. A and B ask NAT for external port
+* 2. A and B learn external IP+port and use simulatenous UDP connection
+* 3. A and B use external relay
+
+
+### aside: address reuse in NAT  {.smaller}
+
+
+* with nested network address translation might have…
+* home network (10/8) $\leftrightarrow$ ISP's NAT (10/8) $\leftrightarrow$ internet (‘real’) 
+<hr class="vspace" />
+* conceptually nothing prevents this from working 
+
+   * NAT box translates 10.x.y.z addresses to different 10.a.b.c address
+   * routing with 10.w.x.y ‘gateway’ also specifies interface
+   * (yes, can't contact other IPs in ISP's 10/8 network easily from home network, but probably don't care)
+
+* … but confuses a lot of implementations
+* reason for special CGNAT IP space 100.64/10 
+
+   * supposed to only be used by devices that can handling nesting like this
+
+

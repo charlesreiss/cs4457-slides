@@ -1,0 +1,73 @@
+
+### fancier firewalls?  {.smaller}
+
+
+* some additional actions we might like from firewalls: 
+<hr class="vspace" />
+* more options for actions 
+
+   * log interesting packets for later
+   * send alert to sysadmin about weird activity
+   * trigger block of host sending traffic
+   * …
+
+* fancier rules 
+
+   * pattern matching on TCP stream
+   * pattern matching on HTTP URIs
+   * pattern matching on app-layer stuff
+   * heuristics, machine-learning-based rules
+   * …
+
+
+
+### IDS / IPS  {.smaller}
+
+
+* IDS = intrusion detection system 
+
+   * usually ‘passive’ monitoring
+   * logging lots of stuff for analysis later
+   * sometimes ‘alerting’ sysadmin/security team
+
+* IPS = intrusion prevention system 
+
+   * IDS + acting on alerts automatically
+
+
+
+### example Snort rule [reformatted]  {.smaller}
+
+
+```
+alert tcp $HOME_NET any -> $EXTERNAL_NET $HTTP_PORTS (
+msg:"MALWARE-CNC Win.Trojan.Rovnix variant outbound connection";
+flow:to_server, established; http_method; content:"POST";
+http_uri; content:"/vbulletin/post.php?qu=",fast_pattern,nocase;
+http_header; content:!"User-Agent:"; content:!"Accept";
+metadata:impact_flag red,ruleset community;
+service:http;
+reference:url,www.virustotal.com/en/file/a184775757cf30f9593977ee0344cd6c54deb4b14a012a7af8e3a2cdbb85a749/analysis/;
+classtype:trojan-activity;
+sid:34868;
+rev:2;
+)
+
+```
+
+
+### Zeek  {.smaller}
+
+
+* Zeek --- old (c. 1996) open source IDS or ‘Network Security Monitor’
+* different focus than Snort (though supports similar things) 
+<hr class="vspace" />
+* main idea (in default config): produces log files for later analysis
+* examples: 
+
+   * list of all seen servers and software versions
+   * list of all SSH connections
+   * copies of downloaded files
+   * list of all HTTP URIs
+
+

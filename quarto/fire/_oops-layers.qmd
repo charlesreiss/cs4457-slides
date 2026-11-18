@@ -1,0 +1,75 @@
+
+### layering violation  {.smaller}
+
+
+* previously router only handled IP (network layer)
+* but looking at UDP/TCP fields 
+<hr class="vspace" />
+* router typically doesn't do defragmentation
+* might interpret TCP/UDP fields different than end-host
+
+
+### fragmented SYN  {.smaller}
+
+
+
+* `tcp flags & (fin|syn|rst|ack) == syn drop`
+ 
+![](/fire/tcp-syn-frag){}
+ 
+
+* tcp flags are not first fragment
+* need to reassemble to accurately filter
+* … or maybe filter out very short fragments
+
+
+### ambiguous fragmentation  {.smaller}
+
+
+![](/fire/tcp-syn-ambig-frag){}
+ 
+
+* can have two different versions of a fragment
+* using different TTLs to choose which one makes it 
+<hr class="vspace" />
+* one idea: defragment to choose which version  
+
+   * and drop unknown fragments
+
+
+
+### other interpretation issues  {.smaller}
+
+
+* wrote: `tcp flags & (fin|syn|rst|ack) == syn drop`
+* versus:`tcp flags == syn drop`
+* ‘‘mishandles’’: 
+
+   * SYN | ECE ?
+   * SYN | URG
+   * SYN | first reserved flag bit?
+   * …
+
+* some of these combinations not defined by TCP standard 
+
+   * don't really know if they open connection
+   * don't really know if they might be used for other purpose
+
+* probably related to why ECN often filtered
+
+
+### higher-level filtering?  {.smaller}
+
+
+* let's say we want to disallow
+* `GET /malicious HTTP/1.1`, etc. 
+<hr class="vspace" />
+* one idea: check for `GET /malicious`
+* huge number of issues: 
+
+   * what if split across multiple TCP packets?
+   * what if uploading file containing `GET /malicious`?
+   * what about `GET   /malicious`, `GET /%6dalicious`?
+   * …
+
+

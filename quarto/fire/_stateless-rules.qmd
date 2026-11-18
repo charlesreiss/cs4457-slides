@@ -1,0 +1,40 @@
+
+### firewall rules  {.smaller}
+
+
+* simple idea: look at packet's fields
+* table indicating whether to reject 
+<hr class="vspace" />
+* similar idea to routing, but…
+* table matches fields other than destination
+* table actions are ‘accept’, ‘drop’, ‘reject’, etc.
+
+
+### ‘‘stateless’’ firewall  {.smaller}
+
+
+* this design: table is set once by sysadmin
+* doesn't change based on connections, etc. 
+
+   * might change based on manual reconfiguration, etc.
+ 
+<hr class="vspace" />
+* called ‘‘stateless’’ 
+<hr class="vspace" />
+* firewall doesn't track ‘state’ based on current activity
+
+
+### exercise: what info do we need  {.smaller}
+
+
+* what fields do we need to match these 
+
+   * (and/or can we not handle without something more stateful?)
+ 
+<hr class="vspace" />
+* DNS queries from recursive DNS server and their responses
+* packets with source address that does not match network
+* packets from known malicious networks
+* connecting from outside  to TCP servers not on allowlist
+* connecting from inside using services (HTTP, etc.) not on allowlist
+

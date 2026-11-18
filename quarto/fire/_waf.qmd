@@ -1,0 +1,53 @@
+
+### web application firewalls  {.smaller}
+
+
+* reverse HTTP proxy for firewalling
+* similar rules, but on HTTP requests/responses, not packets 
+<hr class="vspace" />
+* example: Apache mod_security
+* follows: some rules from OWASP coreruleset project
+
+
+### example mod_security rule (wrapped)  {.smaller}
+
+
+```
+SecRule RESPONSE_BODY "@rx <title>r57 Shell Version [0-9.]+
+                         </title>|<title>r57 shell</title>" \
+    "id:955110,\
+    phase:4,\
+    block,\
+    capture,\
+    t:none,\
+    msg:'r57 web shell',\
+    logdata:'Matched Data: %{TX.0} found within %{MATCHED_VAR_NAME}',\
+    ...
+    severity:'CRITICAL',\
+    setvar:'tx.outbound_anomaly_score_pl1=+%{tx.critical_anomaly_score}'"
+
+```
+
+
+### example mod_security rule (wrapped)  {.smaller}
+
+
+```
+SecRule REQUEST_URI|ARGS|REQUEST_HEADERS|!REQUEST_HEADERS:Referer|FILES|XML:\
+      /* "@rx (?:(?:^|[\x5c/;])\.{2,3}[\x5c/;]|[\x5c/;]\.{2,3}(?:[\x5c/;]|$))" \
+    "id:930110,\
+    phase:2,\
+    block,\
+    capture,\
+    t:none,t:utf8toUnicode,t:urlDecodeUni,t:removeNulls,t:cmdLine,\
+    msg:'Path Traversal Attack (/../) or (/.../)',\
+    logdata:'Matched Data: %{TX.0} found within %{MATCHED_VAR_NAME}: %{MATCHED_VAR}',\
+    ....
+    ver:'OWASP_CRS/4.8.0',\
+    severity:'CRITICAL',\
+    multiMatch,\
+    setvar:'tx.inbound_anomaly_score_pl1=+%{tx.critical_anomaly_score}',\
+    setvar:'tx.lfi_score=+%{tx.critical_anomaly_score}'"
+
+```
+

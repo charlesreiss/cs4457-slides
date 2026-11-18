@@ -1,0 +1,52 @@
+
+### motivation for stateful firewall  {.smaller}
+
+
+* common policy: allow outgoing connections only 
+<hr class="vspace" />
+* prior approach: 
+
+   * drop incoming non-TCP, or TCP SYN
+
+* problems: 
+
+   * disallowing UDP-based protocols (example: DNS over UDP, HTTP/3)
+   * disallowing normal ICMP (example: ICMP ping replies)
+   * allowing unsolicited TCP packets
+
+
+
+### keeping state 
+
+
+* outgoing connections only?
+* really want to track list of <i>connections</i> 
+<hr class="vspace" />
+* most common form of <i>stateful firewall</i>
+
+
+### connection tracking?  {.smaller}
+
+
+* simple idea for TCP:
+* see SYN: add (TCP, source IP+port, dest IP+port) to table
+* see FIN, FIN+ACK, ACK: remove row from table after timeout
+* (plus other timeouts, error cases, etc.) 
+<hr class="vspace" />
+* mirrors TCP state machine
+
+
+### Linux conntrack  {.smaller}
+
+
+* in-kernel table of active ‘‘connections’’
+* includes notion of connections for UDP, ICMP, etc. 
+
+   * heuristic guesses since protocol has no connect/close operation
+
+* maintains table of (proto, source host+port, dest host+port)
+* packets marked with connection state 
+
+   * new, established, [related]{.fragment fragment-index=2 .custom .myem-only}, invalid
+
+

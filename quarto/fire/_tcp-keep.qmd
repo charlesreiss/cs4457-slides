@@ -1,0 +1,13 @@
+
+### TCP keep-alive  {.smaller}
+
+
+* for TCP: SO_KEEPALIVE socket option
+* enables periodic ‘‘keep-alive’’ messages 
+
+   * periodically send empty probe packets, resend last byte of data
+   * threshold for number of probes after which to consider connection lost
+ 
+<hr class="vspace" />
+* also many protocols have periodic ‘ping/pong’ messages
+

@@ -1,0 +1,64 @@
+
+### limits of packet matching?  {.smaller}
+
+
+* so far: showing stateless filtering 
+<hr class="vspace" />
+* can stateless filtering to do a lot…:
+* match more header fields
+* check if packet contents match pattern 
+<hr class="vspace" />
+* but some fundamental limits of design
+
+
+### filtering connections? (1)  {.smaller}
+
+
+* let's say we're writing rule on router between 3fff::/16 network and internet
+* want to rule allow…
+* TCP connections from 3fff::2 to outside machines
+* and drop all other traffic 
+<hr class="vspace" />
+* can't really do this with stateless rules
+* but can come close
+
+
+### exercise (1) 
+
+
+
+* goal: allow 3fff::2 outside TCP connections only
+* how is this going to break? 
+
+   * assume we run this only packets about to be forwarded in router
+
+ 
+```
+ip6 saddr 3fff::2 protocol tcp accept
+drop
+
+```
+
+
+### exercise  {.smaller}
+
+
+
+* goal: allow 3fff::2 outside TCP connections only
+* assume <code>ethInt</code> = inside; <code>ethExt</code> = outside
+* is this good enough? 
+
+   * assume we run this only packets about to be forwarded in router
+
+ 
+```
+iifname ethInt protocol tcp accept
+iifname ethExt protocol \
+    tcp flags & (fin|syn|rst|ack) == syn drop
+iifname ethExt ip6 daddr 3fff::2 protocol tcp accept
+iifname ethExt ip6 daddr 3fff::2 \
+    icmpv6 { destination-unreachavble, time-exceeded } accept
+drop
+
+```
+

@@ -1,0 +1,66 @@
+
+# firewall use cases {visibility="hidden"}
+
+{{< include /fire/_firewall-examples.qmd >}}
+
+# firewall: placement, state {visibility="hidden"}
+
+{{< include /fire/_placement-state.qmd >}}
+
+## zones of trust idea {visibility="hidden"}
+
+{{< include /fire/_zone-of-trust.qmd >}}
+
+# stateless firewall idea {visibility="hidden"}
+
+{{< include /fire/_stateless-rules.qmd >}}
+
+## nftables rules {visibility="hidden"}
+
+{{< include /fire/_netfilter-intro.qmd >}}
+
+## things we can't do {visibility="hidden"}
+
+{{< include /fire/_stateless-imposs.qmd >}}
+
+# oops: layers {visibility="hidden"}
+
+{{< include /fire/_oops-layers.qmd >}}
+
+## aside: WAF {visibility="hidden"}
+
+{{< include /fire/_waf.qmd >}}
+
+## WAF ambiguity {visibility="hidden"}
+
+{{< include /fire/_waf-request-smuggle.qmd >}}
+
+# stateful firewalls {visibility="hidden"}
+
+{{< include /fire/_stateful.qmd >}}
+
+{{< include /fire/_conntrack-related.qmd >}}
+
+# TCP keep-alive {visibility="hidden"}
+
+{{< include /fire/_tcp-keep.qmd >}}
+
+## state size {visibility="hidden"}
+
+{{< include /fire/_state-size.qmd >}}
+
+## aside: SYN floods {visibility="hidden"}
+
+{{< include /fire/_syn-flood.qmd >}}
+
+## aside: DoS pattern {visibility="hidden"}
+
+{{< include /fire/_dos-pattern.qmd >}}
+
+# NAT {visibility="hidden"}
+
+{{< include /fire/_nat.qmd >}}
+
+# IDS {visibility="hidden"}
+
+{{< include /fire/_ids.qmd >}}

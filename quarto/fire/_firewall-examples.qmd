@@ -1,0 +1,11 @@
+
+### why packet filtering  {.smaller}
+
+
+* some reasons to <i>filter</i> packets: 
+<hr class="vspace" />
+* remove (malicious?) packets with false source addresses
+* disallow external access to servers not on allowlist
+* block traffic from known malicious sources
+* only permit services on allowlist out of private network
+

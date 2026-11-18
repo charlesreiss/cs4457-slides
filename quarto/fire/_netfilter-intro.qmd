@@ -1,0 +1,66 @@
+
+### Linux firewall: nftables  {.smaller}
+
+
+* Linux's nftables --- one Linux kernel packet filter interface 
+
+   * command-line tools + system call API implemented in kernel
+   * will show syntax for <code>nft</code> tool
+   * also some other kernel APIs: eBPF ‘programs’, iptables
+
+* different ‘‘hooks’’ where filtering can happen, list for IP: 
+
+   * prerouting
+   * input (if received locally), forward (otherwise)
+   * output (if sent from local program)
+   * postrouting
+
+* each hook has multiple ‘‘chains’’ of ‘‘rules’’
+
+
+###   {.smaller .longcode}
+
+
+```
+# for use with 'nft' on Linux; probably not the best way to write these rules:
+table inet filter {
+    chain EXTERNAL-INPUT {
+        ip6 saddr {3fff:14::/32, 3fff:30::/32} drop
+        ip saddr 198.51.100.0/24 drop
+        ip6 daddr 3fff:14:1:15 tcp dport {80, 443} accept
+        ip6 daddr 3fff:14:1::/48 tcp dport 22 accept
+        drop
+    }
+    chain INTERNAL-INPUT {
+        ip6 saddr != {3fff:14::/32, 3fff:30::/32} drop
+        ip saddr != 198.51.100.0/24 drop
+        udp dport 137 drop
+        accept
+    }
+    chain FORWARD {
+        type filter hook input priority 0
+        iifname lo accept
+        iifname ethExt jump EXTERNAL-INPUT
+        iifname ethInt jump INTERNAL-INPUT
+        reject
+    }
+}
+
+```
+
+
+### aside: eBPF  {.smaller}
+
+
+* extended Berkeley Packet Filter
+* little assembly language 
+
+   * load, store, arithmetic, conditional jump, return
+
+* verifier makes sure there are no loops, out-of-bounds memory acceses
+* Linux: converted into actual machine code and run inside kernel
+* can be used for packet filtering, routing decisions, + other tasks 
+
+   * allows for extra flexibility without loading new drivers
+
+

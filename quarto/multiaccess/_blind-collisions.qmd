@@ -22,10 +22,27 @@
 <hr class="vspace" />
 * probability events occur $< K$ time units apart <br> $1-e^{-\lambda K}$
 
+### collisions and non-collisions
+
+::: {.r-stack .my-full}
+
+![](/multiaccess/texfig/collision-examples.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="a packet transmitted slighlty after a packet collides."}
+
+![](/multiaccess/texfig/collision-examples.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="a packet transmitted just before the end of another packet collides."}
+
+![](/multiaccess/texfig/collision-examples.figure-3.svg){.fragment .fade-in-then-out fragment-index=3  fig-alt="a packet transmitted just after the end of another packet does not collide."}
+
+![](/multiaccess/texfig/collision-examples.figure-4.svg){.fragment .fade-in-then-out fragment-index=4  fig-alt="a packet transmitted just before another packet collides."}
+
+![](/multiaccess/texfig/collision-examples.figure-5.svg){.fragment .fade-in-then-out fragment-index=5  fig-alt="a packet transmitted such that it doesn't finish before another packet starts collides."}
+
+![](/multiaccess/texfig/collision-examples.figure-6.svg){.fragment .fade-in-then-out fragment-index=6 fig-alt="but a packet transmitted so that it finishes just before another packet starts does not collide."}
+
+:::
+
 ### quiet time to avoid collisions  {.smaller}
 
-![](/multiaccess/texfig/blind-collisions-quiet-time-to-avoid-collisions.figure.svg)
- 
+![](/multiaccess/texfig/blind-collisions-quiet-time-to-avoid-collisions.figure.svg){fig-alt="for a 1-unit packet, the time period 1 unit before it starts transmitting up until it stops transmitting is marked in red. A 1-unit packet transmitted just after the beginning of the red time will overlap the beginning of the primary packet. A packet transmitted near the end of the red time will overlap the end of the primary packet."}
 
 * to avoid collision with 1 ms packet…
 * can't start packet less than 1 ms before

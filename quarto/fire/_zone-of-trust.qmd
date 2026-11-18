@@ -1,0 +1,23 @@
+
+### zones of trust  {.smaller}
+
+
+* most common kind of firewall policy, three zones:
+* internal network 
+
+   * can send most things
+   * can't receive unsolicited traffic from external network
+   * where typical laptops/desktops live
+
+* DMZ (‘demilitrized zone’) 
+
+   * not ‘protected’ from external networks
+   * access to internal network similar to being within it
+   * where externally accessible services live
+
+* external network 
+
+   * can only unsolicited to DMZ
+   * where the rest of the Internet lives
+
+

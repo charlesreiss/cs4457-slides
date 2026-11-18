@@ -1,0 +1,10 @@
+
+### state size 
+
+
+* problem with stateful firewalls:
+* how big can state table get?
+* what to do if state table is too big? 
+<hr class="vspace" />
+* no great answers
+
