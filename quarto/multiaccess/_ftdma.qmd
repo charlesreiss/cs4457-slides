@@ -1,44 +1,37 @@
 
-### wifi polling mode  {.smaller}
+### wifi polling mode  
 
 
-* wifi has rarely used ‘‘polling’’ mode 
+* wifi has long had an uncommon "polling mode"
+  *  historically rare, but something like this is big part of Wifi 6
 <hr class="vspace" />
 * access point tells everyone when to transmit/not transmit
 * periodically ‘poll’ stations for more traffic
 * can be mixed with periods allowing normal CSMA/CA 
-
    * carrier sense multiple access with collision avoidance
- 
 <hr class="vspace" />
 * exercise: pro/con
 
 
-### deliberate scheduling  {.smaller}
-
+### deliberate scheduling
 
 * so far:  
-
    * devices decide when to try to send or reply to requests
    * one channel supporting one transmitter/receiver
- 
 <hr class="vspace" />
-* alternate idea (cellular networks): divide
-* several available channels 
-
+* alternate idea (cellular networks, sometimes Wifi):<br/>divide several available channels 
    * typically different frequencies
-   * signal encoding chosen to avoid interference between close frequencies
-
+   * encodings chosen to avoid interference
 * slots within each time interval
-
 
 ###  
 
- Computer Networks: A Systems Approach, Figure 54 
 ![](/multiaccess/CNSA-Fig54){}
 
+[Computer Networks: A Systems Approach, Figure 54]{.mycredit}
 
-### central scheduler idea  {.smaller}
+
+### central scheduler idea
 
 
 * ‘base stations’ track active user devices
@@ -53,12 +46,13 @@
 
 
 * schedule of slots will also have time delays
+  * especially with cellular networks over large area
 * goal: compensate for propogation delay 
 <hr class="vspace" />
 * base station needs to track estimate of propogation delay
 
 
-### dealing with new nodes  {.smaller}
+### dealing with new nodes 
 
 
 * what about nodes without a reservation? 
@@ -68,7 +62,7 @@
 * use more wifi-like contention here
 
 
-### exercise  {.smaller}
+### exercise
 
 
 * central scheduling v carrier-sense 
@@ -78,5 +72,4 @@
    * utilizing the most of the available bandwidth
    * independently controlled access points/base stations
    * communications between two nearby nodes
-
 

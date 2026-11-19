@@ -1,0 +1,50 @@
+### last time {.smaller}
+
+*  multiaccess media
+*  collisions
+*  no carrier sense: 2 packet "quiet time" 
+*  signal strength
+   *  cubic decay in strength, measured in dB(m)
+   *  signal-to-noise + bandwidth determines bitrate
+*  hidden nodes:
+   *  interferes with you at receiver, but you can't hear them
+*  exposed nodes:
+   *  you hear them, but not interferes with you
+
+### assignment Q+A
+
+# RTS/CTS {visibility="hidden"}
+
+{{< include /multiaccess/_rts-cts.qmd >}}
+
+## RTS/CTS exercise {visibility="hidden"}
+
+{{< include /multiaccess/_rts-cts-help.qmd >}}
+
+# multipath {visibility="hidden"}
+
+{{< include /multiaccess/_multipath.qmd >}}
+
+# aside: assignment {visibility="hidden"}
+
+### assignment 
+
+# ad-hoc v base stations {visibility="hidden"}
+
+{{< include /multiaccess/_probe-base.qmd >}}
+
+## mobility {visibility="hidden"}
+
+{{< include /multiaccess/_mobility.qmd >}}
+
+## mesh networks {visibility="hidden"}
+
+{{< include /multiaccess/_mesh-network.qmd >}}
+
+# centralized planning {visibility="hidden"}
+
+{{< include /multiaccess/_ftdma.qmd >}}
+
+###
+
+{{< include /fire/_talk-inner.qmd >}}
