@@ -41,7 +41,11 @@
 
 {{< include /fire/_conntrack-related.qmd >}}
 
-# TCP keep-alive {visibility="hidden"}
+{{< include /fire/_nft-conntrack.qmd >}}
+
+# stateful timeouts {visibility="hidden"}
+
+{{< include /fire/_stateful-timeout.qmd >}}
 
 {{< include /fire/_tcp-keep.qmd >}}
 

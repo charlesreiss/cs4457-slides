@@ -1,7 +1,7 @@
 
 ### multipath interference 
 
-![](/multiaccess/texfig/multipath-multipath-interference.figure.svg)
+![](/multiaccess/texfig/multipath-multipath-interference.figure.svg){fig-alt="signals between two nodes in a room can take many paths: directly or by bouncing of the walls of the room"}
 
 
 ### simple self-interference 
@@ -9,15 +9,15 @@
 
 
 ::: {.r-stack .my-full}
-![](/multiaccess/texfig/multipath-simple-self-interference.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/multiaccess/texfig/multipath-simple-self-interference.figure-1.svg){.fragment .fade-out fragment-index=2 fig-alt="two pairs of similar received waveforms are added together. In one case, the sum of the signals is weaker, in the other the sum is stronger. THe difference comes from subtle differences in "}
 
-![](/multiaccess/texfig/multipath-simple-self-interference.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/multiaccess/texfig/multipath-simple-self-interference.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 fig-alt="the stronger signal in each added pair is the original signal and the weaker is the reflected signal. The phase of the weaker signal depends on the exact distance of the reflections."}
 
 
 :::
 
 
-### interference and wavelengths  {.smaller}
+### interference and wavelengths
 
 
 * radio wave frequency determines wavelength 
@@ -37,25 +37,23 @@
 
    * the things we turn into bits
 
-* for long paths/high symbol rate, might receive delayed signal overlaid on non-delayed
+* for long paths/high symbol rate, <br/> might receive delayed signal overlaid on non-delayed
+
+* WiFi 6 --- 1024 possible symbols (10 bits/symbol)
+  *  plus sending multiple symbols at a time (subchannels)
+  *  12.8 microseconds symbol transmission time
 
 
 ### multipath interference  {.smaller}
 
 
 * quite complicated to predict in three dimensions, variable reflectivity, …
-* varies on frequency 
-
-   * switching to close different channel may change a lot
-
+* varies on exact frequency 
 * can help and hurt signal reception
 * especially bad when ‘inter-symbol interference’ 
-
    * can be mitigated some by choice of message encoding
- 
 <hr class="vspace" />
 * contributes to irregular ‘dead zones’, etc.
-
 
 ### deliberate multipath / MIMO  {.smaller}
 
@@ -71,16 +69,17 @@
 
 ### multiple spatial streams  {.smaller}
 
-![](/multiaccess/texfig/multipath-multiple-spatial-streams.figure.svg)
+![](/multiaccess/texfig/multipath-multiple-spatial-streams.figure.svg){fig-alt="A uses transmitters A1, A2 to send signals to B's receivers B1, B2. Each receiver receives a mix of the two transmissions."}
  
 
-* signals might mix based on relative strengths, say: \begin{align*}
+* signals might mix based on relative strengths, say:
+   \begin{align*}
    B_1 &\sim& 0.9A_1 &+& 0.7A_2 \\
    B_2 &\sim& A_1 &+& 1.2A_2 
    \end{align*}
 
 
-### simplified multipath model  {.smaller}
+### simplified multipath model 
 
 \begin{align*}
 B_1 &\sim& 0.9A_1 &+& 0.7A_2 \\
@@ -92,16 +91,17 @@ B_2 &\sim& A_1 &+& 1.2A_2
 <hr class="vspace" />
 * A can send with pattern to help estimate coefficients: 
 
-   * example: send full power from $A_1$ ($(B_1,B_2)=(0.9, 1)$), then from $A_2$ ($(B_1,B_2)=(0.7, 1.2)$)
+   * example: send full power from $A_1$ ($(B_1,B_2)=(0.9, 1)$),<br/> then from $A_2$ ($(B_1,B_2)=(0.7, 1.2)$)
 
 
 
-### correlation problem  {.smaller}
+### correlation problem  
 
 
-* when two ‘spatial streams’ correlated, harder to solve for them
+* when two ‘spatial streams’ correlated, harder to solve
 * example: suppose $(B_1,B_2)=(A_1+A_2,A_1+1.1A_2)$ 
 <hr class="vspace" />
 * $A_2=10B_1-10B_2$
 * need 10x precision in $B_1$, $B_2$ to get 1x precision in $A_2$
+  * means need much better signal-to-noise ratio
 

@@ -1,0 +1,19 @@
+
+### connection state timeouts
+
+
+* problem: TCP connection with no activity for 30 minutes
+* should it stay in table?
+* how about after 8 hours? 
+
+### Linux conntrack timeouts
+
+* Linux conntrack, configurable timeouts: 
+
+   * default: 5 days if in ESTABLISHED TCP state machine state
+   * lower for other connection TCP states (e.g. middle of handshake)
+
+* could disagree with end-host timeouts! 
+
+   * mysterious connection dropping
+

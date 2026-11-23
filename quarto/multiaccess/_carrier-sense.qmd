@@ -47,17 +47,26 @@
    * transmit in rand(0, $2^\text{attempts}$) slots
 * two transmitters after previous packet --- expected time for next packet?
 
+###
+
 ### 802.11b typical slots
 
 * $20 \mu\text{s}$ slots
 * $50 \mu\text{s}$ interframe spacing (IFS) 
-   * includes time to receive ACK of packet, switch from receive to xmit
+   * [includes time to receive ACK of packet, switch from receive to xmit]{.my-small}
 <hr class="vspace" />
 * transmit first time after IFS (if idle)
 * transmit second time after IFS + rand($0$, $2^5$) slots 
    * plus time spent by other seen transmissions
 * third time after rand($0$, $2^6$) slots, etc.
 
+### 802.11b ACKs
+
+*  802.11b does packet-by-packet acknowledgments
+   *  for point-to-point packets (not broadcasts)
+<hr class="vspace"/>
+*  pros?
+*  cons?
 
 ### 802.11b packet lengths
 

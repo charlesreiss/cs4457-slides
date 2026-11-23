@@ -1,5 +1,5 @@
 
-### denial-of-service  {.smaller}
+### denial-of-service 
 
 
 * denial of service attack: 

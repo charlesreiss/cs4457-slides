@@ -6,29 +6,26 @@
 
 [Computer Networks: A Systems Approach, figure 48]{.mycredit}
 
-### APs as switches  {.smaller}
+### APs as switches 
 
 
-* multiple APs can act as <i>one network</i>
+* multiple APs can act as _one network_
 * example: nodes connected to different APs can send packets to each other by MAC address 
 <hr class="vspace" />
-* distribution system needs to share neighbor-table-like information
+* <i>distribution system</i> needs to share neighbor-table-like information
 
 
-### switching APs  {.smaller}
+### switching APs
 
 
 * nodes can switch APs… 
 <hr class="vspace" />
 * check for new APs when signal strength too low
-* periodically check for beacons + signal strength 
+* listen for beacons + signal strength 
 <hr class="vspace" />
 * switching APs = same as joining network, but…  
-
    * can keep IP address, etc.
    * maybe optimizations to avoid redoing wifi security, etc.
-
-
 
 ### cellular networks 
 
@@ -51,13 +48,14 @@
 
 ![](/multiaccess/sysapp-fig53){}
 
+[Systems Approach, figure 53]{.mycredit}
 
-### cellular mobility model (1)  {.smaller}
+
+### cellular mobility model (1) 
 
 <table>
-<tr><td>cell phone</td><td>$\rightarrow$</td><td>base station</td><td>$\rightarrow$</td><td>service gateway</td><td>$\rightarrow$</td><td>PDN gateway</td></tr>
+<tr><td>cell phone</td><td>→</td><td>base station</td><td>→</td><td>service gateway</td><td>→</td><td>PDN gateway</td></tr>
 <tr><td>(UE)</td><td></td><td>(BBU)</td><td></td><td>(SGW)</td><td></td><td>(PGW)</td></tr>
-<tr><td></td></tr>
 </table>
  
 
@@ -72,14 +70,13 @@
 
 
 
-### cellular mobility model (2)  {.smaller}
+### cellular mobility model (2)  
 
 <table>
-<tr><td>cell phone</td><td>$\rightarrow$</td><td>base station</td><td>$\rightarrow$</td><td>service gateway</td><td>$\rightarrow$</td><td>PDN gateway</td></tr>
+<tr><td>cell phone</td><td>→</td><td>base station</td><td>→</td><td>service gateway</td><td>→</td><td>PDN gateway</td></tr>
 <tr><td>(UE)</td><td></td><td>(BBU)</td><td></td><td>(SGW)</td><td></td><td>(PGW)</td></tr>
-<tr><td></td></tr>
 </table>
- 
+
 <hr class="vspace" /> 
 
 * if ‘roaming’:

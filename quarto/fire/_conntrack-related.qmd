@@ -41,39 +41,3 @@
 * PPTP (VPN protocol)
 
 
-### nft with conntrack  {.smaller}
-
-
-```
-table inet filter {
-    chain forward {
-        type filter hook input priority 0
-
-        ct state established accept
-        ct state related accept
-        ct state invalid drop
-        iifname ethInt ct state new accept
-        drop
-    }
-}
-
-```
-
-
-### connection state timeouts  {.smaller}
-
-
-* problem: TCP connection with no activity for 30 minutes
-* should it stay in table?
-* how about after 8 hours? 
-<hr class="vspace" />
-* Linux conntrack, configurable timeouts: 
-
-   * default: 5 days if in ESTABLISHED TCP state machine state
-   * lower for other connection TCP states (e.g. middle of handshake)
-
-* could disagree with end-host timeouts! 
-
-   * mysterious connection dropping
-
-

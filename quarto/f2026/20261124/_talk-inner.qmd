@@ -1,0 +1,82 @@
+### last time {.smaller}
+
+*  ready-to-send/clear-to-send
+   *  "solves" hidden node (and makes exposed node worse)
+   *  extra overhead to get permission to send messages
+*  multipath interference, multiple spatial streams
+*  infrastructure mode
+   *  going through current access point
+   *  access points tracking where every node is
+*  mesh networks --- routing over wireless
+*  cellular networks
+   *  base stations planning everyone's transmissions
+   *  "tunnels" to more central locations
+*  packet filters
+
+###
+
+### assignment Q+A
+
+###
+
+## zones of trust idea {visibility="hidden"}
+
+{{< include /fire/_zone-of-trust.qmd >}}
+
+# stateless firewall idea {visibility="hidden"}
+
+{{< include /fire/_stateless-rules.qmd >}}
+
+## nftables rules {visibility="hidden"}
+
+{{< include /fire/_netfilter-intro.qmd >}}
+
+## things we can't do {visibility="hidden"}
+
+{{< include /fire/_stateless-imposs.qmd >}}
+
+# oops: layers {visibility="hidden"}
+
+{{< include /fire/_oops-layers.qmd >}}
+
+## aside: WAF {visibility="hidden"}
+
+{{< include /fire/_waf.qmd >}}
+
+## WAF ambiguity {visibility="hidden"}
+
+{{< include /fire/_waf-request-smuggle.qmd >}}
+
+# stateful firewalls {visibility="hidden"}
+
+{{< include /fire/_stateful.qmd >}}
+
+{{< include /fire/_conntrack-related.qmd >}}
+
+{{< include /fire/_nft-conntrack.qmd >}}
+
+# stateful timeouts {visibility="hidden"}
+
+{{< include /fire/_stateful-timeout.qmd >}}
+
+{{< include /fire/_tcp-keep.qmd >}}
+
+## state size {visibility="hidden"}
+
+{{< include /fire/_state-size.qmd >}}
+
+## aside: SYN floods {visibility="hidden"}
+
+{{< include /fire/_syn-flood.qmd >}}
+
+## aside: DoS pattern {visibility="hidden"}
+
+{{< include /fire/_dos-pattern.qmd >}}
+
+# NAT {visibility="hidden"}
+
+{{< include /fire/_nat.qmd >}}
+
+# IDS {visibility="hidden"}
+
+{{< include /fire/_ids.qmd >}}

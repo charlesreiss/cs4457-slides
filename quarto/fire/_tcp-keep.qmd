@@ -1,13 +1,23 @@
 
-### TCP keep-alive  {.smaller}
-
+### TCP keep-alive
 
 * for TCP: SO_KEEPALIVE socket option
 * enables periodic ‘‘keep-alive’’ messages 
 
    * periodically send empty probe packets, resend last byte of data
    * threshold for number of probes after which to consider connection lost
- 
-<hr class="vspace" />
-* also many protocols have periodic ‘ping/pong’ messages
+
+*  connection lost = recv() gives error
+
+### application protocol keep-alive
+
+*  IMAP (email reading) (RFC 9051):
+   *  <small>"The server MAY consider a client inactive if it has an IDLE command running, and if such a server has an inactivity timeout, it MAY log the client off implicitly at the end of its timeout period. Because of that, clients using IDLE are advised to terminate IDLE and _reissue it at least every 29 minutes_ to avoid being logged off..."</small>
+*  Internet Relay Chat (RFC 2812)
+   *  <small>"The PING command is used to test the presence of an active client or
+      server at the other end of the connection.  Servers _send a PING
+      message at regular intervals_ if no other activity detected coming
+      from a connection..."</small>
+*  QUIC (RFC 9000; transport protocol for HTTP/3)
+   *  <small>"An endpoint _might need to send ack-eliciting packets to avoid an idle timeout_ if it is expecting response data but does not have or is unable to send application data."</small>
 

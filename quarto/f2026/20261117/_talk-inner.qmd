@@ -7,4 +7,12 @@
 *  retrying, bounce messages
 *  SPF, DKIM -- verifying senders
 
+###
+
+### assignment Q+A
+
+###
+
 {{< include /multiaccess/_talk-inner.qmd >}}
+
+{{< include /multiaccess/_talk-backup.qmd >}}

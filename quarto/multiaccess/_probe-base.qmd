@@ -8,18 +8,15 @@
 * mostly use infrastructure networks
 
 
-### infrastructure mode  {.smaller}
-
+### infrastructure mode 
 
 * networks identified by SSID (Service Set IDentifier) 
-
    * human readable name
-
 * single SSID can have many access points (example: eduroam)
 * clients <i>associated</i> with one access point at a time 
 <hr class="vspace" />
 * clients only <i>only</i> send to their current access point
-* … even if sending to other nodes on network
+* … even if sending to other nodes on local network
 
 
 ### exercise: why through AP? 
@@ -32,27 +29,28 @@
 ### beacons (approx. once per 100ms) 
 
 
-![](/multiaccess/wifi-beacon-1.png){}
+![](/multiaccess/wifi-beacon-1.png){fig-alt="wireshark output showing 802.11 beacon frame. It has a destination address of ff:ff:ff:ff:ff, an SSID, and lots of information about the network (supported rates, encryption, channel information, ...)"}
 
 
-### probes/probe responses  {.smaller}
+### probes/probe responses
 
 
-* beacons --- listen for a few seconds, find out about nearby networks
+* beacons
+  *  listen for a few seconds, find out about nearby networks
 * probably need to scan multiple channels 
 <hr class="vspace" />
 * can also send explicit probes to learn about networks
 * receive responses, with essentially same kind of information
 
 
-### association  {.smaller}
+### association 
 
 
-* client $\rightarrow$ AP: association response (SSID=…)
-* AP $\rightarrow$ client: association response (SSID=…)
+* client → AP: association response (SSID=…)
+* AP → client: association response (SSID=…)
 * + things related to WiFi Security (encryption, passwords, etc.) 
 <hr class="vspace" />
-* client $\rightarrow$ AP: deassociation (sometimes)
+* client → AP: deassociation (sometimes)
 
 
 ### moving between APs 
@@ -63,20 +61,19 @@
 <hr class="vspace" />
 * eventually decide to change association
 
-
 ### wifi data frames 
 
 
-![](/multiaccess/wifi-data-1.png){}
+![](/multiaccess/wifi-data-1.png){fig-alt="wireshark output showing 802.11 data frame. It includes a duration, receiver address, transmitter address, desitnation address, source address, BSS ID (=transmitter address), STA address (=receiver address)."}
 
 
-### wifi data  {.smaller}
+### wifi data frame addresses
 
-![](/multiaccess/texfig/probe-base-wifi-data.figure.svg)
+![](/multiaccess/texfig/probe-base-wifi-data.figure.svg){fig-alt="A→AP1→AP2→B"}
  
-
-* receiver/transmitter address --- this hop
-* source/destination address --- final soruce/destination 
+* many addresses because multiple hops supported
+* receiver/transmitter address --- for just this hop
+* source/destination address --- final source/destination 
 <hr class="vspace" />
 * can differ if…  
 

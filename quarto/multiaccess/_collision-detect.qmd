@@ -2,11 +2,11 @@
 ### collision detection  {.smaller}
 
 * Wi-Fi: use ACKs to detect if transmission successful
-* problem: transmit whole packet, then know about collision 
+* problem 1: transmit whole packet, then know about collision 
+* problem 2: need to reserve time for ACK to be sent after each packet
 <hr class="vspace" />
 * alternate idea: listen for collision, stop transmitting early
 * doesn't work on wireless
   * can't hear other transmissions while transmitting on same channel
 * does work on some wired shared media
-* part of reason for design of Ethernet header
 

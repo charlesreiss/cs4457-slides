@@ -1,0 +1,21 @@
+
+
+### nft with conntrack {.longcode}
+
+
+```
+table inet filter {
+    chain forward {
+        type filter hook input priority 0
+
+        ct state established accept
+        ct state related accept
+        ct state invalid drop
+        iifname ethInt ct state new accept
+        drop
+    }
+}
+
+```
+
+

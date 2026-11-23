@@ -25,18 +25,19 @@
 * most common form of <i>stateful firewall</i>
 
 
-### connection tracking?  {.smaller}
+### connection tracking for TCP
 
 
-* simple idea for TCP:
-* see SYN: add (TCP, source IP+port, dest IP+port) to table
-* see FIN, FIN+ACK, ACK: remove row from table after timeout
+* see SYN: 
+  * add (TCP, source IP+port, dest IP+port) to table
+* see FIN, FIN+ACK, ACK:
+  * remove row from table after timeout
 * (plus other timeouts, error cases, etc.) 
 <hr class="vspace" />
 * mirrors TCP state machine
 
 
-### Linux conntrack  {.smaller}
+### Linux conntrack 
 
 
 * in-kernel table of active ‘‘connections’’

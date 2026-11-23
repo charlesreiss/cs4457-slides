@@ -1,11 +1,12 @@
 
 ### Roofnet (Cambridge, MA, 2005) 
 
- Bicket, Aguayo, Biswas, Morris, ‘`Architecture and Evaluation of an Unplanned 802.11b Mesh Network (MobiCom’05) 
-![](/multiaccess/roofnet-fig1){}
+![](/multiaccess/roofnet-fig1){height=450px}
+
+[Bicket, Aguayo, Biswas, Morris, ‘`Architecture and Evaluation of an Unplanned 802.11b Mesh Network (MobiCom’05)]{.mycredit}
 
 
-### roofnet routing  {.smaller}
+### roofnet routing
 
 
 * up to five hops for packet to get from one node to another
@@ -17,19 +18,20 @@
 
    * idea called ‘‘source routing’’
    * prevents transient routing loops
-   * important because conditions (e.g. weather) changes connectivity
+   * important because conditions changes connectivity
 
 * everyone using same channel!
 
 
-### mesh network efficiency  {.smaller}
+### mesh network efficiency 
 
 
-* A $\rightarrow$ B $\rightarrow$ C
+* A → B → C
 * if A, B, C all using one channel:
 * how fast can A send messages to C? 
 <hr class="vspace" />
 * A can't send second message until B forwards first to C
+  * (B can't receive second message while transmitting itself)
 * only get $\sim$ half the channel capacity
 
 
@@ -38,7 +40,7 @@
 
 * no explicit list of links/networks
 * instead: periodically broadcast and see who responds
-* keep track of signal strength/reliability/etc. for routing metrics
+* keep track of signal strength/etc. for routing metrics
 * … then can run ‘normal’ routing protocol we learned
 
 
@@ -54,11 +56,9 @@
  
 <hr class="vspace" />
 * typically using self-organizing mesh network ideas 
-
    * likely similar routing protocols to what we discussed
 
 * usually properietary networking protocols 
-
    * vendor lock-in problem
    * (though there is now a recent Wifi standard)
 
