@@ -1,0 +1,9 @@
+
+### SSH window sizes? 
+
+
+* SSH has way of managing channel window sizes
+* how should SSH server do that? 
+<hr class="vspace" />
+* (OpenSSH: 2MB max/init window size, not adjusted immediately)
+

@@ -1,0 +1,20 @@
+
+### encapsulatoin with encryption  {.smaller}
+
+
+* GRE = sends packets as is, setup in advance 
+<hr class="vspace" />
+* often want to add autoconfiguration + encryption + authentication
+* typically: 
+
+   * TLS-handshake like <i>key exchange</i> protocol to setup conncetion
+   * add space for message authentication code, nonce
+   * encrypt data with symmetric keys
+
+* example protocols: 
+
+   * IKE (setup/key exchange) + IPsec ESP (actual tunnel)
+   * OpenVPN (both)
+   * WireGuard (both)
+
+

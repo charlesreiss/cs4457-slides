@@ -1,0 +1,54 @@
+
+### SSH protocol overview  {.smaller}
+
+
+* SSH transport layer protocol 
+
+   * handles encryption + integrity + host authentication
+   * uses key exchange, with key share signed by host key
+   * rest of connection uses symmetric encryption + MACs
+
+* transport layer supports sending packets 
+
+   * initial 1-type ‘‘message number’’ identifies type
+   * packets encrypted+MAC'd once that is negotiated
+
+* on top of transport layer:
+* SSH (user) authentication protocol 
+
+   * handles passwords, etc.
+
+* SSH connection protocol 
+
+   * handles terminal sessions, forwarded connections
+
+
+
+### SSH connection protocol  {.smaller}
+
+
+* open channels identified by 32-bit integers
+* each channel has: 
+
+   * type ([<code>session</code> or <code>pty-req</code> or <code>tcpip-forward</code> or …]{.fragment fragment-index=2 .custom .myem-only})
+   * [‘‘window size’’]{.fragment fragment-index=3 .custom .myem-only}
+   * maximum packet size
+
+* seperate packets for 
+
+   * opening/closing channels
+   * adjusting ‘‘window size’’
+   * sending data
+   * sending metadata (example: terminal window size)
+
+
+
+### SSH window sizes  {.smaller}
+
+
+* SSH connection protocol considers <i>window size</i> to be <br> amount of data that can be sent
+* not same as TCP idea since no acknowledgments 
+<hr class="vspace" />
+* decrements by X when X bytes sent
+* increases by Y on window adjust message with Y
+

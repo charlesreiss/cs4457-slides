@@ -1,0 +1,15 @@
+
+### GRE packet format 
+
+
+
+::: {.r-stack .my-full}
+![](/encap/texfig/gre.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/encap/texfig/gre.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/encap/texfig/gre.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+
+:::
+

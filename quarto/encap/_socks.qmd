@@ -1,0 +1,54 @@
+
+### SOCKS (RFC 1928) 
+
+
+* SOCKS motivation in RFC: firewall traversal
+* supports both TCP and UDP
+
+
+### SOCKS TCP operation (client) 
+
+![](/encap/texfig/socks-socks-tcp-operation-client.figure.svg)
+
+
+### SOCKS TCP operation (server) 
+
+![](/encap/texfig/socks-socks-tcp-operation-server.figure.svg)
+
+
+### SOCKS UDP operation  {.smaller}
+
+
+
+* use TCP to get UDP port for proxy to use
+* send/receives UDP packets with ‘‘request header’’:
+ 
+```
++----+------+------+----------+----------+----------+
+|RSV | FRAG | ATYP | DST.ADDR | DST.PORT |   DATA   |
++----+------+------+----------+----------+----------+
+| 2  |  1   |  1   | Variable |    2     | Variable |
++----+------+------+----------+----------+----------+
+
+```
+ 
+
+* FRAG = which fragment number 
+
+   * added header means we might need to split UDP packets up
+   * 0 = not fragmented, most sig bit = last fragment
+
+* ATYP = address type (IPv4/IPv6/DNS name)
+
+
+### SOCKS as interface  {.smaller}
+
+
+* relatively easy to add SOCKS support to (esp. TCP) program
+* but SOCKS doesn't support encryption, etc. 
+<hr class="vspace" />
+* common trick: run SOCKS proxy program on localhost (127.0.0.1/::1)
+* that program sets up ‘tunnel’ with encryption, etc. to other machine 
+<hr class="vspace" />
+* idea supported by OpenSSH, Tor
+

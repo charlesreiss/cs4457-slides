@@ -1,0 +1,10 @@
+
+### what if\ldots  {.smaller}
+
+
+* consider SOCKS TCP connection forwarding…
+* what happens to bandwidth, latency, resource usage, error-reporting if… 
+<hr class="vspace" />
+* sending lots of data and proxy to remote link is slow?
+* remote host goes down in middle of connection?
+

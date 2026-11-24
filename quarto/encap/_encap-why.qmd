@@ -1,0 +1,22 @@
+
+### encapsulation: why? (1)  {.smaller}
+
+
+* some possible scnearios (1/2): 
+<hr class="vspace" />
+* add encryption/authentication to data in flight
+* more explicit way to decide what goes through firewall
+* be ‘‘on University/company network’’ from home
+* hide original location of Internet connection
+* make virtual machines running on different servers appear to be plugged into one switch
+
+
+### encapsulation: why? (2)  {.smaller}
+
+
+* some possible scnearios (2/2): 
+<hr class="vspace" />
+* evade overally restrictive firewall rules
+* make two datacenters connected via Internet appear to be one big network
+* ‘separate’ networks for phones v. desktops without buying two sets of switches
+

@@ -1,0 +1,186 @@
+
+# encapsulation motivations {visibility="hidden"}
+
+## use case: on remote network {visibility="hidden"}
+
+{{< include /encap/_connect-on-remote.qmd >}}
+
+## use case: connect networks {visibility="hidden"}
+
+{{< include /encap/_connect-net-usecase.qmd >}}
+
+## use case: two networks {visibility="hidden"}
+
+{{< include /encap/_connect-net-twonet.qmd >}}
+
+## summary/additional {visibility="hidden"}
+
+{{< include /encap/_encap-why.qmd >}}
+
+## aside: encryption via encapsulation {visibility="hidden"}
+
+
+### encapsulation options [incomplete] {.smaller}
+
+<table class="rowlines collines">
+<thead>
+<tr><th>left in above</th><th>TCP/UDP/higher layers</th><th>IP</th><th>link-layer</th></tr>
+</thead>
+<tbody>
+<tr><td>above TCP/UDP</td><td>HTTP proxy, DNS over HTTP(S)</td><td>---</td><td>---</td></tr>
+<tr><td>TCP/UDP</td><td>SOCKS, HTTP CONNECT,<br/>SSH conn forwarding, TLS</td><td>---</td><td>---</td></tr>
+<tr><td>IP</td><td>OpenVPN, WireGuard</td><td>GRE, IPsec</td><td>MPLS</td></tr>
+<tr><td>link-layer</td><td>OpenVPN, …</td><td>?</td><td>VLAN, MPLS</td></tr>
+</tbody>
+</table>
+
+
+### encapsulation steps 
+
+1. getting the stuff to encapsulate
+2. sending it encapsulated
+
+## capturing packets {visibility="hidden"}
+
+### encapsulation steps 
+
+1. _getting the stuff to encapsulate_
+ 2. sending it encapsulated
+
+{{< include /encap/_encap-capture.qmd >}}
+
+# sending encapsulated {visibility="hidden"}
+
+### encapsulation steps 
+
+1. getting the stuff to encapsulate
+2. _sending it encapsulated_
+
+## transport layer granularity {visibility="hidden"}
+
+### encapsulation options [incomplete] {.smaller}
+
+<table class="rowlines collines">
+<thead>
+<tr><th>left in above</th><th>TCP/UDP/higher layers</th><th>IP</th><th>link-layer</th></tr>
+</thead>
+<tbody>
+<tr><td>above TCP/UDP</td><td>HTTP proxy, DNS over HTTP(S)</td><td>---</td><td>---</td></tr>
+<tr><td>TCP/UDP</td><td>_SOCKS, HTTP CONNECT,<br/>SSH conn forwarding, TLS_</td><td>---</td><td>---</td></tr>
+<tr><td>IP</td><td>OpenVPN, WireGuard</td><td>GRE, IPsec</td><td>MPLS</td></tr>
+<tr><td>link-layer</td><td>OpenVPN, …</td><td>?</td><td>VLAN, MPLS</td></tr>
+</tbody>
+</table>
+
+## SOCKS {visibility="hidden"}
+
+{{< include /encap/_socks.qmd >}}
+
+## exercise: what if {visibility="hidden"}
+
+{{< include /encap/_conn-forward-bw-errors.qmd >}}
+
+## SSH connection forwarding {visibility="hidden"}
+
+{{< include /encap/_ssh-conn-forward.qmd >}}
+
+## exercise: what if revised {visibility="hidden"}
+
+{{< include /encap/_ssh-conn-window-size.qmd >}}
+
+## TOR {visibility="hidden"}
+
+{{< include /encap/_tor.qmd >}}
+
+# network layer granularity {visibility="hidden"}
+
+### encapsulation options [incomplete] {.smaller}
+
+<table class="rowlines collines">
+<thead>
+<tr><th>left in above</th><th>TCP/UDP/higher layers</th><th>IP</th><th>link-layer</th></tr>
+</thead>
+<tbody>
+<tr><td>above TCP/UDP</td><td>HTTP proxy, DNS over HTTP(S)</td><td>---</td><td>---</td></tr>
+<tr><td>TCP/UDP</td><td>SOCKS, HTTP CONNECT,<br/>SSH conn forwarding, TLS</td><td>---</td><td>---</td></tr>
+<tr><td>IP</td><td>OpenVPN, WireGuard</td><td>_GRE, IPsec_</td><td>MPLS</td></tr>
+<tr><td>link-layer</td><td>OpenVPN, …</td><td>?</td><td>VLAN, MPLS</td></tr>
+</tbody>
+</table>
+
+
+## GRE {visibility="hidden"}
+
+{{< include /encap/_gre.qmd >}}
+
+## adding encryption/authentication {visibility="hidden"}
+
+{{< include /encap/_pack-with-enc.qmd >}}
+
+### encapsulation options [incomplete] {.smaller}
+
+<table class="rowlines collines">
+<thead>
+<tr><th>left in above</th><th>TCP/UDP/higher layers</th><th>IP</th><th>link-layer</th></tr>
+</thead>
+<tbody>
+<tr><td>above TCP/UDP</td><td>HTTP proxy, DNS over HTTP(S)</td><td>---</td><td>---</td></tr>
+<tr><td>TCP/UDP</td><td>SOCKS, HTTP CONNECT,<br/>SSH conn forwarding, TLS</td><td>---</td><td>---</td></tr>
+<tr><td>IP</td><td>_OpenVPN, WireGuard_</td><td>GRE, IPsec</td><td>MPLS</td></tr>
+<tr><td>link-layer</td><td>OpenVPN, …</td><td>?</td><td>VLAN, MPLS</td></tr>
+</tbody>
+</table>
+
+## issues with over TCP {visibility="hidden"}
+
+{{< include /encap/_net-over-tcp.qmd >}}
+
+# link-layer granularity {visibility="hidden"}
+
+### two networks in one 
+
+![](/encap/texfig/connect-net-twonet.figure.svg)
+
+## VLANs {visibility="hidden"}
+
+### encapsulation options [incomplete] {.smaller}
+
+<table class="rowlines collines">
+<thead>
+<tr><th>left in above</th><th>TCP/UDP/higher layers</th><th>IP</th><th>link-layer</th></tr>
+</thead>
+<tbody>
+<tr><td>above TCP/UDP</td><td>HTTP proxy, DNS over HTTP(S)</td><td>---</td><td>---</td></tr>
+<tr><td>TCP/UDP</td><td>SOCKS, HTTP CONNECT,<br/>SSH conn forwarding, TLS</td><td>---</td><td>---</td></tr>
+<tr><td>IP</td><td>OpenVPN, WireGuard</td><td>GRE, IPsec</td><td>MPLS</td></tr>
+<tr><td>link-layer</td><td>OpenVPN, …</td><td>?</td><td>_VLAN_, MPLS</td></tr>
+</tbody>
+</table>
+
+{{< include /encap/_vlan.qmd >}}
+
+## MPLS {visibility="hidden"}
+
+### encapsulation options [incomplete] {.smaller}
+
+<table class="rowlines collines">
+<thead>
+<tr><th>left in above</th><th>TCP/UDP/higher layers</th><th>IP</th><th>link-layer</th></tr>
+</thead>
+<tbody>
+<tr><td>above TCP/UDP</td><td>HTTP proxy, DNS over HTTP(S)</td><td>---</td><td>---</td></tr>
+<tr><td>TCP/UDP</td><td>SOCKS, HTTP CONNECT,<br/>SSH conn forwarding, TLS</td><td>---</td><td>---</td></tr>
+<tr><td>IP</td><td>OpenVPN, WireGuard</td><td>GRE, IPsec</td><td>MPLS</td></tr>
+<tr><td>link-layer</td><td>OpenVPN, …</td><td>?</td><td>VLAN, _MPLS_</td></tr>
+</tbody>
+</table>
+
+{{< include /encap/_mpls.qmd >}}
+
+# encapsulation costs {visibility="hidden"}
+
+{{< include /encap/_encap-costs-ex.qmd >}}
+
+# which encapsulation for {visibility="hidden"}
+
+{{< include /encap/_which-encap-ex.qmd >}}

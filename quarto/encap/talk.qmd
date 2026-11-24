@@ -1,0 +1,10 @@
+---
+title: "encap"
+
+---
+
+{{< include ../encap/_talk-inner.qmd >}}
+
+# Backup slides
+
+{{< include ../encap/_talk-backup.qmd >}}

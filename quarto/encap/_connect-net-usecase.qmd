@@ -1,0 +1,5 @@
+
+### connecting two networks 
+
+![](/encap/texfig/connect-net-usecase.figure.svg){fig-alt="actual connections: company site A and B are connected via the Internet; we setup a 'tunnel' between the two sites. logical conenctions: as if directly linked sites."}
+

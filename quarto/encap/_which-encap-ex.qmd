@@ -1,0 +1,35 @@
+
+### which encapuslation (1)  {.smaller}
+
+
+* suppose I have two racks of servers in two different buildings
+* want them to be in the same subnetwork 
+
+   * so they'll find each other with broadcast, multicast DNS
+
+* how should I do this if…  
+
+   * the two buildings are connected via Ethernet also used for internet access?
+   * the two buildings are connected via an IP link leased from an ISP?
+
+
+
+### which encapuslation (2)  {.smaller}
+
+
+* suppose I have a rack of servers in my building, but I'm migrating to the cloud
+* I've moved one server to a cloud provider…
+* I don't want to reconfigure the other servers that talk to it… 
+<hr class="vspace" />
+* what would be some options to do this? what else do we need to know about the server?
+* what would be useful features for cloud provider to give us?
+
+
+### which encapsulation (3)  {.smaller}
+
+
+* I need to have my machines which handle payment processing go be behind a firewall
+* but they're in the same rack as machines which should have a direct internet connection 
+<hr class="vspace" />
+* how should I do this?
+

@@ -1,0 +1,5 @@
+
+### two networks in one 
+
+![](/encap/texfig/connect-net-twonet.figure.svg){"actual connections: a mix of desktops and phones are connected to two switches which are connected to each other; logical connections: all desktops are connected to one switch and all phones are connected to another, and those two switches are not connected to each other."}
+

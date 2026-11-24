@@ -1,0 +1,25 @@
+
+### TCP-in-TCP problems 
+
+
+
+* sometimes run IP tunnel over TCP
+* exercise: what's wrong with GRE for this?
+ ![](/encap/texfig/net-over-tcp-tcp-in-tcp-problems.figure.svg)
+
+
+### TCP-in-TCP problems  {.smaller}
+
+
+* sometimes run IP tunnel over TCP 
+
+   * example: picky firewall rules, or non-UDP-supporting NAT
+
+* outer TCP connection adds extra buffering 
+
+   * more than UDP, because will usually buffer instead of dropping
+ 
+<hr class="vspace" />
+* $\rightarrow$ very high round-trip time if not careful
+* can result in very poor TCP performance
+

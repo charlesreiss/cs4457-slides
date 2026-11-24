@@ -1,0 +1,11 @@
+
+### aside: non-end-to-end encryption? 
+
+
+* often encapsulation used to have encrypted link
+* nice, but really want to encrypt between end-hosts 
+
+   * example: SSH, HTTPS
+
+* exercise: extra vulnerable points if relying on encrypted link idea?
+

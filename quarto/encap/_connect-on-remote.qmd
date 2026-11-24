@@ -1,0 +1,5 @@
+
+### on a remote network 
+
+![](/encap/texfig/connect-on-remote.figure.svg){fig-alt="actual connections: host is connected through internet, to company network, to server. logical connections: host is connected to company network to server, and connected to internet via company network."}
+

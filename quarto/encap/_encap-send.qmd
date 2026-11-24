@@ -1,0 +1,15 @@
+
+### choices in sending encapsulated data  {.smaller}
+
+
+* authentication or encryption? 
+
+   * need key exchange before encapsulation
+   * might need to tie encapsulated data to correct keys
+
+* how many tunnel for many ‘connections’ 
+
+   * do we need to annotate data with which connection?
+
+* how to deal with too-large packets
+

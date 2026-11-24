@@ -1,0 +1,17 @@
+
+### ethernet to socket translation?  {.smaller}
+
+
+* know of programs that capture Ethernet, extract socket() operations
+* examples: slirp, passt
+* current main use: 
+
+   * networking for virtual machines …
+   * … without permission to configure new virtual network devices
+ 
+<hr class="vspace" />
+* but these don't support then tunneling the TCP/UDP connections 
+
+   * instead just make normal socket calls
+
+

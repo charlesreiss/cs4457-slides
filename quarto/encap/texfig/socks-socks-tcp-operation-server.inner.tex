@@ -1,0 +1,26 @@
+\begin{tikzpicture}
+\begin{scope}[ultra thick]
+    \draw (0, 0) node[above] {client} -- ++(0, -7);
+    \draw (6.5, 0) node[above,align=center] {SOCKS\\proxy} -- ++(0, -7);
+    \draw (13, 0) node[above] {end-server} -- ++(0, -7);
+\end{scope}
+\tikzset{
+    msg/.style={font=\small,inner sep=0.2mm},
+    send/.style={thick,-Latex},
+    send misc/.style={thick,dotted,-Latex},
+}
+\draw[send] (0, -.5) -- ++(6.5, 0) node[midway,above,msg] {open TCP connection};
+%\draw[send] (6.5, -.75) -- ++(6.5, 0);
+\draw[red,send] (0, -1) -- ++(6.5, 0) node[midway,above,msg] {BIND 0:0 \textit{or} BIND end-server:port};
+\draw[red,send] (6.5, -1.5) -- ++(-6.5, 0) node[midway,above,msg] {reply w/ IP+port on proxy};
+\draw[red,send] (13, -2) -- ++(-6.5, 0) node[midway,above,msg] {open TCP connection};
+%\draw[send] (6.5, -2.25) -- ++(6.5, 0) node[midway,above,msg] {open TCP connection};
+\draw[send] (6.5, -2.5) -- ++(-6.5, 0) node[midway,above,msg] {reply w/ success status};
+%
+\draw[ultra thick,red] (-.5, -4) rectangle (13.5, -7);
+    \node[align=left,anchor=south,font=\small,red] at (4, -4) { now client can use TCP connection \\ as if directly to server };
+\draw[send] (0, -4.5) -- ++(6.5, 0) node[midway,above,msg] {data for server};
+\draw[send] (6.5, -4.75) -- ++(6.5, 0) node[midway,above,msg] {data for server};
+\draw[send] (13, -5.5) -- ++(-6.5, 0) node[midway,above,msg] {data from server};
+\draw[send] (6.5, -5.75) -- ++(-6.5, 0) node[midway,above,msg] {data from server};
+\end{tikzpicture}

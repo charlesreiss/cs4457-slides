@@ -1,0 +1,47 @@
+
+### VLAN idea  {.smaller}
+
+
+* multiple (‘virtual’) local networks over one network
+* links/ports either shared or assigned to just one network
+* most common implementation: Ethernet 801.1q: 
+<hr class="vspace" />
+* on shared links, frames tagged with their ‘VLAN ID’ 
+
+   * special case: untagged frames part of VLAN ID 0x0
+
+* tags added/removed when going to unshared links 
+
+   * and broadcast frames filtered out if VLAN ID doesn't match
+
+
+
+### Ethernet encapsulation  {.smaller}
+
+![](/encap/texfig/vlan-ethernet-encapsulation.figure.svg)
+ 
+
+* network IDs (‘VLAN identifiers’) configured by sysadmins 
+
+   * special case: 0x0 = default (untagged), 0xFFF = reserved
+
+* encapsulation typically added/removed by switches
+* usually increase in supported frame size to accomodate tag
+
+
+### configuring Ethernet encapsulation  {.smaller}
+
+
+* adding/removing VLAN identifiers --- options: 
+<hr class="vspace" />
+* configure switch to automatically tag input on specific ports and untag output 
+
+   * example: some ports are ‘phone network’, some are ‘desktop network’
+   * typically: ports for hosts add/remove tags; for other switches don't
+
+* end-hosts handle tagging/untagging 
+
+   * example: each virtual machine assigned its own tag
+   * example: multiple ‘interfaces’, each with own tag + IP address + routing
+
+

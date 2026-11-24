@@ -1,0 +1,256 @@
+
+### encapsulating w/ app changes  {.smaller}
+
+
+* application might have special code to handle connecting differently
+* + might take advantage of extra information in encapsulation 
+<hr class="vspace" />
+* example: many application's TLS support
+* example: web browser HTTP/SOCKS proxy support
+
+
+### encapsulating w/o app changes  {.smaller}
+
+
+* generally: easier to do for lower layers 
+<hr class="vspace" />
+* link-layer in something 
+
+   * ‘‘virtual’’ (probably Ethernet) device
+   * sends/receives from ‘tunnel’
+
+* IP in something 
+
+   * ‘‘virtual’’ IP link
+   * destination routing table can go to
+
+* UDP/TCP in something 
+
+   * replace socket API]
+   * convince application to connect to different IP address?
+   * terminate UDP/TCP connection at ‘wrong’ machine
+
+
+
+### encapsulating w/o app changes  {.smaller}
+
+
+* generally: easier to do for lower layers 
+<hr class="vspace" />
+* _link-layer in something_
+   * _‘‘virtual’’ (probably Ethernet) device_
+   * _sends/receives from ‘tunnel’_
+* IP in something 
+   * ‘‘virtual’’ IP link
+   * destination routing table can go to
+* UDP/TCP in something 
+   * replace socket API
+   * convince application to connect to different IP address?
+   * terminate UDP/TCP connection at ‘wrong’ machine
+
+
+### Linux tap devices  {.smaller}
+
+
+```
+# create virtual ethernet device mydev
+$ ip tuntap add dev mydev mode tap
+# mark ethernet device as up
+$ ip link set mydev up
+$ dhclient mydev # or other commands to use/config device
+
+```
+ (dhclient is a DHCP client) <br> --- 
+```
+int opentap(const char * name) {
+    ... /* setup code, not shown*/
+}
+...
+int fd = opentap("mydev");
+...
+write(fd, ethernetPacket, packetSize)
+/* and (probably in separate threads) */
+read(fd, buffer, SIZE); processEthernetPacket(buffer);
+
+```
+
+
+### encapsulating w/o app changes  {.smaller}
+
+
+* generally: easier to do for lower layers 
+<hr class="vspace" />
+* link-layer in something
+   * ‘‘virtual’’ (probably Ethernet) device
+   * sends/receives from ‘tunnel’
+* _IP in something_
+   * _‘‘virtual’’ IP link_
+   * _destination routing table can go to_
+* UDP/TCP in something 
+   * replace socket API
+   * convince application to connect to different IP address?
+   * terminate UDP/TCP connection at ‘wrong’ machine
+
+
+### Linux tun devices  {.smaller}
+
+
+
+* same as ‘tap’ devices, but…
+* get IP packets, not ethernet packets
+ 
+```
+# create virtual ethernet device mydev
+$ ip tuntap add dev mydev mode tun
+# setup device to be routed to, example:
+$ ip address add 10.0.0.2 dev mydev
+$ ip route add 10.0.0.0/24 dev mydev
+$ ip -6 address add 3fff:1234::1 dev mydev
+$ ip -6 route add 3fff:1234::/32 dev mydev
+
+```
+ 
+
+* tunneling program can then open device and read/write IP packets
+
+
+### full tunnel routing table  {.smaller}
+
+say 198.51.100.5 is running tunnel sever, <br> and 10.0.2.5  is gateway beyond tunnel, <br> and 203.0.113.54 is local gateway: <br>
+<table>
+<thead>
+<tr><th>address</th><th>next hop</th><th>dev</th><th>priority</th></tr>
+</thead>
+<tbody>
+<tr><td><!-- \hline --> 10.0.2.0/24</td><td>---</td><td>tunnel</td><td>normal</td></tr>
+<tr><td>198.51.100.5/32</td><td>208.0.113.54</td><td>real</td><td>high</td></tr>
+<tr><td>(default)</td><td>203.0.113.54</td><td>real</td><td>normal</td></tr>
+<tr><td>(default)</td><td>10.0.2.5</td><td>tunnel</td><td>high</td></tr>
+</tbody>
+</table>
+
+
+### alternate idea  {.smaller}
+
+
+* shown: creating special route for tunnel destination
+* alternate idea: tell OS to use correct interface/IP address
+* most OSes: which IP address is bound = which network interface to use 
+
+   * but would need to discover correct IP address
+   * might be tricky if wireless + wifi connections, or wifi changes
+
+
+
+### split tunnel routing table  {.smaller}
+
+say 198.51.100.5 is running tunnel sever, <br> and 10.0.2.5  is gateway beyond tunnel, <br> and 10.0.0.0/16, 198.51.100.0/24 are tunneled networks <br> and 203.0.113.54 is local gateway: <br>
+<table>
+<thead>
+<tr><th>address</th><th>next hop</th><th>dev</th><th>priority</th></tr>
+</thead>
+<tbody>
+<tr><td><!-- \hline --> 10.0.2.0/24</td><td>---</td><td>tunnel</td><td>normal</td></tr>
+<tr><td>10.0.0.0/16</td><td>10.0.2.5</td><td>tunnel</td><td>normal</td></tr>
+<tr><td>198.51.100.0/24</td><td>10.0.2.5</td><td>tunnel</td><td>normal</td></tr>
+<tr><td>198.51.100.5/32</td><td>208.0.113.54</td><td>real</td><td>high</td></tr>
+<tr><td>(default)</td><td>203.0.113.54</td><td>real</td><td>normal</td></tr>
+</tbody>
+</table>
+
+
+### encapsulating w/o app changes  {.smaller}
+
+
+* generally: easier to do for lower layers 
+<hr class="vspace" />
+* link-layer in something
+   * ‘‘virtual’’ (probably Ethernet) device
+   * sends/receives from ‘tunnel’
+* IP in something_
+   * ‘‘virtual’’ IP link
+   * destination routing table can go to
+* UDP/TCP in something 
+   * _replace socket API_
+   * convince application to connect to different IP address?
+   * terminate UDP/TCP connection at ‘wrong’ machine
+
+### ‘transparent’ proxy via library  {.smaller}
+
+
+![](/encap/proxy-chains){}
+ 
+
+* configures dynamic library loader to load its library 
+
+   * <code>LD_PRELOAD</code>
+
+* with special versions of <code>connect</code>
+
+### encapsulating w/o app changes  {.smaller}
+
+
+* generally: easier to do for lower layers 
+<hr class="vspace" />
+* link-layer in something
+   * ‘‘virtual’’ (probably Ethernet) device
+   * sends/receives from ‘tunnel’
+* IP in something_
+   * ‘‘virtual’’ IP link
+   * destination routing table can go to
+* UDP/TCP in something 
+   * replace socket API
+   * _convince application to connect to different IP address?_
+   * terminate UDP/TCP connection at ‘wrong’ machine
+
+
+### socket-in-socket  {.smaller}
+
+
+* example: SSH connection forwarding 
+
+   * <code>ssh -L X:remotehost:remoteport hostname</code>
+
+* example: <code>stunnel</code> for ‘tunneling’ TCP in TLS
+* run on port X, configure to connect to some remote host
+* configure program to connect to localhost port X
+* … instead of remote host
+
+
+### encapsulating w/o app changes  {.smaller}
+
+
+* generally: easier to do for lower layers 
+<hr class="vspace" />
+* link-layer in something
+   * ‘‘virtual’’ (probably Ethernet) device
+   * sends/receives from ‘tunnel’
+* IP in something_
+   * ‘‘virtual’’ IP link
+   * destination routing table can go to
+* UDP/TCP in something 
+   * replace socket API
+   * convince application to connect to different IP address?
+   * _terminate UDP/TCP connection at ‘wrong’ machine_
+
+
+### ‘transparent’ proxy via IP interception  {.smaller}
+
+
+* example use case: shared HTTP cache used automatically 
+
+   * if company/ISP wants everyone to use cache for performance
+   * if company wants to audit all HTTP traffic
+
+* configure router/firewall to direct all HTTP TCP connections to proxy
+* either: 
+
+   * configure proxy machine to accept connections on all IP addresses <i>or</i>
+   * have router/firewall do network address translation (other direction)
+
+* HTTP proxy <code>squid</code> on Linux, some firewall boxes support this
+* I don't think this is a good idea…  
+
+   * problematic with encryption, new HTTP features
+
+

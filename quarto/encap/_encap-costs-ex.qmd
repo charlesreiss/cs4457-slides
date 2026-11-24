@@ -1,0 +1,21 @@
+
+### encapsulation overheads  {.smaller}
+
+ <table>
+<tr><td>left in above</td><td>TCP/UDP/higher layers</td><td>IP</td><td>link-layer</td></tr>
+<tr><td><!-- \hline --> <!-- \hline --> above TCP/UDP</td><td>HTTP proxy, DNS over HTTP(S)</td><td>---</td><td>---</td></tr>
+<tr><td><!-- \hline --> TCP/UDP</td><td>SOCKS, HTTP CONNECT, SSH conn forwarding, TLS</td><td>---</td><td>---</td></tr>
+<tr><td><!-- \hline --> IP</td><td>OpenVPN, WireGuard</td><td>GRE, IPsec</td><td>MPLS</td></tr>
+<tr><td><!-- \hline --> link-layer</td><td>OpenVPN, …</td><td>?</td><td>VLAN, MPLS</td></tr>
+<tr><td><!-- \hline --></td></tr>
+</table>
+  
+
+* which of these types of options…  
+
+   * best for throughput?
+   * best for latency?
+   * best if both ends are behind a NAT?
+   * bets for compatibility?
+
+

@@ -1,0 +1,141 @@
+
+### multiprotocol label switching (MPLS) 
+
+
+
+* MPLS: combines encapsulation and routing tables
+ 
+
+::: {.r-stack}
+![](/encap/texfig/mpls-multiprotocol-label-switching-mpls.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+
+![](/encap/texfig/mpls-multiprotocol-label-switching-mpls.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+
+![](/encap/texfig/mpls-multiprotocol-label-switching-mpls.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+
+![](/encap/texfig/mpls-multiprotocol-label-switching-mpls.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+
+![](/encap/texfig/mpls-multiprotocol-label-switching-mpls.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+
+
+:::
+
+
+### Label Distribution Protocol  {.smaller}
+
+
+* share with neighbors list of: 
+
+   * (ultimate destination, desired label)
+
+* use entries to 
+
+   * allocate new local labels
+   * setup appropriate <code>swap</code> entries
+   * send other neighbors update about new labels
+ 
+<hr class="vspace" />
+* if using normal routing protocol to decide which neighbors routes to accept, just a funny way to implement routing tables
+
+
+### MPLS tunnel 
+
+![](/encap/texfig/mpls-mpls-tunnel.figure.svg)
+
+
+### MPLS tunnel applications  {.smaller}
+
+
+* example: ISP selling connection from building A to building B 
+
+   * make it appear like ‘Ethernet connection’
+   * make it follow fixed path that has enough bandwidth/low latency
+
+* example: traffic engineering (next slide) 
+
+   * customizing routing complex changes to OSPF/etc. metrics
+   * recall: hard to express complex preferences in OSPF ‘distances’
+
+
+
+### MPLS tunnels for traffic engineering  {.smaller}
+
+
+* if multiple paths from A to B often want to: 
+
+   * balance between them to use available bandwidth
+   * prioritize important traffic on ‘better’ path
+   * …
+
+* plain OSPF can't really do any of this unless equal cost 
+<hr class="vspace" />
+* MPLS gives mechanism to do this kind of balancing: 
+
+   * setup labels along desired paths
+   * choosing new path (or failover) = changing ‘swap X’ to ‘swap Y’
+   * can configure backup paths in advance and turn them on later
+
+
+
+### rapid failover 
+
+![](/encap/texfig/mpls-rapid-failover.figure.svg)
+
+
+### RSVP-TE  {.smaller}
+
+
+* RSVP-TE (RFC 3209): protocol for setting up MPLS tunnels
+* idea: routers figure out labels, etc.
+* end-user can (optionally) specify… 
+<hr class="vspace" />
+* that tunnel go through specific routers
+* also setting up ‘fast reroute’ backup paths
+* bandwidth reservation  
+
+   * routers give you error if bandwidth not gaurenteed
+
+
+
+### nested labels 
+
+
+* label <i>stack</i> allows …
+* nested tunnels
+* marking different types of packet
+* …
+
+
+### protocol-independence  {.smaller}
+
+
+* only first/last routers care about actual protocol
+* easily allows for… 
+<hr class="vspace" />
+* mix of Ethernet and IP tunnels
+* using routers that don't support IP (e.g. ATM)
+* …
+
+
+### actual label format  {.smaller}
+
+
+```
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ Label
+|                Label                  | Exp |S|       TTL     | Stack
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ Entry
+
+                    Label:  Label Value, 20 bits
+                    Exp:    Experimental Use, 3 bits
+                    S:      Bottom of Stack, 1 bit
+                    TTL:    Time to Live, 8 bits
+
+```
+ 
+
+* TTL here is different than we've seen:
+* only processed when label popped
+* typically (re)set to mirror IP TTL if MPLS run over IP
+

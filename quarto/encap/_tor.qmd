@@ -1,0 +1,127 @@
+
+### Tor  {.smaller}
+
+
+* Tor --- ‘‘onion routing’’
+* suppose connecting from A to B and A to C
+* goal: connection is anonymous
+* method: proxy through several ‘onion routers’ 
+<hr class="vspace" />
+* attacker should only know: 
+
+   * A is sending to someone via Tor
+   * B is receiving from someone via Tor
+   * C is receiving from someone via Tor
+
+* not be able to tie A and B or A and C or B and C together otherwise
+
+
+### Tor threat model  {.smaller}
+
+
+* (from Digledine, Mathewson, Syverson, ‘‘Tor: A Second-Generation Onion Router’’)
+* an advserary ‘‘who can observe some fraction of network traffic; who can generate, modify, delete, or delay traffic; who can operate onion routers of their own; and who can compromise some fraction of onion routers’’
+
+
+### Tor circuit idea (1)  {.smaller}
+
+
+* $E_X(Y)$ = Y encrypted to X
+* to create ‘circuit’: A $\leftrightarrow$ OR1 $\leftrightarrow$ OR2 $\leftrightarrow$ B 
+
+   * A = probably browser, B = probably webserver
+   * OR = onion router
+   * can choose different number of ORs if desired
+
+* A sends OR1 via TLS: <br> ‘‘please setup circuit to OR2: ’’ + $E_{OR2}$(‘‘please connect to B’’)
+* OR1 sends A's encrypted data to OR2 with OR1's circuit ID
+* OR2 sends back responses via OR1 + OR1's circuit iD
+* OR1 uses circuit ID to send back to A
+
+
+### Tor circuit idea (2)  {.smaller}
+
+
+* A $\leftrightarrow$ OR1 $\leftrightarrow$ OR2 $\leftrightarrow$ B 
+
+   * A = probably browser, B = probably webserver
+ 
+<hr class="vspace" />
+* OR1 doesn't know who A is sending to
+* OR2 doesn't know who is sending to B
+* fine if OR1, OR2 independently operated 
+
+   * in practice: probably add additional OR to circuit
+   * otherwise, require large portion of ORs to be independent
+
+
+
+### Tor circuit 
+
+
+![](/encap/tor-fig1){}
+
+
+### traffic analysis problem  {.smaller}
+
+
+* problem 1: if I see A send 1000 bytes, then receive 1749 bytes, and…
+* at about the same time I see B receive 1000 bytes, then send 1749 bytes
+* … would be a big tell 
+<hr class="vspace" />
+* worse: B or OR 1 or OR 3 can deliberately generate patterns of traffic to help ID A
+
+
+### mitigations for traffic analysis?  {.smaller}
+
+
+* general idea: add data or delay to make everything ‘the same’
+* add padding to traffic sent on ‘circuit’ 
+
+   * 512-byte cells only (can't see exact sizes in bytes)
+   * additional padding cells added, too
+
+* ‘‘cover traffic’’ sent periodically between A and OR1 
+
+   * 1.5 s to 9.5 s in each direction if no traffic
+   * idea: hard for attacker to tell when user active
+
+* but real-time nature limits possible mitigations 
+
+   * similar idea for email avoids with random delays
+   * … but can't really browse the web that way
+
+
+
+### application-layer tells  {.smaller}
+
+
+* browser reveals a lot of information: 
+
+   * browser, OS version
+   * screen size
+   * fonts available
+   * timezone
+   * …
+
+* problematic for anonymity 
+
+   * helps B limit possible other ends very seriously
+ 
+<hr class="vspace" />
+* Tor browser (modified Firefox, essentially) mitigation: <br> limited set of screen sizes, OS versions, fonts, etc. allowed
+
+
+### other Tor browser paranoia 
+
+
+* scripts disabled by default 
+
+   * seriously limits ‘ordinary’ browser security vulnerabilities
+
+* cookies, caches cleared when browser closed
+* HTTPS-only by default 
+
+   * really dangerous otherwise since we don't trust last onion router
+
+

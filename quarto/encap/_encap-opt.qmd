@@ -1,0 +1,19 @@
+
+### encapsulation options [incomplete] {.small}
+
+<table>
+<tr><td>left in above</td><td>TCP/UDP/higher layers</td><td>IP</td><td>link-layer</td></tr>
+<tr><td><!-- \hline --> <!-- \hline --> [above TCP/UDP]{.fragment fragment-index=2 .custom .myem-only}</td><td>HTTP proxy, DNS over HTTP(S)</td><td>---</td><td>---</td></tr>
+<tr><td><!-- \hline --> [TCP/UDP]{.fragment fragment-index=3 .custom .myem-only}</td><td>SOCKS, HTTP CONNECT, SSH conn forwarding, TLS</td><td>---</td><td>---</td></tr>
+<tr><td><!-- \hline --> [IP]{.fragment fragment-index=4 .custom .myem-only}</td><td>OpenVPN, WireGuard</td><td>GRE, IPsec</td><td>MPLS</td></tr>
+<tr><td><!-- \hline --> [link-layer]{.fragment fragment-index=5 .custom .myem-only}</td><td>OpenVPN, …</td><td>?</td><td>VLAN, MPLS</td></tr>
+<tr><td><!-- \hline --></td></tr>
+</table>
+
+
+### encapsulation steps 
+
+
+* 1. [getting the stuff to encapsulate]{.fragment fragment-index=2 .custom .myem-only}
+* 2. [sending it encapsulated]{.fragment fragment-index=3 .custom .myem-only}
+
