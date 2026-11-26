@@ -58,28 +58,34 @@
 </table>
 
 *  (any port),
-   <table class="rowlines collines"><tr><td>label=24</td><td>(data)</td></tr></table>
-   $\rightarrow$
+   <table class="inlinepacket"><tr><td>label=24</td><td>(data)</td></tr></table>
+   ->
    port 1,
-   <table class="rowlines collines"><tr><td>label=21</td><td>(data)</td></tr></table>
+   <table class="inlinepacket"><tr><td>label=21</td><td>(data)</td></tr></table>
+
+### MPLS togehter
+
+*  from outside at "edge" of MPLS network:
+   *  add labels to packets to indicate their path
+*  from MPLS network at "edge":
+   *  remove label, send on "normal" network
+*  within MPLS network
+   *  use labels to choose path for packet
 
 
 ### multiprotocol label switching (MPLS) 
 
-* MPLS: combines encapsulation and routing tables
- 
+
 
 ::: {.r-stack}
-![](/encap/texfig/mpls-multiprotocol-label-switching-mpls.figure-1.svg){.fragment .fade-out fragment-index=2 width=900px}
 
-![](/encap/texfig/mpls-multiprotocol-label-switching-mpls.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 width=900px}
+![](/encap/texfig/mpls-multiprotocol-label-switching-mpls.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 width=900px fig-alt="The left router accepts a packet for 3fff:1::aa via its port 0. Its table entry for 3fff:1::/32 says to push label 24 and send via port 2. Its port 2 is connected to the center router, which has a table entry directing it to swap lable 24 for 21 and send it out via its port 1. Its port 1 is connected to the right router, which has a table entry directing it to pop label 21 and send the packet via its port 1 to the 3fff:1:/32 network."}
 
-![](/encap/texfig/mpls-multiprotocol-label-switching-mpls.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 width=900px}
+![](/encap/texfig/mpls-multiprotocol-label-switching-mpls.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 width=900px fig-alt="Key to this process is a 'swap' operation used by routers in the middle of the network. This allows label numbers to be assigned piecemail, independently for each router. In this example, the left router only needed to know to use label 24, and the center router is responsible for knowing that the next router wants label 21."}
 
-![](/encap/texfig/mpls-multiprotocol-label-switching-mpls.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 width=900px}
+![](/encap/texfig/mpls-multiprotocol-label-switching-mpls.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 width=900px fig-alt="In general, routers in thie middle of an MPLS network have very simple routing decisions, only looking at the first label on a packet. There's no need, for example, for prefix-matching like in IP routing."}
 
-![](/encap/texfig/mpls-multiprotocol-label-switching-mpls.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 width=900px}
-
+![](/encap/texfig/mpls-multiprotocol-label-switching-mpls.figure-1.svg){.fragment .fade-out fragment-index=2 width=900px fig-alt="MPLS network with 4 routers, each of which has their own MPLS tables."} <!-- FIXME: MPLS table contents -->
 
 :::
 
@@ -103,7 +109,7 @@
 
 ### MPLS tunnel 
 
-![](/encap/texfig/mpls-mpls-tunnel.figure.svg)
+![](/encap/texfig/mpls-mpls-tunnel.figure.svg){fig-alt="logical view:  virtual wire from A to B. actual network: A is connected to B via a series of MPLS routers. The router A's connected to adds an MPLS label and sends to the next one. Each other router takes packets with the previous label, then swaps it for the next label and sends to the next router. At the final router, the label is popped and sent to B."}
 
 
 ### MPLS tunnel applications  {.smaller}
@@ -142,7 +148,7 @@
 
 ### rapid failover 
 
-![](/encap/texfig/mpls-rapid-failover.figure.svg)
+![](/encap/texfig/mpls-rapid-failover.figure.svg){fig-alt="Two MPLS routers are connected to each other directly, but both have a pre-configured 'backup' table entry that would go through a backup router if that direct connection failed. The backup table entry has the same input label as the primary, but swaps it for a different label and uses a differnet output port."}
 
 
 ### RSVP-TE  {.smaller}
