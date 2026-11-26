@@ -1,21 +1,84 @@
 
+### multiprotocol label switching (MPLS)
+
+*  combines encapsulation and routing tables
+*  when packet enters network add "label" header
+*  use labels to do all the routing
+
+### MPLS input {.smaller}
+
+<table class="rowlines collines">
+<thead>
+<tr><th>in</th><th>label</th><th></th><th>op</th><th>out interface</th>
+</thead>
+<tbody>
+<tr><td>0</td><td>--</td><td>3fff:1::/32</td><td>push 24</td><td>2</td></tr>
+<tr><td>0</td><td>--</td><td>3fff:2::/32</td><td>push 27</td><td>2</td></tr>
+<tr><td>0</td><td>--</td><td>3fff:3::/32</td><td>push 29</td><td>1</td></tr>
+<tr><td>...</td><td>...</td><td>...</td><td>...</td><td>1</td></tr>
+</tbody>
+</table>
+
+*  port=0
+   <table class="inlinepacket"><tr><td>IPv6 dest=3fff:1::42, ...</td></tr></table> ->
+   port 2,
+   <table class="inlinepacket"><tr><td>label=24</td><td>IPv6 dest=3fff:1::42, ...</td></tr></table>
+
+### MPLS output {.smaller}
+
+<table class="rowlines collines">
+<thead>
+<tr><th>in</th><th>label</th><th></th><th>op</th><th>out interface</th>
+</thead>
+<tbody>
+<tr><td>...</td><td>...</td><td>...</td><td>...</td><td>1</td></tr>
+<tr><td>2</td><td>29</td><td>--</td><td>pop</td><td>0</td></tr>
+</tbody>
+</table>
+
+*  port=2
+   <table class="inlinepacket"><tr><td>label=29</td><td>...</td></tr></table> -> 
+   port 0,
+   <table class="inlinepacket"><tr><td>...</td></tr></table>
+
+
+
+### multiprotocol label switching (MPLS) as routing {.smaller}
+
+<table class="rowlines collines">
+<thead>
+<tr><th>label</th><th>op</th><th>out interface</th>
+</thead>
+<tbody>
+<tr><td>24</td><td>swap 21</td><td>1</td></tr>
+<tr><td>25</td><td>swap 22</td><td>1</td></tr>
+<tr><td>27</td><td>swap 21</td><td>2</td></tr>
+<tr><td>28</td><td>swap 29</td><td>0</td></tr>
+</tbody>
+</table>
+
+*  (any port),
+   <table class="rowlines collines"><tr><td>label=24</td><td>(data)</td></tr></table>
+   $\rightarrow$
+   port 1,
+   <table class="rowlines collines"><tr><td>label=21</td><td>(data)</td></tr></table>
+
+
 ### multiprotocol label switching (MPLS) 
-
-
 
 * MPLS: combines encapsulation and routing tables
  
 
 ::: {.r-stack}
-![](/encap/texfig/mpls-multiprotocol-label-switching-mpls.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/encap/texfig/mpls-multiprotocol-label-switching-mpls.figure-1.svg){.fragment .fade-out fragment-index=2 width=900px}
 
-![](/encap/texfig/mpls-multiprotocol-label-switching-mpls.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+![](/encap/texfig/mpls-multiprotocol-label-switching-mpls.figure-2.svg){.fragment .fade-in-then-out fragment-index=2 width=900px}
 
-![](/encap/texfig/mpls-multiprotocol-label-switching-mpls.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
+![](/encap/texfig/mpls-multiprotocol-label-switching-mpls.figure-3.svg){.fragment .fade-in-then-out fragment-index=3 width=900px}
 
-![](/encap/texfig/mpls-multiprotocol-label-switching-mpls.figure-4.svg){.fragment .fade-in-then-out fragment-index=4}
+![](/encap/texfig/mpls-multiprotocol-label-switching-mpls.figure-4.svg){.fragment .fade-in-then-out fragment-index=4 width=900px}
 
-![](/encap/texfig/mpls-multiprotocol-label-switching-mpls.figure-5.svg){.fragment .fade-in-then-out fragment-index=5}
+![](/encap/texfig/mpls-multiprotocol-label-switching-mpls.figure-5.svg){.fragment .fade-in-then-out fragment-index=5 width=900px}
 
 
 :::

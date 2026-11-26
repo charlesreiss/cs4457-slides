@@ -3,36 +3,35 @@
 
 
 * SOCKS motivation in RFC: firewall traversal
-* supports both TCP and UDP
+* supports:
+  * connecting to TCP servers
+  * receiving connections from TCP clients
+  * UDP
 
 
 ### SOCKS TCP operation (client) 
 
-![](/encap/texfig/socks-socks-tcp-operation-client.figure.svg)
+![](/encap/texfig/socks-socks-tcp-operation-client.figure.svg){fig-alt="timeline with client, SOCKS proxy, end-server. 1. Client opens TCP connection to SOCKS proxy. 2. Client Sends 'CONNECT end-server:end-server-port' to SOCKS proxy. 3. SOCKS proxy opens TCP connetion. 4. SOCKS proxy replies to client with success status. 5. Now, client can use TCP connection as if it is directly to the server. The SOCKS proxy will forward data in both directions."}
 
 
 ### SOCKS TCP operation (server) 
 
-![](/encap/texfig/socks-socks-tcp-operation-server.figure.svg)
+![](/encap/texfig/socks-socks-tcp-operation-server.figure.svg){fig-alt="timeline with proxy-client/server, SOCKS proxy, remote-client. 1. Client opens a TCP connection to the server and sends 'BIND 0:0' or 'BIND IP:port'. 2. The proxy replies with the IP+port on the proxy. 3. The remote-client opens a TCP connection to the proxy. 4. The proxy replies to its client with success status. 5. Now the proxy-client/server and remote-client can use their TCP connection as if directly connected."}
 
 
 ### SOCKS UDP operation  {.smaller}
 
-
-
-* use TCP to get UDP port for proxy to use
-* send/receives UDP packets with ‘‘request header’’:
- 
+* use TCP connection to proxy for setup:
+  *  get UDP port that proxy will use
+* send/receive UDP packets with ‘‘request header’’:
 ```
 +----+------+------+----------+----------+----------+
 |RSV | FRAG | ATYP | DST.ADDR | DST.PORT |   DATA   |
 +----+------+------+----------+----------+----------+
 | 2  |  1   |  1   | Variable |    2     | Variable |
 +----+------+------+----------+----------+----------+
-
 ```
  
-
 * FRAG = which fragment number 
 
    * added header means we might need to split UDP packets up
@@ -51,4 +50,3 @@
 * that program sets up ‘tunnel’ with encryption, etc. to other machine 
 <hr class="vspace" />
 * idea supported by OpenSSH, Tor
-

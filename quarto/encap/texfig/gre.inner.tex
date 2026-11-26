@@ -31,17 +31,5 @@
                 encapsulated header+data \\
                 (probably IPv4 or IPv6)
             };
-        \begin{visibleenv}<2>
-            \node[explain box 2] {
-                checksum, `key' ($\sim$ port), sequence number optional
-            };
-        \end{visibleenv}
-        \begin{visibleenv}<3>
-            \node[explain box 2] {
-                key to allow multiple connections \\
-                if over UDP, could use separate ports instead \\
-                (but usualy not over UDP)
-            };
-        \end{visibleenv}
     \end{scope}
 \end{tikzpicture}

@@ -11,9 +11,3 @@
 </table>
 
 
-### encapsulation steps 
-
-
-* 1. [getting the stuff to encapsulate]{.fragment fragment-index=2 .custom .myem-only}
-* 2. [sending it encapsulated]{.fragment fragment-index=3 .custom .myem-only}
-

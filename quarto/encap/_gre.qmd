@@ -1,15 +1,30 @@
 
 ### GRE packet format 
 
+![](/encap/texfig/gre.figure-1.svg){fig-alt="GRE packet: IP or UDP header, then flag bits: C (checksum), 0 (fixed value), K (key), S (sequence number). Then fixed 0 value. Then version number 0. Then protocol type (ethertype value), then checksum (if C flag set), then 0 padding if C set, then key if K set, then sequence number if S set., then encapsulated data (which is usually IPv4 or IPv6)"}
 
+### GRE packet format (flags)
 
-::: {.r-stack .my-full}
-![](/encap/texfig/gre.figure-1.svg){.fragment .fade-in-then-out fragment-index=1}
+![](/encap/texfig/gre.figure-2.svg){fig-alt="Same diagram as previous slide, with C, K, S bits highlighted"}
 
-![](/encap/texfig/gre.figure-2.svg){.fragment .fade-in-then-out fragment-index=2}
+::: {.myoverbox .vlow}
 
-![](/encap/texfig/gre.figure-3.svg){.fragment .fade-in-then-out fragment-index=3}
-
+*  checksum, "key" (basically port number), sequence number optional
+*  bit in header indicates when present
 
 :::
+
+### GRE keys
+
+![](/encap/texfig/gre.figure-3.svg){fig-alt="Same diagram as previous slide, with K flag bit and key highlighted."}
+
+
+::: {.myoverbox .vlow}
+
+*  key to allow multiple connections between IPs
+*  if over UDP, could use separate ports instead/in addition
+   *  but GRE most commonly used directly over IP
+
+:::
+
 

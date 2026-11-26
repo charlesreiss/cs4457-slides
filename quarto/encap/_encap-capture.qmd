@@ -49,7 +49,7 @@
    * terminate UDP/TCP connection at ‘wrong’ machine
 
 
-### Linux tap devices  {.smaller}
+### Linux tap devices 
 
 
 ```
@@ -58,9 +58,10 @@ $ ip tuntap add dev mydev mode tap
 # mark ethernet device as up
 $ ip link set mydev up
 $ dhclient mydev # or other commands to use/config device
-
 ```
- (dhclient is a DHCP client) <br> --- 
+
+ (dhclient is a DHCP client)
+ <hr/>
 ```
 int opentap(const char * name) {
     ... /* setup code, not shown*/
@@ -92,15 +93,14 @@ read(fd, buffer, SIZE); processEthernetPacket(buffer);
    * terminate UDP/TCP connection at ‘wrong’ machine
 
 
-### Linux tun devices  {.smaller}
+### Linux tun devices
 
 
 
-* same as ‘tap’ devices, but…
-* get IP packets, not ethernet packets
+* same as ‘tap’ devices, but IP, not Ethernet
  
 ```
-# create virtual ethernet device mydev
+# create virtual IP device mydev
 $ ip tuntap add dev mydev mode tun
 # setup device to be routed to, example:
 $ ip address add 10.0.0.2 dev mydev
@@ -109,10 +109,11 @@ $ ip -6 address add 3fff:1234::1 dev mydev
 $ ip -6 route add 3fff:1234::/32 dev mydev
 
 ```
- 
+<hr/>
 
-* tunneling program can then open device and read/write IP packets
-
+* in tunneling program:
+  * opens `mydev`
+  * read/write IP packets
 
 ### full tunnel routing table  {.smaller}
 
@@ -128,18 +129,6 @@ say 198.51.100.5 is running tunnel sever, <br> and 10.0.2.5  is gateway beyond t
 <tr><td>(default)</td><td>10.0.2.5</td><td>tunnel</td><td>high</td></tr>
 </tbody>
 </table>
-
-
-### alternate idea  {.smaller}
-
-
-* shown: creating special route for tunnel destination
-* alternate idea: tell OS to use correct interface/IP address
-* most OSes: which IP address is bound = which network interface to use 
-
-   * but would need to discover correct IP address
-   * might be tricky if wireless + wifi connections, or wifi changes
-
 
 
 ### split tunnel routing table  {.smaller}
@@ -159,6 +148,13 @@ say 198.51.100.5 is running tunnel sever, <br> and 10.0.2.5  is gateway beyond t
 </table>
 
 
+### choosing tunnel baesd on source addresses
+
+* shown: telling OS best way to destination is through tunnnel
+   * idea: OS automtaically chooses source interface/IP
+* alternate idea: application tells OS to use correct interface/IP address
+   * servers usually support this to handle multiple IPs
+
 ### encapsulating w/o app changes  {.smaller}
 
 
@@ -177,9 +173,7 @@ say 198.51.100.5 is running tunnel sever, <br> and 10.0.2.5  is gateway beyond t
 
 ### ‘transparent’ proxy via library  {.smaller}
 
-
-![](/encap/proxy-chains){}
- 
+![](/encap/proxy-chains){fig-alt="ProxyChains README, current version 3.1.  This is open source software for GNU/Linux systems. proxychains - a tool that forces any TCP connection made by a given application to follow through proxy like TOR or any other SOCKS4, SOCKS5, or HTTP(S) proxy. Support auth-types: 'user/pass' for SOCKS4/5, 'basic' for HTTP."}
 
 * configures dynamic library loader to load its library 
 
@@ -208,9 +202,7 @@ say 198.51.100.5 is running tunnel sever, <br> and 10.0.2.5  is gateway beyond t
 
 
 * example: SSH connection forwarding 
-
    * <code>ssh -L X:remotehost:remoteport hostname</code>
-
 * example: <code>stunnel</code> for ‘tunneling’ TCP in TLS
 * run on port X, configure to connect to some remote host
 * configure program to connect to localhost port X

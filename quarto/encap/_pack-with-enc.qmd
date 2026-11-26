@@ -1,10 +1,10 @@
 
-### encapsulatoin with encryption  {.smaller}
+### encapsulation with encryption  {.smaller}
 
 
 * GRE = sends packets as is, setup in advance 
 <hr class="vspace" />
-* often want to add autoconfiguration + encryption + authentication
+* often want to add encryption + authentication
 * typically: 
 
    * TLS-handshake like <i>key exchange</i> protocol to setup conncetion

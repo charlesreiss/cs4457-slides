@@ -1,25 +1,22 @@
 
-### TCP-in-TCP problems 
-
-
+### TCP-in-TCP problems (1)
 
 * sometimes run IP tunnel over TCP
-* exercise: what's wrong with GRE for this?
- ![](/encap/texfig/net-over-tcp-tcp-in-tcp-problems.figure.svg)
+* exercise (0): why might we do this?
+* exercise (1): what would we need to change about GRE to do this?
 
+![](/encap/texfig/gre.figure-1.svg)
 
-### TCP-in-TCP problems  {.smaller}
+### TCP-in-TCP problems (2)
 
+* sometimes run IP tunnel over TCP
+* exercise (2): what happens if we send stuff too fast through tunnel?
 
-* sometimes run IP tunnel over TCP 
-
-   * example: picky firewall rules, or non-UDP-supporting NAT
-
+### TCP-in-TCP problems (3)
 * outer TCP connection adds extra buffering 
-
    * more than UDP, because will usually buffer instead of dropping
  
 <hr class="vspace" />
-* $\rightarrow$ very high round-trip time if not careful
-* can result in very poor TCP performance
+*  very high round-trip time if not careful
+* can result in very poor TCP performance for nested connection
 

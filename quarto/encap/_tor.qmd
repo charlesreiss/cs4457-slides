@@ -16,7 +16,7 @@
 * not be able to tie A and B or A and C or B and C together otherwise
 
 
-### Tor threat model  {.smaller}
+### Tor threat model
 
 
 * (from Digledine, Mathewson, Syverson, ‘‘Tor: A Second-Generation Onion Router’’)
@@ -58,8 +58,7 @@
 
 ### Tor circuit 
 
-
-![](/encap/tor-fig1){}
+![](/encap/tor-fig1){fig-alt="Figure from tor paper labeled 'Figure 1: Alice builds a two-hop circuit and begins fetching a web-page. There are four parties involved, Alice, then OR 1, then OR 2, then website. The links between Alice and OR 1 and between OR1 and OR 2 are TLS-encrypted. The link between OR 2 and the website is unencrypted. Alice sends 'Create c1, E(g^x1)' to OR 1 [E(x) = RSA encrpytion, c1=circuit 1]. OR 1 replies 'created c1, g^y1, H(K1)'. Alice sends 'Relay c1{Extend, OR 2, E(g^x2)}' (with relayed data ssent AES-encrypted). OR1 sends 'Create c2, E(g^x2)' to OR2; OR2 replies 'Created c2, g^y2, H(K2)', OR1 replies to Alice 'Relay c1{Extended, g^y2, H(K(2)}'. Then, with the two-hop circui setup, Alice uses it to contact a server: Alice sends 'Relay c1{{Begin <website>:80}}' to OR1, OR1 sends 'Relay c2{Begin <website>:80}' to OR2; OR2 connects to website, then sends 'Relay c2{Connected}' to OR1, OR1 sends 'Relay c1{{Connected}}' to Alice. Alice sends 'Relay c1{{Data, HTTP GET ...}}' to OR1, OR1 sends 'Relay c2{Data, HTTP GET ...}' to OR 2, OR 2 sends HTTP GET ... to the website; The website sends a response which is forwarded from OR2 to OR1 to Alice in a reverse manner."}
 
 
 ### traffic analysis problem  {.smaller}
@@ -69,7 +68,7 @@
 * at about the same time I see B receive 1000 bytes, then send 1749 bytes
 * … would be a big tell 
 <hr class="vspace" />
-* worse: B or OR 1 or OR 3 can deliberately generate patterns of traffic to help ID A
+* worse: B or OR 1 or OR 2 can deliberately generate patterns of traffic to help ID A
 
 
 ### mitigations for traffic analysis?  {.smaller}
